@@ -448,7 +448,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7327468930025391540}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: unloadUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6618920512969882661}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: unloadUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2828543944602473375}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: loadUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7611934963243128113}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2827800036088775823
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +605,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6119614382348746840}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: unloadUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: loadUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3016179727849215772
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,7 +750,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3993925048313308965}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: unloadUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: unloadUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: loadUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3345202328718599781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,7 +1338,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5146373550477003691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: unloadUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6618920512969882661}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: unloadUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7611934963243128113}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: loadUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2828543944602473375}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6007228439645330369
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,6 +2181,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 499052437886616475, guid: 52df013806853794f960badf73d4619d, type: 3}
   m_PrefabInstance: {fileID: 1079425992969749397}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7611934963243128113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7447232757143606948, guid: 52df013806853794f960badf73d4619d, type: 3}
+  m_PrefabInstance: {fileID: 1079425992969749397}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1316078655310714559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2154,6 +2291,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5c2f7d73b3213d4b860d9d62934f8d5, type: 3}
+--- !u!1 &6618920512969882661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5303137765143702170, guid: f5c2f7d73b3213d4b860d9d62934f8d5, type: 3}
+  m_PrefabInstance: {fileID: 1316078655310714559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2731716845014055813 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4011202513918733626, guid: f5c2f7d73b3213d4b860d9d62934f8d5, type: 3}
@@ -2260,6 +2402,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5af0856d1dd9c894e8170e43a17edf44, type: 3}
+--- !u!1 &2828543944602473375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6796250910890911824, guid: 5af0856d1dd9c894e8170e43a17edf44, type: 3}
+  m_PrefabInstance: {fileID: 8723511550566939599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6201315284188012516 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3395534813341754411, guid: 5af0856d1dd9c894e8170e43a17edf44, type: 3}
