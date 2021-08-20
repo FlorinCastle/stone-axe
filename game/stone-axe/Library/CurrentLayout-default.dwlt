@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Inspector
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 110
+  controlID: 39
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 111
+  controlID: 40
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 112
+  controlID: 41
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -343,22 +343,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Prefabs/UI_Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Prefabs/UI_Prefabs
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Users\ender\Documents\GitHub\stone-axe\game\stone-axe
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c43f0000
-    m_LastClickedID: 16324
-    m_ExpandedIDs: 00000000b03f0000b23f0000b43f0000b63f0000c03f0000
+    m_SelectedIDs: 26400000
+    m_LastClickedID: 16422
+    m_ExpandedIDs: 00000000084000000a4000000c4000000e40000018400000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -386,7 +386,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b03f0000b23f0000b43f0000b63f0000
+    m_ExpandedIDs: 00000000084000000a4000000c4000000e400000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -507,9 +507,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 70f3ffff1ef6ffff9cf6ffffaefaffffc0faffff50fbffff54fbffff
+      m_SelectedIDs: ecf7ffff
+      m_LastClickedID: -2068
+      m_ExpandedIDs: a0e3ffff7ee6ffffbaeeffff48f6ffffeaf6ffff24f9ffff5efaffff70faffffa6faffffaefaffffc0faffff54fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -569,9 +569,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 422.9664, y: 281.28424, z: -11.095123}
+    m_Target: {x: 276.88275, y: 407.48798, z: -14.652924}
     speed: 2
-    m_Value: {x: 422.9664, y: 281.28424, z: -11.095123}
+    m_Value: {x: 276.88275, y: 407.48798, z: -14.652924}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -618,13 +618,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.027306383, y: 0.0014941478, z: -0.000040814048, w: 0.99962795}
+    m_Target: {x: 0.025805604, y: -0.010501642, z: 0.0002712564, w: 0.9996149}
     speed: 2
-    m_Value: {x: 0.027306331, y: 0.001494145, z: -0.00004081397, w: 0.99962604}
+    m_Value: {x: 0.025805902, y: -0.00900218, z: 0.00023254697, w: 0.99962646}
   m_Size:
-    m_Target: 300.48557
+    m_Target: 419.0853
     speed: 2
-    m_Value: 300.48557
+    m_Value: 401.03857
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -707,7 +707,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
