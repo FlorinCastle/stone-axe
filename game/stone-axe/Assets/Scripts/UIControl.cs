@@ -7,6 +7,8 @@ public class UIControl : MonoBehaviour
     [Header("UI")]
     [SerializeField] GameObject mainMenuUI;
     [SerializeField] GameObject gameShopUI;
+    [SerializeField] GameObject optionsPopup;
+    [Header("Sub UI")]
     [SerializeField] GameObject economicSubUI;
     [SerializeField] GameObject disassembleSubUI;
     [SerializeField] GameObject craftSubUI;
@@ -18,6 +20,8 @@ public class UIControl : MonoBehaviour
             Debug.LogError("Main Menu UI is not assigned");
         if (gameShopUI == null)
             Debug.LogError("Game Shop UI is not assigned");
+        if (optionsPopup == null)
+            Debug.LogError("Options Popup is not assigned");
         if (economicSubUI == null)
             Debug.LogError("Economic Sub UI UI is not assigned");
         if (disassembleSubUI == null)
