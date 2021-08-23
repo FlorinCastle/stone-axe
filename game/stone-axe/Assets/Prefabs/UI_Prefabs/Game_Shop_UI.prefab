@@ -364,7 +364,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 412.25, y: 270}
+  m_AnchoredPosition: {x: 416.75, y: 270}
   m_SizeDelta: {x: 150, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4731443587735599696
@@ -654,7 +654,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 112, y: 270}
+  m_AnchoredPosition: {x: 116.5, y: 270}
   m_SizeDelta: {x: 150, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4047798824485002427
@@ -744,7 +744,7 @@ MonoBehaviour:
         m_MethodName: unloadUI
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 2828543944602473375}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -756,7 +756,7 @@ MonoBehaviour:
         m_MethodName: unloadUI
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 7611934963243128113}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -768,7 +768,7 @@ MonoBehaviour:
         m_MethodName: loadUI
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 6618920512969882661}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1254,7 +1254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 262.25, y: 270}
+  m_AnchoredPosition: {x: 266.75, y: 270}
   m_SizeDelta: {x: 150, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2210146277207683739
@@ -2170,9 +2170,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1912910593974817586, guid: 52df013806853794f960badf73d4619d, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7447232757143606948, guid: 52df013806853794f960badf73d4619d, type: 3}
       propertyPath: m_Name
       value: Craft_UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7447232757143606948, guid: 52df013806853794f960badf73d4619d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52df013806853794f960badf73d4619d, type: 3}
@@ -2395,6 +2403,10 @@ PrefabInstance:
     - target: {fileID: 6796250910890911824, guid: 5af0856d1dd9c894e8170e43a17edf44, type: 3}
       propertyPath: m_Name
       value: Disassemble_UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6796250910890911824, guid: 5af0856d1dd9c894e8170e43a17edf44, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7910254740274158809, guid: 5af0856d1dd9c894e8170e43a17edf44, type: 3}
       propertyPath: m_PresetInfoIsWorld

@@ -12,6 +12,8 @@ public class UIControl : MonoBehaviour
     [SerializeField] GameObject economicSubUI;
     [SerializeField] GameObject disassembleSubUI;
     [SerializeField] GameObject craftSubUI;
+    [SerializeField] GameObject inventoryUI;
+    [SerializeField] GameObject skillTreeUI;
 
     private void Awake()
     {
@@ -23,11 +25,15 @@ public class UIControl : MonoBehaviour
         if (optionsPopup == null)
             Debug.LogError("Options Popup is not assigned");
         if (economicSubUI == null)
-            Debug.LogError("Economic Sub UI UI is not assigned");
+            Debug.LogError("Economic Sub UI is not assigned");
         if (disassembleSubUI == null)
-            Debug.LogError("Disassemble Sub UI UI is not assigned");
+            Debug.LogError("Disassemble Sub UI is not assigned");
         if (craftSubUI == null)
-            Debug.LogError("Craft Sub UI UI is not assigned");
+            Debug.LogError("Craft Sub UI is not assigned");
+        if (inventoryUI == null)
+            Debug.LogError("Inventory UI is not assigned");
+        if (skillTreeUI == null)
+            Debug.LogError("Skill Tree UI is not assigned");
     }
 
     public void unloadUI(GameObject UIInput)
