@@ -521,6 +521,8 @@ MonoBehaviour:
   - {fileID: 562023012}
   - {fileID: 1976643800}
   - {fileID: 441358065}
+  _itemDataList:
+  - {fileID: 11400000, guid: 60bee362faf67e840b65be712fa59bea, type: 2}
 --- !u!1 &659033541
 GameObject:
   m_ObjectHideFlags: 0

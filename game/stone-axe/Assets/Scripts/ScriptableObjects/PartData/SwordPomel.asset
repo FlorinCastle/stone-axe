@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c44053df750ac84482645dbf86aabaf, type: 3}
+  m_Name: SwordPomel
+  m_EditorClassIdentifier: 
+  _partName: SwordBlade
+  _validmaterials:
+  - {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
+  _unitsOfMaterialNeeded: 1
+  _baseCost: 5
+  _baseStrenght: 1
+  _baseDextarity: 1
+  _baseIntelligence: 1

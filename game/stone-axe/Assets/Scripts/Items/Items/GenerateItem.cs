@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class GenerateItem : MonoBehaviour
 {
@@ -10,8 +11,6 @@ public class GenerateItem : MonoBehaviour
 
     public void GenerateRandomItem()
     {
-
-
         itemText.text = itemScript.chooseItem();
     }
 }
