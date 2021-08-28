@@ -6,7 +6,7 @@ public class PartData : ScriptableObject
 {
     [SerializeField]
     private string _partName;
-    //[SerializeField]
+    [SerializeField]
     private MaterialData _material;
     [SerializeField]
     private List<MaterialData> _validmaterials;
@@ -31,8 +31,9 @@ public class PartData : ScriptableObject
         get
         {
             ranIndex = Random.Range(0, _validmaterials.Count);
-            return _validmaterials[ranIndex].Material;
-            //return _material.Material;
+            _material = _validmaterials[ranIndex];
+            //Debug.Log(_partName + " " + _material.Material);
+            return _material.Material;
         }
     }
 
@@ -40,7 +41,8 @@ public class PartData : ScriptableObject
     {
         get
         {
-            return _baseCost + (_unitsOfMaterialNeeded * _material.BaseCostPerUnit);
+            _totalCurrentValue = _baseCost + (_unitsOfMaterialNeeded * _material.BaseCostPerUnit);
+            return _totalCurrentValue;
         }
     }
 
@@ -48,6 +50,7 @@ public class PartData : ScriptableObject
     {
         get
         {
+            
             return _baseStrenght + _material.AddedStrength;
         }
     }

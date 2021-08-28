@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c44053df750ac84482645dbf86aabaf, type: 3}
   m_Name: SwordHandle
   m_EditorClassIdentifier: 
-  _partName: SwordBlade
+  _partName: Sword Handle
+  _material: {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
   _validmaterials:
   - {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
   _unitsOfMaterialNeeded: 2

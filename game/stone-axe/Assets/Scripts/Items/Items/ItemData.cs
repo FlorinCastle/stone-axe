@@ -23,6 +23,7 @@ public class ItemData : ScriptableObject
     [SerializeField]
     private int _baseIntelligence;
 
+    
     public string ItemName
     {
         get

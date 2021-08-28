@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c44053df750ac84482645dbf86aabaf, type: 3}
   m_Name: SwordBlade
   m_EditorClassIdentifier: 
-  _partName: SwordBlade
+  _partName: Sword Blade
+  _material: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
   _validmaterials:
   - {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
   - {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
   _unitsOfMaterialNeeded: 3
   _baseCost: 5
   _baseStrenght: 3
-  _baseDextarity: 0
+  _baseDextarity: 1
   _baseIntelligence: 0
