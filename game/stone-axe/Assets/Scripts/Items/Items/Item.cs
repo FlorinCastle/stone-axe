@@ -44,7 +44,10 @@ public class Item : MonoBehaviour
         return textReturn;
     }
 
-
+    public List<ItemData> getItemDataRef()
+    {
+        return _itemDataList;
+    }
 }
 
 /*

@@ -11,6 +11,8 @@ public class PartData : ScriptableObject
     [SerializeField]
     private List<MaterialData> _validmaterials;
     [SerializeField]
+    private List<string> _validMaterialTypes;
+    [SerializeField]
     private int _unitsOfMaterialNeeded;
     [SerializeField]
     private int _baseCost;
@@ -26,6 +28,14 @@ public class PartData : ScriptableObject
 
     private int ranIndex;
 
+    public string PartName
+    {
+        get
+        {
+            return _partName;
+        }
+    }
+    
     public string Material
     {
         get
@@ -34,6 +44,14 @@ public class PartData : ScriptableObject
             _material = _validmaterials[ranIndex];
             //Debug.Log(_partName + " " + _material.Material);
             return _material.Material;
+        }
+    }
+
+    public List<string> ValidMaterials
+    {
+        get
+        {
+            return _validMaterialTypes;
         }
     }
 

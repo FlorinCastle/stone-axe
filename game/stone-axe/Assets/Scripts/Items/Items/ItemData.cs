@@ -23,6 +23,7 @@ public class ItemData : ScriptableObject
     [SerializeField]
     private int _baseIntelligence;
 
+    //  TODO: revise this script so differnt, simaler parts can be used to make the same item
     
     public string ItemName
     {

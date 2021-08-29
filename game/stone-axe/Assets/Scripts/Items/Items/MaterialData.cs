@@ -33,6 +33,15 @@ public class MaterialData : ScriptableObject
             return _materaialName;
         }
     }
+
+    public string MaterialType
+    {
+        get
+        {
+            return _materialType.ToString();
+        }
+    }
+
     public int BaseCostPerUnit
     {
         get

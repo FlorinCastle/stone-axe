@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: AxeBlade
   m_EditorClassIdentifier: 
   _partName: Axe Blade
-  _material: {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
+  _material: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
   _validmaterials:
   - {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
   - {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
+  _validMaterialTypes:
+  - Metal
   _unitsOfMaterialNeeded: 3
   _baseCost: 5
   _baseStrenght: 4

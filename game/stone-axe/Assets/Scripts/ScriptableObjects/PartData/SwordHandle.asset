@@ -16,6 +16,8 @@ MonoBehaviour:
   _material: {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
   _validmaterials:
   - {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
+  _validMaterialTypes:
+  - Wood
   _unitsOfMaterialNeeded: 2
   _baseCost: 5
   _baseStrenght: 1
