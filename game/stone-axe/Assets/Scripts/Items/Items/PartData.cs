@@ -9,7 +9,7 @@ public class PartData : ScriptableObject
     [SerializeField]
     private MaterialData _material;
     [SerializeField]
-    private List<MaterialData> _validmaterials;
+    private List<MaterialData> _validMaterials;
     [SerializeField]
     private List<string> _validMaterialTypes;
     [SerializeField]
@@ -40,10 +40,18 @@ public class PartData : ScriptableObject
     {
         get
         {
-            ranIndex = Random.Range(0, _validmaterials.Count);
-            _material = _validmaterials[ranIndex];
+            ranIndex = Random.Range(0, _validMaterials.Count);
+            _material = _validMaterials[ranIndex];
             //Debug.Log(_partName + " " + _material.Material);
             return _material.Material;
+        }
+    }
+
+    public List<MaterialData> ValidMaterialData
+    {
+        get
+        {
+            return _validMaterials;
         }
     }
 

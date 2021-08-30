@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Pomel
   m_EditorClassIdentifier: 
   _partName: Pomel
-  _material: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
-  _validmaterials:
-  - {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
+  _material: {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
+  _validMaterials:
   - {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
+  - {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
+  - {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
   _validMaterialTypes:
   - Metal
   - Wood

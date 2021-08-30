@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SwordBlade
   m_EditorClassIdentifier: 
   _partName: Sword Blade
-  _material: {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
-  _validmaterials:
+  _material: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
+  _validMaterials:
   - {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
   - {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
   _validMaterialTypes:

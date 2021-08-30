@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partName: Axe Handle
   _material: {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
-  _validmaterials:
+  _validMaterials:
   - {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
   _validMaterialTypes:
   - Wood

@@ -9,9 +9,15 @@ public class ItemData : ScriptableObject
     [SerializeField]
     private PartData _part1;
     [SerializeField]
+    private List<PartData> _validPart1;
+    [SerializeField]
     private PartData _part2;
     [SerializeField]
+    private List<PartData> _validPart2;
+    [SerializeField]
     private PartData _part3;
+    [SerializeField]
+    private List<PartData> _validPart3;
     [SerializeField]
     private int _baseCost;
     //[SerializeField]
@@ -72,4 +78,29 @@ public class ItemData : ScriptableObject
             return _part1.Material + "\n" + _part2.Material + "\n" + _part3.Material;
         }
     }
+
+    public List<PartData> ValidParts1
+    {
+        get
+        {
+            return _validPart1;
+        }
+    }
+
+    public List<PartData> ValidParts2
+    {
+        get
+        {
+            return _validPart2;
+        }
+    }
+
+    public List<PartData> ValidParts3
+    {
+        get
+        {
+            return _validPart3;
+        }
+    }
+
 }

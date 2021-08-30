@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: Axe
   _part1: {fileID: 11400000, guid: 300b4734fd9a8484cbf9034e96ce4099, type: 2}
+  _validPart1:
+  - {fileID: 11400000, guid: 300b4734fd9a8484cbf9034e96ce4099, type: 2}
   _part2: {fileID: 11400000, guid: 2e047b0c65a685548b825d1064765d75, type: 2}
+  _validPart2:
+  - {fileID: 11400000, guid: 2e047b0c65a685548b825d1064765d75, type: 2}
   _part3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
+  _validPart3:
+  - {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 20
   _baseStrenght: 6
   _baseDextarity: 3
