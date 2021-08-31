@@ -32,6 +32,9 @@ public class Craft : MonoBehaviour
     PartData part1;
     PartData part2;
     PartData part3;
+    MaterialData mat1;
+    MaterialData mat2;
+    MaterialData mat3;
     private void Awake()
     {
         // item dropdown
@@ -63,12 +66,17 @@ public class Craft : MonoBehaviour
             _part3Select.options[_part3Select.value].text != "Choose Item" &&
             _part1Material.options[_part1Material.value].text != "Choose Material" &&
             _part2Material.options[_part2Material.value].text != "Choose Material" &&
-            _part2Material.options[_part3Material.value].text != "Choose Material")
+            _part3Material.options[_part3Material.value].text != "Choose Material")
         {
+            
             _itemName = "Item - " + chosenItem.ItemName;
             _materials = "\n\nMaterials\n" + _part1Material.options[_part1Material.value].text 
                 + "\n" + _part2Material.options[_part2Material.value].text
-                + "\n" + _part2Material.options[_part3Material.value].text;
+                + "\n" + _part3Material.options[_part3Material.value].text;
+            _totalStrength = "\nStrength: " + chosenItem.TotalStrength;
+            _totalDex = "\nDextarity: " + chosenItem.TotalDextarity;
+            _totalInt = "\nIntelegence: " + chosenItem.TotalIntelegence;
+            _totalValue = "\n\nValue: " + chosenItem.TotalValue;
             //Debug.Log("code is wip");
             _craftedItem.text = _itemName +
                 "\nStats" + _materials;
@@ -103,13 +111,15 @@ public class Craft : MonoBehaviour
             {
                 if (item.ItemName == _itemDropdown.options[_itemDropdown.value].text)
                 {
+                    // start creating instance of new item
+                    //chosenItem = ScriptableObject.CreateInstance("ItemData") as ItemData;
                     chosenItem = item;
+
                 }
             }
 
             //  TODO: set up code so only certain parts can be selected
             setAllPartOptions(_itemDropdown.options[_itemDropdown.value].text);
-
             //  TODO: set up code so only certain materials can be selected
 
             _part1Select.value = 0;
@@ -137,7 +147,10 @@ public class Craft : MonoBehaviour
             {
                 if (part.PartName == _part1Select.options[_part1Select.value].text)
                 {
+                    // create instance of part; store in this script and store in chosenItem (instance)
+                    //part1 = ScriptableObject.CreateInstance("PartData") as PartData;
                     part1 = part;
+                    chosenItem.Part1 = part1;
                 }
             }
             // setting material options
@@ -167,7 +180,10 @@ public class Craft : MonoBehaviour
             {
                 if (part.PartName == _part2Select.options[_part2Select.value].text)
                 {
+                    // create instance of part; store in this script and store in chosenItem (instance)
+                    //part2 = ScriptableObject.CreateInstance("PartData") as PartData;
                     part2 = part;
+                    chosenItem.Part2 = part2;
                 }
             }
             // setting material options
@@ -197,7 +213,10 @@ public class Craft : MonoBehaviour
             {
                 if (part.PartName == _part3Select.options[_part3Select.value].text)
                 {
+                    // create instance of part; store in this script and store in chosenItem (instance)
+                    //part3 = ScriptableObject.CreateInstance("PartData") as PartData;
                     part3 = part;
+                    chosenItem.Part3 = part3;
                 }
             }
             // setting material options
@@ -214,6 +233,51 @@ public class Craft : MonoBehaviour
         else
         {
             _part3Material.interactable = false;
+        }
+    }
+
+    public void checkMat1Selection()
+    {
+        if (_part1Material.options[_part1Material.value].text != "Choose Item")
+        {
+            foreach (MaterialData mat in part1.ValidMaterialData)
+            {
+                if (mat.Material == _part1Material.options[_part1Material.value].text)
+                {
+                    mat1 = mat;
+                    part1.Material = mat1;
+                }
+            }
+        }
+    }
+
+    public void checkMat2Selection()
+    {
+        if (_part2Material.options[_part2Material.value].text != "Choose Item")
+        {
+            foreach (MaterialData mat in part2.ValidMaterialData)
+            {
+                if (mat.Material == _part2Material.options[_part2Material.value].text)
+                {
+                    mat2 = mat;
+                    part2.Material = mat2;
+                }
+            }
+        }
+    }
+
+    public void checkMat3Selection()
+    {
+        if (_part3Material.options[_part3Material.value].text != "Choose Item")
+        {
+            foreach (MaterialData mat in part3.ValidMaterialData)
+            {
+                if (mat.Material == _part3Material.options[_part3Material.value].text)
+                {
+                    mat3 = mat;
+                    part3.Material = mat3;
+                }
+            }
         }
     }
 

@@ -55,12 +55,27 @@ public class ItemData : ScriptableObject
         }
     }
 
+    public PartData Part1
+    {
+        private get => _part1;
+        set => _part1 = value;
+    }
+
+    public PartData Part2
+    {
+        private get => _part2;
+        set => _part2 = value;
+    }
+
+    public PartData Part3
+    {
+        private get => _part3;
+        set => _part3 = value;
+    }
+
     public int TotalDextarity
     {
-        get
-        {
-            return _baseDextarity + _part1.PartDextarity + _part2.PartDextarity + _part3.PartDextarity;
-        }
+        get => _baseDextarity + _part1.PartDextarity + _part2.PartDextarity + _part3.PartDextarity;
     }
 
     public int TotalIntelegence
@@ -75,7 +90,7 @@ public class ItemData : ScriptableObject
     {
         get
         {
-            return _part1.Material + "\n" + _part2.Material + "\n" + _part3.Material;
+            return _part1.RandomMaterial + "\n" + _part2.RandomMaterial + "\n" + _part3.RandomMaterial;
         }
     }
 

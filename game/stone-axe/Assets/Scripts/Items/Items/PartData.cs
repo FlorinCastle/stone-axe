@@ -36,7 +36,13 @@ public class PartData : ScriptableObject
         }
     }
     
-    public string Material
+    public MaterialData Material
+    {
+        get => _material;
+        set => _material = value;
+    }
+
+    public string RandomMaterial
     {
         get
         {
