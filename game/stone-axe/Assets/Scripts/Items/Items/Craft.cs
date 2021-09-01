@@ -79,7 +79,11 @@ public class Craft : MonoBehaviour
             _totalValue = "\n\nValue: " + chosenItem.TotalValue;
             //Debug.Log("code is wip");
             _craftedItem.text = _itemName +
-                "\nStats" + _materials;
+                "\nStats" + _totalStrength
+                + _totalDex
+                + _totalInt
+                + _materials
+                + _totalValue;
         }
         else
         {

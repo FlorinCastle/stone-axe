@@ -33,26 +33,17 @@ public class ItemData : ScriptableObject
     
     public string ItemName
     {
-        get
-        {
-            return _itemName;
-        }
+        get => _itemName;
     }
 
     public int TotalValue
     {
-        get
-        {
-            return _baseCost + _part1.TotalCurrentValue + _part2.TotalCurrentValue + _part3.TotalCurrentValue;
-        }
+        get => _baseCost + _part1.TotalCurrentValue + _part2.TotalCurrentValue + _part3.TotalCurrentValue;
     }
 
     public int TotalStrength
     {
-        get
-        {
-            return _baseStrenght + _part1.PartStrenght + _part2.PartStrenght + _part3.PartStrenght;
-        }
+        get => _baseStrenght + _part1.PartStrenght + _part2.PartStrenght + _part3.PartStrenght;
     }
 
     public PartData Part1
@@ -80,42 +71,27 @@ public class ItemData : ScriptableObject
 
     public int TotalIntelegence
     {
-        get
-        {
-            return _baseIntelligence + _part1.PartIntelligence + _part2.PartIntelligence + _part3.PartIntelligence;
-        }
+        get => _baseIntelligence + _part1.PartIntelligence + _part2.PartIntelligence + _part3.PartIntelligence;
     }
 
     public string Materials
     {
-        get
-        {
-            return _part1.RandomMaterial + "\n" + _part2.RandomMaterial + "\n" + _part3.RandomMaterial;
-        }
+        get => _part1.RandomMaterial + "\n" + _part2.RandomMaterial + "\n" + _part3.RandomMaterial;
     }
 
     public List<PartData> ValidParts1
     {
-        get
-        {
-            return _validPart1;
-        }
+        get => _validPart1;
     }
 
     public List<PartData> ValidParts2
     {
-        get
-        {
-            return _validPart2;
-        }
+        get => _validPart2;
     }
 
     public List<PartData> ValidParts3
     {
-        get
-        {
-            return _validPart3;
-        }
+        get => _validPart3;
     }
 
 }

@@ -16,6 +16,8 @@ public class MaterialData : ScriptableObject
     [SerializeField]
     private int _levelRequirement;
     [SerializeField]
+    private int _quantity;
+    [SerializeField]
     private int _baseCostPerUnit;
     [Header("Extra Stats")]
     [SerializeField]
@@ -28,49 +30,36 @@ public class MaterialData : ScriptableObject
 
     public string Material
     {
-        get
-        {
-            return _materaialName;
-        }
+        get => _materaialName;
     }
 
     public string MaterialType
     {
-        get
-        {
-            return _materialType.ToString();
-        }
+        get => _materialType.ToString();
+    }
+
+    public int MaterialCount
+    {
+        get => _quantity;
     }
 
     public int BaseCostPerUnit
     {
-        get
-        {
-            return _baseCostPerUnit;
-        }
+        get => _baseCostPerUnit;
     }
 
     public int AddedStrength
     {
-        get
-        {
-            return _addedStrength;
-        }
+        get => _addedStrength;
     }
 
     public int AddedDextarity
     {
-        get
-        {
-            return _addedDextarity;
-        }
+        get => _addedDextarity;
     }
 
     public int AddedIntelligence
     {
-        get
-        {
-            return _addedIntelligence;
-        }
+        get => _addedIntelligence;
     }
 }
