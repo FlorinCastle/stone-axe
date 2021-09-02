@@ -9,6 +9,8 @@ public class Craft : MonoBehaviour
     [SerializeField] Item _itemScriptReference;
     [SerializeField] Part _partScriptReference;
     [SerializeField] Material _materialScriptReference;
+    [SerializeField] Inventory _InventoryScriptReference;
+    [SerializeField] InventoryScript _inventoryControlReference;
     [Header("UI")]
     [SerializeField] Dropdown _itemDropdown;
     [SerializeField] Dropdown _part1Select;
@@ -84,10 +86,18 @@ public class Craft : MonoBehaviour
                 + _totalInt
                 + _materials
                 + _totalValue;
+            int i = _InventoryScriptReference.InsertItem(chosenItem);
+            if (i == -1)
+                Debug.LogWarning("Could not insert item into inventory!");
+            else
+            {
+
+            }
+            //Debug.Log("inserted item - " + chosenItem.ItemName + " at index: " + i);
         }
         else
         {
-            _craftedItem.text = "new text";
+            _craftedItem.text = "placeholder text";
         }
     }
 

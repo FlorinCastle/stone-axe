@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Inventory", fileName = "Inventory.asset")]
 [System.Serializable]
@@ -92,7 +93,7 @@ public class Inventory : ScriptableObject
         return true;
     }
 
-    // inset an item, return the index where it was inserted. -1 if error.
+    // inset an item/part/material, return the index where it was inserted. -1 if error.
     public int InsertItem(ItemData item)
     {
         for (int i = 0; i < itemInventory.Length; i++)
@@ -130,5 +131,20 @@ public class Inventory : ScriptableObject
             }
         }
         return -1;
+    }
+
+    public int ItemInventorySize
+    {
+        get => itemInventory.Length;
+    }
+
+    public int PartInventorySize
+    {
+        get => partInventory.Length;
+    }
+
+    public int MaterialInventorySize
+    {
+        get => materialInventory.Length;
     }
 }
