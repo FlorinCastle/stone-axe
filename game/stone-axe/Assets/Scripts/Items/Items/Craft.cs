@@ -86,7 +86,7 @@ public class Craft : MonoBehaviour
                 + _totalInt
                 + _materials
                 + _totalValue;
-            int i = _InventoryScriptReference.InsertItem(chosenItem);
+            int i = _inventoryControlReference.InsertItem(chosenItem);
             if (i == -1)
                 Debug.LogWarning("Could not insert item into inventory!");
             else
