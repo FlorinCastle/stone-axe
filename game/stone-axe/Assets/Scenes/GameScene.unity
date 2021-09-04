@@ -3228,6 +3228,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586892575}
   m_CullTransparentMesh: 1
+--- !u!1 &586916143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6455196102277125022, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
+  m_PrefabInstance: {fileID: 2494867850780624252}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &604172128 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7495269448786400411, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -5466,8 +5471,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventoryResourceRef: {fileID: 11400000, guid: 69862b2c99a1df741a7df38ea83efa83, type: 2}
-  _itemInfoPrefab: {fileID: 9222972596873334500, guid: 52645e019a7420d478cb63c7c1f4b12e, type: 3}
-  _inventoryParent: {fileID: 1769797340}
+  _itemInfoPrefab: {fileID: 2791117391628846461, guid: 8f66dfb029538464c822f9f69549409d, type: 3}
+  _inventoryParent: {fileID: 586916143}
   itemInventory:
   - {fileID: 0}
   - {fileID: 0}
@@ -5489,7 +5494,27 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _itemButtonList: []
+  _itemButtonList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   partInventory:
   - {fileID: 0}
   - {fileID: 0}
@@ -5551,7 +5576,67 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _partButtonList: []
+  _partButtonList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   materialInventory:
   - {fileID: 0}
   - {fileID: 0}
@@ -5563,7 +5648,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _materialButtonList: []
+  _materialButtonList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1181822453
 Transform:
   m_ObjectHideFlags: 0
@@ -8362,11 +8457,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764056119}
   m_CullTransparentMesh: 1
---- !u!1 &1769797340 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8931349895874560676, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
-  m_PrefabInstance: {fileID: 2494867850780624252}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1782712025
 GameObject:
   m_ObjectHideFlags: 0
@@ -10389,6 +10479,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1734993353}
+    - target: {fileID: 6398096739436441643, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -17.081055
+      objectReference: {fileID: 0}
     - target: {fileID: 6557091423555394508, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

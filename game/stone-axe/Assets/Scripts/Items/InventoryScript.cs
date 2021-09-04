@@ -9,28 +9,34 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private GameObject _itemInfoPrefab;
     [SerializeField] private GameObject _inventoryParent;
 
-    [SerializeField] private ItemData[] itemInventory;
-    [SerializeField] private GameObject[] _itemButtonList;
-    [SerializeField] private PartData[] partInventory;
-    [SerializeField] private GameObject[] _partButtonList;
-    [SerializeField] private MaterialData[] materialInventory;
-    [SerializeField] private GameObject[] _materialButtonList;
+    [SerializeField] private List<ItemData> itemInventory;
+    [SerializeField] private List<GameObject> _itemButtonList;
+    [SerializeField] private List<PartData> partInventory;
+    [SerializeField] private List<GameObject> _partButtonList;
+    [SerializeField] private List<MaterialData> materialInventory;
+    [SerializeField] private List<GameObject> _materialButtonList;
 
-
+    private Vector3 prevButtonPos;
     private GameObject tempButtonList;
     public void setupInventory()
     {
-        foreach(ItemData item in itemInventory)
+        prevButtonPos = _inventoryParent.transform.position;
+        //clearItemButtonList();
+        //_itemButtonList.Clear();
+
+        foreach (ItemData item in itemInventory)
         {
             if (item != null)
             {
                 tempButtonList = Instantiate(_itemInfoPrefab);
-                tempButtonList.transform.SetParent(_inventoryParent.transform);
+                tempButtonList.transform.SetParent(_inventoryParent.transform, false);
                 Text t = tempButtonList.GetComponentInChildren<Text>();
                 t.text = item.ItemName;
-                
+                prevButtonPos.y -= 53f;
+                tempButtonList.transform.position = prevButtonPos;
+                InsertItemButton(tempButtonList);
+
             }
-            
         }
     }
 
@@ -103,7 +109,7 @@ public class InventoryScript : MonoBehaviour
     // inset an item/part/material, return the index where it was inserted. -1 if error.
     public int InsertItem(ItemData item)
     {
-        for (int i = 0; i < itemInventory.Length; i++)
+        for (int i = 0; i < itemInventory.Count; i++)
         {
             if (ItemSlotEmpty(i))
             {
@@ -116,7 +122,7 @@ public class InventoryScript : MonoBehaviour
 
     private int InsertItemButton(GameObject item)
     {
-        for (int i = 0; i < _itemButtonList.Length; i++)
+        for (int i = 0; i < _itemButtonList.Count; i++)
             if (ItemButtonSlotEmpty(i))
             {
                 _itemButtonList[i] = item;
@@ -125,9 +131,10 @@ public class InventoryScript : MonoBehaviour
         return -1;
     }
 
+
     public int InsertPart(PartData part)
     {
-        for (int p = 0; p < partInventory.Length; p++)
+        for (int p = 0; p < partInventory.Count; p++)
         {
             if (PartSlotEmpty(p))
             {
@@ -140,7 +147,7 @@ public class InventoryScript : MonoBehaviour
 
     public int InsertMaterial(MaterialData mat)
     {
-        for (int m = 0; m < materialInventory.Length; m++)
+        for (int m = 0; m < materialInventory.Count; m++)
         {
             if (MaterialSlotEmpty(m))
             {
@@ -153,16 +160,29 @@ public class InventoryScript : MonoBehaviour
 
     public int ItemInventorySize
     {
-        get => itemInventory.Length;
+        get => itemInventory.Count;
     }
 
     public int PartInventorySize
     {
-        get => partInventory.Length;
+        get => partInventory.Count;
     }
 
     public int MaterialInventorySize
     {
-        get => materialInventory.Length;
+        get => materialInventory.Count;
+    }
+
+    private int CIB_index;
+    private void clearItemButtonList()
+    {
+        CIB_index = 0;
+        foreach (GameObject go in _itemButtonList)
+        {
+            _itemButtonList[CIB_index] = null;
+            Destroy(go);
+            CIB_index++;
+        }
+        //_itemButtonList.Clear();
     }
 }
