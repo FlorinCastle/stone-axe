@@ -16,29 +16,73 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private List<MaterialData> materialInventory;
     [SerializeField] private List<GameObject> _materialButtonList;
 
+    [Header("UI References")]
+    [SerializeField] private Text _descriptionText;
+
     private Vector3 prevButtonPos;
     private GameObject tempButtonList;
     public void setupInventory()
     {
         prevButtonPos = _inventoryParent.transform.position;
-        //clearItemButtonList();
-        //_itemButtonList.Clear();
+        clearItemButtonList();
 
         foreach (ItemData item in itemInventory)
         {
             if (item != null)
             {
+                // instantiate the button prefab
                 tempButtonList = Instantiate(_itemInfoPrefab);
                 tempButtonList.transform.SetParent(_inventoryParent.transform, false);
+
+                // set up button text
                 Text t = tempButtonList.GetComponentInChildren<Text>();
                 t.text = item.ItemName;
+
+                // set button position
                 prevButtonPos.y -= 53f;
                 tempButtonList.transform.position = prevButtonPos;
-                InsertItemButton(tempButtonList);
 
+                // add button to list
+                InsertItemButton(tempButtonList);
             }
         }
     }
+
+    private string _itemName;
+    private string _materials;
+    private string _totalStrength;
+    private string _totalDex;
+    private string _totalInt;
+    private string _totalValue;
+
+    public void setItemDetailText(int index)
+    {
+        if (itemInventory[index] != null)
+        {
+            ItemData itemRef = itemInventory[index];
+            _itemName = "Item - " + itemInventory[index].ItemName;
+            _materials = "\n\nMaterials\n" + itemRef.Part1.Material.Material
+                + "\n" + itemRef.Part2.Material.Material
+                + "\n" + itemRef.Part3.Material.Material;
+            _totalStrength = "\nStrenght: " + itemRef.TotalStrength;
+            _totalDex = "\nDextarity: " + itemRef.TotalDextarity;
+            _totalInt = "\nIntelegence: " + itemRef.TotalIntelegence;
+            _totalValue = "\n\nValue: " + itemRef.TotalValue;
+
+            // set the text
+            _descriptionText.text = _itemName +
+                "\nStats" + _totalStrength
+                + _totalDex
+                + _totalInt
+                + _materials
+                + _totalValue;
+        }
+        else
+            _descriptionText.text = "new text";
+        //Debug.Log("Item Detail Text set for - item index: " + index);
+    }
+
+
 
     public bool ItemSlotEmpty(int index)
     {
@@ -131,7 +175,6 @@ public class InventoryScript : MonoBehaviour
         return -1;
     }
 
-
     public int InsertPart(PartData part)
     {
         for (int p = 0; p < partInventory.Count; p++)
@@ -173,16 +216,13 @@ public class InventoryScript : MonoBehaviour
         get => materialInventory.Count;
     }
 
-    private int CIB_index;
+    // private int CIB_index;
     private void clearItemButtonList()
     {
-        CIB_index = 0;
         foreach (GameObject go in _itemButtonList)
-        {
-            _itemButtonList[CIB_index] = null;
             Destroy(go);
-            CIB_index++;
-        }
-        //_itemButtonList.Clear();
+
+        for (int j = 0; j < _itemButtonList.Count; j++)
+            _itemButtonList[j] = null;
     }
 }

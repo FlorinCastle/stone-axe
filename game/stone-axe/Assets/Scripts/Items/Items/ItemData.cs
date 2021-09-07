@@ -48,19 +48,19 @@ public class ItemData : ScriptableObject
 
     public PartData Part1
     {
-        private get => _part1;
+        get => _part1;
         set => _part1 = value;
     }
 
     public PartData Part2
     {
-        private get => _part2;
+        get => _part2;
         set => _part2 = value;
     }
 
     public PartData Part3
     {
-        private get => _part3;
+        get => _part3;
         set => _part3 = value;
     }
 

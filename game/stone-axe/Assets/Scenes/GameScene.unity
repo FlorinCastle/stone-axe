@@ -4434,6 +4434,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &990265707 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4348689728321893004, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
+  m_PrefabInstance: {fileID: 2494867850780624252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &996813600
 GameObject:
   m_ObjectHideFlags: 0
@@ -4465,7 +4476,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemText: {fileID: 330064119}
   itemScript: {fileID: 564590206}
-  inventoryStorage: {fileID: 11400000, guid: ace9adbb503746047ab506c5144fc7e2, type: 2}
+  _inventoryRef: {fileID: 0}
+  _generatedItem: {fileID: 0}
 --- !u!4 &996813602
 Transform:
   m_ObjectHideFlags: 0
@@ -5453,7 +5465,7 @@ GameObject:
   - component: {fileID: 1181822452}
   m_Layer: 0
   m_Name: InventoryControl
-  m_TagString: Untagged
+  m_TagString: InventoryControl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5659,6 +5671,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _descriptionText: {fileID: 990265707}
 --- !u!4 &1181822453
 Transform:
   m_ObjectHideFlags: 0
@@ -8111,7 +8124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemText: {fileID: 7485012191131071713}
   itemScript: {fileID: 564590206}
-  inventoryStorage: {fileID: 11400000, guid: ace9adbb503746047ab506c5144fc7e2, type: 2}
+  _inventoryRef: {fileID: 1181822452}
+  _generatedItem: {fileID: 0}
 --- !u!1 &1737049421
 GameObject:
   m_ObjectHideFlags: 0

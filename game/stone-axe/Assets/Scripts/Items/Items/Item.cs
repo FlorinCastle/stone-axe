@@ -18,7 +18,15 @@ public class Item : MonoBehaviour
     private string _totalInt;
     private string _totalValue;
 
-    public string chooseItem()
+    public ItemData chooseItem()
+    {
+        ranItem = Random.Range(0, _itemDataList.Count);
+        _generatedItem = _itemDataList[ranItem];
+
+        return _generatedItem;
+    }
+
+    public string silence()
     {
         // generate the item
         ranItem = Random.Range(0, _itemDataList.Count);
