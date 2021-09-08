@@ -7,17 +7,19 @@ public class GenerateItem : MonoBehaviour
     [SerializeField] Text itemText;
     [SerializeField] Item itemScript;
     [SerializeField] InventoryScript _inventoryRef;
+    [SerializeField] GameObject _inventoryControl;
 
     //[SerializeField] InventoryScriptableObject inventoryStorage;
+
 
     [SerializeField] private ItemData _generatedItem;
     public void GenerateRandomItem()
     {
         _generatedItem = itemScript.chooseItem();
-        _inventoryRef.InsertItem(_generatedItem);
 
         generateItemText();
         itemText.text = _generatedText;
+        _inventoryRef.InsertItem(_generatedItem);
     }
 
     private string _generatedText;

@@ -82,7 +82,6 @@ public class PartData : ScriptableObject
     {
         get
         {
-            
             return _baseStrenght + _material.AddedStrength;
         }
     }

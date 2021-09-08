@@ -4477,6 +4477,7 @@ MonoBehaviour:
   itemText: {fileID: 330064119}
   itemScript: {fileID: 564590206}
   _inventoryRef: {fileID: 0}
+  _inventoryControl: {fileID: 0}
   _generatedItem: {fileID: 0}
 --- !u!4 &996813602
 Transform:
@@ -5482,8 +5483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2e14862389e164e83a0139145a1d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryResourceRef: {fileID: 11400000, guid: 69862b2c99a1df741a7df38ea83efa83, type: 2}
-  _itemInfoPrefab: {fileID: 2791117391628846461, guid: 8f66dfb029538464c822f9f69549409d, type: 3}
+  _inventoryResourceRef: {fileID: 0}
   _inventoryParent: {fileID: 586916143}
   itemInventory:
   - {fileID: 0}
@@ -5506,6 +5506,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _itemInventoryData: []
   _itemButtonList:
   - {fileID: 0}
   - {fileID: 0}
@@ -5672,6 +5673,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _descriptionText: {fileID: 990265707}
+  _itemDataStoragePrefab: {fileID: 3328798671714280204, guid: aaa72dc8f0c7e3847bf46e551e78b592, type: 3}
+  _itemInfoPrefab: {fileID: 2791117391628846461, guid: 8f66dfb029538464c822f9f69549409d, type: 3}
 --- !u!4 &1181822453
 Transform:
   m_ObjectHideFlags: 0
@@ -6186,7 +6189,7 @@ MonoBehaviour:
   _itemScriptReference: {fileID: 564590206}
   _partScriptReference: {fileID: 1217593891}
   _materialScriptReference: {fileID: 681287825}
-  _InventoryScriptReference: {fileID: 11400000, guid: 69862b2c99a1df741a7df38ea83efa83, type: 2}
+  _InventoryScriptReference: {fileID: 0}
   _inventoryControlReference: {fileID: 1181822452}
   _itemDropdown: {fileID: 2065403862}
   _part1Select: {fileID: 351213849}
@@ -8125,6 +8128,7 @@ MonoBehaviour:
   itemText: {fileID: 7485012191131071713}
   itemScript: {fileID: 564590206}
   _inventoryRef: {fileID: 1181822452}
+  _inventoryControl: {fileID: 1181822451}
   _generatedItem: {fileID: 0}
 --- !u!1 &1737049421
 GameObject:

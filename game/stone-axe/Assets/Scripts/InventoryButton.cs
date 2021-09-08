@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryButton : MonoBehaviour
 {
     [SerializeField] private InventoryScript _invControl;
-    private int _myButtonIndex;
+    [SerializeField] private int _myButtonIndex;
     
     private void Awake()
     {

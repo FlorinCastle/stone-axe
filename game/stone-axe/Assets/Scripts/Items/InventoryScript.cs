@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class InventoryScript : MonoBehaviour
 {
     [SerializeField] private Inventory _inventoryResourceRef;
-    [SerializeField] private GameObject _itemInfoPrefab;
     [SerializeField] private GameObject _inventoryParent;
 
     [SerializeField] private List<ItemData> itemInventory;
+    [SerializeField] private List<GameObject> _itemInventoryData;
     [SerializeField] private List<GameObject> _itemButtonList;
     [SerializeField] private List<PartData> partInventory;
     [SerializeField] private List<GameObject> _partButtonList;
@@ -18,6 +18,9 @@ public class InventoryScript : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField] private Text _descriptionText;
+    [Header("Prefabs")]
+    [SerializeField] private GameObject _itemDataStoragePrefab;
+    [SerializeField] private GameObject _itemInfoPrefab;
 
     private Vector3 prevButtonPos;
     private GameObject tempButtonList;
@@ -57,32 +60,57 @@ public class InventoryScript : MonoBehaviour
 
     public void setItemDetailText(int index)
     {
-        if (itemInventory[index] != null)
+        if (index != -1)
         {
-            ItemData itemRef = itemInventory[index];
-            _itemName = "Item - " + itemInventory[index].ItemName;
-            _materials = "\n\nMaterials\n" + itemRef.Part1.Material.Material
-                + "\n" + itemRef.Part2.Material.Material
-                + "\n" + itemRef.Part3.Material.Material;
-            _totalStrength = "\nStrenght: " + itemRef.TotalStrength;
-            _totalDex = "\nDextarity: " + itemRef.TotalDextarity;
-            _totalInt = "\nIntelegence: " + itemRef.TotalIntelegence;
-            _totalValue = "\n\nValue: " + itemRef.TotalValue;
+            if (itemInventory[index] != null)
+            {
+                Debug.Log("Item selected: " + itemInventory[index].ItemName);
+                ItemData itemRef = itemInventory[index];
+                _itemName = "Item - " + itemInventory[index].ItemName;
+                _materials = "\n\nMaterials\n" + itemRef.Part1.Material.Material
+                    + "\n" + itemRef.Part2.Material.Material
+                    + "\n" + itemRef.Part3.Material.Material;
+                _totalStrength = "\nStrenght: " + itemRef.TotalStrength;
+                _totalDex = "\nDextarity: " + itemRef.TotalDextarity;
+                _totalInt = "\nIntelegence: " + itemRef.TotalIntelegence;
+                _totalValue = "\n\nValue: " + itemRef.TotalValue;
 
-            // set the text
-            _descriptionText.text = _itemName +
-                "\nStats" + _totalStrength
-                + _totalDex
-                + _totalInt
-                + _materials
-                + _totalValue;
+                // set the text
+                _descriptionText.text = _itemName +
+                    "\nStats" + _totalStrength
+                    + _totalDex
+                    + _totalInt
+                    + _materials
+                    + _totalValue;
+            }
+            else
+                _descriptionText.text = "new text";
+            //Debug.Log("Item Detail Text set for - item index: " + index);
         }
         else
             _descriptionText.text = "new text";
-        //Debug.Log("Item Detail Text set for - item index: " + index);
     }
 
+    private GameObject itemDataStorageTemp;
+    private ItemDataStorage itemDataScriptRef;
+    public void convertItemData(ItemData item)
+    {
+        // get variables set up
+        itemDataStorageTemp = Instantiate(_itemDataStoragePrefab);
+        itemDataStorageTemp.transform.parent = this.gameObject.transform;
+        itemDataScriptRef = itemDataStorageTemp.GetComponent<ItemDataStorage>();
 
+        // convert data from scriptable object to gameobject
+        //  stats
+        itemDataScriptRef.setItemName(item.ItemName);
+        itemDataScriptRef.setTotalValue(item.TotalValue);
+        itemDataScriptRef.setTotalStrenght(item.TotalStrength);
+        itemDataScriptRef.setTotalDex(item.TotalDextarity);
+        itemDataScriptRef.setTotalInt(item.TotalIntelegence);
+        //  parts
+        // TODO
+
+    }
 
     public bool ItemSlotEmpty(int index)
     {
@@ -164,12 +192,13 @@ public class InventoryScript : MonoBehaviour
         return -1;
     }
 
-    private int InsertItemButton(GameObject item)
+    private int InsertItemButton(GameObject button)
     {
         for (int i = 0; i < _itemButtonList.Count; i++)
             if (ItemButtonSlotEmpty(i))
             {
-                _itemButtonList[i] = item;
+                _itemButtonList[i] = button;
+                button.GetComponent<InventoryButton>().setMyIndex(i);
                 return i;
             }
         return -1;

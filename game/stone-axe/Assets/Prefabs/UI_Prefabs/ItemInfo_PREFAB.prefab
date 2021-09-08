@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _invControl: {fileID: 0}
+  _myButtonIndex: -1
 --- !u!1 &4659518661460071116
 GameObject:
   m_ObjectHideFlags: 0

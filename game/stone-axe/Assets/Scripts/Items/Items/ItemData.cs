@@ -74,6 +74,11 @@ public class ItemData : ScriptableObject
         get => _baseIntelligence + _part1.PartIntelligence + _part2.PartIntelligence + _part3.PartIntelligence;
     }
 
+    public string RandomMaterials
+    {
+        get => _part1.RandomMaterial + "\n" + _part2.RandomMaterial + "\n" + _part3.RandomMaterial;
+    }
+    
     public string Materials
     {
         get => _part1.RandomMaterial + "\n" + _part2.RandomMaterial + "\n" + _part3.RandomMaterial;

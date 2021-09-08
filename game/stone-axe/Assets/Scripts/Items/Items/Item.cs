@@ -28,14 +28,10 @@ public class Item : MonoBehaviour
 
     public string silence()
     {
-        // generate the item
-        ranItem = Random.Range(0, _itemDataList.Count);
-        _generatedItem = _itemDataList[ranItem];
-
         //  store text values (this always comes after the item is generated)
         //  DO NOT REARANGE THE ORDER OR IT WILL MESS UP THE ITEM STAT BLOCK
         _itemName = "Item - " + _generatedItem.ItemName;
-        _materials = "\n\nMaterials\n" + _generatedItem.Materials; // calling this will generate the materials used for the item. DO NOT MOVE IT LOWER IN THE ORDER OR IT WILL BREAK STUFF
+        _materials = "\n\nMaterials\n" + _generatedItem.RandomMaterials; // calling this will generate the materials used for the item. DO NOT MOVE IT LOWER IN THE ORDER OR IT WILL BREAK STUFF
         _totalStrenght = "\nStrenght: " + _generatedItem.TotalStrength;
         _totalDex = "\nDextarity: " + _generatedItem.TotalDextarity;
         _totalInt = "\nIntelegence: " + _generatedItem.TotalIntelegence;
