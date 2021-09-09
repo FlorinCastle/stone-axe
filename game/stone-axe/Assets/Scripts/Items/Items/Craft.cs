@@ -19,6 +19,8 @@ public class Craft : MonoBehaviour
     [SerializeField] Dropdown _part2Material;
     [SerializeField] Dropdown _part3Select;
     [SerializeField] Dropdown _part3Material;
+    [SerializeField] Dropdown _partDropdown;
+    [SerializeField] Dropdown _materialSelect;
     [SerializeField] Text _craftedItem;
 
 
@@ -29,7 +31,10 @@ public class Craft : MonoBehaviour
     [SerializeField] List<string> part1MaterialDropOptions;
     [SerializeField] List<string> part2MaterialDropOptions;
     [SerializeField] List<string> part3MaterialDropOptions;
+    [SerializeField] List<string> partDropOptions;
+    [SerializeField] List<string> partMaterialOptions;
     List<ItemData> itemData;
+    List<PartData> partData;
     ItemData chosenItem;
     PartData part1;
     PartData part2;
@@ -37,15 +42,23 @@ public class Craft : MonoBehaviour
     MaterialData mat1;
     MaterialData mat2;
     MaterialData mat3;
+    PartData chosenPart;
+    MaterialData chosenMat;
     private void Awake()
     {
         // item dropdown
         _itemDropdown.ClearOptions();
         itemData = _itemScriptReference.getItemDataRef();
-        itemDropOptions.Add("Choose Item"); // store this somewhere to allow for localizaion??
+        itemDropOptions.Add("Choose Item");
+        // set up craftable items
         foreach (ItemData item in itemData)
             itemDropOptions.Add(item.ItemName);
         _itemDropdown.AddOptions(itemDropOptions);
+
+        // set up craftable parts
+        foreach (PartData part in partData)
+            partDropOptions.Add(part.PartName);
+        _partDropdown.AddOptions(partDropOptions);
 
         // clear dropdowns
         clearPartOptions();
@@ -122,15 +135,8 @@ public class Craft : MonoBehaviour
         {
             //Debug.Log(_itemDropdown.options[_itemDropdown.value].text);
             foreach (ItemData item in itemData)
-            {
                 if (item.ItemName == _itemDropdown.options[_itemDropdown.value].text)
-                {
-                    // start creating instance of new item
-                    //chosenItem = ScriptableObject.CreateInstance("ItemData") as ItemData;
                     chosenItem = item;
-
-                }
-            }
 
             //  TODO: set up code so only certain parts can be selected
             setAllPartOptions(_itemDropdown.options[_itemDropdown.value].text);
@@ -148,6 +154,22 @@ public class Craft : MonoBehaviour
             _part3Select.interactable = true;
             _part3Material.value = 0;
             _part3Material.interactable = false;
+        }
+    }
+
+    public void checkPartSelection()
+    {
+        if (_partDropdown.options[_partDropdown.value].text == "Choose Part")
+        {
+            _materialSelect.interactable = false;
+
+            clearPartMatOptions();
+        }
+        else
+        {
+            foreach (PartData part in partData)
+                if (part.PartName == _partDropdown.options[_partDropdown.value].text)
+                    chosenPart = part;
         }
     }
 
@@ -295,6 +317,21 @@ public class Craft : MonoBehaviour
         }
     }
 
+    public void checkMaterialSelection()
+    {
+        if (_materialSelect.options[_materialSelect.value]. text != "Choose Item")
+        {
+            foreach(MaterialData mat in chosenPart.ValidMaterialData)
+            {
+                if (mat.Material == _materialSelect.options[_materialSelect.value].text)
+                {
+                    chosenMat = mat;
+                    chosenPart.Material = chosenMat;
+                }
+            }
+        }
+    }
+
     private void setAllPartOptions(string chosenItem)
     {
         // part 1 options
@@ -343,6 +380,11 @@ public class Craft : MonoBehaviour
         _part3Select.AddOptions(part3PartDropOptions);
     }
 
+    private void setCraftablePartOptions()
+    {
+
+    }
+
     private void clearPartOptions()
     {
         //Debug.Log("Clear Part Options has been called");
@@ -389,4 +431,12 @@ public class Craft : MonoBehaviour
 
     }
 
+    private void clearPartMatOptions()
+    {
+        // material options
+        _materialSelect.ClearOptions();
+        partMaterialOptions.Clear();
+        partMaterialOptions.Add("Choose Material");
+        _materialSelect.AddOptions(partMaterialOptions);
+    }
 }

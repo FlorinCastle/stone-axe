@@ -6,6 +6,7 @@ public class InventoryButton : MonoBehaviour
 {
     [SerializeField] private InventoryScript _invControl;
     [SerializeField] private int _myButtonIndex;
+    [SerializeField] private int _itemIndex;
     
     private void Awake()
     {
@@ -17,13 +18,9 @@ public class InventoryButton : MonoBehaviour
         _invControl.setItemDetailText(_myButtonIndex);
     }
 
-    public void setMyIndex(int i)
-    {
-        _myButtonIndex = i;
-    }
+    public void setMyIndex(int i) { _myButtonIndex = i; }
+    public int MyIndex { get => _myButtonIndex; }
 
-    public int getMyIndex()
-    {
-        return _myButtonIndex;
-    }
+    public void setItemIndex(int i) { _itemIndex = i; }
+    public int ItemIndex { get => _itemIndex; }
 }

@@ -29,35 +29,54 @@ public class InventoryScript : MonoBehaviour
 
     private Vector3 prevButtonPos;
     private GameObject tempButtonList;
-    public void setupInventory()
+    public void setupItemInventory()
     {
         prevButtonPos = _inventoryParent.transform.position;
+        clearPartButtonList();
         clearItemButtonList();
 
         foreach (GameObject item in _itemInventoryData)
-        {
             if (item != null)
             {
                 // get reference to ItemDataStorage script
                 ItemDataStorage itemData = item.GetComponent<ItemDataStorage>();
-
-                // instatiate the buttone prefab
+                // instatiate the button prefab
                 tempButtonList = Instantiate(_itemInfoPrefab);
                 tempButtonList.transform.SetParent(_inventoryParent.transform, false);
-
                 // set up button text
                 Text t = tempButtonList.GetComponentInChildren<Text>();
                 t.text = itemData.ItemName;
-
                 // set button position
                 prevButtonPos.y -= 53f;
                 tempButtonList.transform.position = prevButtonPos;
-
                 // add button to list
                 InsertItemButton(tempButtonList);
-
             }
-        }
+    }
+
+    public void setupPartInventory()
+    {
+        prevButtonPos = _inventoryParent.transform.position;
+        clearItemButtonList();
+        clearPartButtonList();
+
+        foreach (GameObject part in _partInventoryData)
+            if (part != null)
+            {
+                // get reference to ItemDataStorage script
+                PartDataStorage partData = part.GetComponent<PartDataStorage>();
+                // instantiate the button prefab
+                tempButtonList = Instantiate(_itemInfoPrefab);
+                tempButtonList.transform.SetParent(_inventoryParent.transform, false);
+                // set up button text
+                Text t = tempButtonList.GetComponentInChildren<Text>();
+                t.text = partData.PartName;
+                // set butto postion
+                prevButtonPos.y -= 53f;
+                tempButtonList.transform.position = prevButtonPos;
+                // add button to list
+                InsertPartButton(tempButtonList);
+            }
     }
 
     private string _itemName;
@@ -189,6 +208,14 @@ public class InventoryScript : MonoBehaviour
         return false;
     }
     
+    private bool PartButtonSlotEmpty(int index)
+    {
+        if (_partButtonList[index] == null)
+            return true;
+
+        return false;
+    }
+
     private bool MaterialSlotEmpty(int index)
     {
         if (materialInventory[index] == null || materialInventory[index].MaterialCount <= 0)
@@ -236,6 +263,18 @@ public class InventoryScript : MonoBehaviour
             }
         return -1;
     }
+
+    private int InsertPartButton(GameObject button)
+    {
+        for (int i = 0; i < _partButtonList.Count; i++)
+            if (PartButtonSlotEmpty(i))
+            {
+                _partButtonList[i] = button;
+                button.GetComponent<InventoryButton>().setMyIndex(i);
+                return i;
+            }
+        return -1;
+    }
     
     private int InsertMaterial(MaterialData mat)
     {
@@ -262,5 +301,14 @@ public class InventoryScript : MonoBehaviour
 
         for (int j = 0; j < _itemButtonList.Count; j++)
             _itemButtonList[j] = null;
+    }
+
+    private void clearPartButtonList()
+    {
+        foreach (GameObject go in _partButtonList)
+            Destroy(go);
+
+        for (int j = 0; j < _partButtonList.Count; j++)
+            _partButtonList[j] = null;
     }
 }
