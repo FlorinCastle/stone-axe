@@ -5,22 +5,27 @@ using UnityEngine.UI;
 
 public class InventoryScript : MonoBehaviour
 {
-    [SerializeField] private Inventory _inventoryResourceRef;
     [SerializeField] private GameObject _inventoryParent;
 
-    [SerializeField] private List<ItemData> itemInventory;
-    [SerializeField] private List<GameObject> _itemInventoryData;
-    [SerializeField] private List<GameObject> _itemButtonList;
-    [SerializeField] private List<PartData> partInventory;
-    [SerializeField] private List<GameObject> _partButtonList;
-    [SerializeField] private List<MaterialData> materialInventory;
-    [SerializeField] private List<GameObject> _materialButtonList;
+    [SerializeField]
+    private List<GameObject> _itemInventoryData;
+    [SerializeField] 
+    private List<GameObject> _itemButtonList;
+    [SerializeField]
+    private List<GameObject> _partInventoryData;
+    [SerializeField] // unused currently - will be used
+    private List<GameObject> _partButtonList;
+    [SerializeField] 
+    private List<MaterialData> materialInventory;
+    [SerializeField] // unused currently - will be used
+    private List<GameObject> _materialButtonList;
 
     [Header("UI References")]
     [SerializeField] private Text _descriptionText;
     [Header("Prefabs")]
     [SerializeField] private GameObject _itemDataStoragePrefab;
     [SerializeField] private GameObject _itemInfoPrefab;
+    [SerializeField] private GameObject _partInfoPrefab;
 
     private Vector3 prevButtonPos;
     private GameObject tempButtonList;
@@ -29,17 +34,20 @@ public class InventoryScript : MonoBehaviour
         prevButtonPos = _inventoryParent.transform.position;
         clearItemButtonList();
 
-        foreach (ItemData item in itemInventory)
+        foreach (GameObject item in _itemInventoryData)
         {
             if (item != null)
             {
-                // instantiate the button prefab
+                // get reference to ItemDataStorage script
+                ItemDataStorage itemData = item.GetComponent<ItemDataStorage>();
+
+                // instatiate the buttone prefab
                 tempButtonList = Instantiate(_itemInfoPrefab);
                 tempButtonList.transform.SetParent(_inventoryParent.transform, false);
 
                 // set up button text
                 Text t = tempButtonList.GetComponentInChildren<Text>();
-                t.text = item.ItemName;
+                t.text = itemData.ItemName;
 
                 // set button position
                 prevButtonPos.y -= 53f;
@@ -47,6 +55,7 @@ public class InventoryScript : MonoBehaviour
 
                 // add button to list
                 InsertItemButton(tempButtonList);
+
             }
         }
     }
@@ -62,20 +71,23 @@ public class InventoryScript : MonoBehaviour
     {
         if (index != -1)
         {
-            if (itemInventory[index] != null)
+            if (_itemInventoryData[index] != null)
             {
-                Debug.Log("Item selected: " + itemInventory[index].ItemName);
-                ItemData itemRef = itemInventory[index];
-                _itemName = "Item - " + itemInventory[index].ItemName;
-                _materials = "\n\nMaterials\n" + itemRef.Part1.Material.Material
-                    + "\n" + itemRef.Part2.Material.Material
-                    + "\n" + itemRef.Part3.Material.Material;
-                _totalStrength = "\nStrenght: " + itemRef.TotalStrength;
-                _totalDex = "\nDextarity: " + itemRef.TotalDextarity;
-                _totalInt = "\nIntelegence: " + itemRef.TotalIntelegence;
-                _totalValue = "\n\nValue: " + itemRef.TotalValue;
+                // get reference to ItemDataStorage script
+                ItemDataStorage itemDataRef = _itemInventoryData[index].GetComponent<ItemDataStorage>();
+                Debug.Log("Item selected: " + itemDataRef.ItemName);
 
-                // set the text
+                // set up text strings
+                _itemName = "Item - " + itemDataRef.ItemName;
+                _materials = "\n\nMaterials\n" + itemDataRef.Part1.Material.Material
+                    + "\n" + itemDataRef.Part2.Material.Material
+                    + "\n" + itemDataRef.Part3.Material.Material;
+                _totalStrength = "\nStrenght: " + itemDataRef.TotalStrength;
+                _totalDex = "\nDextarity: " + itemDataRef.TotalDextarity;
+                _totalInt = "\nIntelegence: " + itemDataRef.TotalIntelegence;
+                _totalValue = "\n\nValue: " + itemDataRef.TotalValue;
+
+                // organize the texts
                 _descriptionText.text = _itemName +
                     "\nStats" + _totalStrength
                     + _totalDex
@@ -92,8 +104,14 @@ public class InventoryScript : MonoBehaviour
     }
 
     private GameObject itemDataStorageTemp;
+    private GameObject part1DataStorageTemp;
+    private GameObject part2DataStorageTemp;
+    private GameObject part3DataStorageTemp;
     private ItemDataStorage itemDataScriptRef;
-    public void convertItemData(ItemData item)
+    private PartDataStorage part1DataScriptRef;
+    private PartDataStorage part2DataScriptRef;
+    private PartDataStorage part3DataScriptRef;
+    public GameObject convertItemData(ItemData item)
     {
         // get variables set up
         itemDataStorageTemp = Instantiate(_itemDataStoragePrefab);
@@ -102,19 +120,62 @@ public class InventoryScript : MonoBehaviour
 
         // convert data from scriptable object to gameobject
         //  stats
+        itemDataStorageTemp.name = item.ItemName;
         itemDataScriptRef.setItemName(item.ItemName);
         itemDataScriptRef.setTotalValue(item.TotalValue);
         itemDataScriptRef.setTotalStrenght(item.TotalStrength);
         itemDataScriptRef.setTotalDex(item.TotalDextarity);
         itemDataScriptRef.setTotalInt(item.TotalIntelegence);
-        //  parts
-        // TODO
 
+        //  parts
+        // part 1
+        part1DataStorageTemp = Instantiate(_partInfoPrefab);
+        part1DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
+        part1DataScriptRef = part1DataStorageTemp.GetComponent<PartDataStorage>();
+        // convert data from scriptable object to gameobject
+        part1DataStorageTemp.name = item.Part1.Material.Material + " " + item.Part1.PartName;
+        part1DataScriptRef.setPartName(item.Part1.PartName);
+        part1DataScriptRef.setMaterial(item.Part1.Material);
+        part1DataScriptRef.setPartStr(item.Part1.PartStrenght);
+        part1DataScriptRef.setPartDex(item.Part1.PartDextarity);
+        part1DataScriptRef.setPartInt(item.Part1.PartIntelligence);
+        // store ref of part 1 in item script
+        itemDataScriptRef.setPart1(part1DataScriptRef);
+
+        // part 2
+        part2DataStorageTemp = Instantiate(_partInfoPrefab);
+        part2DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
+        part2DataScriptRef = part2DataStorageTemp.GetComponent<PartDataStorage>();
+        // convert data from scriptable object to gameobject
+        part2DataStorageTemp.name = item.Part2.Material.Material + " " + item.Part2.PartName;
+        part2DataScriptRef.setPartName(item.Part2.PartName);
+        part2DataScriptRef.setMaterial(item.Part2.Material);
+        part2DataScriptRef.setPartStr(item.Part2.PartStrenght);
+        part2DataScriptRef.setPartDex(item.Part2.PartDextarity);
+        part2DataScriptRef.setPartInt(item.Part2.PartIntelligence);
+        // store ref of part 2 in item script
+        itemDataScriptRef.setPart2(part2DataScriptRef);
+
+        // part 3
+        part3DataStorageTemp = Instantiate(_partInfoPrefab);
+        part3DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
+        part3DataScriptRef = part3DataStorageTemp.GetComponent<PartDataStorage>();
+        // convert data from scriptable object to gameobject
+        part3DataStorageTemp.name = item.Part3.Material.Material + " " + item.Part3.PartName;
+        part3DataScriptRef.setPartName(item.Part3.PartName);
+        part3DataScriptRef.setMaterial(item.Part3.Material);
+        part3DataScriptRef.setPartStr(item.Part3.PartStrenght);
+        part3DataScriptRef.setPartDex(item.Part3.PartDextarity);
+        part3DataScriptRef.setPartInt(item.Part3.PartIntelligence);
+        // store ref of part 3 in item script
+        itemDataScriptRef.setPart3(part3DataScriptRef);
+
+        return itemDataStorageTemp;
     }
 
-    public bool ItemSlotEmpty(int index)
+    private bool ItemSlotEmpty(int index)
     {
-        if (itemInventory[index] == null)
+        if (_itemInventoryData[index] == null)
             return true;
 
         return false;
@@ -127,16 +188,8 @@ public class InventoryScript : MonoBehaviour
 
         return false;
     }
-
-    public bool PartSlotEmpty(int index)
-    {
-        if (partInventory[index] == null)
-            return true;
-
-        return false;
-    }
-
-    public bool MaterialSlotEmpty(int index)
+    
+    private bool MaterialSlotEmpty(int index)
     {
         if (materialInventory[index] == null || materialInventory[index].MaterialCount <= 0)
             return true;
@@ -144,30 +197,8 @@ public class InventoryScript : MonoBehaviour
         return false;
     }
 
-    // remove item/part/material
-    public bool GetItem(int index, out ItemData item)
-    {
-        if (ItemSlotEmpty(index))
-        {
-            item = null;
-            return false;
-        }
-        item = itemInventory[index];
-        return true;
-    }
-
-    public bool GetPart(int index, out PartData part)
-    {
-        if (PartSlotEmpty(index))
-        {
-            part = null;
-            return false;
-        }
-        part = partInventory[index];
-        return true;
-    }
     // may or may not need this code
-    public bool GetMaterial(int index, out MaterialData mat)
+    private bool GetMaterial(int index, out MaterialData mat)
     {
         if (MaterialSlotEmpty(index))
         {
@@ -181,11 +212,13 @@ public class InventoryScript : MonoBehaviour
     // inset an item/part/material, return the index where it was inserted. -1 if error.
     public int InsertItem(ItemData item)
     {
-        for (int i = 0; i < itemInventory.Count; i++)
+        GameObject temp = convertItemData(item);
+
+        for (int i = 0; i < _itemInventoryData.Count; i++)
         {
             if (ItemSlotEmpty(i))
             {
-                itemInventory[i] = item;
+                _itemInventoryData[i] = temp;
                 return i;
             }
         }
@@ -203,21 +236,8 @@ public class InventoryScript : MonoBehaviour
             }
         return -1;
     }
-
-    public int InsertPart(PartData part)
-    {
-        for (int p = 0; p < partInventory.Count; p++)
-        {
-            if (PartSlotEmpty(p))
-            {
-                partInventory[p] = part;
-                return p;
-            }
-        }
-        return -1;
-    }
-
-    public int InsertMaterial(MaterialData mat)
+    
+    private int InsertMaterial(MaterialData mat)
     {
         for (int m = 0; m < materialInventory.Count; m++)
         {
@@ -229,23 +249,12 @@ public class InventoryScript : MonoBehaviour
         }
         return -1;
     }
-
-    public int ItemInventorySize
-    {
-        get => itemInventory.Count;
-    }
-
-    public int PartInventorySize
-    {
-        get => partInventory.Count;
-    }
-
-    public int MaterialInventorySize
+    
+    private int MaterialInventorySize
     {
         get => materialInventory.Count;
     }
 
-    // private int CIB_index;
     private void clearItemButtonList()
     {
         foreach (GameObject go in _itemButtonList)

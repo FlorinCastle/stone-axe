@@ -14,43 +14,22 @@ public class PartDataStorage : MonoBehaviour
     [SerializeField] private int _partDextarity;
     [SerializeField] private int _partIntelegence;
 
-    public string PartName
-    {
-        get => _partName;
-        set => _partName = value;
-    }
+    public string PartName { get => _partName; }
+    public void setPartName(string name) { _partName = name; }
 
-    public MaterialData Material
-    {
-        get => _material;
-        set => _material = value;
-    }
+    public MaterialData Material { get => _material; }
+    public void setMaterial(MaterialData mat) { _material = mat; }
 
-    public string MaterialName
-    {
-        get => _material.Material;
-    }
+    public string MaterialName { get => _material.Material; }
 
-    public int Value
-    {
-        get => _totalValue;
-    }
+    public int Value { get => _totalValue; }
 
-    public int PartStr
-    {
-        get => _partStrength;
-        set => _partStrength = value;
-    }
+    public int PartStr  { get => _partStrength; }
+    public void setPartStr(int value) { _partStrength = value; }
 
-    public int PartDex
-    {
-        get => _partDextarity;
-        set => _partDextarity = value;
-    }
+    public int PartDex { get => _partDextarity; }
+    public void setPartDex(int value) { _partDextarity = value; }
 
-    public int PartInt
-    {
-        get => _partIntelegence;
-        set => _partIntelegence = value;
-    }
+    public int PartInt { get => _partIntelegence; }
+    public void setPartInt(int value) { _partIntelegence = value; }
 }

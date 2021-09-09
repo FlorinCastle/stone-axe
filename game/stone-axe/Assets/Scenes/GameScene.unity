@@ -5485,7 +5485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventoryResourceRef: {fileID: 0}
   _inventoryParent: {fileID: 586916143}
-  itemInventory:
+  _itemInventoryData:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -5506,7 +5506,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _itemInventoryData: []
   _itemButtonList:
   - {fileID: 0}
   - {fileID: 0}
@@ -5528,7 +5527,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  partInventory:
+  _partInventoryData:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -5675,6 +5674,7 @@ MonoBehaviour:
   _descriptionText: {fileID: 990265707}
   _itemDataStoragePrefab: {fileID: 3328798671714280204, guid: aaa72dc8f0c7e3847bf46e551e78b592, type: 3}
   _itemInfoPrefab: {fileID: 2791117391628846461, guid: 8f66dfb029538464c822f9f69549409d, type: 3}
+  _partInfoPrefab: {fileID: 5268577830243002201, guid: f7bae9d50dd6f1145b24f8abbad17464, type: 3}
 --- !u!4 &1181822453
 Transform:
   m_ObjectHideFlags: 0

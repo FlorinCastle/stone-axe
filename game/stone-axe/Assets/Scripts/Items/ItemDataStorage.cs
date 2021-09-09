@@ -34,5 +34,13 @@ public class ItemDataStorage : MonoBehaviour
     public void setTotalInt(int value) { _totalIntelegence = value; }
     public int TotalIntelegence { get => _totalIntelegence; }
 
-    
+    public void setPart1(PartDataStorage value) { _part1 = value; }
+    public PartDataStorage Part1 { get => _part1; }
+
+    public void setPart2(PartDataStorage value) { _part2 = value; }
+    public PartDataStorage Part2 { get => _part2; }
+
+    public void setPart3(PartDataStorage value) { _part3 = value; }
+    public PartDataStorage Part3 { get => _part3; }
+
 }
