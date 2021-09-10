@@ -9,7 +9,7 @@ public class Craft : MonoBehaviour
     [SerializeField] Item _itemScriptReference;
     [SerializeField] Part _partScriptReference;
     [SerializeField] Material _materialScriptReference;
-    [SerializeField] Inventory _InventoryScriptReference;
+    //[SerializeField] Inventory _InventoryScriptReference;
     [SerializeField] InventoryScript _inventoryControlReference;
     [Header("UI")]
     [SerializeField] Dropdown _itemDropdown;
@@ -55,6 +55,11 @@ public class Craft : MonoBehaviour
             itemDropOptions.Add(item.ItemName);
         _itemDropdown.AddOptions(itemDropOptions);
 
+        // part dropdown
+        _partDropdown.ClearOptions();
+        partData = _partScriptReference.getAllParts();
+        partDropOptions.Add("Choose Part");
+
         // set up craftable parts
         foreach (PartData part in partData)
             partDropOptions.Add(part.PartName);
@@ -63,6 +68,7 @@ public class Craft : MonoBehaviour
         // clear dropdowns
         clearPartOptions();
         clearMaterialOptions();
+        clearPartMatOptions();
 
     }
 
@@ -138,9 +144,9 @@ public class Craft : MonoBehaviour
                 if (item.ItemName == _itemDropdown.options[_itemDropdown.value].text)
                     chosenItem = item;
 
-            //  TODO: set up code so only certain parts can be selected
+            //  TODO: set up code so only certain parts can be selected. Done?
             setAllPartOptions(_itemDropdown.options[_itemDropdown.value].text);
-            //  TODO: set up code so only certain materials can be selected
+            //  TODO: set up code so only certain materials can be selected. Done?
 
             _part1Select.value = 0;
             _part1Select.interactable = true;
@@ -170,6 +176,11 @@ public class Craft : MonoBehaviour
             foreach (PartData part in partData)
                 if (part.PartName == _partDropdown.options[_partDropdown.value].text)
                     chosenPart = part;
+
+            setMaterialOptions(_partDropdown.options[_partDropdown.value].text);
+
+            _materialSelect.value = 0;
+            _materialSelect.interactable = true;
         }
     }
 
@@ -380,9 +391,23 @@ public class Craft : MonoBehaviour
         _part3Select.AddOptions(part3PartDropOptions);
     }
 
-    private void setCraftablePartOptions()
+    private void setMaterialOptions(string chosenPart)
     {
-
+        _materialSelect.ClearOptions();
+        partMaterialOptions.Clear();
+        partMaterialOptions.Add("Choose Material");
+        foreach (PartData part in partData)
+        {
+            if (part.PartName == chosenPart)
+            {
+                List<MaterialData> validMaterial = part.ValidMaterialData;
+                foreach (MaterialData mat in validMaterial)
+                {
+                    partMaterialOptions.Add(mat.Material);
+                }
+            }
+        }
+        _materialSelect.AddOptions(partMaterialOptions);
     }
 
     private void clearPartOptions()
