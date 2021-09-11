@@ -23,6 +23,7 @@ public class PartDataStorage : MonoBehaviour
     public string MaterialName { get => _material.Material; }
 
     public int Value { get => _totalValue; }
+    public void setValue(int value) { _totalValue = value; }
 
     public int PartStr  { get => _partStrength; }
     public void setPartStr(int value) { _partStrength = value; }

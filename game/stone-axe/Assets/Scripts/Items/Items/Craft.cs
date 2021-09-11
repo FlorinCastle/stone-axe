@@ -35,6 +35,7 @@ public class Craft : MonoBehaviour
     [SerializeField] List<string> partMaterialOptions;
     List<ItemData> itemData;
     List<PartData> partData;
+    // item crafting
     ItemData chosenItem;
     PartData part1;
     PartData part2;
@@ -42,6 +43,7 @@ public class Craft : MonoBehaviour
     MaterialData mat1;
     MaterialData mat2;
     MaterialData mat3;
+    // part crafting
     PartData chosenPart;
     MaterialData chosenMat;
     private void Awake()
@@ -100,11 +102,8 @@ public class Craft : MonoBehaviour
             _totalValue = "\n\nValue: " + chosenItem.TotalValue;
             //Debug.Log("code is wip");
             _craftedItem.text = _itemName +
-                "\nStats" + _totalStrength
-                + _totalDex
-                + _totalInt
-                + _materials
-                + _totalValue;
+                "\nStats" + _totalStrength + _totalDex + _totalInt
+                + _materials + _totalValue;
             int i = _inventoryControlReference.InsertItem(chosenItem);
             if (i == -1)
                 Debug.LogWarning("Could not insert item into inventory!");
@@ -115,9 +114,40 @@ public class Craft : MonoBehaviour
             //Debug.Log("inserted item - " + chosenItem.ItemName + " at index: " + i);
         }
         else
-        {
             _craftedItem.text = "placeholder text";
+    }
+
+    private string _partName;
+    private string _partMaterial;
+    private string _partStrength;
+    private string _partDex;
+    private string _partInt;
+    private string _partValue;
+    public void craftPart()
+    {
+        if (_partDropdown.options[_partDropdown.value].text != "Choose Part" &&
+            _materialSelect.options[_materialSelect.value].text != "Choose Material")
+        {
+            _partName = "Part - " + chosenPart.PartName;
+            _partMaterial = "\n\nMaterials\n" + chosenPart.Material.Material;
+            _partStrength = "\nStrength: " + chosenPart.PartStrenght;
+            _partDex = "\nDextarity: " + chosenPart.PartDextarity;
+            _partInt = "\nIntelegence: " + chosenPart.PartIntelligence;
+            _partValue = "\n\nValue: " + chosenPart.TotalCurrentValue;
+
+            _craftedItem.text = _partName +
+                "\nStats" + _totalStrength + _partDex + _partInt
+                + _partMaterial + _partValue;
+            int i = _inventoryControlReference.InsertPart(chosenPart);
+            if (i == -1)
+                Debug.LogWarning("Could not insert part into inventory!");
+            else
+            {
+
+            }
         }
+        else
+            _craftedItem.text = "placeholder text";
     }
 
     public void checkItemSelection()

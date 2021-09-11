@@ -24,6 +24,7 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private Text _descriptionText;
     [Header("Prefabs")]
     [SerializeField] private GameObject _itemDataStoragePrefab;
+    [SerializeField] private GameObject _partDataStoragePrefab;
     [SerializeField] private GameObject _itemInfoPrefab;
     [SerializeField] private GameObject _partInfoPrefab;
 
@@ -66,7 +67,7 @@ public class InventoryScript : MonoBehaviour
                 // get reference to ItemDataStorage script
                 PartDataStorage partData = part.GetComponent<PartDataStorage>();
                 // instantiate the button prefab
-                tempButtonList = Instantiate(_itemInfoPrefab);
+                tempButtonList = Instantiate(_partInfoPrefab);
                 tempButtonList.transform.SetParent(_inventoryParent.transform, false);
                 // set up button text
                 Text t = tempButtonList.GetComponentInChildren<Text>();
@@ -85,7 +86,6 @@ public class InventoryScript : MonoBehaviour
     private string _totalDex;
     private string _totalInt;
     private string _totalValue;
-
     public void setItemDetailText(int index)
     {
         if (index != -1)
@@ -94,7 +94,6 @@ public class InventoryScript : MonoBehaviour
             {
                 // get reference to ItemDataStorage script
                 ItemDataStorage itemDataRef = _itemInventoryData[index].GetComponent<ItemDataStorage>();
-                Debug.Log("Item selected: " + itemDataRef.ItemName);
 
                 // set up text strings
                 _itemName = "Item - " + itemDataRef.ItemName;
@@ -108,15 +107,47 @@ public class InventoryScript : MonoBehaviour
 
                 // organize the texts
                 _descriptionText.text = _itemName +
-                    "\nStats" + _totalStrength
-                    + _totalDex
-                    + _totalInt
-                    + _materials
-                    + _totalValue;
+                    "\nStats" + _totalStrength + _totalDex + _totalInt
+                    + _materials + _totalValue;
             }
             else
                 _descriptionText.text = "new text";
             //Debug.Log("Item Detail Text set for - item index: " + index);
+        }
+        else
+            _descriptionText.text = "new text";
+    }
+
+    private string _partName;
+    private string _material;
+    private string _partStrength;
+    private string _partDex;
+    private string _partInt;
+    private string _partValue;
+    public void setPartDetailText(int index)
+    {
+        if (index != -1)
+        {
+            if (_partInventoryData[index] != null)
+            {
+                // get reference to PartDataStorage script
+                PartDataStorage partDataRef = _partInventoryData[index].GetComponent<PartDataStorage>();
+
+                // set up text strings
+                _partName = "Part - " + partDataRef.PartName;
+                _material = "\n\nMaterial\n" + partDataRef.MaterialName;
+                _partStrength = "\nStrenght: " + partDataRef.PartStr;
+                _partDex = "\nDextarity: " + partDataRef.PartDex;
+                _partInt = "\nIntelegence: " + partDataRef.PartInt;
+                _partValue = "\n\nValue: " + partDataRef.Value;
+
+                // organize the texts
+                _descriptionText.text = _partName +
+                    "\nStats" + _partStrength + _partDex + _partInt
+                    + _material + _partValue;
+            }
+            else
+                _descriptionText.text = "new text";
         }
         else
             _descriptionText.text = "new text";
@@ -192,9 +223,39 @@ public class InventoryScript : MonoBehaviour
         return itemDataStorageTemp;
     }
 
+    private GameObject partDataStorageTemp;
+    private PartDataStorage partDataScriptRef;
+    public GameObject convertPartData(PartData part)
+    {
+        // get variables set up
+        partDataStorageTemp = Instantiate(_partDataStoragePrefab);
+        partDataStorageTemp.transform.parent = this.gameObject.transform;
+        partDataScriptRef = partDataStorageTemp.GetComponent<PartDataStorage>();
+
+        // convert data from scriptable object to gameobject
+        //  stats
+        partDataStorageTemp.name = part.PartName;
+        partDataScriptRef.setPartName(part.PartName);
+        partDataScriptRef.setMaterial(part.Material);
+        partDataScriptRef.setPartStr(part.PartStrenght);
+        partDataScriptRef.setPartDex(part.PartDextarity);
+        partDataScriptRef.setPartInt(part.PartIntelligence);
+        partDataScriptRef.setValue(part.TotalCurrentValue);
+
+        return partDataStorageTemp;
+    }
+
     private bool ItemSlotEmpty(int index)
     {
         if (_itemInventoryData[index] == null)
+            return true;
+
+        return false;
+    }
+
+    private bool PartSlotEmpty(int index)
+    {
+        if (_partInventoryData[index] == null)
             return true;
 
         return false;
@@ -249,6 +310,20 @@ public class InventoryScript : MonoBehaviour
                 return i;
             }
         }
+        return -1;
+    }
+
+    public int InsertPart(PartData part)
+    {
+        GameObject temp = convertPartData(part);
+
+        for (int i = 0; i < _partInventoryData.Count; i++)
+            if (PartSlotEmpty(i))
+            {
+                _partInventoryData[i] = temp;
+                return i;
+            }
+
         return -1;
     }
 

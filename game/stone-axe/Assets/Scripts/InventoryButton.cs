@@ -13,9 +13,14 @@ public class InventoryButton : MonoBehaviour
         _invControl = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>();
     }
 
-    public void setInfoText()
+    public void setItemInfoText()
     {
         _invControl.setItemDetailText(_myButtonIndex);
+    }
+
+    public void setPartInfoText()
+    {
+        _invControl.setPartDetailText(_myButtonIndex);
     }
 
     public void setMyIndex(int i) { _myButtonIndex = i; }

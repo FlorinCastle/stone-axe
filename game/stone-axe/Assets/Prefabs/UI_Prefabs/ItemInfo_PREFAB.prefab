@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _invControl: {fileID: 0}
   _myButtonIndex: -1
+  _itemIndex: 0
 --- !u!1 &4659518661460071116
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +175,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8417178379374518237}
         m_TargetAssemblyTypeName: InventoryButton, Assembly-CSharp
-        m_MethodName: setInfoText
+        m_MethodName: setItemInfoText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

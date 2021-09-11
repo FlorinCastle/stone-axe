@@ -6244,7 +6244,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1221333021}
         m_TargetAssemblyTypeName: Craft, Assembly-CSharp
-        m_MethodName: craftItem
+        m_MethodName: craftPart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7652,8 +7652,9 @@ MonoBehaviour:
   - {fileID: 0}
   _descriptionText: {fileID: 990265707}
   _itemDataStoragePrefab: {fileID: 3328798671714280204, guid: aaa72dc8f0c7e3847bf46e551e78b592, type: 3}
+  _partDataStoragePrefab: {fileID: 5268577830243002201, guid: f7bae9d50dd6f1145b24f8abbad17464, type: 3}
   _itemInfoPrefab: {fileID: 2791117391628846461, guid: 8f66dfb029538464c822f9f69549409d, type: 3}
-  _partInfoPrefab: {fileID: 5268577830243002201, guid: f7bae9d50dd6f1145b24f8abbad17464, type: 3}
+  _partInfoPrefab: {fileID: 2791117391628846461, guid: 3b06e52e9fff60f47ad438fd8b6d2a61, type: 3}
 --- !u!4 &1181822453
 Transform:
   m_ObjectHideFlags: 0
@@ -8168,7 +8169,6 @@ MonoBehaviour:
   _itemScriptReference: {fileID: 564590206}
   _partScriptReference: {fileID: 1217593891}
   _materialScriptReference: {fileID: 681287825}
-  _InventoryScriptReference: {fileID: 0}
   _inventoryControlReference: {fileID: 1181822452}
   _itemDropdown: {fileID: 2065403862}
   _part1Select: {fileID: 351213849}
