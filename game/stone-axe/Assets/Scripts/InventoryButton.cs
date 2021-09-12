@@ -23,6 +23,11 @@ public class InventoryButton : MonoBehaviour
         _invControl.setPartDetailText(_myButtonIndex);
     }
 
+    public void setSelectedItem()
+    {
+        _invControl.setSelectedItem(_itemIndex);
+    }
+
     public void setMyIndex(int i) { _myButtonIndex = i; }
     public int MyIndex { get => _myButtonIndex; }
 

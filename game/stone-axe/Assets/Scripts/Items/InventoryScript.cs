@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class InventoryScript : MonoBehaviour
 {
     [SerializeField] private GameObject _inventoryParent;
+    [SerializeField]
+    private GameObject _selectedItem;
 
     [SerializeField]
     private List<GameObject> _itemInventoryData;
@@ -22,6 +24,7 @@ public class InventoryScript : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField] private Text _descriptionText;
+    [SerializeField] private GameObject _selectButton;
     [Header("Prefabs")]
     [SerializeField] private GameObject _itemDataStoragePrefab;
     [SerializeField] private GameObject _partDataStoragePrefab;
@@ -30,17 +33,20 @@ public class InventoryScript : MonoBehaviour
 
     private Vector3 prevButtonPos;
     private GameObject tempButtonList;
-    public void setupItemInventory()
+    public void setupItemInventory(bool isRemoving)
     {
+        _selectButton.SetActive(isRemoving);
         prevButtonPos = _inventoryParent.transform.position;
         clearPartButtonList();
         clearItemButtonList();
-
+        int k = 0;
         foreach (GameObject item in _itemInventoryData)
+        {
             if (item != null)
             {
                 // get reference to ItemDataStorage script
                 ItemDataStorage itemData = item.GetComponent<ItemDataStorage>();
+
                 // instatiate the button prefab
                 tempButtonList = Instantiate(_itemInfoPrefab);
                 tempButtonList.transform.SetParent(_inventoryParent.transform, false);
@@ -51,8 +57,10 @@ public class InventoryScript : MonoBehaviour
                 prevButtonPos.y -= 53f;
                 tempButtonList.transform.position = prevButtonPos;
                 // add button to list
-                InsertItemButton(tempButtonList);
+                InsertItemButton(tempButtonList, k);
             }
+            k++;
+        }
     }
 
     public void setupPartInventory()
@@ -179,7 +187,7 @@ public class InventoryScript : MonoBehaviour
 
         //  parts
         // part 1
-        part1DataStorageTemp = Instantiate(_partInfoPrefab);
+        part1DataStorageTemp = Instantiate(_partDataStoragePrefab);
         part1DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part1DataScriptRef = part1DataStorageTemp.GetComponent<PartDataStorage>();
         // convert data from scriptable object to gameobject
@@ -193,7 +201,7 @@ public class InventoryScript : MonoBehaviour
         itemDataScriptRef.setPart1(part1DataScriptRef);
 
         // part 2
-        part2DataStorageTemp = Instantiate(_partInfoPrefab);
+        part2DataStorageTemp = Instantiate(_partDataStoragePrefab);
         part2DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part2DataScriptRef = part2DataStorageTemp.GetComponent<PartDataStorage>();
         // convert data from scriptable object to gameobject
@@ -207,7 +215,7 @@ public class InventoryScript : MonoBehaviour
         itemDataScriptRef.setPart2(part2DataScriptRef);
 
         // part 3
-        part3DataStorageTemp = Instantiate(_partInfoPrefab);
+        part3DataStorageTemp = Instantiate(_partDataStoragePrefab);
         part3DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part3DataScriptRef = part3DataStorageTemp.GetComponent<PartDataStorage>();
         // convert data from scriptable object to gameobject
@@ -327,13 +335,14 @@ public class InventoryScript : MonoBehaviour
         return -1;
     }
 
-    private int InsertItemButton(GameObject button)
+    private int InsertItemButton(GameObject button, int j)
     {
         for (int i = 0; i < _itemButtonList.Count; i++)
             if (ItemButtonSlotEmpty(i))
             {
                 _itemButtonList[i] = button;
                 button.GetComponent<InventoryButton>().setMyIndex(i);
+                button.GetComponent<InventoryButton>().setItemIndex(j);
                 return i;
             }
         return -1;
@@ -385,5 +394,26 @@ public class InventoryScript : MonoBehaviour
 
         for (int j = 0; j < _partButtonList.Count; j++)
             _partButtonList[j] = null;
+    }
+
+    public void setSelectedItem(int i)
+    {
+        if (i != -1)
+        {
+            _selectedItem = _itemInventoryData[i];
+            Debug.Log("Selected item is: " + _selectedItem.name + " at index: " + i);
+        }
+        else
+            Debug.Log("example button selected");
+    }
+
+    public GameObject getSelectedItem()
+    {
+        if (_selectedItem != null)
+        {
+            return _selectedItem;
+
+        }
+        return null;
     }
 }
