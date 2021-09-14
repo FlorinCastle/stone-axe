@@ -9,6 +9,8 @@ public class SellItemControl : MonoBehaviour
     [SerializeField] private UIControl _uIControlRef;
     [SerializeField] private GameObject _selectedItem;
     [SerializeField] private Text _itemText;
+    [Header("UI")]
+    [SerializeField] private Button _sellItemButton;
 
     private void Awake()
     {
@@ -31,9 +33,13 @@ public class SellItemControl : MonoBehaviour
         {
             //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
             setupDiscription();
+            _sellItemButton.interactable = true;
         }
         else
+        {
             Debug.Log("No Item selected!");
+            _sellItemButton.interactable = false;
+        }
 
     }
 
@@ -64,5 +70,11 @@ public class SellItemControl : MonoBehaviour
             "\nStats" + _totalStrength + _totalDex + _totalInt
             + _materials + _totalValue;
 
+    }
+
+    public void sellItem()
+    {
+        _itemData = _selectedItem.GetComponent<ItemDataStorage>();
+        _invScriptRef.RemoveItem(_itemData.InventoryIndex);
     }
 }

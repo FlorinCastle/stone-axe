@@ -8845,6 +8845,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1383667778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1042297404449287503, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+  m_PrefabInstance: {fileID: 7485012191131071712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1400681667
 GameObject:
   m_ObjectHideFlags: 0
@@ -10657,6 +10668,7 @@ MonoBehaviour:
   _uIControlRef: {fileID: 0}
   _selectedItem: {fileID: 0}
   _itemText: {fileID: 1142077648}
+  _sellItemButton: {fileID: 1383667778}
 --- !u!1 &1737049421
 GameObject:
   m_ObjectHideFlags: 0
@@ -13758,6 +13770,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1042297404449287503, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1734993355}
     - target: {fileID: 1503544390664033765, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

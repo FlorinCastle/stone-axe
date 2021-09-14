@@ -314,6 +314,7 @@ public class InventoryScript : MonoBehaviour
         {
             if (ItemSlotEmpty(i))
             {
+                temp.GetComponent<ItemDataStorage>().setInventoryIndex(i);
                 _itemInventoryData[i] = temp;
                 return i;
             }
@@ -358,6 +359,17 @@ public class InventoryScript : MonoBehaviour
                 return i;
             }
         return -1;
+    }
+
+    public void RemoveItem(int index)
+    {
+        //Debug.Log("removing item at index: " + index);
+        GameObject item = _itemInventoryData[index];
+        Destroy(item);
+        _descriptionText.text = "item text";
+        _itemInventoryData[index] = null;
+        _selectedItem = null;
+        //_descriptionText.text = "item text";
     }
     
     private int InsertMaterial(MaterialData mat)
