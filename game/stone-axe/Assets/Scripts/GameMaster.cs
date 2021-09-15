@@ -3,20 +3,30 @@ using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
+    [SerializeField] private int _currentCurrency;
+    
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void addCurrency(int value)
     {
-        
+        _currentCurrency += value;
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool removeCurrency(int value)
     {
-        
+        int temp = _currentCurrency - value;
+
+        if (temp >= 0)
+        {
+            _currentCurrency = temp;
+            return true;
+        }
+        else if (temp < 0)
+            return false;
+
+        return false;
     }
 }

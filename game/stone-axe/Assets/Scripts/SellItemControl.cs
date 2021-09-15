@@ -75,6 +75,7 @@ public class SellItemControl : MonoBehaviour
     public void sellItem()
     {
         _itemData = _selectedItem.GetComponent<ItemDataStorage>();
+        GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().addCurrency(_itemData.TotalValue);
         _invScriptRef.RemoveItem(_itemData.InventoryIndex);
     }
 }
