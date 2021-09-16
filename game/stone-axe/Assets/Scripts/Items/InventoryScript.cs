@@ -9,6 +9,14 @@ public class InventoryScript : MonoBehaviour
     [SerializeField]
     private GameObject _selectedItem;
 
+    private enum removingItemStatusEnum
+    {
+        NotRemoving,            // int 0
+        RemovingToSell,         // int 1
+        RemovingToDisassemble   // int 2
+    }
+    [SerializeField] private removingItemStatusEnum _removingStatus;
+
     [SerializeField]
     private List<GameObject> _itemInventoryData;
     [SerializeField] 
@@ -33,9 +41,15 @@ public class InventoryScript : MonoBehaviour
 
     private Vector3 prevButtonPos;
     private GameObject tempButtonList;
-    public void setupItemInventory(bool isRemoving)
+
+    public void setupItemInventory()
+    {
+        setupItemInventory(false, 0);
+    }
+    public void setupItemInventory(bool isRemoving, int state)
     {
         _selectButton.SetActive(isRemoving);
+        setStatus(state);
         prevButtonPos = _inventoryParent.transform.position;
         clearPartButtonList();
         clearItemButtonList();
@@ -336,6 +350,23 @@ public class InventoryScript : MonoBehaviour
         return -1;
     }
 
+    public int InsertPartData(GameObject part)
+    {
+        //Debug.Log(part.name);
+        if (part.GetComponent<PartDataStorage>() != null)
+        {
+            for (int i = 0; i < _partInventoryData.Count; i++)
+                if (PartSlotEmpty(i))
+                {
+                    _partInventoryData[i] = part;
+                    return i;
+                }
+        }
+        else if (part.GetComponent<PartDataStorage>() == null)
+            Debug.LogWarning("Part does not contain the PartDataStorage component!");
+        return -1;
+    }
+
     private int InsertItemButton(GameObject button, int j)
     {
         for (int i = 0; i < _itemButtonList.Count; i++)
@@ -413,7 +444,7 @@ public class InventoryScript : MonoBehaviour
         if (i != -1)
         {
             _selectedItem = _itemInventoryData[i];
-            Debug.Log("Selected item is: " + _selectedItem.name + " at index: " + i);
+            //Debug.Log("Selected item is: " + _selectedItem.name + " at index: " + i);
         }
         else
             Debug.Log("example button selected");
@@ -427,5 +458,36 @@ public class InventoryScript : MonoBehaviour
 
         }
         return null;
+    }
+
+    private void setStatus(int value)
+    {
+        //Debug.Log("setStatus - value = " + value);
+        if (value == 0)
+            _removingStatus = removingItemStatusEnum.NotRemoving;
+        else if (value == 1)
+            _removingStatus = removingItemStatusEnum.RemovingToSell;
+        else if (value == 2)
+            _removingStatus = removingItemStatusEnum.RemovingToDisassemble;
+        else
+        {
+            _removingStatus = removingItemStatusEnum.NotRemoving;
+            Debug.LogWarning("Invalid input status!");
+        }
+    }
+
+    public void returnSelectedItem()
+    {
+        //Debug.Log("returning item");
+        if (_removingStatus == removingItemStatusEnum.RemovingToSell)
+        {
+            //Debug.Log("returning item to sell");
+            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem();
+        }
+        else if (_removingStatus == removingItemStatusEnum.RemovingToDisassemble)
+        {
+            //Debug.Log("returning item to disassemble");
+            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem();
+        }
     }
 }

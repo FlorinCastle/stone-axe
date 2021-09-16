@@ -8,8 +8,8 @@ public class SellItemControl : MonoBehaviour
     [SerializeField] private InventoryScript _invScriptRef;
     [SerializeField] private UIControl _uIControlRef;
     [SerializeField] private GameObject _selectedItem;
-    [SerializeField] private Text _itemText;
     [Header("UI")]
+    [SerializeField] private Text _itemText;
     [SerializeField] private Button _sellItemButton;
 
     private void Awake()
@@ -23,7 +23,7 @@ public class SellItemControl : MonoBehaviour
 
     public void suggestAlt()
     {
-        _invScriptRef.setupItemInventory(true);
+        _invScriptRef.setupItemInventory(true,1);
     }
 
     public void selectItem()
@@ -40,7 +40,6 @@ public class SellItemControl : MonoBehaviour
             Debug.Log("No Item selected!");
             _sellItemButton.interactable = false;
         }
-
     }
 
     private ItemDataStorage _itemData;
