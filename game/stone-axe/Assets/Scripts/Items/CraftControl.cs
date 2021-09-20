@@ -16,17 +16,120 @@ public class CraftControl : MonoBehaviour
     [SerializeField] GameObject _itemCraftingUI;
     [SerializeField] GameObject _partCraftingUI;
     [SerializeField] Dropdown _recipeDropdown;
+    [SerializeField] Text _part1Discription;
+    [SerializeField] Text _part2Discription;
+    [SerializeField] Text _part3Discription;
+
+    [Header("Crafting Tracking")]
+    [SerializeField] ItemData _chosenItemRecipe;
+    [SerializeField] GameObject _chosenPart1;
+    [SerializeField] GameObject _chosenPart2;
+    [SerializeField] GameObject _chosenPart3;
+    [SerializeField] PartData _chosenPartRecipe;
+    [SerializeField] MaterialData _chosenPartMaterial;
 
     public void checkSelection()
     {
         if (_recipeDropdown.options[_recipeDropdown.value].text == "Choose Item")
         {
             _itemCraftingUI.SetActive(false);
+            clearItemCraftingUI();
             _partCraftingUI.SetActive(false);
         }
         else
         {
             
         }
+    }
+
+    private void clearItemCraftingUI()
+    {
+        _chosenPart1 = null;
+        _part1Discription.text = "choose part";
+        _chosenPart2 = null;
+        _part2Discription.text = "choose part";
+        _chosenPart3 = null;
+        _part3Discription.text = "choose part";
+    }
+
+    private void clearPartCraftingUI()
+    {
+
+    }
+
+    public void invPart1Setup()
+    {
+        _inventoryControlReference.setupPartInventory(true, 3);
+    }
+
+    public void invPart2Setup()
+    {
+        _inventoryControlReference.setupPartInventory(true, 4);
+    }
+
+
+    public void invPart3Setup()
+    {
+        _inventoryControlReference.setupPartInventory(true, 5);
+    }
+
+    public void SelectPart1()
+    {
+        _chosenPart1 = _inventoryControlReference.getSelectedPart();
+        if (_chosenPart1 != null)
+        {
+            // setup discription
+            setupDiscription(1, _chosenPart1);
+        }
+        else
+        {
+            Debug.LogWarning("No Part 1 Selected!");
+        }
+    }
+
+    public void SelectPart2()
+    {
+        _chosenPart2 = _inventoryControlReference.getSelectedPart();
+        if (_chosenPart2 != null)
+        {
+            // setup discription
+            setupDiscription(2, _chosenPart2);
+        }
+        else
+        {
+            Debug.LogWarning("No Part 2 Selected!");
+        }
+    }
+
+    public void SelectPart3()
+    {
+        _chosenPart3 = _inventoryControlReference.getSelectedPart();
+        if (_chosenPart3 != null)
+        {
+            // setup discription
+            setupDiscription(3, _chosenPart3);
+        }
+        else
+        {
+            Debug.LogWarning("No Part 3 Selected!");
+        }
+    }
+
+    private void setupDiscription(int i, GameObject part)
+    {
+        PartDataStorage data = part.GetComponent<PartDataStorage>();
+        if (i == 1)
+            _part1Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
+        else if (i == 2)
+            _part2Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
+        else if (i == 3)
+            _part3Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
+        else
+            Debug.LogWarning("i value is invalid!");
+    }
+
+    private void clearDiscription()
+    {
+
     }
 }

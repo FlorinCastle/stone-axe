@@ -8,12 +8,17 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private GameObject _inventoryParent;
     [SerializeField]
     private GameObject _selectedItem;
+    [SerializeField]
+    private GameObject _selectedPart;
 
     private enum removingItemStatusEnum
     {
         NotRemoving,            // int 0
         RemovingToSell,         // int 1
-        RemovingToDisassemble   // int 2
+        RemovingToDisassemble,  // int 2
+        RemovingToCraft1,       // int 3
+        RemovingToCraft2,       // int 4
+        RemovingToCraft3        // int 5
     }
     [SerializeField] private removingItemStatusEnum _removingStatus;
 
@@ -79,6 +84,14 @@ public class InventoryScript : MonoBehaviour
 
     public void setupPartInventory()
     {
+        setupPartInventory(false, 0);
+    }
+
+    public void setupPartInventory(bool isRemoving, int state)
+    {
+        _selectButton.SetActive(isRemoving);
+        setStatus(state);
+
         prevButtonPos = _inventoryParent.transform.position;
         clearItemButtonList();
         clearPartButtonList();
@@ -444,7 +457,18 @@ public class InventoryScript : MonoBehaviour
         if (i != -1)
         {
             _selectedItem = _itemInventoryData[i];
-            //Debug.Log("Selected item is: " + _selectedItem.name + " at index: " + i);
+            //Debug.Log("Selected item is: " + _selectedItem.name + " at index: " + i); 
+        }
+        else
+            Debug.Log("example button selected");
+    }
+
+    public void setSelectedPart(int i)
+    {
+        if (i != -1)
+        {
+            _selectedPart = _partInventoryData[i];
+            //Debug.Log("Selected part is: " + _selectedPart.name + " at index: " + i);
         }
         else
             Debug.Log("example button selected");
@@ -452,23 +476,29 @@ public class InventoryScript : MonoBehaviour
 
     public GameObject getSelectedItem()
     {
-        if (_selectedItem != null)
-        {
+        if (_selectedItem != null) 
             return _selectedItem;
+         
+        return null;
+    }
 
-        }
+    public GameObject getSelectedPart()
+    {
+        if (_selectedPart != null)
+            return _selectedPart;
+
         return null;
     }
 
     private void setStatus(int value)
     {
         //Debug.Log("setStatus - value = " + value);
-        if (value == 0)
-            _removingStatus = removingItemStatusEnum.NotRemoving;
-        else if (value == 1)
-            _removingStatus = removingItemStatusEnum.RemovingToSell;
-        else if (value == 2)
-            _removingStatus = removingItemStatusEnum.RemovingToDisassemble;
+        if (value == 0) _removingStatus = removingItemStatusEnum.NotRemoving;
+        else if (value == 1) _removingStatus = removingItemStatusEnum.RemovingToSell;
+        else if (value == 2) _removingStatus = removingItemStatusEnum.RemovingToDisassemble;
+        else if (value == 3) _removingStatus = removingItemStatusEnum.RemovingToCraft1;
+        else if (value == 4) _removingStatus = removingItemStatusEnum.RemovingToCraft2;
+        else if (value == 5) _removingStatus = removingItemStatusEnum.RemovingToCraft3;
         else
         {
             _removingStatus = removingItemStatusEnum.NotRemoving;
@@ -489,5 +519,19 @@ public class InventoryScript : MonoBehaviour
             //Debug.Log("returning item to disassemble");
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem();
         }
+    }
+
+    public void returnSeletedPart()
+    {
+        if (_removingStatus == removingItemStatusEnum.RemovingToCraft1)
+            GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectPart1();
+        //SetPart1(_selectedPart);
+        else if (_removingStatus == removingItemStatusEnum.RemovingToCraft2)
+            GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectPart2();
+        //SetPart2(_selectedPart);
+        else if (_removingStatus == removingItemStatusEnum.RemovingToCraft3)
+            GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectPart3();
+                //SetPart3(_selectedPart);
+
     }
 }

@@ -9606,6 +9606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventoryParent: {fileID: 586916143}
   _selectedItem: {fileID: 0}
+  _selectedPart: {fileID: 0}
   _removingStatus: 0
   _itemInventoryData:
   - {fileID: 0}
@@ -10291,7 +10292,7 @@ GameObject:
   - component: {fileID: 1221333022}
   m_Layer: 0
   m_Name: CraftControl
-  m_TagString: Untagged
+  m_TagString: CraftControl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10357,14 +10358,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937ddd27b768514409cacdf9fa325967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemScriptReference: {fileID: 0}
-  _partScriptReference: {fileID: 0}
-  _materialScriptReference: {fileID: 0}
-  _inventoryControlReference: {fileID: 0}
-  _recipeBookRef: {fileID: 0}
-  _itemCraftingUI: {fileID: 1046687006}
-  _partCraftingUI: {fileID: 2075190877}
-  _recipeDropdown: {fileID: 2023457572}
+  _itemScriptReference: {fileID: 564590206}
+  _partScriptReference: {fileID: 1217593891}
+  _materialScriptReference: {fileID: 681287825}
+  _inventoryControlReference: {fileID: 1181822452}
+  _recipeBookRef: {fileID: 1427857945}
+  _itemCraftingUI: {fileID: 7485012191131071716}
+  _partCraftingUI: {fileID: 7485012191131071715}
+  _recipeDropdown: {fileID: 7485012191131071714}
+  _part1Discription: {fileID: 0}
+  _part2Discription: {fileID: 0}
+  _part3Discription: {fileID: 0}
+  _chosenItemRecipe: {fileID: 0}
+  _chosenPart1: {fileID: 0}
+  _chosenPart2: {fileID: 0}
+  _chosenPart3: {fileID: 0}
+  _chosenPartRecipe: {fileID: 0}
+  _chosenPartMaterial: {fileID: 0}
 --- !u!1 &1223757152
 GameObject:
   m_ObjectHideFlags: 0
@@ -12177,7 +12187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1490218581
 Transform:
   m_ObjectHideFlags: 0
@@ -16619,7 +16629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2075190878
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17274,7 +17284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 962313401821021369, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2832197894689712266, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -17284,10 +17294,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1181822452}
-    - target: {fileID: 8710313024073061922, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 8710313024073061922, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -17589,6 +17595,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 140743319049393509, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 582681466648870926, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -17641,6 +17651,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1997940092}
+    - target: {fileID: 1639240311457755097, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1853857630366425413, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 11.099976
@@ -17733,6 +17747,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1734993353}
+    - target: {fileID: 6988217600644336047, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1221333022}
     - target: {fileID: 7485012190445823121, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_Name
       value: Game_Shop_UI
@@ -17842,3 +17860,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7485012191131071714 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6988217600644336047, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+  m_PrefabInstance: {fileID: 7485012191131071712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b652f32a2cc243917e4028fa0f046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &7485012191131071715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4375401665430598327, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+  m_PrefabInstance: {fileID: 7485012191131071712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7485012191131071716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1211295180311504770, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+  m_PrefabInstance: {fileID: 7485012191131071712}
+  m_PrefabAsset: {fileID: 0}

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameMaster
   - InventoryControl
+  - CraftControl
   layers:
   - Default
   - TransparentFX
