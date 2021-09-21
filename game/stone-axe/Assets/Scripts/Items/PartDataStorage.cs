@@ -14,6 +14,11 @@ public class PartDataStorage : MonoBehaviour
     [SerializeField] private int _partDextarity;
     [SerializeField] private int _partIntelegence;
 
+    [SerializeField] private PartData _selfRecipeData;
+
+    public PartData RecipeData { get => _selfRecipeData; }
+    public void setRecipeData(PartData partRecipe) { _selfRecipeData = partRecipe; }
+
     public string PartName { get => _partName; }
     public void setPartName(string name) { _partName = name; }
 

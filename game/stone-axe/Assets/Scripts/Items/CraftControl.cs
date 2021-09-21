@@ -19,26 +19,76 @@ public class CraftControl : MonoBehaviour
     [SerializeField] Text _part1Discription;
     [SerializeField] Text _part2Discription;
     [SerializeField] Text _part3Discription;
+    [SerializeField] Text _finalStatsText;
 
-    [Header("Crafting Tracking")]
+    [Header("Item Crafting")]
     [SerializeField] ItemData _chosenItemRecipe;
     [SerializeField] GameObject _chosenPart1;
     [SerializeField] GameObject _chosenPart2;
     [SerializeField] GameObject _chosenPart3;
+    [Header("Part Crafting")]
     [SerializeField] PartData _chosenPartRecipe;
     [SerializeField] MaterialData _chosenPartMaterial;
 
+    [SerializeField, HideInInspector] private List<string> recipeDropOptions;
+    [SerializeField, HideInInspector] private List<string> itemRecipeOptions;
+    [SerializeField, HideInInspector] private List<string> partRecipeOptions;
+
+    private void Awake()
+    {
+        setupRecipeDropdown();
+        updateFinalStatsText();
+        _itemCraftingUI.SetActive(false);
+        _partCraftingUI.SetActive(false);
+    }
+
     public void checkSelection()
     {
-        if (_recipeDropdown.options[_recipeDropdown.value].text == "Choose Item")
+        string selection = _recipeDropdown.options[_recipeDropdown.value].text;
+        int index = 0;
+        if (selection == "Choose Recipe")
         {
             _itemCraftingUI.SetActive(false);
             clearItemCraftingUI();
             _partCraftingUI.SetActive(false);
+            clearPartCraftingUI();
         }
         else
         {
-            
+            // Debug.Log(_recipeDropdown.options[_recipeDropdown.value].text);
+            index = 0;
+            foreach (string itemRecipe in itemRecipeOptions)
+            {
+                if (selection == itemRecipe)
+                {
+                    //Debug.Log("Recipe is item - " + selection);
+                    _chosenItemRecipe = _recipeBookRef.getItemRecipe(index);
+                    _chosenPartRecipe = null;
+
+                    _itemCraftingUI.SetActive(true);
+                    clearItemCraftingUI();
+                    _partCraftingUI.SetActive(false);
+                    clearPartCraftingUI();
+                }
+                index++;
+            }
+            index = 0;
+            foreach (string partRecipe in partRecipeOptions)
+            {
+                if (selection == partRecipe)
+                {
+                    //Debug.Log("Recipe is part - " + selection);
+
+                    _chosenItemRecipe = null;
+                    _chosenPartRecipe = _recipeBookRef.getPartRecipe(index);
+
+                    _itemCraftingUI.SetActive(true);
+                    clearItemCraftingUI();
+                    _partCraftingUI.SetActive(false);
+                    clearPartCraftingUI();
+                }
+                index++;
+            }
         }
     }
 
@@ -57,6 +107,23 @@ public class CraftControl : MonoBehaviour
 
     }
 
+    private void setupRecipeDropdown()
+    {
+        _recipeDropdown.ClearOptions();
+        itemRecipeOptions = _recipeBookRef.itemRecipesNames();
+        partRecipeOptions = _recipeBookRef.partRecipesNames();
+
+        recipeDropOptions.Add("Choose Recipe");
+
+        foreach (string itemRecipe in itemRecipeOptions)
+            recipeDropOptions.Add(itemRecipe);
+
+        foreach (string partRecipe in partRecipeOptions)
+            recipeDropOptions.Add(partRecipe);
+
+        _recipeDropdown.AddOptions(recipeDropOptions);
+    }
+
     public void invPart1Setup()
     {
         _inventoryControlReference.setupPartInventory(true, 3);
@@ -66,7 +133,6 @@ public class CraftControl : MonoBehaviour
     {
         _inventoryControlReference.setupPartInventory(true, 4);
     }
-
 
     public void invPart3Setup()
     {
@@ -119,17 +185,46 @@ public class CraftControl : MonoBehaviour
     {
         PartDataStorage data = part.GetComponent<PartDataStorage>();
         if (i == 1)
+        {
             _part1Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
+        }
         else if (i == 2)
+        {
             _part2Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
+        }
         else if (i == 3)
+        {
             _part3Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
+        }
         else
             Debug.LogWarning("i value is invalid!");
+
+        updateFinalStatsText();
     }
 
     private void clearDiscription()
     {
 
+    }
+
+    private string finalStatsString;
+    private void updateFinalStatsText()
+    {
+        finalStatsString = "";
+        finalStatsString += "select ";
+        if (_chosenPart1 == null)
+            finalStatsString += "part1 ";
+        if (_chosenPart2 == null)
+            finalStatsString += "part2 ";
+        if (_chosenPart3 == null)
+            finalStatsString += "part3";
+
+        _finalStatsText.text = finalStatsString;
+    }
+
+    public ItemData checkItemRecipe()
+    {
+
+        return _chosenItemRecipe;
     }
 }

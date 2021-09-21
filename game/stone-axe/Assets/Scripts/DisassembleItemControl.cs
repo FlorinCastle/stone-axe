@@ -62,8 +62,6 @@ public class DisassembleItemControl : MonoBehaviour
     
     public void disassembleItem()
     {
-
-
         // move part1 transform parent to inventory
         GameObject part1 = _selectedItem.GetComponent<ItemDataStorage>().Part1.gameObject;
         _invScriptRef.InsertPartData(part1);

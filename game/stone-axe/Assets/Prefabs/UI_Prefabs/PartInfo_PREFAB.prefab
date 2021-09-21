@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -150, y: 175}
-  m_SizeDelta: {x: 2200, y: 200}
+  m_SizeDelta: {x: 1100, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8417178379374518237
 MonoBehaviour:
@@ -52,6 +52,7 @@ MonoBehaviour:
   _invControl: {fileID: 0}
   _myButtonIndex: -1
   _itemIndex: 0
+  _partIndex: 0
 --- !u!1 &4659518661460071116
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +177,18 @@ MonoBehaviour:
       - m_Target: {fileID: 8417178379374518237}
         m_TargetAssemblyTypeName: InventoryButton, Assembly-CSharp
         m_MethodName: setPartInfoText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8417178379374518237}
+        m_TargetAssemblyTypeName: InventoryButton, Assembly-CSharp
+        m_MethodName: setSelectedPart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

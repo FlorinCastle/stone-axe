@@ -20,6 +20,7 @@ public class InventoryScript : MonoBehaviour
         RemovingToCraft2,       // int 4
         RemovingToCraft3        // int 5
     }
+    [Header("Data")]
     [SerializeField] private removingItemStatusEnum _removingStatus;
 
     [SerializeField]
@@ -36,8 +37,12 @@ public class InventoryScript : MonoBehaviour
     private List<GameObject> _materialButtonList;
 
     [Header("UI References")]
+    [SerializeField] private Button _headerButtonItems;
+    [SerializeField] private Button _headerButtonParts;
+    [SerializeField] private Button _headerButtonMaterials;
     [SerializeField] private Text _descriptionText;
-    [SerializeField] private GameObject _selectButton;
+    [SerializeField] private GameObject _selectItemButton;
+    [SerializeField] private GameObject _selectPartButton;
     [Header("Prefabs")]
     [SerializeField] private GameObject _itemDataStoragePrefab;
     [SerializeField] private GameObject _partDataStoragePrefab;
@@ -53,8 +58,11 @@ public class InventoryScript : MonoBehaviour
     }
     public void setupItemInventory(bool isRemoving, int state)
     {
-        _selectButton.SetActive(isRemoving);
+        _selectItemButton.SetActive(isRemoving);
+        _selectPartButton.SetActive(false);
         setStatus(state);
+        setupHeader();
+
         prevButtonPos = _inventoryParent.transform.position;
         clearPartButtonList();
         clearItemButtonList();
@@ -89,30 +97,91 @@ public class InventoryScript : MonoBehaviour
 
     public void setupPartInventory(bool isRemoving, int state)
     {
-        _selectButton.SetActive(isRemoving);
+        _selectItemButton.SetActive(false);
+        _selectPartButton.SetActive(isRemoving);
         setStatus(state);
+        setupHeader();
 
         prevButtonPos = _inventoryParent.transform.position;
         clearItemButtonList();
         clearPartButtonList();
-
+        int k = 0;
         foreach (GameObject part in _partInventoryData)
+        {
             if (part != null)
             {
                 // get reference to ItemDataStorage script
                 PartDataStorage partData = part.GetComponent<PartDataStorage>();
+
                 // instantiate the button prefab
                 tempButtonList = Instantiate(_partInfoPrefab);
                 tempButtonList.transform.SetParent(_inventoryParent.transform, false);
+
                 // set up button text
                 Text t = tempButtonList.GetComponentInChildren<Text>();
                 t.text = partData.PartName;
+                
                 // set butto postion
                 prevButtonPos.y -= 53f;
                 tempButtonList.transform.position = prevButtonPos;
+                
+                // if removing part from inventory
+                if (isRemoving == true)
+                {
+                    if (state == 3 || state == 4 || state == 5)
+                    {
+                        if (checkIfPartIsValid(state, partData))
+                            tempButtonList.GetComponentInChildren<Button>().interactable = true;
+                        else
+                            tempButtonList.GetComponentInChildren<Button>().interactable = false;
+                    }
+                }
+
                 // add button to list
-                InsertPartButton(tempButtonList);
+                InsertPartButton(tempButtonList, k);
             }
+            k++;
+        }
+    }
+
+    private ColorBlock ItemColorBlock;
+    private ColorBlock PartColorBlock;
+    private ColorBlock MaterialColorBlock; // preping for material inventory
+    private void setupHeader()
+    {
+        //Debug.Log("Setting up Inventory Header - current status: " + _removingStatus.ToString());
+
+        ItemColorBlock = _headerButtonItems.colors;
+        PartColorBlock = _headerButtonParts.colors;
+        if (_removingStatus == removingItemStatusEnum.NotRemoving)
+        {
+            _headerButtonItems.interactable = true;
+            _headerButtonParts.interactable = true;
+            _headerButtonMaterials.interactable = false; // temp while material in code is being worked on
+
+            ItemColorBlock.colorMultiplier = 1f;
+            PartColorBlock.colorMultiplier = 1f;
+        }
+        else if (_removingStatus == removingItemStatusEnum.RemovingToSell || _removingStatus == removingItemStatusEnum.RemovingToDisassemble)
+        {   // removing item from inventory
+            _headerButtonItems.interactable = false;
+            _headerButtonParts.interactable = false;
+            _headerButtonMaterials.interactable = false;
+
+            ItemColorBlock.colorMultiplier = 2f;
+            PartColorBlock.colorMultiplier = 1f;
+        }
+        else if (_removingStatus == removingItemStatusEnum.RemovingToCraft1 || _removingStatus == removingItemStatusEnum.RemovingToCraft2 || _removingStatus == removingItemStatusEnum.RemovingToCraft3)
+        {   // removing part from inventory
+            _headerButtonItems.interactable = false;
+            _headerButtonParts.interactable = false;
+            _headerButtonMaterials.interactable = false;
+
+            ItemColorBlock.colorMultiplier = 1f;
+            PartColorBlock.colorMultiplier = 2f;
+        }
+        _headerButtonItems.colors = ItemColorBlock;
+        _headerButtonParts.colors = PartColorBlock;
     }
 
     private string _itemName;
@@ -217,6 +286,8 @@ public class InventoryScript : MonoBehaviour
         part1DataStorageTemp = Instantiate(_partDataStoragePrefab);
         part1DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part1DataScriptRef = part1DataStorageTemp.GetComponent<PartDataStorage>();
+        // store reference to scriptabe object
+        part1DataScriptRef.setRecipeData(item.Part1);
         // convert data from scriptable object to gameobject
         part1DataStorageTemp.name = item.Part1.Material.Material + " " + item.Part1.PartName;
         part1DataScriptRef.setPartName(item.Part1.PartName);
@@ -231,6 +302,8 @@ public class InventoryScript : MonoBehaviour
         part2DataStorageTemp = Instantiate(_partDataStoragePrefab);
         part2DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part2DataScriptRef = part2DataStorageTemp.GetComponent<PartDataStorage>();
+        // store reference to scriptabe object
+        part2DataScriptRef.setRecipeData(item.Part2);
         // convert data from scriptable object to gameobject
         part2DataStorageTemp.name = item.Part2.Material.Material + " " + item.Part2.PartName;
         part2DataScriptRef.setPartName(item.Part2.PartName);
@@ -245,6 +318,8 @@ public class InventoryScript : MonoBehaviour
         part3DataStorageTemp = Instantiate(_partDataStoragePrefab);
         part3DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part3DataScriptRef = part3DataStorageTemp.GetComponent<PartDataStorage>();
+        // store reference to scriptabe object
+        part3DataScriptRef.setRecipeData(item.Part3);
         // convert data from scriptable object to gameobject
         part3DataStorageTemp.name = item.Part3.Material.Material + " " + item.Part3.PartName;
         part3DataScriptRef.setPartName(item.Part3.PartName);
@@ -393,13 +468,14 @@ public class InventoryScript : MonoBehaviour
         return -1;
     }
 
-    private int InsertPartButton(GameObject button)
+    private int InsertPartButton(GameObject button, int j)
     {
         for (int i = 0; i < _partButtonList.Count; i++)
             if (PartButtonSlotEmpty(i))
             {
                 _partButtonList[i] = button;
                 button.GetComponent<InventoryButton>().setMyIndex(i);
+                button.GetComponent<InventoryButton>().setPartIndex(j);
                 return i;
             }
         return -1;
@@ -533,5 +609,37 @@ public class InventoryScript : MonoBehaviour
             GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectPart3();
                 //SetPart3(_selectedPart);
 
+    }
+
+    private bool checkIfPartIsValid(int i, PartDataStorage part) // incoming i should either be 3, 4, or 5
+    {
+        /* call out to craft control
+         * ask for chosen recipe
+         * check in part button's part data storage for valid parts
+         * check in part's part data stoage
+         */
+        CraftControl ccRef = GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>();
+        PartData validPart = part.RecipeData;
+
+        if (i == 3)
+        {
+            foreach (PartData validPart1 in ccRef.checkItemRecipe().ValidParts1)
+                if (validPart1.PartName == validPart.PartName)
+                    return true;
+        }
+        else if (i == 4)
+        {
+            foreach (PartData validPart2 in ccRef.checkItemRecipe().ValidParts2)
+                if (validPart2.PartName == validPart.PartName)
+                    return true;
+        }
+        else if (i == 5)
+        {
+            foreach (PartData validPart3 in ccRef.checkItemRecipe().ValidParts3)
+                if (validPart3.PartName == validPart.PartName)
+                    return true;
+        }
+
+        return false;
     }
 }
