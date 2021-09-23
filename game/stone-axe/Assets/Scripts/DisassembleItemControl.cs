@@ -79,5 +79,10 @@ public class DisassembleItemControl : MonoBehaviour
 
         // remove item from inventory
         _invScriptRef.RemoveItem(_selectedItem.GetComponent<ItemDataStorage>().InventoryIndex);
+
+        _selectedItem = null;
+
+        _itemNameText.text = "item chosen: [item name]";
+        _itemText.text = "placeholder text";
     }
 }

@@ -16,16 +16,23 @@ public class CraftControl : MonoBehaviour
     [SerializeField] GameObject _itemCraftingUI;
     [SerializeField] GameObject _partCraftingUI;
     [SerializeField] Dropdown _recipeDropdown;
+    [SerializeField] Button _craftButton;
     [SerializeField] Text _part1Discription;
     [SerializeField] Text _part2Discription;
     [SerializeField] Text _part3Discription;
-    [SerializeField] Text _finalStatsText;
+    [SerializeField] Text _finalStatsText1;
+    [SerializeField] Text _finalStatsText2;
 
     [Header("Item Crafting")]
     [SerializeField] ItemData _chosenItemRecipe;
     [SerializeField] GameObject _chosenPart1;
     [SerializeField] GameObject _chosenPart2;
     [SerializeField] GameObject _chosenPart3;
+    private PartDataStorage _part1DataRef;
+    private PartDataStorage _part2DataRef;
+    private PartDataStorage _part3DataRef;
+    private GameObject itemDataStorageTemp;
+    private ItemDataStorage itemDataStorageRef;
     [Header("Part Crafting")]
     [SerializeField] PartData _chosenPartRecipe;
     [SerializeField] MaterialData _chosenPartMaterial;
@@ -33,6 +40,10 @@ public class CraftControl : MonoBehaviour
     [SerializeField, HideInInspector] private List<string> recipeDropOptions;
     [SerializeField, HideInInspector] private List<string> itemRecipeOptions;
     [SerializeField, HideInInspector] private List<string> partRecipeOptions;
+
+    [Header("Prefabs")]
+    [SerializeField] private GameObject _itemDataStoragePrefab;
+    [SerializeField] private GameObject _partDataStoragePrefab;
 
     private void Awake()
     {
@@ -100,6 +111,9 @@ public class CraftControl : MonoBehaviour
         _part2Discription.text = "choose part";
         _chosenPart3 = null;
         _part3Discription.text = "choose part";
+
+        _finalStatsText1.text = "select [part1, part2, part3]";
+        _finalStatsText2.text = "";
     }
 
     private void clearPartCraftingUI()
@@ -181,6 +195,41 @@ public class CraftControl : MonoBehaviour
         }
     }
 
+    public void CraftItem()
+    {
+        //Debug.Log("crafting");
+        itemDataStorageTemp = Instantiate(_itemDataStoragePrefab);
+        itemDataStorageTemp.transform.parent = _inventoryControlReference.gameObject.transform;
+
+        itemDataStorageRef = itemDataStorageTemp.GetComponent<ItemDataStorage>();
+        // stats
+        itemDataStorageTemp.name = _chosenItemRecipe.ItemName;
+        itemDataStorageRef.setTotalValue(_part1DataRef.Value + _part2DataRef.Value + _part3DataRef.Value);
+        itemDataStorageRef.setTotalStrenght(_part1DataRef.PartStr + _part2DataRef.PartStr + _part3DataRef.PartStr);
+        itemDataStorageRef.setTotalDex(_part1DataRef.PartDex + _part2DataRef.PartDex + _part3DataRef.PartDex);
+        itemDataStorageRef.setTotalInt(_part1DataRef.PartInt + _part2DataRef.PartInt + _part3DataRef.PartInt);
+
+        _chosenPart1.transform.parent = itemDataStorageTemp.transform;
+        itemDataStorageRef.setPart1(_chosenPart1.GetComponent<PartDataStorage>());
+        _chosenPart2.transform.parent = itemDataStorageTemp.transform;
+        itemDataStorageRef.setPart2(_chosenPart2.GetComponent<PartDataStorage>());
+        _chosenPart3.transform.parent = itemDataStorageTemp.transform;
+        itemDataStorageRef.setPart3(_chosenPart3.GetComponent<PartDataStorage>());
+
+        _chosenItemRecipe = null;
+        itemDataStorageTemp = null;
+        itemDataStorageRef = null;
+        _chosenPart1 = null;
+        _part1DataRef = null;
+        _chosenPart2 = null;
+        _part2DataRef = null;
+        _chosenPart3 = null;
+        _part3DataRef = null;
+
+        clearItemCraftingUI();
+        _recipeDropdown.value = 0;
+    }
+
     private void setupDiscription(int i, GameObject part)
     {
         PartDataStorage data = part.GetComponent<PartDataStorage>();
@@ -202,24 +251,53 @@ public class CraftControl : MonoBehaviour
         updateFinalStatsText();
     }
 
-    private void clearDiscription()
-    {
-
-    }
-
     private string finalStatsString;
+
+    private string finalStatsString1;
+    private string finalStatsString2;
+
+    private string _itemName;
+    private string _materials;
+    private string _totalStrength;
+    private string _totalDex;
+    private string _totalInt;
+    private string _totalValue;
     private void updateFinalStatsText()
     {
         finalStatsString = "";
-        finalStatsString += "select ";
-        if (_chosenPart1 == null)
-            finalStatsString += "part1 ";
-        if (_chosenPart2 == null)
-            finalStatsString += "part2 ";
-        if (_chosenPart3 == null)
-            finalStatsString += "part3";
+        if (_chosenPart1 != null && _chosenPart2 != null && _chosenPart3 != null)
+        {
+            _part1DataRef = _chosenPart1.GetComponent<PartDataStorage>();
+            _part2DataRef = _chosenPart2.GetComponent<PartDataStorage>();
+            _part3DataRef = _chosenPart3.GetComponent<PartDataStorage>();
 
-        _finalStatsText.text = finalStatsString;
+            _itemName = "Item - " + _chosenItemRecipe.ItemName;
+            _materials = "Materials\n"
+                + _part1DataRef.MaterialName + "\n" + _part2DataRef.MaterialName + "\n" + _part3DataRef.MaterialName;
+            _totalStrength = "\nStrenght: " + (_part1DataRef.PartStr + _part2DataRef.PartStr + _part3DataRef.PartStr).ToString();
+            _totalDex = "\nDextarity: " + (_part1DataRef.PartDex + _part2DataRef.PartDex + _part3DataRef.PartDex).ToString();
+            _totalInt = "\nIntelegence: " + (_part1DataRef.PartInt + _part2DataRef.PartInt + _part3DataRef.PartInt).ToString();
+            _totalValue = "\n\nValue: " + (_part1DataRef.Value + _part2DataRef.Value + _part3DataRef.Value).ToString();
+
+            finalStatsString1 = _itemName + "\nStats" + _totalStrength + _totalDex + _totalInt + _totalValue;
+            finalStatsString2 = _materials;
+            _finalStatsText1.text = finalStatsString1;
+            _finalStatsText2.text = finalStatsString2;
+            _craftButton.interactable = true;
+        }
+        else
+        {
+            finalStatsString += "select ";
+            if (_chosenPart1 == null)
+                finalStatsString += "part1 ";
+            if (_chosenPart2 == null)
+                finalStatsString += "part2 ";
+            if (_chosenPart3 == null)
+                finalStatsString += "part3";
+
+            _finalStatsText1.text = finalStatsString;
+            _craftButton.interactable = false;
+        }
     }
 
     public ItemData checkItemRecipe()

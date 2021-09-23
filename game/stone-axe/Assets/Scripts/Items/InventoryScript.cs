@@ -295,6 +295,7 @@ public class InventoryScript : MonoBehaviour
         part1DataScriptRef.setPartStr(item.Part1.PartStrenght);
         part1DataScriptRef.setPartDex(item.Part1.PartDextarity);
         part1DataScriptRef.setPartInt(item.Part1.PartIntelligence);
+        part1DataScriptRef.setValue(item.Part1.TotalCurrentValue);
         // store ref of part 1 in item script
         itemDataScriptRef.setPart1(part1DataScriptRef);
 
@@ -311,6 +312,7 @@ public class InventoryScript : MonoBehaviour
         part2DataScriptRef.setPartStr(item.Part2.PartStrenght);
         part2DataScriptRef.setPartDex(item.Part2.PartDextarity);
         part2DataScriptRef.setPartInt(item.Part2.PartIntelligence);
+        part2DataScriptRef.setValue(item.Part2.TotalCurrentValue);
         // store ref of part 2 in item script
         itemDataScriptRef.setPart2(part2DataScriptRef);
 
@@ -327,6 +329,7 @@ public class InventoryScript : MonoBehaviour
         part3DataScriptRef.setPartStr(item.Part3.PartStrenght);
         part3DataScriptRef.setPartDex(item.Part3.PartDextarity);
         part3DataScriptRef.setPartInt(item.Part3.PartIntelligence);
+        part3DataScriptRef.setValue(item.Part3.TotalCurrentValue);
         // store ref of part 3 in item script
         itemDataScriptRef.setPart3(part3DataScriptRef);
 
@@ -418,6 +421,20 @@ public class InventoryScript : MonoBehaviour
             {
                 temp.GetComponent<ItemDataStorage>().setInventoryIndex(i);
                 _itemInventoryData[i] = temp;
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int InsertCraftedItem(GameObject item)
+    {
+        for (int i = 0; i < _itemInventoryData.Count; i++)
+        {
+            if (ItemSlotEmpty(i))
+            {
+                item.GetComponent<ItemDataStorage>().setInventoryIndex(i);
+                _itemInventoryData[i] = item;
                 return i;
             }
         }
