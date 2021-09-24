@@ -15,6 +15,7 @@ MonoBehaviour:
   _materaialName: Leather
   _materialType: 2
   _levelRequirement: 0
+  _quantity: 12
   _baseCostPerUnit: 3
   _addedStrength: 0
   _addedDextarity: 5

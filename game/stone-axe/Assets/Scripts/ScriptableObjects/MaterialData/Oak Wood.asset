@@ -15,6 +15,7 @@ MonoBehaviour:
   _materaialName: Oak Wood
   _materialType: 1
   _levelRequirement: 0
+  _quantity: 8
   _baseCostPerUnit: 3
   _addedStrength: 2
   _addedDextarity: 4

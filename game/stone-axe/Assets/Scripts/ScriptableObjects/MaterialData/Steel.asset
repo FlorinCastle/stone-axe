@@ -15,6 +15,7 @@ MonoBehaviour:
   _materaialName: Steel
   _materialType: 0
   _levelRequirement: 0
+  _quantity: 37
   _baseCostPerUnit: 6
   _addedStrength: 7
   _addedDextarity: 1

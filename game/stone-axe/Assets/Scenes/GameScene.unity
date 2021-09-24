@@ -5101,6 +5101,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625274116}
   m_CullTransparentMesh: 1
+--- !u!1 &629901127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4147964689671816352, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
+  m_PrefabInstance: {fileID: 2494867850780624252}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &636852898
 GameObject:
   m_ObjectHideFlags: 0
@@ -9715,6 +9720,7 @@ MonoBehaviour:
   _inventoryParent: {fileID: 586916143}
   _selectedItem: {fileID: 0}
   _selectedPart: {fileID: 0}
+  _selectedMat: {fileID: 0}
   _removingStatus: 0
   _itemInventoryData:
   - {fileID: 0}
@@ -9881,10 +9887,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   materialInventory:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
+  - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
+  - {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
+  - {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -9908,10 +9914,12 @@ MonoBehaviour:
   _descriptionText: {fileID: 990265707}
   _selectItemButton: {fileID: 2494867850780624253}
   _selectPartButton: {fileID: 1124367918}
+  _selectMatButton: {fileID: 629901127}
   _itemDataStoragePrefab: {fileID: 3328798671714280204, guid: aaa72dc8f0c7e3847bf46e551e78b592, type: 3}
   _partDataStoragePrefab: {fileID: 5268577830243002201, guid: f7bae9d50dd6f1145b24f8abbad17464, type: 3}
   _itemInfoPrefab: {fileID: 2791117391628846461, guid: 8f66dfb029538464c822f9f69549409d, type: 3}
   _partInfoPrefab: {fileID: 2791117391628846461, guid: 3b06e52e9fff60f47ad438fd8b6d2a61, type: 3}
+  _matInfoPrefab: {fileID: 2791117391628846461, guid: 6957b820436a92343860c3fb31d576c0, type: 3}
 --- !u!4 &1181822453
 Transform:
   m_ObjectHideFlags: 0
@@ -17397,10 +17405,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1734993353}
-    - target: {fileID: 365611693695582662, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 1734993353}
     - target: {fileID: 475226697210755141, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -17464,11 +17468,15 @@ PrefabInstance:
     - target: {fileID: 2832197894689712266, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1181822451}
-    - target: {fileID: 6567486858348315317, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
-      propertyPath: m_Color.a
-      value: 0.078431375
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1181822452}
+    - target: {fileID: 2962175749452142033, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1181822452}
+    - target: {fileID: 2962175749452142033, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1734993353}
     - target: {fileID: 7960942806231543207, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

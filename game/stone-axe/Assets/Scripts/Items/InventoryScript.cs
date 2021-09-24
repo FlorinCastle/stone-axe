@@ -10,6 +10,8 @@ public class InventoryScript : MonoBehaviour
     private GameObject _selectedItem;
     [SerializeField]
     private GameObject _selectedPart;
+    [SerializeField]
+    private MaterialData _selectedMat;
 
     private enum removingItemStatusEnum
     {
@@ -18,7 +20,8 @@ public class InventoryScript : MonoBehaviour
         RemovingToDisassemble,  // int 2
         RemovingToCraft1,       // int 3
         RemovingToCraft2,       // int 4
-        RemovingToCraft3        // int 5
+        RemovingToCraft3,       // int 5
+        RemovingToCraftMat      // int 6
     }
     [Header("Data")]
     [SerializeField] private removingItemStatusEnum _removingStatus;
@@ -43,11 +46,13 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private Text _descriptionText;
     [SerializeField] private GameObject _selectItemButton;
     [SerializeField] private GameObject _selectPartButton;
+    [SerializeField] private GameObject _selectMatButton;
     [Header("Prefabs")]
     [SerializeField] private GameObject _itemDataStoragePrefab;
     [SerializeField] private GameObject _partDataStoragePrefab;
     [SerializeField] private GameObject _itemInfoPrefab;
     [SerializeField] private GameObject _partInfoPrefab;
+    [SerializeField] private GameObject _matInfoPrefab;
 
     private Vector3 prevButtonPos;
     private GameObject tempButtonList;
@@ -60,6 +65,7 @@ public class InventoryScript : MonoBehaviour
     {
         _selectItemButton.SetActive(isRemoving);
         _selectPartButton.SetActive(false);
+        _selectMatButton.SetActive(false);
         setStatus(state);
         setupHeader();
 
@@ -94,11 +100,11 @@ public class InventoryScript : MonoBehaviour
     {
         setupPartInventory(false, 0);
     }
-
     public void setupPartInventory(bool isRemoving, int state)
     {
         _selectItemButton.SetActive(false);
         _selectPartButton.SetActive(isRemoving);
+        _selectMatButton.SetActive(false);
         setStatus(state);
         setupHeader();
 
@@ -144,6 +150,57 @@ public class InventoryScript : MonoBehaviour
         }
     }
 
+    public void setupMatInventory()
+    {
+        setupMatInventory(false, 0);
+    }
+    public void setupMatInventory(bool isRemoving, int state)
+    {
+        _selectItemButton.SetActive(false);
+        _selectPartButton.SetActive(false);
+        _selectMatButton.SetActive(isRemoving);
+        setStatus(state);
+        setupHeader();
+
+        prevButtonPos = _inventoryParent.transform.position;
+        clearItemButtonList();
+        clearPartButtonList();
+
+        int m = 0;
+        foreach (MaterialData mat in materialInventory)
+        {
+            if (mat != null)
+            {
+                // instantiate the button prefab
+                tempButtonList = Instantiate(_matInfoPrefab);
+                tempButtonList.transform.SetParent(_inventoryParent.transform, false);
+
+                // set up the button text
+                tempButtonList.GetComponentInChildren<MaterialButton>().setMatInfoText(mat);
+                // set button position
+                prevButtonPos.y -= 53f;
+                tempButtonList.transform.position = prevButtonPos;
+
+                // if removing from inventory
+                if (isRemoving == true)
+                {
+                    if (state == 6)
+                    {
+                        if (checkIfMatIsValid(state, mat))
+                            tempButtonList.GetComponentInChildren<Button>().interactable = true;
+                        else
+                            tempButtonList.GetComponentInChildren<Button>().interactable = false;
+
+                    }
+                }
+                // add button to list
+                
+            }
+            m++;
+        }
+
+    }
+
     private ColorBlock ItemColorBlock;
     private ColorBlock PartColorBlock;
     private ColorBlock MaterialColorBlock; // preping for material inventory
@@ -153,14 +210,16 @@ public class InventoryScript : MonoBehaviour
 
         ItemColorBlock = _headerButtonItems.colors;
         PartColorBlock = _headerButtonParts.colors;
+        MaterialColorBlock = _headerButtonMaterials.colors;
         if (_removingStatus == removingItemStatusEnum.NotRemoving)
         {
             _headerButtonItems.interactable = true;
             _headerButtonParts.interactable = true;
-            _headerButtonMaterials.interactable = false; // temp while material in code is being worked on
+            _headerButtonMaterials.interactable = true;
 
             ItemColorBlock.colorMultiplier = 1f;
             PartColorBlock.colorMultiplier = 1f;
+            MaterialColorBlock.colorMultiplier = 1f;
         }
         else if (_removingStatus == removingItemStatusEnum.RemovingToSell || _removingStatus == removingItemStatusEnum.RemovingToDisassemble)
         {   // removing item from inventory
@@ -170,6 +229,7 @@ public class InventoryScript : MonoBehaviour
 
             ItemColorBlock.colorMultiplier = 2f;
             PartColorBlock.colorMultiplier = 1f;
+            MaterialColorBlock.colorMultiplier = 1f;
         }
         else if (_removingStatus == removingItemStatusEnum.RemovingToCraft1 || _removingStatus == removingItemStatusEnum.RemovingToCraft2 || _removingStatus == removingItemStatusEnum.RemovingToCraft3)
         {   // removing part from inventory
@@ -179,9 +239,21 @@ public class InventoryScript : MonoBehaviour
 
             ItemColorBlock.colorMultiplier = 1f;
             PartColorBlock.colorMultiplier = 2f;
+            MaterialColorBlock.colorMultiplier = 1f;
+        }
+        else if (_removingStatus == removingItemStatusEnum.RemovingToCraftMat)
+        {
+            _headerButtonItems.interactable = false;
+            _headerButtonParts.interactable = false;
+            _headerButtonMaterials.interactable = false;
+
+            ItemColorBlock.colorMultiplier = 1f;
+            PartColorBlock.colorMultiplier = 1f;
+            MaterialColorBlock.colorMultiplier = 2f;
         }
         _headerButtonItems.colors = ItemColorBlock;
         _headerButtonParts.colors = PartColorBlock;
+        _headerButtonMaterials.colors = MaterialColorBlock;
     }
 
     private string _itemName;
@@ -567,6 +639,16 @@ public class InventoryScript : MonoBehaviour
             Debug.Log("example button selected");
     }
 
+    public void setSelectedMat(int i)
+    {
+        if (i != -1)
+        {
+            _selectedMat = materialInventory[i];
+        }
+        else
+            Debug.Log("example button selected");
+    }
+
     public GameObject getSelectedItem()
     {
         if (_selectedItem != null) 
@@ -656,6 +738,12 @@ public class InventoryScript : MonoBehaviour
                 if (validPart3.PartName == validPart.PartName)
                     return true;
         }
+
+        return false;
+    }
+
+    private bool checkIfMatIsValid(int m, MaterialData mat)
+    {
 
         return false;
     }
