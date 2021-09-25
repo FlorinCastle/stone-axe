@@ -4029,7 +4029,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: returnSelectedMat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

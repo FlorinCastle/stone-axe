@@ -176,9 +176,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InventoryButton, Assembly-CSharp
-        m_MethodName: setPartInfoText
+      - m_Target: {fileID: 6216401637405813523}
+        m_TargetAssemblyTypeName: MaterialButton, Assembly-CSharp
+        m_MethodName: setMatText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -188,9 +188,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InventoryButton, Assembly-CSharp
-        m_MethodName: setSelectedPart
+      - m_Target: {fileID: 6216401637405813523}
+        m_TargetAssemblyTypeName: MaterialButton, Assembly-CSharp
+        m_MethodName: setSelectedMat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

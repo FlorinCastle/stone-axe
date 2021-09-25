@@ -78,27 +78,15 @@ public class PartData : ScriptableObject
         }
     }
 
-    public int PartStrenght
-    {
-        get
-        {
-            return _baseStrenght + _material.AddedStrength;
-        }
-    }
+    public int BaseCost { get { return _baseCost; } }
 
-    public int PartDextarity
-    {
-        get
-        {
-            return _baseDextarity + _material.AddedDextarity;
-        }
-    }
+    public int PartStrenght { get { return _baseStrenght + _material.AddedStrength; } }
 
-    public int PartIntelligence
-    {
-        get
-        {
-            return _baseIntelligence + _material.AddedIntelligence;
-        }
-    }
+    public int BaseStrenght { get { return _baseStrenght; } }
+
+    public int PartDextarity { get { return _baseDextarity + _material.AddedDextarity; } }
+
+    public int BaseDextarity { get { return _baseDextarity; } }
+    public int PartIntelligence { get { return _baseIntelligence + _material.AddedIntelligence; } } 
+    public int BaseIntelligence { get { return _baseIntelligence; } }
 }

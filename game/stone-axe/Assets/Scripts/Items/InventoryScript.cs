@@ -72,6 +72,7 @@ public class InventoryScript : MonoBehaviour
         prevButtonPos = _inventoryParent.transform.position;
         clearPartButtonList();
         clearItemButtonList();
+        clearMatButtonList();
         int k = 0;
         foreach (GameObject item in _itemInventoryData)
         {
@@ -111,6 +112,7 @@ public class InventoryScript : MonoBehaviour
         prevButtonPos = _inventoryParent.transform.position;
         clearItemButtonList();
         clearPartButtonList();
+        clearMatButtonList();
         int k = 0;
         foreach (GameObject part in _partInventoryData)
         {
@@ -165,6 +167,7 @@ public class InventoryScript : MonoBehaviour
         prevButtonPos = _inventoryParent.transform.position;
         clearItemButtonList();
         clearPartButtonList();
+        clearMatButtonList();
 
         int m = 0;
         foreach (MaterialData mat in materialInventory)
@@ -190,11 +193,10 @@ public class InventoryScript : MonoBehaviour
                             tempButtonList.GetComponentInChildren<Button>().interactable = true;
                         else
                             tempButtonList.GetComponentInChildren<Button>().interactable = false;
-
                     }
                 }
                 // add button to list
-                
+                InsertMatButton(tempButtonList, m);
             }
             m++;
         }
@@ -321,6 +323,37 @@ public class InventoryScript : MonoBehaviour
                 _descriptionText.text = _partName +
                     "\nStats" + _partStrength + _partDex + _partInt
                     + _material + _partValue;
+            }
+            else
+                _descriptionText.text = "new text";
+        }
+        else
+            _descriptionText.text = "new text";
+    }
+
+    private string _matName;
+    private string _matType;
+    private string _matStrength;
+    private string _matDex;
+    private string _matInt;
+    private string _matValue;
+
+    public void setMatDetailText(int index)
+    {
+        if (index != -1)
+        {
+            if (materialInventory[index] != null)
+            {
+                MaterialData matDataRef = materialInventory[index];
+
+                _matName = "Material - " + matDataRef.Material;
+                _matType = "\nType - " + matDataRef.MaterialType;
+                _matStrength = "\nStrength: " + matDataRef.AddedStrength.ToString();
+                _matDex = "\nDextarity: " + matDataRef.AddedDextarity.ToString();
+                _matInt = "\nIntelegence: " + matDataRef.AddedIntelligence.ToString();
+                _matValue = "\nValue: " + matDataRef.BaseCostPerUnit.ToString();
+
+                _descriptionText.text = _matName + _matType + _matValue + "\n" + _matStrength + _matDex + _matInt;
             }
             else
                 _descriptionText.text = "new text";
@@ -470,6 +503,14 @@ public class InventoryScript : MonoBehaviour
         return false;
     }
 
+    private bool MatButtonSlotEmpty(int index)
+    {
+        if (_materialButtonList[index] == null)
+            return true;
+
+        return false;
+    }
+
     // may or may not need this code
     private bool GetMaterial(int index, out MaterialData mat)
     {
@@ -570,6 +611,20 @@ public class InventoryScript : MonoBehaviour
         return -1;
     }
 
+    private int InsertMatButton(GameObject button, int k)
+    {
+        for (int i = 0; i < _materialButtonList.Count; i++)
+            if (MatButtonSlotEmpty(i))
+            {
+                _materialButtonList[i] = button;
+                button.GetComponent<MaterialButton>().setMyIndex(i);
+                button.GetComponent<MaterialButton>().setMatIndex(k);
+                return i;
+            }
+
+        return -1;
+    }
+
     public void RemoveItem(int index)
     {
         //Debug.Log("removing item at index: " + index);
@@ -615,6 +670,15 @@ public class InventoryScript : MonoBehaviour
 
         for (int j = 0; j < _partButtonList.Count; j++)
             _partButtonList[j] = null;
+    }
+
+    private void clearMatButtonList()
+    {
+        foreach (GameObject go in _materialButtonList)
+            Destroy(go);
+
+        for (int k = 0; k < _materialButtonList.Count; k++)
+            _materialButtonList[k] = null;
     }
 
     public void setSelectedItem(int i)
@@ -665,6 +729,14 @@ public class InventoryScript : MonoBehaviour
         return null;
     }
 
+    public MaterialData getSelectedMat()
+    {
+        if (_selectedMat != null)
+            return _selectedMat;
+
+        return null;
+    }
+
     private void setStatus(int value)
     {
         //Debug.Log("setStatus - value = " + value);
@@ -674,6 +746,7 @@ public class InventoryScript : MonoBehaviour
         else if (value == 3) _removingStatus = removingItemStatusEnum.RemovingToCraft1;
         else if (value == 4) _removingStatus = removingItemStatusEnum.RemovingToCraft2;
         else if (value == 5) _removingStatus = removingItemStatusEnum.RemovingToCraft3;
+        else if (value == 6) _removingStatus = removingItemStatusEnum.RemovingToCraftMat;
         else
         {
             _removingStatus = removingItemStatusEnum.NotRemoving;
@@ -710,13 +783,14 @@ public class InventoryScript : MonoBehaviour
 
     }
 
+    public void returnSelectedMat()
+    {
+        if (_removingStatus == removingItemStatusEnum.RemovingToCraftMat)
+            GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectMat();
+    }
+
     private bool checkIfPartIsValid(int i, PartDataStorage part) // incoming i should either be 3, 4, or 5
     {
-        /* call out to craft control
-         * ask for chosen recipe
-         * check in part button's part data storage for valid parts
-         * check in part's part data stoage
-         */
         CraftControl ccRef = GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>();
         PartData validPart = part.RecipeData;
 
@@ -742,8 +816,16 @@ public class InventoryScript : MonoBehaviour
         return false;
     }
 
-    private bool checkIfMatIsValid(int m, MaterialData mat)
+    private bool checkIfMatIsValid(int m, MaterialData mat) // incoming m should be 6
     {
+        CraftControl ccRef = GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>();
+
+        if (m == 6)
+        {
+            foreach (MaterialData validMat in ccRef.checkPartRecipe().ValidMaterialData)
+                if (validMat.Material == mat.Material)
+                    return true;
+        }
 
         return false;
     }

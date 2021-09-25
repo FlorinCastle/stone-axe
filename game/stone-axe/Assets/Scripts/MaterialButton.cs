@@ -8,8 +8,6 @@ public class MaterialButton : MonoBehaviour
     [SerializeField] private InventoryScript _invControl;
     [SerializeField] private int _myButtonIndex;
     [SerializeField] private int _matIndex;
-    //[SerializeField] private int _itemIndex;
-    //[SerializeField] private int _partIndex;
     [SerializeField] private Text _matNameText;
     [SerializeField] private Text _matCountText;
 
@@ -18,11 +16,12 @@ public class MaterialButton : MonoBehaviour
     {
         _invControl = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>();
     }
-    /*
-    public void setItemInfoText() { _invControl.setItemDetailText(_myButtonIndex); }
-    public void setPartInfoText() { _invControl.setPartDetailText(_myButtonIndex); }
-    public void setSelectedItem() { _invControl.setSelectedItem(_itemIndex); }
-    public void setSelectedPart() { _invControl.setSelectedPart(_partIndex); }*/
+
+    public void setMatText()
+    {
+        _invControl.setMatDetailText(_myButtonIndex);
+    }
+
     public void setMatInfoText(MaterialData matInfo)
     {
         _matNameText.text = matInfo.Material;
@@ -37,11 +36,5 @@ public class MaterialButton : MonoBehaviour
     public void setMyIndex(int i) { _myButtonIndex = i; }
     public int MyIndex { get => _myButtonIndex; }
 
-    /*
-    public void setItemIndex(int i) { _itemIndex = i; }
-    public int ItemIndex { get => _itemIndex; }
-
-    public void setPartIndex(int i) { _partIndex = i; }
-    public int PartIndex { get => _partIndex; }
-    */
+    public void setMatIndex(int i) { _matIndex = i; }
 }

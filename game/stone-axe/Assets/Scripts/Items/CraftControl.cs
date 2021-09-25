@@ -20,19 +20,27 @@ public class CraftControl : MonoBehaviour
     [SerializeField] Text _part1Discription;
     [SerializeField] Text _part2Discription;
     [SerializeField] Text _part3Discription;
+    [SerializeField] Text _partRecipeStats1;
+    [SerializeField] Text _partRecipeStats2;
+    [SerializeField] Text _matDiscription;
     [SerializeField] Text _finalStatsText1;
     [SerializeField] Text _finalStatsText2;
+    [SerializeField] Text _partStatsText1;
+    [SerializeField] Text _partStatsText2;
 
     [Header("Item Crafting")]
     [SerializeField] ItemData _chosenItemRecipe;
     [SerializeField] GameObject _chosenPart1;
     [SerializeField] GameObject _chosenPart2;
     [SerializeField] GameObject _chosenPart3;
+    // [SerializeField] MaterialData _chosenMat;
     private PartDataStorage _part1DataRef;
     private PartDataStorage _part2DataRef;
     private PartDataStorage _part3DataRef;
     private GameObject itemDataStorageTemp;
     private ItemDataStorage itemDataStorageRef;
+    private GameObject partDataStorageTemp;
+    private PartDataStorage partDataStorageRef;
     [Header("Part Crafting")]
     [SerializeField] PartData _chosenPartRecipe;
     [SerializeField] MaterialData _chosenPartMaterial;
@@ -93,10 +101,11 @@ public class CraftControl : MonoBehaviour
                     _chosenItemRecipe = null;
                     _chosenPartRecipe = _recipeBookRef.getPartRecipe(index);
 
-                    _itemCraftingUI.SetActive(true);
+                    _itemCraftingUI.SetActive(false);
                     clearItemCraftingUI();
-                    _partCraftingUI.SetActive(false);
+                    _partCraftingUI.SetActive(true);
                     clearPartCraftingUI();
+                    setupPartRecipeStats();
                 }
                 index++;
             }
@@ -118,7 +127,23 @@ public class CraftControl : MonoBehaviour
 
     private void clearPartCraftingUI()
     {
+        _partRecipeStats1.text = "placeholder";
+        _partRecipeStats2.text = "";
+        _matDiscription.text = "choose material";
 
+        _partStatsText1.text = "select [material]";
+        _partStatsText2.text = "";
+    }
+
+    private void setupPartRecipeStats()
+    {
+        _partRecipeStats1.text = "Valid Material Types\n";
+        foreach(string matType in _chosenPartRecipe.ValidMaterials)
+        {
+            _partRecipeStats1.text += matType + "\n";
+        }
+
+        _partRecipeStats2.text = "Base Stats\nBase Strenght: " + _chosenPartRecipe.BaseStrenght + "\nBase Intellegence: " + _chosenPartRecipe.BaseIntelligence + "\nBase Dextarity: " + _chosenPartRecipe.BaseDextarity;
     }
 
     private void setupRecipeDropdown()
@@ -151,6 +176,11 @@ public class CraftControl : MonoBehaviour
     public void invPart3Setup()
     {
         _inventoryControlReference.setupPartInventory(true, 5);
+    }
+
+    public void invMatSetup()
+    {
+        _inventoryControlReference.setupMatInventory(true, 6);
     }
 
     public void SelectPart1()
@@ -195,7 +225,30 @@ public class CraftControl : MonoBehaviour
         }
     }
 
-    public void CraftItem()
+    public void SelectMat()
+    {
+        _chosenPartMaterial = _inventoryControlReference.getSelectedMat();
+        if (_chosenPartMaterial != null)
+        {
+            // setup discription
+            setupMatDiscription(_chosenPartMaterial);
+        }
+        else
+            Debug.LogWarning("No Mat Selected");
+    }
+
+    public void Craft()
+    {
+        if (_chosenItemRecipe != null)
+            CraftItem();
+        else if (_chosenPartRecipe != null)
+            CraftPart();
+        
+        else
+            Debug.LogWarning("No Recipe Selected");
+    }
+
+    private void CraftItem()
     {
         //Debug.Log("crafting");
         itemDataStorageTemp = Instantiate(_itemDataStoragePrefab);
@@ -230,6 +283,32 @@ public class CraftControl : MonoBehaviour
         _recipeDropdown.value = 0;
     }
 
+    private void CraftPart()
+    {
+        partDataStorageTemp = Instantiate(_partDataStoragePrefab);
+        partDataStorageTemp.transform.parent = _inventoryControlReference.gameObject.transform;
+
+        partDataStorageRef = partDataStorageTemp.GetComponent<PartDataStorage>();
+        // stats
+        partDataStorageTemp.name = _chosenPartMaterial.Material + " " + _chosenPartRecipe.PartName;
+        partDataStorageRef.setPartName(_chosenPartRecipe.PartName);
+        partDataStorageRef.setMaterial(_chosenPartMaterial);
+        partDataStorageRef.setValue(_chosenPartRecipe.BaseCost + _chosenPartMaterial.BaseCostPerUnit);
+        partDataStorageRef.setPartStr(_chosenPartRecipe.BaseStrenght + _chosenPartMaterial.AddedStrength);
+        partDataStorageRef.setPartDex(_chosenPartRecipe.BaseDextarity + _chosenPartMaterial.AddedDextarity);
+        partDataStorageRef.setPartInt(_chosenPartRecipe.BaseIntelligence + _chosenPartMaterial.AddedIntelligence);
+        partDataStorageRef.setRecipeData(_chosenPartRecipe);
+
+        // clear crafting components
+        _chosenPartRecipe = null;
+        partDataStorageTemp = null;
+        partDataStorageRef = null;
+        _chosenPartMaterial = null;
+
+        clearPartCraftingUI();
+        _recipeDropdown.value = 0;
+    }
+
     private void setupDiscription(int i, GameObject part)
     {
         PartDataStorage data = part.GetComponent<PartDataStorage>();
@@ -251,6 +330,13 @@ public class CraftControl : MonoBehaviour
         updateFinalStatsText();
     }
 
+    private void setupMatDiscription(MaterialData mat)
+    {
+        _matDiscription.text = mat.Material + "\nType - " + mat.MaterialType + "\nAdded Strength: " + mat.AddedStrength + "\nAdded Dextarity: " + mat.AddedDextarity + "\nAdded Intelegence: " + mat.AddedIntelligence;
+
+        updateFinalStatsText();
+    }
+
     private string finalStatsString;
 
     private string finalStatsString1;
@@ -262,47 +348,91 @@ public class CraftControl : MonoBehaviour
     private string _totalDex;
     private string _totalInt;
     private string _totalValue;
+
+    private string _partName;
+    private string _partMat;
+    private string _partStrength;
+    private string _partDex;
+    private string _partInt;
+    private string _partValue;
     private void updateFinalStatsText()
     {
         finalStatsString = "";
-        if (_chosenPart1 != null && _chosenPart2 != null && _chosenPart3 != null)
+        if (_chosenItemRecipe != null)
         {
-            _part1DataRef = _chosenPart1.GetComponent<PartDataStorage>();
-            _part2DataRef = _chosenPart2.GetComponent<PartDataStorage>();
-            _part3DataRef = _chosenPart3.GetComponent<PartDataStorage>();
+            if (_chosenPart1 != null && _chosenPart2 != null && _chosenPart3 != null)
+            {
+                _part1DataRef = _chosenPart1.GetComponent<PartDataStorage>();
+                _part2DataRef = _chosenPart2.GetComponent<PartDataStorage>();
+                _part3DataRef = _chosenPart3.GetComponent<PartDataStorage>();
 
-            _itemName = "Item - " + _chosenItemRecipe.ItemName;
-            _materials = "Materials\n"
-                + _part1DataRef.MaterialName + "\n" + _part2DataRef.MaterialName + "\n" + _part3DataRef.MaterialName;
-            _totalStrength = "\nStrenght: " + (_part1DataRef.PartStr + _part2DataRef.PartStr + _part3DataRef.PartStr).ToString();
-            _totalDex = "\nDextarity: " + (_part1DataRef.PartDex + _part2DataRef.PartDex + _part3DataRef.PartDex).ToString();
-            _totalInt = "\nIntelegence: " + (_part1DataRef.PartInt + _part2DataRef.PartInt + _part3DataRef.PartInt).ToString();
-            _totalValue = "\n\nValue: " + (_part1DataRef.Value + _part2DataRef.Value + _part3DataRef.Value).ToString();
+                _itemName = "Item - " + _chosenItemRecipe.ItemName;
+                _materials = "Materials\n"
+                    + _part1DataRef.MaterialName + "\n" + _part2DataRef.MaterialName + "\n" + _part3DataRef.MaterialName;
+                _totalStrength = "\nStrenght: " + (_part1DataRef.PartStr + _part2DataRef.PartStr + _part3DataRef.PartStr).ToString();
+                _totalDex = "\nDextarity: " + (_part1DataRef.PartDex + _part2DataRef.PartDex + _part3DataRef.PartDex).ToString();
+                _totalInt = "\nIntelegence: " + (_part1DataRef.PartInt + _part2DataRef.PartInt + _part3DataRef.PartInt).ToString();
+                _totalValue = "\n\nValue: " + (_part1DataRef.Value + _part2DataRef.Value + _part3DataRef.Value).ToString();
 
-            finalStatsString1 = _itemName + "\nStats" + _totalStrength + _totalDex + _totalInt + _totalValue;
-            finalStatsString2 = _materials;
-            _finalStatsText1.text = finalStatsString1;
-            _finalStatsText2.text = finalStatsString2;
-            _craftButton.interactable = true;
+                finalStatsString1 = _itemName + "\nStats" + _totalStrength + _totalDex + _totalInt + _totalValue;
+                finalStatsString2 = _materials;
+                _finalStatsText1.text = finalStatsString1;
+                _finalStatsText2.text = finalStatsString2;
+                _craftButton.interactable = true;
+            }
+            else
+            {
+                finalStatsString += "select ";
+                if (_chosenPart1 == null)
+                    finalStatsString += "part1 ";
+                if (_chosenPart2 == null)
+                    finalStatsString += "part2 ";
+                if (_chosenPart3 == null)
+                    finalStatsString += "part3";
+
+                _finalStatsText1.text = finalStatsString;
+                _craftButton.interactable = false;
+            }
+
+        }
+        else if (_chosenPartRecipe != null)
+        {
+            if (_chosenPartMaterial != null)
+            {
+                _partName = "Part - " + _chosenPartRecipe.PartName;
+                _partMat = "Material\n" + _chosenPartMaterial.Material;
+                _partStrength = "\nStrenght: " + (_chosenPartRecipe.BaseStrenght + _chosenPartMaterial.AddedStrength);
+                _partDex = "\nDextarity: " + (_chosenPartRecipe.BaseDextarity + _chosenPartMaterial.AddedDextarity);
+                _partInt = "\nIntelegence: " + (_chosenPartRecipe.BaseIntelligence + _chosenPartMaterial.AddedIntelligence);
+                _partValue = "\n\nValue: " + (_chosenPartRecipe.BaseCost + _chosenPartMaterial.BaseCostPerUnit);
+
+                finalStatsString1 = _partName + "\nStats" + _partStrength + _partDex + _partInt + _partValue;
+                finalStatsString2 = _partMat;
+
+                _partStatsText1.text = finalStatsString1;
+                _partStatsText2.text = finalStatsString2;
+
+                _craftButton.interactable = true;
+            }
+            else
+            {
+                finalStatsString1 = "select [material]";
+                _partStatsText1.text = finalStatsString1;
+                _craftButton.interactable = false;
+            }
         }
         else
-        {
-            finalStatsString += "select ";
-            if (_chosenPart1 == null)
-                finalStatsString += "part1 ";
-            if (_chosenPart2 == null)
-                finalStatsString += "part2 ";
-            if (_chosenPart3 == null)
-                finalStatsString += "part3";
-
-            _finalStatsText1.text = finalStatsString;
-            _craftButton.interactable = false;
-        }
+            Debug.LogWarning("No Recipe selected!");
     }
 
     public ItemData checkItemRecipe()
     {
 
         return _chosenItemRecipe;
+    }
+
+    public PartData checkPartRecipe()
+    {
+        return _chosenPartRecipe;
     }
 }
