@@ -54,7 +54,6 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private GameObject _partInfoPrefab;
     [SerializeField] private GameObject _matInfoPrefab;
 
-    private Vector3 prevButtonPos;
     private GameObject tempButtonList;
 
     public void setupItemInventory()
@@ -69,7 +68,6 @@ public class InventoryScript : MonoBehaviour
         setStatus(state);
         setupHeader();
 
-        prevButtonPos = _inventoryParent.transform.position;
         clearPartButtonList();
         clearItemButtonList();
         clearMatButtonList();
@@ -87,9 +85,7 @@ public class InventoryScript : MonoBehaviour
                 // set up button text
                 Text t = tempButtonList.GetComponentInChildren<Text>();
                 t.text = itemData.ItemName;
-                // set button position
-                prevButtonPos.y -= 53f;
-                tempButtonList.transform.position = prevButtonPos;
+
                 // add button to list
                 InsertItemButton(tempButtonList, k);
             }
@@ -109,7 +105,6 @@ public class InventoryScript : MonoBehaviour
         setStatus(state);
         setupHeader();
 
-        prevButtonPos = _inventoryParent.transform.position;
         clearItemButtonList();
         clearPartButtonList();
         clearMatButtonList();
@@ -128,10 +123,6 @@ public class InventoryScript : MonoBehaviour
                 // set up button text
                 Text t = tempButtonList.GetComponentInChildren<Text>();
                 t.text = partData.PartName;
-                
-                // set butto postion
-                prevButtonPos.y -= 53f;
-                tempButtonList.transform.position = prevButtonPos;
                 
                 // if removing part from inventory
                 if (isRemoving == true)
@@ -164,7 +155,6 @@ public class InventoryScript : MonoBehaviour
         setStatus(state);
         setupHeader();
 
-        prevButtonPos = _inventoryParent.transform.position;
         clearItemButtonList();
         clearPartButtonList();
         clearMatButtonList();
@@ -180,9 +170,6 @@ public class InventoryScript : MonoBehaviour
 
                 // set up the button text
                 tempButtonList.GetComponentInChildren<MaterialButton>().setMatInfoText(mat);
-                // set button position
-                prevButtonPos.y -= 53f;
-                tempButtonList.transform.position = prevButtonPos;
 
                 // if removing from inventory
                 if (isRemoving == true)
