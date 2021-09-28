@@ -53,21 +53,11 @@ public class PartData : ScriptableObject
         }
     }
 
-    public List<MaterialData> ValidMaterialData
-    {
-        get
-        {
-            return _validMaterials;
-        }
-    }
+    public List<MaterialData> ValidMaterialData { get => _validMaterials; }
 
-    public List<string> ValidMaterials
-    {
-        get
-        {
-            return _validMaterialTypes;
-        }
-    }
+    public List<string> ValidMaterials { get => _validMaterialTypes; }
+
+    public int UnitsOfMaterialNeeded { get => _unitsOfMaterialNeeded; }
 
     public int TotalCurrentValue
     {

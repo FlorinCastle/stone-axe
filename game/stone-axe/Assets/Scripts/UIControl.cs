@@ -45,4 +45,9 @@ public class UIControl : MonoBehaviour
     {
         UIInput.SetActive(true);
     }
+
+    public void quitGame()
+    {
+        Application.Quit();
+    }
 }

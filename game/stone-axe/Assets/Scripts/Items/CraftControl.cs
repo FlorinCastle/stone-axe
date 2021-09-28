@@ -143,6 +143,8 @@ public class CraftControl : MonoBehaviour
             _partRecipeStats1.text += matType + "\n";
         }
 
+        _partRecipeStats1.text += "\nUnits of Material Required: " + _chosenPartRecipe.UnitsOfMaterialNeeded;
+
         _partRecipeStats2.text = "Base Stats\nBase Strenght: " + _chosenPartRecipe.BaseStrenght + "\nBase Intellegence: " + _chosenPartRecipe.BaseIntelligence + "\nBase Dextarity: " + _chosenPartRecipe.BaseDextarity;
     }
 
@@ -262,6 +264,7 @@ public class CraftControl : MonoBehaviour
         itemDataStorageRef.setTotalDex(_part1DataRef.PartDex + _part2DataRef.PartDex + _part3DataRef.PartDex);
         itemDataStorageRef.setTotalInt(_part1DataRef.PartInt + _part2DataRef.PartInt + _part3DataRef.PartInt);
 
+        // (re)move parts
         _chosenPart1.transform.parent = itemDataStorageTemp.transform;
         itemDataStorageRef.setPart1(_chosenPart1.GetComponent<PartDataStorage>());
         _chosenPart2.transform.parent = itemDataStorageTemp.transform;
@@ -269,6 +272,7 @@ public class CraftControl : MonoBehaviour
         _chosenPart3.transform.parent = itemDataStorageTemp.transform;
         itemDataStorageRef.setPart3(_chosenPart3.GetComponent<PartDataStorage>());
 
+        // clear selected crafting componets
         _chosenItemRecipe = null;
         itemDataStorageTemp = null;
         itemDataStorageRef = null;
@@ -285,28 +289,35 @@ public class CraftControl : MonoBehaviour
 
     private void CraftPart()
     {
-        partDataStorageTemp = Instantiate(_partDataStoragePrefab);
-        partDataStorageTemp.transform.parent = _inventoryControlReference.gameObject.transform;
+        if (_chosenPartMaterial.CanRemoveAmount(_chosenPartRecipe.UnitsOfMaterialNeeded))
+        {
+            partDataStorageTemp = Instantiate(_partDataStoragePrefab);
+            partDataStorageTemp.transform.parent = _inventoryControlReference.gameObject.transform;
 
-        partDataStorageRef = partDataStorageTemp.GetComponent<PartDataStorage>();
-        // stats
-        partDataStorageTemp.name = _chosenPartMaterial.Material + " " + _chosenPartRecipe.PartName;
-        partDataStorageRef.setPartName(_chosenPartRecipe.PartName);
-        partDataStorageRef.setMaterial(_chosenPartMaterial);
-        partDataStorageRef.setValue(_chosenPartRecipe.BaseCost + _chosenPartMaterial.BaseCostPerUnit);
-        partDataStorageRef.setPartStr(_chosenPartRecipe.BaseStrenght + _chosenPartMaterial.AddedStrength);
-        partDataStorageRef.setPartDex(_chosenPartRecipe.BaseDextarity + _chosenPartMaterial.AddedDextarity);
-        partDataStorageRef.setPartInt(_chosenPartRecipe.BaseIntelligence + _chosenPartMaterial.AddedIntelligence);
-        partDataStorageRef.setRecipeData(_chosenPartRecipe);
+            partDataStorageRef = partDataStorageTemp.GetComponent<PartDataStorage>();
+            // stats
+            partDataStorageTemp.name = _chosenPartMaterial.Material + " " + _chosenPartRecipe.PartName;
+            partDataStorageRef.setPartName(_chosenPartRecipe.PartName);
+            partDataStorageRef.setMaterial(_chosenPartMaterial);
+            partDataStorageRef.setValue(_chosenPartRecipe.BaseCost + _chosenPartMaterial.BaseCostPerUnit);
+            partDataStorageRef.setPartStr(_chosenPartRecipe.BaseStrenght + _chosenPartMaterial.AddedStrength);
+            partDataStorageRef.setPartDex(_chosenPartRecipe.BaseDextarity + _chosenPartMaterial.AddedDextarity);
+            partDataStorageRef.setPartInt(_chosenPartRecipe.BaseIntelligence + _chosenPartMaterial.AddedIntelligence);
+            partDataStorageRef.setRecipeData(_chosenPartRecipe);
 
-        // clear crafting components
-        _chosenPartRecipe = null;
-        partDataStorageTemp = null;
-        partDataStorageRef = null;
-        _chosenPartMaterial = null;
+            // remove right amount of materials
+            _chosenPartMaterial.RemoveMat(_chosenPartRecipe.UnitsOfMaterialNeeded);
 
-        clearPartCraftingUI();
-        _recipeDropdown.value = 0;
+            // clear selected crafting components
+            _chosenPartRecipe = null;
+            partDataStorageTemp = null;
+            partDataStorageRef = null;
+            _chosenPartMaterial = null;
+
+            clearPartCraftingUI();
+            _recipeDropdown.value = 0;
+
+        }
     }
 
     private void setupDiscription(int i, GameObject part)

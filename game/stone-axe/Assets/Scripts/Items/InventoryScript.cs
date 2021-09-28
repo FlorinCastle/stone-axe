@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class InventoryScript : MonoBehaviour
 {
-    [SerializeField] private GameObject _inventoryParent;
+    [SerializeField] private GameObject _inventoryButtonParent;
     [SerializeField]
     private GameObject _selectedItem;
     [SerializeField]
@@ -21,38 +21,42 @@ public class InventoryScript : MonoBehaviour
         RemovingToCraft1,       // int 3
         RemovingToCraft2,       // int 4
         RemovingToCraft3,       // int 5
-        RemovingToCraftMat      // int 6
+        RemovingToCraftMat,     // int 6
+        RemovingToEnchant       // int 7
     }
     [Header("Data")]
     [SerializeField] private removingItemStatusEnum _removingStatus;
 
-    [SerializeField]
-    private List<GameObject> _itemInventoryData;
-    [SerializeField] 
-    private List<GameObject> _itemButtonList;
-    [SerializeField]
-    private List<GameObject> _partInventoryData;
-    [SerializeField] // unused currently - will be used
-    private List<GameObject> _partButtonList;
-    [SerializeField] 
-    private List<MaterialData> materialInventory;
-    [SerializeField] // unused currently - will be used
-    private List<GameObject> _materialButtonList;
+    // item inventory
+    [SerializeField] private List<GameObject> _itemInventoryData;
+    [SerializeField] private List<GameObject> _itemButtonList;
+    // part inventory
+    [SerializeField] private List<GameObject> _partInventoryData;
+    [SerializeField] private List<GameObject> _partButtonList;
+    // material inventory
+    [SerializeField] private List<MaterialData> materialInventory;
+    [SerializeField] private List<GameObject> _materialButtonList;
+    // enchant inventory
+    [SerializeField] private List<GameObject> _enchantInventoryData;
+    [SerializeField] private List<GameObject> _enchantButtonList;
 
     [Header("UI References")]
     [SerializeField] private Button _headerButtonItems;
     [SerializeField] private Button _headerButtonParts;
     [SerializeField] private Button _headerButtonMaterials;
+    [SerializeField] private Button _headerButtonEnchants;
     [SerializeField] private Text _descriptionText;
     [SerializeField] private GameObject _selectItemButton;
     [SerializeField] private GameObject _selectPartButton;
     [SerializeField] private GameObject _selectMatButton;
+    [SerializeField] private GameObject _selectEnchantButton;
     [Header("Prefabs")]
     [SerializeField] private GameObject _itemDataStoragePrefab;
     [SerializeField] private GameObject _partDataStoragePrefab;
     [SerializeField] private GameObject _itemInfoPrefab;
     [SerializeField] private GameObject _partInfoPrefab;
     [SerializeField] private GameObject _matInfoPrefab;
+    [SerializeField] private GameObject _enchantInfoPrefab;
 
     private GameObject tempButtonList;
 
@@ -65,6 +69,7 @@ public class InventoryScript : MonoBehaviour
         _selectItemButton.SetActive(isRemoving);
         _selectPartButton.SetActive(false);
         _selectMatButton.SetActive(false);
+        _selectEnchantButton.SetActive(false);
         setStatus(state);
         setupHeader();
 
@@ -81,7 +86,7 @@ public class InventoryScript : MonoBehaviour
 
                 // instatiate the button prefab
                 tempButtonList = Instantiate(_itemInfoPrefab);
-                tempButtonList.transform.SetParent(_inventoryParent.transform, false);
+                tempButtonList.transform.SetParent(_inventoryButtonParent.transform, false);
                 // set up button text
                 Text t = tempButtonList.GetComponentInChildren<Text>();
                 t.text = itemData.ItemName;
@@ -102,6 +107,7 @@ public class InventoryScript : MonoBehaviour
         _selectItemButton.SetActive(false);
         _selectPartButton.SetActive(isRemoving);
         _selectMatButton.SetActive(false);
+        _selectEnchantButton.SetActive(false);
         setStatus(state);
         setupHeader();
 
@@ -118,7 +124,7 @@ public class InventoryScript : MonoBehaviour
 
                 // instantiate the button prefab
                 tempButtonList = Instantiate(_partInfoPrefab);
-                tempButtonList.transform.SetParent(_inventoryParent.transform, false);
+                tempButtonList.transform.SetParent(_inventoryButtonParent.transform, false);
 
                 // set up button text
                 Text t = tempButtonList.GetComponentInChildren<Text>();
@@ -152,6 +158,7 @@ public class InventoryScript : MonoBehaviour
         _selectItemButton.SetActive(false);
         _selectPartButton.SetActive(false);
         _selectMatButton.SetActive(isRemoving);
+        _selectEnchantButton.SetActive(false);
         setStatus(state);
         setupHeader();
 
@@ -166,7 +173,7 @@ public class InventoryScript : MonoBehaviour
             {
                 // instantiate the button prefab
                 tempButtonList = Instantiate(_matInfoPrefab);
-                tempButtonList.transform.SetParent(_inventoryParent.transform, false);
+                tempButtonList.transform.SetParent(_inventoryButtonParent.transform, false);
 
                 // set up the button text
                 tempButtonList.GetComponentInChildren<MaterialButton>().setMatInfoText(mat);
@@ -190,9 +197,40 @@ public class InventoryScript : MonoBehaviour
 
     }
 
+    public void setupEnchantInventory()
+    {
+        setupEnchantInventory(false, 0);
+    }
+
+    public void setupEnchantInventory(bool isRemoving, int state)
+    {
+
+        _selectItemButton.SetActive(false);
+        _selectPartButton.SetActive(false);
+        _selectMatButton.SetActive(false);
+        _selectEnchantButton.SetActive(isRemoving);
+        setStatus(state);
+
+        setupHeader();
+
+        clearItemButtonList();
+        clearPartButtonList();
+        clearMatButtonList();
+
+        int e = 0;
+        foreach(GameObject ench in _enchantInventoryData)
+        {
+            if (ench != null)
+            {
+
+            }
+        }
+    }
+
     private ColorBlock ItemColorBlock;
     private ColorBlock PartColorBlock;
-    private ColorBlock MaterialColorBlock; // preping for material inventory
+    private ColorBlock MaterialColorBlock;
+    private ColorBlock EnchantColorBlock;
     private void setupHeader()
     {
         //Debug.Log("Setting up Inventory Header - current status: " + _removingStatus.ToString());
@@ -200,21 +238,25 @@ public class InventoryScript : MonoBehaviour
         ItemColorBlock = _headerButtonItems.colors;
         PartColorBlock = _headerButtonParts.colors;
         MaterialColorBlock = _headerButtonMaterials.colors;
+        EnchantColorBlock = _headerButtonEnchants.colors;
         if (_removingStatus == removingItemStatusEnum.NotRemoving)
         {
             _headerButtonItems.interactable = true;
             _headerButtonParts.interactable = true;
             _headerButtonMaterials.interactable = true;
+            _headerButtonEnchants.interactable = false; // for now
 
             ItemColorBlock.colorMultiplier = 1f;
             PartColorBlock.colorMultiplier = 1f;
             MaterialColorBlock.colorMultiplier = 1f;
+            EnchantColorBlock.colorMultiplier = 1f;
         }
         else if (_removingStatus == removingItemStatusEnum.RemovingToSell || _removingStatus == removingItemStatusEnum.RemovingToDisassemble)
         {   // removing item from inventory
             _headerButtonItems.interactable = false;
             _headerButtonParts.interactable = false;
             _headerButtonMaterials.interactable = false;
+            _headerButtonEnchants.interactable = false;
 
             ItemColorBlock.colorMultiplier = 2f;
             PartColorBlock.colorMultiplier = 1f;
@@ -225,6 +267,7 @@ public class InventoryScript : MonoBehaviour
             _headerButtonItems.interactable = false;
             _headerButtonParts.interactable = false;
             _headerButtonMaterials.interactable = false;
+            _headerButtonEnchants.interactable = false;
 
             ItemColorBlock.colorMultiplier = 1f;
             PartColorBlock.colorMultiplier = 2f;
@@ -235,6 +278,7 @@ public class InventoryScript : MonoBehaviour
             _headerButtonItems.interactable = false;
             _headerButtonParts.interactable = false;
             _headerButtonMaterials.interactable = false;
+            _headerButtonEnchants.interactable = false;
 
             ItemColorBlock.colorMultiplier = 1f;
             PartColorBlock.colorMultiplier = 1f;
@@ -243,6 +287,7 @@ public class InventoryScript : MonoBehaviour
         _headerButtonItems.colors = ItemColorBlock;
         _headerButtonParts.colors = PartColorBlock;
         _headerButtonMaterials.colors = MaterialColorBlock;
+        _headerButtonEnchants.colors = EnchantColorBlock;
     }
 
     private string _itemName;

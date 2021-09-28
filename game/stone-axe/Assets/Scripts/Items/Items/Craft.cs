@@ -49,23 +49,23 @@ public class Craft : MonoBehaviour
     private void Awake()
     {
         // item dropdown
-        _itemDropdown.ClearOptions();
+        //_itemDropdown.ClearOptions();
         itemData = _itemScriptReference.getItemDataRef();
         itemDropOptions.Add("Choose Item");
         // set up craftable items
         foreach (ItemData item in itemData)
             itemDropOptions.Add(item.ItemName);
-        _itemDropdown.AddOptions(itemDropOptions);
+        //_itemDropdown.AddOptions(itemDropOptions);
 
         // part dropdown
-        _partDropdown.ClearOptions();
+        //_partDropdown.ClearOptions();
         partData = _partScriptReference.getAllParts();
         partDropOptions.Add("Choose Part");
 
         // set up craftable parts
         foreach (PartData part in partData)
             partDropOptions.Add(part.PartName);
-        _partDropdown.AddOptions(partDropOptions);
+        //_partDropdown.AddOptions(partDropOptions);
 
         // clear dropdowns
         clearPartOptions();
@@ -80,6 +80,7 @@ public class Craft : MonoBehaviour
     private string _totalDex;
     private string _totalInt;
     private string _totalValue;
+    /*
     public void craftItem()
     {
         //Debug.Log("code is wip");
@@ -116,6 +117,7 @@ public class Craft : MonoBehaviour
         else
             _craftedItem.text = "placeholder text";
     }
+    */
 
     private string _partName;
     private string _partMaterial;
@@ -123,6 +125,7 @@ public class Craft : MonoBehaviour
     private string _partDex;
     private string _partInt;
     private string _partValue;
+    /*
     public void craftPart()
     {
         if (_partDropdown.options[_partDropdown.value].text != "Choose Part" &&
@@ -149,6 +152,7 @@ public class Craft : MonoBehaviour
         else
             _craftedItem.text = "placeholder text";
     }
+    */
 
     public void checkItemSelection()
     {

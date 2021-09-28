@@ -15,7 +15,7 @@ MonoBehaviour:
   _materaialName: Iron
   _materialType: 0
   _levelRequirement: 0
-  _quantity: 50
+  _quantity: 2
   _baseCostPerUnit: 3
   _addedStrength: 5
   _addedDextarity: 0

@@ -16,12 +16,12 @@ public class InventoryButton : MonoBehaviour
 
     public void setItemInfoText()
     {
-        _invControl.setItemDetailText(_myButtonIndex);
+        _invControl.setItemDetailText(_itemIndex);
     }
 
     public void setPartInfoText()
     {
-        _invControl.setPartDetailText(_myButtonIndex);
+        _invControl.setPartDetailText(_partIndex);
     }
 
     public void setSelectedItem()

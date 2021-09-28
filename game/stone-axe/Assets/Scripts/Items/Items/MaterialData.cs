@@ -27,39 +27,26 @@ public class MaterialData : ScriptableObject
     [SerializeField]
     private int _addedIntelligence;
 
-
-    public string Material
+    public int AddMat(int value) { _quantity += value; return value; }
+    public int RemoveMat(int value)
     {
-        get => _materaialName;
+        if (CanRemoveAmount(value))
+            _quantity -= value;
+        return _quantity;
     }
 
-    public string MaterialType
+    public bool CanRemoveAmount(int value)
     {
-        get => _materialType.ToString();
+        if (value <= _quantity)
+            return true;
+        return false;
     }
 
-    public int MaterialCount
-    {
-        get => _quantity;
-    }
-
-    public int BaseCostPerUnit
-    {
-        get => _baseCostPerUnit;
-    }
-
-    public int AddedStrength
-    {
-        get => _addedStrength;
-    }
-
-    public int AddedDextarity
-    {
-        get => _addedDextarity;
-    }
-
-    public int AddedIntelligence
-    {
-        get => _addedIntelligence;
-    }
+    public string Material { get => _materaialName; }
+    public string MaterialType { get => _materialType.ToString(); }
+    public int MaterialCount { get => _quantity; }
+    public int BaseCostPerUnit { get => _baseCostPerUnit; }
+    public int AddedStrength { get => _addedStrength; }
+    public int AddedDextarity { get => _addedDextarity; }
+    public int AddedIntelligence { get => _addedIntelligence; }
 }
