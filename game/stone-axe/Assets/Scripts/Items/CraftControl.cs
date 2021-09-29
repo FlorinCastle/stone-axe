@@ -308,6 +308,9 @@ public class CraftControl : MonoBehaviour
             // remove right amount of materials
             _chosenPartMaterial.RemoveMat(_chosenPartRecipe.UnitsOfMaterialNeeded);
 
+            // insert crafted part into inventory script
+            _inventoryControlReference.InsertPartData(partDataStorageTemp);
+
             // clear selected crafting components
             _chosenPartRecipe = null;
             partDataStorageTemp = null;

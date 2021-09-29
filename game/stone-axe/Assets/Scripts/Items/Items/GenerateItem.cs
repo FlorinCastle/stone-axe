@@ -4,13 +4,14 @@ using System.Collections.Generic;
 
 public class GenerateItem : MonoBehaviour
 {
-    [SerializeField] Item itemScript;
-    [SerializeField] InventoryScript _inventoryRef;
-    [SerializeField] GameObject _inventoryControl;
-    [SerializeField] GameObject _gameMaster;
+    [SerializeField] private Item itemScript;
+    [SerializeField] private Enchant enchantScript;
+    [SerializeField] private InventoryScript _inventoryRef;
+    [SerializeField] private GameObject _inventoryControl;
+    [SerializeField] private GameObject _gameMaster;
     [Header("UI")]
-    [SerializeField] Text itemText;
-    [SerializeField] Button buyButton;
+    [SerializeField] private Text itemText;
+    [SerializeField] private Button buyButton;
 
     //[SerializeField] InventoryScriptableObject inventoryStorage;
 
@@ -20,9 +21,19 @@ public class GenerateItem : MonoBehaviour
     }
 
     [SerializeField] private ItemData _generatedItem;
+    [SerializeField] private EnchantData _generatedEnchant;
     public void GenerateRandomItem()
     {
         _generatedItem = itemScript.chooseItem();
+        int ranEnchChance = Random.Range(0, 1000);
+        if (ranEnchChance >= 700)
+        {
+            _generatedEnchant = enchantScript.chooseEnchant();
+            _generatedItem.setIsEnchanted(true);
+        }
+        else
+            _generatedItem.setIsEnchanted(false);
+
         generateItemText();
         itemText.text = _generatedText;
         buyButton.interactable = true;

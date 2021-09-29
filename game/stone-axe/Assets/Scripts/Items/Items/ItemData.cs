@@ -28,6 +28,8 @@ public class ItemData : ScriptableObject
     private int _baseDextarity;
     [SerializeField]
     private int _baseIntelligence;
+    [SerializeField]
+    private bool _isEnchanted;
 
     //  TODO: revise this script so differnt, simaler parts can be used to make the same item
     
@@ -73,6 +75,9 @@ public class ItemData : ScriptableObject
     {
         get => _baseIntelligence + _part1.PartIntelligence + _part2.PartIntelligence + _part3.PartIntelligence;
     }
+
+    public bool IsEnchanted { get => _isEnchanted; }
+    public void setIsEnchanted(bool value) { _isEnchanted = value; }
 
     public string RandomMaterials
     {
