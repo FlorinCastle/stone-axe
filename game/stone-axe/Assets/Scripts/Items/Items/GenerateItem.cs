@@ -12,12 +12,14 @@ public class GenerateItem : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Text itemText;
     [SerializeField] private Button buyButton;
+    Text buyButtonText;
 
     //[SerializeField] InventoryScriptableObject inventoryStorage;
 
     private void Awake()
     {
         _gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
+        buyButtonText = buyButton.GetComponentInChildren<Text>();
     }
 
     [SerializeField] private ItemData _generatedItem;
@@ -36,6 +38,7 @@ public class GenerateItem : MonoBehaviour
 
         generateItemText();
         itemText.text = _generatedText;
+        buyButtonText.text = "buy: " + _generatedItem.TotalValue;
         buyButton.interactable = true;
     }
 
@@ -50,6 +53,7 @@ public class GenerateItem : MonoBehaviour
         }
         _generatedItem = null;
         buyButton.interactable = false;
+        buyButtonText.text = "buy: [price]";
         itemText.text = "item text";
     }
 
@@ -61,6 +65,7 @@ public class GenerateItem : MonoBehaviour
         }
         _generatedItem = null;
         buyButton.interactable = false;
+        buyButtonText.text = "buy: [price]";
         itemText.text = "item text";
     }
 
@@ -76,12 +81,49 @@ public class GenerateItem : MonoBehaviour
         }
         _generatedItem = null;
         buyButton.interactable = false;
+        buyButtonText.text = "buy: [price]";
         itemText.text = "item text";
     }
 
     private string _generatedText;
+
+    private string _itemName;
+    private string _materials;
+    private string _totalStrenght;
+    private string _totalDex;
+    private string _totalInt;
+    private string _totalValue;
+    private bool _isEnchanted;
+    private string _enchant;
+
     private void generateItemText()
     {
-        _generatedText = itemScript.silence();
+        _itemName = "Item - " + _generatedItem.ItemName;
+        _materials = "\n\nMaterials\n" + _generatedItem.RandomMaterials;
+
+        _totalStrenght = "\nStrenght: " + _generatedItem.TotalStrength;
+        _totalDex = "\nDextarity: " + _generatedItem.TotalDextarity;
+        _totalInt = "\nIntelegence: " + _generatedItem.TotalIntelegence;
+        _totalValue = "\n\nValue: " + _generatedItem.TotalValue;
+        _isEnchanted = _generatedItem.IsEnchanted;
+
+        if (_isEnchanted) 
+            _enchant = "\nitem is enchanted"; 
+        else
+            _enchant = "\nitem is not enchanted";
+
+        _generatedText = "";
+        _generatedText += _itemName
+            + "\nStats" + _totalStrenght
+            + _totalDex
+            + _totalInt
+            + _materials
+            + _enchant
+            + _totalValue;
+    }
+
+    public EnchantData getEnchantment
+    {
+        get => _generatedEnchant;
     }
 }

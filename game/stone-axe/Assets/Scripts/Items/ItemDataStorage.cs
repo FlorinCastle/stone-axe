@@ -19,6 +19,11 @@ public class ItemDataStorage : MonoBehaviour
     [SerializeField] private PartDataStorage _part2;
     [SerializeField] private PartDataStorage _part3;
 
+    [Header("Enchantment")]
+    [SerializeField] private bool _isEnchanted = false;
+    [SerializeField] private EnchantDataStorage _enchantment;
+
+
 
     public void setItemName(string name) { _itemName = name; }
     public string ItemName { get => _itemName; }
@@ -46,5 +51,11 @@ public class ItemDataStorage : MonoBehaviour
 
     public void setInventoryIndex(int value) { inventoryIndex = value; }
     public int InventoryIndex { get => inventoryIndex; }
+
+    public void setIsEnchanted(bool value) { _isEnchanted = value; }
+    public bool IsEnchanted { get => _isEnchanted; }
+
+    public void setEnchantment(EnchantDataStorage enchant) { _enchantment = enchant; }
+    public EnchantDataStorage Enchantment { get => _enchantment; }
 
 }

@@ -26,6 +26,7 @@ public class Item : MonoBehaviour
         return _generatedItem;
     }
 
+    /*
     public string silence()
     {
         //  store text values (this always comes after the item is generated)
@@ -47,6 +48,7 @@ public class Item : MonoBehaviour
 
         return textReturn;
     }
+    */
 
     public List<ItemData> getItemDataRef()
     {

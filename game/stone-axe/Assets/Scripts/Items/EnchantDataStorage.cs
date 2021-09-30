@@ -6,19 +6,6 @@ public class EnchantDataStorage : MonoBehaviour
 {
     [Header("Enchant Data")]
     [SerializeField] private string _enchantName;
-
-    /*
-    private enum enchantBuffType
-    {
-        StatBuff_STR,
-        StatBuff_DEX,
-        StatBuff_INT,
-        StatBuff_DEF_GEN,
-        OtherBuff_FIRE_DMG,
-        OtherBuff_ICE_DMG
-    }
-    [SerializeField] private enchantBuffType _enchantBuffType;
-    */
     [Header("Enchant Stats")]
     [SerializeField] private string _enchantBuffType;
     [SerializeField] private int _valueOfBuff;

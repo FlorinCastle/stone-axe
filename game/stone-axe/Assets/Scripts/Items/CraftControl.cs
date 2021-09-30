@@ -435,8 +435,8 @@ public class CraftControl : MonoBehaviour
                 _craftButton.interactable = false;
             }
         }
-        else
-            Debug.LogWarning("No Recipe selected!");
+        //else
+            //Debug.LogWarning("No Recipe selected!");
     }
 
     public ItemData checkItemRecipe()

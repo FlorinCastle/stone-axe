@@ -46,6 +46,7 @@ public class DisassembleItemControl : MonoBehaviour
     private string part1;
     private string part2;
     private string part3;
+    private string ench;
     private void setupTexts()
     {
         ItemDataStorage itemData = _selectedItem.GetComponent<ItemDataStorage>();
@@ -54,8 +55,14 @@ public class DisassembleItemControl : MonoBehaviour
         part1 = itemData.Part1.MaterialName + " " + itemData.Part1.PartName + "\n";
         part2 = itemData.Part2.MaterialName + " " + itemData.Part2.PartName + "\n";
         part3 = itemData.Part3.MaterialName + " " + itemData.Part3.PartName;
+        if (itemData.IsEnchanted)
+        {
+            ench = "\n" + itemData.Enchantment.EnchantName + " +" + itemData.Enchantment.AmountOfBuff;
+        }
+        else
+            ench = "";
 
-        _itemText.text = header + part1 + part2 + part3;
+        _itemText.text = header + part1 + part2 + part3 + ench;
 
     }
 
@@ -76,6 +83,14 @@ public class DisassembleItemControl : MonoBehaviour
         GameObject part3 = _selectedItem.GetComponent<ItemDataStorage>().Part3.gameObject;
         _invScriptRef.InsertPartData(part3);
         part3.transform.parent = _invScriptRef.gameObject.transform;
+
+        // move enchantment, if enchanted
+        if (_selectedItem.GetComponent<ItemDataStorage>().IsEnchanted)
+        {
+            GameObject enc = _selectedItem.GetComponent<ItemDataStorage>().Enchantment.gameObject;
+            _invScriptRef.InsertEnchatment(enc);
+            enc.transform.parent = _invScriptRef.gameObject.transform;
+        }
 
         // remove item from inventory
         _invScriptRef.RemoveItem(_selectedItem.GetComponent<ItemDataStorage>().InventoryIndex);
