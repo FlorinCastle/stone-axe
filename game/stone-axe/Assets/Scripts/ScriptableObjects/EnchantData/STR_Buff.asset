@@ -15,4 +15,6 @@ MonoBehaviour:
   _enchantName: Strength
   _minBuff: 1
   _maxBuff: 5
+  _baseValuePerLevel: 2
+  _multiplierValuePerBuffLevel: 2
   _enchantBuffType: 0

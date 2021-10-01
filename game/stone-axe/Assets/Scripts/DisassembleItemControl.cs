@@ -87,9 +87,36 @@ public class DisassembleItemControl : MonoBehaviour
         // move enchantment, if enchanted
         if (_selectedItem.GetComponent<ItemDataStorage>().IsEnchanted)
         {
+            int chosenEnchantedPart = Random.Range(0,3);
+            
             GameObject enc = _selectedItem.GetComponent<ItemDataStorage>().Enchantment.gameObject;
-            _invScriptRef.InsertEnchatment(enc);
-            enc.transform.parent = _invScriptRef.gameObject.transform;
+            if (chosenEnchantedPart == 0) // part 1 selected
+            {
+                part1.GetComponent<PartDataStorage>().setEnchantment(enc.GetComponent<EnchantDataStorage>());
+                part1.GetComponent<PartDataStorage>().setIsHoldingEnchanted(true);
+                part2.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
+                part3.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
+                enc.transform.parent = part1.transform;
+            }
+            else if (chosenEnchantedPart == 1)  // part 2 selected
+            {
+                part2.GetComponent<PartDataStorage>().setEnchantment(enc.GetComponent<EnchantDataStorage>());
+                part1.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
+                part2.GetComponent<PartDataStorage>().setIsHoldingEnchanted(true);
+                part3.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
+                enc.transform.parent = part2.transform;
+            }
+            else if (chosenEnchantedPart == 2)  // part 3 selected
+            {
+                part3.GetComponent<PartDataStorage>().setEnchantment(enc.GetComponent<EnchantDataStorage>());
+                part1.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
+                part2.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
+                part3.GetComponent<PartDataStorage>().setIsHoldingEnchanted(true);
+                enc.transform.parent = part3.transform;
+            }
+
+            // _invScriptRef.InsertEnchatment(enc);
+            //enc.transform.parent = _invScriptRef.gameObject.transform;
         }
 
         // remove item from inventory

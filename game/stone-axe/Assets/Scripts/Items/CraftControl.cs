@@ -250,6 +250,8 @@ public class CraftControl : MonoBehaviour
             Debug.LogWarning("No Recipe Selected");
     }
 
+
+    private EnchantDataStorage enc;
     private void CraftItem()
     {
         //Debug.Log("crafting");
@@ -259,6 +261,7 @@ public class CraftControl : MonoBehaviour
         itemDataStorageRef = itemDataStorageTemp.GetComponent<ItemDataStorage>();
         // stats
         itemDataStorageTemp.name = _chosenItemRecipe.ItemName;
+        itemDataStorageRef.setItemName(_chosenItemRecipe.ItemName);
         itemDataStorageRef.setTotalValue(_part1DataRef.Value + _part2DataRef.Value + _part3DataRef.Value);
         itemDataStorageRef.setTotalStrenght(_part1DataRef.PartStr + _part2DataRef.PartStr + _part3DataRef.PartStr);
         itemDataStorageRef.setTotalDex(_part1DataRef.PartDex + _part2DataRef.PartDex + _part3DataRef.PartDex);
@@ -271,6 +274,31 @@ public class CraftControl : MonoBehaviour
         itemDataStorageRef.setPart2(_chosenPart2.GetComponent<PartDataStorage>());
         _chosenPart3.transform.parent = itemDataStorageTemp.transform;
         itemDataStorageRef.setPart3(_chosenPart3.GetComponent<PartDataStorage>());
+
+        // check if any chosen parts are enchanted
+        // if so, move enchant to main item
+
+        if (checkIfAnyPartEnchanted() == true)
+        {
+            if (_chosenPart1.GetComponent<PartDataStorage>().IsHoldingEnchant == true)
+            {
+                enc = _chosenPart1.GetComponent<PartDataStorage>().Enchantment;
+                _chosenPart1.GetComponent<PartDataStorage>().setEnchantment(null);
+            }
+            else if (_chosenPart2.GetComponent<PartDataStorage>().IsHoldingEnchant == true)
+            {
+                enc = _chosenPart2.GetComponent<PartDataStorage>().Enchantment;
+                _chosenPart2.GetComponent<PartDataStorage>().setEnchantment(null);
+            }
+            else if (_chosenPart3.GetComponent<PartDataStorage>().IsHoldingEnchant == true)
+            {
+                enc = _chosenPart3.GetComponent<PartDataStorage>().Enchantment;
+                _chosenPart3.GetComponent<PartDataStorage>().setEnchantment(null);
+            }
+            itemDataStorageRef.setIsEnchanted(true);
+            enc.gameObject.transform.parent = itemDataStorageTemp.transform;
+            itemDataStorageRef.setEnchantment(enc);
+        }
 
         // clear selected crafting componets
         _chosenItemRecipe = null;
@@ -329,14 +357,26 @@ public class CraftControl : MonoBehaviour
         if (i == 1)
         {
             _part1Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
+            if (data.IsHoldingEnchant == true)
+            {
+                _part1Discription.text += "\nEnchant: " + data.Enchantment.EnchantName + " +" + data.Enchantment.AmountOfBuff;
+            }
         }
         else if (i == 2)
         {
             _part2Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
+            if (data.IsHoldingEnchant == true)
+            {
+                _part2Discription.text += "\nEnchant: " + data.Enchantment.EnchantName + " +" + data.Enchantment.AmountOfBuff;
+            }
         }
         else if (i == 3)
         {
             _part3Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
+            if (data.IsHoldingEnchant == true)
+            {
+                _part3Discription.text += "\nEnchant: " + data.Enchantment.EnchantName + " +" + data.Enchantment.AmountOfBuff;
+            }
         }
         else
             Debug.LogWarning("i value is invalid!");
@@ -369,6 +409,7 @@ public class CraftControl : MonoBehaviour
     private string _partDex;
     private string _partInt;
     private string _partValue;
+    private string _finalEnchant;
     private void updateFinalStatsText()
     {
         finalStatsString = "";
@@ -388,8 +429,26 @@ public class CraftControl : MonoBehaviour
                 _totalInt = "\nIntelegence: " + (_part1DataRef.PartInt + _part2DataRef.PartInt + _part3DataRef.PartInt).ToString();
                 _totalValue = "\n\nValue: " + (_part1DataRef.Value + _part2DataRef.Value + _part3DataRef.Value).ToString();
 
+                _finalEnchant = "";
+                if (checkIfAnyPartEnchanted() == true)
+                {
+                    _finalEnchant = "\n\nEnchantment:\n";
+                    if (_part1DataRef.IsHoldingEnchant == true)
+                    {
+                        _finalEnchant += _part1DataRef.Enchantment.EnchantName + " +" + _part1DataRef.Enchantment.AmountOfBuff;
+                    }
+                    else if (_part2DataRef.IsHoldingEnchant == true)
+                    {
+                        _finalEnchant += _part2DataRef.Enchantment.EnchantName + " +" + _part2DataRef.Enchantment.AmountOfBuff;
+                    }
+                    else if (_part3DataRef.IsHoldingEnchant == true)
+                    {
+                        _finalEnchant += _part3DataRef.Enchantment.EnchantName + " +" + _part3DataRef.Enchantment.AmountOfBuff;
+                    }
+                }
+
                 finalStatsString1 = _itemName + "\nStats" + _totalStrength + _totalDex + _totalInt + _totalValue;
-                finalStatsString2 = _materials;
+                finalStatsString2 = _materials + _finalEnchant;
                 _finalStatsText1.text = finalStatsString1;
                 _finalStatsText2.text = finalStatsString2;
                 _craftButton.interactable = true;
@@ -448,5 +507,17 @@ public class CraftControl : MonoBehaviour
     public PartData checkPartRecipe()
     {
         return _chosenPartRecipe;
+    }
+
+    private bool checkIfAnyPartEnchanted()
+    {
+        if (_chosenPart1.GetComponent<PartDataStorage>().IsHoldingEnchant)
+            return true;
+        else if (_chosenPart2.GetComponent<PartDataStorage>().IsHoldingEnchant)
+            return true;
+        else if (_chosenPart3.GetComponent<PartDataStorage>().IsHoldingEnchant)
+            return true;
+
+        return false;
     }
 }

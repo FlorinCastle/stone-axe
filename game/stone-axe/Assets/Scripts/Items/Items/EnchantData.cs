@@ -8,6 +8,7 @@ public class EnchantData : ScriptableObject
     [SerializeField] private string _enchantName;
     [SerializeField] private int _minBuff;
     [SerializeField] private int _maxBuff;
+    [SerializeField] private int _baseValuePerLevel;
 
     private enum enchantBuffType
     {
@@ -23,5 +24,6 @@ public class EnchantData : ScriptableObject
 
     public string EnchantName { get => _enchantName; }
     public string EnchantType { get => _enchantBuffType.ToString(); } 
-    public int GetRandomBuff { get => Random.Range(_minBuff, _maxBuff); }
+    public int GetRandomBuff { get => Random.Range(_minBuff, _maxBuff+1); }
+    public int BaseAddedValuePerLevel { get => _baseValuePerLevel; }
 }

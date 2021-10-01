@@ -9,6 +9,7 @@ public class Item : MonoBehaviour
     [SerializeField] List<ItemData> _itemDataList;
     int ranItem;
     ItemData _generatedItem;
+    /*
     string textReturn = "";
 
     private string _itemName;
@@ -17,7 +18,7 @@ public class Item : MonoBehaviour
     private string _totalDex;
     private string _totalInt;
     private string _totalValue;
-
+    */
     public ItemData chooseItem()
     {
         ranItem = Random.Range(0, _itemDataList.Count);

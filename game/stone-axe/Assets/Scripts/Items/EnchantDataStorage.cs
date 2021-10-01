@@ -9,6 +9,7 @@ public class EnchantDataStorage : MonoBehaviour
     [Header("Enchant Stats")]
     [SerializeField] private string _enchantBuffType;
     [SerializeField] private int _valueOfBuff;
+    [SerializeField] private int _valueOfEnchant;
 
     public string EnchantName { get => _enchantName; }
     public void setEnchantName(string name) { _enchantName = name; }
@@ -18,4 +19,7 @@ public class EnchantDataStorage : MonoBehaviour
 
     public int AmountOfBuff { get => _valueOfBuff; }
     public void setAmountOfBuff(int value) { _valueOfBuff = value; }
+
+    public int AddedValueOfEnchant { get => _valueOfEnchant; }
+    public void setValueOfEnchant(int value) { _valueOfEnchant = value; }
 }

@@ -375,6 +375,7 @@ public class InventoryScript : MonoBehaviour
     private string _partDex;
     private string _partInt;
     private string _partValue;
+    private string _enchant;
     public void setPartDetailText(int index)
     {
         if (index != -1)
@@ -391,10 +392,16 @@ public class InventoryScript : MonoBehaviour
                 _partDex = "\nDextarity: " + partDataRef.PartDex;
                 _partInt = "\nIntelegence: " + partDataRef.PartInt;
                 _partValue = "\n\nValue: " + partDataRef.Value;
+                _enchant = "";
+
+                if (partDataRef.IsHoldingEnchant == true)
+                {
+                    _enchant += "\n\nEnchantment:\n" + partDataRef.Enchantment.EnchantName + " +" + partDataRef.Enchantment.AmountOfBuff;
+                }
 
                 // organize the texts
                 _descriptionText.text = _partName +
-                    "\nStats" + _partStrength + _partDex + _partInt
+                    "\nStats" + _partStrength + _partDex + _partInt + _enchant
                     + _material + _partValue;
             }
             else
@@ -538,8 +545,11 @@ public class InventoryScript : MonoBehaviour
         if (item.IsEnchanted)
         {
             GameObject enc = convertEnchantData(GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GenerateItem>().getEnchantment);
+
             enc.transform.parent = itemDataStorageTemp.gameObject.transform;
             itemDataScriptRef.setEnchantment(enc.GetComponent<EnchantDataStorage>());
+
+            itemDataScriptRef.setTotalValue(itemDataScriptRef.TotalValue + enc.GetComponent<EnchantDataStorage>().AddedValueOfEnchant);
         }
 
         return itemDataStorageTemp;
@@ -581,6 +591,7 @@ public class InventoryScript : MonoBehaviour
         enchantDataScriptRef.setEnchantName(enchant.EnchantName);
         enchantDataScriptRef.setEnchantType(enchant.EnchantType);
         enchantDataScriptRef.setAmountOfBuff(enchant.GetRandomBuff);
+        enchantDataScriptRef.setValueOfEnchant(enchant.BaseAddedValuePerLevel * enchantDataScriptRef.AmountOfBuff);
 
         return enchantDataStorageTemp;
     }
