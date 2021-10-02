@@ -252,6 +252,7 @@ public class CraftControl : MonoBehaviour
 
 
     private EnchantDataStorage enc;
+    private bool encSelected;
     private void CraftItem()
     {
         //Debug.Log("crafting");
@@ -277,24 +278,46 @@ public class CraftControl : MonoBehaviour
 
         // check if any chosen parts are enchanted
         // if so, move enchant to main item
-
+        encSelected = false;
         if (checkIfAnyPartEnchanted() == true)
         {
             if (_chosenPart1.GetComponent<PartDataStorage>().IsHoldingEnchant == true)
             {
                 enc = _chosenPart1.GetComponent<PartDataStorage>().Enchantment;
+                encSelected = true;
                 _chosenPart1.GetComponent<PartDataStorage>().setEnchantment(null);
             }
-            else if (_chosenPart2.GetComponent<PartDataStorage>().IsHoldingEnchant == true)
+            if (_chosenPart2.GetComponent<PartDataStorage>().IsHoldingEnchant == true)
             {
-                enc = _chosenPart2.GetComponent<PartDataStorage>().Enchantment;
-                _chosenPart2.GetComponent<PartDataStorage>().setEnchantment(null);
+                if (encSelected == false)
+                {
+                    enc = _chosenPart2.GetComponent<PartDataStorage>().Enchantment;
+                    encSelected = true;
+                    _chosenPart2.GetComponent<PartDataStorage>().setEnchantment(null);
+                }
+                else if (enc.EnchantType == _chosenPart2.GetComponent<PartDataStorage>().Enchantment.EnchantType)
+                {
+                    enc.setAmountOfBuff(enc.AmountOfBuff + _chosenPart2.GetComponent<PartDataStorage>().Enchantment.AmountOfBuff);
+                    enc.setValueOfEnchant(enc.AddedValueOfEnchant + _chosenPart2.GetComponent<PartDataStorage>().Enchantment.AddedValueOfEnchant);
+                }
+
             }
-            else if (_chosenPart3.GetComponent<PartDataStorage>().IsHoldingEnchant == true)
+            if (_chosenPart3.GetComponent<PartDataStorage>().IsHoldingEnchant == true)
             {
-                enc = _chosenPart3.GetComponent<PartDataStorage>().Enchantment;
-                _chosenPart3.GetComponent<PartDataStorage>().setEnchantment(null);
+                if (encSelected == false)
+                {
+                    enc = _chosenPart3.GetComponent<PartDataStorage>().Enchantment;
+                    encSelected = true;
+                    _chosenPart3.GetComponent<PartDataStorage>().setEnchantment(null);
+                }
+                else if (enc.EnchantType == _chosenPart3.GetComponent<PartDataStorage>().Enchantment.EnchantType)
+                {
+                    enc.setAmountOfBuff(enc.AmountOfBuff + _chosenPart3.GetComponent<PartDataStorage>().Enchantment.AmountOfBuff);
+                    enc.setValueOfEnchant(enc.AddedValueOfEnchant + _chosenPart3.GetComponent<PartDataStorage>().Enchantment.AddedValueOfEnchant);
+                }
             }
+            itemDataStorageRef.setTotalValue(itemDataStorageRef.TotalValue + enc.AddedValueOfEnchant);
+
             itemDataStorageRef.setIsEnchanted(true);
             enc.gameObject.transform.parent = itemDataStorageTemp.transform;
             itemDataStorageRef.setEnchantment(enc);
@@ -410,6 +433,11 @@ public class CraftControl : MonoBehaviour
     private string _partInt;
     private string _partValue;
     private string _finalEnchant;
+
+    private bool _enchantIsChosen = false;
+    private string _enchantType;
+    private EnchantDataStorage encant;
+    private int _value;
     private void updateFinalStatsText()
     {
         finalStatsString = "";
@@ -427,8 +455,9 @@ public class CraftControl : MonoBehaviour
                 _totalStrength = "\nStrenght: " + (_part1DataRef.PartStr + _part2DataRef.PartStr + _part3DataRef.PartStr).ToString();
                 _totalDex = "\nDextarity: " + (_part1DataRef.PartDex + _part2DataRef.PartDex + _part3DataRef.PartDex).ToString();
                 _totalInt = "\nIntelegence: " + (_part1DataRef.PartInt + _part2DataRef.PartInt + _part3DataRef.PartInt).ToString();
-                _totalValue = "\n\nValue: " + (_part1DataRef.Value + _part2DataRef.Value + _part3DataRef.Value).ToString();
+                _value = _part1DataRef.Value + _part2DataRef.Value + _part3DataRef.Value;
 
+                _enchantIsChosen = false;
                 _finalEnchant = "";
                 if (checkIfAnyPartEnchanted() == true)
                 {
@@ -436,16 +465,48 @@ public class CraftControl : MonoBehaviour
                     if (_part1DataRef.IsHoldingEnchant == true)
                     {
                         _finalEnchant += _part1DataRef.Enchantment.EnchantName + " +" + _part1DataRef.Enchantment.AmountOfBuff;
+                        _enchantIsChosen = true;
+                        _enchantType = _part1DataRef.Enchantment.EnchantType;
+                        encant = _part1DataRef.Enchantment;
+                        _value += encant.AddedValueOfEnchant;
                     }
-                    else if (_part2DataRef.IsHoldingEnchant == true)
+                    if (_part2DataRef.IsHoldingEnchant == true)
                     {
-                        _finalEnchant += _part2DataRef.Enchantment.EnchantName + " +" + _part2DataRef.Enchantment.AmountOfBuff;
+                        if (_enchantIsChosen == false)
+                        {
+                            _finalEnchant += _part2DataRef.Enchantment.EnchantName + " +" + _part2DataRef.Enchantment.AmountOfBuff;
+                            _enchantIsChosen = true;
+                            _enchantType = _part2DataRef.Enchantment.EnchantType;
+                            encant = _part2DataRef.Enchantment;
+                            _value += encant.AddedValueOfEnchant;
+                        }
+                        else if (_part2DataRef.Enchantment.EnchantType == _enchantType)
+                        {
+                            _finalEnchant = "\n\nEnchantment:\n";
+                            _finalEnchant += encant.EnchantName + " +" + (encant.AmountOfBuff + _part2DataRef.Enchantment.AmountOfBuff);
+                            _value += _part2DataRef.Enchantment.AddedValueOfEnchant;
+                        }
                     }
-                    else if (_part3DataRef.IsHoldingEnchant == true)
+                    if (_part3DataRef.IsHoldingEnchant == true)
                     {
-                        _finalEnchant += _part3DataRef.Enchantment.EnchantName + " +" + _part3DataRef.Enchantment.AmountOfBuff;
+                        if (_enchantIsChosen == false)
+                        {
+                            _finalEnchant += _part3DataRef.Enchantment.EnchantName + " +" + _part3DataRef.Enchantment.AmountOfBuff;
+                            _enchantIsChosen = true;
+                            _enchantType = _part3DataRef.Enchantment.EnchantType;
+                            encant = _part3DataRef.Enchantment;
+                            _value += encant.AddedValueOfEnchant;
+                        }
+                        else if (_part3DataRef.Enchantment.EnchantType == _enchantType)
+                        {
+                            _finalEnchant = "\n\nEnchantment:\n";
+                            _finalEnchant += encant.EnchantName + " +" + (encant.AmountOfBuff + _part3DataRef.Enchantment.AmountOfBuff);
+                            _value += _part3DataRef.Enchantment.AddedValueOfEnchant;
+                        }
                     }
                 }
+
+                _totalValue = "\n\nValue: " + _value.ToString();
 
                 finalStatsString1 = _itemName + "\nStats" + _totalStrength + _totalDex + _totalInt + _totalValue;
                 finalStatsString2 = _materials + _finalEnchant;

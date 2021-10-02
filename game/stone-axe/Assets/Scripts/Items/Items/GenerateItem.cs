@@ -28,7 +28,7 @@ public class GenerateItem : MonoBehaviour
     {
         _generatedItem = itemScript.chooseItem();
         int ranEnchChance = Random.Range(0, 1000);
-        if (ranEnchChance >= 700)
+        if (ranEnchChance >= 100)
         {
             _generatedEnchant = enchantScript.chooseEnchant();
             _generatedItem.setIsEnchanted(true);
