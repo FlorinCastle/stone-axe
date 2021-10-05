@@ -2139,9 +2139,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
-        m_MethodName: setupItemInventory
-        m_Mode: 6
+        m_TargetAssemblyTypeName: RecipeBook, Assembly-CSharp
+        m_MethodName: disableRecipeSelectButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -10,6 +10,8 @@ public class RecipeBook : MonoBehaviour
     [SerializeField, HideInInspector] private List<string> itemRecipeName;
     [SerializeField, HideInInspector] private List<string> partRecipeName;
     [SerializeField, HideInInspector] private List<GameObject> recipeButtons;
+    [SerializeField] private ItemData _selectedItemRecipe;
+    [SerializeField] private PartData _selectedPartRecipe;
     [Header("UI References")]
     [SerializeField] private Text _recipeText;
     [SerializeField] private Button _recipeSelectButton;
@@ -25,30 +27,81 @@ public class RecipeBook : MonoBehaviour
         setupRecipeGrid();
     }
 
+    public void disableRecipeSelectButton()
+    {
+        _recipeSelectButton.interactable = false;
+    }
+
+    public void prepToSelectRecipe()
+    {
+        _recipeSelectButton.interactable = true;
+    }
+
+    public void selectRecipe()
+    {
+        if (anyRecipeSelected())
+        {
+
+        }
+    }
+
     public void setItemRecipeInfo(int index)
     {
         // get gameobject from recipeButton list at input index
         if (index == -1)
-        {
             _recipeText.text = "placeholder";
-        }
         else
         {
             GameObject button = recipeButtons[index];
-            foreach (string itemRecipe in itemRecipeName)
+            foreach (ItemData itemRecipe in itemRecipes)
             {
-                if (itemRecipe == button.GetComponent<RecipeButton>().GetRecipeName)
+                if (itemRecipe.ItemName == button.GetComponent<RecipeButton>().GetRecipeName)
                 {
-                    _recipeText.text = "";
+                    _selectedItemRecipe = itemRecipe;
+                    _selectedPartRecipe = null;
+
+                    _recipeText.text = itemRecipe.ItemName + "\nParts:\nValid Part 1: ";
+                    foreach (PartData valid1 in itemRecipe.ValidParts1) 
+                        _recipeText.text += valid1.PartName + " ";
+
+                    _recipeText.text += "\nValid Part 2: ";
+                    foreach (PartData valid2 in itemRecipe.ValidParts2)
+                        _recipeText.text += valid2.PartName + " ";
+
+                    _recipeText.text += "\nValid Part 3: ";
+                    foreach (PartData valid3 in itemRecipe.ValidParts3)
+                        _recipeText.text += valid3.PartName + " ";
                 }
             }
-
         }
     }
 
     public void setPartRecipeInfo(int index)
     {
+        if (index == -1)
+            _recipeText.text = "placeholder";
+        else
+        {
+            GameObject button = recipeButtons[index];
+            foreach (PartData partRecipe in partRecipes)
+            {
+                if (partRecipe.PartName == button.GetComponent<RecipeButton>().GetRecipeName)
+                {
+                    _selectedItemRecipe = null;
+                    _selectedPartRecipe = partRecipe;
 
+                    _recipeText.text = partRecipe.PartName + "\nValid Material Types:\n";
+                    foreach (string matName in partRecipe.ValidMaterials)
+                        _recipeText.text += matName + "\n";
+                }
+            }
+        }
+    }
+
+    public void clearSelectedRecipe()
+    {
+        _selectedItemRecipe = null;
+        _selectedPartRecipe = null;
     }
 
     private GameObject tempButton;
@@ -108,6 +161,13 @@ public class RecipeBook : MonoBehaviour
         return index;
     }
 
+    private bool anyRecipeSelected()
+    {
+        if (_selectedItemRecipe != null || _selectedPartRecipe != null)
+            return true;
+
+        return false;
+    }
 
     public List<string> itemRecipesNames()
     {
