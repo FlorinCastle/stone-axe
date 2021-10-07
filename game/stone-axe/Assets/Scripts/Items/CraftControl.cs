@@ -17,6 +17,7 @@ public class CraftControl : MonoBehaviour
     [SerializeField] GameObject _partCraftingUI;
     [SerializeField] Dropdown _recipeDropdown;
     [SerializeField] Button _craftButton;
+    [SerializeField] Text _selectedRecipeText;
     [SerializeField] Text _part1Discription;
     [SerializeField] Text _part2Discription;
     [SerializeField] Text _part3Discription;
@@ -59,6 +60,7 @@ public class CraftControl : MonoBehaviour
         updateFinalStatsText();
         _itemCraftingUI.SetActive(false);
         _partCraftingUI.SetActive(false);
+        _selectedRecipeText.text = "selected:\nnone";
     }
 
     public void checkSelection()
@@ -109,6 +111,35 @@ public class CraftControl : MonoBehaviour
                 }
                 index++;
             }
+        }
+    }
+
+    public void setChosenRecipe()
+    {
+        if (_recipeBookRef.getSelectedItemRecipe() != null)
+        {
+            _chosenItemRecipe = _recipeBookRef.getSelectedItemRecipe();
+            _chosenPartRecipe = null;
+
+            _itemCraftingUI.SetActive(true);
+            clearItemCraftingUI();
+            _partCraftingUI.SetActive(false);
+            clearPartCraftingUI();
+
+            _selectedRecipeText.text = "selected:\n" + _chosenItemRecipe.ItemName;
+        }
+        else if (_recipeBookRef.getSeletedPartRecipe() != null)
+        {
+            _chosenItemRecipe = null;
+            _chosenPartRecipe = _recipeBookRef.getSeletedPartRecipe();
+
+            _itemCraftingUI.SetActive(false);
+            clearItemCraftingUI();
+            _partCraftingUI.SetActive(true);
+            clearPartCraftingUI();
+            setupPartRecipeStats();
+
+            _selectedRecipeText.text = "selected:\n" + _chosenPartRecipe.PartName;
         }
     }
 

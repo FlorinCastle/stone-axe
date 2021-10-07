@@ -22,7 +22,12 @@ public class RecipeButton : MonoBehaviour
     {
         _recipeControl.setPartRecipeInfo(_myButtonIndex);
     }
-
+    /*
+    public void setSelectedRecipe()
+    {
+        _recipeControl.setSelectedRecipe(_myButtonIndex);
+    }
+    */
     public void setRecipeName(string name) { _recipeName = name; }
     public string GetRecipeName { get => _recipeName; }
 

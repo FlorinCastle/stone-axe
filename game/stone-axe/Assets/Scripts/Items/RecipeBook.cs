@@ -41,7 +41,9 @@ public class RecipeBook : MonoBehaviour
     {
         if (anyRecipeSelected())
         {
+            CraftControl CCRef = GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>();
 
+            CCRef.setChosenRecipe();
         }
     }
 
@@ -97,12 +99,36 @@ public class RecipeBook : MonoBehaviour
             }
         }
     }
-
+    /*
+    public void setSelectedRecipe(int index)
+    {
+        if (index != -1)
+        {
+            GameObject button = recipeButtons[index];
+            foreach (ItemData itemRecipe in itemRecipes)
+            {
+                if (itemRecipe.ItemName == button.GetComponent<RecipeButton>().GetRecipeName)
+                {
+                    Debug.Log("Selected recipe is an Item");
+                }
+            }
+            foreach (PartData partRecipe in partRecipes)
+            {
+                if (partRecipe.PartName == button.GetComponent<RecipeButton>().GetRecipeName)
+                {
+                    Debug.Log("Selected recipe is a Part");
+                }
+            }
+        }
+    }
+    */
     public void clearSelectedRecipe()
     {
         _selectedItemRecipe = null;
         _selectedPartRecipe = null;
     }
+
+
 
     private GameObject tempButton;
     public void setupRecipeGrid()
@@ -193,5 +219,15 @@ public class RecipeBook : MonoBehaviour
     public PartData getPartRecipe(int i)
     {
         return partRecipes[i];
+    }
+
+    public ItemData getSelectedItemRecipe()
+    {
+        return _selectedItemRecipe;
+    }
+
+    public PartData getSeletedPartRecipe()
+    {
+        return _selectedPartRecipe;
     }
 }

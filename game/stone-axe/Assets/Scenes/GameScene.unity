@@ -1157,6 +1157,7 @@ MonoBehaviour:
   _partCraftingUI: {fileID: 7485012191131071715}
   _recipeDropdown: {fileID: 7485012191131071714}
   _craftButton: {fileID: 804002940}
+  _selectedRecipeText: {fileID: 1331316048}
   _part1Discription: {fileID: 676686842}
   _part2Discription: {fileID: 1713595213}
   _part3Discription: {fileID: 1107876977}
@@ -1181,6 +1182,17 @@ MonoBehaviour:
 --- !u!114 &1248365485 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6407723404423014970, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+  m_PrefabInstance: {fileID: 7485012191131071712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1331316048 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8513422411281653532, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
   m_PrefabInstance: {fileID: 7485012191131071712}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -1791,6 +1803,10 @@ PrefabInstance:
     - target: {fileID: 1489998276868703643, guid: f08ae8c8c4af81c41953df121b1b0127, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
+      objectReference: {fileID: 1221333022}
+    - target: {fileID: 1489998276868703643, guid: f08ae8c8c4af81c41953df121b1b0127, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
       objectReference: {fileID: 1734993353}
     - target: {fileID: 1913020982666911950, guid: f08ae8c8c4af81c41953df121b1b0127, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2276,6 +2292,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1734993354}
+    - target: {fileID: 2540487492386173556, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -71.83435
+      objectReference: {fileID: 0}
     - target: {fileID: 2828543944602473375, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2548,6 +2568,20 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1852441534}
+    - target: {fileID: 8513422411281653532, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_Text
+      value: 'selected:
+
+        ph'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8831179969611790320, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 280.4312
+      objectReference: {fileID: 0}
+    - target: {fileID: 8831179969611790320, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 343
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
 --- !u!114 &7485012191131071713 stripped
