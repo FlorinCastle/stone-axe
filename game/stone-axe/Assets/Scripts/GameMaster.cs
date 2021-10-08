@@ -4,7 +4,9 @@ using UnityEngine.SceneManagement;
 public class GameMaster : MonoBehaviour
 {
     [SerializeField] private int _currentCurrency;
-    
+    [SerializeField] private int _totalExperience;
+    [SerializeField] private int _level;
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -29,4 +31,10 @@ public class GameMaster : MonoBehaviour
 
         return false;
     }
+
+    public void setTotalExperience(int value) { _totalExperience = value; }
+    public int GetTotalExperience { get => _totalExperience; }
+
+    public void setLevel(int value) { _level = value; }
+    public int GetLevel { get => _level; }
 }
