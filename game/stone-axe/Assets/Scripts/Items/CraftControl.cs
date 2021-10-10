@@ -354,6 +354,9 @@ public class CraftControl : MonoBehaviour
             itemDataStorageRef.setEnchantment(enc);
         }
 
+        // add experience
+        GameObject.FindGameObjectWithTag("GameMaster").GetComponent<ExperienceManager>().addExperience(4);
+
         // clear selected crafting componets
         _chosenItemRecipe = null;
         itemDataStorageTemp = null;
@@ -392,6 +395,9 @@ public class CraftControl : MonoBehaviour
 
             // insert crafted part into inventory script
             _inventoryControlReference.InsertPartData(partDataStorageTemp);
+
+            // add experience
+            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<ExperienceManager>().addExperience(3);
 
             // clear selected crafting components
             _chosenPartRecipe = null;

@@ -9,18 +9,21 @@ public class ExperienceManager : MonoBehaviour
     [SerializeField] private Slider _expSlider;
     [SerializeField] private List<int> _levelMarks;
 
+    [SerializeField] private SkillManager _skillMgrRef;
+
     private void Awake()
     {
         if (_gameMasterRef == null)
             this.gameObject.GetComponent<GameMaster>();
         updateEXPSlider();
+        calculateLevel();
     }
 
     public void addExperience(int value)
     {
         _gameMasterRef.setTotalExperience(_gameMasterRef.GetTotalExperience + value);
-        calculateLevel();
         updateEXPSlider();
+        calculateLevel();
     }
 
     public void calculateLevel()
@@ -34,6 +37,8 @@ public class ExperienceManager : MonoBehaviour
                 break;
         }
         _gameMasterRef.setLevel(counter);
+        _gameMasterRef.setCurrentSkillPoints(counter);
+        _skillMgrRef.setTotalSkillPoints(counter);
     }
 
     public void updateEXPSlider()

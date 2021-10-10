@@ -122,6 +122,8 @@ public class DisassembleItemControl : MonoBehaviour
         // remove item from inventory
         _invScriptRef.RemoveItem(_selectedItem.GetComponent<ItemDataStorage>().InventoryIndex);
 
+        this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
+
         _selectedItem = null;
 
         _itemNameText.text = "item chosen: [item name]";

@@ -49,6 +49,7 @@ public class GenerateItem : MonoBehaviour
             if (this.gameObject.GetComponent<GameMaster>().removeCurrency(_generatedItem.TotalValue))
             {
                 _inventoryRef.InsertItem(_generatedItem);
+                this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
             }
         }
         _generatedItem = null;

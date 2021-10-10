@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +7,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private int _currentCurrency;
     [SerializeField] private int _totalExperience;
     [SerializeField] private int _level;
+    [SerializeField] private int _currentSkillPoints;
 
     private void Awake()
     {
@@ -37,4 +39,7 @@ public class GameMaster : MonoBehaviour
 
     public void setLevel(int value) { _level = value; }
     public int GetLevel { get => _level; }
+
+    public void setCurrentSkillPoints(int value) { _currentSkillPoints = value; }
+    public int GetCurrentSkillPoints { get => _currentSkillPoints; }
 }

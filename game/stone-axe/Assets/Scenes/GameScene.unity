@@ -535,7 +535,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934415189}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92834512dd8674f409655588f2cea386, type: 3}
   m_Name: 
@@ -1362,6 +1362,7 @@ GameObject:
   - component: {fileID: 1734993354}
   - component: {fileID: 1734993355}
   - component: {fileID: 1734993356}
+  - component: {fileID: 1734993358}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameMaster
@@ -1384,6 +1385,7 @@ MonoBehaviour:
   _currentCurrency: 100000
   _totalExperience: 41
   _level: 0
+  _currentSkillPoints: 0
 --- !u!4 &1734993352
 Transform:
   m_ObjectHideFlags: 0
@@ -1489,6 +1491,21 @@ MonoBehaviour:
   _gameMasterRef: {fileID: 1734993351}
   _expSlider: {fileID: 1134902408}
   _levelMarks: 0a000000140000001e00000028000000320000003c00000046000000500000005a00000064000000
+  _skillMgrRef: {fileID: 1734993358}
+--- !u!114 &1734993358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734993350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8c4d3a7f75bd7468ae7babb0b655da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _totalSkillPoints: 0
+  _currentSkillPoints: 0
 --- !u!114 &1741334579 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8710313024073061922, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
