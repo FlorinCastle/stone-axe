@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 714f26b78ced1a048a0e934b6afc597f, type: 3}
-  m_Name: Steel
+  m_Name: Emerald
   m_EditorClassIdentifier: 
-  _materialName: Steel
-  _materialType: 0
+  _materialName: Emerald
+  _materialType: 3
   _subMatType: 0
-  _levelRequirement: 4
-  _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 7
-  _addedDextarity: 1
-  _addedIntelligence: 3
+  _levelRequirement: 0
+  _quantity: 50
+  _baseCostPerUnit: 3
+  _addedStrength: 1
+  _addedDextarity: 2
+  _addedIntelligence: 4

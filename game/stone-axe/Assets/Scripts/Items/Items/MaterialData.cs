@@ -3,29 +3,28 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewMaterialData", menuName = "MaterialData", order = 51)]
 public class MaterialData : ScriptableObject
 {
-    private enum matTypeEnum
-    {
-        Metal,
-        Wood,
-        Cloth
-    };
-    [SerializeField]
-    private string _materaialName;
-    [SerializeField]
-    private matTypeEnum _materialType;
-    [SerializeField]
-    private int _levelRequirement;
-    [SerializeField]
-    private int _quantity;
-    [SerializeField]
-    private int _baseCostPerUnit;
-    [Header("Extra Stats")]
-    [SerializeField]
-    private int _addedStrength;
-    [SerializeField]
-    private int _addedDextarity;
-    [SerializeField]
-    private int _addedIntelligence;
+    public string _materialName;
+
+    public enum matTypeEnum { Metal, Wood, Cloth, Gemstone };
+    public enum subMatTypeEnum { Basic, MagicMetal, Cloth, Leather };
+    //[SerializeField]
+    public matTypeEnum _materialType;
+    //[SerializeField]
+    public subMatTypeEnum _subMatType;
+
+
+    //[SerializeField]
+    public int _levelRequirement;
+    //[SerializeField]
+    public int _quantity;
+    //[SerializeField]
+    public int _baseCostPerUnit;
+    //[SerializeField]
+    public int _addedStrength;
+    //[SerializeField]
+    public int _addedDextarity;
+    //[SerializeField]
+    public int _addedIntelligence;
 
     public int AddMat(int value) { _quantity += value; return value; }
     public int RemoveMat(int value)
@@ -42,8 +41,9 @@ public class MaterialData : ScriptableObject
         return false;
     }
 
-    public string Material { get => _materaialName; }
+    public string Material { get => _materialName; }
     public string MaterialType { get => _materialType.ToString(); }
+    public string SubMaterialTybe { get => _subMatType.ToString(); }
     public int MaterialCount { get => _quantity; }
     public int BaseCostPerUnit { get => _baseCostPerUnit; }
     public int AddedStrength { get => _addedStrength; }

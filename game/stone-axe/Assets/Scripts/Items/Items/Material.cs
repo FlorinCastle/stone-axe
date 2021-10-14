@@ -9,6 +9,7 @@ public class Material : MonoBehaviour
     [SerializeField] List<MaterialData> _metalMaterials;
     [SerializeField] List<MaterialData> _woodMaterials;
     [SerializeField] List<MaterialData> _clothMaterials;
+    [SerializeField] List<MaterialData> _gemstoneMaterials;
 
     private void Awake()
     {
@@ -28,6 +29,10 @@ public class Material : MonoBehaviour
             {
                 //Debug.Log("material found cloth: " + mat.Material);
                 _clothMaterials.Add(mat);
+            }
+            else if (mat.MaterialType == "Gemstone")
+            {
+                _gemstoneMaterials.Add(mat);
             }
             else
                 Debug.LogError("Can not catigorize: " + mat.Material);

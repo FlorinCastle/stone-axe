@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714f26b78ced1a048a0e934b6afc597f, type: 3}
   m_Name: Iron
   m_EditorClassIdentifier: 
-  _materaialName: Iron
+  _materialName: Iron
   _materialType: 0
+  _subMatType: 0
   _levelRequirement: 0
-  _quantity: 2
+  _quantity: 500
   _baseCostPerUnit: 3
   _addedStrength: 5
   _addedDextarity: 0

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 714f26b78ced1a048a0e934b6afc597f, type: 3}
-  m_Name: Steel
+  m_Name: Angel Wood
   m_EditorClassIdentifier: 
-  _materialName: Steel
-  _materialType: 0
+  _materialName: Angel Wood
+  _materialType: 1
   _subMatType: 0
-  _levelRequirement: 4
+  _levelRequirement: 20
   _quantity: 500
-  _baseCostPerUnit: 7
+  _baseCostPerUnit: 23
   _addedStrength: 7
-  _addedDextarity: 1
-  _addedIntelligence: 3
+  _addedDextarity: 10
+  _addedIntelligence: 10

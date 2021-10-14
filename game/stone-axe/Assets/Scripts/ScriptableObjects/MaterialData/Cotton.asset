@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 714f26b78ced1a048a0e934b6afc597f, type: 3}
-  m_Name: Steel
+  m_Name: Cotton
   m_EditorClassIdentifier: 
-  _materialName: Steel
-  _materialType: 0
-  _subMatType: 0
-  _levelRequirement: 4
+  _materialName: Cotton
+  _materialType: 2
+  _subMatType: 2
+  _levelRequirement: 9
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 7
-  _addedDextarity: 1
-  _addedIntelligence: 3
+  _baseCostPerUnit: 12
+  _addedStrength: 4
+  _addedDextarity: 7
+  _addedIntelligence: 5
