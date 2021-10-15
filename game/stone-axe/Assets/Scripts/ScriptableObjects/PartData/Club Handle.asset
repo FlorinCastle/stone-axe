@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c44053df750ac84482645dbf86aabaf, type: 3}
+  m_Name: Club Handle
+  m_EditorClassIdentifier: 
+  _partName: Club Handle
+  _material: {fileID: 0}
+  _validMaterials:
+  - {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}
+  - {fileID: 11400000, guid: 7ba3f56a6cf24c6498a633f016021027, type: 2}
+  - {fileID: 11400000, guid: 9a249b9e603da774cb4202555c78ceff, type: 2}
+  - {fileID: 11400000, guid: 43c581baf585f0243ada9274c3bbcfc1, type: 2}
+  - {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
+  - {fileID: 11400000, guid: 56c2efc7d77a43a49bccc0f0ab800c69, type: 2}
+  - {fileID: 11400000, guid: 440de40f604fd0743a0a66493279ad73, type: 2}
+  - {fileID: 11400000, guid: d723de8e21a61ed4fbf8330932dd62f3, type: 2}
+  - {fileID: 11400000, guid: 3206576d24b36594e9db6032fd6fdfb1, type: 2}
+  - {fileID: 11400000, guid: cf84968d70a35c74c9218b4b8c41277e, type: 2}
+  - {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
+  - {fileID: 11400000, guid: c1142bc72c55dd94fb96dfd69001e16b, type: 2}
+  - {fileID: 11400000, guid: e1b6489bf01c8894e91101a6e9bf9f02, type: 2}
+  - {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
+  _validMaterialTypes:
+  - Wood
+  - Metal
+  _unitsOfMaterialNeeded: 4
+  _baseCost: 7
+  _baseStrenght: 2
+  _baseDextarity: 1
+  _baseIntelligence: 0

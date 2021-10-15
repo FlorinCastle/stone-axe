@@ -9,6 +9,7 @@ public class Part : MonoBehaviour
     [SerializeField] List<PartData> _metalBasedParts;
     [SerializeField] List<PartData> _woodBasedParts;
     [SerializeField] List<PartData> _clothBasedParts;
+    [SerializeField] List<PartData> _gemstoneBasedParts;
 
     private void Awake()
     {
@@ -20,15 +21,19 @@ public class Part : MonoBehaviour
                 {
                     _metalBasedParts.Add(part);
                 }
-                else if (validMat == "Wood")
+                if (validMat == "Wood")
                 {
                     _woodBasedParts.Add(part);
                 }
-                else if (validMat == "Cloth")
+                if (validMat == "Cloth")
                 {
                     _clothBasedParts.Add(part);
                 }
-                else
+                if (validMat == "Gemstone")
+                {
+                    _gemstoneBasedParts.Add(part);
+                }
+                if (validMat != "Metal" && validMat != "Wood" && validMat != "Cloth" && validMat != "Gemstone")
                     Debug.LogError("Can not catigorize: " + part.PartName);
             }
         }
@@ -52,5 +57,10 @@ public class Part : MonoBehaviour
     public List<PartData> getClothParts()
     {
         return _clothBasedParts;
+    }
+
+    public List<PartData> getGemstoneParts()
+    {
+        return _gemstoneBasedParts;
     }
 }

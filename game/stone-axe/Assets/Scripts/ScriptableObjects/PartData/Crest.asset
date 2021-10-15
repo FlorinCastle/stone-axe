@@ -7,19 +7,22 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c44053df750ac84482645dbf86aabaf, type: 3}
-  m_Name: AxeHandle
+  m_Name: Crest
   m_EditorClassIdentifier: 
-  _partName: Axe Handle
-  _material: {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
+  _partName: Crest
+  _material: {fileID: 0}
   _validMaterials:
-  - {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
+  - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
+  - {fileID: 11400000, guid: 3daa26c81517ad7469d747e94fe5e2f4, type: 2}
+  - {fileID: 11400000, guid: d905eb4a07023d74ea23a7f665c720dd, type: 2}
+  - {fileID: 11400000, guid: bab2bdbbc182b62418f2378a9c99c460, type: 2}
   _validMaterialTypes:
-  - Wood
-  _unitsOfMaterialNeeded: 3
+  - Cloth
+  _unitsOfMaterialNeeded: 2
   _baseCost: 5
-  _baseStrenght: 2
-  _baseDextarity: 1
+  _baseStrenght: 1
+  _baseDextarity: 2
   _baseIntelligence: 0

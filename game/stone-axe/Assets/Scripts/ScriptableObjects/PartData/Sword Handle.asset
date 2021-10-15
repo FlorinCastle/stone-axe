@@ -10,22 +10,11 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c44053df750ac84482645dbf86aabaf, type: 3}
-  m_Name: Pomel
+  m_Name: Sword Handle
   m_EditorClassIdentifier: 
-  _partName: Pomel
+  _partName: Sword Handle
   _material: {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
   _validMaterials:
-  - {fileID: 11400000, guid: 06b9aebefd67bea4fad7a9ec99861549, type: 2}
-  - {fileID: 11400000, guid: f9ff7a3994c4ed340b791d693187aa9d, type: 2}
-  - {fileID: 11400000, guid: 76bd0065f11d4bf4b910a384a801a781, type: 2}
-  - {fileID: 11400000, guid: bc64ff08a64fd02419b35d00f9263aad, type: 2}
-  - {fileID: 11400000, guid: d723de8e21a61ed4fbf8330932dd62f3, type: 2}
-  - {fileID: 11400000, guid: 3206576d24b36594e9db6032fd6fdfb1, type: 2}
-  - {fileID: 11400000, guid: cf84968d70a35c74c9218b4b8c41277e, type: 2}
-  - {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
-  - {fileID: 11400000, guid: c1142bc72c55dd94fb96dfd69001e16b, type: 2}
-  - {fileID: 11400000, guid: e1b6489bf01c8894e91101a6e9bf9f02, type: 2}
-  - {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
   - {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}
   - {fileID: 11400000, guid: 7ba3f56a6cf24c6498a633f016021027, type: 2}
   - {fileID: 11400000, guid: 9a249b9e603da774cb4202555c78ceff, type: 2}
@@ -34,11 +23,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 56c2efc7d77a43a49bccc0f0ab800c69, type: 2}
   - {fileID: 11400000, guid: 440de40f604fd0743a0a66493279ad73, type: 2}
   _validMaterialTypes:
-  - Metal
   - Wood
-  - Gemstone
-  _unitsOfMaterialNeeded: 1
+  _unitsOfMaterialNeeded: 2
   _baseCost: 5
   _baseStrenght: 1
-  _baseDextarity: 1
-  _baseIntelligence: 1
+  _baseDextarity: 2
+  _baseIntelligence: 0
