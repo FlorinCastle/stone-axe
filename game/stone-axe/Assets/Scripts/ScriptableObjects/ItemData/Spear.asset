@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea40fb9319c29d949a348c58871d2658, type: 3}
+  m_Name: Spear
+  m_EditorClassIdentifier: 
+  _itemName: Spear
+  _part1: {fileID: 0}
+  _validPart1:
+  - {fileID: 11400000, guid: e62467babd0438644855f3dc79591821, type: 2}
+  _part2: {fileID: 0}
+  _validPart2:
+  - {fileID: 11400000, guid: 49f0d999a34fb044cacc4c7d5a6c3cb1, type: 2}
+  _part3: {fileID: 0}
+  _validPart3:
+  - {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
+  _baseCost: 23
+  _baseStrenght: 5
+  _baseDextarity: 4
+  _baseIntelligence: 1
+  _isEnchanted: 0
