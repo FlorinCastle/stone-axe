@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714f26b78ced1a048a0e934b6afc597f, type: 3}
   m_Name: Adamantine
   m_EditorClassIdentifier: 
-  _materialName: Adamintine
+  _materialName: Adamantine
   _materialType: 0
   _subMatType: 1
   _levelRequirement: 21
-  _quantity: 500
+  _quantity: 490
   _baseCostPerUnit: 24
   _addedStrength: 10
   _addedDextarity: 8

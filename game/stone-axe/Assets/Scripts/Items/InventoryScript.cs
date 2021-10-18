@@ -752,56 +752,42 @@ public class InventoryScript : MonoBehaviour
 
     private int InsertItemButton(GameObject button, int j)
     {
+        _itemButtonList.Add(button);
         for (int i = 0; i < _itemButtonList.Count; i++)
-            if (ItemButtonSlotEmpty(i))
-            {
-                _itemButtonList[i] = button;
+            if (_itemButtonList[i] == button)
                 button.GetComponent<InventoryButton>().setMyIndex(i);
-                button.GetComponent<InventoryButton>().setItemIndex(j);
-                return i;
-            }
-        return -1;
+        button.GetComponent<InventoryButton>().setItemIndex(j);
+        return button.GetComponent<InventoryButton>().MyIndex;
     }
 
     private int InsertPartButton(GameObject button, int j)
     {
+        _partButtonList.Add(button);
         for (int i = 0; i < _partButtonList.Count; i++)
-            if (PartButtonSlotEmpty(i))
-            {
-                _partButtonList[i] = button;
+            if (_partButtonList[i] == button)
                 button.GetComponent<InventoryButton>().setMyIndex(i);
-                button.GetComponent<InventoryButton>().setPartIndex(j);
-                return i;
-            }
-        return -1;
+        button.GetComponent<InventoryButton>().setPartIndex(j);
+        return button.GetComponent<InventoryButton>().MyIndex;
     }
 
     private int InsertMatButton(GameObject button, int k)
     {
+        _materialButtonList.Add(button);
         for (int i = 0; i < _materialButtonList.Count; i++)
-            if (MatButtonSlotEmpty(i))
-            {
-                _materialButtonList[i] = button;
+            if (_materialButtonList[i] == button)
                 button.GetComponent<MaterialButton>().setMyIndex(i);
-                button.GetComponent<MaterialButton>().setMatIndex(k);
-                return i;
-            }
-
-        return -1;
+        button.GetComponent<MaterialButton>().setMatIndex(k);
+        return button.GetComponent<MaterialButton>().MyIndex;
     }
 
     private int InsertEnchantButton(GameObject button, int l)
     {
-        for (int i = 0; i < _enchantButtonList.Count; i++) 
-            if (EnchantButtonSlotEmpty(i))
-            {
-                _enchantButtonList[i] = button;
+        _enchantButtonList.Add(button);
+        for (int i = 0; i < _enchantButtonList.Count; i++)
+            if (_enchantButtonList[i] == button)
                 button.GetComponent<InventoryButton>().setMyIndex(i);
-                button.GetComponent<InventoryButton>().setEnchantIndex(l);
-                return i;
-            }
-
-        return -1;
+        button.GetComponent<InventoryButton>().setEnchantIndex(l);
+        return button.GetComponent<InventoryButton>().MyIndex;
     }
     public void RemoveItem(int index)
     {
@@ -837,8 +823,8 @@ public class InventoryScript : MonoBehaviour
         foreach (GameObject go in _itemButtonList)
             Destroy(go);
 
-        for (int j = 0; j < _itemButtonList.Count; j++)
-            _itemButtonList[j] = null;
+        for (int j = _itemButtonList.Count - 1; j >= 0; j--)
+            _itemButtonList.RemoveAt(j);
     }
 
     private void clearPartButtonList()
@@ -846,8 +832,8 @@ public class InventoryScript : MonoBehaviour
         foreach (GameObject go in _partButtonList)
             Destroy(go);
 
-        for (int j = 0; j < _partButtonList.Count; j++)
-            _partButtonList[j] = null;
+        for (int j = _partButtonList.Count - 1; j >= 0; j--)
+            _partButtonList.RemoveAt(j);
     }
 
     private void clearMatButtonList()
@@ -855,8 +841,8 @@ public class InventoryScript : MonoBehaviour
         foreach (GameObject go in _materialButtonList)
             Destroy(go);
 
-        for (int k = 0; k < _materialButtonList.Count; k++)
-            _materialButtonList[k] = null;
+        for (int k = _materialButtonList.Count - 1; k >= 0; k--)
+            _materialButtonList.RemoveAt(k);
     }
 
     private void clearEnchantButtonList()
@@ -864,8 +850,8 @@ public class InventoryScript : MonoBehaviour
         foreach (GameObject go in _enchantButtonList)
             Destroy(go);
 
-        for (int l = 0; l < _enchantButtonList.Count; l++)
-            _enchantButtonList[l] = null;
+        for (int l = _enchantButtonList.Count - 1; l >= 0; l--)
+            _enchantButtonList.RemoveAt(l);
     }
 
     public void setSelectedItem(int i)

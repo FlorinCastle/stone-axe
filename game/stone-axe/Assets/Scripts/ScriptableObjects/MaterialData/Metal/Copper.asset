@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714f26b78ced1a048a0e934b6afc597f, type: 3}
   m_Name: Copper
   m_EditorClassIdentifier: 
-  _materialName: copper
+  _materialName: Copper
   _materialType: 0
   _subMatType: 0
   _levelRequirement: 0

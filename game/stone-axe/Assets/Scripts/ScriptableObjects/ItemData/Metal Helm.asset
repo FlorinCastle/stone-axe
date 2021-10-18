@@ -15,7 +15,7 @@ MonoBehaviour:
   _itemName: Metal Helm
   _part1: {fileID: 0}
   _validPart1:
-  - {fileID: 11400000, guid: f42da3e3febdbfd458add1214f07a7ca, type: 2}
+  - {fileID: 11400000, guid: 72cbac9fec11bce4180859c1057550fd, type: 2}
   _part2: {fileID: 0}
   _validPart2:
   - {fileID: 11400000, guid: 07cfcc0bdabd59f4fabf721e19c0c88b, type: 2}

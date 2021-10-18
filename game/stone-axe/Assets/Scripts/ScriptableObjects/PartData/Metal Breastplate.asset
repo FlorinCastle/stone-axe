@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c44053df750ac84482645dbf86aabaf, type: 3}
-  m_Name: Breastplate
+  m_Name: Metal Breastplate
   m_EditorClassIdentifier: 
-  _partName: Breastplate
+  _partName: Metal Breastplate
   _material: {fileID: 0}
   _validMaterials:
   - {fileID: 11400000, guid: d723de8e21a61ed4fbf8330932dd62f3, type: 2}
@@ -22,12 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c1142bc72c55dd94fb96dfd69001e16b, type: 2}
   - {fileID: 11400000, guid: e1b6489bf01c8894e91101a6e9bf9f02, type: 2}
   - {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
-  - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
-  - {fileID: 11400000, guid: 3daa26c81517ad7469d747e94fe5e2f4, type: 2}
-  - {fileID: 11400000, guid: d905eb4a07023d74ea23a7f665c720dd, type: 2}
-  - {fileID: 11400000, guid: bab2bdbbc182b62418f2378a9c99c460, type: 2}
   _validMaterialTypes:
-  - Cloth
   - Metal
   _unitsOfMaterialNeeded: 8
   _baseCost: 12

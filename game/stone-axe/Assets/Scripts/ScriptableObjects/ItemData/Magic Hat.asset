@@ -15,7 +15,7 @@ MonoBehaviour:
   _itemName: Magic Hat
   _part1: {fileID: 0}
   _validPart1:
-  - {fileID: 11400000, guid: f42da3e3febdbfd458add1214f07a7ca, type: 2}
+  - {fileID: 11400000, guid: 4610915c03b054a49a878f1adccee3c5, type: 2}
   _part2: {fileID: 0}
   _validPart2:
   - {fileID: 11400000, guid: bd12b16edaea7834eb767d8915e7c36a, type: 2}
