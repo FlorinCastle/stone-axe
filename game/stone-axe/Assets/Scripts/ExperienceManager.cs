@@ -7,6 +7,7 @@ public class ExperienceManager : MonoBehaviour
 {
     [SerializeField] private GameMaster _gameMasterRef;
     [SerializeField] private Slider _expSlider;
+    [SerializeField] private Text _levelTxt;
     [SerializeField] private List<int> _levelMarks;
 
     [SerializeField] private SkillManager _skillMgrRef;
@@ -31,14 +32,19 @@ public class ExperienceManager : MonoBehaviour
         int counter = 0;
         foreach (int levelMark in _levelMarks)
         {
-            if (levelMark <= _gameMasterRef.GetTotalExperience) 
-                counter++; 
+            if (levelMark <= _gameMasterRef.GetTotalExperience)
+            {
+                counter++;
+                if (_gameMasterRef.GetLevel < counter)
+                    _skillMgrRef.AddSkillPoint();
+            }
             else if (levelMark > _gameMasterRef.GetTotalExperience)
                 break;
         }
         _gameMasterRef.setLevel(counter);
         _gameMasterRef.setCurrentSkillPoints(counter);
         _skillMgrRef.setTotalSkillPoints(counter);
+        _levelTxt.text = "level: " + _gameMasterRef.GetLevel;
     }
 
     public void updateEXPSlider()
