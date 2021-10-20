@@ -33,6 +33,13 @@ public class SkillManager : MonoBehaviour
         _skillPointsText.text = _currentSkillPoints.ToString();
     }
 
+    public bool hasFreeSkillPoint()
+    {
+        if (_currentSkillPoints >= 1)
+            return true;
+        return false;
+    }
+
 
     public void setTotalSkillPoints(int value) { _totalSkillPoints = value; }
     public int GetTotalSkillPoints { get => _totalSkillPoints; }
@@ -40,4 +47,5 @@ public class SkillManager : MonoBehaviour
     public void setCurrentSkillPoints(int value) { _currentSkillPoints = value; }
     public int GetCurrentSkillPoints { get => _currentSkillPoints; }
     public void AddSkillPoint() { _currentSkillPoints++; }
+    public void RemoveSkillPoint() { _currentSkillPoints--; }
 }

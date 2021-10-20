@@ -9,6 +9,7 @@ public class GenerateItem : MonoBehaviour
     [SerializeField] private InventoryScript _inventoryRef;
     [SerializeField] private GameObject _inventoryControl;
     [SerializeField] private GameObject _gameMaster;
+    [SerializeField] private ECO_DecBuyPrice _buyPriceSkill;
     [Header("UI")]
     [SerializeField] private Text itemText;
     [SerializeField] private Button buyButton;
@@ -38,7 +39,7 @@ public class GenerateItem : MonoBehaviour
 
         generateItemText();
         itemText.text = _generatedText;
-        buyButtonText.text = "buy: " + _generatedItem.TotalValue;
+        buyButtonText.text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * _buyPriceSkill.getModifiedBuyPrice());
         buyButton.interactable = true;
     }
 
@@ -46,7 +47,7 @@ public class GenerateItem : MonoBehaviour
     {
         if (_generatedItem != null)
         {
-            if (this.gameObject.GetComponent<GameMaster>().removeCurrency(_generatedItem.TotalValue))
+            if (this.gameObject.GetComponent<GameMaster>().removeCurrency(Mathf.RoundToInt(_generatedItem.TotalValue * _buyPriceSkill.getModifiedBuyPrice())))
             {
                 _inventoryRef.InsertItem(_generatedItem);
                 this.gameObject.GetComponent<ExperienceManager>().addExperience(3);

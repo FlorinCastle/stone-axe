@@ -11,6 +11,9 @@ public class SellItemControl : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Text _itemText;
     [SerializeField] private Button _sellItemButton;
+    [SerializeField] private Button _refuseButton;
+    [Header("Modifying Skills")]
+    [SerializeField] private ECO_IncSellPrice _sellPriceSkill;
 
     private void Awake()
     {
@@ -19,6 +22,9 @@ public class SellItemControl : MonoBehaviour
 
         if (_uIControlRef == null)
             _uIControlRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<UIControl>();
+
+        _sellItemButton.interactable = false;
+        _refuseButton.interactable = false;
     }
 
     public void suggestAlt()
@@ -34,6 +40,7 @@ public class SellItemControl : MonoBehaviour
             //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
             setupDiscription();
             _sellItemButton.interactable = true;
+            _refuseButton.interactable = true;
         }
         else
         {
@@ -69,14 +76,26 @@ public class SellItemControl : MonoBehaviour
             "\nStats" + _totalStrength + _totalDex + _totalInt
             + _materials + _totalValue;
 
+        _sellItemButton.GetComponentInChildren<Text>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * _sellPriceSkill.getModifiedSellPrice());
+
     }
 
     public void sellItem()
     {
         _itemData = _selectedItem.GetComponent<ItemDataStorage>();
-        GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().addCurrency(_itemData.TotalValue);
+        GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().addCurrency(Mathf.RoundToInt(_itemData.TotalValue * _sellPriceSkill.getModifiedSellPrice()));
         _invScriptRef.RemoveItem(_itemData.InventoryIndex);
 
         this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
+        clearSellMenu();
+    }
+    
+    public void clearSellMenu()
+    {
+        _itemData = null;
+        _itemText.text = "item text";
+        _sellItemButton.GetComponentInChildren<Text>().text = "sell: [price]";
+        _sellItemButton.interactable = false;
+        _refuseButton.interactable = false;
     }
 }
