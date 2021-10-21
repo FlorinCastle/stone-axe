@@ -11,6 +11,7 @@ public class CraftControl : MonoBehaviour
     [SerializeField] Material _materialScriptReference;
     [SerializeField] InventoryScript _inventoryControlReference;
     [SerializeField] RecipeBook _recipeBookRef;
+    [SerializeField] CFT_ReduceMaterialCost materialSkill;
 
     [Header("UI")]
     [SerializeField] GameObject _itemCraftingUI;
@@ -164,6 +165,7 @@ public class CraftControl : MonoBehaviour
 
         _partStatsText1.text = "select [material]";
         _partStatsText2.text = "";
+
     }
 
     private void setupPartRecipeStats()
@@ -391,7 +393,7 @@ public class CraftControl : MonoBehaviour
             partDataStorageRef.setRecipeData(_chosenPartRecipe);
 
             // remove right amount of materials
-            _chosenPartMaterial.RemoveMat(_chosenPartRecipe.UnitsOfMaterialNeeded);
+            _chosenPartMaterial.RemoveMat(Mathf.RoundToInt(_chosenPartRecipe.UnitsOfMaterialNeeded * materialSkill.getModifiedMatAmount()));
 
             // insert crafted part into inventory script
             _inventoryControlReference.InsertPartData(partDataStorageTemp);

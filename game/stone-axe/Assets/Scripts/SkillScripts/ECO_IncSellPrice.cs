@@ -13,6 +13,7 @@ public class ECO_IncSellPrice : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject addPointButton;
     [SerializeField] private Text skillLevelText;
+    [SerializeField] private Text skillBodyText;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class ECO_IncSellPrice : MonoBehaviour
         else
             addPointButton.GetComponent<Button>().interactable = false;
         setupSkillLevelText();
+        setupSkillText();
     }
 
     public void addLevel()
@@ -48,6 +50,7 @@ public class ECO_IncSellPrice : MonoBehaviour
             }
         }
         setupSkillLevelText();
+        setupSkillText();
     }
 
     public void removeAddButton()
@@ -60,10 +63,16 @@ public class ECO_IncSellPrice : MonoBehaviour
         skillLevelText.text = currentLevel + " / " + maxLevel;
     }
 
+    private void setupSkillText()
+    {
+        skillBodyText.text = "increase final sell price by " + (1f * currentLevel).ToString() + "%";
+
+    }
+
 
     public float getModifiedSellPrice()
     {
-        for (int i = 0; i < maxLevel; i++)
+        for (int i = 0; i <= maxLevel; i++)
             if (i == currentLevel)
                 return 1.0f + (0.01f * i);
         return 1.0f;

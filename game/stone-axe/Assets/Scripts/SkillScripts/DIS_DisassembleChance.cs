@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ECO_DecBuyPrice : MonoBehaviour
+public class DIS_DisassembleChance : MonoBehaviour
 {
+
     [SerializeField] private SkillManager _skillManagerRef;
     [SerializeField] private GameMaster _gameMasterRef;
     [SerializeField] private int currentLevel = 0;
@@ -65,15 +66,15 @@ public class ECO_DecBuyPrice : MonoBehaviour
 
     private void setupSkillText()
     {
-        skillBodyText.text = "decrease final buy price by " + (1f * currentLevel).ToString() + "%";
-
+        skillBodyText.text = "chance of getting all materials of an item is " + (10f * currentLevel) + "%";
     }
 
-    public float getModifiedBuyPrice()
+
+    public float getFullDisassembleChance()
     {
         for (int i = 0; i <= maxLevel; i++)
             if (i == currentLevel)
-                return 1.0f - (0.01f * i);
-        return 1.0f;
+                return (0.1f * 1);
+        return 0.0f;
     }
 }

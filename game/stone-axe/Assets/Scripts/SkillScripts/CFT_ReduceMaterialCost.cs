@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ECO_DecBuyPrice : MonoBehaviour
+public class CFT_ReduceMaterialCost : MonoBehaviour
 {
     [SerializeField] private SkillManager _skillManagerRef;
     [SerializeField] private GameMaster _gameMasterRef;
@@ -65,15 +65,14 @@ public class ECO_DecBuyPrice : MonoBehaviour
 
     private void setupSkillText()
     {
-        skillBodyText.text = "decrease final buy price by " + (1f * currentLevel).ToString() + "%";
-
+        skillBodyText.text = "reduce amount of consumed material by " + (5f * currentLevel) + "%";
     }
 
-    public float getModifiedBuyPrice()
+    public float getModifiedMatAmount()
     {
         for (int i = 0; i <= maxLevel; i++)
             if (i == currentLevel)
-                return 1.0f - (0.01f * i);
+                return 1.0f - (0.05f * i);
         return 1.0f;
     }
 }
