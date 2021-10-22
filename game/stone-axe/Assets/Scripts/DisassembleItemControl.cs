@@ -9,6 +9,7 @@ public class DisassembleItemControl : MonoBehaviour
     [SerializeField] private UIControl _uIControlRef;
     [SerializeField] private GameObject _selectedItem;
     [SerializeField] private DIS_DisassembleChance disassembleSkill;
+    [SerializeField] private CFT_ReduceMaterialCost reducedMatSkill;
     [Header("UI")]
     [SerializeField] private Text _itemText;
     [SerializeField] private Text _itemNameText;
@@ -126,7 +127,27 @@ public class DisassembleItemControl : MonoBehaviour
         }
         else if (ran < Mathf.RoundToInt(disassembleSkill.getFullDisassembleChance()))
         {
-            Debug.LogWarning("TODO: re-setup code so item can be fully disassembled");
+            //Debug.LogWarning("TODO: re-setup code so item can be fully disassembled");
+            // get reference to part 1, get material composition and add to appropriate material ref
+            GameObject part1 = _selectedItem.GetComponent<ItemDataStorage>().Part1.gameObject;
+            part1.GetComponent<PartDataStorage>().Material.AddMat(Mathf.RoundToInt(part1.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
+
+            // part 2
+            GameObject part2 = _selectedItem.GetComponent<ItemDataStorage>().Part2.gameObject;
+            part2.GetComponent<PartDataStorage>().Material.AddMat(Mathf.RoundToInt(part2.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
+
+            // part 3
+            GameObject part3 = _selectedItem.GetComponent<ItemDataStorage>().Part3.gameObject;
+            part3.GetComponent<PartDataStorage>().Material.AddMat(Mathf.RoundToInt(part3.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
+
+            // move enchantment if enchanted
+            if (_selectedItem.GetComponent<ItemDataStorage>().IsEnchanted)
+            {
+                GameObject enc = _selectedItem.GetComponent<ItemDataStorage>().Enchantment.gameObject;
+
+                _invScriptRef.InsertEnchatment(enc);
+                enc.transform.parent = _invScriptRef.gameObject.transform;
+            }
         }
         // remove item from inventory
         _invScriptRef.RemoveItem(_selectedItem.GetComponent<ItemDataStorage>().InventoryIndex);

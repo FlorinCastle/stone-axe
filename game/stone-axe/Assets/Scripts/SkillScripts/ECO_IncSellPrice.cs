@@ -17,6 +17,8 @@ public class ECO_IncSellPrice : MonoBehaviour
 
     private void Awake()
     {
+        _skillManagerRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SkillManager>();
+        _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         if (requiredPlayerLevel <= _gameMasterRef.GetLevel)
         {
             addPointButton.GetComponent<Button>().interactable = true;
@@ -45,7 +47,11 @@ public class ECO_IncSellPrice : MonoBehaviour
             {
                 _skillManagerRef.RemoveSkillPoint();
                 _skillManagerRef.updateSkillPoints();
-                if (currentLevel == maxLevel)
+                if (_skillManagerRef.GetCurrentSkillPoints == 0)
+                {
+                    addPointButton.GetComponent<Button>().interactable = false;
+                }
+                else if (currentLevel == maxLevel)
                     removeAddButton();
             }
         }

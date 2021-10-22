@@ -18,6 +18,8 @@ public class DIS_DisassembleChance : MonoBehaviour
 
     private void Awake()
     {
+        _skillManagerRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SkillManager>();
+        _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         if (requiredPlayerLevel <= _gameMasterRef.GetLevel)
         {
             addPointButton.GetComponent<Button>().interactable = true;
@@ -46,7 +48,11 @@ public class DIS_DisassembleChance : MonoBehaviour
             {
                 _skillManagerRef.RemoveSkillPoint();
                 _skillManagerRef.updateSkillPoints();
-                if (currentLevel == maxLevel)
+                if (_skillManagerRef.GetCurrentSkillPoints == 0)
+                {
+                    addPointButton.GetComponent<Button>().interactable = false;
+                }
+                else if (currentLevel == maxLevel)
                     removeAddButton();
             }
         }
@@ -74,7 +80,7 @@ public class DIS_DisassembleChance : MonoBehaviour
     {
         for (int i = 0; i <= maxLevel; i++)
             if (i == currentLevel)
-                return (0.1f * 1);
+                return (10f * i);
         return 0.0f;
     }
 }

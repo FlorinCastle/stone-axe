@@ -17,6 +17,8 @@ public class CFT_ReduceMaterialCost : MonoBehaviour
 
     private void Awake()
     {
+        _skillManagerRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SkillManager>();
+        _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         if (requiredPlayerLevel <= _gameMasterRef.GetLevel)
         {
             addPointButton.GetComponent<Button>().interactable = true;
@@ -33,6 +35,8 @@ public class CFT_ReduceMaterialCost : MonoBehaviour
 
     public void addLevel()
     {
+        _skillManagerRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SkillManager>();
+        _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         if (_skillManagerRef.hasFreeSkillPoint())
         {
             currentLevel++;
@@ -45,7 +49,11 @@ public class CFT_ReduceMaterialCost : MonoBehaviour
             {
                 _skillManagerRef.RemoveSkillPoint();
                 _skillManagerRef.updateSkillPoints();
-                if (currentLevel == maxLevel)
+                if (_skillManagerRef.GetCurrentSkillPoints == 0)
+                {
+                    addPointButton.GetComponent<Button>().interactable = false;
+                }
+                else if (currentLevel == maxLevel)
                     removeAddButton();
             }
         }
@@ -67,6 +75,7 @@ public class CFT_ReduceMaterialCost : MonoBehaviour
     {
         skillBodyText.text = "reduce amount of consumed material by " + (5f * currentLevel) + "%";
     }
+
 
     public float getModifiedMatAmount()
     {
