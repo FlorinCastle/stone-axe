@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea40fb9319c29d949a348c58871d2658, type: 3}
+  m_Name: Mask
+  m_EditorClassIdentifier: 
+  _itemName: Mask
+  _part1: {fileID: 0}
+  _validPart1:
+  - {fileID: 11400000, guid: 5e34043c014e5fa4fb9c73f082a31433, type: 2}
+  _part2: {fileID: 0}
+  _validPart2:
+  - {fileID: 11400000, guid: 42bc6ee626b3d044e91f12ace9a9c689, type: 2}
+  _part3: {fileID: 0}
+  _validPart3:
+  - {fileID: 11400000, guid: 577d2d7ce159cf045870956b4233f3db, type: 2}
+  _baseCost: 20
+  _baseStrenght: 4
+  _baseDextarity: 4
+  _baseIntelligence: 2
+  _isEnchanted: 0

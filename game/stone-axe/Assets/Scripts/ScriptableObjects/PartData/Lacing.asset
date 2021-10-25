@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c44053df750ac84482645dbf86aabaf, type: 3}
+  m_Name: Lacing
+  m_EditorClassIdentifier: 
+  _partName: Lacing
+  _material: {fileID: 0}
+  _validMaterials:
+  - {fileID: 11400000, guid: 1e9b7f9659be5de4aa93d81c837a7562, type: 2}
+  - {fileID: 11400000, guid: 8b123dc586a3f244b83f83b0ffc64992, type: 2}
+  - {fileID: 11400000, guid: 9e75d77f4858d6643b4e74d870a9ff74, type: 2}
+  - {fileID: 11400000, guid: ba1c5e625e5ab5e4fa7ec67ccab1e890, type: 2}
+  _validMaterialTypes:
+  - Cloth
+  _unitsOfMaterialNeeded: 2
+  _baseCost: 6
+  _baseStrenght: 0
+  _baseDextarity: 3
+  _baseIntelligence: 1
