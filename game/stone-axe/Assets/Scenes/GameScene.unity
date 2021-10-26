@@ -1051,6 +1051,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1013641663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3692048483184885275, guid: 1d042dde36cf4d94f9fa320ae1b02a06, type: 3}
+  m_PrefabInstance: {fileID: 1627070219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9f448e55e210094ca34ac3a3b5695ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1044782912 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1135020411114291873, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -1743,6 +1754,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a63ea2b5d3e3a94d89f9420cab71ece, type: 3}
+--- !u!114 &1420118123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 155588751977228980, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+  m_PrefabInstance: {fileID: 7485012191131071712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1427857944
 GameObject:
   m_ObjectHideFlags: 0
@@ -2193,7 +2215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentCurrency: 100000
-  _totalExperience: 41
+  _totalExperience: 0
   _level: 0
   _currentSkillPoints: 0
 --- !u!4 &1734993352
@@ -2248,8 +2270,10 @@ MonoBehaviour:
   _inventoryControl: {fileID: 1181822451}
   _gameMaster: {fileID: 0}
   _buyPriceSkill: {fileID: 672557554}
+  _haggleSkill: {fileID: 1013641663}
   itemText: {fileID: 7485012191131071713}
   buyButton: {fileID: 1044782912}
+  haggleButton: {fileID: 1799106410}
   _generatedItem: {fileID: 0}
   _generatedEnchant: {fileID: 0}
 --- !u!114 &1734993355
@@ -2270,7 +2294,9 @@ MonoBehaviour:
   _itemText: {fileID: 1142077648}
   _sellItemButton: {fileID: 1383667778}
   _refuseButton: {fileID: 131163305}
-  _sellPriceSkill: {fileID: 0}
+  _haggleButton: {fileID: 1420118123}
+  _sellPriceSkill: {fileID: 1807804930}
+  _haggleSuccessSkill: {fileID: 1013641663}
 --- !u!114 &1734993356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2288,6 +2314,7 @@ MonoBehaviour:
   _selectedItem: {fileID: 0}
   disassembleSkill: {fileID: 1310622674}
   reducedMatSkill: {fileID: 2027709418}
+  enchantRemovalSkill: {fileID: 1912071572}
   _itemText: {fileID: 1248365485}
   _itemNameText: {fileID: 1200330649}
   _disassembleButton: {fileID: 53514155}
@@ -2346,11 +2373,44 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6618920512969882661, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
   m_PrefabInstance: {fileID: 7485012191131071712}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1799106410 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1039077712130969543, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+  m_PrefabInstance: {fileID: 7485012191131071712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1807804930 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2029208072, guid: cbd0887bb4dfa07429c4fbb208cbc6ec, type: 3}
+  m_PrefabInstance: {fileID: 296800291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 150c70c4216c46f4d8825e2cadd1074e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852441534 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 962313401821021369, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
   m_PrefabInstance: {fileID: 2494867850780624252}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1912071572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2673239140485792297, guid: ce63e73fe2e1d44479da5e4f48e5eeeb, type: 3}
+  m_PrefabInstance: {fileID: 2144300947}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da327f0115d6104abb00ca2195a191f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1912074382
 GameObject:
   m_ObjectHideFlags: 0
@@ -3364,7 +3424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4465213899347535661, guid: bbb978ce789265f499b2dc5355239dbd, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4465213899347535661, guid: bbb978ce789265f499b2dc5355239dbd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3451,6 +3511,14 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 155588751977228980, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 155588751977228980, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1734993355}
     - target: {fileID: 321441258037774221, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_Interactable
       value: 1
@@ -3483,6 +3551,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1852441534}
+    - target: {fileID: 1039077712130969543, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1734993354}
     - target: {fileID: 1042297404449287503, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_Interactable
       value: 1
@@ -3513,6 +3585,10 @@ PrefabInstance:
       objectReference: {fileID: 1997940092}
     - target: {fileID: 1639240311457755097, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1688566524503042909, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1853857630366425413, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -3685,7 +3761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6618920512969882661, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6806520654681909981, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3707,9 +3783,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game_Shop_UI
       objectReference: {fileID: 0}
+    - target: {fileID: 7485012190445823121, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7485012190445823122, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7485012190445823122, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3765,7 +3845,7 @@ PrefabInstance:
       objectReference: {fileID: 1734993353}
     - target: {fileID: 7611934963243128113, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7785965203485837329, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

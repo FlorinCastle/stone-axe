@@ -10,6 +10,7 @@ public class DisassembleItemControl : MonoBehaviour
     [SerializeField] private GameObject _selectedItem;
     [SerializeField] private DIS_DisassembleChance disassembleSkill;
     [SerializeField] private CFT_ReduceMaterialCost reducedMatSkill;
+    [SerializeField] private DIS_EnchantRemoval enchantRemovalSkill;
     [Header("UI")]
     [SerializeField] private Text _itemText;
     [SerializeField] private Text _itemNameText;
@@ -93,34 +94,48 @@ public class DisassembleItemControl : MonoBehaviour
             // move enchantment, if enchanted
             if (_selectedItem.GetComponent<ItemDataStorage>().IsEnchanted)
             {
-                int chosenEnchantedPart = Random.Range(0, 3);
+                int ranEnc = Random.Range(0, 100);
+                //Debug.Log("ranEnc: " + ranEnc.ToString());
 
-                GameObject enc = _selectedItem.GetComponent<ItemDataStorage>().Enchantment.gameObject;
-                if (chosenEnchantedPart == 0) // part 1 selected
+                if (ranEnc >= Mathf.RoundToInt(enchantRemovalSkill.getEnchantRemovalChance()))
                 {
-                    part1.GetComponent<PartDataStorage>().setEnchantment(enc.GetComponent<EnchantDataStorage>());
-                    part1.GetComponent<PartDataStorage>().setIsHoldingEnchanted(true);
-                    part2.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
-                    part3.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
-                    enc.transform.parent = part1.transform;
-                }
-                else if (chosenEnchantedPart == 1)  // part 2 selected
-                {
-                    part2.GetComponent<PartDataStorage>().setEnchantment(enc.GetComponent<EnchantDataStorage>());
-                    part1.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
-                    part2.GetComponent<PartDataStorage>().setIsHoldingEnchanted(true);
-                    part3.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
-                    enc.transform.parent = part2.transform;
-                }
-                else if (chosenEnchantedPart == 2)  // part 3 selected
-                {
-                    part3.GetComponent<PartDataStorage>().setEnchantment(enc.GetComponent<EnchantDataStorage>());
-                    part1.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
-                    part2.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
-                    part3.GetComponent<PartDataStorage>().setIsHoldingEnchanted(true);
-                    enc.transform.parent = part3.transform;
-                }
+                    int chosenEnchantedPart = Random.Range(0, 3);
 
+                        GameObject enc = _selectedItem.GetComponent<ItemDataStorage>().Enchantment.gameObject;
+                    if (chosenEnchantedPart == 0) // part 1 selected
+                    {
+                        part1.GetComponent<PartDataStorage>().setEnchantment(enc.GetComponent<EnchantDataStorage>());
+                        part1.GetComponent<PartDataStorage>().setIsHoldingEnchanted(true);
+                        part2.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
+                        part3.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
+                        enc.transform.parent = part1.transform;
+                    }
+                    else if (chosenEnchantedPart == 1)  // part 2 selected
+                    {
+                        part2.GetComponent<PartDataStorage>().setEnchantment(enc.GetComponent<EnchantDataStorage>());
+                        part1.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
+                        part2.GetComponent<PartDataStorage>().setIsHoldingEnchanted(true);
+                        part3.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
+                        enc.transform.parent = part2.transform;
+                    }
+                    else if (chosenEnchantedPart == 2)  // part 3 selected
+                    {
+                        part3.GetComponent<PartDataStorage>().setEnchantment(enc.GetComponent<EnchantDataStorage>());
+                        part1.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
+                        part2.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
+                        part3.GetComponent<PartDataStorage>().setIsHoldingEnchanted(true);
+                        enc.transform.parent = part3.transform;
+                    }
+
+                }
+                else if (ranEnc < Mathf.RoundToInt(enchantRemovalSkill.getEnchantRemovalChance()))
+                {
+                    //Debug.Log("adding enchant to inventory");
+                    GameObject enc = _selectedItem.GetComponent<ItemDataStorage>().Enchantment.gameObject;
+
+                    _invScriptRef.InsertEnchatment(enc);
+                    enc.transform.parent = _invScriptRef.gameObject.transform;
+                }
                 // _invScriptRef.InsertEnchatment(enc);
                 //enc.transform.parent = _invScriptRef.gameObject.transform;
             }

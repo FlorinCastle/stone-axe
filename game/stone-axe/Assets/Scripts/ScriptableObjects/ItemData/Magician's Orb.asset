@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea40fb9319c29d949a348c58871d2658, type: 3}
-  m_Name: Wood Shield (incomplete)
+  m_Name: Magician's Orb
   m_EditorClassIdentifier: 
-  _itemName: Wood Shield
+  _itemName: Magician's Orb
   _part1: {fileID: 0}
   _validPart1:
-  - {fileID: 11400000, guid: 9c7f6729ed6912646947da69c78ea188, type: 2}
+  - {fileID: 11400000, guid: 0c394eafc001483488e07fe06842f262, type: 2}
   _part2: {fileID: 0}
   _validPart2:
-  - {fileID: 11400000, guid: 7edf5f63ae38079448e1da1af9cc66e1, type: 2}
+  - {fileID: 11400000, guid: 0513c3377d7ea804d9acd816f5bf297e, type: 2}
   _part3: {fileID: 0}
   _validPart3:
-  - {fileID: 11400000, guid: ff13d57fbba88984f9ba53097eabfc03, type: 2}
-  _baseCost: 0
+  - {fileID: 11400000, guid: 72bc31ccfff37364d9c2bb261e5fc262, type: 2}
+  _baseCost: 30
   _baseStrenght: 0
-  _baseDextarity: 0
-  _baseIntelligence: 0
+  _baseDextarity: 2
+  _baseIntelligence: 8
   _isEnchanted: 0

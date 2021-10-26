@@ -12,8 +12,12 @@ public class SellItemControl : MonoBehaviour
     [SerializeField] private Text _itemText;
     [SerializeField] private Button _sellItemButton;
     [SerializeField] private Button _refuseButton;
+    [SerializeField] private Button _haggleButton;
     [Header("Modifying Skills")]
     [SerializeField] private ECO_IncSellPrice _sellPriceSkill;
+    [SerializeField] private ECO_HaggleSuccess _haggleSuccessSkill;
+
+    private bool haggleSucceded = false;
 
     private void Awake()
     {
@@ -25,6 +29,8 @@ public class SellItemControl : MonoBehaviour
 
         _sellItemButton.interactable = false;
         _refuseButton.interactable = false;
+        _haggleButton.interactable = false;
+        _haggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: n/a)";
     }
 
     public void suggestAlt()
@@ -41,6 +47,7 @@ public class SellItemControl : MonoBehaviour
             setupDiscription();
             _sellItemButton.interactable = true;
             _refuseButton.interactable = true;
+            _haggleButton.interactable = true;
         }
         else
         {
@@ -78,16 +85,41 @@ public class SellItemControl : MonoBehaviour
 
         _sellItemButton.GetComponentInChildren<Text>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * _sellPriceSkill.getModifiedSellPrice());
 
+        _haggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: " + (_haggleSuccessSkill.getHaggleChance()).ToString() + "%)";
     }
 
     public void sellItem()
     {
         _itemData = _selectedItem.GetComponent<ItemDataStorage>();
-        GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().addCurrency(Mathf.RoundToInt(_itemData.TotalValue * _sellPriceSkill.getModifiedSellPrice()));
+
+        if (haggleSucceded == false)
+            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().addCurrency(Mathf.RoundToInt(_itemData.TotalValue * _sellPriceSkill.getModifiedSellPrice()));
+        else if (haggleSucceded == true)
+
+            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().addCurrency(Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _haggleSuccessSkill.getModifiedPrice())));
+
         _invScriptRef.RemoveItem(_itemData.InventoryIndex);
 
         this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
         clearSellMenu();
+    }
+
+    public void hagglePrice()
+    {
+        int ran = Random.Range(0, 100);
+        if (ran >= Mathf.RoundToInt(_haggleSuccessSkill.getHaggleChance()))
+        {
+            Debug.Log("haggle fail");
+            haggleSucceded = false;
+        }
+        else if (ran < Mathf.RoundToInt(_haggleSuccessSkill.getHaggleChance()))
+        {
+            Debug.Log("haggle success");
+            haggleSucceded = true;
+            _sellItemButton.GetComponentInChildren<Text>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _haggleSuccessSkill.getModifiedPrice()));
+        }
+        _haggleButton.GetComponentInChildren<Text>().text = "haggle\ncomplete";
+        _haggleButton.interactable = false;
     }
     
     public void clearSellMenu()
@@ -95,7 +127,10 @@ public class SellItemControl : MonoBehaviour
         _itemData = null;
         _itemText.text = "item text";
         _sellItemButton.GetComponentInChildren<Text>().text = "sell: [price]";
+        _haggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: n/a)";
         _sellItemButton.interactable = false;
         _refuseButton.interactable = false;
+        _haggleButton.interactable = false;
+        haggleSucceded = false;
     }
 }
