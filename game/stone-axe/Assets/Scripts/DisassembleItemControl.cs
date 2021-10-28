@@ -173,5 +173,7 @@ public class DisassembleItemControl : MonoBehaviour
 
         _itemNameText.text = "item chosen: [item name]";
         _itemText.text = "placeholder text";
+
+        _disassembleButton.interactable = false;
     }
 }

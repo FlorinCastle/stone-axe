@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &5308371626658473099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6400372528317531084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c46663702612634f95d8df079dbc0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillManagerRef: {fileID: 0}
+  _gameMasterRef: {fileID: 0}
+  currentLevel: 0
+  maxLevel: 3
+  requiredPlayerLevel: 0
+  addPointButton: {fileID: 6400372526854304288}
+  skillLevelText: {fileID: 6400372527219884146}
+  skillBodyText: {fileID: 6400372528375695724}
 --- !u!1001 &5809036014947884562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99,5 +119,53 @@ PrefabInstance:
       propertyPath: m_Text
       value: disassemble hit reduction
       objectReference: {fileID: 0}
+    - target: {fileID: 598811200867445808, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5308371626658473099}
+    - target: {fileID: 598811200867445808, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: addLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 598811200867445808, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DIS_HitReduction, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 598811200867445808, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+--- !u!1 &6400372528317531084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 598811200459005406, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+  m_PrefabInstance: {fileID: 5809036014947884562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6400372528375695724 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 598811200384128894, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+  m_PrefabInstance: {fileID: 5809036014947884562}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6400372526854304288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 598811200867445810, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+  m_PrefabInstance: {fileID: 5809036014947884562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6400372527219884146 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 598811201576050272, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+  m_PrefabInstance: {fileID: 5809036014947884562}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
