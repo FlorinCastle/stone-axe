@@ -153,6 +153,8 @@ public class CraftControl : MonoBehaviour
         _chosenPart3 = null;
         _part3Discription.text = "choose part";
 
+        _selectedRecipeText.text = "selected:\nnone";
+
         _finalStatsText1.text = "select [part1, part2, part3]";
         _finalStatsText2.text = "";
     }
@@ -163,9 +165,10 @@ public class CraftControl : MonoBehaviour
         _partRecipeStats2.text = "";
         _matDiscription.text = "choose material";
 
+        _selectedRecipeText.text = "selected:\nnone";
+
         _partStatsText1.text = "select [material]";
         _partStatsText2.text = "";
-
     }
 
     private void setupPartRecipeStats()

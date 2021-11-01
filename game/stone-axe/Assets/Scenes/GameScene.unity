@@ -156,6 +156,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &87253647 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6492594565353835820, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+  m_PrefabInstance: {fileID: 7485012191131071712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &131163305 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8190191894150922369, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -853,17 +864,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &804002940 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2871716122849283728, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
-  m_PrefabInstance: {fileID: 7485012191131071712}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &819829594 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4304910883369564858, guid: 5d518b8acbd82bc4898dadb0d9338101, type: 3}
@@ -1495,11 +1495,11 @@ MonoBehaviour:
   _materialScriptReference: {fileID: 681287825}
   _inventoryControlReference: {fileID: 1181822452}
   _recipeBookRef: {fileID: 1427857945}
-  materialSkill: {fileID: 0}
+  materialSkill: {fileID: 2027709418}
   _itemCraftingUI: {fileID: 7485012191131071716}
   _partCraftingUI: {fileID: 7485012191131071715}
   _recipeDropdown: {fileID: 7485012191131071714}
-  _craftButton: {fileID: 804002940}
+  _craftButton: {fileID: 87253647}
   _selectedRecipeText: {fileID: 1331316048}
   _part1Discription: {fileID: 676686842}
   _part2Discription: {fileID: 1713595213}
@@ -2899,7 +2899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2920222055676640568, guid: 141109d87efa52e48a7e129a24b4fb7c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2920222055676640569, guid: 141109d87efa52e48a7e129a24b4fb7c, type: 3}
       propertyPath: m_RootOrder
@@ -3915,6 +3915,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1734993359}
+    - target: {fileID: 6492594565353835820, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1696650682}
     - target: {fileID: 6557091423555394508, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
