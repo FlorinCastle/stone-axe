@@ -6,12 +6,13 @@ public class Quest : MonoBehaviour
 {
     [Header("Quest Tracking")]
     [SerializeField] List<QuestData> _questDataList;
-    [SerializeField] List<QuestData> _tutorialQuests;
-    [SerializeField] List<QuestData> _storyQuests;
-    [SerializeField] List<QuestData> _onCraft_ItemQuests;
-    [SerializeField] List<QuestData> _onCraft_QuestItemQuests;
-    [SerializeField] List<QuestData> _onDis_MatQuests;
-    [SerializeField] List<QuestData> _onCraft_TotalQuests;
+    [SerializeField, HideInInspector] List<QuestData> _tutorialQuests;
+    [SerializeField, HideInInspector] List<QuestData> _storyQuests;
+    [SerializeField, HideInInspector] List<QuestData> _onCraftItemQuests;
+    [SerializeField, HideInInspector] List<QuestData> _onCraftQuestItemQuests;
+    [SerializeField, HideInInspector] List<QuestData> _onDisMatQuests;
+    [SerializeField, HideInInspector] List<QuestData> _onCraftTotalQuests;
+    [SerializeField, HideInInspector] List<QuestData> _repeatableQuests;
 
     private void Awake()
     {
@@ -19,25 +20,27 @@ public class Quest : MonoBehaviour
         {
             string questType = quest.QuestType;
             if (questType == "OCC_Item")
-                _onCraft_ItemQuests.Add(quest);
-            else if (questType == "OCC_QuestItem")
-                _onCraft_QuestItemQuests.Add(quest);
-            else if (questType == "OD_Material")
-                _onDis_MatQuests.Add(quest);
-            else if (questType == "OCC_TotalCrafted")
-                _onCraft_TotalQuests.Add(quest);
-            else if (questType == "Tutorial")
+                _onCraftItemQuests.Add(quest);
+            if (questType == "OCC_QuestItem")
+                _onCraftQuestItemQuests.Add(quest);
+            if (questType == "OD_Material")
+                _onDisMatQuests.Add(quest);
+            if (questType == "OCC_TotalCrafted")
+                _onCraftTotalQuests.Add(quest);
+            if (questType == "Tutorial")
                 _tutorialQuests.Add(quest);
-            else if (questType == "Story")
+            if (questType == "Story")
                 _storyQuests.Add(quest);
+            if (questType == "OCC_Item" || questType == "OCC_QuestItem" || questType == "OD_Material" || questType == "OCC_TotalCrafted")
+                _repeatableQuests.Add(quest);
         }
     }
 
-
     public List<QuestData> getTutorialQuests() { return _tutorialQuests; }
     public List<QuestData> getStoryQuests() { return _storyQuests; }
-    public List<QuestData> getOnCraftItemQuests() { return _onCraft_ItemQuests; }
-    public List<QuestData> getOnCraftQuestItemQuests() { return _onCraft_QuestItemQuests; }
-    public List<QuestData> getOnDisMatQuests() { return _onDis_MatQuests; }
-    public List<QuestData> getOnCraftTotalQuests() { return _onCraft_TotalQuests; }
+    public List<QuestData> getOnCraftItemQuests() { return _onCraftItemQuests; }
+    public List<QuestData> getOnCraftQuestItemQuests() { return _onCraftQuestItemQuests; }
+    public List<QuestData> getOnDisMatQuests() { return _onDisMatQuests; }
+    public List<QuestData> getOnCraftTotalQuests() { return _onCraftTotalQuests; }
+    public List<QuestData> getRepeatableQuests() { return _repeatableQuests; }
 }

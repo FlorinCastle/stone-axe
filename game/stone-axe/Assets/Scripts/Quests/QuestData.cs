@@ -16,7 +16,7 @@ public class QuestData : ScriptableObject
     public int _requiredCount;
     public QuestData _nextQuest;
 
-    public string QuestName { get => QuestName; }
+    public string QuestName { get => _questName; }
     public string QuestDiscription { get => _questDiscription; }
     public string QuestType { get => _questType.ToString(); }
 
