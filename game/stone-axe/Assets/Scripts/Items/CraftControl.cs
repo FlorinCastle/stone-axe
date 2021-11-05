@@ -11,6 +11,7 @@ public class CraftControl : MonoBehaviour
     [SerializeField] Material _materialScriptReference;
     [SerializeField] InventoryScript _inventoryControlReference;
     [SerializeField] RecipeBook _recipeBookRef;
+    [SerializeField] QuestControl _questControlRef;
     [SerializeField] CFT_ReduceMaterialCost materialSkill;
 
     [Header("UI")]
@@ -361,6 +362,9 @@ public class CraftControl : MonoBehaviour
 
         // add experience
         GameObject.FindGameObjectWithTag("GameMaster").GetComponent<ExperienceManager>().addExperience(4);
+
+        // check quest
+        _questControlRef.updateQuestProgress(_chosenItemRecipe);
 
         // clear selected crafting componets
         _chosenItemRecipe = null;

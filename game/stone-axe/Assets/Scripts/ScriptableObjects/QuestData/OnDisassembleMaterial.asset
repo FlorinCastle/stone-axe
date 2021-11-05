@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906549ced2b40c84c8a9474b679e6739, type: 3}
   m_Name: OnDisassembleMaterial
   m_EditorClassIdentifier: 
-  _questName: On Disassemble Material
+  _questName: On Have Material
   _questDiscription: have this material
   _questType: 3
   _requiredItem: {fileID: 0}

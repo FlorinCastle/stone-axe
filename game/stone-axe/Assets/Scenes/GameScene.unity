@@ -875,6 +875,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5986173107023473856, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
   m_PrefabInstance: {fileID: 5986173108268856756}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &744597666 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2525285332354797347, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
+  m_PrefabInstance: {fileID: 6064659085432043188}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &750977558 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3987797895055551156, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -1533,6 +1544,7 @@ MonoBehaviour:
   _materialScriptReference: {fileID: 681287825}
   _inventoryControlReference: {fileID: 1181822452}
   _recipeBookRef: {fileID: 1427857945}
+  _questControlRef: {fileID: 1734993360}
   materialSkill: {fileID: 2027709418}
   _itemCraftingUI: {fileID: 7485012191131071716}
   _partCraftingUI: {fileID: 7485012191131071715}
@@ -2457,6 +2469,7 @@ MonoBehaviour:
   _questName: {fileID: 750977558}
   _questText: {fileID: 178493471}
   _newQuestButton: {fileID: 589853683}
+  _completeQuestButton: {fileID: 744597666}
   _repeatableQuests: []
 --- !u!1 &1737104022
 GameObject:
@@ -3765,6 +3778,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2525285332354797347, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525285332354797347, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1734993360}
+    - target: {fileID: 2525285332354797347, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: completeQuest
+      objectReference: {fileID: 0}
     - target: {fileID: 6064659084706931268, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3776,6 +3801,10 @@ PrefabInstance:
     - target: {fileID: 6064659085037596998, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
       propertyPath: m_Name
       value: Quest_UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064659085037596998, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6064659085037596999, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
       propertyPath: m_RootOrder
