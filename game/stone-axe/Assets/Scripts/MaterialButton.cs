@@ -11,6 +11,8 @@ public class MaterialButton : MonoBehaviour
     [SerializeField] private Text _matNameText;
     [SerializeField] private Text _matCountText;
 
+    [SerializeField] private MaterialData _matRef;
+
 
     private void Awake()
     {
@@ -30,11 +32,17 @@ public class MaterialButton : MonoBehaviour
 
     public void setSelectedMat()
     {
-        _invControl.setSelectedMat(_matIndex);
+        _invControl.setSelectedMat(_matRef);
     }
 
     public void setMyIndex(int i) { _myButtonIndex = i; }
     public int MyIndex { get => _myButtonIndex; }
 
     public void setMatIndex(int i) { _matIndex = i; }
+
+    public MaterialData MaterialData
+    {
+        get => _matRef;
+        set => _matRef = value;
+    }
 }

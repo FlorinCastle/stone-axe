@@ -25,6 +25,7 @@ public class RecipeBook : MonoBehaviour
         _recipeSelectButton.interactable = false; // temp till I get all the code set up
         recipeButtons = new List<GameObject>();
         setupRecipeGrid();
+        _recipeText.text = "";
     }
 
     public void disableRecipeSelectButton()
@@ -126,9 +127,8 @@ public class RecipeBook : MonoBehaviour
     {
         _selectedItemRecipe = null;
         _selectedPartRecipe = null;
+        _recipeText.text = "";
     }
-
-
 
     private GameObject tempButton;
     public void setupRecipeGrid()
@@ -148,7 +148,7 @@ public class RecipeBook : MonoBehaviour
                 t.text = itemRecipe.ItemName + " Recipe";
                 tempButton.name = itemRecipe.ItemName + " Recipe";
                 // add button to list
-                InsertButton(tempButton, r);
+                InsertButton(tempButton);
             }
             r++;
         }
@@ -165,8 +165,24 @@ public class RecipeBook : MonoBehaviour
                 t.text = partRecipe.PartName + " Recipe";
                 tempButton.name = partRecipe.PartName + " Recipe";
                 // add button to list
-                InsertButton(tempButton, r);
+                InsertButton(tempButton);
             }
+            r++;
+        }
+    }
+
+    public void setupFilteredGrid()
+    {
+        clearRecipeGrid();
+        int r = 0;
+        foreach (ItemData itemRecipe in itemRecipes)
+        {
+
+            r++;
+        }
+        foreach (PartData partRecipe in partRecipes)
+        {
+
             r++;
         }
     }
@@ -180,11 +196,12 @@ public class RecipeBook : MonoBehaviour
             recipeButtons.RemoveAt(r);
     }
 
-    private int InsertButton(GameObject button, int index)
+    private int InsertButton(GameObject button)
     {
         recipeButtons.Add(button);
-        button.GetComponent<RecipeButton>().setMyIndex(index);
-        return index;
+        int i = recipeButtons.IndexOf(button);
+        button.GetComponent<RecipeButton>().setMyIndex(i);
+        return i;
     }
 
     private bool anyRecipeSelected()

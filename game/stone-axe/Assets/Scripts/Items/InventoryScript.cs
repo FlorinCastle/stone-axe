@@ -188,17 +188,17 @@ public class InventoryScript : MonoBehaviour
             if (mat != null)
             {
                 // if level req is met
-                //Debug.Log("mat: " + mat.Material + " level: " + mat.LevelRequirement);
-                //Debug.Log("current level: " + _gameMaster.GetLevel);
                 if (mat.LevelRequirement <= _gameMaster.GetLevel)
                 {
-                    Debug.Log("")
                     // instantiate the button prefab
                     tempButtonList = Instantiate(_matInfoPrefab);
                     tempButtonList.transform.SetParent(_inventoryButtonParent.transform, false);
 
                     // set up the button text
                     tempButtonList.GetComponentInChildren<MaterialButton>().setMatInfoText(mat);
+
+                    // set material
+                    tempButtonList.GetComponentInChildren<MaterialButton>().MaterialData = mat;
 
                     // if removing from inventory
                     if (isRemoving == true)
@@ -213,9 +213,10 @@ public class InventoryScript : MonoBehaviour
                     }
                     // add button to list
                     InsertMatButton(tempButtonList, m);
+                    m++;
                 }
             }
-            m++;
+            //m++;
         }
         _descriptionText.text = "new text";
 
@@ -438,9 +439,9 @@ public class InventoryScript : MonoBehaviour
     {
         if (index != -1)
         {
-            if (materialInventory[index] != null)
+            if (_materialButtonList[index] != null)
             {
-                MaterialData matDataRef = materialInventory[index];
+                MaterialData matDataRef = _materialButtonList[index].GetComponent<MaterialButton>().MaterialData;
 
                 _matName = "Material - " + matDataRef.Material;
                 _matLevel = "\nLevel: " + matDataRef.LevelRequirement;
@@ -891,6 +892,14 @@ public class InventoryScript : MonoBehaviour
         }
         else
             Debug.Log("example button selected");
+    }
+
+    public void setSelectedMat(MaterialData data)
+    {
+        if (data != null)
+            _selectedMat = data;
+        else
+            Debug.LogWarning("No mat input!");
     }
 
     public void setSelectedMat(int i)
