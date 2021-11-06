@@ -1237,6 +1237,7 @@ MonoBehaviour:
   _selectedPart: {fileID: 0}
   _selectedMat: {fileID: 0}
   _selectedEnchant: {fileID: 0}
+  _gameMaster: {fileID: 1734993351}
   _removingStatus: 0
   _itemInventoryData:
   - {fileID: 0}
@@ -2501,10 +2502,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questDataList:
+  - {fileID: 11400000, guid: 1ed3daa3503ec394590cab46f07d9c64, type: 2}
+  - {fileID: 11400000, guid: d9324e77a67796f4a96063873d355bff, type: 2}
+  - {fileID: 11400000, guid: 97835c6312c7ee8429ccf6e228e37b7b, type: 2}
+  - {fileID: 11400000, guid: 1e27d5e62428a364a920364c8cc9b5f8, type: 2}
+  - {fileID: 11400000, guid: fb5e780d6afe6284dbf26c1481190469, type: 2}
+  - {fileID: 11400000, guid: b41ae6045ecc02841b447053f62cc118, type: 2}
+  - {fileID: 11400000, guid: 9b63d138313554548bcf8c7418977b81, type: 2}
+  - {fileID: 11400000, guid: f9696d2709ab2324782ac0d79831a2a9, type: 2}
+  - {fileID: 11400000, guid: db8d7aa01a361f0438b099ad8e690626, type: 2}
+  - {fileID: 11400000, guid: 70d715a53e86c3a409e5a4039ae984b7, type: 2}
+  - {fileID: 11400000, guid: 8add2750f6c636243b8873515e5b7769, type: 2}
+  - {fileID: 11400000, guid: 95ad72372be5ebf409f86be96a3cc5c2, type: 2}
+  - {fileID: 11400000, guid: 28836d9784616c4409572321aff92f47, type: 2}
+  - {fileID: 11400000, guid: 396bed4a0bcbe03479d52f9b259fb713, type: 2}
+  - {fileID: 11400000, guid: dd94643ebd4d3b641a2741b4b000b7f3, type: 2}
+  - {fileID: 11400000, guid: bf3b1e2af228584438a8576d68fe4c07, type: 2}
+  - {fileID: 11400000, guid: 7303c9dbd62975b4a909921b2849cabd, type: 2}
+  - {fileID: 11400000, guid: 3dcc8b7af7e8504498979bd452707501, type: 2}
+  - {fileID: 11400000, guid: 0e72daaa3487ce64b9d0e36cd4478525, type: 2}
+  - {fileID: 11400000, guid: 85d842346e227c84094ddab370afd104, type: 2}
+  - {fileID: 11400000, guid: fb73de75df9b0c448accec2e0c4ac931, type: 2}
+  - {fileID: 11400000, guid: e45aaf85e6f789e459b1357bcdf29c88, type: 2}
+  - {fileID: 11400000, guid: eff7047383225cf49949824e0ef8b0bc, type: 2}
+  - {fileID: 11400000, guid: 18bf8b56e29fc974c92620675335a738, type: 2}
+  - {fileID: 11400000, guid: ce3dec74c829cce42b8ee881723a7fc6, type: 2}
+  - {fileID: 11400000, guid: 3c24b9f855cd65544b1b8e83cbf71209, type: 2}
   - {fileID: 11400000, guid: bd67a72a1b843994780db13b9a59e809, type: 2}
   - {fileID: 11400000, guid: 1e7b36bf1fa5e3343ba3bc06fb28a1e6, type: 2}
   - {fileID: 11400000, guid: 80fe7f698fe8b0e40b454339a3996724, type: 2}
-  - {fileID: 11400000, guid: 28836d9784616c4409572321aff92f47, type: 2}
   - {fileID: 11400000, guid: b513f70bebd368e42865c6a21fad0df2, type: 2}
   - {fileID: 11400000, guid: 29b15c4c3e08a9641a2275deb3ef5764, type: 2}
   _tutorialQuests: []

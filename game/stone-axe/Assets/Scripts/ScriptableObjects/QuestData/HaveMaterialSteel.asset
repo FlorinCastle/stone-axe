@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 906549ced2b40c84c8a9474b679e6739, type: 3}
-  m_Name: OnDisassembleMaterial
+  m_Name: HaveMaterialSteel
   m_EditorClassIdentifier: 
-  _questName: On Have Material
+  _questName: Have Steel
   _questDiscription: have this material
   _questType: 3
   _requiredItem: {fileID: 0}
-  _requiredMaterial: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
+  _requiredMaterial: {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
   _requiredCount: 5
   _nextQuest: {fileID: 0}

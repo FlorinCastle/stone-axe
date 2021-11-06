@@ -14,6 +14,8 @@ public class InventoryScript : MonoBehaviour
     private MaterialData _selectedMat;
     [SerializeField]
     private GameObject _selectedEnchant;
+    [SerializeField]
+    private GameMaster _gameMaster;
 
     private enum removingItemStatusEnum
     {
@@ -62,6 +64,12 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private GameObject _enchantInfoPrefab;
 
     private GameObject tempButtonList;
+
+    private void Awake()
+    {
+        if (_gameMaster == null)
+            _gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+    }
 
     public void setupItemInventory()
     {
@@ -179,26 +187,33 @@ public class InventoryScript : MonoBehaviour
         {
             if (mat != null)
             {
-                // instantiate the button prefab
-                tempButtonList = Instantiate(_matInfoPrefab);
-                tempButtonList.transform.SetParent(_inventoryButtonParent.transform, false);
-
-                // set up the button text
-                tempButtonList.GetComponentInChildren<MaterialButton>().setMatInfoText(mat);
-
-                // if removing from inventory
-                if (isRemoving == true)
+                // if level req is met
+                //Debug.Log("mat: " + mat.Material + " level: " + mat.LevelRequirement);
+                //Debug.Log("current level: " + _gameMaster.GetLevel);
+                if (mat.LevelRequirement <= _gameMaster.GetLevel)
                 {
-                    if (state == 6)
+                    Debug.Log("")
+                    // instantiate the button prefab
+                    tempButtonList = Instantiate(_matInfoPrefab);
+                    tempButtonList.transform.SetParent(_inventoryButtonParent.transform, false);
+
+                    // set up the button text
+                    tempButtonList.GetComponentInChildren<MaterialButton>().setMatInfoText(mat);
+
+                    // if removing from inventory
+                    if (isRemoving == true)
                     {
-                        if (checkIfMatIsValid(state, mat))
-                            tempButtonList.GetComponentInChildren<Button>().interactable = true;
-                        else
-                            tempButtonList.GetComponentInChildren<Button>().interactable = false;
+                        if (state == 6)
+                        {
+                            if (checkIfMatIsValid(state, mat))
+                                tempButtonList.GetComponentInChildren<Button>().interactable = true;
+                            else
+                                tempButtonList.GetComponentInChildren<Button>().interactable = false;
+                        }
                     }
+                    // add button to list
+                    InsertMatButton(tempButtonList, m);
                 }
-                // add button to list
-                InsertMatButton(tempButtonList, m);
             }
             m++;
         }
@@ -412,6 +427,7 @@ public class InventoryScript : MonoBehaviour
     }
 
     private string _matName;
+    private string _matLevel;
     private string _matType;
     private string _matStrength;
     private string _matDex;
@@ -427,13 +443,14 @@ public class InventoryScript : MonoBehaviour
                 MaterialData matDataRef = materialInventory[index];
 
                 _matName = "Material - " + matDataRef.Material;
+                _matLevel = "\nLevel: " + matDataRef.LevelRequirement;
                 _matType = "\nType - " + matDataRef.MaterialType;
                 _matStrength = "\nStrength: " + matDataRef.AddedStrength.ToString();
                 _matDex = "\nDextarity: " + matDataRef.AddedDextarity.ToString();
                 _matInt = "\nIntelegence: " + matDataRef.AddedIntelligence.ToString();
                 _matValue = "\nValue: " + matDataRef.BaseCostPerUnit.ToString();
 
-                _descriptionText.text = _matName + _matType + _matValue + "\n" + _matStrength + _matDex + _matInt;
+                _descriptionText.text = _matName + _matType + _matLevel + _matValue + "\n" + _matStrength + _matDex + _matInt;
             }
             else
                 _descriptionText.text = "new text";

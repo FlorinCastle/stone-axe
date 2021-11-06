@@ -41,6 +41,7 @@ public class MaterialData : ScriptableObject
         return false;
     }
 
+    public int LevelRequirement { get => _levelRequirement; }
     public string Material { get => _materialName; }
     public string MaterialType { get => _materialType.ToString(); }
     public string SubMaterialTybe { get => _subMatType.ToString(); }
