@@ -56,7 +56,7 @@ public class QuestControl : MonoBehaviour
         {
             _questName.text = _chosenQuest.QuestName;
             _questText.text = _chosenQuest.QuestDiscription;
-            if (_chosenQuest.QuestType == "OCC_Item")
+            if (_chosenQuest.QuestType == "OCC_Item" || _chosenQuest.QuestType == "OCC_TotalCrafted")
             {
                 _questName.text += " (" + currentItemCount + "/" + reqItemCount + ")";
                 _questText.text += ": " + _chosenQuest.RequiredItem.ItemName;

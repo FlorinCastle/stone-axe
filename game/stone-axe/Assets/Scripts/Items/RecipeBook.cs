@@ -16,6 +16,7 @@ public class RecipeBook : MonoBehaviour
     [SerializeField] private Text _recipeText;
     [SerializeField] private Button _recipeSelectButton;
     [SerializeField] private GameObject _contentRef;
+    [SerializeField] private GameObject _filterUI;
     [Header("Prefabs")]
     [SerializeField] private GameObject _itemRecipeInfoPrefab;
     [SerializeField] private GameObject _partRecipeInfoPrefab;
@@ -26,11 +27,13 @@ public class RecipeBook : MonoBehaviour
         recipeButtons = new List<GameObject>();
         setupRecipeGrid();
         _recipeText.text = "";
+        _filterUI.SetActive(false);
     }
 
     public void disableRecipeSelectButton()
     {
         _recipeSelectButton.interactable = false;
+        _filterUI.SetActive(false);
     }
 
     public void prepToSelectRecipe()
@@ -246,5 +249,10 @@ public class RecipeBook : MonoBehaviour
     public PartData getSeletedPartRecipe()
     {
         return _selectedPartRecipe;
+    }
+
+    public void toggleFilterUI()
+    {
+        _filterUI.SetActive(!_filterUI.activeInHierarchy);
     }
 }
