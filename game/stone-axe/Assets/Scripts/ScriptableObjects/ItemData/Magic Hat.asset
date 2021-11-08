@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Magic Hat
   m_EditorClassIdentifier: 
   _itemName: Magic Hat
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: 4610915c03b054a49a878f1adccee3c5, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 4610915c03b054a49a878f1adccee3c5, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: bd12b16edaea7834eb767d8915e7c36a, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: bd12b16edaea7834eb767d8915e7c36a, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: e6008839e5faca343b35824fef1bf1e4, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: e6008839e5faca343b35824fef1bf1e4, type: 2}
   _baseCost: 23

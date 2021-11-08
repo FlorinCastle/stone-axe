@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Mace
   m_EditorClassIdentifier: 
   _itemName: Mace
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: 73e59a353565ffa459c35863677b8235, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 73e59a353565ffa459c35863677b8235, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: 48aabbbb748c25644b5c4ebf7d5d2cb3, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: 48aabbbb748c25644b5c4ebf7d5d2cb3, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 25

@@ -817,7 +817,35 @@ public class InventoryScript : MonoBehaviour
         _selectedItem = null;
         //_descriptionText.text = "item text";
     }
-    
+    public void RemoveItem(GameObject item)
+    {
+        foreach (GameObject go in _itemInventoryData)
+        {
+            if (item == go)
+            {
+                int index = _itemInventoryData.IndexOf(go);
+                Destroy(item);
+                _descriptionText.text = "item text";
+                _itemInventoryData[index] = null;
+                _selectedItem = null;
+                break;
+            }
+        }
+    }
+
+    public void RemovePart(GameObject part)
+    {
+        foreach (GameObject go in _partInventoryData)
+        {
+            if (part == go)
+            {
+                int index = _partInventoryData.IndexOf(go);
+                _partInventoryData[index] = null;
+                break;
+            }
+        }
+    }
+
     private int InsertMaterial(MaterialData mat)
     {
         for (int m = 0; m < materialInventory.Count; m++)

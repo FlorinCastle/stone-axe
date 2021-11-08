@@ -38,6 +38,7 @@ public class MiniGameControl : MonoBehaviour
     {
         _craftingMinigameUI.SetActive(true);
         _disassemblyMinigameUI.SetActive(false);
+        populateHitPoints();
     }
 
     public void startDisassemblyMiniGame()

@@ -35,6 +35,7 @@ public class GenerateItem : MonoBehaviour
     public void GenerateRandomItem()
     {
         _generatedItem = itemScript.chooseItem();
+        //Debug.Log("generated item: " + _generatedItem.ItemName);
         int ranEnchChance = Random.Range(0, 1000);
         if (ranEnchChance >= 100)
         {

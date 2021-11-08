@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Ring
   m_EditorClassIdentifier: 
   _itemName: Ring
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: f1788bbd3600cb047a0f4fbfceae01fe, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: f1788bbd3600cb047a0f4fbfceae01fe, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: 527d41718bdee5e4293d614e3c8918c9, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: 527d41718bdee5e4293d614e3c8918c9, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: 4543bb96cd0ed64468c9c287671e0483, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: 4543bb96cd0ed64468c9c287671e0483, type: 2}
   _baseCost: 28

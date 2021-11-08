@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Magic Staff
   m_EditorClassIdentifier: 
   _itemName: Magic Staff
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: c1bd77792eb18c346b125fdd86575f6c, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: c1bd77792eb18c346b125fdd86575f6c, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: 39315e6808b2f2a4e9d8e1d61f89154d, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: 39315e6808b2f2a4e9d8e1d61f89154d, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: f1bac052971d22141a1468172dee784b, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: f1bac052971d22141a1468172dee784b, type: 2}
   _baseCost: 23

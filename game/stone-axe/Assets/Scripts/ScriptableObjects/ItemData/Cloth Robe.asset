@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Cloth Robe
   m_EditorClassIdentifier: 
   _itemName: Cloth Robe
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: 0099b7ed353b01c4c8beb62e48a39876, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 0099b7ed353b01c4c8beb62e48a39876, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: 6bdc22f9bca3fcb4ab530617e2ec7c9b, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: 6bdc22f9bca3fcb4ab530617e2ec7c9b, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: a9f726ac3f3884a4da011a55f3063813, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: a9f726ac3f3884a4da011a55f3063813, type: 2}
   _baseCost: 28

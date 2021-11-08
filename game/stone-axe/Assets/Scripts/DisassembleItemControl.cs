@@ -165,7 +165,8 @@ public class DisassembleItemControl : MonoBehaviour
             }
         }
         // remove item from inventory
-        _invScriptRef.RemoveItem(_selectedItem.GetComponent<ItemDataStorage>().InventoryIndex);
+        //_invScriptRef.RemoveItem(_selectedItem.GetComponent<ItemDataStorage>().InventoryIndex);
+        _invScriptRef.RemoveItem(_selectedItem);
 
         this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
 

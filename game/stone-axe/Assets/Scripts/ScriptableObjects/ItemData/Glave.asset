@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Glave
   m_EditorClassIdentifier: 
   _itemName: Glave
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: 6b7061e9f995d3340aea8f1b8470bef7, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 6b7061e9f995d3340aea8f1b8470bef7, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: 49f0d999a34fb044cacc4c7d5a6c3cb1, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: 49f0d999a34fb044cacc4c7d5a6c3cb1, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 32

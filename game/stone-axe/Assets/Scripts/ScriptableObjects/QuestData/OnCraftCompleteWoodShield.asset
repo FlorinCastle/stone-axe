@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 906549ced2b40c84c8a9474b679e6739, type: 3}
-  m_Name: OnCraftCompleteItem
+  m_Name: OnCraftCompleteWoodShield
   m_EditorClassIdentifier: 
-  _questName: On Craft Complete Item
+  _questName: Craft Wood Shield
   _questDiscription: craft this item
   _questType: 1
-  _requiredItem: {fileID: 11400000, guid: 0aba0d063fffe684d90c0df5e99560d8, type: 2}
+  _requiredItem: {fileID: 11400000, guid: 1f65688b1bb60484a85acc7f1d1720d3, type: 2}
   _requiredMaterial: {fileID: 0}
   _requiredCount: 0
   _nextQuest: {fileID: 0}

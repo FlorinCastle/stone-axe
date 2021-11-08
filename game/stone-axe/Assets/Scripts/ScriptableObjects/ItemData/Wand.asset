@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Wand
   m_EditorClassIdentifier: 
   _itemName: Wand
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: 2acfc6e0342d12e4880c419d1514535c, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 2acfc6e0342d12e4880c419d1514535c, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: 66a78a63f91673e409e71c181209000b, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: 66a78a63f91673e409e71c181209000b, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: 681dea017584d9d42850eea23071b46c, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: 681dea017584d9d42850eea23071b46c, type: 2}
   _baseCost: 28

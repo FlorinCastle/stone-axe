@@ -98,7 +98,8 @@ public class SellItemControl : MonoBehaviour
 
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().addCurrency(Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _haggleSuccessSkill.getModifiedPrice())));
 
-        _invScriptRef.RemoveItem(_itemData.InventoryIndex);
+        //_invScriptRef.RemoveItem(_itemData.InventoryIndex);
+        _invScriptRef.RemoveItem(_selectedItem);
 
         this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
         clearSellMenu();

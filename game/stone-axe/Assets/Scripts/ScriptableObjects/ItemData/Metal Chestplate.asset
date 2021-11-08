@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Metal Chestplate
   m_EditorClassIdentifier: 
   _itemName: Metal Chestplate
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: f70d2bad399cf524a96f80c3af711fc4, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: f70d2bad399cf524a96f80c3af711fc4, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: 78fefe8565bb40848918725f3bbc3740, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: 78fefe8565bb40848918725f3bbc3740, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: ac58c2151275da14cba38ad548c01080, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: ac58c2151275da14cba38ad548c01080, type: 2}
   _baseCost: 30

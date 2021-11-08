@@ -13,17 +13,18 @@ MonoBehaviour:
   m_Name: Rapier
   m_EditorClassIdentifier: 
   _itemName: Rapier
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: 72e487bb1e4195d44a79d0e2469de4fc, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 72e487bb1e4195d44a79d0e2469de4fc, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: 481856a10254f7946b4cbdab8856a0cf, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: 481856a10254f7946b4cbdab8856a0cf, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 30
   _baseStrenght: 5
   _baseDextarity: 4
   _baseIntelligence: 1
-  _isEnchanted: 0
+  _isEnchanted: 1

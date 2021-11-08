@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Short Sword
   m_EditorClassIdentifier: 
   _itemName: Short Sword
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: 7e02b1d05b5c6d744932abe03837e8e0, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 7e02b1d05b5c6d744932abe03837e8e0, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: 481856a10254f7946b4cbdab8856a0cf, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: 481856a10254f7946b4cbdab8856a0cf, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 20

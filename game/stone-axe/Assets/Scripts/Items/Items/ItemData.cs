@@ -33,7 +33,6 @@ public class ItemData : ScriptableObject
     [SerializeField]
     private bool _isEnchanted;
 
-    
     public string ItemName { get => _itemName; }
     public int ItemLevel { get => _levelRequirement; }
     public int TotalValue { get => _baseCost + _part1.TotalCurrentValue + _part2.TotalCurrentValue + _part3.TotalCurrentValue; }

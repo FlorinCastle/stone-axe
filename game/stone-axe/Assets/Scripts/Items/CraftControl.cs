@@ -308,10 +308,15 @@ public class CraftControl : MonoBehaviour
         // (re)move parts
         _chosenPart1.transform.parent = itemDataStorageTemp.transform;
         itemDataStorageRef.setPart1(_chosenPart1.GetComponent<PartDataStorage>());
+        //_inventoryControlReference.RemovePart(_part1DataRef);
+
         _chosenPart2.transform.parent = itemDataStorageTemp.transform;
         itemDataStorageRef.setPart2(_chosenPart2.GetComponent<PartDataStorage>());
+        //_inventoryControlReference.RemovePart(_part2DataRef);
+
         _chosenPart3.transform.parent = itemDataStorageTemp.transform;
         itemDataStorageRef.setPart3(_chosenPart3.GetComponent<PartDataStorage>());
+        //_inventoryControlReference.RemovePart(_part3DataRef);
 
         // check if any chosen parts are enchanted
         // if so, move enchant to main item
@@ -370,10 +375,13 @@ public class CraftControl : MonoBehaviour
         _chosenItemRecipe = null;
         itemDataStorageTemp = null;
         itemDataStorageRef = null;
+        _inventoryControlReference.RemovePart(_chosenPart1);
         _chosenPart1 = null;
         _part1DataRef = null;
+        _inventoryControlReference.RemovePart(_chosenPart2);
         _chosenPart2 = null;
         _part2DataRef = null;
+        _inventoryControlReference.RemovePart(_chosenPart3);
         _chosenPart3 = null;
         _part3DataRef = null;
 

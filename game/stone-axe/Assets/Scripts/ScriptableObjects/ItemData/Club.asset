@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Club
   m_EditorClassIdentifier: 
   _itemName: Club
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: 403fd0f130fe77345b6dde9bbc6d02b4, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 403fd0f130fe77345b6dde9bbc6d02b4, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: b5fdbac325f54eb4a8e821d62cb32c07, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: b5fdbac325f54eb4a8e821d62cb32c07, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 22

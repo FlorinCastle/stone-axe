@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Great Sword
   m_EditorClassIdentifier: 
   _itemName: Great Sword
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: 9a92fa346eeb8b64cb85eb2639ff48b8, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 9a92fa346eeb8b64cb85eb2639ff48b8, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: 48a17134923977d46939fce7f931a600, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: 48a17134923977d46939fce7f931a600, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 32

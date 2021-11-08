@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Metal Shield
   m_EditorClassIdentifier: 
   _itemName: Metal Shield
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: d0640d2ae56a64241a508e572e8b0103, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: d0640d2ae56a64241a508e572e8b0103, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: 7edf5f63ae38079448e1da1af9cc66e1, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: 7edf5f63ae38079448e1da1af9cc66e1, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: 5d102162b4ad7a748bc2a31b842bafef, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: 5d102162b4ad7a748bc2a31b842bafef, type: 2}
   _baseCost: 28

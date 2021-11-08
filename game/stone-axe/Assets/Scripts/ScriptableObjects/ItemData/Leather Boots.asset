@@ -13,17 +13,18 @@ MonoBehaviour:
   m_Name: Leather Boots
   m_EditorClassIdentifier: 
   _itemName: Leather Boots
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: 215355c14ba8d7f4898c9bbbad3aa36c, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 215355c14ba8d7f4898c9bbbad3aa36c, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: e701e5c007c848e448f4775b9e5c442d, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: e701e5c007c848e448f4775b9e5c442d, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: 41300328d46d9bd43986fe3a1857e4d0, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: 41300328d46d9bd43986fe3a1857e4d0, type: 2}
   _baseCost: 20
   _baseStrenght: 3
   _baseDextarity: 5
   _baseIntelligence: 2
-  _isEnchanted: 0
+  _isEnchanted: 1

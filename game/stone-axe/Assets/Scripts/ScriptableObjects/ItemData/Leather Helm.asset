@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Leather Helm
   m_EditorClassIdentifier: 
   _itemName: Leather Helm
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: f42da3e3febdbfd458add1214f07a7ca, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: f42da3e3febdbfd458add1214f07a7ca, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: 2d5adce6fefcae548a99d308f80210b3, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: 2d5adce6fefcae548a99d308f80210b3, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: b9ef74e0e026be94b8892956950e09c8, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: b9ef74e0e026be94b8892956950e09c8, type: 2}
   _baseCost: 20

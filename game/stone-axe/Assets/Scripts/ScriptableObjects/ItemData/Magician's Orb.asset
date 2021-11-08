@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Magician's Orb
   m_EditorClassIdentifier: 
   _itemName: Magician's Orb
-  _part1: {fileID: 0}
+  _levelRequirement: 0
+  _part1: {fileID: 11400000, guid: 0c394eafc001483488e07fe06842f262, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 0c394eafc001483488e07fe06842f262, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: 0513c3377d7ea804d9acd816f5bf297e, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: 0513c3377d7ea804d9acd816f5bf297e, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: 72bc31ccfff37364d9c2bb261e5fc262, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: 72bc31ccfff37364d9c2bb261e5fc262, type: 2}
   _baseCost: 30
