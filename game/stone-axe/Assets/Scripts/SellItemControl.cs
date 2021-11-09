@@ -8,16 +8,23 @@ public class SellItemControl : MonoBehaviour
     [SerializeField] private InventoryScript _invScriptRef;
     [SerializeField] private UIControl _uIControlRef;
     [SerializeField] private GameObject _selectedItem;
-    [Header("UI")]
+    [Header("Shop UI")]
     [SerializeField] private Text _itemText;
     [SerializeField] private Button _sellItemButton;
     [SerializeField] private Button _refuseButton;
     [SerializeField] private Button _haggleButton;
+    [Header("Market UI")]
+    [SerializeField] private Text _marketItemText;
+    [SerializeField] private Button _marketSellItemButton;
+    [SerializeField] private Button _marketRefuseButton;
+    [SerializeField] private Button _marketHaggleButton;
     [Header("Modifying Skills")]
     [SerializeField] private ECO_IncSellPrice _sellPriceSkill;
     [SerializeField] private ECO_HaggleSuccess _haggleSuccessSkill;
+    [SerializeField] private float _marketModifier = 0.1f;
 
     private bool haggleSucceded = false;
+    private int sellingState = 0;
 
     private void Awake()
     {
@@ -31,6 +38,11 @@ public class SellItemControl : MonoBehaviour
         _refuseButton.interactable = false;
         _haggleButton.interactable = false;
         _haggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: n/a)";
+
+        _marketSellItemButton.interactable = false;
+        _marketRefuseButton.interactable = false;
+        _marketHaggleButton.interactable = false;
+        _marketHaggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: n/a)";
     }
 
     public void suggestAlt()
@@ -43,11 +55,22 @@ public class SellItemControl : MonoBehaviour
         _selectedItem = _invScriptRef.getSelectedItem();
         if (_selectedItem != null)
         {
-            //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
-            setupDiscription();
-            _sellItemButton.interactable = true;
-            _refuseButton.interactable = true;
-            _haggleButton.interactable = true;
+            if (sellingState == 0)
+            {
+                //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
+                setupDiscription();
+                _sellItemButton.interactable = true;
+                _refuseButton.interactable = true;
+                _haggleButton.interactable = true;
+            }
+            else if (sellingState == 1)
+            {
+                //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
+                setupDiscription();
+                _marketSellItemButton.interactable = true;
+                _marketRefuseButton.interactable = true;
+                _marketHaggleButton.interactable = true;
+            }
         }
         else
         {
@@ -79,13 +102,26 @@ public class SellItemControl : MonoBehaviour
         _totalValue = "\n\nValue: " + _itemData.TotalValue;
 
         // organize the texts
-        _itemText.text = _itemName +
-            "\nStats" + _totalStrength + _totalDex + _totalInt
-            + _materials + _totalValue;
+        if (sellingState == 0)
+        {
+            _itemText.text = _itemName +
+                "\nStats" + _totalStrength + _totalDex + _totalInt
+                + _materials + _totalValue;
 
-        _sellItemButton.GetComponentInChildren<Text>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * _sellPriceSkill.getModifiedSellPrice());
+            _sellItemButton.GetComponentInChildren<Text>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * _sellPriceSkill.getModifiedSellPrice());
 
-        _haggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: " + (_haggleSuccessSkill.getHaggleChance()).ToString() + "%)";
+            _haggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: " + (_haggleSuccessSkill.getHaggleChance()).ToString() + "%)";
+        }
+        else if (sellingState == 1)
+        {
+            _marketItemText.text = _itemName +
+                "\nStats" + _totalStrength + _totalDex + _totalInt
+                + _materials + _totalValue;
+
+            _marketSellItemButton.GetComponentInChildren<Text>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _marketModifier));
+
+            _marketHaggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: " + (_haggleSuccessSkill.getHaggleChance()).ToString() + "%)";
+        }
     }
 
     public void sellItem()
@@ -93,10 +129,20 @@ public class SellItemControl : MonoBehaviour
         _itemData = _selectedItem.GetComponent<ItemDataStorage>();
 
         if (haggleSucceded == false)
-            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().addCurrency(Mathf.RoundToInt(_itemData.TotalValue * _sellPriceSkill.getModifiedSellPrice()));
+        {
+            if (sellingState == 0)
+                GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().addCurrency(Mathf.RoundToInt(_itemData.TotalValue * _sellPriceSkill.getModifiedSellPrice()));
+            else if (sellingState == 1)
+                GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().addCurrency(Mathf.RoundToInt(_itemData.TotalValue * _sellPriceSkill.getModifiedSellPrice() + _marketModifier));
+        }
         else if (haggleSucceded == true)
+        {
+            if (sellingState == 0)
+                GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().addCurrency(Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _haggleSuccessSkill.getModifiedPrice())));
+            else if (sellingState == 1)
+                GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().addCurrency(Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _haggleSuccessSkill.getModifiedPrice()) + _marketModifier));
+        }
 
-            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().addCurrency(Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _haggleSuccessSkill.getModifiedPrice())));
 
         //_invScriptRef.RemoveItem(_itemData.InventoryIndex);
         _invScriptRef.RemoveItem(_selectedItem);
@@ -117,10 +163,15 @@ public class SellItemControl : MonoBehaviour
         {
             Debug.Log("haggle success");
             haggleSucceded = true;
-            _sellItemButton.GetComponentInChildren<Text>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _haggleSuccessSkill.getModifiedPrice()));
+            if (sellingState == 0)
+                _sellItemButton.GetComponentInChildren<Text>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _haggleSuccessSkill.getModifiedPrice()));
+            else if (sellingState == 1)
+                _marketSellItemButton.GetComponentInChildren<Text>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _haggleSuccessSkill.getModifiedPrice() + _marketModifier));
         }
         _haggleButton.GetComponentInChildren<Text>().text = "haggle\ncomplete";
         _haggleButton.interactable = false;
+        _marketHaggleButton.GetComponentInChildren<Text>().text = "haggle\ncomplete";
+        _marketHaggleButton.interactable = false;
     }
     
     public void clearSellMenu()
@@ -133,5 +184,15 @@ public class SellItemControl : MonoBehaviour
         _refuseButton.interactable = false;
         _haggleButton.interactable = false;
         haggleSucceded = false;
+
+        _marketItemText.text = "item text";
+        _marketSellItemButton.GetComponentInChildren<Text>().text = "sell: [price]";
+        _marketHaggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: n/a)";
+        _marketSellItemButton.interactable = false;
+        _marketRefuseButton.interactable = false;
+        _marketHaggleButton.interactable = false;
+        haggleSucceded = false;
     }
+
+    public int SellingState { get => sellingState; set => sellingState = value; }
 }
