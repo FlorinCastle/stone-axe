@@ -12,14 +12,18 @@ public class RecipeBook : MonoBehaviour
     [SerializeField, HideInInspector] private List<GameObject> recipeButtons;
     [SerializeField] private ItemData _selectedItemRecipe;
     [SerializeField] private PartData _selectedPartRecipe;
+    [Header("Filters")]
+    [SerializeField] private List<FilterData> filterData;
     [Header("UI References")]
     [SerializeField] private Text _recipeText;
     [SerializeField] private Button _recipeSelectButton;
     [SerializeField] private GameObject _contentRef;
     [SerializeField] private GameObject _filterUI;
+    [SerializeField] private GameObject _filterParent;
     [Header("Prefabs")]
     [SerializeField] private GameObject _itemRecipeInfoPrefab;
     [SerializeField] private GameObject _partRecipeInfoPrefab;
+    [SerializeField] private GameObject _filterPrefab;
 
     private void Awake()
     {
@@ -27,6 +31,7 @@ public class RecipeBook : MonoBehaviour
         recipeButtons = new List<GameObject>();
         setupRecipeGrid();
         _recipeText.text = "";
+        setupFilterUI();
         _filterUI.SetActive(false);
     }
 
@@ -249,6 +254,18 @@ public class RecipeBook : MonoBehaviour
     public PartData getSeletedPartRecipe()
     {
         return _selectedPartRecipe;
+    }
+
+    public void setupFilterUI()
+    {
+        foreach(FilterData filter in filterData)
+        {
+            GameObject filterPlaceholder = Instantiate(_filterPrefab);
+            filterPlaceholder.transform.SetParent(_filterParent.transform, false);
+            filterPlaceholder.GetComponent<Filter>().FilterDataRef = filter;
+            filterPlaceholder.GetComponent<Filter>().setupFilter();
+        }
+
     }
 
     public void toggleFilterUI()

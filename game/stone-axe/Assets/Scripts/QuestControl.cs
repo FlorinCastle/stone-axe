@@ -10,6 +10,12 @@ public class QuestControl : MonoBehaviour
     [SerializeField]
     private QuestData _chosenQuest;
 
+    [SerializeField] private QuestSheet _questSheet1;
+    [SerializeField] private QuestSheet _questSheet2;
+    [SerializeField] private QuestSheet _questSheet3;
+
+    private QuestSheet _selectedSheet;
+
     [Header("UI")]
     [SerializeField]
     private Text _questName;
@@ -28,8 +34,13 @@ public class QuestControl : MonoBehaviour
     private void Awake()
     {
         _repeatableQuests = _questRef.getRepeatableQuests();
-        setupText();
-        
+    }
+
+    private void Start()
+    {
+        setupQuest1();
+        setupQuest2();
+        setupQuest3();
     }
 
     private void FixedUpdate()
@@ -39,15 +50,72 @@ public class QuestControl : MonoBehaviour
                 updateQuestProgress(_chosenQuest.ReqiredMaterial);
     }
 
-    public void chooseNewQuest()
+    public void chooseQuestSheet(QuestSheet input)
     {
-        int index = Random.Range(0, _repeatableQuests.Count);
-        _chosenQuest = _repeatableQuests[index];
+        if (input == _questSheet1)
+        {
+            _selectedSheet = _questSheet1;
+        }
+        else if (input == _questSheet2)
+        {
+            _selectedSheet = _questSheet2;
+        }
+        else if (input == _questSheet3)
+        {
+            _selectedSheet = _questSheet3;
+        }
+    }
 
-        //Debug.Log("chosen quest: " + _chosenQuest.QuestName);
+    public void setupQuest1()
+    {
+        if (_questSheet1 != null)
+        {
+            int i = Random.Range(0, _repeatableQuests.Count);
+            _questSheet1.Quest = _repeatableQuests[i];
+            _questSheet1.setQuestDetails();
+
+        }
+        else Debug.LogWarning("Quest sheet 1 is not assigned");
+    }
+    public void setupQuest2()
+    {
+        if (_questSheet2 != null)
+        {
+            int j = Random.Range(0, _repeatableQuests.Count);
+            _questSheet2.Quest = _repeatableQuests[j];
+            _questSheet2.setQuestDetails();
+
+        }
+        else Debug.LogWarning("Quest sheet 2 is not assigned");
+    }
+    public void setupQuest3()
+    {
+        if (_questSheet3 != null)
+        {
+            int k = Random.Range(0, _repeatableQuests.Count);
+            _questSheet3.Quest = _repeatableQuests[k];
+            _questSheet3.setQuestDetails();
+
+        }
+        else Debug.LogWarning("Quest sheet 3 is not assigned");
+    }
+
+    public void acceptQuest()
+    {
         setupQuest();
         setupText();
-        _completeQuestButton.interactable = false;
+    }
+
+    public void rerollQuest()
+    {
+        if (_selectedSheet == _questSheet1)
+            setupQuest1();
+        else if (_selectedSheet == _questSheet2)
+            setupQuest2();
+        else if (_selectedSheet == _questSheet3)
+            setupQuest3();
+        else
+            Debug.LogWarning("no quest sheet selected!");
     }
 
     public void setupText()
@@ -77,8 +145,10 @@ public class QuestControl : MonoBehaviour
 
     public void setupQuest()
     {
-        if (_chosenQuest != null)
+        if (_selectedSheet != null)
         {
+            _chosenQuest = _selectedSheet.Quest;
+            _selectedSheet.confirmQuest();
             if (_chosenQuest.QuestType == "OCC_Item")
             {
                 reqItemCount = 1;
@@ -96,6 +166,14 @@ public class QuestControl : MonoBehaviour
                 reqItemCount = _chosenQuest.ReqiredCount;
             }
         }
+    }
+
+    public bool questChosen()
+    {
+        if (_chosenQuest != null)
+            return true;
+        else
+            return false;
     }
 
     //overload 1 (basic item crafting)
@@ -164,5 +242,7 @@ public class QuestControl : MonoBehaviour
         _chosenQuest = null;
         setupText();
         currentItemCount = 0;
+        rerollQuest();
+        _selectedSheet = null;
     }
 }
