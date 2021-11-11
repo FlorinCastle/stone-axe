@@ -5,7 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewFilterData", menuName = "FilterData", order = 58)]
 public class FilterData : ScriptableObject
 {
-    [SerializeField] private string _filterName;
+    public string _filterName;
+    public bool _hasSubFilters;
+    public List<FilterData> _subFilters;
 
     public string FilterName { get => _filterName; }
+    public bool HasSubFilters { get => _hasSubFilters; }
+    public List<FilterData> SubFilters { get => _subFilters; }
 }

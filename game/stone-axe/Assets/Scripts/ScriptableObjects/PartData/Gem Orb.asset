@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gem Orb
   m_EditorClassIdentifier: 
   _partName: Gem Orb
-  _material: {fileID: 0}
+  _material: {fileID: 11400000, guid: 76bd0065f11d4bf4b910a384a801a781, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: 06b9aebefd67bea4fad7a9ec99861549, type: 2}
   - {fileID: 11400000, guid: f9ff7a3994c4ed340b791d693187aa9d, type: 2}
@@ -26,3 +26,6 @@ MonoBehaviour:
   _baseStrenght: 0
   _baseDextarity: 0
   _baseIntelligence: 4
+  _filters:
+  - {fileID: 11400000, guid: 10c48989c4e143c439a232a261506541, type: 2}
+  - {fileID: 11400000, guid: f1a4d420e41507b4f9ebff7193236ff7, type: 2}

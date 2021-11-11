@@ -33,6 +33,9 @@ public class ItemData : ScriptableObject
     [SerializeField]
     private bool _isEnchanted;
 
+    [SerializeField]
+    private List<FilterData> _filters;
+
     public string ItemName { get => _itemName; }
     public int ItemLevel { get => _levelRequirement; }
     public int TotalValue { get => _baseCost + _part1.TotalCurrentValue + _part2.TotalCurrentValue + _part3.TotalCurrentValue; }
@@ -65,4 +68,5 @@ public class ItemData : ScriptableObject
     public List<PartData> ValidParts2 { get => _validPart2; } 
     public List<PartData> ValidParts3 { get => _validPart3; }
 
+    public List<FilterData> ValidFilters { get => _filters; }
 }

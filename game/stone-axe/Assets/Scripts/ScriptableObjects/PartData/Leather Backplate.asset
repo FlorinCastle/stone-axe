@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Leather Backplate
   m_EditorClassIdentifier: 
   _partName: Leather Backplate
-  _material: {fileID: 0}
+  _material: {fileID: 11400000, guid: 3daa26c81517ad7469d747e94fe5e2f4, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
   - {fileID: 11400000, guid: 3daa26c81517ad7469d747e94fe5e2f4, type: 2}
@@ -26,3 +26,7 @@ MonoBehaviour:
   _baseStrenght: 2
   _baseDextarity: 2
   _baseIntelligence: 0
+  _filters:
+  - {fileID: 11400000, guid: 10c48989c4e143c439a232a261506541, type: 2}
+  - {fileID: 11400000, guid: 20b136f7b5c2b5640a2c3026b92bca7a, type: 2}
+  - {fileID: 11400000, guid: fcc69f66b3a91d24889fe2d1b51e29f6, type: 2}

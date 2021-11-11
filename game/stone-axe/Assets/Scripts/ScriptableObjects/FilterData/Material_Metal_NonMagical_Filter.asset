@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3164c9b5e299814ba7ea4bdc5524074, type: 3}
   m_Name: Material_Metal_NonMagical_Filter
   m_EditorClassIdentifier: 
-  _filterName: Non-Magical Metal
+  _filterName: Subtype - Non-Magical Metal
+  _hasSubFilters: 0
+  _subFilters: []

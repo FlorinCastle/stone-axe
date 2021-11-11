@@ -26,6 +26,9 @@ public class PartData : ScriptableObject
     [SerializeField]
     private int _baseIntelligence;
 
+    [SerializeField]
+    private List<FilterData> _filters;
+
     private int ranIndex;
 
     public string PartName
@@ -79,4 +82,6 @@ public class PartData : ScriptableObject
     public int BaseDextarity { get { return _baseDextarity; } }
     public int PartIntelligence { get { return _baseIntelligence + _material.AddedIntelligence; } } 
     public int BaseIntelligence { get { return _baseIntelligence; } }
+
+    public List<FilterData> ValidFilters { get => _filters; }
 }

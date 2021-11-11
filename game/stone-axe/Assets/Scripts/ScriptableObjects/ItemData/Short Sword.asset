@@ -27,4 +27,8 @@ MonoBehaviour:
   _baseStrenght: 3
   _baseDextarity: 5
   _baseIntelligence: 2
-  _isEnchanted: 0
+  _isEnchanted: 1
+  _filters:
+  - {fileID: 11400000, guid: b8da9b853241afa4ab2ed683bf25b60d, type: 2}
+  - {fileID: 11400000, guid: a8195541a0e5ad940b740274b75c2cf3, type: 2}
+  - {fileID: 11400000, guid: f6700d05ccb26f74ab2d5b80c5b1ede7, type: 2}

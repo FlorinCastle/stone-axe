@@ -29,3 +29,8 @@ MonoBehaviour:
   _baseStrenght: 3
   _baseDextarity: 1
   _baseIntelligence: 0
+  _filters:
+  - {fileID: 11400000, guid: 10c48989c4e143c439a232a261506541, type: 2}
+  - {fileID: 11400000, guid: ff815341c89891f49ab73626b6633673, type: 2}
+  - {fileID: 11400000, guid: 9fbaae89baca66344a9e3db4d2074318, type: 2}
+  - {fileID: 11400000, guid: ecee1f96866bfa54abdd16f9872f8af0, type: 2}

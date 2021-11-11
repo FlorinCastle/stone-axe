@@ -10,10 +10,11 @@ public class RecipeBook : MonoBehaviour
     [SerializeField, HideInInspector] private List<string> itemRecipeName;
     [SerializeField, HideInInspector] private List<string> partRecipeName;
     [SerializeField, HideInInspector] private List<GameObject> recipeButtons;
-    [SerializeField] private ItemData _selectedItemRecipe;
-    [SerializeField] private PartData _selectedPartRecipe;
+    [SerializeField, HideInInspector] private ItemData _selectedItemRecipe;
+    [SerializeField, HideInInspector] private PartData _selectedPartRecipe;
     [Header("Filters")]
     [SerializeField] private List<FilterData> filterData;
+    [SerializeField, HideInInspector] private List<GameObject> filterButtons;
     [Header("UI References")]
     [SerializeField] private Text _recipeText;
     [SerializeField] private Button _recipeSelectButton;
@@ -185,13 +186,47 @@ public class RecipeBook : MonoBehaviour
         int r = 0;
         foreach (ItemData itemRecipe in itemRecipes)
         {
-
+            foreach (FilterData filter in itemRecipe.ValidFilters)
+                foreach (GameObject filterButton in filterButtons)
+                    if (filter == filterButton.GetComponent<Filter>().FilterDataRef)
+                        if (filterButton.GetComponent<Filter>().FilterEnabled)
+                        {
+                            // instantiate the button prefab
+                            tempButton = Instantiate(_itemRecipeInfoPrefab);
+                            tempButton.transform.SetParent(_contentRef.transform, false);
+                            tempButton.GetComponent<RecipeButton>().setRecipeName(itemRecipe.ItemName);
+                            // set up button text
+                            Text t = tempButton.GetComponentInChildren<Text>();
+                            t.text = itemRecipe.ItemName + " Recipe";
+                            tempButton.name = itemRecipe.ItemName + " Recipe";
+                            // add button to list
+                            InsertButton(tempButton);
+                        }
             r++;
         }
         foreach (PartData partRecipe in partRecipes)
         {
+            foreach (FilterData filter in partRecipe.ValidFilters)
+                foreach (GameObject filterButton in filterButtons)
+                    if (filter == filterButton.GetComponent<Filter>().FilterDataRef)
+                        if (filterButton.GetComponent<Filter>().FilterEnabled)
+                        {
+                            tempButton = Instantiate(_partRecipeInfoPrefab);
+                            tempButton.transform.SetParent(_contentRef.transform, false);
+                            tempButton.GetComponent<RecipeButton>().setRecipeName(partRecipe.PartName);
+
+                            Text t = tempButton.GetComponentInChildren<Text>();
+                            t.text = partRecipe.PartName + " Recipe";
+                            tempButton.name = partRecipe.PartName + " Recipe";
+                            // add button to list
+                            InsertButton(tempButton);
+                        }
 
             r++;
+        }
+        if (recipeButtons.Count == 0)
+        {
+            setupRecipeGrid();
         }
     }
 
@@ -199,9 +234,7 @@ public class RecipeBook : MonoBehaviour
     {
         foreach (GameObject go in recipeButtons)
             Destroy(go);
-
-        for (int r = 0; r < recipeButtons.Count; r++)
-            recipeButtons.RemoveAt(r);
+        recipeButtons.Clear();
     }
 
     private int InsertButton(GameObject button)
@@ -264,8 +297,8 @@ public class RecipeBook : MonoBehaviour
             filterPlaceholder.transform.SetParent(_filterParent.transform, false);
             filterPlaceholder.GetComponent<Filter>().FilterDataRef = filter;
             filterPlaceholder.GetComponent<Filter>().setupFilter();
+            filterButtons.Add(filterPlaceholder);
         }
-
     }
 
     public void toggleFilterUI()
