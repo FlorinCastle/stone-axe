@@ -13,6 +13,7 @@ public class QuestData : ScriptableObject
 
     public ItemData _requiredItem;
     public MaterialData _requiredMaterial;
+    public QuestItemData _requiredQuestItem;
     public int _requiredCount;
     public QuestData _nextQuest;
 
@@ -22,5 +23,6 @@ public class QuestData : ScriptableObject
 
     public ItemData RequiredItem { get => _requiredItem; }
     public MaterialData ReqiredMaterial { get => _requiredMaterial; }
+    public QuestItemData RequiredQuestItem { get => _requiredQuestItem; }
     public int ReqiredCount { get => _requiredCount; }
 }

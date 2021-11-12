@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 906549ced2b40c84c8a9474b679e6739, type: 3}
-  m_Name: Quest_OnCraftCompleteQuestItem
+  m_Name: Quest_CraftSmilingMask
   m_EditorClassIdentifier: 
-  _questName: On Craft Complete Quest Item
-  _questDiscription: craft this quest item
+  _questName: Craft Smiling Mask
+  _questDiscription: a green hooded figure has requested that a duplicate of the
+    one they bare be created
   _questType: 2
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
+  _requiredQuestItem: {fileID: 11400000, guid: 633f74539903d18418b54170147d0bc2, type: 2}
   _requiredCount: 0
   _nextQuest: {fileID: 0}

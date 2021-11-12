@@ -2158,6 +2158,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 66a78a63f91673e409e71c181209000b, type: 2}
   - {fileID: 11400000, guid: 681dea017584d9d42850eea23071b46c, type: 2}
   - {fileID: 11400000, guid: 9c7f6729ed6912646947da69c78ea188, type: 2}
+  questItemRecipes:
+  - {fileID: 11400000, guid: c5cd3c99f545ad3438463db3c0a3304d, type: 2}
+  - {fileID: 11400000, guid: 3a6c1490b42c2a6429fa057b0b52002b, type: 2}
+  - {fileID: 11400000, guid: 8138bfe9c97a64849a36f50a2a4f2d71, type: 2}
+  - {fileID: 11400000, guid: 4a358224e7ad79148bf3b838127f4058, type: 2}
+  - {fileID: 11400000, guid: 1b4876e8b310e914389cc13436383267, type: 2}
+  - {fileID: 11400000, guid: 511906394000b5a4fb2bdb43d8e8a506, type: 2}
+  - {fileID: 11400000, guid: 288501f55f64897468c9c1db5832b8c3, type: 2}
+  - {fileID: 11400000, guid: dcaf2545d12f2b145b3454e2df7b24c9, type: 2}
+  - {fileID: 11400000, guid: 9a7142e62edff5947a351c90839d4f22, type: 2}
+  - {fileID: 11400000, guid: 75fb357861e1a2d48867fafac6ffe96b, type: 2}
+  - {fileID: 11400000, guid: 1fe4a9478cebc974a8df82e2834dee40, type: 2}
+  - {fileID: 11400000, guid: 633f74539903d18418b54170147d0bc2, type: 2}
+  - {fileID: 11400000, guid: 731a917b8edefdd4e8102744ff15f29e, type: 2}
+  - {fileID: 11400000, guid: 40302358e82eca14d95c57c7c917b1d8, type: 2}
+  - {fileID: 11400000, guid: 30fa3fe65aa15ea4584a3f86c25390ec, type: 2}
+  - {fileID: 11400000, guid: 5a32c4cfb8f9abb40aebba43cf17a330, type: 2}
+  - {fileID: 11400000, guid: 241d6b3880973164690d46505b1eeb22, type: 2}
   itemRecipeName: []
   partRecipeName: []
   recipeButtons: []
@@ -2840,7 +2858,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2c12ec2419db4eb4ebdf261fa53583cb, type: 2}
   - {fileID: 11400000, guid: 67855cdef6f101848be2a28449d80ac6, type: 2}
   - {fileID: 11400000, guid: 577899b2c8a643f47948836c5da71f1e, type: 2}
+  - {fileID: 11400000, guid: 19ac8c9401c607544b04bab44d08cb06, type: 2}
+  - {fileID: 11400000, guid: 91c65078f10549d409f92402f96ea758, type: 2}
+  - {fileID: 11400000, guid: 26ebbc11caead7d4fb428c77e1963354, type: 2}
+  - {fileID: 11400000, guid: 87b18551b49d9634b81dbda1b259492f, type: 2}
+  - {fileID: 11400000, guid: 6f4059b203bbce7469ce98617b668ba2, type: 2}
+  - {fileID: 11400000, guid: 9bab471dbeea5f94abb0c676477ee317, type: 2}
+  - {fileID: 11400000, guid: e8200399525ffe346b4c947952911d01, type: 2}
+  - {fileID: 11400000, guid: ba37b941995eaeb4e922a39b88455d7a, type: 2}
+  - {fileID: 11400000, guid: a3678f2fd9e7877418312d51551e00dc, type: 2}
+  - {fileID: 11400000, guid: c53d986273e32d54c8f032d930abfaf8, type: 2}
+  - {fileID: 11400000, guid: 5a1a6d494bc12b04d8b33e06488c7b20, type: 2}
   - {fileID: 11400000, guid: 80fe7f698fe8b0e40b454339a3996724, type: 2}
+  - {fileID: 11400000, guid: be8fdea03f5e7e74db02ec85637baf4b, type: 2}
+  - {fileID: 11400000, guid: adf9ed708a057c9488d7c7c7f01d5f49, type: 2}
+  - {fileID: 11400000, guid: ec296aa6d734f194596c33df786c152e, type: 2}
+  - {fileID: 11400000, guid: cb1dcdd64795ab04e8c32a5614a76906, type: 2}
+  - {fileID: 11400000, guid: 853a3a0f48779d8449266f55634d56d1, type: 2}
   - {fileID: 11400000, guid: b513f70bebd368e42865c6a21fad0df2, type: 2}
   - {fileID: 11400000, guid: 29b15c4c3e08a9641a2275deb3ef5764, type: 2}
   _tutorialQuests: []

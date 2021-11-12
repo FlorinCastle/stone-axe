@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
+  m_Name: GoldenLasso
+  m_EditorClassIdentifier: 
+  _qItemName: Golden Lasso
+  _qItemLore: An item that is mainly used for restrainign others, but is also blessed
+    by a god(dess) of Truth and Fairness
+  _qItemPart1: {fileID: 11400000, guid: 3e0f8209da497274bb70b9f4a1a62cf8, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: cef5cc207515ad74093cd9473a392691, type: 2}
+  _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
+  _baseCost: 0
+  _baseStrength: 0
+  _baseDextarity: 0
+  _baseIntelligence: 0

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
+  m_Name: BlackSpikedCuirass
+  m_EditorClassIdentifier: 
+  _qItemName: Black Spiked Cuirass
+  _qItemLore: Black chestplate with spikes and deep red accents across the breastplate.
+    A dark, otherworldly aura from a demonic creature emits from this armor
+  _qItemPart1: {fileID: 11400000, guid: f70d2bad399cf524a96f80c3af711fc4, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: 78fefe8565bb40848918725f3bbc3740, type: 2}
+  _qItemPart3: {fileID: 11400000, guid: ac58c2151275da14cba38ad548c01080, type: 2}
+  _baseCost: 0
+  _baseStrength: 0
+  _baseDextarity: 0
+  _baseIntelligence: 0

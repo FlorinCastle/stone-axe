@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
+  m_Name: RedCoveralls
+  m_EditorClassIdentifier: 
+  _qItemName: Red Coveralls
+  _qItemLore: Bright red coveralls, worn by a service worker. Well used, but sturdy
+    and will be used for much longer
+  _qItemPart1: {fileID: 11400000, guid: 0099b7ed353b01c4c8beb62e48a39876, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: 6bdc22f9bca3fcb4ab530617e2ec7c9b, type: 2}
+  _qItemPart3: {fileID: 11400000, guid: a9f726ac3f3884a4da011a55f3063813, type: 2}
+  _baseCost: 0
+  _baseStrength: 0
+  _baseDextarity: 0
+  _baseIntelligence: 0

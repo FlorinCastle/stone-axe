@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
+  m_Name: GoldenRing
+  m_EditorClassIdentifier: 
+  _qItemName: Golden Ring
+  _qItemLore: A ring forged by a madman to use to control the wearers of similer
+    rings. A bit warm to the touch
+  _qItemPart1: {fileID: 11400000, guid: f1788bbd3600cb047a0f4fbfceae01fe, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: 527d41718bdee5e4293d614e3c8918c9, type: 2}
+  _qItemPart3: {fileID: 11400000, guid: 4543bb96cd0ed64468c9c287671e0483, type: 2}
+  _baseCost: 0
+  _baseStrength: 0
+  _baseDextarity: 0
+  _baseIntelligence: 0

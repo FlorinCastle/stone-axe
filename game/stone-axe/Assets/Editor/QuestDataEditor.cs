@@ -12,6 +12,7 @@ public class QuestDataEditor : Editor
         questDiscription,
         reqItem,
         reqMat,
+        reqQItem,
         reqCount,
         nextQuest;
 
@@ -23,6 +24,7 @@ public class QuestDataEditor : Editor
 
         reqItem = serializedObject.FindProperty("_requiredItem");
         reqMat = serializedObject.FindProperty("_requiredMaterial");
+        reqQItem = serializedObject.FindProperty("_requiredQuestItem");
         reqCount = serializedObject.FindProperty("_requiredCount");
         nextQuest = serializedObject.FindProperty("_nextQuest");
     }
@@ -30,6 +32,7 @@ public class QuestDataEditor : Editor
     /* Disregard this
     reqItem.objectReferenceValue = null;
     reqMat.objectReferenceValue = null;
+    reqQItem.objectReferenceValue = null;
     reqCount.intValue = 0;
     nextQuest.objectReferenceValue = null;
     */
@@ -50,12 +53,15 @@ public class QuestDataEditor : Editor
             case QuestData.questTypeEnum.OCC_Item:
                 EditorGUILayout.PropertyField(reqItem, new GUIContent("Required Item"));
                 reqMat.objectReferenceValue = null;
+                reqQItem.objectReferenceValue = null;
                 reqCount.intValue = 0;
                 nextQuest.objectReferenceValue = null;
                 break;
 
             case QuestData.questTypeEnum.OCC_QuestItem:
-                //EditorGUILayout.PropertyField(occQItem_ReqItem, new GUIContent("Required Item"));
+                reqItem.objectReferenceValue = null;
+                reqMat.objectReferenceValue = null;
+                EditorGUILayout.PropertyField(reqQItem, new GUIContent("Required Item"));
                 reqCount.intValue = 0;
                 nextQuest.objectReferenceValue = null;
                 break;
@@ -63,6 +69,7 @@ public class QuestDataEditor : Editor
             case QuestData.questTypeEnum.OD_Material:
                 reqItem.objectReferenceValue = null;
                 EditorGUILayout.PropertyField(reqMat, new GUIContent("Required Material"));
+                reqQItem.objectReferenceValue = null;
                 EditorGUILayout.PropertyField(reqCount, new GUIContent("Material Count"));
                 nextQuest.objectReferenceValue = null;
                 break;
@@ -70,6 +77,7 @@ public class QuestDataEditor : Editor
             case QuestData.questTypeEnum.OCC_TotalCrafted:
                 EditorGUILayout.PropertyField(reqItem, new GUIContent("Required Item"));
                 reqMat.objectReferenceValue = null;
+                reqQItem.objectReferenceValue = null;
                 EditorGUILayout.PropertyField(reqCount, new GUIContent("Item Count"));
                 nextQuest.objectReferenceValue = null;
                 break;
@@ -77,6 +85,7 @@ public class QuestDataEditor : Editor
             case QuestData.questTypeEnum.Tutorial:
                 reqItem.objectReferenceValue = null;
                 reqMat.objectReferenceValue = null;
+                reqQItem.objectReferenceValue = null;
                 reqCount.intValue = 0;
                 EditorGUILayout.PropertyField(nextQuest);
                 break;
@@ -84,6 +93,7 @@ public class QuestDataEditor : Editor
             case QuestData.questTypeEnum.Story:
                 reqItem.objectReferenceValue = null;
                 reqMat.objectReferenceValue = null;
+                reqQItem.objectReferenceValue = null;
                 reqCount.intValue = 0;
                 EditorGUILayout.PropertyField(nextQuest);
                 break;

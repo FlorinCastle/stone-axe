@@ -7,6 +7,7 @@ public class RecipeBook : MonoBehaviour
 {
     [SerializeField] private List<ItemData> itemRecipes;
     [SerializeField] private List<PartData> partRecipes;
+    [SerializeField] private List<QuestItemData> questItemRecipes;
     [SerializeField, HideInInspector] private List<string> itemRecipeName;
     [SerializeField, HideInInspector] private List<string> partRecipeName;
     [SerializeField, HideInInspector] private List<GameObject> recipeButtons;

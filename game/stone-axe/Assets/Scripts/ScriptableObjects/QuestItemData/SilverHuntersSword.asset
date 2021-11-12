@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
+  m_Name: SilverHuntersSword
+  m_EditorClassIdentifier: 
+  _qItemName: Silver Hunter's Sword
+  _qItemLore: A hunter's blade made of silver. The silver blade is bane for terrifying
+    monsters. Often paired with a steel sword that is used for humans rather than
+    monsters
+  _qItemPart1: {fileID: 11400000, guid: 9da3680434e2c3e49806b931b533c9be, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: 481856a10254f7946b4cbdab8856a0cf, type: 2}
+  _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
+  _baseCost: 0
+  _baseStrength: 0
+  _baseDextarity: 0
+  _baseIntelligence: 0
