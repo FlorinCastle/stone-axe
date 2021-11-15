@@ -1394,6 +1394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1181822453}
   - component: {fileID: 1181822452}
+  - component: {fileID: 1181822454}
   m_Layer: 0
   m_Name: InventoryControl
   m_TagString: InventoryControl
@@ -1419,7 +1420,54 @@ MonoBehaviour:
   _selectedMat: {fileID: 0}
   _selectedEnchant: {fileID: 0}
   _gameMaster: {fileID: 1734993351}
+  _inventoryData: {fileID: 0}
   _removingStatus: 0
+  _itemButtonList: []
+  _partButtonList: []
+  _materialButtonList: []
+  _enchantButtonList: []
+  _headerButtonItems: {fileID: 1741334579}
+  _headerButtonParts: {fileID: 1095342147}
+  _headerButtonMaterials: {fileID: 952693742}
+  _headerButtonEnchants: {fileID: 819829594}
+  _descriptionText: {fileID: 990265707}
+  _selectItemButton: {fileID: 2494867850780624253}
+  _selectPartButton: {fileID: 1124367918}
+  _selectMatButton: {fileID: 629901127}
+  _selectEnchantButton: {fileID: 510794818}
+  _itemDataStoragePrefab: {fileID: 3328798671714280204, guid: aaa72dc8f0c7e3847bf46e551e78b592, type: 3}
+  _partDataStoragePrefab: {fileID: 5268577830243002201, guid: f7bae9d50dd6f1145b24f8abbad17464, type: 3}
+  _enchantDataStoragePrefab: {fileID: 2715520260335081180, guid: ad122982f9d8c1042b468d255e240981, type: 3}
+  _itemInfoPrefab: {fileID: 2791117391628846461, guid: 8f66dfb029538464c822f9f69549409d, type: 3}
+  _partInfoPrefab: {fileID: 2791117391628846461, guid: 3b06e52e9fff60f47ad438fd8b6d2a61, type: 3}
+  _matInfoPrefab: {fileID: 2791117391628846461, guid: 6957b820436a92343860c3fb31d576c0, type: 3}
+  _enchantInfoPrefab: {fileID: 2791117391628846461, guid: 89786f260efb52f4b8c993b577614770, type: 3}
+--- !u!4 &1181822453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181822451}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1181822454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181822451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d8dc1e984285649913d655b7fa7477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _itemInventoryData:
   - {fileID: 0}
   - {fileID: 0}
@@ -1441,7 +1489,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _itemButtonList: []
   _partInventoryData:
   - {fileID: 0}
   - {fileID: 0}
@@ -1503,7 +1550,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _partButtonList: []
   materialInventory:
   - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
   - {fileID: 11400000, guid: 1e9b7f9659be5de4aa93d81c837a7562, type: 2}
@@ -1531,7 +1577,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
   - {fileID: 11400000, guid: 56c2efc7d77a43a49bccc0f0ab800c69, type: 2}
   - {fileID: 11400000, guid: 440de40f604fd0743a0a66493279ad73, type: 2}
-  _materialButtonList: []
   _enchantInventoryData:
   - {fileID: 0}
   - {fileID: 0}
@@ -1543,37 +1588,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _enchantButtonList: []
-  _headerButtonItems: {fileID: 1741334579}
-  _headerButtonParts: {fileID: 1095342147}
-  _headerButtonMaterials: {fileID: 952693742}
-  _headerButtonEnchants: {fileID: 819829594}
-  _descriptionText: {fileID: 990265707}
-  _selectItemButton: {fileID: 2494867850780624253}
-  _selectPartButton: {fileID: 1124367918}
-  _selectMatButton: {fileID: 629901127}
-  _selectEnchantButton: {fileID: 510794818}
-  _itemDataStoragePrefab: {fileID: 3328798671714280204, guid: aaa72dc8f0c7e3847bf46e551e78b592, type: 3}
-  _partDataStoragePrefab: {fileID: 5268577830243002201, guid: f7bae9d50dd6f1145b24f8abbad17464, type: 3}
-  _enchantDataStoragePrefab: {fileID: 2715520260335081180, guid: ad122982f9d8c1042b468d255e240981, type: 3}
-  _itemInfoPrefab: {fileID: 2791117391628846461, guid: 8f66dfb029538464c822f9f69549409d, type: 3}
-  _partInfoPrefab: {fileID: 2791117391628846461, guid: 3b06e52e9fff60f47ad438fd8b6d2a61, type: 3}
-  _matInfoPrefab: {fileID: 2791117391628846461, guid: 6957b820436a92343860c3fb31d576c0, type: 3}
-  _enchantInfoPrefab: {fileID: 2791117391628846461, guid: 89786f260efb52f4b8c993b577614770, type: 3}
---- !u!4 &1181822453
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1181822451}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1200330649 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3442224586668836898, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}

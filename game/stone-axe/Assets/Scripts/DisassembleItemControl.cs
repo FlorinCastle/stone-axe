@@ -33,6 +33,12 @@ public class DisassembleItemControl : MonoBehaviour
     public void selectItem()
     {
         _selectedItem = _invScriptRef.getSelectedItem();
+        selectItem(_selectedItem);
+    }
+
+    public void selectItem(GameObject item)
+    {
+        _selectedItem = item;
         if (_selectedItem != null)
         {
             setupTexts();

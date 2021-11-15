@@ -7,7 +7,7 @@ public class ItemDataStorage : MonoBehaviour
     [Header("Item Data")]
     [SerializeField] private string _itemName;
     [SerializeField] private int _totalValue;
-    private int inventoryIndex;
+    [SerializeField] private int inventoryIndex;
 
     [Header("Item Stats")]
     [SerializeField] private int _totalStrength;

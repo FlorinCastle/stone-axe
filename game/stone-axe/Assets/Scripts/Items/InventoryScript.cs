@@ -16,6 +16,8 @@ public class InventoryScript : MonoBehaviour
     private GameObject _selectedEnchant;
     [SerializeField]
     private GameMaster _gameMaster;
+    [SerializeField]
+    private InventoryData _inventoryData;
 
     private enum removingItemStatusEnum
     {
@@ -32,16 +34,16 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private removingItemStatusEnum _removingStatus;
 
     // item inventory
-    [SerializeField] private List<GameObject> _itemInventoryData;
+    //[SerializeField] private List<GameObject> _itemInventoryData;
     [SerializeField] private List<GameObject> _itemButtonList;
     // part inventory
-    [SerializeField] private List<GameObject> _partInventoryData;
+    //[SerializeField] private List<GameObject> _partInventoryData;
     [SerializeField] private List<GameObject> _partButtonList;
     // material inventory
-    [SerializeField] private List<MaterialData> materialInventory;
+    //[SerializeField] private List<MaterialData> materialInventory;
     [SerializeField] private List<GameObject> _materialButtonList;
     // enchant inventory
-    [SerializeField] private List<GameObject> _enchantInventoryData;
+    //[SerializeField] private List<GameObject> _enchantInventoryData;
     [SerializeField] private List<GameObject> _enchantButtonList;
 
     [Header("UI References")]
@@ -69,6 +71,8 @@ public class InventoryScript : MonoBehaviour
     {
         if (_gameMaster == null)
             _gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+        if (_inventoryData == null)
+            _inventoryData = this.gameObject.GetComponent<InventoryData>();
     }
 
     public void setupItemInventory()
@@ -89,7 +93,7 @@ public class InventoryScript : MonoBehaviour
         clearMatButtonList();
         clearEnchantButtonList();
         int k = 0;
-        foreach (GameObject item in _itemInventoryData)
+        foreach (GameObject item in _inventoryData.ItemInventory)
         {
             if (item != null)
             {
@@ -129,7 +133,7 @@ public class InventoryScript : MonoBehaviour
         clearMatButtonList();
         clearEnchantButtonList();
         int k = 0;
-        foreach (GameObject part in _partInventoryData)
+        foreach (GameObject part in _inventoryData.PartInventory)
         {
             if (part != null)
             {
@@ -183,7 +187,7 @@ public class InventoryScript : MonoBehaviour
         clearEnchantButtonList();
 
         int m = 0;
-        foreach (MaterialData mat in materialInventory)
+        foreach (MaterialData mat in _inventoryData.MaterialInventory)
         {
             if (mat != null)
             {
@@ -243,7 +247,7 @@ public class InventoryScript : MonoBehaviour
         clearEnchantButtonList();
 
         int e = 0;
-        foreach(GameObject ench in _enchantInventoryData)
+        foreach(GameObject ench in _inventoryData.EnchantInventory)
         {
             if (ench != null)
             {
@@ -339,10 +343,10 @@ public class InventoryScript : MonoBehaviour
     {
         if (index != -1)
         {
-            if (_itemInventoryData[index] != null)
+            if (_inventoryData.ItemInventory[index] != null)
             {
                 // get reference to ItemDataStorage script
-                ItemDataStorage itemDataRef = _itemInventoryData[index].GetComponent<ItemDataStorage>();
+                ItemDataStorage itemDataRef = _inventoryData.ItemInventory[index].GetComponent<ItemDataStorage>();
 
                 // set up text strings
                 _itemName = "Item - " + itemDataRef.ItemName;
@@ -396,10 +400,10 @@ public class InventoryScript : MonoBehaviour
     {
         if (index != -1)
         {
-            if (_partInventoryData[index] != null)
+            if (_inventoryData.PartInventory[index] != null)
             {
                 // get reference to PartDataStorage script
-                PartDataStorage partDataRef = _partInventoryData[index].GetComponent<PartDataStorage>();
+                PartDataStorage partDataRef = _inventoryData.PartInventory[index].GetComponent<PartDataStorage>();
 
                 // set up text strings
                 _partName = "Part - " + partDataRef.PartName;
@@ -466,9 +470,9 @@ public class InventoryScript : MonoBehaviour
     {
         if (index != -1)
         {
-            if (_enchantInventoryData[index] != null)
+            if (_inventoryData.EnchantInventory[index] != null)
             {
-                EnchantDataStorage enchantDataRef = _enchantInventoryData[index].GetComponent<EnchantDataStorage>();
+                EnchantDataStorage enchantDataRef = _inventoryData.EnchantInventory[index].GetComponent<EnchantDataStorage>();
 
                 _enchantName = "Enchantment - " + enchantDataRef.EnchantName;
                 _valueOfBuff = "\nBuff Amount: +" + enchantDataRef.AmountOfBuff;
@@ -616,7 +620,7 @@ public class InventoryScript : MonoBehaviour
 
     private bool ItemSlotEmpty(int index)
     {
-        if (_itemInventoryData[index] == null)
+        if (_inventoryData.ItemInventory[index] == null)
             return true;
 
         return false;
@@ -624,7 +628,7 @@ public class InventoryScript : MonoBehaviour
 
     private bool PartSlotEmpty(int index)
     {
-        if (_partInventoryData[index] == null)
+        if (_inventoryData.PartInventory[index] == null)
             return true;
 
         return false;
@@ -632,7 +636,7 @@ public class InventoryScript : MonoBehaviour
 
     private bool EnchantSlotEmpty (int index)
     {
-        if (_enchantInventoryData[index] == null)
+        if (_inventoryData.EnchantInventory[index] == null)
             return true;
 
         return false;
@@ -656,7 +660,7 @@ public class InventoryScript : MonoBehaviour
 
     private bool MaterialSlotEmpty(int index)
     {
-        if (materialInventory[index] == null || materialInventory[index].MaterialCount <= 0)
+        if (_inventoryData.MaterialInventory[index] == null || _inventoryData.MaterialInventory[index].MaterialCount <= 0)
             return true;
 
         return false;
@@ -686,21 +690,23 @@ public class InventoryScript : MonoBehaviour
             mat = null;
             return false;
         }
-        mat = materialInventory[index];
+        mat = _inventoryData.MaterialInventory[index];
         return true;
     }
 
     // inset an item/part/material, return the index where it was inserted. -1 if error.
     public int InsertItem(ItemData item)
     {
+        //Debug.Log("insterting item: " + item.ItemName);
         GameObject temp = convertItemData(item);
 
-        for (int i = 0; i < _itemInventoryData.Count; i++)
+        for (int i = 0; i < _inventoryData.ItemInventory.Count; i++)
         {
             if (ItemSlotEmpty(i))
             {
+                //Debug.Log("i: " + i);
                 temp.GetComponent<ItemDataStorage>().setInventoryIndex(i);
-                _itemInventoryData[i] = temp;
+                _inventoryData.insertItemData(temp, i);
                 return i;
             }
         }
@@ -709,12 +715,12 @@ public class InventoryScript : MonoBehaviour
 
     public int InsertCraftedItem(GameObject item)
     {
-        for (int i = 0; i < _itemInventoryData.Count; i++)
+        for (int i = 0; i < _inventoryData.ItemInventory.Count; i++)
         {
             if (ItemSlotEmpty(i))
             {
                 item.GetComponent<ItemDataStorage>().setInventoryIndex(i);
-                _itemInventoryData[i] = item;
+                _inventoryData.ItemInventory[i] = item;
                 return i;
             }
         }
@@ -725,10 +731,10 @@ public class InventoryScript : MonoBehaviour
     {
         GameObject temp = convertPartData(part);
 
-        for (int i = 0; i < _partInventoryData.Count; i++)
+        for (int i = 0; i < _inventoryData.PartInventory.Count; i++)
             if (PartSlotEmpty(i))
             {
-                _partInventoryData[i] = temp;
+                _inventoryData.insertPartData(temp, i);
                 return i;
             }
 
@@ -740,10 +746,10 @@ public class InventoryScript : MonoBehaviour
         //Debug.Log(part.name);
         if (part.GetComponent<PartDataStorage>() != null)
         {
-            for (int i = 0; i < _partInventoryData.Count; i++)
+            for (int i = 0; i < _inventoryData.PartInventory.Count; i++)
                 if (PartSlotEmpty(i))
                 {
-                    _partInventoryData[i] = part;
+                    _inventoryData.insertPartData(part, i);
                     return i;
                 }
         }
@@ -756,10 +762,10 @@ public class InventoryScript : MonoBehaviour
     {
         if (ench.GetComponent<EnchantDataStorage>() != null)
         {
-            for (int i = 0; i < _enchantInventoryData.Count; i++)
+            for (int i = 0; i < _inventoryData.EnchantInventory.Count; i++)
                 if (EnchantSlotEmpty(i))
                 {
-                    _enchantInventoryData[i] = ench;
+                    _inventoryData.insertEnchantData(ench, i);
                     return i;
                 }
         }
@@ -807,6 +813,7 @@ public class InventoryScript : MonoBehaviour
         button.GetComponent<InventoryButton>().setEnchantIndex(l);
         return button.GetComponent<InventoryButton>().MyIndex;
     }
+    /* not needed?
     public void RemoveItem(int index)
     {
         //Debug.Log("removing item at index: " + index);
@@ -817,8 +824,10 @@ public class InventoryScript : MonoBehaviour
         _selectedItem = null;
         //_descriptionText.text = "item text";
     }
+    */
     public void RemoveItem(GameObject item)
     {
+        /*
         foreach (GameObject go in _itemInventoryData)
         {
             if (item == go)
@@ -831,21 +840,17 @@ public class InventoryScript : MonoBehaviour
                 break;
             }
         }
+        */
+        _inventoryData.removeItem(item);
+        _descriptionText.text = "item text";
+        _selectedItem = null;
     }
 
     public void RemovePart(GameObject part)
     {
-        foreach (GameObject go in _partInventoryData)
-        {
-            if (part == go)
-            {
-                int index = _partInventoryData.IndexOf(go);
-                _partInventoryData[index] = null;
-                break;
-            }
-        }
+        _inventoryData.removePart(part);
     }
-
+    /*
     private int InsertMaterial(MaterialData mat)
     {
         for (int m = 0; m < materialInventory.Count; m++)
@@ -863,7 +868,7 @@ public class InventoryScript : MonoBehaviour
     {
         get => materialInventory.Count;
     }
-
+    */
     private void clearItemButtonList()
     {
         foreach (GameObject go in _itemButtonList)
@@ -904,7 +909,7 @@ public class InventoryScript : MonoBehaviour
     {
         if (i != -1)
         {
-            _selectedItem = _itemInventoryData[i];
+            _selectedItem = _inventoryData.ItemInventory[i];
             //Debug.Log("Selected item is: " + _selectedItem.name + " at index: " + i); 
         }
         else
@@ -915,7 +920,7 @@ public class InventoryScript : MonoBehaviour
     {
         if (i != -1)
         {
-            _selectedPart = _partInventoryData[i];
+            _selectedPart = _inventoryData.PartInventory[i];
             //Debug.Log("Selected part is: " + _selectedPart.name + " at index: " + i);
         }
         else
@@ -934,7 +939,7 @@ public class InventoryScript : MonoBehaviour
     {
         if (i != -1)
         {
-            _selectedMat = materialInventory[i];
+            _selectedMat = _inventoryData.MaterialInventory[i];
         }
         else
             Debug.Log("example button selected");
@@ -944,7 +949,7 @@ public class InventoryScript : MonoBehaviour
     {
         if (i != -1)
         {
-            _selectedEnchant = _enchantInventoryData[i];
+            _selectedEnchant = _inventoryData.EnchantInventory[i];
         }
         else
             Debug.Log("example button selected");
