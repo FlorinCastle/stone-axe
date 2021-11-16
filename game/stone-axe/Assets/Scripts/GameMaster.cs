@@ -1,4 +1,6 @@
 
+using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,10 +17,12 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private GameObject _marketSubUI;
     [SerializeField] private GameObject _toShopButton;
     [SerializeField] private GameObject _toMarketButton;
+    private InventoryData _invData;
 
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        _invData = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryData>();
     }
 
     public void addCurrency(int value)
@@ -71,4 +75,77 @@ public class GameMaster : MonoBehaviour
 
     public void setCurrentSkillPoints(int value) { _currentSkillPoints = value; }
     public int GetCurrentSkillPoints { get => _currentSkillPoints; }
+
+    public void clearSavedData()
+    {
+        _invData.gameObject.GetComponent<InventoryScript>().forceClearItemInventory();
+        _invData.gameObject.GetComponent<InventoryScript>().forceClearPartInventory();
+    }
+
+    public void saveGame()
+    {
+        List<SaveItemObject> itemSaveList = new List<SaveItemObject>();
+        foreach (GameObject item in _invData.ItemInventory)
+        {
+            if (item != null)
+            {
+                SaveItemObject saveData = item.GetComponent<ItemDataStorage>().SaveItem();
+                itemSaveList.Add(saveData);
+                // Debug.Log(json);
+            }
+        }
+
+        List<SavePartObject> partSaveList = new List<SavePartObject>();
+        foreach (GameObject part in _invData.PartInventory)
+        {
+            if (part != null)
+            {
+                SavePartObject saveData = part.GetComponent<PartDataStorage>().SavePart();
+                partSaveList.Add(saveData);
+            }
+        }
+
+        List<SaveEnchantObject> enchSaveList = new List<SaveEnchantObject>();
+        foreach (GameObject enc in _invData.EnchantInventory)
+        {
+            if (enc != null)
+            {
+                SaveEnchantObject saveData = enc.GetComponent<EnchantDataStorage>().SaveEnchant();
+                enchSaveList.Add(saveData);
+            }
+        }
+        
+        SaveObject saveInvObj = new SaveObject
+        {
+            inventoryObjects = itemSaveList,
+            partInvObjects = partSaveList,
+            enchInvObjects = enchSaveList,
+        };
+        string json = JsonUtility.ToJson(saveInvObj, true);
+        //Debug.Log(json);
+        File.WriteAllText(Application.dataPath + "/save.txt", json);
+    }
+
+    public void loadGame()
+    {
+        if (File.Exists(Application.dataPath + "/save.txt"))
+        {
+            string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
+
+            SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+
+
+
+            // load out all the data
+        }
+        else
+            Debug.LogWarning("No save data!");
+    }
+
+    private class SaveObject
+    {
+        public List<SaveItemObject> inventoryObjects;
+        public List<SavePartObject> partInvObjects;
+        public List<SaveEnchantObject> enchInvObjects;
+    }
 }

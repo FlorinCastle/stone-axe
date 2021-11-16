@@ -694,12 +694,15 @@ public class InventoryScript : MonoBehaviour
         return true;
     }
 
-    // inset an item/part/material, return the index where it was inserted. -1 if error.
+    // insert an item/part/material, return the index where it was inserted. -1 if error.
     public int InsertItem(ItemData item)
     {
         //Debug.Log("insterting item: " + item.ItemName);
         GameObject temp = convertItemData(item);
 
+        return _inventoryData.insertItemData(temp);
+
+        /*
         for (int i = 0; i < _inventoryData.ItemInventory.Count; i++)
         {
             if (ItemSlotEmpty(i))
@@ -711,10 +714,20 @@ public class InventoryScript : MonoBehaviour
             }
         }
         return -1;
+        */
     }
 
     public int InsertCraftedItem(GameObject item)
     {
+        if (item.GetComponent<ItemDataStorage>() != null)
+        {
+            item.GetComponent<ItemDataStorage>().setInventoryIndex(_inventoryData.insertItemData(item));
+            return item.GetComponent<ItemDataStorage>().InventoryIndex;
+        }
+        else if (item.GetComponent<ItemDataStorage>() == null)
+            Debug.LogWarning("Item does not contain the ItemDataStorage component!");
+        return -1;
+        /*
         for (int i = 0; i < _inventoryData.ItemInventory.Count; i++)
         {
             if (ItemSlotEmpty(i))
@@ -725,33 +738,33 @@ public class InventoryScript : MonoBehaviour
             }
         }
         return -1;
+        */
     }
-
+    /*
     public int InsertPart(PartData part)
     {
         GameObject temp = convertPartData(part);
 
+        return _inventoryData.insertPartData(temp);
+        /*
         for (int i = 0; i < _inventoryData.PartInventory.Count; i++)
             if (PartSlotEmpty(i))
             {
-                _inventoryData.insertPartData(temp, i);
+                //_inventoryData.insertPartData(temp, i);
+                _inventoryData.insertPartData(temp);
                 return i;
             }
 
         return -1;
     }
+    */
 
     public int InsertPartData(GameObject part)
     {
         //Debug.Log(part.name);
         if (part.GetComponent<PartDataStorage>() != null)
         {
-            for (int i = 0; i < _inventoryData.PartInventory.Count; i++)
-                if (PartSlotEmpty(i))
-                {
-                    _inventoryData.insertPartData(part, i);
-                    return i;
-                }
+            return _inventoryData.insertPartData(part);
         }
         else if (part.GetComponent<PartDataStorage>() == null)
             Debug.LogWarning("Part does not contain the PartDataStorage component!");
@@ -762,12 +775,7 @@ public class InventoryScript : MonoBehaviour
     {
         if (ench.GetComponent<EnchantDataStorage>() != null)
         {
-            for (int i = 0; i < _inventoryData.EnchantInventory.Count; i++)
-                if (EnchantSlotEmpty(i))
-                {
-                    _inventoryData.insertEnchantData(ench, i);
-                    return i;
-                }
+            return _inventoryData.insertEnchantData(ench);
         }
         else if (ench.GetComponent<EnchantDataStorage>() == null)
             Debug.LogWarning("Enchant does not containt the EnchantDataStorage component!");
@@ -813,18 +821,7 @@ public class InventoryScript : MonoBehaviour
         button.GetComponent<InventoryButton>().setEnchantIndex(l);
         return button.GetComponent<InventoryButton>().MyIndex;
     }
-    /* not needed?
-    public void RemoveItem(int index)
-    {
-        //Debug.Log("removing item at index: " + index);
-        GameObject item = _itemInventoryData[index];
-        Destroy(item);
-        _descriptionText.text = "item text";
-        _itemInventoryData[index] = null;
-        _selectedItem = null;
-        //_descriptionText.text = "item text";
-    }
-    */
+    
     public void RemoveItem(GameObject item)
     {
         /*
@@ -846,29 +843,11 @@ public class InventoryScript : MonoBehaviour
         _selectedItem = null;
     }
 
-    public void RemovePart(GameObject part)
+    public void RemovePart(GameObject part, bool destroy)
     {
-        _inventoryData.removePart(part);
-    }
-    /*
-    private int InsertMaterial(MaterialData mat)
-    {
-        for (int m = 0; m < materialInventory.Count; m++)
-        {
-            if (MaterialSlotEmpty(m))
-            {
-                materialInventory[m] = mat;
-                return m;
-            }
-        }
-        return -1;
+        _inventoryData.removePart(part, destroy);
     }
     
-    private int MaterialInventorySize
-    {
-        get => materialInventory.Count;
-    }
-    */
     private void clearItemButtonList()
     {
         foreach (GameObject go in _itemButtonList)
@@ -903,6 +882,15 @@ public class InventoryScript : MonoBehaviour
 
         for (int l = _enchantButtonList.Count - 1; l >= 0; l--)
             _enchantButtonList.RemoveAt(l);
+    }
+
+    public void forceClearItemInventory()
+    {
+        _inventoryData.removeAllItems();
+    }
+    public void forceClearPartInventory()
+    {
+        _inventoryData.removeAllParts();
     }
 
     public void setSelectedItem(int i)

@@ -371,17 +371,19 @@ public class CraftControl : MonoBehaviour
         // check quest
         _questControlRef.updateQuestProgress(_chosenItemRecipe);
 
+        _inventoryControlReference.InsertCraftedItem(itemDataStorageTemp);
+
         // clear selected crafting componets
         _chosenItemRecipe = null;
         itemDataStorageTemp = null;
         itemDataStorageRef = null;
-        _inventoryControlReference.RemovePart(_chosenPart1);
+        _inventoryControlReference.RemovePart(_chosenPart1, false);
         _chosenPart1 = null;
         _part1DataRef = null;
-        _inventoryControlReference.RemovePart(_chosenPart2);
+        _inventoryControlReference.RemovePart(_chosenPart2, false);
         _chosenPart2 = null;
         _part2DataRef = null;
-        _inventoryControlReference.RemovePart(_chosenPart3);
+        _inventoryControlReference.RemovePart(_chosenPart3, false);
         _chosenPart3 = null;
         _part3DataRef = null;
 

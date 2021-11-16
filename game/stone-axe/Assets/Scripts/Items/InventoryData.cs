@@ -13,21 +13,40 @@ public class InventoryData : MonoBehaviour
     [SerializeField] private List<MaterialData> materialInventory;
     // enchant inventory
     [SerializeField] private List<GameObject> _enchantInventoryData;
-
+    /*
     public int insertItemData(GameObject item, int i)
     {
         _itemInventoryData[i] = item;
         return i;
     }
+    */
+    public int insertItemData(GameObject item)
+    {
+        _itemInventoryData.Add(item);
+        item.GetComponent<ItemDataStorage>().setInventoryIndex(_itemInventoryData.IndexOf(item));
+        return _itemInventoryData.IndexOf(item);
+    }
+    /*
     public int insertPartData(GameObject part, int i)
     {
         _partInventoryData[i] = part;
         return i;
     }
+    */
+    public int insertPartData(GameObject part)
+    {
+        _partInventoryData.Add(part);
+        return _partInventoryData.IndexOf(part);
+    }
     public int insertEnchantData(GameObject enchant, int i)
     {
         _enchantInventoryData[i] = enchant;
         return i;
+    }
+    public int insertEnchantData(GameObject enchant)
+    {
+        _enchantInventoryData.Add(enchant);
+        return _enchantInventoryData.IndexOf(enchant);
     }
 
     public void removeItem(GameObject item)
@@ -38,22 +57,55 @@ public class InventoryData : MonoBehaviour
             {
                 int index = _itemInventoryData.IndexOf(go);
                 Destroy(item);
-                _itemInventoryData[index] = null;
+                //_itemInventoryData[index] = null;
+                _itemInventoryData.RemoveAt(index);
                 break;
             }
         }
+        correctItemIndex();
     }
-    public void removePart(GameObject part)
+
+    private void correctItemIndex()
+    {
+        foreach (GameObject go in _itemInventoryData)
+        {
+            int index = _itemInventoryData.IndexOf(go);
+            go.GetComponent<ItemDataStorage>().setInventoryIndex(index);
+        }
+    }
+    public void removePart(GameObject part, bool destroy)
     {
         foreach (GameObject go in _partInventoryData)
         {
             if (part == go)
             {
                 int index = _partInventoryData.IndexOf(go);
-                _partInventoryData[index] = null;
+                if (destroy == true)
+                    Destroy(part);
+                //_partInventoryData[index] = null;
+                _partInventoryData.RemoveAt(index);
                 break;
             }
         }
+    }
+
+    public void removeAllItems()
+    {
+        foreach(GameObject go in _itemInventoryData)
+        {
+            int index = _itemInventoryData.IndexOf(go);
+            Destroy(go);
+        }
+        _itemInventoryData.Clear();
+    }
+    public void removeAllParts()
+    {
+        foreach(GameObject go in _partInventoryData)
+        {
+            int index = _partInventoryData.IndexOf(go);
+            Destroy(go);
+        }
+        _partInventoryData.Clear();
     }
 
     public List<GameObject> ItemInventory { get => _itemInventoryData; }

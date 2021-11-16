@@ -11,6 +11,18 @@ public class EnchantDataStorage : MonoBehaviour
     [SerializeField] private int _valueOfBuff;
     [SerializeField] private int _valueOfEnchant;
 
+    public SaveEnchantObject SaveEnchant()
+    {
+        SaveEnchantObject saveEnchant = new SaveEnchantObject
+        {
+            enchName = _enchantName,
+            enchBuffType = _enchantBuffType,
+            valueOfBuff = _valueOfBuff,
+            valueOfEnchant = _valueOfEnchant,
+        };
+        return saveEnchant;
+    }
+
     public string EnchantName { get => _enchantName; }
     public void setEnchantName(string name) { _enchantName = name; }
 
@@ -22,4 +34,12 @@ public class EnchantDataStorage : MonoBehaviour
 
     public int AddedValueOfEnchant { get => _valueOfEnchant; }
     public void setValueOfEnchant(int value) { _valueOfEnchant = value; }
+}
+[System.Serializable]
+public class SaveEnchantObject
+{
+    public string enchName;
+    public string enchBuffType;
+    public int valueOfBuff;
+    public int valueOfEnchant;
 }

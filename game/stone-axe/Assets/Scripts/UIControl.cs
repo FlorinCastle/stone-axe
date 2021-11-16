@@ -46,6 +46,12 @@ public class UIControl : MonoBehaviour
         UIInput.SetActive(true);
     }
 
+    public void mainMenu()
+    {
+        this.gameObject.GetComponent<GameMaster>().saveGame();
+        this.gameObject.GetComponent<GameMaster>().clearSavedData();
+    }
+
     public void quitGame()
     {
         Application.Quit();

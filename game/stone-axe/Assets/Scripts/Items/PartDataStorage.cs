@@ -20,6 +20,30 @@ public class PartDataStorage : MonoBehaviour
     [SerializeField] private bool _isEnchanted = false;
     [SerializeField] private EnchantDataStorage _enchantStorage;
 
+    public SavePartObject SavePart()
+    {
+        SavePartObject saveObject = new SavePartObject
+        {
+            partName = _partName,
+            materialName = _material.Material,
+            totalValue = _totalValue,
+            partStrength = _partStrength,
+            partDextarity = _partDextarity,
+            partIntellegence = _partIntelegence,
+            partRecipeName = _selfRecipeData.PartName,
+            isEnchanted = _isEnchanted,
+            enchantment = checkEnchant(),
+        };
+        return saveObject;
+    }
+
+    private object checkEnchant()
+    {
+        if (_isEnchanted == true)
+            return _enchantStorage.SaveEnchant();
+        else return null;
+    }
+
     public PartData RecipeData { get => _selfRecipeData; }
     public void setRecipeData(PartData partRecipe) { _selfRecipeData = partRecipe; }
 
@@ -49,4 +73,21 @@ public class PartDataStorage : MonoBehaviour
     public void setEnchantment(EnchantDataStorage enchant) { _enchantStorage = enchant; }
     public EnchantDataStorage Enchantment { get => _enchantStorage; }
 
+}
+[System.Serializable]
+public class SavePartObject
+{
+    public string partName;
+    public string materialName;
+    public int totalValue;
+
+    public int partStrength;
+    public int partDextarity;
+    public int partIntellegence;
+
+    public string partRecipeName;
+
+    public bool isEnchanted;
+    // put json object of enchant here if enchated
+    public object enchantment;
 }

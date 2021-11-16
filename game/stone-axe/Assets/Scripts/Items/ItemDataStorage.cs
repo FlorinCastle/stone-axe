@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemDataStorage : MonoBehaviour
@@ -23,7 +21,26 @@ public class ItemDataStorage : MonoBehaviour
     [SerializeField] private bool _isEnchanted = false;
     [SerializeField] private EnchantDataStorage _enchantment;
 
+    public SaveItemObject SaveItem()
+    {
+        SaveItemObject saveObject = new SaveItemObject
+        {
+            itemName = _itemName,
+            totalValue = _totalValue,
+            invIndex = inventoryIndex,
+            totalStrenght = _totalStrength,
+            totalDextarity = _totalDextarity,
+            totalIntellegence = _totalIntelegence,
 
+            part1 = _part1.SavePart(),
+            part2 = _part2.SavePart(),
+            part3 = _part3.SavePart(),
+
+            isEnchanted = _isEnchanted,
+            enchantment = _enchantment,
+        };
+        return saveObject;
+    }
 
     public void setItemName(string name) { _itemName = name; }
     public string ItemName { get => _itemName; }
@@ -57,5 +74,23 @@ public class ItemDataStorage : MonoBehaviour
 
     public void setEnchantment(EnchantDataStorage enchant) { _enchantment = enchant; }
     public EnchantDataStorage Enchantment { get => _enchantment; }
+}
+[System.Serializable]
+public class SaveItemObject
+{
+    public string itemName;
+    public int totalValue;
+    public int invIndex;
+    public int totalStrenght;
+    public int totalDextarity;
+    public int totalIntellegence;
 
+    // put json objects of parts here
+    public SavePartObject part1;
+    public SavePartObject part2;
+    public SavePartObject part3;
+
+    public bool isEnchanted;
+    // put json object of enchant here if enchated
+    public object enchantment;
 }
