@@ -84,17 +84,17 @@ public class DisassembleItemControl : MonoBehaviour
         {
             // move part1 transform parent to inventory
             GameObject part1 = _selectedItem.GetComponent<ItemDataStorage>().Part1.gameObject;
-            _invScriptRef.InsertPartData(part1);
+            _invScriptRef.InsertPart(part1);
             part1.transform.parent = _invScriptRef.gameObject.transform;
 
             // move part2 
             GameObject part2 = _selectedItem.GetComponent<ItemDataStorage>().Part2.gameObject;
-            _invScriptRef.InsertPartData(part2);
+            _invScriptRef.InsertPart(part2);
             part2.transform.parent = _invScriptRef.gameObject.transform;
 
             // move part 3
             GameObject part3 = _selectedItem.GetComponent<ItemDataStorage>().Part3.gameObject;
-            _invScriptRef.InsertPartData(part3);
+            _invScriptRef.InsertPart(part3);
             part3.transform.parent = _invScriptRef.gameObject.transform;
 
             // move enchantment, if enchanted

@@ -75,6 +75,10 @@ public class CFT_ReduceMaterialCost : MonoBehaviour
     {
         skillBodyText.text = "reduce amount of consumed material by " + (5f * currentLevel) + "%";
     }
+    public int CurrentSkillLevel
+    {
+        get => currentLevel;
+    }
 
 
     public float getModifiedMatAmount()

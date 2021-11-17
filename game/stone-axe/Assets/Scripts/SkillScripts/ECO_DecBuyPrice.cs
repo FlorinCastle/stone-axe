@@ -75,6 +75,10 @@ public class ECO_DecBuyPrice : MonoBehaviour
 
     }
 
+    public int CurrentSkillLevel
+    {
+        get => currentLevel;
+    }
 
     public float getModifiedBuyPrice()
     {

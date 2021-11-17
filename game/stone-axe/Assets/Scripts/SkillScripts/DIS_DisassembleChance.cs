@@ -75,6 +75,10 @@ public class DIS_DisassembleChance : MonoBehaviour
         skillBodyText.text = "chance of getting all materials of an item is " + (10f * currentLevel) + "%";
     }
 
+    public int CurrentSkillLevel
+    {
+        get => currentLevel;
+    }
 
     public float getFullDisassembleChance()
     {

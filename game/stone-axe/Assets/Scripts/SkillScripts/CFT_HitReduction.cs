@@ -74,6 +74,10 @@ public class CFT_HitReduction : MonoBehaviour
         skillBodyText.text = "points to craft an item is reduced by " + currentLevel + ". minimum to hit 1";
     }
 
+    public int CurrentSkillLevel
+    {
+        get => currentLevel;
+    }
 
     public float getHitReductionAmount()
     {

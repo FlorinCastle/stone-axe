@@ -18,11 +18,13 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private GameObject _toShopButton;
     [SerializeField] private GameObject _toMarketButton;
     private InventoryData _invData;
+    private InventoryScript _invScript;
 
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
         _invData = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryData>();
+        _invScript = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>();
     }
 
     public void addCurrency(int value)
@@ -80,10 +82,12 @@ public class GameMaster : MonoBehaviour
     {
         _invData.gameObject.GetComponent<InventoryScript>().forceClearItemInventory();
         _invData.gameObject.GetComponent<InventoryScript>().forceClearPartInventory();
+        _invData.gameObject.GetComponent<InventoryScript>().forceClearEnchantInventory();
     }
 
     public void saveGame()
     {
+        // get all data to save
         List<SaveItemObject> itemSaveList = new List<SaveItemObject>();
         foreach (GameObject item in _invData.ItemInventory)
         {
@@ -114,12 +118,16 @@ public class GameMaster : MonoBehaviour
                 enchSaveList.Add(saveData);
             }
         }
-        
+
+        SaveSkillsObject skillSave = this.GetComponent<SkillManager>().SaveSkills();
+
+        // put data into save object
         SaveObject saveInvObj = new SaveObject
         {
             inventoryObjects = itemSaveList,
             partInvObjects = partSaveList,
             enchInvObjects = enchSaveList,
+            skillObject = skillSave,
         };
         string json = JsonUtility.ToJson(saveInvObj, true);
         //Debug.Log(json);
@@ -134,9 +142,22 @@ public class GameMaster : MonoBehaviour
 
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
 
+            // load the saved items
+            foreach (SaveItemObject item in saveObject.inventoryObjects)
+            {
+                _invScript.InsertItem(_invScript.convertItemData(item));
+            }
+            foreach (SavePartObject part in saveObject.partInvObjects)
+            {
+                _invScript.InsertPart(_invScript.convertPartData(part));
+            }
+            foreach (SaveEnchantObject ench in saveObject.enchInvObjects)
+            {
+                _invScript.InsertEnchatment(_invScript.convertEnchantData(ench));
+            }
 
-
-            // load out all the data
+            // load out all the data (todo)
+            // TODO - load out assigned skill points
         }
         else
             Debug.LogWarning("No save data!");
@@ -147,5 +168,6 @@ public class GameMaster : MonoBehaviour
         public List<SaveItemObject> inventoryObjects;
         public List<SavePartObject> partInvObjects;
         public List<SaveEnchantObject> enchInvObjects;
+        public SaveSkillsObject skillObject;
     }
 }

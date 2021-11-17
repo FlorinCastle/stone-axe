@@ -74,6 +74,10 @@ public class ECO_HaggleSuccess : MonoBehaviour
         skillBodyText.text = "haggle success chance is " + (30f + (10f * currentLevel)) + "%, increasing sell price by +" + (5f + (1f * currentLevel)) + "%";
     }
 
+    public int CurrentSkillLevel
+    {
+        get => currentLevel;
+    }
 
     public float getHaggleChance()
     {

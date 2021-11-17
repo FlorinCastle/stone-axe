@@ -2629,9 +2629,14 @@ MonoBehaviour:
   _disassemblySkillsContent: {fileID: 3926314262210042915}
   _craftingSkillsContent: {fileID: 3926314262210042914}
   _skillPrefab: {fileID: 598811200459005406, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
-  _economicSkills: []
-  _disasemblySkills: []
-  _craftingSkills: []
+  _ECOIncSellPrice: {fileID: 1807804930}
+  _ECODecBuyPrice: {fileID: 0}
+  _ECOHaggleSuccess: {fileID: 0}
+  _DISDisassembleChance: {fileID: 0}
+  _DISEnchantRemoval: {fileID: 0}
+  _DISHitReduction: {fileID: 0}
+  _CFTReduceMaterialCost: {fileID: 0}
+  _CFTHitReduction: {fileID: 0}
 --- !u!114 &1734993359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4044,6 +4049,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1734993351}
     - target: {fileID: 1242753787123315559, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1734993351}
+    - target: {fileID: 1242753787123315559, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 369422302}
@@ -4126,7 +4135,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 148084295805150489, guid: bbb978ce789265f499b2dc5355239dbd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 820370358751675657, guid: bbb978ce789265f499b2dc5355239dbd, type: 3}
       propertyPath: m_Name
@@ -4208,6 +4217,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 7257224821169206553, guid: bbb978ce789265f499b2dc5355239dbd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1734993351}
     - target: {fileID: 7708953607954780668, guid: bbb978ce789265f499b2dc5355239dbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

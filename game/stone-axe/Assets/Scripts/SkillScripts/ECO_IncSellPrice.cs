@@ -76,6 +76,10 @@ public class ECO_IncSellPrice : MonoBehaviour
     }
 
 
+    public int CurrentSkillLevel
+    {
+        get => currentLevel;
+    }
     public float getModifiedSellPrice()
     {
         for (int i = 0; i <= maxLevel; i++)

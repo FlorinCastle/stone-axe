@@ -73,6 +73,10 @@ public class DIS_EnchantRemoval : MonoBehaviour
     {
         skillBodyText.text = "chance of removing enchant when disassembling is " + (5f * currentLevel) + "%";
     }
+    public int CurrentSkillLevel
+    {
+        get => currentLevel;
+    }
 
 
     public float getEnchantRemovalChance()

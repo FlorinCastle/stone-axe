@@ -107,6 +107,23 @@ public class InventoryData : MonoBehaviour
         }
         _partInventoryData.Clear();
     }
+    public void removeAllEnchants()
+    {
+        foreach(GameObject go in _partInventoryData)
+        {
+            int index = _partInventoryData.IndexOf(go);
+            Destroy(go);
+        }
+        _enchantInventoryData.Clear();
+    }
+
+    public MaterialData getMaterial(string matName)
+    {
+        foreach(MaterialData mat in materialInventory)
+            if (mat.Material == matName)
+                return mat;
+        return null;
+    }
 
     public List<GameObject> ItemInventory { get => _itemInventoryData; }
     public List<GameObject> PartInventory { get => _partInventoryData; }

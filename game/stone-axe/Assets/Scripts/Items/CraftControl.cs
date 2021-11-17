@@ -371,7 +371,7 @@ public class CraftControl : MonoBehaviour
         // check quest
         _questControlRef.updateQuestProgress(_chosenItemRecipe);
 
-        _inventoryControlReference.InsertCraftedItem(itemDataStorageTemp);
+        _inventoryControlReference.InsertItem(itemDataStorageTemp);
 
         // clear selected crafting componets
         _chosenItemRecipe = null;
@@ -413,7 +413,7 @@ public class CraftControl : MonoBehaviour
             _chosenPartMaterial.RemoveMat(Mathf.RoundToInt(_chosenPartRecipe.UnitsOfMaterialNeeded * materialSkill.getModifiedMatAmount()));
 
             // insert crafted part into inventory script
-            _inventoryControlReference.InsertPartData(partDataStorageTemp);
+            _inventoryControlReference.InsertPart(partDataStorageTemp);
 
             // add experience
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<ExperienceManager>().addExperience(3);

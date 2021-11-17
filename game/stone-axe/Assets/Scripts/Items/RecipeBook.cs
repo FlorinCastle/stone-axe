@@ -279,6 +279,14 @@ public class RecipeBook : MonoBehaviour
     {
         return partRecipes[i];
     }
+    public PartData getPartRecipe(string name)
+    {
+        foreach (PartData part in partRecipes)
+            if (part.PartName == name)
+                return part;
+            //else Debug.LogWarning("Can not find recipe for: " + name);
+        return null;
+    }
 
     public ItemData getSelectedItemRecipe()
     {

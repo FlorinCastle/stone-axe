@@ -18,7 +18,7 @@ public class ItemDataStorage : MonoBehaviour
     [SerializeField] private PartDataStorage _part3;
 
     [Header("Enchantment")]
-    [SerializeField] private bool _isEnchanted = false;
+    [SerializeField] private bool _isEnchanted;
     [SerializeField] private EnchantDataStorage _enchantment;
 
     public SaveItemObject SaveItem()
@@ -37,9 +37,15 @@ public class ItemDataStorage : MonoBehaviour
             part3 = _part3.SavePart(),
 
             isEnchanted = _isEnchanted,
-            enchantment = _enchantment,
+            enchantment = checkEnchant(),
         };
         return saveObject;
+    }
+    private SaveEnchantObject checkEnchant()
+    {
+        if (_isEnchanted == true)
+            return _enchantment.SaveEnchant();
+        return null;
     }
 
     public void setItemName(string name) { _itemName = name; }
@@ -92,5 +98,5 @@ public class SaveItemObject
 
     public bool isEnchanted;
     // put json object of enchant here if enchated
-    public object enchantment;
+    public SaveEnchantObject enchantment;
 }

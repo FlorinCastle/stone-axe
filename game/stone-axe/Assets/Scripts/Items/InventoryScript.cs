@@ -577,6 +577,88 @@ public class InventoryScript : MonoBehaviour
         return itemDataStorageTemp;
     }
 
+    public GameObject convertItemData(SaveItemObject item)
+    {
+        itemDataStorageTemp = Instantiate(_itemDataStoragePrefab);
+        itemDataStorageTemp.transform.parent = this.gameObject.transform;
+        itemDataScriptRef = itemDataStorageTemp.GetComponent<ItemDataStorage>();
+
+        // get data from object and insert into gameobject
+        // stats
+        itemDataStorageTemp.name = item.itemName;
+        itemDataScriptRef.setItemName(item.itemName);
+        itemDataScriptRef.setTotalValue(item.totalValue);
+        itemDataScriptRef.setTotalStrenght(item.totalStrenght);
+        itemDataScriptRef.setTotalDex(item.totalDextarity);
+        itemDataScriptRef.setTotalInt(item.totalIntellegence);
+
+        // parts
+            // part 1
+        part1DataStorageTemp = Instantiate(_partDataStoragePrefab);
+        part1DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
+        part1DataScriptRef = part1DataStorageTemp.GetComponent<PartDataStorage>();
+        // setup reference to scriptabe object recipe
+        part1DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.part1.partRecipeName));
+        // convert data from object to gameobject
+        part1DataStorageTemp.name = item.part1.materialName + " " + item.part1.partName;
+        part1DataScriptRef.setPartName(item.part1.partName);
+        part1DataScriptRef.setMaterial(_inventoryData.getMaterial(item.part1.materialName));
+        part1DataScriptRef.setPartStr(item.part1.partStrength);
+        part1DataScriptRef.setPartDex(item.part1.partDextarity);
+        part1DataScriptRef.setPartInt(item.part1.partIntellegence);
+        part1DataScriptRef.setValue(item.part1.totalValue);
+        // store ref of part 1 in item script
+        itemDataScriptRef.setPart1(part1DataScriptRef);
+
+            // part 2
+        part2DataStorageTemp = Instantiate(_partDataStoragePrefab);
+        part2DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
+        part2DataScriptRef = part2DataStorageTemp.GetComponent<PartDataStorage>();
+        // setup reference to scriptabe object recipe
+        part2DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.part2.partRecipeName));
+        // convert data from object to gameobject
+        part2DataStorageTemp.name = item.part2.materialName + " " + item.part2.partName;
+        part2DataScriptRef.setPartName(item.part2.partName);
+        part2DataScriptRef.setMaterial(_inventoryData.getMaterial(item.part2.materialName));
+        part2DataScriptRef.setPartStr(item.part2.partStrength);
+        part2DataScriptRef.setPartDex(item.part2.partDextarity);
+        part2DataScriptRef.setPartInt(item.part2.partIntellegence);
+        part2DataScriptRef.setValue(item.part2.totalValue);
+        // store ref of part 1 in item script
+        itemDataScriptRef.setPart2(part2DataScriptRef);
+
+            // part 3
+        part3DataStorageTemp = Instantiate(_partDataStoragePrefab);
+        part3DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
+        part3DataScriptRef = part3DataStorageTemp.GetComponent<PartDataStorage>();
+        // setup reference to scriptabe object recipe
+        part3DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.part3.partRecipeName));
+        // convert data from object to gameobject
+        part3DataStorageTemp.name = item.part3.materialName + " " + item.part3.partName;
+        part3DataScriptRef.setPartName(item.part3.partName);
+        part3DataScriptRef.setMaterial(_inventoryData.getMaterial(item.part3.materialName));
+        part3DataScriptRef.setPartStr(item.part3.partStrength);
+        part3DataScriptRef.setPartDex(item.part3.partDextarity);
+        part3DataScriptRef.setPartInt(item.part3.partIntellegence);
+        part3DataScriptRef.setValue(item.part3.totalValue);
+        // store ref of part 1 in item script
+        itemDataScriptRef.setPart3(part3DataScriptRef);
+
+        // enchantment
+        itemDataScriptRef.setIsEnchanted(item.isEnchanted);
+        if (item.isEnchanted)
+        {
+            GameObject enc = convertEnchantData(item.enchantment);
+
+            enc.transform.parent = itemDataStorageTemp.gameObject.transform;
+            itemDataScriptRef.setEnchantment(enc.GetComponent<EnchantDataStorage>());
+
+            itemDataScriptRef.setTotalValue(itemDataScriptRef.TotalValue + enc.GetComponent<EnchantDataStorage>().AddedValueOfEnchant);
+        }
+
+        return itemDataStorageTemp;
+    }
+
     private GameObject partDataStorageTemp;
     private PartDataStorage partDataScriptRef;
     public GameObject convertPartData(PartData part)
@@ -598,6 +680,25 @@ public class InventoryScript : MonoBehaviour
 
         return partDataStorageTemp;
     }
+    public GameObject convertPartData(SavePartObject part)
+    {
+        // get variables set up
+        partDataStorageTemp = Instantiate(_partDataStoragePrefab);
+        partDataStorageTemp.transform.parent = this.gameObject.transform;
+        partDataScriptRef = partDataStorageTemp.GetComponent<PartDataStorage>();
+
+        // convert data from scriptable object to gameobject
+        //  stats
+        partDataStorageTemp.name = part.partName;
+        partDataScriptRef.setPartName(part.partName);
+        partDataScriptRef.setMaterial(_inventoryData.getMaterial(part.materialName)); 
+        partDataScriptRef.setPartStr(part.partStrength);
+        partDataScriptRef.setPartDex(part.partDextarity);
+        partDataScriptRef.setPartInt(part.partIntellegence);
+        partDataScriptRef.setValue(part.totalValue);
+
+        return partDataStorageTemp;
+    }
 
     private GameObject enchantDataStorageTemp;
     private EnchantDataStorage enchantDataScriptRef;
@@ -614,6 +715,22 @@ public class InventoryScript : MonoBehaviour
         enchantDataScriptRef.setEnchantType(enchant.EnchantType);
         enchantDataScriptRef.setAmountOfBuff(enchant.GetRandomBuff);
         enchantDataScriptRef.setValueOfEnchant(enchant.BaseAddedValuePerLevel * enchantDataScriptRef.AmountOfBuff);
+
+        return enchantDataStorageTemp;
+    }
+
+    public GameObject convertEnchantData(SaveEnchantObject enchant)
+    {
+        // get variables set up
+        enchantDataStorageTemp = Instantiate(_enchantDataStoragePrefab);
+        enchantDataStorageTemp.transform.parent = this.gameObject.transform;
+        enchantDataScriptRef = enchantDataStorageTemp.GetComponent<EnchantDataStorage>();
+
+        enchantDataStorageTemp.name = enchant.enchName + " Enchantment";
+        enchantDataScriptRef.setEnchantName(enchant.enchName);
+        enchantDataScriptRef.setEnchantType(enchant.enchBuffType);
+        enchantDataScriptRef.setAmountOfBuff(enchant.valueOfBuff);
+        enchantDataScriptRef.setValueOfEnchant(enchant.valueOfEnchant * enchantDataScriptRef.AmountOfBuff);
 
         return enchantDataStorageTemp;
     }
@@ -717,7 +834,7 @@ public class InventoryScript : MonoBehaviour
         */
     }
 
-    public int InsertCraftedItem(GameObject item)
+    public int InsertItem(GameObject item)
     {
         if (item.GetComponent<ItemDataStorage>() != null)
         {
@@ -759,6 +876,17 @@ public class InventoryScript : MonoBehaviour
     }
     */
 
+    public int InsertPart(GameObject part)
+    {
+        if (part.GetComponent<PartDataStorage>() != null)
+        {
+            return _inventoryData.insertPartData(part);
+        }
+        else if (part.GetComponent<PartDataStorage>() == null)
+            Debug.LogWarning("Part does not contain the PartDataStorage component!");
+        return -1;
+    }
+    /*
     public int InsertPartData(GameObject part)
     {
         //Debug.Log(part.name);
@@ -770,6 +898,7 @@ public class InventoryScript : MonoBehaviour
             Debug.LogWarning("Part does not contain the PartDataStorage component!");
         return -1;
     }
+    */
 
     public int InsertEnchatment(GameObject ench)
     {
@@ -891,6 +1020,10 @@ public class InventoryScript : MonoBehaviour
     public void forceClearPartInventory()
     {
         _inventoryData.removeAllParts();
+    }
+    public void forceClearEnchantInventory()
+    {
+        _inventoryData.removeAllEnchants();
     }
 
     public void setSelectedItem(int i)
