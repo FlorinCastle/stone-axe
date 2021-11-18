@@ -56,29 +56,32 @@ public class DIS_DisassembleChance : MonoBehaviour
                     removeAddButton();
             }
         }
+        updateSkillTexts();
+    }
+    public void updateSkillTexts()
+    {
         setupSkillLevelText();
         setupSkillText();
-    }
 
+    }
     public void removeAddButton()
     {
         addPointButton.SetActive(false);
     }
-
     private void setupSkillLevelText()
     {
         skillLevelText.text = currentLevel + " / " + maxLevel;
     }
-
     private void setupSkillText()
     {
         skillBodyText.text = "chance of getting all materials of an item is " + (10f * currentLevel) + "%";
     }
-
     public int CurrentSkillLevel
     {
         get => currentLevel;
+        set => currentLevel = value;
     }
+
 
     public float getFullDisassembleChance()
     {

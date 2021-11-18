@@ -17,6 +17,8 @@ public class QuestData : ScriptableObject
     public int _requiredCount;
     public QuestData _nextQuest;
 
+    public bool _storyQuestComplete;
+
     public string QuestName { get => _questName; }
     public string QuestDiscription { get => _questDiscription; }
     public string QuestType { get => _questType.ToString(); }
@@ -25,4 +27,5 @@ public class QuestData : ScriptableObject
     public MaterialData ReqiredMaterial { get => _requiredMaterial; }
     public QuestItemData RequiredQuestItem { get => _requiredQuestItem; }
     public int ReqiredCount { get => _requiredCount; }
+    public bool StoryQuestComplete { get => _storyQuestComplete; set => _storyQuestComplete = value; }
 }

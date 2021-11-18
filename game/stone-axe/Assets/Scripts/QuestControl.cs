@@ -50,6 +50,16 @@ public class QuestControl : MonoBehaviour
                 updateQuestProgress(_chosenQuest.ReqiredMaterial);
     }
 
+    public SaveQuestsObject saveQuests()
+    {
+        SaveQuestsObject questObject = new SaveQuestsObject
+        {
+            //currentQuest = _questRef.saveCurrentQuest(),
+        };
+        return questObject;
+    }
+
+
     public void chooseQuestSheet(QuestSheet input)
     {
         if (input == _questSheet1)
@@ -245,4 +255,11 @@ public class QuestControl : MonoBehaviour
         rerollQuest();
         _selectedSheet = null;
     }
+
+}
+[System.Serializable]
+public class SaveQuestsObject
+{
+    QuestObject currentQuest;
+    List<QuestObject> completedQuests;
 }

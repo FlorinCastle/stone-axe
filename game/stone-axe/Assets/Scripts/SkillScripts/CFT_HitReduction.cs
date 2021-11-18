@@ -55,29 +55,32 @@ public class CFT_HitReduction : MonoBehaviour
                     removeAddButton();
             }
         }
+        updateSkillTexts();
+    }
+    public void updateSkillTexts()
+    {
         setupSkillLevelText();
         setupSkillText();
-    }
 
+    }
     public void removeAddButton()
     {
         addPointButton.SetActive(false);
     }
-
     private void setupSkillLevelText()
     {
         skillLevelText.text = currentLevel + " / " + maxLevel;
     }
-
     private void setupSkillText()
     {
         skillBodyText.text = "points to craft an item is reduced by " + currentLevel + ". minimum to hit 1";
     }
-
     public int CurrentSkillLevel
     {
         get => currentLevel;
+        set => currentLevel = value;
     }
+
 
     public float getHitReductionAmount()
     {

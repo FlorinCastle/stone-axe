@@ -14,6 +14,7 @@ public class QuestDataEditor : Editor
         reqMat,
         reqQItem,
         reqCount,
+        questComplete,
         nextQuest;
 
     private void OnEnable()
@@ -26,6 +27,7 @@ public class QuestDataEditor : Editor
         reqMat = serializedObject.FindProperty("_requiredMaterial");
         reqQItem = serializedObject.FindProperty("_requiredQuestItem");
         reqCount = serializedObject.FindProperty("_requiredCount");
+        questComplete = serializedObject.FindProperty("_storyQuestComplete");
         nextQuest = serializedObject.FindProperty("_nextQuest");
     }
 
@@ -34,6 +36,7 @@ public class QuestDataEditor : Editor
     reqMat.objectReferenceValue = null;
     reqQItem.objectReferenceValue = null;
     reqCount.intValue = 0;
+    questComplete.boolValue = false;
     nextQuest.objectReferenceValue = null;
     */
     public override void OnInspectorGUI()
@@ -55,6 +58,7 @@ public class QuestDataEditor : Editor
                 reqMat.objectReferenceValue = null;
                 reqQItem.objectReferenceValue = null;
                 reqCount.intValue = 0;
+                questComplete.boolValue = false;
                 nextQuest.objectReferenceValue = null;
                 break;
 
@@ -63,6 +67,7 @@ public class QuestDataEditor : Editor
                 reqMat.objectReferenceValue = null;
                 EditorGUILayout.PropertyField(reqQItem, new GUIContent("Required Item"));
                 reqCount.intValue = 0;
+                questComplete.boolValue = false;
                 nextQuest.objectReferenceValue = null;
                 break;
 
@@ -71,6 +76,7 @@ public class QuestDataEditor : Editor
                 EditorGUILayout.PropertyField(reqMat, new GUIContent("Required Material"));
                 reqQItem.objectReferenceValue = null;
                 EditorGUILayout.PropertyField(reqCount, new GUIContent("Material Count"));
+                questComplete.boolValue = false;
                 nextQuest.objectReferenceValue = null;
                 break;
 
@@ -79,6 +85,7 @@ public class QuestDataEditor : Editor
                 reqMat.objectReferenceValue = null;
                 reqQItem.objectReferenceValue = null;
                 EditorGUILayout.PropertyField(reqCount, new GUIContent("Item Count"));
+                questComplete.boolValue = false;
                 nextQuest.objectReferenceValue = null;
                 break;
 
@@ -87,6 +94,7 @@ public class QuestDataEditor : Editor
                 reqMat.objectReferenceValue = null;
                 reqQItem.objectReferenceValue = null;
                 reqCount.intValue = 0;
+                EditorGUILayout.PropertyField(questComplete, new GUIContent("This Quest Complete"));
                 EditorGUILayout.PropertyField(nextQuest);
                 break;
 
@@ -95,6 +103,7 @@ public class QuestDataEditor : Editor
                 reqMat.objectReferenceValue = null;
                 reqQItem.objectReferenceValue = null;
                 reqCount.intValue = 0;
+                EditorGUILayout.PropertyField(questComplete, new GUIContent("This Quest Complete"));
                 EditorGUILayout.PropertyField(nextQuest);
                 break;
         }

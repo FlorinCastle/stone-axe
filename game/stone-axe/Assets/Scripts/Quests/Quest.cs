@@ -35,7 +35,13 @@ public class Quest : MonoBehaviour
                 _repeatableQuests.Add(quest);
         }
     }
+    /* TODO
+    public QuestObject saveCurentQuest()
+    {
 
+        
+    }
+    */
     public List<QuestData> getTutorialQuests() { return _tutorialQuests; }
     public List<QuestData> getStoryQuests() { return _storyQuests; }
     public List<QuestData> getOnCraftItemQuests() { return _onCraftItemQuests; }
@@ -43,4 +49,9 @@ public class Quest : MonoBehaviour
     public List<QuestData> getOnDisMatQuests() { return _onDisMatQuests; }
     public List<QuestData> getOnCraftTotalQuests() { return _onCraftTotalQuests; }
     public List<QuestData> getRepeatableQuests() { return _repeatableQuests; }
+}
+[System.Serializable]
+public class QuestObject
+{
+
 }

@@ -55,20 +55,22 @@ public class DIS_EnchantRemoval : MonoBehaviour
                     removeAddButton();
             }
         }
+        updateSkillTexts();
+    }
+    public void updateSkillTexts()
+    {
         setupSkillLevelText();
         setupSkillText();
-    }
 
+    }
     public void removeAddButton()
     {
         addPointButton.SetActive(false);
     }
-
     private void setupSkillLevelText()
     {
         skillLevelText.text = currentLevel + " / " + maxLevel;
     }
-
     private void setupSkillText()
     {
         skillBodyText.text = "chance of removing enchant when disassembling is " + (5f * currentLevel) + "%";
@@ -76,6 +78,7 @@ public class DIS_EnchantRemoval : MonoBehaviour
     public int CurrentSkillLevel
     {
         get => currentLevel;
+        set => currentLevel = value;
     }
 
 

@@ -2630,13 +2630,13 @@ MonoBehaviour:
   _craftingSkillsContent: {fileID: 3926314262210042914}
   _skillPrefab: {fileID: 598811200459005406, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
   _ECOIncSellPrice: {fileID: 1807804930}
-  _ECODecBuyPrice: {fileID: 0}
-  _ECOHaggleSuccess: {fileID: 0}
-  _DISDisassembleChance: {fileID: 0}
-  _DISEnchantRemoval: {fileID: 0}
-  _DISHitReduction: {fileID: 0}
-  _CFTReduceMaterialCost: {fileID: 0}
-  _CFTHitReduction: {fileID: 0}
+  _ECODecBuyPrice: {fileID: 672557554}
+  _ECOHaggleSuccess: {fileID: 1013641663}
+  _DISDisassembleChance: {fileID: 1310622674}
+  _DISEnchantRemoval: {fileID: 1912071572}
+  _DISHitReduction: {fileID: 191321953}
+  _CFTReduceMaterialCost: {fileID: 2027709418}
+  _CFTHitReduction: {fileID: 1931993712}
 --- !u!114 &1734993359
 MonoBehaviour:
   m_ObjectHideFlags: 0

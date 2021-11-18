@@ -55,31 +55,34 @@ public class ECO_IncSellPrice : MonoBehaviour
                     removeAddButton();
             }
         }
+        updateSkillTexts();
+    }
+    public void updateSkillTexts()
+    {
         setupSkillLevelText();
         setupSkillText();
-    }
 
+    }
     public void removeAddButton()
     {
         addPointButton.SetActive(false);
     }
-
     private void setupSkillLevelText()
     {
         skillLevelText.text = currentLevel + " / " + maxLevel;
     }
-
     private void setupSkillText()
     {
         skillBodyText.text = "increase final sell price by " + (1f * currentLevel).ToString() + "%";
 
     }
-
-
     public int CurrentSkillLevel
     {
         get => currentLevel;
+        set => currentLevel = value;
     }
+
+
     public float getModifiedSellPrice()
     {
         for (int i = 0; i <= maxLevel; i++)

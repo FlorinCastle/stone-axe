@@ -13,26 +13,49 @@ public class InventoryData : MonoBehaviour
     [SerializeField] private List<MaterialData> materialInventory;
     // enchant inventory
     [SerializeField] private List<GameObject> _enchantInventoryData;
-    /*
-    public int insertItemData(GameObject item, int i)
+
+    public SaveMaterialsObject saveMaterials()
     {
-        _itemInventoryData[i] = item;
-        return i;
+        List<SaveMatObject> matObjects = new List<SaveMatObject>();
+
+        foreach (MaterialData mat in MaterialInventory)
+        {
+            matObjects.Add(saveMat(mat));
+        }
+
+        SaveMaterialsObject saveObject = new SaveMaterialsObject
+        {
+            matObjectList = matObjects,
+        };
+        return saveObject;
     }
-    */
+    private SaveMatObject saveMat(MaterialData mat)
+    {
+        SaveMatObject matObject = new SaveMatObject
+        {
+            matName = mat.Material,
+            matCount = mat.MaterialCount,
+        };
+        return matObject;
+    }
+
+    public void loadMaterials(SaveMaterialsObject savedMats)
+    {
+        foreach (SaveMatObject mat in savedMats.matObjectList)
+        {
+            foreach (MaterialData matData in MaterialInventory)
+                if (matData.Material == mat.matName)
+                    matData.MaterialCount = mat.matCount;
+        }
+    }
+
+
     public int insertItemData(GameObject item)
     {
         _itemInventoryData.Add(item);
         item.GetComponent<ItemDataStorage>().setInventoryIndex(_itemInventoryData.IndexOf(item));
         return _itemInventoryData.IndexOf(item);
     }
-    /*
-    public int insertPartData(GameObject part, int i)
-    {
-        _partInventoryData[i] = part;
-        return i;
-    }
-    */
     public int insertPartData(GameObject part)
     {
         _partInventoryData.Add(part);
@@ -129,4 +152,15 @@ public class InventoryData : MonoBehaviour
     public List<GameObject> PartInventory { get => _partInventoryData; }
     public List<MaterialData> MaterialInventory { get => materialInventory; }
     public List<GameObject> EnchantInventory { get => _enchantInventoryData; }
+}
+[System.Serializable]
+public class SaveMaterialsObject
+{
+    public List<SaveMatObject> matObjectList;
+}
+[System.Serializable]
+public class SaveMatObject
+{
+    public string matName;
+    public int matCount;
 }

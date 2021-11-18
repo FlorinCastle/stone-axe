@@ -37,7 +37,7 @@ public class PartDataStorage : MonoBehaviour
         return saveObject;
     }
 
-    private object checkEnchant()
+    private SaveEnchantObject checkEnchant()
     {
         if (_isEnchanted == true)
             return _enchantStorage.SaveEnchant();
@@ -89,5 +89,5 @@ public class SavePartObject
 
     public bool isEnchanted;
     // put json object of enchant here if enchated
-    public object enchantment;
+    public SaveEnchantObject enchantment;
 }

@@ -45,7 +45,7 @@ public class MaterialData : ScriptableObject
     public string Material { get => _materialName; }
     public string MaterialType { get => _materialType.ToString(); }
     public string SubMaterialTybe { get => _subMatType.ToString(); }
-    public int MaterialCount { get => _quantity; }
+    public int MaterialCount { get => _quantity; set => _quantity = value; }
     public int BaseCostPerUnit { get => _baseCostPerUnit; }
     public int AddedStrength { get => _addedStrength; }
     public int AddedDextarity { get => _addedDextarity; }

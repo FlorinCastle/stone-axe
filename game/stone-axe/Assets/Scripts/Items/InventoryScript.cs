@@ -696,6 +696,20 @@ public class InventoryScript : MonoBehaviour
         partDataScriptRef.setPartDex(part.partDextarity);
         partDataScriptRef.setPartInt(part.partIntellegence);
         partDataScriptRef.setValue(part.totalValue);
+        // recipe
+        partDataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(part.partRecipeName));
+        // enchant
+        partDataScriptRef.setIsHoldingEnchanted(part.isEnchanted);
+        if (part.isEnchanted)
+        {
+            //partDataScriptRef.setEnchantment(part.enchantment);
+            GameObject enc = convertEnchantData(part.enchantment);
+
+            enc.transform.parent = partDataStorageTemp.gameObject.transform;
+            partDataScriptRef.setEnchantment(enc.GetComponent<EnchantDataStorage>());
+
+            partDataScriptRef.setValue(partDataScriptRef.Value + enc.GetComponent<EnchantDataStorage>().AddedValueOfEnchant);
+        }
 
         return partDataStorageTemp;
     }

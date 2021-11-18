@@ -119,16 +119,29 @@ public class GameMaster : MonoBehaviour
             }
         }
 
+        //List<SaveQuestsObject> questSaveList = new List<SaveQuestsObject>();
+        // save the quest progress
+        SaveQuestsObject questSaveList = this.gameObject.GetComponent<QuestControl>().saveQuests();
+
         SaveSkillsObject skillSave = this.GetComponent<SkillManager>().SaveSkills();
 
-        // put data into save object
+        SaveMaterialsObject materialsSave = _invData.saveMaterials();
+
+        // put this object's data into save object
         SaveObject saveInvObj = new SaveObject
         {
+            currentCurency = _currentCurrency,
+            currentExp = _totalExperience,
+            level = _level,
+            currentSkillPoints = _currentSkillPoints,
             inventoryObjects = itemSaveList,
             partInvObjects = partSaveList,
             enchInvObjects = enchSaveList,
+            questSaveObject = questSaveList,
             skillObject = skillSave,
+            materialsObject = materialsSave,
         };
+
         string json = JsonUtility.ToJson(saveInvObj, true);
         //Debug.Log(json);
         File.WriteAllText(Application.dataPath + "/save.txt", json);
@@ -142,7 +155,7 @@ public class GameMaster : MonoBehaviour
 
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
 
-            // load the saved items
+            // load the saved items & materials
             foreach (SaveItemObject item in saveObject.inventoryObjects)
             {
                 _invScript.InsertItem(_invScript.convertItemData(item));
@@ -155,9 +168,17 @@ public class GameMaster : MonoBehaviour
             {
                 _invScript.InsertEnchatment(_invScript.convertEnchantData(ench));
             }
+            _invData.loadMaterials(saveObject.materialsObject);
 
             // load out all the data (todo)
-            // TODO - load out assigned skill points
+            // load out assigned skill points
+            this.gameObject.GetComponent<SkillManager>().LoadSkills(saveObject.skillObject);
+            // load out this gameobject's data
+            _currentCurrency = saveObject.currentCurency;
+            _totalExperience = saveObject.currentExp;
+            _level = saveObject.level;
+            _currentSkillPoints = saveObject.currentSkillPoints;
+
         }
         else
             Debug.LogWarning("No save data!");
@@ -165,9 +186,15 @@ public class GameMaster : MonoBehaviour
 
     private class SaveObject
     {
+        public int currentCurency;
+        public int currentExp;
+        public int level;
+        public int currentSkillPoints;
         public List<SaveItemObject> inventoryObjects;
         public List<SavePartObject> partInvObjects;
         public List<SaveEnchantObject> enchInvObjects;
+        public SaveQuestsObject questSaveObject;
         public SaveSkillsObject skillObject;
+        public SaveMaterialsObject materialsObject;
     }
 }

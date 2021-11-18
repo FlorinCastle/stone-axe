@@ -19,10 +19,6 @@ public class SkillManager : MonoBehaviour
     [SerializeField] private GameObject _skillPrefab;
 
     [Header("Skill Tracking")]
-    //[SerializeField] private List<GameObject> _allSkills;
-    //[SerializeField] private List<GameObject> _economicSkills;
-    //[SerializeField] private List<GameObject> _disasemblySkills;
-    //[SerializeField] private List<GameObject> _craftingSkills;
     [SerializeField] private ECO_IncSellPrice _ECOIncSellPrice;
     [SerializeField] private ECO_DecBuyPrice _ECODecBuyPrice;
     [SerializeField] private ECO_HaggleSuccess _ECOHaggleSuccess;
@@ -41,10 +37,9 @@ public class SkillManager : MonoBehaviour
     {
         SaveSkillsObject saveObject = new SaveSkillsObject
         {
-            //spentSkillPoints = getSpentSkillPoints(),
             totalSkillPoints = _totalSkillPoints,
             currentSkillPoints = _currentSkillPoints,
-
+            
             ECO_IncSellPricePoints = _ECOIncSellPrice.CurrentSkillLevel,
             ECO_DecBuyPricePoints = _ECODecBuyPrice.CurrentSkillLevel,
             ECO_HagglePoints = _ECOHaggleSuccess.CurrentSkillLevel,
@@ -53,49 +48,35 @@ public class SkillManager : MonoBehaviour
             DIS_HitReductionPoints = _DISHitReduction.CurrentSkillLevel,
             CFT_ReduceMatCostPoints = _CFTReduceMaterialCost.CurrentSkillLevel,
             CFT_HitReductionPoints = _CFTHitReduction.CurrentSkillLevel,
+            
         };
         return saveObject;
     }
 
-    public void LoadSkills()
+    public void LoadSkills(SaveSkillsObject skills)
     {
+        _totalSkillPoints = skills.totalSkillPoints;
+        _currentSkillPoints = skills.currentSkillPoints;
+        
+        _ECOIncSellPrice.CurrentSkillLevel = skills.ECO_IncSellPricePoints;
+        _ECOIncSellPrice.updateSkillTexts();
+        _ECODecBuyPrice.CurrentSkillLevel = skills.ECO_DecBuyPricePoints;
+        _ECODecBuyPrice.updateSkillTexts();
+        _ECOHaggleSuccess.CurrentSkillLevel = skills.ECO_HagglePoints;
+        _ECOHaggleSuccess.updateSkillTexts();
+        _DISDisassembleChance.CurrentSkillLevel = skills.DIS_DisChancePoints;
+        _DISDisassembleChance.updateSkillTexts();
+        _DISEnchantRemoval.CurrentSkillLevel = skills.DIS_EnchRemovalPoints;
+        _DISEnchantRemoval.updateSkillTexts();
+        _DISHitReduction.CurrentSkillLevel = skills.DIS_HitReductionPoints;
+        _DISHitReduction.updateSkillTexts();
+        _CFTReduceMaterialCost.CurrentSkillLevel = skills.CFT_ReduceMatCostPoints;
+        _CFTReduceMaterialCost.updateSkillTexts();
+        _CFTHitReduction.CurrentSkillLevel = skills.CFT_HitReductionPoints;
+        _CFTHitReduction.updateSkillTexts();
+
 
     }
-
-    /*
-    public List<int> getSpentSkillPoints()
-    {
-        List<int> list = new List<int>();
-
-        foreach(GameObject go in _economicSkills)
-        {
-            if (go.GetComponent<ECO_IncSellPrice>() == true)
-                list.Add(go.GetComponent<ECO_IncSellPrice>().CurrentSkillLevel);
-            if (go.GetComponent<ECO_DecBuyPrice>() == true)
-                list.Add(go.GetComponent<ECO_DecBuyPrice>().CurrentSkillLevel);
-            if (go.GetComponent<ECO_HaggleSuccess>() == true)
-                list.Add(go.GetComponent<ECO_HaggleSuccess>().CurrentSkillLevel);
-        }
-        foreach(GameObject go in _disasemblySkills)
-        {
-            if (go.GetComponent<DIS_DisassembleChance>() == true)
-                list.Add(go.GetComponent<DIS_DisassembleChance>().CurrentSkillLevel);
-            if (go.GetComponent<DIS_EnchantRemoval>() == true)
-                list.Add(go.GetComponent<DIS_EnchantRemoval>().CurrentSkillLevel);
-            if (go.GetComponent<DIS_HitReduction>() == true)
-                list.Add(go.GetComponent<DIS_HitReduction>().CurrentSkillLevel);
-        }
-        foreach(GameObject go in _craftingSkills)
-        {
-            if (go.GetComponent<CFT_ReduceMaterialCost>() == true)
-                list.Add(go.GetComponent<CFT_ReduceMaterialCost>().CurrentSkillLevel);
-            if (go.GetComponent<CFT_HitReduction>() == true)
-                list.Add(go.GetComponent<CFT_HitReduction>().CurrentSkillLevel);
-        }
-
-        return list;
-    }
-    */
 
     public void updateSkillPoints()
     {
@@ -121,7 +102,6 @@ public class SkillManager : MonoBehaviour
 [System.Serializable]
 public class SaveSkillsObject
 {
-    //public List<int> spentSkillPoints;
     public int totalSkillPoints;
     public int currentSkillPoints;
 

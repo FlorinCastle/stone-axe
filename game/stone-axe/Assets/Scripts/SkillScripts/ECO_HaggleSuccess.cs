@@ -55,29 +55,32 @@ public class ECO_HaggleSuccess : MonoBehaviour
                     removeAddButton();
             }
         }
+        updateSkillTexts();
+    }
+    public void updateSkillTexts()
+    {
         setupSkillLevelText();
         setupSkillText();
-    }
 
+    }
     public void removeAddButton()
     {
         addPointButton.SetActive(false);
     }
-
     private void setupSkillLevelText()
     {
         skillLevelText.text = currentLevel + " / " + maxLevel;
     }
-
     private void setupSkillText()
     {
         skillBodyText.text = "haggle success chance is " + (30f + (10f * currentLevel)) + "%, increasing sell price by +" + (5f + (1f * currentLevel)) + "%";
     }
-
     public int CurrentSkillLevel
     {
         get => currentLevel;
+        set => currentLevel = value;
     }
+
 
     public float getHaggleChance()
     {
@@ -86,7 +89,6 @@ public class ECO_HaggleSuccess : MonoBehaviour
                 return (30f + 10f * i);
         return 30.0f;
     }
-
     public float getModifiedPrice()
     {
         for (int i = 0; i <= maxLevel; i++)

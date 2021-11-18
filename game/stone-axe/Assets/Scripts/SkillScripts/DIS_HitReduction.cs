@@ -55,20 +55,22 @@ public class DIS_HitReduction : MonoBehaviour
                     removeAddButton();
             }
         }
+        updateSkillTexts();
+    }
+    public void updateSkillTexts()
+    {
         setupSkillLevelText();
         setupSkillText();
-    }
 
+    }
     public void removeAddButton()
     {
         addPointButton.SetActive(false);
     }
-
     private void setupSkillLevelText()
     {
         skillLevelText.text = currentLevel + " / " + maxLevel;
     }
-
     private void setupSkillText()
     {
         skillBodyText.text = "points to disassemble an item is reduced by " + currentLevel + ". minimum to hit 1";
@@ -76,6 +78,7 @@ public class DIS_HitReduction : MonoBehaviour
     public int CurrentSkillLevel
     {
         get => currentLevel;
+        set => currentLevel = value;
     }
 
 
