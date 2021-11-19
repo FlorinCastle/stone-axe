@@ -170,9 +170,12 @@ public class GameMaster : MonoBehaviour
             }
             _invData.loadMaterials(saveObject.materialsObject);
 
-            // load out all the data (todo)
+            // load out all the other data
             // load out assigned skill points
             this.gameObject.GetComponent<SkillManager>().LoadSkills(saveObject.skillObject);
+            // load out quest data
+            this.gameObject.GetComponent<QuestControl>().LoadQuests(saveObject.questSaveObject);
+
             // load out this gameobject's data
             _currentCurrency = saveObject.currentCurency;
             _totalExperience = saveObject.currentExp;
@@ -190,10 +193,10 @@ public class GameMaster : MonoBehaviour
         public int currentExp;
         public int level;
         public int currentSkillPoints;
+        public SaveQuestsObject questSaveObject;
         public List<SaveItemObject> inventoryObjects;
         public List<SavePartObject> partInvObjects;
         public List<SaveEnchantObject> enchInvObjects;
-        public SaveQuestsObject questSaveObject;
         public SaveSkillsObject skillObject;
         public SaveMaterialsObject materialsObject;
     }

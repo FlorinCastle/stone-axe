@@ -52,11 +52,44 @@ public class QuestControl : MonoBehaviour
 
     public SaveQuestsObject saveQuests()
     {
+
+        List <QuestObject> completedQuestList = new List<QuestObject>();
+        foreach(QuestData tutQuest in _questRef.getTutorialQuests())
+            if (tutQuest.StoryQuestComplete == true)
+                completedQuestList.Add(_questRef.saveQuest(tutQuest));
+
+        foreach (QuestData stryQuest in _questRef.getStoryQuests())
+            if (stryQuest.StoryQuestComplete == true)
+                completedQuestList.Add(_questRef.saveQuest(stryQuest));
+
         SaveQuestsObject questObject = new SaveQuestsObject
         {
-            //currentQuest = _questRef.saveCurrentQuest(),
+            currentQuest = _questRef.saveQuest(_chosenQuest),
+            completedQuests = completedQuestList,
         };
+
         return questObject;
+    }
+    public void LoadQuests(SaveQuestsObject questsSave)
+    {
+        if (questsSave.currentQuest != null)
+        {
+            foreach (QuestData quest in _questRef.getAllQuests())
+                if (quest.QuestName == questsSave.currentQuest.questName)
+                    _chosenQuest = quest;
+            setupText();
+        }
+        foreach (QuestObject quest in questsSave.completedQuests)
+        {
+            if (quest.questType == "Tutorial")
+                foreach (QuestData tutQuest in _questRef.getTutorialQuests())
+                    if (tutQuest.QuestName == quest.questName)
+                        tutQuest.StoryQuestComplete = true;
+            else if (quest.questType == "Story")
+                foreach (QuestData storyQuest in _questRef.getStoryQuests())
+                    if (storyQuest.QuestName == quest.questName)
+                        storyQuest.StoryQuestComplete = true;
+        }
     }
 
 
@@ -260,6 +293,6 @@ public class QuestControl : MonoBehaviour
 [System.Serializable]
 public class SaveQuestsObject
 {
-    QuestObject currentQuest;
-    List<QuestObject> completedQuests;
+    public QuestObject currentQuest;
+    public List<QuestObject> completedQuests;
 }

@@ -35,13 +35,23 @@ public class Quest : MonoBehaviour
                 _repeatableQuests.Add(quest);
         }
     }
-    /* TODO
-    public QuestObject saveCurentQuest()
+    // TODO
+    public QuestObject saveQuest(QuestData currentQuest)
     {
-
-        
+        QuestObject questObject = new QuestObject
+        {
+            questName = "",
+            questType = "Not_Set",
+        };
+        if (currentQuest != null)
+        {
+            questObject.questName = currentQuest.QuestName;
+            questObject.questType = currentQuest.QuestType;
+        }
+        return questObject;
     }
-    */
+    
+    public List<QuestData> getAllQuests() { return _questDataList; }
     public List<QuestData> getTutorialQuests() { return _tutorialQuests; }
     public List<QuestData> getStoryQuests() { return _storyQuests; }
     public List<QuestData> getOnCraftItemQuests() { return _onCraftItemQuests; }
@@ -53,5 +63,6 @@ public class Quest : MonoBehaviour
 [System.Serializable]
 public class QuestObject
 {
-
+    public string questName;
+    public string questType;
 }

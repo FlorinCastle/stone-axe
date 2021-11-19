@@ -17,5 +17,7 @@ MonoBehaviour:
   _questType: 6
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
+  _requiredQuestItem: {fileID: 0}
   _requiredCount: 0
   _nextQuest: {fileID: 0}
+  _storyQuestComplete: 0
