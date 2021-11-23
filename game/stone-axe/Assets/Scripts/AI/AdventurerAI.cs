@@ -5,25 +5,38 @@ using UnityEngine;
 public class AdventurerAI : MonoBehaviour
 {
     // REMINDER: forward is along the z-Axis of the object
+    private AdventurerMaster _advMaster;
+    private AdventurerData _advRaceRef;
 
     [SerializeField] private GameObject _currentPoint;
+    [Header("Body Refs")]
+    [SerializeField] private GameObject _headMark;
 
-    /*
-    Rigidbody m_Rigidbody;
-    float m_Speed;
-
-    private void Start()
+    private void Awake()
     {
-        m_Rigidbody = GetComponent<Rigidbody>();
-        m_Speed = 10.0f;
+        _advMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<AdventurerMaster>();
     }
 
-    private void Update()
+    public void setupAdventurer()
     {
-        if(Input.GetKey(KeyCode.UpArrow))
+        chooseRace();
+        setupAdventurerModel();
+    }
+
+    private void chooseRace()
+    {
+        List<AdventurerData> adventRef = _advMaster.GetAdvRaceList;
+        int i = Random.Range(0, adventRef.Count);
+        _advRaceRef = adventRef[i];
+    }
+
+    private void setupAdventurerModel()
+    {
+        if (_advRaceRef != null)
         {
-            m_Rigidbody.velocity = transform.forward * m_Speed;
+
         }
+        else
+            Debug.LogWarning("Adventurer Data for " + this.gameObject.name + " is not assigned! Use chooseRace() first then use setupAdventurerModel()");
     }
-    */
 }

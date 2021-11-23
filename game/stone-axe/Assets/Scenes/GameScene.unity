@@ -3025,6 +3025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de4de6ebf591a7438680cc4a5000da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeBetweenSpawn: 30
+  _adventurerPrefab: {fileID: 2822056689991755846, guid: 72bb614d62307cf4382c20b6e086adac, type: 3}
   _currentAdventurers: []
   _walkingPoints:
   - {fileID: 931527662}
@@ -3034,6 +3036,11 @@ MonoBehaviour:
   - {fileID: 1038123880}
   - {fileID: 422175389}
   - {fileID: 281450653}
+  _adventurerData:
+  - {fileID: 11400000, guid: faac5658c44210b4f8c25b795233b062, type: 2}
+  - {fileID: 11400000, guid: fc491033180c96f4c8b4c00b7b728e08, type: 2}
+  - {fileID: 11400000, guid: 5068122a98071c14d9744def6012cdc7, type: 2}
+  advSpawnEnabled: 0
 --- !u!1 &1737104022
 GameObject:
   m_ObjectHideFlags: 0
@@ -4784,6 +4791,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 59646114575990709, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1734993351}
     - target: {fileID: 140743319049393509, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0

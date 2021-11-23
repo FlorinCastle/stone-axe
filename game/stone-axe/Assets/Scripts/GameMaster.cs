@@ -187,6 +187,17 @@ public class GameMaster : MonoBehaviour
             Debug.LogWarning("No save data!");
     }
 
+    private bool spawnAdvent = false;
+    public void toggleAdventurerSpawn()
+    {
+        spawnAdvent = !spawnAdvent;
+        if (spawnAdvent == true)
+            this.gameObject.GetComponent<AdventurerMaster>().startAdventurerSpawn();
+        else if (spawnAdvent == false)
+            this.gameObject.GetComponent<AdventurerMaster>().disableAdventurerSpawn();
+    }
+
+
     private class SaveObject
     {
         public int currentCurency;
