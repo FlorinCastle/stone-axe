@@ -42,10 +42,17 @@ public class AdventurerMaster : MonoBehaviour
         while (advSpawnEnabled)
         {
             Debug.Log("Started Adventurer Spawn Coroutine");
-            advPlaceholder = Instantiate(_adventurerPrefab);
-            advPlaceholder.GetComponent<AdventurerAI>().setupAdventurer();
+            if (_currentAdventurers.Count < 3)
+            {
+                advPlaceholder = Instantiate(_adventurerPrefab, _walkingPoints[0].gameObject.transform, false);
+                advPlaceholder.transform.parent = null;
+                advPlaceholder.GetComponent<AdventurerAI>().setCurentTarget(_walkingPoints[1].gameObject);
+                advPlaceholder.GetComponent<AdventurerAI>().setupAdventurer();
+                //advPlaceholder.GetComponent<AdventurerAI>().IsMoving = true;
+                _currentAdventurers.Add(advPlaceholder);
+            }
             yield return new WaitForSeconds(_timeBetweenSpawn);
-            Debug.Log("Finished Coroutine");
+            Debug.Log("Finished spawning Coroutine Countdown");
         }
     }
 
