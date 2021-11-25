@@ -8,6 +8,7 @@ public class AdventurerAI : MonoBehaviour
     private AdventurerMaster _advMaster;
     [SerializeField] private AdventurerData _advRaceRef;
     private bool _move;
+    private bool dismissed;
 
     [SerializeField] private GameObject _currentTarget;
     private Vector3 _targetPosition;
@@ -20,7 +21,6 @@ public class AdventurerAI : MonoBehaviour
     }
 
     private Vector3 newDirection;
-
     private void Update()
     {
         if (_move == true)
@@ -40,9 +40,32 @@ public class AdventurerAI : MonoBehaviour
             Debug.Log("position reached");
             IsMoving = false;
             if (_currentTarget.GetComponent<WalkingPoint>() == true)
+            {
+                dismissed = false;
                 setCurentTarget(_currentTarget.GetComponent<WalkingPoint>().NextPoint);
+            }
             else if (_currentTarget.GetComponent<LinePoint>() == true)
-                setCurentTarget(_currentTarget.GetComponent<LinePoint>().NextPoint);
+            {
+                _currentTarget.GetComponent<LinePoint>().IsOccupied = true;
+                if (_currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<LinePoint>() != null
+                    && _currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<LinePoint>().IsOccupied == false)
+                {
+                    _currentTarget.GetComponent<LinePoint>().IsOccupied = false;
+                    dismissed = false;
+                    setCurentTarget(_currentTarget.GetComponent<LinePoint>().NextPoint);
+                }
+                else if (_currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<LinePoint>() != null && _currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<LinePoint>().IsOccupied == true)
+                {
+                    dismissed = false;
+                    Debug.Log("waiting");
+                }
+                else if (dismissed == true && _currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<WalkingPoint>() != null)
+                {
+                    _currentTarget.GetComponent<LinePoint>().IsOccupied = false;
+                    dismissed = false;
+                    setCurentTarget(_currentTarget.GetComponent<LinePoint>().NextPoint);
+                }
+            }
         }
 
         if (Vector3.Angle(transform.forward, _targetPosition - this.transform.position) < 10f)
@@ -62,6 +85,7 @@ public class AdventurerAI : MonoBehaviour
     }
 
     public bool IsMoving { set => _move = value; }
+    public bool IsDismissed { set => dismissed = value; }
 
     private void chooseRace()
     {

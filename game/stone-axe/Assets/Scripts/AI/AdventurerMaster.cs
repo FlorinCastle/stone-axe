@@ -36,6 +36,13 @@ public class AdventurerMaster : MonoBehaviour
         return advSpawnEnabled;
     }
 
+    public void dismissAdventurers()
+    {
+        foreach (GameObject adventurer in _currentAdventurers)
+            if (adventurer.GetComponent<AdventurerAI>() != null)
+                adventurer.GetComponent<AdventurerAI>().IsDismissed = true;
+    }
+
     private GameObject advPlaceholder;
     IEnumerator AdventurerSpawn()
     {

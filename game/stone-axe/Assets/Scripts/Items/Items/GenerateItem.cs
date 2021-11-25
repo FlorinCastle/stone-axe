@@ -80,6 +80,7 @@ public class GenerateItem : MonoBehaviour
         itemText.text = "item text";
         haggleButton.interactable = false;
         haggleButtonText.text = "haggle\n(success chance: n/a)";
+        this.gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
     }
 
     public void haggleGeneratedPrice()

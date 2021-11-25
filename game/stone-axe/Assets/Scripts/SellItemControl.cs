@@ -149,6 +149,7 @@ public class SellItemControl : MonoBehaviour
 
         this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
         clearSellMenu();
+        this.gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
     }
 
     public void hagglePrice()
