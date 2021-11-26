@@ -15,6 +15,7 @@ public class GenerateItem : MonoBehaviour
     [SerializeField] private Text itemText;
     [SerializeField] private Button buyButton;
     [SerializeField] private Button haggleButton;
+    [SerializeField] private Button generateButton;
     private Text buyButtonText;
     private Text haggleButtonText;
 
@@ -28,6 +29,7 @@ public class GenerateItem : MonoBehaviour
         buyButtonText = buyButton.GetComponentInChildren<Text>();
         haggleButtonText = haggleButton.GetComponentInChildren<Text>();
         haggleButtonText.text = "haggle\n(success chance: n/a)";
+        generateButton.interactable = false;
     }
 
     [SerializeField] private ItemData _generatedItem;
@@ -52,7 +54,6 @@ public class GenerateItem : MonoBehaviour
         haggleButtonText.text = "haggle\n(success chance: " + (_haggleSkill.getHaggleChance()).ToString() + "%)";
         haggleButton.interactable = true;
     }
-
     public void buyGeneratedItem()
     {
         if (_generatedItem != null)
@@ -82,7 +83,6 @@ public class GenerateItem : MonoBehaviour
         haggleButtonText.text = "haggle\n(success chance: n/a)";
         this.gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
     }
-
     public void haggleGeneratedPrice()
     {
         int ran = Random.Range(0, 100);
@@ -101,7 +101,6 @@ public class GenerateItem : MonoBehaviour
         haggleButton.GetComponentInChildren<Text>().text = "haggle\ncomplete";
         haggleButton.interactable = false;
     }
-
     public void forceInsertItem()
     {
         if (_generatedItem != null)
@@ -115,7 +114,6 @@ public class GenerateItem : MonoBehaviour
         haggleButton.interactable = false;
         haggleButtonText.text = "haggle\n(success chance: n/a)";
     }
-
     public void forceDisassembleItem()
     {
         if (_generatedItem != null)
@@ -133,6 +131,18 @@ public class GenerateItem : MonoBehaviour
         haggleButton.interactable = false;
         haggleButtonText.text = "haggle\n(success chance: n/a)";
     }
+    public void adventurerAtCounter()
+    {
+        if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == true)
+        {
+            generateButton.interactable = true;
+        }
+        else if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == false)
+        {
+            generateButton.interactable = false;
+        }
+    }
+
 
     private string _generatedText;
 

@@ -13,11 +13,13 @@ public class SellItemControl : MonoBehaviour
     [SerializeField] private Button _sellItemButton;
     [SerializeField] private Button _refuseButton;
     [SerializeField] private Button _haggleButton;
+    [SerializeField] private Button _suggestButton;
     [Header("Market UI")]
     [SerializeField] private Text _marketItemText;
     [SerializeField] private Button _marketSellItemButton;
     [SerializeField] private Button _marketRefuseButton;
     [SerializeField] private Button _marketHaggleButton;
+    [SerializeField] private Button _marketSuggestButton;
     [Header("Modifying Skills")]
     [SerializeField] private ECO_IncSellPrice _sellPriceSkill;
     [SerializeField] private ECO_HaggleSuccess _haggleSuccessSkill;
@@ -37,11 +39,13 @@ public class SellItemControl : MonoBehaviour
         _sellItemButton.interactable = false;
         _refuseButton.interactable = false;
         _haggleButton.interactable = false;
+        _suggestButton.interactable = false;
         _haggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: n/a)";
 
         _marketSellItemButton.interactable = false;
         _marketRefuseButton.interactable = false;
         _marketHaggleButton.interactable = false;
+        _marketSuggestButton.interactable = false;
         _marketHaggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: n/a)";
     }
 
@@ -193,6 +197,20 @@ public class SellItemControl : MonoBehaviour
         _marketRefuseButton.interactable = false;
         _marketHaggleButton.interactable = false;
         haggleSucceded = false;
+    }
+
+    public void adventurerAtCounter()
+    {
+        if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == true)
+        {
+            _suggestButton.interactable = true;
+            _marketSuggestButton.interactable = true;
+        }
+        else if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == false)
+        {
+            _suggestButton.interactable = false;
+            _marketSuggestButton.interactable = false;
+        }
     }
 
     public int SellingState { get => sellingState; set => sellingState = value; }

@@ -10,6 +10,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private int _totalExperience;
     [SerializeField] private int _level;
     [SerializeField] private int _currentSkillPoints;
+    private bool adventurerAtCounter;
     [Header("UI and Level")]
     [SerializeField] private GameObject _shopLevel;
     [SerializeField] private GameObject _marketLevel;
@@ -19,6 +20,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private GameObject _toMarketButton;
     private InventoryData _invData;
     private InventoryScript _invScript;
+
 
     private void Awake()
     {
@@ -31,7 +33,6 @@ public class GameMaster : MonoBehaviour
     {
         _currentCurrency += value;
     }
-
     public bool removeCurrency(int value)
     {
         int temp = _currentCurrency - value;
@@ -56,8 +57,8 @@ public class GameMaster : MonoBehaviour
         _toShopButton.SetActive(true);
         _toMarketButton.SetActive(false);
         this.gameObject.GetComponent<SellItemControl>().SellingState = 1;
+        this.gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
     }
-
     public void loadShopLevel()
     {
         _shopLevel.SetActive(true);
@@ -67,16 +68,18 @@ public class GameMaster : MonoBehaviour
         _toShopButton.SetActive(false);
         _toMarketButton.SetActive(true);
         this.gameObject.GetComponent<SellItemControl>().SellingState = 0;
+        this.gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
     }
 
+
     public void setTotalExperience(int value) { _totalExperience = value; }
-    public int GetTotalExperience { get => _totalExperience; }
-
+    public int GetTotalExperience { get => _totalExperience; } 
     public void setLevel(int value) { _level = value; }
-    public int GetLevel { get => _level; }
-
+    public int GetLevel { get => _level; } 
     public void setCurrentSkillPoints(int value) { _currentSkillPoints = value; }
     public int GetCurrentSkillPoints { get => _currentSkillPoints; }
+    public bool AdventurerAtCounter { get => adventurerAtCounter; set => adventurerAtCounter = value; }
+
 
     public void clearSavedData()
     {
@@ -84,7 +87,6 @@ public class GameMaster : MonoBehaviour
         _invData.gameObject.GetComponent<InventoryScript>().forceClearPartInventory();
         _invData.gameObject.GetComponent<InventoryScript>().forceClearEnchantInventory();
     }
-
     public void saveGame()
     {
         // get all data to save
@@ -146,7 +148,6 @@ public class GameMaster : MonoBehaviour
         //Debug.Log(json);
         File.WriteAllText(Application.dataPath + "/save.txt", json);
     }
-
     public void loadGame()
     {
         if (File.Exists(Application.dataPath + "/save.txt"))
@@ -186,7 +187,6 @@ public class GameMaster : MonoBehaviour
         else
             Debug.LogWarning("No save data!");
     }
-
     private bool spawnAdvent = false;
     public void toggleAdventurerSpawn()
     {
