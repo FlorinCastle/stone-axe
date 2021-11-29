@@ -36,25 +36,19 @@ public class UIControl : MonoBehaviour
             Debug.LogError("Skill Tree UI is not assigned");
     }
 
-    public void unloadUI(GameObject UIInput)
-    {
-        UIInput.SetActive(false);
-    }
-
-    public void loadUI(GameObject UIInput)
-    {
-        UIInput.SetActive(true);
-    }
-
+    public void unloadUI(GameObject UIInput) { UIInput.SetActive(false); } 
+    public void loadUI(GameObject UIInput) { UIInput.SetActive(true); } 
     public void mainMenu()
     {
         this.gameObject.GetComponent<GameMaster>().saveGame();
         this.gameObject.GetComponent<GameMaster>().clearSavedData();
         this.gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
-    }
+        this.gameObject.GetComponent<PlayerManager>().removePlayer();
+    } 
+    public void quitGame() { Application.Quit(); }
 
-    public void quitGame()
-    {
-        Application.Quit();
-    }
+    public bool MainMenuUIActive { get => mainMenuUI.activeInHierarchy; }
+    public bool ShopUIActive { get => gameShopUI.activeInHierarchy; }
+    public bool OptionsUIActive { get => optionsPopup.activeInHierarchy; }
+
 }

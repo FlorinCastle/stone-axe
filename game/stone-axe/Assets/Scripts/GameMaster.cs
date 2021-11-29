@@ -21,7 +21,6 @@ public class GameMaster : MonoBehaviour
     private InventoryData _invData;
     private InventoryScript _invScript;
 
-
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -69,6 +68,8 @@ public class GameMaster : MonoBehaviour
         _toMarketButton.SetActive(true);
         this.gameObject.GetComponent<SellItemControl>().SellingState = 0;
         this.gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
+        if (this.gameObject.GetComponent<PlayerManager>().PlayerExists == false)
+            this.gameObject.GetComponent<PlayerManager>().spawnPlayer();
     }
 
 
@@ -79,7 +80,8 @@ public class GameMaster : MonoBehaviour
     public void setCurrentSkillPoints(int value) { _currentSkillPoints = value; }
     public int GetCurrentSkillPoints { get => _currentSkillPoints; }
     public bool AdventurerAtCounter { get => adventurerAtCounter; set => adventurerAtCounter = value; }
-
+    public bool ShopActive { get => _shopLevel.activeInHierarchy; }
+    public bool MarketActive { get => _marketLevel.activeInHierarchy; }
 
     public void clearSavedData()
     {
