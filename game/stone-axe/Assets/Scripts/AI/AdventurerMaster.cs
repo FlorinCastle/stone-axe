@@ -51,20 +51,23 @@ public class AdventurerMaster : MonoBehaviour
     }
     public void removeAllAdventurers()
     {
+        StopCoroutine(AdventurerSpawn());
+        StopCoroutine(AdventurerTimer());
         foreach (GameObject go in _currentAdventurers)
             Destroy(go);
 
         _currentAdventurers.Clear();
-        StopCoroutine(AdventurerSpawn());
     }
 
     private GameObject advPlaceholder;
     IEnumerator AdventurerSpawn()
     {
+        //StartCoroutine(AdventurerTimer());
         while (advSpawnEnabled)
         {
             Debug.Log("Started Adventurer Spawn Coroutine");
-            yield return new WaitForSeconds((_timeBetweenSpawn / 3));
+            StartCoroutine(AdventurerTimer());
+            yield return new WaitForSeconds(_timeBetweenSpawn);
             if (_currentAdventurers.Count < 3)
             {
                 advPlaceholder = Instantiate(_adventurerPrefab, _walkingPoints[0].gameObject.transform, false);
@@ -74,8 +77,19 @@ public class AdventurerMaster : MonoBehaviour
                 //advPlaceholder.GetComponent<AdventurerAI>().IsMoving = true;
                 _currentAdventurers.Add(advPlaceholder);
             }
-            yield return new WaitForSeconds(2*(_timeBetweenSpawn/3));
+            StopCoroutine(AdventurerTimer());
             Debug.Log("Finished spawning Coroutine Countdown");
+        }
+    }
+    IEnumerator AdventurerTimer()
+    {
+        float duration = _timeBetweenSpawn;
+        float normalizedTime = 0f;
+        while (normalizedTime <= 1f)
+        {
+            _spawnProgressSlider.value = normalizedTime;
+            normalizedTime += Time.deltaTime / duration;
+            yield return null;
         }
     }
 

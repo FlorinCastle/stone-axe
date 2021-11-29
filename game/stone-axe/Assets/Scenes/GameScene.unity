@@ -3074,7 +3074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de4de6ebf591a7438680cc4a5000da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeBetweenSpawn: 30
+  _timeBetweenSpawn: 10
   _adventurerPrefab: {fileID: 2822056689991755846, guid: 72bb614d62307cf4382c20b6e086adac, type: 3}
   _currentAdventurers: []
   _walkingPoints:

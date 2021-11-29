@@ -50,6 +50,7 @@ public class UIControl : MonoBehaviour
     {
         this.gameObject.GetComponent<GameMaster>().saveGame();
         this.gameObject.GetComponent<GameMaster>().clearSavedData();
+        this.gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
     }
 
     public void quitGame()
