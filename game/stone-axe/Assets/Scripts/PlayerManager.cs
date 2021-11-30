@@ -6,6 +6,8 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private GameObject _playerRef;
+    [SerializeField] private GameObject _playerHeadPrefabRef;
+    [SerializeField] private List<GameObject> _playerHeads;
     [Header("Shop Points")]
     [SerializeField] private GameObject _counterPoint;
     [SerializeField] private GameObject _craftPoint;
@@ -22,9 +24,31 @@ public class PlayerManager : MonoBehaviour
             spawnPlayer();
     }
 
+    public PlayerSave savePlayer()
+    {
+        PlayerSave saveObject = new PlayerSave
+        {
+            playerHead = _playerHeadPrefabRef,
+        };
+        return saveObject;
+    }
+    public void loadPlayerData(PlayerSave playerSave)
+    {
+        _playerHeadPrefabRef = playerSave.playerHead;
+    }
+
+
     public void spawnPlayer()
     {
         _playerRef = Instantiate(_playerPrefab);
+        if (_playerHeadPrefabRef != null)
+            _playerRef.GetComponent<PlayerScript>().setupHead(_playerHeadPrefabRef);
+        else
+        {
+            //Debug.LogWarning("no player head");
+            int headIndex = Random.Range(0, _playerHeads.Count);
+            _playerRef.GetComponent<PlayerScript>().setupHead(_playerHeads[headIndex]);
+        }
         playerExists = true;
         warpToCounter();
     }
@@ -77,4 +101,9 @@ public class PlayerManager : MonoBehaviour
         Destroy(_playerRef);
         playerExists = false;
     }
+
+}
+public class PlayerSave
+{
+    public GameObject playerHead;
 }

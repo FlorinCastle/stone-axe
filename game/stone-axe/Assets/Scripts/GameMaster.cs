@@ -131,6 +131,8 @@ public class GameMaster : MonoBehaviour
 
         SaveMaterialsObject materialsSave = _invData.saveMaterials();
 
+        PlayerSave savePlayer = this.GetComponent<PlayerManager>().savePlayer();
+
         // put this object's data into save object
         SaveObject saveInvObj = new SaveObject
         {
@@ -138,6 +140,7 @@ public class GameMaster : MonoBehaviour
             currentExp = _totalExperience,
             level = _level,
             currentSkillPoints = _currentSkillPoints,
+            playerSave = savePlayer,
             inventoryObjects = itemSaveList,
             partInvObjects = partSaveList,
             enchInvObjects = enchSaveList,
@@ -184,7 +187,8 @@ public class GameMaster : MonoBehaviour
             _totalExperience = saveObject.currentExp;
             _level = saveObject.level;
             _currentSkillPoints = saveObject.currentSkillPoints;
-
+            // load out the player data
+            this.gameObject.GetComponent<PlayerManager>().loadPlayerData(saveObject.playerSave);
         }
         else
             Debug.LogWarning("No save data!");
@@ -206,6 +210,7 @@ public class GameMaster : MonoBehaviour
         public int currentExp;
         public int level;
         public int currentSkillPoints;
+        public PlayerSave playerSave;
         public SaveQuestsObject questSaveObject;
         public List<SaveItemObject> inventoryObjects;
         public List<SavePartObject> partInvObjects;
