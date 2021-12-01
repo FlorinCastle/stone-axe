@@ -24,8 +24,10 @@ public class UIControl : MonoBehaviour
     [SerializeField] Button _creditsButton;
     [SerializeField] GameObject _loadGameMenu;
     [SerializeField] GameObject _newGameMenu;
+    [Header("New Game UI")]
     [SerializeField] InputField _playerName;
     [SerializeField] InputField _shopName;
+    [SerializeField] Button _startNewGameButton;
 
     private void Awake()
     {
@@ -47,6 +49,7 @@ public class UIControl : MonoBehaviour
         if (skillTreeUI == null)
             Debug.LogError("Skill Tree UI is not assigned");
 
+        _startNewGameButton.interactable = false;
         setupMainMenu();
     }
 
@@ -67,6 +70,10 @@ public class UIControl : MonoBehaviour
         if (_settingsButton != null) _settingsButton.interactable = true;
         if (_creditsButton != null) _creditsButton.interactable = true;
     }
+    private void setupNewGameMenu()
+    {
+        _startNewGameButton.interactable = false;
+    }
 
     public void unloadUI(GameObject UIInput) { UIInput.SetActive(false); } 
     public void loadUI(GameObject UIInput) { UIInput.SetActive(true); } 
@@ -75,6 +82,7 @@ public class UIControl : MonoBehaviour
         PlayerName = "";
         ShopName = "";
         _newGameMenu.SetActive(false);
+        _startNewGameButton.interactable = false;
     }
     public void mainMenu()
     {
@@ -85,6 +93,21 @@ public class UIControl : MonoBehaviour
         setupMainMenu();
     } 
     public void quitGame() { Application.Quit(); }
+
+    public void updatingInputData()
+    {
+        _startNewGameButton.interactable = false;
+    }
+    public void checkInputData()
+    {
+        if (_playerName.text != "" && _shopName.text != "")
+        {
+            Debug.Log("has all required text");
+            _startNewGameButton.interactable = true;
+        }
+        else if (_playerName.text == "" || _shopName.text == "")
+            _startNewGameButton.interactable = false;
+    }
 
     public bool MainMenuUIActive { get => mainMenuUI.activeInHierarchy; }
     public bool ShopUIActive { get => gameShopUI.activeInHierarchy; }

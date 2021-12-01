@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
+    [SerializeField] private string _playerName = "test";
+    [SerializeField] private string _shopName = "test";
     [SerializeField] private int _currentCurrency;
     [SerializeField] private int _totalExperience;
     [SerializeField] private int _level;
@@ -20,12 +22,18 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private GameObject _toMarketButton;
     private InventoryData _invData;
     private InventoryScript _invScript;
+    [Header("save tracking")]
+    [SerializeField] private List<SaveTracker> _saveTrackerScripts;
+    [SerializeField]
+    private List<string> _saveGameList;
 
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
         _invData = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryData>();
         _invScript = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>();
+
+        loadSaveGames();
     }
 
     public void addCurrency(int value)
@@ -136,6 +144,8 @@ public class GameMaster : MonoBehaviour
         // put this object's data into save object
         SaveObject saveInvObj = new SaveObject
         {
+            playerName = _playerName,
+            shopName = _shopName,
             currentCurency = _currentCurrency,
             currentExp = _totalExperience,
             level = _level,
@@ -151,48 +161,80 @@ public class GameMaster : MonoBehaviour
 
         string json = JsonUtility.ToJson(saveInvObj, true);
         //Debug.Log(json);
-        File.WriteAllText(Application.dataPath + "/save.txt", json);
+        string savePath = Application.dataPath + "/save_" + _playerName + "_" + _shopName + ".txt";
+        File.WriteAllText(savePath, json);
+        _saveGameList.Add(savePath);
     }
     public void loadGame()
+    {
+        foreach (string savePath in _saveGameList)
+        {
+            //if (File.Exists(Application.dataPath + "/save.txt"))
+            if (File.Exists(savePath))
+            {
+                //string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
+                string saveString = File.ReadAllText(savePath);
+
+                SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+
+                // load the saved items & materials
+                foreach (SaveItemObject item in saveObject.inventoryObjects)
+                {
+                    _invScript.InsertItem(_invScript.convertItemData(item));
+                }
+                foreach (SavePartObject part in saveObject.partInvObjects)
+                {
+                    _invScript.InsertPart(_invScript.convertPartData(part));
+                }
+                foreach (SaveEnchantObject ench in saveObject.enchInvObjects)
+                {
+                    _invScript.InsertEnchatment(_invScript.convertEnchantData(ench));
+                }
+                _invData.loadMaterials(saveObject.materialsObject);
+
+                // load out all the other data
+                // load out assigned skill points
+                this.gameObject.GetComponent<SkillManager>().LoadSkills(saveObject.skillObject);
+                // load out quest data
+                this.gameObject.GetComponent<QuestControl>().LoadQuests(saveObject.questSaveObject);
+
+                // load out this gameobject's data
+                _currentCurrency = saveObject.currentCurency;
+                _totalExperience = saveObject.currentExp;
+                _level = saveObject.level;
+                _currentSkillPoints = saveObject.currentSkillPoints;
+                // load out the player data
+                this.gameObject.GetComponent<PlayerManager>().loadPlayerData(saveObject.playerSave);
+            }
+            else
+                Debug.LogWarning("No save data!");
+        }
+    }
+
+    public void saveSaveGames()
+    {
+        SaveData saveObj = new SaveData
+        {
+            saveGamePaths = _saveGameList,
+        };
+        string json = JsonUtility.ToJson(saveObj, true);
+        string savePath = Application.dataPath + "/save.txt";
+        File.WriteAllText(savePath, json);
+    }
+    public void loadSaveGames()
     {
         if (File.Exists(Application.dataPath + "/save.txt"))
         {
             string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
 
-            SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+            SaveData saveObject = JsonUtility.FromJson<SaveData>(saveString);
 
-            // load the saved items & materials
-            foreach (SaveItemObject item in saveObject.inventoryObjects)
-            {
-                _invScript.InsertItem(_invScript.convertItemData(item));
-            }
-            foreach (SavePartObject part in saveObject.partInvObjects)
-            {
-                _invScript.InsertPart(_invScript.convertPartData(part));
-            }
-            foreach (SaveEnchantObject ench in saveObject.enchInvObjects)
-            {
-                _invScript.InsertEnchatment(_invScript.convertEnchantData(ench));
-            }
-            _invData.loadMaterials(saveObject.materialsObject);
-
-            // load out all the other data
-            // load out assigned skill points
-            this.gameObject.GetComponent<SkillManager>().LoadSkills(saveObject.skillObject);
-            // load out quest data
-            this.gameObject.GetComponent<QuestControl>().LoadQuests(saveObject.questSaveObject);
-
-            // load out this gameobject's data
-            _currentCurrency = saveObject.currentCurency;
-            _totalExperience = saveObject.currentExp;
-            _level = saveObject.level;
-            _currentSkillPoints = saveObject.currentSkillPoints;
-            // load out the player data
-            this.gameObject.GetComponent<PlayerManager>().loadPlayerData(saveObject.playerSave);
+            _saveGameList = saveObject.saveGamePaths;
         }
         else
-            Debug.LogWarning("No save data!");
+            Debug.LogWarning("No save game data!");
     }
+
     private bool spawnAdvent = false;
     public void toggleAdventurerSpawn()
     {
@@ -203,9 +245,15 @@ public class GameMaster : MonoBehaviour
             this.gameObject.GetComponent<AdventurerMaster>().disableAdventurerSpawn();
     }
 
+    private class SaveData
+    {
+        public List<string> saveGamePaths;
+    }
 
     private class SaveObject
     {
+        public string playerName;
+        public string shopName;
         public int currentCurency;
         public int currentExp;
         public int level;

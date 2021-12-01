@@ -1,0 +1,599 @@
+{
+    "playerName": "test",
+    "shopName": "test",
+    "currentCurency": 100000,
+    "currentExp": 1009,
+    "level": 10,
+    "currentSkillPoints": 10,
+    "questSaveObject": {
+        "currentQuest": {
+            "questName": "",
+            "questType": "Not_Set"
+        },
+        "completedQuests": []
+    },
+    "inventoryObjects": [
+        {
+            "itemName": "Sword",
+            "totalValue": 126,
+            "invIndex": 0,
+            "totalStrenght": 22,
+            "totalDextarity": 27,
+            "totalIntellegence": 22,
+            "part1": {
+                "partName": "Sword Blade",
+                "materialName": "Silver",
+                "totalValue": 35,
+                "partStrength": 5,
+                "partDextarity": 7,
+                "partIntellegence": 7,
+                "partRecipeName": "Sword Blade",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "part2": {
+                "partName": "Sword Handle",
+                "materialName": "Dark Wood",
+                "totalValue": 55,
+                "partStrength": 9,
+                "partDextarity": 12,
+                "partIntellegence": 11,
+                "partRecipeName": "Sword Handle",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "part3": {
+                "partName": "Pomel",
+                "materialName": "Birch Wood",
+                "totalValue": 8,
+                "partStrength": 2,
+                "partDextarity": 5,
+                "partIntellegence": 3,
+                "partRecipeName": "Pomel",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "isEnchanted": true,
+            "enchantment": {
+                "enchName": "Strength",
+                "enchBuffType": "StatBuff_STR",
+                "valueOfBuff": 4,
+                "valueOfEnchant": 8
+            }
+        },
+        {
+            "itemName": "Metal Shield",
+            "totalValue": 174,
+            "invIndex": 1,
+            "totalStrenght": 38,
+            "totalDextarity": 18,
+            "totalIntellegence": 22,
+            "part1": {
+                "partName": "Metal Shield Plate",
+                "materialName": "Bronze",
+                "totalValue": 38,
+                "partStrength": 8,
+                "partDextarity": 3,
+                "partIntellegence": 2,
+                "partRecipeName": "Metal Shield Plate",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "part2": {
+                "partName": "Shield Edging",
+                "materialName": "Mythril",
+                "totalValue": 52,
+                "partStrength": 10,
+                "partDextarity": 6,
+                "partIntellegence": 7,
+                "partRecipeName": "Shield Edging",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "part3": {
+                "partName": "Metal Decoration",
+                "materialName": "Adamantine",
+                "totalValue": 56,
+                "partStrength": 12,
+                "partDextarity": 9,
+                "partIntellegence": 11,
+                "partRecipeName": "Metal Decoration",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "isEnchanted": false,
+            "enchantment": {
+                "enchName": "",
+                "enchBuffType": "",
+                "valueOfBuff": 0,
+                "valueOfEnchant": 0
+            }
+        },
+        {
+            "itemName": "Leather Helm",
+            "totalValue": 164,
+            "invIndex": 2,
+            "totalStrenght": 24,
+            "totalDextarity": 36,
+            "totalIntellegence": 19,
+            "part1": {
+                "partName": "Leather Cap",
+                "materialName": "Dragon Leather",
+                "totalValue": 90,
+                "partStrength": 11,
+                "partDextarity": 13,
+                "partIntellegence": 9,
+                "partRecipeName": "Leather Cap",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "part2": {
+                "partName": "Crest",
+                "materialName": "Boar Leather",
+                "totalValue": 11,
+                "partStrength": 2,
+                "partDextarity": 6,
+                "partIntellegence": 2,
+                "partRecipeName": "Crest",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "part3": {
+                "partName": "Nose Guard",
+                "materialName": "Magic Beast Leather",
+                "totalValue": 42,
+                "partStrength": 8,
+                "partDextarity": 12,
+                "partIntellegence": 6,
+                "partRecipeName": "Nose Guard",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "isEnchanted": true,
+            "enchantment": {
+                "enchName": "Fire Damage",
+                "enchBuffType": "OtherBuff_FIRE_DMG",
+                "valueOfBuff": 1,
+                "valueOfEnchant": 1
+            }
+        },
+        {
+            "itemName": "Glave",
+            "totalValue": 138,
+            "invIndex": 3,
+            "totalStrenght": 21,
+            "totalDextarity": 23,
+            "totalIntellegence": 14,
+            "part1": {
+                "partName": "Glave Head",
+                "materialName": "Bronze",
+                "totalValue": 42,
+                "partStrength": 6,
+                "partDextarity": 5,
+                "partIntellegence": 2,
+                "partRecipeName": "Glave Head",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "part2": {
+                "partName": "Spear Handle",
+                "materialName": "Ash Wood",
+                "totalValue": 38,
+                "partStrength": 3,
+                "partDextarity": 7,
+                "partIntellegence": 3,
+                "partRecipeName": "Spear Handle",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "part3": {
+                "partName": "Pomel",
+                "materialName": "Mythril",
+                "totalValue": 20,
+                "partStrength": 8,
+                "partDextarity": 6,
+                "partIntellegence": 8,
+                "partRecipeName": "Pomel",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "isEnchanted": true,
+            "enchantment": {
+                "enchName": "General Defence",
+                "enchBuffType": "StatBuff_DEF_GEN",
+                "valueOfBuff": 6,
+                "valueOfEnchant": 6
+            }
+        },
+        {
+            "itemName": "Short Sword",
+            "totalValue": 83,
+            "invIndex": 4,
+            "totalStrenght": 16,
+            "totalDextarity": 19,
+            "totalIntellegence": 18,
+            "part1": {
+                "partName": "Short Sword Blade",
+                "materialName": "Mythril",
+                "totalValue": 34,
+                "partStrength": 9,
+                "partDextarity": 7,
+                "partIntellegence": 7,
+                "partRecipeName": "Short Sword Blade",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "part2": {
+                "partName": "Sword Handle",
+                "materialName": "Oak Wood",
+                "totalValue": 11,
+                "partStrength": 2,
+                "partDextarity": 4,
+                "partIntellegence": 4,
+                "partRecipeName": "Sword Handle",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "part3": {
+                "partName": "Pomel",
+                "materialName": "Emerald",
+                "totalValue": 8,
+                "partStrength": 2,
+                "partDextarity": 3,
+                "partIntellegence": 5,
+                "partRecipeName": "Pomel",
+                "isEnchanted": false,
+                "enchantment": {
+                    "enchName": "",
+                    "enchBuffType": "",
+                    "valueOfBuff": 0,
+                    "valueOfEnchant": 0
+                }
+            },
+            "isEnchanted": true,
+            "enchantment": {
+                "enchName": "Dextarity",
+                "enchBuffType": "StatBuff_DEX",
+                "valueOfBuff": 5,
+                "valueOfEnchant": 10
+            }
+        }
+    ],
+    "partInvObjects": [
+        {
+            "partName": "Metal Breastplate",
+            "materialName": "Iron",
+            "totalValue": 36,
+            "partStrength": 7,
+            "partDextarity": 2,
+            "partIntellegence": 2,
+            "partRecipeName": "Metal Breastplate",
+            "isEnchanted": false,
+            "enchantment": {
+                "enchName": "",
+                "enchBuffType": "",
+                "valueOfBuff": 0,
+                "valueOfEnchant": 0
+            }
+        },
+        {
+            "partName": "Metal Backplate",
+            "materialName": "Copper",
+            "totalValue": 32,
+            "partStrength": 5,
+            "partDextarity": 5,
+            "partIntellegence": 1,
+            "partRecipeName": "Metal Backplate",
+            "isEnchanted": false,
+            "enchantment": {
+                "enchName": "",
+                "enchBuffType": "",
+                "valueOfBuff": 0,
+                "valueOfEnchant": 0
+            }
+        },
+        {
+            "partName": "Inner Padding",
+            "materialName": "Wool",
+            "totalValue": 45,
+            "partStrength": 5,
+            "partDextarity": 4,
+            "partIntellegence": 5,
+            "partRecipeName": "Inner Padding",
+            "isEnchanted": true,
+            "enchantment": {
+                "enchName": "General Defence",
+                "enchBuffType": "StatBuff_DEF_GEN",
+                "valueOfBuff": 8,
+                "valueOfEnchant": 8
+            }
+        },
+        {
+            "partName": "Cloth Cap",
+            "materialName": "Silk",
+            "totalValue": 60,
+            "partStrength": 5,
+            "partDextarity": 9,
+            "partIntellegence": 11,
+            "partRecipeName": "Cloth Cap",
+            "isEnchanted": true,
+            "enchantment": {
+                "enchName": "Ice Damage",
+                "enchBuffType": "OtherBuff_ICE_DMG",
+                "valueOfBuff": 2,
+                "valueOfEnchant": 2
+            }
+        },
+        {
+            "partName": "Brim",
+            "materialName": "Silk",
+            "totalValue": 61,
+            "partStrength": 4,
+            "partDextarity": 9,
+            "partIntellegence": 13,
+            "partRecipeName": "Brim",
+            "isEnchanted": false,
+            "enchantment": {
+                "enchName": "",
+                "enchBuffType": "",
+                "valueOfBuff": 0,
+                "valueOfEnchant": 0
+            }
+        },
+        {
+            "partName": "Hat Lining",
+            "materialName": "Silk",
+            "totalValue": 102,
+            "partStrength": 4,
+            "partDextarity": 9,
+            "partIntellegence": 13,
+            "partRecipeName": "Hat Lining",
+            "isEnchanted": false,
+            "enchantment": {
+                "enchName": "",
+                "enchBuffType": "",
+                "valueOfBuff": 0,
+                "valueOfEnchant": 0
+            }
+        },
+        {
+            "partName": "Metal Breastplate",
+            "materialName": "Iron",
+            "totalValue": 36,
+            "partStrength": 7,
+            "partDextarity": 2,
+            "partIntellegence": 2,
+            "partRecipeName": "Metal Breastplate",
+            "isEnchanted": false,
+            "enchantment": {
+                "enchName": "",
+                "enchBuffType": "",
+                "valueOfBuff": 0,
+                "valueOfEnchant": 0
+            }
+        },
+        {
+            "partName": "Metal Backplate",
+            "materialName": "Copper",
+            "totalValue": 32,
+            "partStrength": 5,
+            "partDextarity": 5,
+            "partIntellegence": 1,
+            "partRecipeName": "Metal Backplate",
+            "isEnchanted": false,
+            "enchantment": {
+                "enchName": "",
+                "enchBuffType": "",
+                "valueOfBuff": 0,
+                "valueOfEnchant": 0
+            }
+        },
+        {
+            "partName": "Inner Padding",
+            "materialName": "Boar Leather",
+            "totalValue": 25,
+            "partStrength": 2,
+            "partDextarity": 6,
+            "partIntellegence": 2,
+            "partRecipeName": "Inner Padding",
+            "isEnchanted": true,
+            "enchantment": {
+                "enchName": "Ice Damage",
+                "enchBuffType": "OtherBuff_ICE_DMG",
+                "valueOfBuff": 1,
+                "valueOfEnchant": 1
+            }
+        }
+    ],
+    "enchInvObjects": [],
+    "skillObject": {
+        "totalSkillPoints": 10,
+        "currentSkillPoints": 10,
+        "ECO_IncSellPricePoints": 0,
+        "ECO_DecBuyPricePoints": 0,
+        "ECO_HagglePoints": 0,
+        "DIS_DisChancePoints": 0,
+        "DIS_EnchRemovalPoints": 0,
+        "DIS_HitReductionPoints": 0,
+        "CFT_ReduceMatCostPoints": 0,
+        "CFT_HitReductionPoints": 0
+    },
+    "materialsObject": {
+        "matObjectList": [
+            {
+                "matName": "Boar Leather",
+                "matCount": 500
+            },
+            {
+                "matName": "Cotton",
+                "matCount": 500
+            },
+            {
+                "matName": "Dragon Leather",
+                "matCount": 500
+            },
+            {
+                "matName": "Linen",
+                "matCount": 500
+            },
+            {
+                "matName": "Magic Beast Leather",
+                "matCount": 500
+            },
+            {
+                "matName": "Silk",
+                "matCount": 500
+            },
+            {
+                "matName": "Wolf Leather",
+                "matCount": 500
+            },
+            {
+                "matName": "Wool",
+                "matCount": 500
+            },
+            {
+                "matName": "Diamond",
+                "matCount": 50
+            },
+            {
+                "matName": "Emerald",
+                "matCount": 50
+            },
+            {
+                "matName": "Ruby",
+                "matCount": 50
+            },
+            {
+                "matName": "Sapphire",
+                "matCount": 50
+            },
+            {
+                "matName": "Adamantine",
+                "matCount": 490
+            },
+            {
+                "matName": "Bronze",
+                "matCount": 500
+            },
+            {
+                "matName": "Copper",
+                "matCount": 500
+            },
+            {
+                "matName": "Iron",
+                "matCount": 500
+            },
+            {
+                "matName": "Mythril",
+                "matCount": 500
+            },
+            {
+                "matName": "Silver",
+                "matCount": 500
+            },
+            {
+                "matName": "Steel",
+                "matCount": 500
+            },
+            {
+                "matName": "Angel Wood",
+                "matCount": 500
+            },
+            {
+                "matName": "Ash Wood",
+                "matCount": 500
+            },
+            {
+                "matName": "Birch Wood",
+                "matCount": 500
+            },
+            {
+                "matName": "Dark Wood",
+                "matCount": 500
+            },
+            {
+                "matName": "Oak Wood",
+                "matCount": 500
+            },
+            {
+                "matName": "Rose Wood",
+                "matCount": 500
+            },
+            {
+                "matName": "Spruce Wood",
+                "matCount": 500
+            }
+        ]
+    }
+}

@@ -1,0 +1,5 @@
+{
+    "saveGamePaths": [
+        "D:/Users/ender/Documents/GitHub/stone-axe/game/stone-axe/Assets/save_test_test.txt"
+    ]
+}
