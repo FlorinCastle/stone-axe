@@ -26,6 +26,8 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private List<SaveTracker> _saveTrackerScripts;
     [SerializeField]
     private List<string> _saveGameList;
+    [SerializeField]
+    private string _selectedSave;
 
     private void Awake()
     {
@@ -80,7 +82,8 @@ public class GameMaster : MonoBehaviour
             this.gameObject.GetComponent<PlayerManager>().spawnPlayer();
     }
 
-
+    public string PlayerName { get => _playerName; set => _playerName = value; }
+    public string ShopName { get => _shopName; set => _shopName = value; }
     public void setTotalExperience(int value) { _totalExperience = value; }
     public int GetTotalExperience { get => _totalExperience; } 
     public void setLevel(int value) { _level = value; }
@@ -90,6 +93,8 @@ public class GameMaster : MonoBehaviour
     public bool AdventurerAtCounter { get => adventurerAtCounter; set => adventurerAtCounter = value; }
     public bool ShopActive { get => _shopLevel.activeInHierarchy; }
     public bool MarketActive { get => _marketLevel.activeInHierarchy; }
+    public List<SaveTracker> SaveTrackers { get => _saveTrackerScripts; }
+    public string SelectedSave { get => _selectedSave; set => _selectedSave = value; }
 
     public void clearSavedData()
     {
@@ -170,44 +175,49 @@ public class GameMaster : MonoBehaviour
         foreach (string savePath in _saveGameList)
         {
             //if (File.Exists(Application.dataPath + "/save.txt"))
-            if (File.Exists(savePath))
+            if (_selectedSave != "" && savePath == _selectedSave)
             {
-                //string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
-                string saveString = File.ReadAllText(savePath);
-
-                SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
-
-                // load the saved items & materials
-                foreach (SaveItemObject item in saveObject.inventoryObjects)
+                if (File.Exists(savePath))
                 {
-                    _invScript.InsertItem(_invScript.convertItemData(item));
-                }
-                foreach (SavePartObject part in saveObject.partInvObjects)
-                {
-                    _invScript.InsertPart(_invScript.convertPartData(part));
-                }
-                foreach (SaveEnchantObject ench in saveObject.enchInvObjects)
-                {
-                    _invScript.InsertEnchatment(_invScript.convertEnchantData(ench));
-                }
-                _invData.loadMaterials(saveObject.materialsObject);
+                    //string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
+                    string saveString = File.ReadAllText(savePath);
 
-                // load out all the other data
-                // load out assigned skill points
-                this.gameObject.GetComponent<SkillManager>().LoadSkills(saveObject.skillObject);
-                // load out quest data
-                this.gameObject.GetComponent<QuestControl>().LoadQuests(saveObject.questSaveObject);
+                    SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
 
-                // load out this gameobject's data
-                _currentCurrency = saveObject.currentCurency;
-                _totalExperience = saveObject.currentExp;
-                _level = saveObject.level;
-                _currentSkillPoints = saveObject.currentSkillPoints;
-                // load out the player data
-                this.gameObject.GetComponent<PlayerManager>().loadPlayerData(saveObject.playerSave);
+                    // load the saved items & materials
+                    foreach (SaveItemObject item in saveObject.inventoryObjects)
+                    {
+                        _invScript.InsertItem(_invScript.convertItemData(item));
+                    }
+                    foreach (SavePartObject part in saveObject.partInvObjects)
+                    {
+                        _invScript.InsertPart(_invScript.convertPartData(part));
+                    }
+                    foreach (SaveEnchantObject ench in saveObject.enchInvObjects)
+                    {
+                        _invScript.InsertEnchatment(_invScript.convertEnchantData(ench));
+                    }
+                    _invData.loadMaterials(saveObject.materialsObject);
+
+                    // load out all the other data
+                    // load out assigned skill points
+                    this.gameObject.GetComponent<SkillManager>().LoadSkills(saveObject.skillObject);
+                    // load out quest data
+                    this.gameObject.GetComponent<QuestControl>().LoadQuests(saveObject.questSaveObject);
+
+                    // load out this gameobject's data
+                    _currentCurrency = saveObject.currentCurency;
+                    _totalExperience = saveObject.currentExp;
+                    _level = saveObject.level;
+                    _currentSkillPoints = saveObject.currentSkillPoints;
+                    // load out the player data
+                    this.gameObject.GetComponent<PlayerManager>().loadPlayerData(saveObject.playerSave);
+                }
+                else
+                    Debug.LogWarning("No save data!");
             }
             else
-                Debug.LogWarning("No save data!");
+                Debug.LogWarning("No save selected!");
         }
     }
 
@@ -230,6 +240,13 @@ public class GameMaster : MonoBehaviour
             SaveData saveObject = JsonUtility.FromJson<SaveData>(saveString);
 
             _saveGameList = saveObject.saveGamePaths;
+            // store the paths of the saved games in the save trackers 
+            int i = 0;
+            foreach (string sg_string in _saveGameList)
+            {
+                _saveTrackerScripts[i].SaveReference = sg_string;
+                i++;
+            }
         }
         else
             Debug.LogWarning("No save game data!");
@@ -245,11 +262,26 @@ public class GameMaster : MonoBehaviour
             this.gameObject.GetComponent<AdventurerMaster>().disableAdventurerSpawn();
     }
 
+    public string playerNameFromSaveString(string saveReference)
+    {
+        string saveString = File.ReadAllText(saveReference);
+        SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+
+        return saveObject.playerName;
+    }
+    public string shopNameFromSaveString(string saveReference)
+    {
+        string saveString = File.ReadAllText(saveReference);
+        SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+
+        return saveObject.shopName;
+    }
+
+
     private class SaveData
     {
         public List<string> saveGamePaths;
     }
-
     private class SaveObject
     {
         public string playerName;

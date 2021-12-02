@@ -74,11 +74,28 @@ public class UIControl : MonoBehaviour
     {
         _startNewGameButton.interactable = false;
     }
+    public void setupLoadGameMenu()
+    {
+        List<SaveTracker> saveTrackers = this.gameObject.GetComponent<GameMaster>().SaveTrackers;
+        foreach (SaveTracker st in saveTrackers)
+        {
+            //Debug.Log("Save Tracker index: " + st.Index);
+            if (File.Exists(st.SaveReference))
+            {
+                st.PlayerName = this.gameObject.GetComponent<GameMaster>().playerNameFromSaveString(st.SaveReference);
+                st.ShopName = this.gameObject.GetComponent<GameMaster>().shopNameFromSaveString(st.SaveReference);
+                st.setupTexts();
+            }
+            else
+                Debug.LogWarning("No save assigned to " + st.gameObject.name);
+        }
+    }
 
     public void unloadUI(GameObject UIInput) { UIInput.SetActive(false); } 
     public void loadUI(GameObject UIInput) { UIInput.SetActive(true); } 
     public void unloadNewGameUI()
     {
+        storePlayerVariables();
         PlayerName = "";
         ShopName = "";
         _newGameMenu.SetActive(false);
@@ -108,6 +125,12 @@ public class UIControl : MonoBehaviour
         else if (_playerName.text == "" || _shopName.text == "")
             _startNewGameButton.interactable = false;
     }
+    public void storePlayerVariables()
+    {
+        this.gameObject.GetComponent<GameMaster>().PlayerName = PlayerName;
+        this.gameObject.GetComponent<GameMaster>().ShopName = ShopName;
+    }
+
 
     public bool MainMenuUIActive { get => mainMenuUI.activeInHierarchy; }
     public bool ShopUIActive { get => gameShopUI.activeInHierarchy; }

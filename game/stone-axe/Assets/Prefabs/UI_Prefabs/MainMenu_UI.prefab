@@ -1699,7 +1699,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8674460194649097936}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: unloadUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6677607640269489756}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3058717458251399120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2916,6 +2928,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: unloadNewGameUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameMaster, Assembly-CSharp
+        m_MethodName: storePlayerVariables
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6320795898516327078
 GameObject:
   m_ObjectHideFlags: 0
@@ -3345,7 +3381,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6024634813946985952}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: loadUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6677607640269489756}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: setupLoadGameMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7259773017829381534
 GameObject:
   m_ObjectHideFlags: 0
@@ -3705,8 +3765,8 @@ RectTransform:
   - {fileID: 3001234347096721439}
   - {fileID: 7758158550728751111}
   - {fileID: 5681197635882517610}
-  - {fileID: 85639942156101590}
   - {fileID: 8479463469364186675}
+  - {fileID: 85639942156101590}
   m_Father: {fileID: 9041149155578230022}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4382,6 +4442,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3032585997903991868}
     m_Modifications:
+    - target: {fileID: 1604185715649118363, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
+      propertyPath: _indexRef
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6542653831270956639, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4484,6 +4548,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3032585997903991868}
     m_Modifications:
+    - target: {fileID: 1604185715649118363, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
+      propertyPath: _indexRef
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6542653831270956639, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4494,7 +4562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6542653831270956639, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6542653831270956639, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4570,7 +4638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8717333280307072121, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
       propertyPath: m_Name
-      value: SaveHolder_UI_PREFAB (5)
+      value: SaveHolder_UI_PREFAB (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
@@ -4586,6 +4654,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3032585997903991868}
     m_Modifications:
+    - target: {fileID: 1604185715649118363, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
+      propertyPath: _indexRef
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6542653831270956639, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4790,6 +4862,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3032585997903991868}
     m_Modifications:
+    - target: {fileID: 1604185715649118363, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
+      propertyPath: _indexRef
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6542653831270956639, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4800,7 +4876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6542653831270956639, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6542653831270956639, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4876,7 +4952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8717333280307072121, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
       propertyPath: m_Name
-      value: SaveHolder_UI_PREFAB (4)
+      value: SaveHolder_UI_PREFAB (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
@@ -4892,6 +4968,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3032585997903991868}
     m_Modifications:
+    - target: {fileID: 1604185715649118363, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
+      propertyPath: _indexRef
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6542653831270956639, guid: 549e4c3277c162544b9c72e4989957da, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
