@@ -23,6 +23,7 @@ public class MiniGameControl : MonoBehaviour
     [SerializeField] private Button _craftCompletButton;
 
     private int baseHitPointCount = 5;
+    private int finalPointsToHit = 5;
     private int pointsHit = 0;
 
     private void Awake()
@@ -51,8 +52,13 @@ public class MiniGameControl : MonoBehaviour
     private void populateHitPoints()
     {
         chosenHitPoints.Clear();
-        
-        for (int j = 0; j < baseHitPointCount; j++)
+
+        if (_disassemblyMinigameUI.activeInHierarchy == true)
+            finalPointsToHit = calculateDisasembleHitPoints();
+        else if (_craftingMinigameUI.activeInHierarchy == true)
+            finalPointsToHit = calculateCraftHitPoints();
+
+        for (int j = 0; j < finalPointsToHit; j++)
         {
             int k = Random.Range(0, _hitPointMarkers.Count);
             if (chosenHitPoints.Contains(k) == false)
@@ -61,11 +67,24 @@ public class MiniGameControl : MonoBehaviour
                 j--;
         }
 
-        foreach(int l in chosenHitPoints)
+        foreach (int l in chosenHitPoints)
         {
             GameObject ph = Instantiate(_hitPointPrefab);
             ph.transform.SetParent(_hitPointMarkers[l].transform, false);
         }
+    }
+
+    private int calculateDisasembleHitPoints()
+    {
+        int calc = baseHitPointCount - _disassembleHitSkill.CurrentSkillLevel;
+        if (calc < 1) return 1;
+        else return calc;
+    }
+    private int calculateCraftHitPoints()
+    {
+        int calc = baseHitPointCount - _craftHitSkill.CurrentSkillLevel;
+        if (calc < 1) return 1;
+        else return calc;
     }
 
     public void increaseHitCount()

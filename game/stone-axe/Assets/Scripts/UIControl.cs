@@ -68,7 +68,7 @@ public class UIControl : MonoBehaviour
 
         if (_newGameButton != null) _newGameButton.interactable = true;
         if (_settingsButton != null) _settingsButton.interactable = true;
-        if (_creditsButton != null) _creditsButton.interactable = true;
+        if (_creditsButton != null) _creditsButton.interactable = false;
     }
     private void setupNewGameMenu()
     {
@@ -130,7 +130,14 @@ public class UIControl : MonoBehaviour
         this.gameObject.GetComponent<GameMaster>().PlayerName = PlayerName;
         this.gameObject.GetComponent<GameMaster>().ShopName = ShopName;
     }
-
+    public void hideHighlights()
+    {
+        foreach (SaveTracker st in this.gameObject.GetComponent<GameMaster>().SaveTrackers)
+        {
+            st.hideHighlight();
+        }
+        
+    }
 
     public bool MainMenuUIActive { get => mainMenuUI.activeInHierarchy; }
     public bool ShopUIActive { get => gameShopUI.activeInHierarchy; }

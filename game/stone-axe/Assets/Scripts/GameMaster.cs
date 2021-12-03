@@ -179,7 +179,6 @@ public class GameMaster : MonoBehaviour
             {
                 if (File.Exists(savePath))
                 {
-                    //string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
                     string saveString = File.ReadAllText(savePath);
 
                     SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
@@ -199,7 +198,7 @@ public class GameMaster : MonoBehaviour
                     }
                     _invData.loadMaterials(saveObject.materialsObject);
 
-                    // load out all the other data
+                    //  load out all the other data
                     // load out assigned skill points
                     this.gameObject.GetComponent<SkillManager>().LoadSkills(saveObject.skillObject);
                     // load out quest data
@@ -211,7 +210,9 @@ public class GameMaster : MonoBehaviour
                     _level = saveObject.level;
                     _currentSkillPoints = saveObject.currentSkillPoints;
                     // load out the player data
+                    //Debug.Log(saveObject.playerSave.playerHead);
                     this.gameObject.GetComponent<PlayerManager>().loadPlayerData(saveObject.playerSave);
+                    Debug.Log("loaded save: " + saveObject.playerName + " " + saveObject.shopName);
                 }
                 else
                     Debug.LogWarning("No save data!");
@@ -219,6 +220,12 @@ public class GameMaster : MonoBehaviour
             else
                 Debug.LogWarning("No save selected!");
         }
+    }
+
+    public void quickLoadGame()
+    {
+        _selectedSave = _saveGameList[0];
+        loadGame();
     }
 
     public void saveSaveGames()
@@ -260,6 +267,14 @@ public class GameMaster : MonoBehaviour
             this.gameObject.GetComponent<AdventurerMaster>().startAdventurerSpawn();
         else if (spawnAdvent == false)
             this.gameObject.GetComponent<AdventurerMaster>().disableAdventurerSpawn();
+    }
+    public void clearSelectedSave()
+    {
+        SelectedSave = "";
+        foreach(SaveTracker st in _saveTrackerScripts)
+        {
+            st.hideHighlight();
+        }
     }
 
     public string playerNameFromSaveString(string saveReference)

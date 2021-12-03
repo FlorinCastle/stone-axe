@@ -10,17 +10,29 @@ public class SaveTracker : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private Text _shopNameText;
     [SerializeField] private Text _dayTimeText;
+    [SerializeField] private GameObject _selectedHighlight;
     private string shopName;
     private string playerName;
 
     public void toggleSection()
     {
-        GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().SelectedSave = _saveRef;
+        if (_saveRef != "")
+        {
+            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().SelectedSave = _saveRef;
+            Debug.Log(this.gameObject.name + " selected");
+            showHighlight();
+        }
     }
     public void setupTexts()
     {
         _shopNameText.text = playerName + "\n" + shopName;
     }
+    public void showHighlight()
+    {
+        GameObject.FindGameObjectWithTag("GameMaster").GetComponent<UIControl>().hideHighlights();
+        _selectedHighlight.SetActive(true);
+    }
+    public void hideHighlight() { _selectedHighlight.SetActive(false); }
 
     public string SaveReference { get => _saveRef; set => _saveRef = value; }
     public int Index { get => _indexRef; }

@@ -28,13 +28,15 @@ public class PlayerManager : MonoBehaviour
     {
         PlayerSave saveObject = new PlayerSave
         {
-            playerHead = _playerHeadPrefabRef,
+            playerHead = _playerHeadPrefabRef.name,
         };
         return saveObject;
     }
     public void loadPlayerData(PlayerSave playerSave)
     {
-        _playerHeadPrefabRef = playerSave.playerHead;
+        foreach (GameObject pHead in _playerHeads)
+            if (pHead.name == playerSave.playerHead)
+                _playerHeadPrefabRef = pHead;
     }
 
 
@@ -48,6 +50,7 @@ public class PlayerManager : MonoBehaviour
             //Debug.LogWarning("no player head");
             int headIndex = Random.Range(0, _playerHeads.Count);
             _playerRef.GetComponent<PlayerScript>().setupHead(_playerHeads[headIndex]);
+            _playerHeadPrefabRef = _playerHeads[headIndex];
         }
         playerExists = true;
         warpToCounter();
@@ -103,7 +106,9 @@ public class PlayerManager : MonoBehaviour
     }
 
 }
+[System.Serializable]
 public class PlayerSave
 {
-    public GameObject playerHead;
+    //public GameObject playerHead;
+    public string playerHead;
 }
