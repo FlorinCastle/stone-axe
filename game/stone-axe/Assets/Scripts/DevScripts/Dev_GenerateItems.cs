@@ -10,7 +10,9 @@ public class Dev_GenerateItems : MonoBehaviour
     [Header("Parts")]
     [SerializeField] private DisassembleItemControl _dissasembleItemRef;
     [SerializeField] private int _totalItemPartsToGenerateCount = 3;
-    // Start is called before the first frame update
+    [Header("Enchants")]
+    [SerializeField] private int _totalEnchantsToGenerate = 1;
+
     void Start()
     {
         if (_generateItemRef != null)
@@ -20,6 +22,14 @@ public class Dev_GenerateItems : MonoBehaviour
                 _generateItemRef.GenerateRandomItem();
                 _generateItemRef.forceInsertItem();
                 //Debug.Log("Creating item #" + (i+1));
+            }
+        }
+        if (_generateItemRef != null)
+        {
+            for (int j = 0; j < _totalEnchantsToGenerate; j++)
+            {
+                _generateItemRef.GenerateRandomEnchant();
+                _generateItemRef.forceInsertEnchant();
             }
         }
 

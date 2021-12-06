@@ -81,6 +81,8 @@ public class InventoryScript : MonoBehaviour
     }
     public void setupItemInventory(bool isRemoving, int state)
     {
+        _selectedItem = null;
+        
         _selectItemButton.SetActive(isRemoving);
         _selectPartButton.SetActive(false);
         _selectMatButton.SetActive(false);
@@ -121,6 +123,8 @@ public class InventoryScript : MonoBehaviour
     }
     public void setupPartInventory(bool isRemoving, int state)
     {
+        _selectedPart = null;
+        
         _selectItemButton.SetActive(false);
         _selectPartButton.SetActive(isRemoving);
         _selectMatButton.SetActive(false);
@@ -174,6 +178,8 @@ public class InventoryScript : MonoBehaviour
     }
     public void setupMatInventory(bool isRemoving, int state)
     {
+        _selectedMat = null;
+
         _selectItemButton.SetActive(false);
         _selectPartButton.SetActive(false);
         _selectMatButton.SetActive(isRemoving);
@@ -232,6 +238,7 @@ public class InventoryScript : MonoBehaviour
     }
     public void setupEnchantInventory(bool isRemoving, int state)
     {
+        _selectedEnchant = null;
 
         _selectItemButton.SetActive(false);
         _selectPartButton.SetActive(false);
@@ -1114,6 +1121,13 @@ public class InventoryScript : MonoBehaviour
         return null;
     }
 
+    public GameObject getSelectedEnchant()
+    {
+        if (_selectedEnchant != null)
+            return _selectedEnchant;
+        return null;
+    }
+
     private void setStatus(int value)
     {
         //Debug.Log("setStatus - value = " + value);
@@ -1124,6 +1138,7 @@ public class InventoryScript : MonoBehaviour
         else if (value == 4) _removingStatus = removingItemStatusEnum.RemovingToCraft2;
         else if (value == 5) _removingStatus = removingItemStatusEnum.RemovingToCraft3;
         else if (value == 6) _removingStatus = removingItemStatusEnum.RemovingToCraftMat;
+        else if (value == 7) _removingStatus = removingItemStatusEnum.RemovingToEnchant;
         else
         {
             _removingStatus = removingItemStatusEnum.NotRemoving;
@@ -1150,20 +1165,23 @@ public class InventoryScript : MonoBehaviour
     {
         if (_removingStatus == removingItemStatusEnum.RemovingToCraft1)
             GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectPart1();
-        //SetPart1(_selectedPart);
         else if (_removingStatus == removingItemStatusEnum.RemovingToCraft2)
             GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectPart2();
-        //SetPart2(_selectedPart);
         else if (_removingStatus == removingItemStatusEnum.RemovingToCraft3)
             GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectPart3();
-                //SetPart3(_selectedPart);
-
+        
     }
 
     public void returnSelectedMat()
     {
         if (_removingStatus == removingItemStatusEnum.RemovingToCraftMat)
             GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectMat();
+    }
+
+    public void returnSelectedEnchant()
+    {
+        if (_removingStatus == removingItemStatusEnum.RemovingToEnchant)
+            GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectEnchant();
     }
 
     private bool checkIfPartIsValid(int i, PartDataStorage part) // incoming i should either be 3, 4, or 5

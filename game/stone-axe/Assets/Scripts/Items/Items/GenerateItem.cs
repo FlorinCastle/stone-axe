@@ -54,6 +54,10 @@ public class GenerateItem : MonoBehaviour
         haggleButtonText.text = "haggle\n(success chance: " + (_haggleSkill.getHaggleChance()).ToString() + "%)";
         haggleButton.interactable = true;
     }
+    public void GenerateRandomEnchant()
+    {
+        _generatedEnchant = enchantScript.chooseEnchant();
+    }
     public void buyGeneratedItem()
     {
         if (_generatedItem != null)
@@ -104,15 +108,19 @@ public class GenerateItem : MonoBehaviour
     public void forceInsertItem()
     {
         if (_generatedItem != null)
-        {
             _inventoryRef.InsertItem(_generatedItem);
-        }
         _generatedItem = null;
         buyButton.interactable = false;
         buyButtonText.text = "buy: [price]";
         itemText.text = "item text";
         haggleButton.interactable = false;
         haggleButtonText.text = "haggle\n(success chance: n/a)";
+    }
+    public void forceInsertEnchant()
+    {
+        if (_generatedEnchant != null)
+            _inventoryRef.InsertEnchatment(_inventoryRef.convertEnchantData(_generatedEnchant));
+        _generatedEnchant = null;
     }
     public void forceDisassembleItem()
     {

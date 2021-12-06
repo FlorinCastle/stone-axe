@@ -19,17 +19,22 @@ public class CraftControl : MonoBehaviour
     [SerializeField] GameObject _partCraftingUI;
     [SerializeField] Dropdown _recipeDropdown;
     [SerializeField] Button _craftButton;
+    // item crafting
+    [Space(5)]
     [SerializeField] Text _selectedRecipeText;
     [SerializeField] Text _part1Discription;
     [SerializeField] Text _part2Discription;
     [SerializeField] Text _part3Discription;
+    [SerializeField] Text _finalStatsText1;
+    [SerializeField] Text _finalStatsText2;
+    // part crafting
+    [Space(5)]
     [SerializeField] Text _partRecipeStats1;
     [SerializeField] Text _partRecipeStats2;
     [SerializeField] Text _matDiscription;
-    [SerializeField] Text _finalStatsText1;
-    [SerializeField] Text _finalStatsText2;
     [SerializeField] Text _partStatsText1;
     [SerializeField] Text _partStatsText2;
+    [SerializeField] Text _encDiscription;
 
     [Header("Item Crafting")]
     [SerializeField] ItemData _chosenItemRecipe;
@@ -47,6 +52,7 @@ public class CraftControl : MonoBehaviour
     [Header("Part Crafting")]
     [SerializeField] PartData _chosenPartRecipe;
     [SerializeField] MaterialData _chosenPartMaterial;
+    [SerializeField] GameObject _optionalChosenEnchant;
 
     [SerializeField, HideInInspector] private List<string> recipeDropOptions;
     [SerializeField, HideInInspector] private List<string> itemRecipeOptions;
@@ -222,6 +228,11 @@ public class CraftControl : MonoBehaviour
         _inventoryControlReference.setupMatInventory(true, 6);
     }
 
+    public void invEnchSetup()
+    {
+        _inventoryControlReference.setupEnchantInventory(true, 7);
+    }
+
     public void SelectPart1()
     {
         _chosenPart1 = _inventoryControlReference.getSelectedPart();
@@ -274,6 +285,17 @@ public class CraftControl : MonoBehaviour
         }
         else
             Debug.LogWarning("No Mat Selected");
+    }
+
+    public void SelectEnchant()
+    {
+        _optionalChosenEnchant = _inventoryControlReference.getSelectedEnchant();
+        if (_optionalChosenEnchant != null)
+        {
+            setupEnchDiscription(_optionalChosenEnchant);
+        }
+        else
+            Debug.LogWarning("No Enchant Selected!");
     }
 
     public void Craft()
@@ -408,6 +430,13 @@ public class CraftControl : MonoBehaviour
             partDataStorageRef.setPartDex(_chosenPartRecipe.BaseDextarity + _chosenPartMaterial.AddedDextarity);
             partDataStorageRef.setPartInt(_chosenPartRecipe.BaseIntelligence + _chosenPartMaterial.AddedIntelligence);
             partDataStorageRef.setRecipeData(_chosenPartRecipe);
+            
+            if (_optionalChosenEnchant != null)
+            {
+                _optionalChosenEnchant.transform.parent = partDataStorageRef.gameObject.transform;
+                partDataStorageRef.setEnchantment(_optionalChosenEnchant.GetComponent<EnchantDataStorage>());
+                partDataStorageRef.setIsHoldingEnchanted(true);
+            }
 
             // remove right amount of materials
             _chosenPartMaterial.RemoveMat(Mathf.RoundToInt(_chosenPartRecipe.UnitsOfMaterialNeeded * materialSkill.getModifiedMatAmount()));
@@ -470,6 +499,15 @@ public class CraftControl : MonoBehaviour
         updateFinalStatsText();
     }
 
+    private void setupEnchDiscription(GameObject enchant)
+    {
+        EnchantDataStorage data = enchant.GetComponent<EnchantDataStorage>();
+
+        _encDiscription.text = "Type: " + data.EnchantName + "+" + data.AmountOfBuff;
+
+        updateFinalStatsText();
+    }
+
     private string finalStatsString;
 
     private string finalStatsString1;
@@ -480,6 +518,7 @@ public class CraftControl : MonoBehaviour
     private string _totalStrength;
     private string _totalDex;
     private string _totalInt;
+    private string _finalEnchant;
     private string _totalValue;
 
     private string _partName;
@@ -487,8 +526,8 @@ public class CraftControl : MonoBehaviour
     private string _partStrength;
     private string _partDex;
     private string _partInt;
+    private string _partEnchant;
     private string _partValue;
-    private string _finalEnchant;
 
     private bool _enchantIsChosen = false;
     private string _enchantType;
@@ -596,8 +635,14 @@ public class CraftControl : MonoBehaviour
                 _partInt = "\nIntelegence: " + (_chosenPartRecipe.BaseIntelligence + _chosenPartMaterial.AddedIntelligence);
                 _partValue = "\n\nValue: " + (_chosenPartRecipe.BaseCost + _chosenPartMaterial.BaseCostPerUnit);
 
+                if (_optionalChosenEnchant != null)
+                    _partEnchant = "\n\nEnchant:\n" + _optionalChosenEnchant.GetComponent<EnchantDataStorage>().EnchantName + "+" + _optionalChosenEnchant.GetComponent<EnchantDataStorage>().AmountOfBuff;
+                else
+                    _partEnchant = "";
+
+
                 finalStatsString1 = _partName + "\nStats" + _partStrength + _partDex + _partInt + _partValue;
-                finalStatsString2 = _partMat;
+                finalStatsString2 = _partMat + _partEnchant;
 
                 _partStatsText1.text = finalStatsString1;
                 _partStatsText2.text = finalStatsString2;
@@ -608,6 +653,7 @@ public class CraftControl : MonoBehaviour
             {
                 finalStatsString1 = "select [material]";
                 _partStatsText1.text = finalStatsString1;
+                _partStatsText2.text = "";
                 _craftButton.interactable = false;
             }
         }
