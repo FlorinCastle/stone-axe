@@ -15,7 +15,26 @@ MonoBehaviour:
   _questName: Tutorial
   _questDiscription: 
   _questType: 5
+  _questStages:
+  - {fileID: 11400000, guid: 420fed8f93f346645b70f8d07f385259, type: 2}
+  - {fileID: 11400000, guid: 29fab02663f3e5f47b4250970165d371, type: 2}
+  - {fileID: 11400000, guid: d9feb16d64d188f4bbdcb42246218cb4, type: 2}
+  - {fileID: 11400000, guid: c3fc376e832b82a4aab4ccc65c060fb6, type: 2}
+  - {fileID: 11400000, guid: d2ae031221b80b341b19800c4c57ccb4, type: 2}
+  - {fileID: 11400000, guid: 447cce343ac1e4d428f4eae7bac6cb8d, type: 2}
+  - {fileID: 11400000, guid: bcd8cf5302bf850499f76bb7d7ced19b, type: 2}
+  - {fileID: 11400000, guid: 6795d5d174faf7f4797c0c2ffb69026f, type: 2}
+  - {fileID: 11400000, guid: 9725e3d78222f86498b6f0c96b1a1d7f, type: 2}
+  - {fileID: 11400000, guid: 9bcea8cf695e8af4281f6f122437a1b5, type: 2}
+  - {fileID: 11400000, guid: c77c9a9109175074981ddaf22ba6f663, type: 2}
+  - {fileID: 11400000, guid: e316660a1107f114782d5a3ef36b22a2, type: 2}
+  - {fileID: 11400000, guid: b1efe2be966ca3f42a5851a14332135a, type: 2}
+  - {fileID: 11400000, guid: 377b8b65dd5242a4ab4d7e8868614609, type: 2}
+  - {fileID: 11400000, guid: 8a4e2e85ab5810b4b9b5ed9e5bdca93b, type: 2}
+  - {fileID: 11400000, guid: bf3643f1691abee4ab2707d6bd9b6028, type: 2}
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
+  _requiredQuestItem: {fileID: 0}
   _requiredCount: 0
   _nextQuest: {fileID: 0}
+  _storyQuestComplete: 0

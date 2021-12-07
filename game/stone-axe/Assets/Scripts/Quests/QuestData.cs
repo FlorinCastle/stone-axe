@@ -10,6 +10,7 @@ public class QuestData : ScriptableObject
     public string _questDiscription;
     public enum questTypeEnum { Not_Set, OCC_Item, OCC_QuestItem, OD_Material, OCC_TotalCrafted, Tutorial, Story };
     public questTypeEnum _questType;
+    public List<QuestStage> _questStages;
 
     public ItemData _requiredItem;
     public MaterialData _requiredMaterial;
@@ -22,6 +23,7 @@ public class QuestData : ScriptableObject
     public string QuestName { get => _questName; }
     public string QuestDiscription { get => _questDiscription; }
     public string QuestType { get => _questType.ToString(); }
+    public List<QuestStage> QuestStages { get => _questStages; }
 
     public ItemData RequiredItem { get => _requiredItem; }
     public MaterialData ReqiredMaterial { get => _requiredMaterial; }

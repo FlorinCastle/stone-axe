@@ -110,6 +110,11 @@ public class UIControl : MonoBehaviour
         setupMainMenu();
     } 
     public void quitGame() { Application.Quit(); }
+    public void doDialogue()
+    {
+        GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>().getTutorialQuests();
+        this.gameObject.GetComponent<DialogueControl>().startDialogue();
+    }
 
     public void updatingInputData()
     {

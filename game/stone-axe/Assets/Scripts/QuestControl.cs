@@ -92,6 +92,11 @@ public class QuestControl : MonoBehaviour
         }
     }
 
+    public void forceSetQuest(QuestData quest)
+    {
+        _chosenQuest = quest;
+        setupText();
+    }
 
     public void chooseQuestSheet(QuestSheet input)
     {
@@ -177,6 +182,10 @@ public class QuestControl : MonoBehaviour
                 _questName.text += " (" + _chosenQuest.ReqiredMaterial.MaterialCount + "/" + reqItemCount + ")";
                 _questText.text += ": " + _chosenQuest.ReqiredMaterial.Material;
                 shut = true;
+            }
+            else if (_chosenQuest.QuestType == "Tutorial")
+            {
+                _questName.text += "";
             }
         }
         else

@@ -9,6 +9,7 @@ TagManager:
   - CraftControl
   - RecipeBookControl
   - SaveTracker
+  - QuestMaster
   layers:
   - Default
   - TransparentFX

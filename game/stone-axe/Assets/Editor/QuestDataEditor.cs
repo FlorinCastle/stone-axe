@@ -10,6 +10,7 @@ public class QuestDataEditor : Editor
         questName,
         questType,
         questDiscription,
+        questStages,
         reqItem,
         reqMat,
         reqQItem,
@@ -22,6 +23,7 @@ public class QuestDataEditor : Editor
         questName = serializedObject.FindProperty("_questName");
         questType = serializedObject.FindProperty("_questType");
         questDiscription = serializedObject.FindProperty("_questDiscription");
+        questStages = serializedObject.FindProperty("_questStages");
 
         reqItem = serializedObject.FindProperty("_requiredItem");
         reqMat = serializedObject.FindProperty("_requiredMaterial");
@@ -94,6 +96,7 @@ public class QuestDataEditor : Editor
                 reqMat.objectReferenceValue = null;
                 reqQItem.objectReferenceValue = null;
                 reqCount.intValue = 0;
+                EditorGUILayout.PropertyField(questStages);
                 EditorGUILayout.PropertyField(questComplete, new GUIContent("This Quest Complete"));
                 EditorGUILayout.PropertyField(nextQuest);
                 break;
@@ -103,6 +106,7 @@ public class QuestDataEditor : Editor
                 reqMat.objectReferenceValue = null;
                 reqQItem.objectReferenceValue = null;
                 reqCount.intValue = 0;
+                EditorGUILayout.PropertyField(questStages);
                 EditorGUILayout.PropertyField(questComplete, new GUIContent("This Quest Complete"));
                 EditorGUILayout.PropertyField(nextQuest);
                 break;
