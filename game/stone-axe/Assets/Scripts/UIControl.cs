@@ -112,7 +112,12 @@ public class UIControl : MonoBehaviour
     public void quitGame() { Application.Quit(); }
     public void doDialogue()
     {
-        GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>().getTutorialQuests();
+        // TODO modular lines to signify quests
+        List<QuestData> tutQuests = GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>().getTutorialQuests();
+        this.gameObject.GetComponent<DialogueControl>().CurrentQuest = tutQuests[0];
+        this.gameObject.GetComponent<QuestControl>().forceSetQuest(tutQuests[0]);
+
+        // only required line
         this.gameObject.GetComponent<DialogueControl>().startDialogue();
     }
 

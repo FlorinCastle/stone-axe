@@ -30,4 +30,5 @@ public class QuestData : ScriptableObject
     public QuestItemData RequiredQuestItem { get => _requiredQuestItem; }
     public int ReqiredCount { get => _requiredCount; }
     public bool StoryQuestComplete { get => _storyQuestComplete; set => _storyQuestComplete = value; }
+    public QuestData NextQuest { get => _nextQuest; }
 }

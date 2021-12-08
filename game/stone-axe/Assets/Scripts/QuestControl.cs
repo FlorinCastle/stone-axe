@@ -9,6 +9,8 @@ public class QuestControl : MonoBehaviour
     private Quest _questRef;
     [SerializeField]
     private QuestData _chosenQuest;
+    [SerializeField]
+    private int _currStageIndex;
 
     [SerializeField] private QuestSheet _questSheet1;
     [SerializeField] private QuestSheet _questSheet2;
@@ -240,17 +242,17 @@ public class QuestControl : MonoBehaviour
                 {
                     currentItemCount++;
                     setupText();
-                    if (currentItemCount >= reqItemCount)
-                    {
+                    if (currentItemCount >= reqItemCount) 
                         //Debug.Log("TODO: quest can be completed");
-                        _completeQuestButton.interactable = true;
-                    }
-                    else
-                    {
-                        _completeQuestButton.interactable = false;
-                    }
-
+                        _completeQuestButton.interactable = true; 
+                    else 
+                        _completeQuestButton.interactable = false; 
                 }
+            }
+            else if (_chosenQuest.QuestType == "Tutorial" || _chosenQuest.QuestType == "Story")
+            {
+                Debug.LogWarning("PH");
+                updateQuestProgress(_chosenQuest, _chosenQuest.QuestStages[_currStageIndex]);
             }
         }
     }
@@ -280,9 +282,41 @@ public class QuestControl : MonoBehaviour
             }
     }
 
-    // overload 4 (story quest)
-
-    // overload 5 (tutorial quest)
+    // overload 4 (story & tutorial quest)
+    public void updateQuestProgress(QuestData quest, bool isComplete)
+    {
+        if (quest.QuestType == "Tutorial")
+        {
+            quest.StoryQuestComplete = isComplete;
+            if (quest.NextQuest != null)
+            {
+                forceSetQuest(quest.NextQuest);
+            }
+        }
+    }
+    public void updateQuestProgress(QuestData quest, QuestStage currStage)
+    {
+        if (currStage.StageType == "Buy_Item")
+        {
+            Debug.LogWarning("Quest Stage: Buy item!");
+        }
+        else if (currStage.StageType == "Disassemble_Item")
+        {
+            Debug.LogWarning("Quest Stage: Disassemble item!");
+        }
+        else if (currStage.StageType == "Craft_Item")
+        {
+            Debug.LogWarning("Quest Stage: Craft item!");
+        }
+        else if (currStage.StageType == "Sell_Item")
+        {
+            Debug.LogWarning("Quest Stage: Sell item!");
+        }
+        else if (currStage.StageType == "Force_Event")
+        {
+            Debug.LogWarning("Quest Stage: Force Event!");
+        }
+    }
 
     public void completeQuest()
     {
@@ -298,6 +332,8 @@ public class QuestControl : MonoBehaviour
         _selectedSheet = null;
     }
 
+    public QuestData CurrentQuest { get => _chosenQuest; }
+    public int CurrentStageIndex { get => _currStageIndex; set => _currStageIndex = value; }
 }
 [System.Serializable]
 public class SaveQuestsObject

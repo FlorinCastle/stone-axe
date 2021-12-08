@@ -390,8 +390,16 @@ public class CraftControl : MonoBehaviour
         // add experience
         GameObject.FindGameObjectWithTag("GameMaster").GetComponent<ExperienceManager>().addExperience(4);
 
+
+
         // check quest
         _questControlRef.updateQuestProgress(_chosenItemRecipe);
+        /*
+        if (_questControlRef.CurrentQuest.QuestType == "OCC_Item" || _questControlRef.CurrentQuest.QuestType == "OCC_TotalCrafted")
+            _questControlRef.updateQuestProgress(_chosenItemRecipe);
+        else if (_questControlRef.CurrentQuest.QuestType == "Tutorial" || _questControlRef.CurrentQuest.QuestType == "Story")
+            _questControlRef.updateQuestProgress();
+        */
 
         _inventoryControlReference.InsertItem(itemDataStorageTemp);
 

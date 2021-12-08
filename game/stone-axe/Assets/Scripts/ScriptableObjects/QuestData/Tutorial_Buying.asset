@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906549ced2b40c84c8a9474b679e6739, type: 3}
+  m_Name: Tutorial_Buying
+  m_EditorClassIdentifier: 
+  _questName: Tutorial Buying
+  _questDiscription: How to Buy stuff
+  _questType: 5
+  _questStages:
+  - {fileID: 11400000, guid: 89790e45c0d973f4d97e72b49a021173, type: 2}
+  - {fileID: 11400000, guid: ce8c7f4372175334a9bd349cfcc511da, type: 2}
+  - {fileID: 11400000, guid: ddcd728e067e57b4cbecb5c7c581d45a, type: 2}
+  - {fileID: 11400000, guid: 0409270e2c2a4d143b7bede9f93c032e, type: 2}
+  - {fileID: 11400000, guid: 8a2d7cf94ce6fee4c9d68045815497b9, type: 2}
+  - {fileID: 11400000, guid: 2118daa67d1ff884181cf4b24f909798, type: 2}
+  - {fileID: 11400000, guid: dbd6f5fe332e8f94fbef6ce9b4ba123d, type: 2}
+  - {fileID: 11400000, guid: f64d67d36d56001449d70a8ead5342cf, type: 2}
+  _requiredItem: {fileID: 0}
+  _requiredMaterial: {fileID: 0}
+  _requiredQuestItem: {fileID: 0}
+  _requiredCount: 0
+  _nextQuest: {fileID: 0}
+  _storyQuestComplete: 0
