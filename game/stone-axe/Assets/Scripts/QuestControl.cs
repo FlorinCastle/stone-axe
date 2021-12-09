@@ -9,8 +9,8 @@ public class QuestControl : MonoBehaviour
     private Quest _questRef;
     [SerializeField]
     private QuestData _chosenQuest;
-    [SerializeField]
-    private int _currStageIndex;
+    [SerializeField, HideInInspector]
+    private int _currStageIndex = 0;
 
     [SerializeField] private QuestSheet _questSheet1;
     [SerializeField] private QuestSheet _questSheet2;
@@ -67,6 +67,7 @@ public class QuestControl : MonoBehaviour
         SaveQuestsObject questObject = new SaveQuestsObject
         {
             currentQuest = _questRef.saveQuest(_chosenQuest),
+            currentQuestStage = _currStageIndex,
             completedQuests = completedQuestList,
         };
 
@@ -78,7 +79,10 @@ public class QuestControl : MonoBehaviour
         {
             foreach (QuestData quest in _questRef.getAllQuests())
                 if (quest.QuestName == questsSave.currentQuest.questName)
+                {
                     _chosenQuest = quest;
+                    _currStageIndex = questsSave.currentQuestStage;
+                }
             setupText();
         }
         foreach (QuestObject quest in questsSave.completedQuests)
@@ -98,8 +102,12 @@ public class QuestControl : MonoBehaviour
     {
         _chosenQuest = quest;
         setupText();
+        if (quest.QuestType == "Tutorial" || quest.QuestType == "Story")
+        {
+            _currStageIndex = 0;
+            startStoryQuest(quest);
+        }
     }
-
     public void chooseQuestSheet(QuestSheet input)
     {
         if (input == _questSheet1)
@@ -155,7 +163,6 @@ public class QuestControl : MonoBehaviour
         setupQuest();
         setupText();
     }
-
     public void rerollQuest()
     {
         if (_selectedSheet == _questSheet1)
@@ -167,7 +174,6 @@ public class QuestControl : MonoBehaviour
         else
             Debug.LogWarning("no quest sheet selected!");
     }
-
     public void setupText()
     {
         if (_chosenQuest != null)
@@ -196,7 +202,6 @@ public class QuestControl : MonoBehaviour
             _questText.text = "placeholder";
         }
     }
-
     public void setupQuest()
     {
         if (_selectedSheet != null)
@@ -221,13 +226,21 @@ public class QuestControl : MonoBehaviour
             }
         }
     }
-
     public bool questChosen()
     {
         if (_chosenQuest != null)
             return true;
         else
             return false;
+    }
+
+    public void startStoryQuest(QuestData questInput)
+    {
+        _chosenQuest = questInput;
+        this.gameObject.GetComponent<DialogueControl>().CurrentQuest = questInput;
+
+        if (questInput.QuestStages[_currStageIndex].StageType == "Dialogue")
+            this.gameObject.GetComponent<DialogueControl>().startDialogue(_currStageIndex);
     }
 
     //overload 1 (basic item crafting)
@@ -288,7 +301,7 @@ public class QuestControl : MonoBehaviour
         if (quest.QuestType == "Tutorial")
         {
             quest.StoryQuestComplete = isComplete;
-            if (quest.NextQuest != null)
+            if (quest.NextQuest != null && isComplete == true)
             {
                 forceSetQuest(quest.NextQuest);
             }
@@ -315,6 +328,11 @@ public class QuestControl : MonoBehaviour
         else if (currStage.StageType == "Force_Event")
         {
             Debug.LogWarning("Quest Stage: Force Event!");
+            if (currStage.QuestEvent == "Summon_Adventurer")
+            {
+                Debug.LogWarning("Quest Event: Summon Adventurer");
+                this.gameObject.GetComponent<AdventurerMaster>().spawnAdventurer();
+            }
         }
     }
 
@@ -339,5 +357,6 @@ public class QuestControl : MonoBehaviour
 public class SaveQuestsObject
 {
     public QuestObject currentQuest;
+    public int currentQuestStage;
     public List<QuestObject> completedQuests;
 }

@@ -15,8 +15,11 @@ public class AdventurerAI : MonoBehaviour
     [Header("Body Refs")]
     [SerializeField] private GameObject _headMark;
 
+    private GameMaster gameMasterRef;
+
     private void Awake()
     {
+        gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         _advMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<AdventurerMaster>();
     }
 
@@ -69,7 +72,7 @@ public class AdventurerAI : MonoBehaviour
                 else if (dismissed == true && _currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<WalkingPoint>() != null)
                 { // if at line point and next point is a walking point and adventurer has been dismissed (head of line, basically)
                     _currentTarget.GetComponent<LinePoint>().IsOccupied = false;
-                    GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().AdventurerAtCounter = false;
+                    gameMasterRef.AdventurerAtCounter = false;
                     GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().adventurerAtCounter();
                     GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GenerateItem>().adventurerAtCounter();
                     dismissed = false;
@@ -77,9 +80,14 @@ public class AdventurerAI : MonoBehaviour
                 }
                 else if (_currentTarget.GetComponent<LinePoint>().HeadOfLine == true)
                 { // if at line point that is head of line
-                    GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().AdventurerAtCounter = true;
-                    GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().adventurerAtCounter();
-                    GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GenerateItem>().adventurerAtCounter();
+                    gameMasterRef.AdventurerAtCounter = true;
+                    gameMasterRef.gameObject.GetComponent<SellItemControl>().adventurerAtCounter();
+                    gameMasterRef.gameObject.GetComponent<GenerateItem>().adventurerAtCounter();
+                    if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null && (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" || gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Story"))
+                        {
+                            Debug.LogWarning("Quest Notif - Adventurer at counter");
+                            //GameObject.FindGameObjectWithTag("GameMaster").GetComponent<QuestControl>().adventurerAtCounter();
+                        }
                 }
             }
         }

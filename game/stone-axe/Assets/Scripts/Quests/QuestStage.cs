@@ -16,6 +16,7 @@ public class QuestStage : ScriptableObject
 
 
     public string StageType { get => _questStageType.ToString(); }
+    public string QuestEvent { get => _questEvent.ToString(); }
     public string DialogueSpeaker { get => _speaker; }
     public string DialogueLine { get => _dialogueLine; }
 }

@@ -3194,6 +3194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _questRef: {fileID: 1737104023}
   _chosenQuest: {fileID: 0}
+  _currStageIndex: 0
   _questSheet1: {fileID: 923706211}
   _questSheet2: {fileID: 1156415821}
   _questSheet3: {fileID: 2079588263}
@@ -3270,6 +3271,8 @@ MonoBehaviour:
   _dialogueUI: {fileID: 7485012191131071719}
   _nameText: {fileID: 7485012191131071718}
   _dialogueText: {fileID: 7485012191131071717}
+  _currentStoryQuest: {fileID: 0}
+  index: 0
 --- !u!1 &1737104022
 GameObject:
   m_ObjectHideFlags: 0
@@ -5860,7 +5863,11 @@ PrefabInstance:
     - target: {fileID: 6801491576894259202, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1734993353}
+      objectReference: {fileID: 1734993360}
+    - target: {fileID: 6801491576894259202, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 29b15c4c3e08a9641a2275deb3ef5764, type: 2}
     - target: {fileID: 6806520654681909981, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
