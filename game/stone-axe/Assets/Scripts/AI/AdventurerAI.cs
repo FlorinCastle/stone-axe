@@ -83,11 +83,18 @@ public class AdventurerAI : MonoBehaviour
                     gameMasterRef.AdventurerAtCounter = true;
                     gameMasterRef.gameObject.GetComponent<SellItemControl>().adventurerAtCounter();
                     gameMasterRef.gameObject.GetComponent<GenerateItem>().adventurerAtCounter();
-                    if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null && (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" || gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Story"))
+
+                    if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
+                        (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" ||
+                        gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Story")) 
+                    {
+                        if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Force_Event" &&
+                            gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.QuestEvent == "Summon_Adventurer")
                         {
                             Debug.LogWarning("Quest Notif - Adventurer at counter");
-                            //GameObject.FindGameObjectWithTag("GameMaster").GetComponent<QuestControl>().adventurerAtCounter();
+                            gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
                         }
+                    }
                 }
             }
         }

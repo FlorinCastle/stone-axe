@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906549ced2b40c84c8a9474b679e6739, type: 3}
+  m_Name: Tutorial_Craft
+  m_EditorClassIdentifier: 
+  _questName: Tutorial Craft
+  _questDiscription: How to Craft stuff
+  _questType: 5
+  _questStages:
+  - {fileID: 11400000, guid: cf4dd5b15445acc42b5282de6221b76f, type: 2}
+  - {fileID: 11400000, guid: 4b33735768c328045a02e28fb0b74dce, type: 2}
+  - {fileID: 11400000, guid: 6e81190dd065e344a96fd20e8d89f61d, type: 2}
+  - {fileID: 11400000, guid: f835e3b62669a164fab2f391f88db752, type: 2}
+  - {fileID: 11400000, guid: 8f3aaf6fde511fc459e1d4bb4bfdb07d, type: 2}
+  - {fileID: 11400000, guid: cccf63c866882ae4caec30c7f08ac802, type: 2}
+  - {fileID: 11400000, guid: 4c83f916e71f6c44e95dbaee54bed15c, type: 2}
+  - {fileID: 11400000, guid: 87470a11dbacc25408117352381f1b1e, type: 2}
+  - {fileID: 11400000, guid: 8b074642bf4e8be45ba59c2235d215b1, type: 2}
+  - {fileID: 11400000, guid: e1004e3c0be09174f8a625026b918346, type: 2}
+  - {fileID: 11400000, guid: b0d2abf4eb2add0429634acad3f663ed, type: 2}
+  - {fileID: 11400000, guid: 7c7aae0850bd877489444c088787e409, type: 2}
+  - {fileID: 11400000, guid: 6dd2ab2803cf28c4a83f80e47319c9a7, type: 2}
+  _requiredItem: {fileID: 0}
+  _requiredMaterial: {fileID: 0}
+  _requiredQuestItem: {fileID: 0}
+  _requiredCount: 0
+  _nextQuest: {fileID: 0}
+  _storyQuestComplete: 1

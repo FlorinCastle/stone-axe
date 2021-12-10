@@ -56,6 +56,13 @@ public class DialogueControl : MonoBehaviour
             this.gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuest, true);
         }
     }
+    /*
+    public void nextStage()
+    {
+        index++;
+        setupDialogueLine();
+    }
+    */
 
     public int CurrentStageIndex { get => index; set => index = value; }
     public QuestData CurrentQuest { set => _currentStoryQuest = value; }

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Tutorial_Buying 7
   m_EditorClassIdentifier: 
   _questStageType: 1
-  _speaker: Faerie
-  _dialogueLine: And there we go!
+  _questEvent: 0
+  _speaker: Tutorial
+  _dialogueLine: (go to Economic Tab)

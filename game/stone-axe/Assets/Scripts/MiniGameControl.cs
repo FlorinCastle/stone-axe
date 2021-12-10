@@ -47,6 +47,12 @@ public class MiniGameControl : MonoBehaviour
         _craftingMinigameUI.SetActive(false);
         _disassemblyMinigameUI.SetActive(true);
         populateHitPoints();
+        if (this.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
+            this.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial")
+        {
+            Debug.LogWarning("Quest Notif - Disassemble Minigame");
+            this.gameObject.GetComponent<QuestControl>().nextStage();
+        }
     }
 
     private void populateHitPoints()

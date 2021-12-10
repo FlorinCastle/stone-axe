@@ -182,5 +182,12 @@ public class DisassembleItemControl : MonoBehaviour
         _itemText.text = "placeholder text";
 
         _disassembleButton.interactable = false;
+
+        if (this.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
+            this.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial")
+        {
+            Debug.LogWarning("Quest Notif - Disassemble Minigame Done");
+            this.gameObject.GetComponent<QuestControl>().nextStage();
+        }
     }
 }

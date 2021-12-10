@@ -86,6 +86,17 @@ public class GenerateItem : MonoBehaviour
         haggleButton.interactable = false;
         haggleButtonText.text = "haggle\n(success chance: n/a)";
         this.gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
+
+        if (_gameMaster.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
+            (_gameMaster.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" ||
+            _gameMaster.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Story"))
+        {
+            if (_gameMaster.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Buy_Item")
+            {
+                Debug.LogWarning("Quest Notif - Bought item from Adventurer!");
+                _gameMaster.gameObject.GetComponent<QuestControl>().nextStage();
+            }
+        }
     }
     public void haggleGeneratedPrice()
     {

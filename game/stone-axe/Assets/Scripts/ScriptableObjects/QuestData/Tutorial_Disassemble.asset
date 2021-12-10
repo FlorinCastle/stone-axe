@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906549ced2b40c84c8a9474b679e6739, type: 3}
+  m_Name: Tutorial_Disassemble
+  m_EditorClassIdentifier: 
+  _questName: Tutorial Disassemble
+  _questDiscription: How to Disassemble stuff
+  _questType: 5
+  _questStages:
+  - {fileID: 11400000, guid: c2ca8b40cad34aa46b3bebf9cdb2250d, type: 2}
+  - {fileID: 11400000, guid: 576264ef11c3ee94dbd37543c4bef88f, type: 2}
+  - {fileID: 11400000, guid: 336d8a44c1c9322468a777d70702b382, type: 2}
+  - {fileID: 11400000, guid: 16ced5e6034876345bbb5948583b28b2, type: 2}
+  - {fileID: 11400000, guid: 7bf0058c1ca21e248a6d899b7f6efcd5, type: 2}
+  - {fileID: 11400000, guid: d0f44c779ac15b3449d796d74ab3357f, type: 2}
+  - {fileID: 11400000, guid: 8052b2faed40c704c850cf6168830b9e, type: 2}
+  - {fileID: 11400000, guid: ac94c85baa4fd7145a9e3a8192a67d75, type: 2}
+  - {fileID: 11400000, guid: 356408c31475dc84981f74a8119ef09e, type: 2}
+  - {fileID: 11400000, guid: aa59e95c7dbcd02439f7314d2b94d3e1, type: 2}
+  - {fileID: 11400000, guid: 6b52c8619b82e3f4fad45dd276b06a62, type: 2}
+  - {fileID: 11400000, guid: 1bcebd5a8eba1c2408531cf0e7113ede, type: 2}
+  - {fileID: 11400000, guid: a770e75ae982a4a4f8358bda3e34fcae, type: 2}
+  - {fileID: 11400000, guid: c32c2bdb6b8bfdb479b224a696ae2df7, type: 2}
+  - {fileID: 11400000, guid: 8e09855f0a2e76d48ba9f266e2d5f8ce, type: 2}
+  - {fileID: 11400000, guid: db669bb4eef024948916aa01dbdbd1eb, type: 2}
+  - {fileID: 11400000, guid: 316844ef29a780c4d89b23e00dfceaa6, type: 2}
+  _requiredItem: {fileID: 0}
+  _requiredMaterial: {fileID: 0}
+  _requiredQuestItem: {fileID: 0}
+  _requiredCount: 0
+  _nextQuest: {fileID: 11400000, guid: eb0c1a0207564e24b997af98e0ac5496, type: 2}
+  _storyQuestComplete: 1

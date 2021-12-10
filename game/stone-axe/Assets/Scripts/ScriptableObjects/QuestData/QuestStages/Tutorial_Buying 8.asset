@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Tutorial_Buying 8
   m_EditorClassIdentifier: 
   _questStageType: 1
-  _speaker: Faerie
-  _dialogueLine: Easy wasn't it? Hehe~
+  _questEvent: 0
+  _speaker: Tutorial
+  _dialogueLine: (then go to Buy)

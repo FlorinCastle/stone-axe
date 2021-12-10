@@ -242,6 +242,11 @@ public class QuestControl : MonoBehaviour
         if (questInput.QuestStages[_currStageIndex].StageType == "Dialogue")
             this.gameObject.GetComponent<DialogueControl>().startDialogue(_currStageIndex);
     }
+    public void nextStage()
+    {
+        _currStageIndex++;
+        this.gameObject.GetComponent<DialogueControl>().setupDialogueLine();
+    }
 
     //overload 1 (basic item crafting)
     public void updateQuestProgress(ItemData craftedItemRecipe)
@@ -312,10 +317,12 @@ public class QuestControl : MonoBehaviour
         if (currStage.StageType == "Buy_Item")
         {
             Debug.LogWarning("Quest Stage: Buy item!");
+            // code should work
         }
         else if (currStage.StageType == "Disassemble_Item")
         {
             Debug.LogWarning("Quest Stage: Disassemble item!");
+            // code should work
         }
         else if (currStage.StageType == "Craft_Item")
         {
@@ -351,6 +358,7 @@ public class QuestControl : MonoBehaviour
     }
 
     public QuestData CurrentQuest { get => _chosenQuest; }
+    public QuestStage CurrentStage { get => _chosenQuest.QuestStages[_currStageIndex]; }
     public int CurrentStageIndex { get => _currStageIndex; set => _currStageIndex = value; }
 }
 [System.Serializable]

@@ -2938,10 +2938,10 @@ GameObject:
   - component: {fileID: 1734993362}
   - component: {fileID: 1734993357}
   - component: {fileID: 1734993353}
+  - component: {fileID: 1734993358}
   - component: {fileID: 1734993354}
   - component: {fileID: 1734993355}
   - component: {fileID: 1734993356}
-  - component: {fileID: 1734993358}
   - component: {fileID: 1734993359}
   - component: {fileID: 1734993360}
   - component: {fileID: 1734993361}
@@ -5400,6 +5400,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1665236781703823169, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_Text
+      value: dialogue text
+      objectReference: {fileID: 0}
     - target: {fileID: 1679154441857126789, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5867,7 +5871,7 @@ PrefabInstance:
     - target: {fileID: 6801491576894259202, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 29b15c4c3e08a9641a2275deb3ef5764, type: 2}
+      objectReference: {fileID: 11400000, guid: eb0c1a0207564e24b997af98e0ac5496, type: 2}
     - target: {fileID: 6806520654681909981, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
