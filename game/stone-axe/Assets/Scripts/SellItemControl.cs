@@ -8,6 +8,7 @@ public class SellItemControl : MonoBehaviour
     [SerializeField] private InventoryScript _invScriptRef;
     [SerializeField] private UIControl _uIControlRef;
     [SerializeField] private GameObject _selectedItem;
+    private GameMaster _gameMasterRef;
     [Header("Shop UI")]
     [SerializeField] private Text _itemText;
     [SerializeField] private Button _sellItemButton;
@@ -35,6 +36,7 @@ public class SellItemControl : MonoBehaviour
 
         if (_uIControlRef == null)
             _uIControlRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<UIControl>();
+        _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
 
         _sellItemButton.interactable = false;
         _refuseButton.interactable = false;
@@ -154,6 +156,13 @@ public class SellItemControl : MonoBehaviour
         this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
         clearSellMenu();
         this.gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
+
+        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null && _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial")
+        {
+            Debug.LogWarning("Quest Notif - Sell Done");
+            _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
+
+        }
     }
 
     public void hagglePrice()

@@ -3303,6 +3303,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questDataList:
+  - {fileID: 11400000, guid: b513f70bebd368e42865c6a21fad0df2, type: 2}
+  - {fileID: 11400000, guid: 16242dde5e7c8dc48ba0ef782e9c7174, type: 2}
+  - {fileID: 11400000, guid: eb0c1a0207564e24b997af98e0ac5496, type: 2}
+  - {fileID: 11400000, guid: 1f0c89b476d511e429ef8fa963c443ec, type: 2}
+  - {fileID: 11400000, guid: 2240dccd919c2304dacfd315d1845e62, type: 2}
+  - {fileID: 11400000, guid: 29b15c4c3e08a9641a2275deb3ef5764, type: 2}
   - {fileID: 11400000, guid: 1ed3daa3503ec394590cab46f07d9c64, type: 2}
   - {fileID: 11400000, guid: d9324e77a67796f4a96063873d355bff, type: 2}
   - {fileID: 11400000, guid: 97835c6312c7ee8429ccf6e228e37b7b, type: 2}
@@ -3396,8 +3402,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec296aa6d734f194596c33df786c152e, type: 2}
   - {fileID: 11400000, guid: cb1dcdd64795ab04e8c32a5614a76906, type: 2}
   - {fileID: 11400000, guid: 853a3a0f48779d8449266f55634d56d1, type: 2}
-  - {fileID: 11400000, guid: b513f70bebd368e42865c6a21fad0df2, type: 2}
-  - {fileID: 11400000, guid: 29b15c4c3e08a9641a2275deb3ef5764, type: 2}
   _tutorialQuests: []
   _storyQuests: []
   _onCraftItemQuests: []
@@ -5868,10 +5872,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1734993360}
-    - target: {fileID: 6801491576894259202, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 11400000, guid: eb0c1a0207564e24b997af98e0ac5496, type: 2}
     - target: {fileID: 6806520654681909981, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

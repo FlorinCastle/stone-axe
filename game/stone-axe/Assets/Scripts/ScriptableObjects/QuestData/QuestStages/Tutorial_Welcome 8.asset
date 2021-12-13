@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Tutorial_Welcome 8
   m_EditorClassIdentifier: 
   _questStageType: 1
+  _questEvent: 0
   _speaker: Faerie
-  _dialogueLine: Are you Art's kid?
+  _dialogueLine: Are you Arti's kid?

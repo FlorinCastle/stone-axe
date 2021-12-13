@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _questStageType: 1
   _questEvent: 0
-  _speaker: Faerie
-  _dialogueLine: There we go! It's crafted!
+  _speaker: Tutorial
+  _dialogueLine: (this is the crafting minigame)

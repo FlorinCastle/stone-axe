@@ -284,7 +284,7 @@ MonoBehaviour:
         m_MethodName: startStoryQuest
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: 29b15c4c3e08a9641a2275deb3ef5764, type: 2}
           m_ObjectArgumentAssemblyTypeName: QuestData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0

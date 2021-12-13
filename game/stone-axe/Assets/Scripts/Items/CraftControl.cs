@@ -13,6 +13,7 @@ public class CraftControl : MonoBehaviour
     [SerializeField] RecipeBook _recipeBookRef;
     [SerializeField] QuestControl _questControlRef;
     [SerializeField] CFT_ReduceMaterialCost materialSkill;
+    private GameMaster _gameMasterRef;
 
     [Header("UI")]
     [SerializeField] GameObject _itemCraftingUI;
@@ -64,6 +65,7 @@ public class CraftControl : MonoBehaviour
 
     private void Awake()
     {
+        _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         setupRecipeDropdown();
         updateFinalStatsText();
         _itemCraftingUI.SetActive(false);
@@ -419,6 +421,13 @@ public class CraftControl : MonoBehaviour
 
         clearItemCraftingUI();
         _recipeDropdown.value = 0;
+
+        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null && _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial")
+        {
+            Debug.LogWarning("Quest Notif - Craft Done");
+            _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
+
+        }
     }
 
     private void CraftPart()
