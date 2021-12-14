@@ -38,5 +38,5 @@ MonoBehaviour:
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 0}
   _requiredCount: 0
-  _nextQuest: {fileID: 0}
-  _storyQuestComplete: 1
+  _nextQuest: {fileID: 11400000, guid: 2240dccd919c2304dacfd315d1845e62, type: 2}
+  _storyQuestComplete: 0
