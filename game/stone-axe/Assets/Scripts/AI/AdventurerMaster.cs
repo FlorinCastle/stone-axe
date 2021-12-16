@@ -16,12 +16,15 @@ public class AdventurerMaster : MonoBehaviour
     [SerializeField] private bool advSpawnEnabled;
     [SerializeField] private Slider _spawnProgressSlider;
 
+    private SoundMaster _soundMaster;
+
     private void Awake()
     {
         //_timer = _timeBetweenSpawn;
         if (_adventurerPrefab == null)
             Debug.LogError("Adventurer Prefab is not assigned!");
         _spawnProgressSlider.gameObject.SetActive(false);
+        _soundMaster = GameObject.FindGameObjectWithTag("AudioMaster").GetComponent<SoundMaster>();
     }
 
     public bool startAdventurerSpawn()
@@ -69,6 +72,8 @@ public class AdventurerMaster : MonoBehaviour
         advPlaceholder.GetComponent<AdventurerAI>().setupAdventurer();
         //advPlaceholder.GetComponent<AdventurerAI>().IsMoving = true;
         _currentAdventurers.Add(advPlaceholder);
+        if (this.gameObject.GetComponent<GameMaster>().ShopActive == true)
+            _soundMaster.playDoorSound();
     }
 
     IEnumerator AdventurerSpawn()
