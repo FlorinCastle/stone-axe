@@ -12,6 +12,7 @@ public class RecipeBook : MonoBehaviour
     [SerializeField, HideInInspector] private List<string> partRecipeName;
     [SerializeField, HideInInspector] private List<GameObject> recipeButtons;
     [SerializeField, HideInInspector] private ItemData _selectedItemRecipe;
+    [SerializeField, HideInInspector] private QuestItemData _selectedQuestItemRecipe;
     [SerializeField, HideInInspector] private PartData _selectedPartRecipe;
     [Header("Filters")]
     [SerializeField] private List<FilterData> filterData;
@@ -24,8 +25,11 @@ public class RecipeBook : MonoBehaviour
     [SerializeField] private GameObject _filterParent;
     [Header("Prefabs")]
     [SerializeField] private GameObject _itemRecipeInfoPrefab;
+    [SerializeField] private GameObject _questItemRecipeInfoPrefab;
     [SerializeField] private GameObject _partRecipeInfoPrefab;
     [SerializeField] private GameObject _filterPrefab;
+
+    private GameMaster _gameMasterRef;
 
     private void Awake()
     {
@@ -35,6 +39,8 @@ public class RecipeBook : MonoBehaviour
         _recipeText.text = "";
         setupFilterUI();
         _filterUI.SetActive(false);
+
+        _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
     }
 
     public void disableRecipeSelectButton()
@@ -71,6 +77,7 @@ public class RecipeBook : MonoBehaviour
                 if (itemRecipe.ItemName == button.GetComponent<RecipeButton>().GetRecipeName)
                 {
                     _selectedItemRecipe = itemRecipe;
+                    _selectedQuestItemRecipe = null;
                     _selectedPartRecipe = null;
 
                     _recipeText.text = itemRecipe.ItemName + "\nParts:\nValid Part 1: ";
@@ -88,7 +95,49 @@ public class RecipeBook : MonoBehaviour
             }
         }
     }
+    public void setQuestItemRecipeInfo(int index)
+    {
+        //Debug.LogWarning("settting up quest recipe Info");
+        if (index == -1)
+            _recipeText.text = "placeholder";
+        else
+        {
+            GameObject button = recipeButtons[index];
+            foreach (QuestItemData questRecipe in questItemRecipes)
+            {
+                if (questRecipe.QuestItemName == button.GetComponent<RecipeButton>().GetRecipeName)
+                {
+                    _selectedItemRecipe = null;
+                    _selectedQuestItemRecipe = questRecipe;
+                    _selectedPartRecipe = null;
 
+                    _recipeText.text = questRecipe.QuestItemName + "\nParts:\nValid Part 1: ";
+                    foreach (string itemName in itemRecipeName)
+                        if (questRecipe.ItemPart1.name == itemName)
+                            _recipeText.text += itemName + " ";
+                    foreach (string partName in partRecipeName)
+                        if (questRecipe.ItemPart1.name == partName)
+                            _recipeText.text += partName + " ";
+
+                    _recipeText.text += "\nValid Part 2: ";
+                    foreach (string itemName in itemRecipeName)
+                        if (questRecipe.ItemPart2.name == itemName)
+                            _recipeText.text += itemName + " ";
+                    foreach (string partName in partRecipeName)
+                        if (questRecipe.ItemPart2.name == partName)
+                            _recipeText.text += partName + " ";
+
+                    _recipeText.text += "\nValid Part 3: ";
+                    foreach (string itemName in itemRecipeName)
+                        if (questRecipe.ItemPart3.name == itemName)
+                            _recipeText.text += itemName + " ";
+                    foreach (string partName in partRecipeName)
+                        if (questRecipe.ItemPart3.name == partName)
+                            _recipeText.text += partName + " ";
+                }
+            }
+        }
+    }
     public void setPartRecipeInfo(int index)
     {
         if (index == -1)
@@ -101,6 +150,7 @@ public class RecipeBook : MonoBehaviour
                 if (partRecipe.PartName == button.GetComponent<RecipeButton>().GetRecipeName)
                 {
                     _selectedItemRecipe = null;
+                    _selectedQuestItemRecipe = null;
                     _selectedPartRecipe = partRecipe;
 
                     _recipeText.text = partRecipe.PartName + "\nValid Material Types:\n";
@@ -141,6 +191,140 @@ public class RecipeBook : MonoBehaviour
     }
 
     private GameObject tempButton;
+
+    public void setupQuestRecipeGrid()
+    {
+        QuestData currQuest = _gameMasterRef.GetComponent<QuestControl>().CurrentQuest;
+        if (currQuest != null)
+        {
+            if (currQuest.QuestType == "Tutorial" || currQuest.QuestType == "Story")
+            {
+                Debug.LogWarning("RecipeBook: quest type - Tutorail or Story");
+                setupStoryQuestRecipeGrid();
+            }
+            else if (currQuest.QuestType == "OCC_QuestItem")
+            {
+                Debug.LogWarning("RecipeBook: quest type - OCC_QuestItem");
+                setupSpecialQuestRecipeGrid();
+            }
+        }
+    }
+
+    public void setupSpecialQuestRecipeGrid()
+    {
+        QuestData currQuest = _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest;
+
+        QuestItemData questItem = currQuest.RequiredQuestItem;
+
+        clearRecipeGrid();
+        int r = 0;
+        
+        if (questItem != null)
+        {
+            // instantiate the button prefab
+            tempButton = Instantiate(_questItemRecipeInfoPrefab);
+            tempButton.transform.SetParent(_contentRef.transform, false);
+            tempButton.GetComponent<RecipeButton>().setRecipeName(questItem.QuestItemName);
+            // set up button text
+            Text t = tempButton.GetComponentInChildren<Text>();
+            t.text = questItem.QuestItemName + " Recipe";
+            tempButton.name = questItem.QuestItemName + " Recipe";
+            // add button to list
+            InsertButton(tempButton);
+        }
+        r++;
+        foreach (ItemData itemRecipe in itemRecipes)
+        {
+            if (itemRecipe != null)
+            {
+                // instantiate the button prefab
+                tempButton = Instantiate(_itemRecipeInfoPrefab);
+                tempButton.transform.SetParent(_contentRef.transform, false);
+                tempButton.GetComponent<RecipeButton>().setRecipeName(itemRecipe.ItemName);
+                // set up button text
+                Text t = tempButton.GetComponentInChildren<Text>();
+                t.text = itemRecipe.ItemName + " Recipe";
+                tempButton.name = itemRecipe.ItemName + " Recipe";
+                // add button to list
+                InsertButton(tempButton);
+            }
+            r++;
+        }
+        foreach (PartData partRecipe in partRecipes)
+        {
+            if (partRecipe != null)
+            {
+                tempButton = Instantiate(_partRecipeInfoPrefab);
+                tempButton.transform.SetParent(_contentRef.transform, false);
+                tempButton.GetComponent<RecipeButton>().setRecipeName(partRecipe.PartName);
+
+                Text t = tempButton.GetComponentInChildren<Text>();
+                t.text = partRecipe.PartName + " Recipe";
+                tempButton.name = partRecipe.PartName + " Recipe";
+                // add button to list
+                InsertButton(tempButton);
+            }
+            r++;
+        }
+
+    }
+    public void setupStoryQuestRecipeGrid()
+    {
+        QuestData currQuest = _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest;
+
+        ItemData reqItem = currQuest.RequiredItem;
+        clearRecipeGrid();
+        int r = 0;
+
+        if (reqItem != null)
+        {
+            // instantiate the button prefab
+            tempButton = Instantiate(_itemRecipeInfoPrefab);
+            tempButton.transform.SetParent(_contentRef.transform, false);
+            tempButton.GetComponent<RecipeButton>().setRecipeName(reqItem.ItemName);
+            // set up button text
+            Text t = tempButton.GetComponentInChildren<Text>();
+            t.text = reqItem.ItemName + " Recipe";
+            tempButton.name = reqItem.ItemName + " Recipe";
+            // add button to list
+            InsertButton(tempButton);
+        }
+        r++;
+        foreach (ItemData itemRecipe in itemRecipes)
+        {
+            if (itemRecipe != null && itemRecipe != reqItem)
+            {
+                // instantiate the button prefab
+                tempButton = Instantiate(_itemRecipeInfoPrefab);
+                tempButton.transform.SetParent(_contentRef.transform, false);
+                tempButton.GetComponent<RecipeButton>().setRecipeName(itemRecipe.ItemName);
+                // set up button text
+                Text t = tempButton.GetComponentInChildren<Text>();
+                t.text = itemRecipe.ItemName + " Recipe";
+                tempButton.name = itemRecipe.ItemName + " Recipe";
+                // add button to list
+                InsertButton(tempButton);
+            }
+            r++;
+        }
+        foreach (PartData partRecipe in partRecipes)
+        {
+            if (partRecipe != null)
+            {
+                tempButton = Instantiate(_partRecipeInfoPrefab);
+                tempButton.transform.SetParent(_contentRef.transform, false);
+                tempButton.GetComponent<RecipeButton>().setRecipeName(partRecipe.PartName);
+
+                Text t = tempButton.GetComponentInChildren<Text>();
+                t.text = partRecipe.PartName + " Recipe";
+                tempButton.name = partRecipe.PartName + " Recipe";
+                // add button to list
+                InsertButton(tempButton);
+            }
+            r++;
+        }
+    }
+
     public void setupRecipeGrid()
     {
         clearRecipeGrid();
@@ -162,7 +346,6 @@ public class RecipeBook : MonoBehaviour
             }
             r++;
         }
-
         foreach (PartData partRecipe in partRecipes)
         {
             if (partRecipe != null)

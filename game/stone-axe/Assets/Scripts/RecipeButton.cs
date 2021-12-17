@@ -17,7 +17,10 @@ public class RecipeButton : MonoBehaviour
     {
         _recipeControl.setItemRecipeInfo(_myButtonIndex);
     }
-
+    public void setQuestItemReceipeInfoText()
+    {
+        _recipeControl.setQuestItemRecipeInfo(_myButtonIndex);
+    }
     public void setPartRecipeInfoText()
     {
         _recipeControl.setPartRecipeInfo(_myButtonIndex);

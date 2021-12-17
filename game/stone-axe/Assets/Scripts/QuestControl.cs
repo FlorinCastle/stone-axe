@@ -215,6 +215,7 @@ public class QuestControl : MonoBehaviour
             else if (_chosenQuest.QuestType == "OCC_QuestItem")
             {
                 reqItemCount = 1;
+                GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().setupQuestRecipeGrid();
             }
             else if (_chosenQuest.QuestType == "OD_Material")
             {

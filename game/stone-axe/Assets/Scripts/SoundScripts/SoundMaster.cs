@@ -12,5 +12,4 @@ public class SoundMaster : MonoBehaviour
     public void playMusic() { _music.Play(); } 
     public void playDoorSound() { _doorSound.Play(); }
     public void playButtonClickSound() { _buttonClick.Play(); }
-
 }

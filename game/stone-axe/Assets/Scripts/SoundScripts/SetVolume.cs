@@ -19,6 +19,7 @@ public class SetVolume : MonoBehaviour
     }
 
     public void SetMusicLevel(float sliderValue) { SetLevel(sliderValue, _musicSlider); }
+    public void SetSFXLevel(float sliderValue) { SetLevel(sliderValue, _sfxSlider); }
 
     public void SetLevel(float sliderValue, Slider sliderRef)
     {
