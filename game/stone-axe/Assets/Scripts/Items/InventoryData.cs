@@ -10,17 +10,23 @@ public class InventoryData : MonoBehaviour
     // part inventory
     [SerializeField] private List<GameObject> _partInventoryData;
     // material inventory
-    [SerializeField] private List<MaterialData> materialInventory;
+    //[SerializeField] private List<MaterialData> materialInventory;
+    [SerializeField] private List<GameObject> materialInventory;
     // enchant inventory
     [SerializeField] private List<GameObject> _enchantInventoryData;
 
     public SaveMaterialsObject saveMaterials()
     {
         List<SaveMatObject> matObjects = new List<SaveMatObject>();
-
+        /*
         foreach (MaterialData mat in MaterialInventory)
         {
             matObjects.Add(saveMat(mat));
+        }
+        */
+        foreach (GameObject mat in materialInventory)
+        {
+            matObjects.Add(saveMat(mat.GetComponent<MaterialDataStorage>()));
         }
 
         SaveMaterialsObject saveObject = new SaveMaterialsObject
@@ -29,6 +35,7 @@ public class InventoryData : MonoBehaviour
         };
         return saveObject;
     }
+    /*
     private SaveMatObject saveMat(MaterialData mat)
     {
         SaveMatObject matObject = new SaveMatObject
@@ -38,17 +45,40 @@ public class InventoryData : MonoBehaviour
         };
         return matObject;
     }
+    */
+    private SaveMatObject saveMat(MaterialDataStorage mat)
+    {
+        SaveMatObject matObject = new SaveMatObject
+        {
+            matName = mat.Material,
+            matCount = mat.MaterialCount
+        };
+        return matObject;
+    }
 
     public void loadMaterials(SaveMaterialsObject savedMats)
     {
         foreach (SaveMatObject mat in savedMats.matObjectList)
         {
+            /*
             foreach (MaterialData matData in MaterialInventory)
                 if (matData.Material == mat.matName)
                     matData.MaterialCount = mat.matCount;
+            */
+            foreach (GameObject matObj in materialInventory)
+                if (matObj.GetComponent<MaterialDataStorage>().MatDataRef.Material == mat.matName)
+                    matObj.GetComponent<MaterialDataStorage>().MaterialCount = mat.matCount;
+                    
         }
     }
 
+    public int getMaterialCount(MaterialData mat)
+    {
+        foreach (GameObject matData in materialInventory)
+            if (matData.GetComponent<MaterialDataStorage>().MatDataRef.Material == mat.Material)
+                return matData.GetComponent<MaterialDataStorage>().MaterialCount;
+        return -1;
+    }
 
     public int insertItemData(GameObject item)
     {
@@ -139,7 +169,7 @@ public class InventoryData : MonoBehaviour
         }
         _enchantInventoryData.Clear();
     }
-
+    /*
     public MaterialData getMaterial(string matName)
     {
         foreach(MaterialData mat in materialInventory)
@@ -147,10 +177,21 @@ public class InventoryData : MonoBehaviour
                 return mat;
         return null;
     }
+    */
+
+    public MaterialDataStorage getMaterial(string matName)
+    {
+        foreach (GameObject matObj in materialInventory)
+            if (matObj.GetComponent<MaterialDataStorage>().MatDataRef.Material == matName)
+                return matObj.GetComponent<MaterialDataStorage>();
+
+        return null;
+    }
+
 
     public List<GameObject> ItemInventory { get => _itemInventoryData; }
     public List<GameObject> PartInventory { get => _partInventoryData; }
-    public List<MaterialData> MaterialInventory { get => materialInventory; }
+    public List<GameObject> MaterialInventory { get => materialInventory; }
     public List<GameObject> EnchantInventory { get => _enchantInventoryData; }
 }
 [System.Serializable]

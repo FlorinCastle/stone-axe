@@ -52,7 +52,7 @@ public class CraftControl : MonoBehaviour
     private PartDataStorage partDataStorageRef;
     [Header("Part Crafting")]
     [SerializeField] PartData _chosenPartRecipe;
-    [SerializeField] MaterialData _chosenPartMaterial;
+    [SerializeField] MaterialDataStorage _chosenPartMaterial;
     [SerializeField] GameObject _optionalChosenEnchant;
 
     [SerializeField, HideInInspector] private List<string> recipeDropOptions;
@@ -509,7 +509,7 @@ public class CraftControl : MonoBehaviour
         updateFinalStatsText();
     }
 
-    private void setupMatDiscription(MaterialData mat)
+    private void setupMatDiscription(MaterialDataStorage mat)
     {
         _matDiscription.text = mat.Material + "\nType - " + mat.MaterialType + "\nAdded Strength: " + mat.AddedStrength + "\nAdded Dextarity: " + mat.AddedDextarity + "\nAdded Intelegence: " + mat.AddedIntelligence;
 

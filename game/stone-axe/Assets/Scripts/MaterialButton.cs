@@ -24,7 +24,7 @@ public class MaterialButton : MonoBehaviour
         _invControl.setMatDetailText(_myButtonIndex);
     }
 
-    public void setMatInfoText(MaterialData matInfo)
+    public void setMatInfoText(MaterialDataStorage matInfo)
     {
         _matNameText.text = matInfo.Material;
         _matCountText.text = matInfo.MaterialCount.ToString();

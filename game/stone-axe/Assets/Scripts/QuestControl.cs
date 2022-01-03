@@ -7,6 +7,7 @@ public class QuestControl : MonoBehaviour
 {
     [SerializeField]
     private Quest _questRef;
+    private InventoryData _invDataRef;
     [SerializeField]
     private QuestData _chosenQuest;
     [SerializeField, HideInInspector]
@@ -36,6 +37,7 @@ public class QuestControl : MonoBehaviour
     private void Awake()
     {
         _repeatableQuests = _questRef.getRepeatableQuests();
+        _invDataRef = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryData>();
     }
 
     private void Start()
@@ -187,7 +189,8 @@ public class QuestControl : MonoBehaviour
             }
             else if (_chosenQuest.QuestType == "OD_Material")
             {
-                _questName.text += " (" + _chosenQuest.ReqiredMaterial.MaterialCount + "/" + reqItemCount + ")";
+                //_questName.text += " (" + _chosenQuest.ReqiredMaterial.MaterialCount + "/" + reqItemCount + ")";
+                _questName.text += " (" + _invDataRef.getMaterialCount(_chosenQuest.ReqiredMaterial) + "/" + reqItemCount + ")";
                 _questText.text += ": " + _chosenQuest.ReqiredMaterial.Material;
                 shut = true;
             }
@@ -289,7 +292,8 @@ public class QuestControl : MonoBehaviour
             {
                 if (_chosenQuest.ReqiredMaterial == materialData)
                 {
-                    if (materialData.MaterialCount >= _chosenQuest.ReqiredCount)
+                    //if (materialData.MaterialCount >= _chosenQuest.ReqiredCount)
+                    if (_invDataRef.getMaterialCount(materialData) >= _chosenQuest.ReqiredCount)
                     {
                         //Debug.Log("TODO: quest can be completed");
                         shut = false;
@@ -349,7 +353,8 @@ public class QuestControl : MonoBehaviour
         _completeQuestButton.interactable = false;
         if (_chosenQuest.QuestType == "OD_Material")
         {
-            _chosenQuest.ReqiredMaterial.RemoveMat(_chosenQuest.ReqiredCount);
+            //_chosenQuest.ReqiredMaterial.RemoveMat(_chosenQuest.ReqiredCount);
+            _invDataRef.getMaterial(_chosenQuest.ReqiredMaterial.Material).RemoveMat(_chosenQuest.ReqiredCount);
         }
         _chosenQuest = null;
         setupText();

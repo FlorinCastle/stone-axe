@@ -193,29 +193,30 @@ public class InventoryScript : MonoBehaviour
         clearEnchantButtonList();
 
         int m = 0;
-        foreach (MaterialData mat in _inventoryData.MaterialInventory)
+        foreach (GameObject mat in _inventoryData.MaterialInventory)
         {
-            if (mat != null)
+            if (mat.GetComponent<MaterialDataStorage>() != null)
             {
+                MaterialDataStorage matStore = mat.GetComponent<MaterialDataStorage>();
                 // if level req is met
-                if (mat.LevelRequirement <= _gameMaster.GetLevel)
+                if (matStore.LevelRequirement <= _gameMaster.GetLevel)
                 {
                     // instantiate the button prefab
                     tempButtonList = Instantiate(_matInfoPrefab);
                     tempButtonList.transform.SetParent(_inventoryButtonParent.transform, false);
 
                     // set up the button text
-                    tempButtonList.GetComponentInChildren<MaterialButton>().setMatInfoText(mat);
+                    tempButtonList.GetComponentInChildren<MaterialButton>().setMatInfoText(matStore);
 
                     // set material
-                    tempButtonList.GetComponentInChildren<MaterialButton>().MaterialData = mat;
+                    tempButtonList.GetComponentInChildren<MaterialButton>().MaterialData = matStore.MatDataRef;
 
                     // if removing from inventory
                     if (isRemoving == true)
                     {
                         if (state == 6)
                         {
-                            if (checkIfMatIsValid(state, mat))
+                            if (checkIfMatIsValid(state, matStore.MatDataRef))
                                 tempButtonList.GetComponentInChildren<Button>().interactable = true;
                             else
                                 tempButtonList.GetComponentInChildren<Button>().interactable = false;
@@ -798,7 +799,7 @@ public class InventoryScript : MonoBehaviour
 
     private bool MaterialSlotEmpty(int index)
     {
-        if (_inventoryData.MaterialInventory[index] == null || _inventoryData.MaterialInventory[index].MaterialCount <= 0)
+        if (_inventoryData.MaterialInventory[index] == null || _inventoryData.MaterialInventory[index].GetComponent<MaterialDataStorage>().MaterialCount <= 0)
             return true;
 
         return false;
@@ -828,7 +829,7 @@ public class InventoryScript : MonoBehaviour
             mat = null;
             return false;
         }
-        mat = _inventoryData.MaterialInventory[index];
+        mat = _inventoryData.MaterialInventory[index].GetComponent<MaterialDataStorage>().MatDataRef;
         return true;
     }
 
@@ -1069,6 +1070,7 @@ public class InventoryScript : MonoBehaviour
             Debug.Log("example button selected");
     }
 
+
     public void setSelectedMat(MaterialData data)
     {
         if (data != null)
@@ -1081,7 +1083,7 @@ public class InventoryScript : MonoBehaviour
     {
         if (i != -1)
         {
-            _selectedMat = _inventoryData.MaterialInventory[i];
+            _selectedMat = _inventoryData.MaterialInventory[i].GetComponent<MaterialDataStorage>().MatDataRef;
         }
         else
             Debug.Log("example button selected");
@@ -1113,10 +1115,10 @@ public class InventoryScript : MonoBehaviour
         return null;
     }
 
-    public MaterialData getSelectedMat()
+    public MaterialDataStorage getSelectedMat()
     {
         if (_selectedMat != null)
-            return _selectedMat;
+            return this.GetComponent<InventoryData>().getMaterial(_selectedMat.Material);
 
         return null;
     }
@@ -1217,7 +1219,7 @@ public class InventoryScript : MonoBehaviour
 
         if (m == 6)
         {
-            foreach (MaterialData validMat in ccRef.checkPartRecipe().ValidMaterialData)
+            foreach (MaterialDataStorage validMat in ccRef.checkPartRecipe().ValidMaterialData)
                 if (validMat.Material == mat.Material)
                     return true;
         }

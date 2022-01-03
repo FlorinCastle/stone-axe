@@ -2196,7 +2196,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1949616017}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2215,32 +2216,32 @@ MonoBehaviour:
   _itemInventoryData: []
   _partInventoryData: []
   materialInventory:
-  - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
-  - {fileID: 11400000, guid: 1e9b7f9659be5de4aa93d81c837a7562, type: 2}
-  - {fileID: 11400000, guid: 3daa26c81517ad7469d747e94fe5e2f4, type: 2}
-  - {fileID: 11400000, guid: 8b123dc586a3f244b83f83b0ffc64992, type: 2}
-  - {fileID: 11400000, guid: d905eb4a07023d74ea23a7f665c720dd, type: 2}
-  - {fileID: 11400000, guid: 9e75d77f4858d6643b4e74d870a9ff74, type: 2}
-  - {fileID: 11400000, guid: bab2bdbbc182b62418f2378a9c99c460, type: 2}
-  - {fileID: 11400000, guid: ba1c5e625e5ab5e4fa7ec67ccab1e890, type: 2}
-  - {fileID: 11400000, guid: 06b9aebefd67bea4fad7a9ec99861549, type: 2}
-  - {fileID: 11400000, guid: f9ff7a3994c4ed340b791d693187aa9d, type: 2}
-  - {fileID: 11400000, guid: 76bd0065f11d4bf4b910a384a801a781, type: 2}
-  - {fileID: 11400000, guid: bc64ff08a64fd02419b35d00f9263aad, type: 2}
-  - {fileID: 11400000, guid: d723de8e21a61ed4fbf8330932dd62f3, type: 2}
-  - {fileID: 11400000, guid: 3206576d24b36594e9db6032fd6fdfb1, type: 2}
-  - {fileID: 11400000, guid: cf84968d70a35c74c9218b4b8c41277e, type: 2}
-  - {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
-  - {fileID: 11400000, guid: c1142bc72c55dd94fb96dfd69001e16b, type: 2}
-  - {fileID: 11400000, guid: e1b6489bf01c8894e91101a6e9bf9f02, type: 2}
-  - {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
-  - {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}
-  - {fileID: 11400000, guid: 7ba3f56a6cf24c6498a633f016021027, type: 2}
-  - {fileID: 11400000, guid: 9a249b9e603da774cb4202555c78ceff, type: 2}
-  - {fileID: 11400000, guid: 43c581baf585f0243ada9274c3bbcfc1, type: 2}
-  - {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
-  - {fileID: 11400000, guid: 56c2efc7d77a43a49bccc0f0ab800c69, type: 2}
-  - {fileID: 11400000, guid: 440de40f604fd0743a0a66493279ad73, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _enchantInventoryData: []
 --- !u!114 &1200330649 stripped
 MonoBehaviour:
@@ -4050,6 +4051,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6acc76b30f70444f878171e1829da9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1949616016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1949616017}
+  - component: {fileID: 1949616018}
+  m_Layer: 0
+  m_Name: MatData_matname
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1949616017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949616016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1181822453}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1949616018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949616016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94396731da129634a938fd47aca4a131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _matDataRef: {fileID: 11400000, guid: d723de8e21a61ed4fbf8330932dd62f3, type: 2}
+  _materialName: Adamantine
+  _materialType: 0
+  _subMatType: 1
+  _levelRequirement: 21
+  _quantity: 0
+  _baseCostPerUnit: 24
+  _addedStrength: 10
+  _addedDextarity: 8
+  _addedIntelligence: 10
 --- !u!114 &1956532292 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 594431945948045278, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}

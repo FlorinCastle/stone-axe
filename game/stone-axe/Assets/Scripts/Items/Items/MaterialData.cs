@@ -16,7 +16,7 @@ public class MaterialData : ScriptableObject
     //[SerializeField]
     public int _levelRequirement;
     //[SerializeField]
-    public int _quantity;
+    //public int _quantity;
     //[SerializeField]
     public int _baseCostPerUnit;
     //[SerializeField]
@@ -25,7 +25,7 @@ public class MaterialData : ScriptableObject
     public int _addedDextarity;
     //[SerializeField]
     public int _addedIntelligence;
-
+    /*
     public int AddMat(int value) { _quantity += value; return value; }
     public int RemoveMat(int value)
     {
@@ -40,12 +40,13 @@ public class MaterialData : ScriptableObject
             return true;
         return false;
     }
+    */
 
     public int LevelRequirement { get => _levelRequirement; }
     public string Material { get => _materialName; }
     public string MaterialType { get => _materialType.ToString(); }
-    public string SubMaterialTybe { get => _subMatType.ToString(); }
-    public int MaterialCount { get => _quantity; set => _quantity = value; }
+    public string SubMaterialType { get => _subMatType.ToString(); }
+    //public int MaterialCount { get => _quantity; set => _quantity = value; }
     public int BaseCostPerUnit { get => _baseCostPerUnit; }
     public int AddedStrength { get => _addedStrength; }
     public int AddedDextarity { get => _addedDextarity; }
