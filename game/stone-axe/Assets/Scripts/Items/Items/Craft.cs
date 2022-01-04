@@ -40,15 +40,15 @@ public class Craft : MonoBehaviour
     PartData part1;
     PartData part2;
     PartData part3;
-    MaterialDataStorage mat1;
+    /*MaterialDataStorage mat1;
     MaterialDataStorage mat2;
-    MaterialDataStorage mat3;
-    /*MaterialData mat1;
+    MaterialDataStorage mat3; */
+    MaterialData mat1;
     MaterialData mat2;
-    MaterialData mat3; */
+    MaterialData mat3;
     // part crafting
     PartData chosenPart;
-    MaterialDataStorage chosenMat;
+    MaterialData chosenMat;
     private void Awake()
     {
         // item dropdown
@@ -241,7 +241,7 @@ public class Craft : MonoBehaviour
             _part1Material.ClearOptions();
             part1MaterialDropOptions.Clear();
             part1MaterialDropOptions.Add("Choose Material");
-            foreach (MaterialDataStorage material in part1.ValidMaterialData)
+            foreach (MaterialData material in part1.ValidMaterialData)
             {
                 part1MaterialDropOptions.Add(material.Material);
             }
@@ -274,7 +274,7 @@ public class Craft : MonoBehaviour
             _part2Material.ClearOptions();
             part2MaterialDropOptions.Clear();
             part2MaterialDropOptions.Add("Choose Material");
-            foreach (MaterialDataStorage material in part2.ValidMaterialData)
+            foreach (MaterialData material in part2.ValidMaterialData)
             {
                 part2MaterialDropOptions.Add(material.Material);
             }
@@ -307,7 +307,7 @@ public class Craft : MonoBehaviour
             _part3Material.ClearOptions();
             part3MaterialDropOptions.Clear();
             part3MaterialDropOptions.Add("Choose Material");
-            foreach (MaterialDataStorage material in part3.ValidMaterialData)
+            foreach (MaterialData material in part3.ValidMaterialData)
             {
                 part3MaterialDropOptions.Add(material.Material);
             }
@@ -324,7 +324,7 @@ public class Craft : MonoBehaviour
     {
         if (_part1Material.options[_part1Material.value].text != "Choose Item")
         {
-            foreach (MaterialDataStorage mat in part1.ValidMaterialData)
+            foreach (MaterialData mat in part1.ValidMaterialData)
             {
                 if (mat.Material == _part1Material.options[_part1Material.value].text)
                 {
@@ -339,7 +339,7 @@ public class Craft : MonoBehaviour
     {
         if (_part2Material.options[_part2Material.value].text != "Choose Item")
         {
-            foreach (MaterialDataStorage mat in part2.ValidMaterialData)
+            foreach (MaterialData mat in part2.ValidMaterialData)
             {
                 if (mat.Material == _part2Material.options[_part2Material.value].text)
                 {
@@ -354,7 +354,7 @@ public class Craft : MonoBehaviour
     {
         if (_part3Material.options[_part3Material.value].text != "Choose Item")
         {
-            foreach (MaterialDataStorage mat in part3.ValidMaterialData)
+            foreach (MaterialData mat in part3.ValidMaterialData)
             {
                 if (mat.Material == _part3Material.options[_part3Material.value].text)
                 {
@@ -369,7 +369,7 @@ public class Craft : MonoBehaviour
     {
         if (_materialSelect.options[_materialSelect.value]. text != "Choose Item")
         {
-            foreach(MaterialDataStorage mat in chosenPart.ValidMaterialData)
+            foreach(MaterialData mat in chosenPart.ValidMaterialData)
             {
                 if (mat.Material == _materialSelect.options[_materialSelect.value].text)
                 {
@@ -437,8 +437,8 @@ public class Craft : MonoBehaviour
         {
             if (part.PartName == chosenPart)
             {
-                List<MaterialDataStorage> validMaterial = part.ValidMaterialData;
-                foreach (MaterialDataStorage mat in validMaterial)
+                List<MaterialData> validMaterial = part.ValidMaterialData;
+                foreach (MaterialData mat in validMaterial)
                 {
                     partMaterialOptions.Add(mat.Material);
                 }

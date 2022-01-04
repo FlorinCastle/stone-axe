@@ -188,6 +188,14 @@ public class InventoryData : MonoBehaviour
         return null;
     }
 
+    public MaterialData getMaterialData(string matName)
+    {
+        foreach (GameObject matObj in materialInventory)
+            if (matObj.GetComponent<MaterialDataStorage>().MatDataRef.Material == matName)
+                return matObj.GetComponent<MaterialDataStorage>().MatDataRef;
+
+        return null;
+    }
 
     public List<GameObject> ItemInventory { get => _itemInventoryData; }
     public List<GameObject> PartInventory { get => _partInventoryData; }

@@ -228,6 +228,11 @@ public class GameMaster : MonoBehaviour
         loadGame();
     }
 
+    public void loadSelectedGame()
+    {
+        loadGame();
+    }
+
     public void saveSaveGames()
     {
         SaveData saveObj = new SaveData
@@ -274,6 +279,7 @@ public class GameMaster : MonoBehaviour
         foreach(SaveTracker st in _saveTrackerScripts)
         {
             st.hideHighlight();
+            st.disableButtons();
         }
     }
 

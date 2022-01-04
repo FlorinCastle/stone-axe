@@ -6,7 +6,7 @@ public class PartDataStorage : MonoBehaviour
 {
     [Header("Part Data")]
     [SerializeField] private string _partName;
-    [SerializeField] private MaterialDataStorage _material;
+    [SerializeField] private MaterialData _material;
     [SerializeField] private int _totalValue;
 
     [Header("Part Stats")]
@@ -50,8 +50,8 @@ public class PartDataStorage : MonoBehaviour
     public string PartName { get => _partName; }
     public void setPartName(string name) { _partName = name; }
 
-    public MaterialDataStorage Material { get => _material; }
-    public void setMaterial(MaterialDataStorage mat) { _material = mat; }
+    public MaterialData Material { get => _material; }
+    public void setMaterial(MaterialData mat) { _material = mat; }
 
     public string MaterialName { get => _material.Material; }
 

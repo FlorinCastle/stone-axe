@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DisassembleItemControl : MonoBehaviour
 {
     [SerializeField] private InventoryScript _invScriptRef;
+    private InventoryData _invDataRef;
     [SerializeField] private UIControl _uIControlRef;
     [SerializeField] private GameObject _selectedItem;
     [SerializeField] private DIS_DisassembleChance disassembleSkill;
@@ -23,6 +24,9 @@ public class DisassembleItemControl : MonoBehaviour
 
         if (_uIControlRef == null)
             _uIControlRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<UIControl>();
+
+        if (_invDataRef == null)
+            _invDataRef = _invScriptRef.gameObject.GetComponent<InventoryData>();
     }
 
     public void chooseItem()
@@ -151,15 +155,18 @@ public class DisassembleItemControl : MonoBehaviour
             //Debug.LogWarning("TODO: re-setup code so item can be fully disassembled");
             // get reference to part 1, get material composition and add to appropriate material ref
             GameObject part1 = _selectedItem.GetComponent<ItemDataStorage>().Part1.gameObject;
-            part1.GetComponent<PartDataStorage>().Material.AddMat(Mathf.RoundToInt(part1.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
+            string ph1 = part1.GetComponent<PartDataStorage>().Material.Material;
+            _invDataRef.getMaterial(ph1).AddMat(Mathf.RoundToInt(part1.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
 
             // part 2
             GameObject part2 = _selectedItem.GetComponent<ItemDataStorage>().Part2.gameObject;
-            part2.GetComponent<PartDataStorage>().Material.AddMat(Mathf.RoundToInt(part2.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
+            string ph2 = part2.GetComponent<PartDataStorage>().Material.Material;
+            _invDataRef.getMaterial(ph2).AddMat(Mathf.RoundToInt(part2.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
 
             // part 3
             GameObject part3 = _selectedItem.GetComponent<ItemDataStorage>().Part3.gameObject;
-            part3.GetComponent<PartDataStorage>().Material.AddMat(Mathf.RoundToInt(part3.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
+            string ph3 = part3.GetComponent<PartDataStorage>().Material.Material;
+            _invDataRef.getMaterial(ph3).AddMat(Mathf.RoundToInt(part3.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
 
             // move enchantment if enchanted
             if (_selectedItem.GetComponent<ItemDataStorage>().IsEnchanted)

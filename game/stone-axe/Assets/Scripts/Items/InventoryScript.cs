@@ -610,7 +610,7 @@ public class InventoryScript : MonoBehaviour
         // convert data from object to gameobject
         part1DataStorageTemp.name = item.part1.materialName + " " + item.part1.partName;
         part1DataScriptRef.setPartName(item.part1.partName);
-        part1DataScriptRef.setMaterial(_inventoryData.getMaterial(item.part1.materialName));
+        part1DataScriptRef.setMaterial(_inventoryData.getMaterialData(item.part1.materialName));
         part1DataScriptRef.setPartStr(item.part1.partStrength);
         part1DataScriptRef.setPartDex(item.part1.partDextarity);
         part1DataScriptRef.setPartInt(item.part1.partIntellegence);
@@ -627,7 +627,7 @@ public class InventoryScript : MonoBehaviour
         // convert data from object to gameobject
         part2DataStorageTemp.name = item.part2.materialName + " " + item.part2.partName;
         part2DataScriptRef.setPartName(item.part2.partName);
-        part2DataScriptRef.setMaterial(_inventoryData.getMaterial(item.part2.materialName));
+        part2DataScriptRef.setMaterial(_inventoryData.getMaterialData(item.part2.materialName));
         part2DataScriptRef.setPartStr(item.part2.partStrength);
         part2DataScriptRef.setPartDex(item.part2.partDextarity);
         part2DataScriptRef.setPartInt(item.part2.partIntellegence);
@@ -644,7 +644,7 @@ public class InventoryScript : MonoBehaviour
         // convert data from object to gameobject
         part3DataStorageTemp.name = item.part3.materialName + " " + item.part3.partName;
         part3DataScriptRef.setPartName(item.part3.partName);
-        part3DataScriptRef.setMaterial(_inventoryData.getMaterial(item.part3.materialName));
+        part3DataScriptRef.setMaterial(_inventoryData.getMaterialData(item.part3.materialName));
         part3DataScriptRef.setPartStr(item.part3.partStrength);
         part3DataScriptRef.setPartDex(item.part3.partDextarity);
         part3DataScriptRef.setPartInt(item.part3.partIntellegence);
@@ -699,7 +699,7 @@ public class InventoryScript : MonoBehaviour
         //  stats
         partDataStorageTemp.name = part.partName;
         partDataScriptRef.setPartName(part.partName);
-        partDataScriptRef.setMaterial(_inventoryData.getMaterial(part.materialName)); 
+        partDataScriptRef.setMaterial(_inventoryData.getMaterialData(part.materialName)); 
         partDataScriptRef.setPartStr(part.partStrength);
         partDataScriptRef.setPartDex(part.partDextarity);
         partDataScriptRef.setPartInt(part.partIntellegence);
@@ -1115,10 +1115,10 @@ public class InventoryScript : MonoBehaviour
         return null;
     }
 
-    public MaterialDataStorage getSelectedMat()
+    public MaterialData getSelectedMat()
     {
         if (_selectedMat != null)
-            return this.GetComponent<InventoryData>().getMaterial(_selectedMat.Material);
+            return this.GetComponent<InventoryData>().getMaterialData(_selectedMat.Material);
 
         return null;
     }
@@ -1219,7 +1219,7 @@ public class InventoryScript : MonoBehaviour
 
         if (m == 6)
         {
-            foreach (MaterialDataStorage validMat in ccRef.checkPartRecipe().ValidMaterialData)
+            foreach (MaterialData validMat in ccRef.checkPartRecipe().ValidMaterialData)
                 if (validMat.Material == mat.Material)
                     return true;
         }

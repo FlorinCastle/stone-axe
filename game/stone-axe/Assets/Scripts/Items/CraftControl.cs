@@ -14,12 +14,14 @@ public class CraftControl : MonoBehaviour
     [SerializeField] QuestControl _questControlRef;
     [SerializeField] CFT_ReduceMaterialCost materialSkill;
     private GameMaster _gameMasterRef;
+    private InventoryData _invDataRef;
 
     [Header("UI")]
     [SerializeField] GameObject _itemCraftingUI;
     [SerializeField] GameObject _partCraftingUI;
     [SerializeField] Dropdown _recipeDropdown;
     [SerializeField] Button _craftButton;
+    [SerializeField] Button _cancelCraftButton;
     // item crafting
     [Space(5)]
     [SerializeField] Text _selectedRecipeText;
@@ -52,7 +54,7 @@ public class CraftControl : MonoBehaviour
     private PartDataStorage partDataStorageRef;
     [Header("Part Crafting")]
     [SerializeField] PartData _chosenPartRecipe;
-    [SerializeField] MaterialDataStorage _chosenPartMaterial;
+    [SerializeField] MaterialData _chosenPartMaterial;
     [SerializeField] GameObject _optionalChosenEnchant;
 
     [SerializeField, HideInInspector] private List<string> recipeDropOptions;
@@ -66,6 +68,8 @@ public class CraftControl : MonoBehaviour
     private void Awake()
     {
         _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+        _invDataRef = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryData>();
+
         setupRecipeDropdown();
         updateFinalStatsText();
         _itemCraftingUI.SetActive(false);
@@ -225,56 +229,32 @@ public class CraftControl : MonoBehaviour
         _inventoryControlReference.setupPartInventory(true, 5);
     }
 
-    public void invMatSetup()
-    {
-        _inventoryControlReference.setupMatInventory(true, 6);
-    }
-
-    public void invEnchSetup()
-    {
-        _inventoryControlReference.setupEnchantInventory(true, 7);
-    }
+    public void invMatSetup() { _inventoryControlReference.setupMatInventory(true, 6); }
+    public void invEnchSetup() { _inventoryControlReference.setupEnchantInventory(true, 7); }
 
     public void SelectPart1()
     {
         _chosenPart1 = _inventoryControlReference.getSelectedPart();
         if (_chosenPart1 != null)
-        {
-            // setup discription
             setupDiscription(1, _chosenPart1);
-        }
         else
-        {
             Debug.LogWarning("No Part 1 Selected!");
-        }
     }
-
     public void SelectPart2()
     {
         _chosenPart2 = _inventoryControlReference.getSelectedPart();
         if (_chosenPart2 != null)
-        {
-            // setup discription
             setupDiscription(2, _chosenPart2);
-        }
         else
-        {
             Debug.LogWarning("No Part 2 Selected!");
-        }
     }
-
     public void SelectPart3()
     {
         _chosenPart3 = _inventoryControlReference.getSelectedPart();
         if (_chosenPart3 != null)
-        {
-            // setup discription
             setupDiscription(3, _chosenPart3);
-        }
         else
-        {
             Debug.LogWarning("No Part 3 Selected!");
-        }
     }
 
     public void SelectMat()
@@ -432,7 +412,7 @@ public class CraftControl : MonoBehaviour
 
     private void CraftPart()
     {
-        if (_chosenPartMaterial.CanRemoveAmount(_chosenPartRecipe.UnitsOfMaterialNeeded))
+        if (_invDataRef.getMaterial(_chosenPartMaterial.Material).CanRemoveAmount(_chosenPartRecipe.UnitsOfMaterialNeeded))
         {
             partDataStorageTemp = Instantiate(_partDataStoragePrefab);
             partDataStorageTemp.transform.parent = _inventoryControlReference.gameObject.transform;
@@ -456,7 +436,7 @@ public class CraftControl : MonoBehaviour
             }
 
             // remove right amount of materials
-            _chosenPartMaterial.RemoveMat(Mathf.RoundToInt(_chosenPartRecipe.UnitsOfMaterialNeeded * materialSkill.getModifiedMatAmount()));
+            _invDataRef.getMaterial(_chosenPartMaterial.Material).RemoveMat(Mathf.RoundToInt(_chosenPartRecipe.UnitsOfMaterialNeeded * materialSkill.getModifiedMatAmount()));
 
             // insert crafted part into inventory script
             _inventoryControlReference.InsertPart(partDataStorageTemp);
@@ -509,7 +489,7 @@ public class CraftControl : MonoBehaviour
         updateFinalStatsText();
     }
 
-    private void setupMatDiscription(MaterialDataStorage mat)
+    private void setupMatDiscription(MaterialData mat)
     {
         _matDiscription.text = mat.Material + "\nType - " + mat.MaterialType + "\nAdded Strength: " + mat.AddedStrength + "\nAdded Dextarity: " + mat.AddedDextarity + "\nAdded Intelegence: " + mat.AddedIntelligence;
 

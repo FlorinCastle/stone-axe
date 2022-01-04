@@ -7,9 +7,9 @@ public class PartData : ScriptableObject
     [SerializeField]
     private string _partName;
     [SerializeField]
-    private MaterialDataStorage _material;
+    private MaterialData _material;
     [SerializeField]
-    private List<MaterialDataStorage> _validMaterials;
+    private List<MaterialData> _validMaterials;
     [SerializeField]
     private List<string> _validMaterialTypes;
     [SerializeField]
@@ -39,7 +39,7 @@ public class PartData : ScriptableObject
         }
     }
     
-    public MaterialDataStorage Material
+    public MaterialData Material
     {
         get => _material;
         set => _material = value;
@@ -56,7 +56,7 @@ public class PartData : ScriptableObject
         }
     }
 
-    public List<MaterialDataStorage> ValidMaterialData { get => _validMaterials; }
+    public List<MaterialData> ValidMaterialData { get => _validMaterials; }
 
     public List<string> ValidMaterials { get => _validMaterialTypes; }
 
