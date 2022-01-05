@@ -168,7 +168,8 @@ public class GameMaster : MonoBehaviour
         //Debug.Log(json);
         string savePath = Application.dataPath + "/save_" + _playerName + "_" + _shopName + ".txt";
         File.WriteAllText(savePath, json);
-        _saveGameList.Add(savePath);
+        if (!_saveGameList.Contains(savePath))
+            _saveGameList.Add(savePath);
     }
     public void loadGame()
     {
@@ -221,17 +222,30 @@ public class GameMaster : MonoBehaviour
                 Debug.LogWarning("No save selected!");
         }
     }
+    public void deleteSaveGame()
+    {
+        if (File.Exists(_selectedSave))
+        {
+            if (_saveGameList.Contains(_selectedSave))
+            {
+                Debug.LogWarning("deleting file: " + _selectedSave);
+                _saveGameList.Remove(_selectedSave);
+                File.Delete(_selectedSave);
+                saveSaveGames();
+            }
+            else
+                Debug.LogWarning("Not a valid save path OR file does not exist!");
+        }
+        else
+            Debug.LogWarning("Not a valid save path OR file does not exist!");
+    }
 
     public void quickLoadGame()
     {
         _selectedSave = _saveGameList[0];
         loadGame();
     }
-
-    public void loadSelectedGame()
-    {
-        loadGame();
-    }
+    public void loadSelectedGame() { loadGame(); }
 
     public void saveSaveGames()
     {
@@ -262,6 +276,22 @@ public class GameMaster : MonoBehaviour
         }
         else
             Debug.LogWarning("No save game data!");
+    }
+
+    public bool checkIfAnySavesExist()
+    {
+        if (File.Exists(Application.dataPath + "/save.txt"))
+        {
+            string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
+
+            SaveData saveObject = JsonUtility.FromJson<SaveData>(saveString);
+            List<string> saveList = saveObject.saveGamePaths;
+            if (saveList.Count > 0)
+                return true;
+            else
+                return false;
+        }
+        else { Debug.LogWarning("No save game data exists!"); return false; }
     }
 
     private bool spawnAdvent = false;

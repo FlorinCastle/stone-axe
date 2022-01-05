@@ -24,7 +24,7 @@ public class SaveTracker : MonoBehaviour
             Debug.Log(this.gameObject.name + " selected");
             showHighlight();
             _loadGameButton.interactable = true;
-            //_deleteGameButton.enabled = true;
+            _deleteGameButton.interactable = true;
         }
     }
     public void setupTexts()

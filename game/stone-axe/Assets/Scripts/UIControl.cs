@@ -55,7 +55,7 @@ public class UIControl : MonoBehaviour
 
     private void setupMainMenu()
     {
-        if(File.Exists(Application.dataPath + "/save.txt"))
+        if(File.Exists(Application.dataPath + "/save.txt") && this.gameObject.GetComponent<GameMaster>().checkIfAnySavesExist())
         {
             if (_continueButton != null) _continueButton.interactable = true;
             if (_loadGameButton != null) _loadGameButton.interactable = true;
@@ -76,6 +76,7 @@ public class UIControl : MonoBehaviour
     }
     public void setupLoadGameMenu()
     {
+        this.gameObject.GetComponent<GameMaster>().loadSaveGames();
         List<SaveTracker> saveTrackers = this.gameObject.GetComponent<GameMaster>().SaveTrackers;
         foreach (SaveTracker st in saveTrackers)
         {
@@ -87,7 +88,12 @@ public class UIControl : MonoBehaviour
                 st.setupTexts();
             }
             else
+            {
                 Debug.LogWarning("No save assigned to " + st.gameObject.name);
+                st.PlayerName = "player name";
+                st.ShopName = "shop name";
+                st.setupTexts();
+            }
         }
     }
 
