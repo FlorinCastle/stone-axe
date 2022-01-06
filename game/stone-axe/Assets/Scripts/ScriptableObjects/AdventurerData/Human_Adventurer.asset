@@ -15,3 +15,8 @@ MonoBehaviour:
   _adventurerSpecies: Human
   _adventuererHead: {fileID: 895723969961948674, guid: 4318ce667c647634abd32178aeb36f84, type: 3}
   _statInclination: 2
+  _adventurerMats:
+  - {x: 255, y: 199, z: 155, w: 255}
+  - {x: 166, y: 130, z: 101, w: 255}
+  - {x: 91, y: 65, z: 44, w: 255}
+  _temp: {fileID: 0}

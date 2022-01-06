@@ -207,16 +207,22 @@ public class SellItemControl : MonoBehaviour
         _marketHaggleButton.interactable = false;
         haggleSucceded = false;
     }
-
+    private bool itemSelected = false;
     public void adventurerAtCounter()
     {
         if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == true)
         {
+            if (itemSelected == false)
+            {
+                _invScriptRef.selectRandomItem();
+                itemSelected = true;
+            }
             _suggestButton.interactable = true;
             _marketSuggestButton.interactable = true;
         }
         else if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == false)
         {
+            itemSelected = false;
             _suggestButton.interactable = false;
             _marketSuggestButton.interactable = false;
         }

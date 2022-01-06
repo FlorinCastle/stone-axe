@@ -1163,6 +1163,14 @@ public class InventoryScript : MonoBehaviour
         }
     }
 
+    public void selectRandomItem()
+    {
+        _removingStatus = removingItemStatusEnum.RemovingToSell;
+        this.gameObject.GetComponent<InventoryData>().getRandomItem();
+
+        returnSelectedItem();
+    }
+
     public void returnSeletedPart()
     {
         if (_removingStatus == removingItemStatusEnum.RemovingToCraft1)

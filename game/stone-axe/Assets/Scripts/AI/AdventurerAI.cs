@@ -7,6 +7,7 @@ public class AdventurerAI : MonoBehaviour
     // REMINDER: forward is along the z-Axis of the object
     private AdventurerMaster _advMaster;
     [SerializeField] private AdventurerData _advRaceRef;
+    private Vector4 _advColorRef;
     private bool _move;
     private bool dismissed;
 
@@ -106,6 +107,7 @@ public class AdventurerAI : MonoBehaviour
     public void setupAdventurer()
     {
         chooseRace();
+        chooseAdvColor();
         setupAdventurerModel();
     }
 
@@ -124,12 +126,19 @@ public class AdventurerAI : MonoBehaviour
         int i = Random.Range(0, adventRef.Count);
         _advRaceRef = adventRef[i];
     }
+    private void chooseAdvColor()
+    {
+        List<Vector4> colorRef = _advRaceRef.AdventurerColors;
+        int j = Random.Range(0, colorRef.Count);
+        _advColorRef = colorRef[j];
+    }
 
     private void setupAdventurerModel()
     {
         if (_advRaceRef != null)
         {
             Instantiate(_advRaceRef.AdventurerHead, _headMark.transform);
+            
         }
         else
             Debug.LogWarning("Adventurer Data for " + this.gameObject.name + " is not assigned! Use chooseRace() first then use setupAdventurerModel()");

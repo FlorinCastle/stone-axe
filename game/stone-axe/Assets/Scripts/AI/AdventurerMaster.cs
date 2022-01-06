@@ -15,7 +15,12 @@ public class AdventurerMaster : MonoBehaviour
     [SerializeField] private List<AdventurerData> _adventurerData;
     [SerializeField] private bool advSpawnEnabled;
     [SerializeField] private Slider _spawnProgressSlider;
-
+    /*
+    [Header("if any other adventurer types are added, the script itself will need to be edited")]
+    [SerializeField] private List<Material> _humanAdvMats;
+    [SerializeField] private List<Material> _elfAdvMats;
+    [SerializeField] private List<Material> _lizAdvMats;
+    */
     private SoundMaster _soundMaster;
 
     private void Awake()
@@ -37,7 +42,7 @@ public class AdventurerMaster : MonoBehaviour
     public bool disableAdventurerSpawn()
     {
         advSpawnEnabled = false;
-        _spawnProgressSlider.gameObject.SetActive(false);
+        //_spawnProgressSlider.gameObject.SetActive(false);
         StopCoroutine(AdventurerSpawn());
         return advSpawnEnabled;
     } 
@@ -97,6 +102,7 @@ public class AdventurerMaster : MonoBehaviour
                 */
             }
             StopCoroutine(AdventurerTimer());
+            _spawnProgressSlider.gameObject.SetActive(false);
             Debug.Log("Finished spawning Coroutine Countdown");
         }
     }

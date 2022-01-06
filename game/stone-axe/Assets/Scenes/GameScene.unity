@@ -299,14 +299,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: 7ba3f56a6cf24c6498a633f016021027, type: 2}
   _materialName: Ash Wood
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 1
+  _subMatType: 0
+  _levelRequirement: 2
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _baseCostPerUnit: 5
+  _addedStrength: 2
+  _addedDextarity: 4
+  _addedIntelligence: 3
 --- !u!4 &167401045
 Transform:
   m_ObjectHideFlags: 0
@@ -5046,14 +5046,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}
   _materialName: Angel Wood
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 1
+  _subMatType: 0
+  _levelRequirement: 20
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _baseCostPerUnit: 23
+  _addedStrength: 7
+  _addedDextarity: 10
+  _addedIntelligence: 10
 --- !u!4 &1748451893
 Transform:
   m_ObjectHideFlags: 0
@@ -7434,7 +7434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5986173107023473856, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5986173107023473857, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
       propertyPath: m_RootOrder
@@ -8528,11 +8528,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1050220253172004380, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1050220253172004380, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1135020411114291873, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -8760,7 +8760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1688566524503042909, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1853857630366425413, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -9044,7 +9044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3383091138319693293, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3573739703463574242, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -9800,7 +9800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7485012190445823121, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7485012190445823122, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_RootOrder

@@ -79,6 +79,11 @@ public class InventoryData : MonoBehaviour
                 return matData.GetComponent<MaterialDataStorage>().MaterialCount;
         return -1;
     }
+    public void getRandomItem()
+    {
+        int ranItemIndex = Random.Range(0,_itemInventoryData.Count);
+        this.gameObject.GetComponent<InventoryScript>().setSelectedItem(ranItemIndex);
+    }
 
     public int insertItemData(GameObject item)
     {
@@ -187,7 +192,6 @@ public class InventoryData : MonoBehaviour
 
         return null;
     }
-
     public MaterialData getMaterialData(string matName)
     {
         foreach (GameObject matObj in materialInventory)
@@ -196,7 +200,6 @@ public class InventoryData : MonoBehaviour
 
         return null;
     }
-
     public List<GameObject> ItemInventory { get => _itemInventoryData; }
     public List<GameObject> PartInventory { get => _partInventoryData; }
     public List<GameObject> MaterialInventory { get => materialInventory; }
