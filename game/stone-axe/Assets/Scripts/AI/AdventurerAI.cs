@@ -107,8 +107,8 @@ public class AdventurerAI : MonoBehaviour
     public void setupAdventurer()
     {
         chooseRace();
-        chooseAdvColor();
         setupAdventurerModel();
+        chooseAdvColor();
     }
 
     public void setCurentTarget(GameObject target)
@@ -126,11 +126,21 @@ public class AdventurerAI : MonoBehaviour
         int i = Random.Range(0, adventRef.Count);
         _advRaceRef = adventRef[i];
     }
+    //private Renderer _renderer;
+    private Renderer[] _renderers;
+    private MaterialPropertyBlock _propBlock;
+    private Color _advColor;
     private void chooseAdvColor()
     {
-        List<Vector4> colorRef = _advRaceRef.AdventurerColors;
-        int j = Random.Range(0, colorRef.Count);
-        _advColorRef = colorRef[j];
+        _renderers = this.gameObject.GetComponentsInChildren<Renderer>();
+        _propBlock = new MaterialPropertyBlock();
+        _advColor = _advMaster.chooseAdvColor(_advRaceRef.AdventurerSpecies);
+        foreach (Renderer ren in _renderers)
+        {
+            ren.GetPropertyBlock(_propBlock);
+            _propBlock.SetColor("_Color", _advColor);
+            ren.SetPropertyBlock(_propBlock);
+        }
     }
 
     private void setupAdventurerModel()

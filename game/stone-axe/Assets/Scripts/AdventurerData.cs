@@ -13,13 +13,13 @@ public class AdventurerData : ScriptableObject
     private enum statInclination { Strength, Dextarity, Intelligence };
     [SerializeField]
     private statInclination _statInclination;
+    /*
     [SerializeField]
     private List<Vector4> _adventurerMats;
-    
-    public Material _temp;
+    */
 
     public string AdventurerSpecies { get => _adventurerSpecies; }
     public GameObject AdventurerHead { get => _adventuererHead; }
     public string AdventurerStatInclination { get => _statInclination.ToString(); }
-    public List<Vector4> AdventurerColors { get => _adventurerMats; }
+    //public List<Vector4> AdventurerColors { get => _adventurerMats; }
 }

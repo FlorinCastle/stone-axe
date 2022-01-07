@@ -8,6 +8,7 @@ public class AdventurerMaster : MonoBehaviour
     [SerializeField] private int _timeBetweenSpawn;
     //[SerializeField] private int _timer;
     [SerializeField] private GameObject _adventurerPrefab;
+    [SerializeField] private AdventurerMaterials _adventurerMats;
 
     [SerializeField] private List<GameObject> _currentAdventurers;
     [SerializeField] private List<WalkingPoint> _walkingPoints;
@@ -79,6 +80,29 @@ public class AdventurerMaster : MonoBehaviour
         _currentAdventurers.Add(advPlaceholder);
         if (this.gameObject.GetComponent<GameMaster>().ShopActive == true)
             _soundMaster.playDoorSound();
+    }
+
+    public Color chooseAdvColor(string advType)
+    {
+        if (advType == "Elf")
+        {
+            int e = Random.Range(0, _adventurerMats.ElfColors.Count);
+            return _adventurerMats.ElfColors[e];
+            //return Color.red;
+        }
+        else if (advType == "Human")
+        {
+            int h = Random.Range(0, _adventurerMats.HumanColors.Count);
+            return _adventurerMats.HumanColors[h];
+            // return Color.blue;
+        }
+        else if (advType == "Lizardman")
+        {
+            int l = Random.Range(0, _adventurerMats.LizardColors.Count);
+            return _adventurerMats.LizardColors[l];
+            //return Color.black;
+        }
+        return Color.magenta;
     }
 
     IEnumerator AdventurerSpawn()

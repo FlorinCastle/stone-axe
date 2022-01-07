@@ -4512,6 +4512,7 @@ GameObject:
   - component: {fileID: 1734993361}
   - component: {fileID: 1734993363}
   - component: {fileID: 1734993364}
+  - component: {fileID: 1734993365}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameMaster
@@ -4783,6 +4784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeBetweenSpawn: 10
   _adventurerPrefab: {fileID: 2822056689991755846, guid: 72bb614d62307cf4382c20b6e086adac, type: 3}
+  _adventurerMats: {fileID: 1734993365}
   _currentAdventurers: []
   _walkingPoints:
   - {fileID: 931527662}
@@ -4854,6 +4856,18 @@ MonoBehaviour:
   _mixer: {fileID: 24100000, guid: 3377f55696fdab849beb3ccb7df0aed8, type: 2}
   _musicSlider: {fileID: 1337077696}
   _sfxSlider: {fileID: 746810145}
+--- !u!114 &1734993365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734993350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70726636c1eba8248a3231de70568ed0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1737104022
 GameObject:
   m_ObjectHideFlags: 0
@@ -7139,6 +7153,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8248737469452024943, guid: 3781c41004e2121428bad7173f24d3d0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8868730c678c0d94a8779b46032caeff, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3781c41004e2121428bad7173f24d3d0, type: 3}
 --- !u!1001 &5986173108268856756
