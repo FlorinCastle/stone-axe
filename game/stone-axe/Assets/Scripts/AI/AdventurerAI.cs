@@ -129,7 +129,7 @@ public class AdventurerAI : MonoBehaviour
     //private Renderer _renderer;
     private Renderer[] _renderers;
     private MaterialPropertyBlock _propBlock;
-    private Color _advColor;
+    private Color32 _advColor;
     private void chooseAdvColor()
     {
         _renderers = this.gameObject.GetComponentsInChildren<Renderer>();

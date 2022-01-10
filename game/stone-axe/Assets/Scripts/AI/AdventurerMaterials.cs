@@ -4,26 +4,22 @@ using UnityEngine;
 
 public class AdventurerMaterials : MonoBehaviour
 {
-    private List<Color> elfColorList = new List<Color>()
+    public List<Color32> ElfColors { get; } = new List<Color32>()
     {
-        new Color(255, 238, 225),
-        new Color(195, 195, 195),
-        new Color(106, 106, 106)
+        new Color32(255, 238, 225, 255),
+        new Color32(195, 195, 195, 255),
+        new Color32(106, 106, 106, 255)
     };
-    private List<Color> humanColorList = new List<Color>()
+    public List<Color32> HumanColors { get; } = new List<Color32>()
     {
-        new Color(255, 199, 155),
-        new Color(166, 130, 101),
-        new Color(91, 65, 44)
+        new Color32 (255, 199, 155, 255),
+        new Color32 (166, 130, 101, 255),
+        new Color32 (91, 65, 44, 255)
     };
-    private List<Color> lizardColorList = new List<Color>()
+    public List<Color32> LizardColors { get; } = new List<Color32>()
     {
-        new Color(48, 48, 48),
-        new Color(132, 0, 0),
-        new Color(0, 132, 65)
+        new Color32 (48, 48, 48, 255),
+        new Color32 (132, 0, 0, 255),
+        new Color32 (0, 132, 65, 255)
     };
-
-    public List<Color> ElfColors { get => elfColorList; }
-    public List<Color> HumanColors { get => humanColorList; }
-    public List<Color> LizardColors { get => lizardColorList; }
 }

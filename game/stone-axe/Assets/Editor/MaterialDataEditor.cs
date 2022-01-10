@@ -13,7 +13,7 @@ public class MaterialDataEditor : Editor
         subClothType,
         matName,
         levelRequirement,
-        quantity,
+        //quantity,
         baseCostPerUnit,
         addedStr,
         addedDex,
@@ -27,7 +27,7 @@ public class MaterialDataEditor : Editor
 
         matName = serializedObject.FindProperty("_materialName");
         levelRequirement = serializedObject.FindProperty("_levelRequirement");
-        quantity = serializedObject.FindProperty("_quantity");
+        //quantity = serializedObject.FindProperty("_quantity");
         baseCostPerUnit = serializedObject.FindProperty("_baseCostPerUnit");
         addedStr = serializedObject.FindProperty("_addedStrength");
         addedDex = serializedObject.FindProperty("_addedDextarity");
@@ -56,7 +56,7 @@ public class MaterialDataEditor : Editor
         }
 
         EditorGUILayout.PropertyField(levelRequirement, new GUIContent("Level Requirement"));
-        EditorGUILayout.PropertyField(quantity, new GUIContent("Quantity"));
+        //EditorGUILayout.PropertyField(quantity, new GUIContent("Quantity"));
         EditorGUILayout.PropertyField(baseCostPerUnit, new GUIContent("Base Cost Per Unit"));
         EditorGUILayout.LabelField("Material Stats", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(addedStr, new GUIContent("Added Strength"));

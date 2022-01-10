@@ -23,6 +23,8 @@ public class AdventurerMaster : MonoBehaviour
     [SerializeField] private List<Material> _lizAdvMats;
     */
     private SoundMaster _soundMaster;
+    private Coroutine advCoroutine = null;
+    private Coroutine timerCoroutine = null;
 
     private void Awake()
     {
@@ -37,14 +39,14 @@ public class AdventurerMaster : MonoBehaviour
     {
         advSpawnEnabled = true;
         _spawnProgressSlider.gameObject.SetActive(true);
-        StartCoroutine(AdventurerSpawn());
+        advCoroutine = StartCoroutine(AdventurerSpawn());
         return advSpawnEnabled;
     } 
     public bool disableAdventurerSpawn()
     {
         advSpawnEnabled = false;
-        //_spawnProgressSlider.gameObject.SetActive(false);
-        StopCoroutine(AdventurerSpawn());
+        _spawnProgressSlider.gameObject.SetActive(false);
+        StopCoroutine(advCoroutine);
         return advSpawnEnabled;
     } 
     public void dismissAdventurers()
@@ -87,18 +89,21 @@ public class AdventurerMaster : MonoBehaviour
         if (advType == "Elf")
         {
             int e = Random.Range(0, _adventurerMats.ElfColors.Count);
+            Debug.Log(advType + " " + e);
             return _adventurerMats.ElfColors[e];
             //return Color.red;
         }
         else if (advType == "Human")
         {
             int h = Random.Range(0, _adventurerMats.HumanColors.Count);
+            Debug.Log(advType + " " + h);
             return _adventurerMats.HumanColors[h];
             // return Color.blue;
         }
         else if (advType == "Lizardman")
         {
             int l = Random.Range(0, _adventurerMats.LizardColors.Count);
+            Debug.Log(advType + " " + l);
             return _adventurerMats.LizardColors[l];
             //return Color.black;
         }
@@ -111,7 +116,8 @@ public class AdventurerMaster : MonoBehaviour
         while (advSpawnEnabled)
         {
             Debug.Log("Started Adventurer Spawn Coroutine");
-            StartCoroutine(AdventurerTimer());
+            timerCoroutine = StartCoroutine(AdventurerTimer());
+            //_spawnProgressSlider.gameObject.SetActive(true);
             yield return new WaitForSeconds(_timeBetweenSpawn);
             if (_currentAdventurers.Count < 3)
             {
@@ -125,13 +131,14 @@ public class AdventurerMaster : MonoBehaviour
                 _currentAdventurers.Add(advPlaceholder);
                 */
             }
-            StopCoroutine(AdventurerTimer());
+            StopCoroutine(timerCoroutine);
             _spawnProgressSlider.gameObject.SetActive(false);
             Debug.Log("Finished spawning Coroutine Countdown");
         }
     }
     IEnumerator AdventurerTimer()
     {
+        _spawnProgressSlider.gameObject.SetActive(true);
         float duration = _timeBetweenSpawn;
         float normalizedTime = 0f;
         while (normalizedTime <= 1f)
