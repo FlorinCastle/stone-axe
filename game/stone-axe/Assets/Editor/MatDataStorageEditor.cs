@@ -3,64 +3,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class MaterialDataStorage : MonoBehaviour
-{
-    [Header("Material Data")]
-    public MaterialData _matDataRef;
-
-    public string _materialName;
-    public enum matTypeEnum { Metal, Wood, Cloth, Gemstone };
-    public enum subMatTypeEnum { Basic, MagicMetal, Cloth, Leather };
-    public matTypeEnum _materialType;
-    public subMatTypeEnum _subMatType;
-
-    public int _levelRequirement;
-    public int _quantity;
-    public int _baseCostPerUnit;
-    public int _addedStrength;
-    public int _addedDextarity;
-    public int _addedIntelligence;
-
-    private void populateData()
-    {
-        _materialName = _matDataRef.Material;
-        _materialType = (matTypeEnum)_matDataRef._materialType;
-        _subMatType = (subMatTypeEnum)_matDataRef._subMatType;
-
-        _levelRequirement = _matDataRef.LevelRequirement;
-        _baseCostPerUnit = _matDataRef.BaseCostPerUnit;
-        _addedStrength = _matDataRef.AddedStrength;
-        _addedDextarity = _matDataRef.AddedDextarity;
-        _addedIntelligence = _matDataRef.AddedIntelligence;
-    }
-
-    public int AddMat(int value) { _quantity += value; return value; }
-    public int RemoveMat(int value)
-    {
-        if (CanRemoveAmount(value))
-            _quantity -= value;
-        return _quantity;
-    }
-
-    public bool CanRemoveAmount(int value)
-    {
-        if (value <= _quantity)
-            return true;
-        return false;
-    }
-
-    public MaterialData MatDataRef { get => _matDataRef; }
-    public int LevelRequirement { get => _levelRequirement; }
-    public string Material { get => _materialName; }
-    public string MaterialType { get => _materialType.ToString(); }
-    public string SubMaterialTybe { get => _subMatType.ToString(); }
-    public int MaterialCount { get => _quantity; set => _quantity = value; }
-    public int BaseCostPerUnit { get => _baseCostPerUnit; }
-    public int AddedStrength { get => _addedStrength; }
-    public int AddedDextarity { get => _addedDextarity; }
-    public int AddedIntelligence { get => _addedIntelligence; }
-}
-/*
 [CustomEditor(typeof(MaterialDataStorage)), CanEditMultipleObjects]
 public class MatDataStorageEditor : Editor
 {
@@ -115,7 +57,7 @@ public class MatDataStorageEditor : Editor
 
             // code for sub material type
             MaterialDataStorage.matTypeEnum MaterialType = (MaterialDataStorage.matTypeEnum)matType.enumValueIndex;
-            switch(MaterialType)
+            switch (MaterialType)
             {
                 case MaterialDataStorage.matTypeEnum.Metal:
                     EditorGUILayout.PropertyField(subMatType, new GUIContent("Sub-Mat Type"));
@@ -166,7 +108,7 @@ public class MatDataStorageEditor : Editor
             addedInt.intValue = matRef.AddedIntelligence;
             EditorGUI.EndDisabledGroup();
         }
-        
+
         serializedObject.ApplyModifiedProperties();
     }
-}*/
+}

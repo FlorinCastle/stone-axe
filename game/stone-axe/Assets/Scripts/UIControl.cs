@@ -53,7 +53,7 @@ public class UIControl : MonoBehaviour
         setupMainMenu();
     }
 
-    private void setupMainMenu()
+    public void setupMainMenu()
     {
         if(File.Exists(Application.dataPath + "/save.txt") && this.gameObject.GetComponent<GameMaster>().checkIfAnySavesExist())
         {

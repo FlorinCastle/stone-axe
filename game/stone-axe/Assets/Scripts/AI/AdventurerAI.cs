@@ -25,10 +25,10 @@ public class AdventurerAI : MonoBehaviour
     }
 
     private Vector3 newDirection;
-    private void Update()
+    private void FixedUpdate()
     {
         if (_move == true) // if moving
-            this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position, _targetPosition, 0.01f);
+            this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position, _targetPosition, 0.1f);
         else if (_move == false) // rotate toward next point, but don't move
         {
             Vector3 targetDirection = _targetPosition - this.gameObject.transform.position;
