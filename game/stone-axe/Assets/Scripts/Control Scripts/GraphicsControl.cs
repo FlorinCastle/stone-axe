@@ -1,19 +1,67 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GraphicsControl : MonoBehaviour
 {
     [SerializeField] private Dropdown _resolutionDropdown;
-    private Dropdown _qualityDropdown;
-    private Dropdown _textureDropdown;
-    private Dropdown _aaDropdown;
+    [SerializeField] private Dropdown _qualityDropdown;
+    [SerializeField] private Dropdown _textureDropdown;
+    [SerializeField] private Dropdown _aaDropdown;
     [SerializeField] private Resolution[] resolutions;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _resolutionDropdown.ClearOptions();
+        List<string> options = new List<string>();
+        resolutions = Screen.resolutions;
+        int currentResolutionIndex = 0;
+
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+                currentResolutionIndex = i;
+        }
+        _resolutionDropdown.AddOptions(options);
+        _resolutionDropdown.RefreshShownValue();
+        LoadSettings(currentResolutionIndex);
+    }
+
+    public void SaveSettings()
+    {
+        PlayerPrefs.SetInt("QualitySettingPreference", _qualityDropdown.value);
+        PlayerPrefs.SetInt("ResolutionPreference", _resolutionDropdown.value);
+        PlayerPrefs.SetInt("TextureQualityPreference", _textureDropdown.value);
+        PlayerPrefs.SetInt("AntiAliasingPreference", _aaDropdown.value);
+        PlayerPrefs.SetInt("FullscreenPreference", Convert.ToInt32(Screen.fullScreen));
+    }
+    public void LoadSettings(int currentResolutionIndex)
+    {
+        if (PlayerPrefs.HasKey("QualitySettingPreference"))
+            _qualityDropdown.value = PlayerPrefs.GetInt("QualitySettingPreference");
+        else
+            _qualityDropdown.value = 3;
+        if (PlayerPrefs.HasKey("ResolutionPreference"))
+            _resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionPreference");
+        else
+            _resolutionDropdown.value = currentResolutionIndex;
+        if (PlayerPrefs.HasKey("TextureQualityPreference"))
+            _textureDropdown.value = PlayerPrefs.GetInt("TextureQualityPreference");
+        else
+            _textureDropdown.value = 0;
+        if (PlayerPrefs.HasKey("AntiAliasingPreference"))
+            _aaDropdown.value = PlayerPrefs.GetInt("AntiAliasingPreference");
+        else
+            _aaDropdown.value = 1;
+        if (PlayerPrefs.HasKey("FullscreenPreference"))
+            Screen.fullScreen = Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference"));
+        else
+            Screen.fullScreen = true;
     }
 
     public void SetResolution(int resolutionIndex)
