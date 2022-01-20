@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class QuestSheet : MonoBehaviour
 {
-    [SerializeField] private Text _headerText;
-    [SerializeField] private Text _bodyText;
+    [SerializeField] private TextMeshProUGUI _headerText;
+    [SerializeField] private TextMeshProUGUI _bodyText;
     [SerializeField] private QuestData _questRef;
     private QuestControl questControl;
     [SerializeField] private Button _acceptButton;

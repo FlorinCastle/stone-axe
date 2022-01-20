@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class ExperienceManager : MonoBehaviour
 {
     [SerializeField] private GameMaster _gameMasterRef;
     [SerializeField] private Slider _expSlider;
-    [SerializeField] private Text _levelTxt;
+    [SerializeField] private TextMeshProUGUI _levelTxt;
     [SerializeField] private List<int> _levelMarks;
 
     [SerializeField] private SkillManager _skillMgrRef;
