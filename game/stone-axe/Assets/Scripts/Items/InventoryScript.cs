@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -51,7 +52,8 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private Button _headerButtonParts;
     [SerializeField] private Button _headerButtonMaterials;
     [SerializeField] private Button _headerButtonEnchants;
-    [SerializeField] private Text _descriptionText;
+    [SerializeField] private TextMeshProUGUI _descriptionText1;
+    [SerializeField] private TextMeshProUGUI _descriptionText2;
     [SerializeField] private GameObject _selectItemButton;
     [SerializeField] private GameObject _selectPartButton;
     [SerializeField] private GameObject _selectMatButton;
@@ -73,8 +75,13 @@ public class InventoryScript : MonoBehaviour
             _gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         if (_inventoryData == null)
             _inventoryData = this.gameObject.GetComponent<InventoryData>();
+
     }
 
+    private void Start()
+    {
+        setupItemInventory();
+    }
     public void setupItemInventory()
     {
         setupItemInventory(false, 0);
@@ -106,7 +113,7 @@ public class InventoryScript : MonoBehaviour
                 tempButtonList = Instantiate(_itemInfoPrefab);
                 tempButtonList.transform.SetParent(_inventoryButtonParent.transform, false);
                 // set up button text
-                Text t = tempButtonList.GetComponentInChildren<Text>();
+                TextMeshProUGUI t = tempButtonList.GetComponentInChildren<TextMeshProUGUI>();
                 t.text = itemData.ItemName;
 
                 // add button to list
@@ -114,7 +121,8 @@ public class InventoryScript : MonoBehaviour
             }
             k++;
         }
-        _descriptionText.text = "new text";
+        _descriptionText1.text = "";
+        _descriptionText2.text = "";
     }
 
     public void setupPartInventory()
@@ -169,7 +177,7 @@ public class InventoryScript : MonoBehaviour
             }
             k++;
         }
-        _descriptionText.text = "new text";
+        _descriptionText1.text = "new text";
     }
 
     public void setupMatInventory()
@@ -229,7 +237,7 @@ public class InventoryScript : MonoBehaviour
             }
             //m++;
         }
-        _descriptionText.text = "new text";
+        _descriptionText1.text = "new text";
 
     }
 
@@ -274,7 +282,7 @@ public class InventoryScript : MonoBehaviour
             }
             e++;
         }
-        _descriptionText.text = "new text";
+        _descriptionText1.text = "new text";
     }
 
     private ColorBlock ItemColorBlock;
@@ -359,10 +367,10 @@ public class InventoryScript : MonoBehaviour
                 // set up text strings
                 _itemName = "Item - " + itemDataRef.ItemName;
 
-                _materials = "\n\nMaterials\n" + itemDataRef.Part1.Material.Material
+                _materials = "\nMaterials\n" + itemDataRef.Part1.Material.Material
                     + "\n" + itemDataRef.Part2.Material.Material
                     + "\n" + itemDataRef.Part3.Material.Material;
-                _totalStrength = "\nStrenght: " + itemDataRef.TotalStrength;
+                _totalStrength = "\nStrength: " + itemDataRef.TotalStrength;
                 _totalDex = "\nDextarity: " + itemDataRef.TotalDextarity;
                 _totalInt = "\nIntelegence: " + itemDataRef.TotalIntelegence;
 
@@ -385,16 +393,14 @@ public class InventoryScript : MonoBehaviour
                 _totalValue = "\n\nValue: " + itemDataRef.TotalValue;
 
                 // organize the texts
-                _descriptionText.text = _itemName +
-                    "\nStats" + _totalStrength + _totalDex + _totalInt + _enchantment
-                    + _materials + _totalValue;
+                _descriptionText1.text = _itemName +
+                    "\nStats" + _totalStrength + _totalDex + _totalInt + _enchantment;
+                _descriptionText2.text = _materials + _totalValue;
             }
-            else
-                _descriptionText.text = "new text";
+            else { _descriptionText1.text = ""; _descriptionText2.text = ""; }
             //Debug.Log("Item Detail Text set for - item index: " + index);
         }
-        else
-            _descriptionText.text = "new text";
+        else { _descriptionText1.text = "";  _descriptionText2.text = ""; }
     }
 
     private string _partName;
@@ -428,15 +434,15 @@ public class InventoryScript : MonoBehaviour
                 }
 
                 // organize the texts
-                _descriptionText.text = _partName +
+                _descriptionText1.text = _partName +
                     "\nStats" + _partStrength + _partDex + _partInt + _enchant
                     + _material + _partValue;
             }
             else
-                _descriptionText.text = "new text";
+                _descriptionText1.text = "new text";
         }
         else
-            _descriptionText.text = "new text";
+            _descriptionText1.text = "new text";
     }
 
     private string _matName;
@@ -463,13 +469,13 @@ public class InventoryScript : MonoBehaviour
                 _matInt = "\nIntelegence: " + matDataRef.AddedIntelligence.ToString();
                 _matValue = "\nValue: " + matDataRef.BaseCostPerUnit.ToString();
 
-                _descriptionText.text = _matName + _matType + _matLevel + _matValue + "\n" + _matStrength + _matDex + _matInt;
+                _descriptionText1.text = _matName + _matType + _matLevel + _matValue + "\n" + _matStrength + _matDex + _matInt;
             }
             else
-                _descriptionText.text = "new text";
+                _descriptionText1.text = "new text";
         }
         else
-            _descriptionText.text = "new text";
+            _descriptionText1.text = "new text";
     }
 
     private string _enchantName;
@@ -485,13 +491,13 @@ public class InventoryScript : MonoBehaviour
                 _enchantName = "Enchantment - " + enchantDataRef.EnchantName;
                 _valueOfBuff = "\nBuff Amount: +" + enchantDataRef.AmountOfBuff;
 
-                _descriptionText.text = _enchantName + _valueOfBuff;
+                _descriptionText1.text = _enchantName + _valueOfBuff;
             }
             else
-                _descriptionText.text = "new text";
+                _descriptionText1.text = "new text";
         }
         else
-            _descriptionText.text = "new text";
+            _descriptionText1.text = "new text";
     }
 
     private GameObject itemDataStorageTemp;
@@ -990,7 +996,7 @@ public class InventoryScript : MonoBehaviour
         }
         */
         _inventoryData.removeItem(item);
-        _descriptionText.text = "item text";
+        _descriptionText1.text = "item text";
         _selectedItem = null;
     }
 

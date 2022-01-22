@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 public class GenerateItem : MonoBehaviour
 {
@@ -12,12 +13,12 @@ public class GenerateItem : MonoBehaviour
     [SerializeField] private ECO_DecBuyPrice _buyPriceSkill;
     [SerializeField] private ECO_HaggleSuccess _haggleSkill;
     [Header("UI")]
-    [SerializeField] private Text itemText;
+    [SerializeField] private TextMeshProUGUI itemText;
     [SerializeField] private Button buyButton;
     [SerializeField] private Button haggleButton;
     [SerializeField] private Button generateButton;
-    private Text buyButtonText;
-    private Text haggleButtonText;
+    private TextMeshProUGUI buyButtonText;
+    private TextMeshProUGUI haggleButtonText;
 
     private bool haggleSucceded = false;
 
@@ -26,8 +27,8 @@ public class GenerateItem : MonoBehaviour
     private void Awake()
     {
         _gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
-        buyButtonText = buyButton.GetComponentInChildren<Text>();
-        haggleButtonText = haggleButton.GetComponentInChildren<Text>();
+        buyButtonText = buyButton.GetComponentInChildren<TextMeshProUGUI>();
+        haggleButtonText = haggleButton.GetComponentInChildren<TextMeshProUGUI>();
         haggleButtonText.text = "haggle\n(success chance: n/a)";
         generateButton.interactable = false;
     }

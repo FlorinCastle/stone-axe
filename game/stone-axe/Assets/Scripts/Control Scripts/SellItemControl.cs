@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,13 +43,13 @@ public class SellItemControl : MonoBehaviour
         _refuseButton.interactable = false;
         _haggleButton.interactable = false;
         _suggestButton.interactable = false;
-        _haggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: n/a)";
+        _haggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: n/a)";
 
         _marketSellItemButton.interactable = false;
         _marketRefuseButton.interactable = false;
         _marketHaggleButton.interactable = false;
         _marketSuggestButton.interactable = false;
-        _marketHaggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: n/a)";
+        _marketHaggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: n/a)";
     }
 
     public void suggestAlt()
