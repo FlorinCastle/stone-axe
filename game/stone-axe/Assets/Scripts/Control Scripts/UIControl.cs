@@ -10,12 +10,18 @@ public class UIControl : MonoBehaviour
     [SerializeField] GameObject mainMenuUI;
     [SerializeField] GameObject gameShopUI;
     [SerializeField] GameObject optionsPopup;
+    [SerializeField] GameObject shopUI;
+    [SerializeField] GameObject marketUI;
+    [Header("Shop UI")]
     [Header("Sub UI")]
     [SerializeField] GameObject economicSubUI;
     [SerializeField] GameObject disassembleSubUI;
     [SerializeField] GameObject craftSubUI;
     [SerializeField] GameObject inventoryUI;
     [SerializeField] GameObject skillTreeUI;
+    [Header("Market UI")]
+    [SerializeField] GameObject marketEconomicSubUI;
+    [SerializeField] GameObject questSubUI;
     [Header("Main Menu UI")]
     [SerializeField] Button _continueButton;
     [SerializeField] Button _newGameButton;
@@ -160,4 +166,13 @@ public class UIControl : MonoBehaviour
     public bool OptionsUIActive { get => optionsPopup.activeInHierarchy; }
     public string PlayerName { get => _playerName.text; set => _playerName.text = value; }
     public string ShopName { get => _shopName.text; set => _shopName.text = value; }
+
+    public bool ShopUIEnabled { get => shopUI.activeInHierarchy; }
+    public bool MarketUIEnabled { get => marketUI.activeInHierarchy; }
+
+    public bool ShopEcoUIEnabled { get => economicSubUI.activeInHierarchy; set => economicSubUI.SetActive(value); }
+    public bool ShopDisUIEnabled { get => disassembleSubUI.activeInHierarchy; set => disassembleSubUI.SetActive(value); }
+    public bool ShopCraftUIEnabled { get => craftSubUI.activeInHierarchy; set => craftSubUI.SetActive(value); }
+    public bool MarketEcoUIEnabled { get => marketEconomicSubUI.activeInHierarchy; set => marketEconomicSubUI.SetActive(value); }
+    public bool MarketQuestUIEnabled { get => questSubUI.activeInHierarchy; set => questSubUI.SetActive(value); }
 }

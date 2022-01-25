@@ -18,6 +18,8 @@ public class InventoryScript : MonoBehaviour
     [SerializeField]
     private GameMaster _gameMaster;
     [SerializeField]
+    private UIControl _UIControlRef;
+    [SerializeField]
     private InventoryData _inventoryData;
 
     private enum removingItemStatusEnum
@@ -1042,12 +1044,12 @@ public class InventoryScript : MonoBehaviour
         if (i != -1)
         {
             _selectedItem = _inventoryData.ItemInventory[i];
+            returnSelectedItem();
             //Debug.Log("Selected item is: " + _selectedItem.name + " at index: " + i); 
         }
         else
             Debug.Log("example button selected");
     }
-
     public void setSelectedPart(int i)
     {
         if (i != -1)
@@ -1058,8 +1060,6 @@ public class InventoryScript : MonoBehaviour
         else
             Debug.Log("example button selected");
     }
-
-
     public void setSelectedMat(MaterialData data)
     {
         if (data != null)
@@ -1067,7 +1067,6 @@ public class InventoryScript : MonoBehaviour
         else
             Debug.LogWarning("No mat input!");
     }
-
     public void setSelectedMat(int i)
     {
         if (i != -1)
@@ -1077,7 +1076,6 @@ public class InventoryScript : MonoBehaviour
         else
             Debug.Log("example button selected");
     }
-
     public void setSelectedEnchant(int i)
     {
         if (i != -1)
@@ -1095,7 +1093,6 @@ public class InventoryScript : MonoBehaviour
          
         return null;
     }
-
     public GameObject getSelectedPart()
     {
         if (_selectedPart != null)
@@ -1103,7 +1100,6 @@ public class InventoryScript : MonoBehaviour
 
         return null;
     }
-
     public MaterialData getSelectedMat()
     {
         if (_selectedMat != null)
@@ -1111,7 +1107,6 @@ public class InventoryScript : MonoBehaviour
 
         return null;
     }
-
     public GameObject getSelectedEnchant()
     {
         if (_selectedEnchant != null)
@@ -1139,6 +1134,34 @@ public class InventoryScript : MonoBehaviour
 
     public void returnSelectedItem()
     {
+        if (_UIControlRef.ShopUIEnabled == true)
+        {
+            Debug.Log("shop ui enabled");
+            if (_UIControlRef.ShopEcoUIEnabled == false && _UIControlRef.ShopDisUIEnabled == false)
+            {
+                //Debug.Log("shop eco and shop disassemble not enabled");
+                _UIControlRef.ShopEcoUIEnabled = false;
+                _UIControlRef.ShopDisUIEnabled = true;
+                _UIControlRef.ShopCraftUIEnabled = false;
+
+                //GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem();
+                //GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem();
+            }
+            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem();
+            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem();
+        }
+        else if (_UIControlRef.MarketUIEnabled == true)
+        {
+            Debug.Log("market ui enabled");
+            if (!_UIControlRef.MarketEcoUIEnabled)
+            {
+                _UIControlRef.MarketEcoUIEnabled = true;
+                _UIControlRef.MarketQuestUIEnabled = false;
+            }
+            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem();
+        }
+
+        /*
         //Debug.Log("returning item");
         if (_removingStatus == removingItemStatusEnum.RemovingToSell)
         {
@@ -1150,6 +1173,7 @@ public class InventoryScript : MonoBehaviour
             //Debug.Log("returning item to disassemble");
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem();
         }
+        */
     }
 
     public void selectRandomItem()

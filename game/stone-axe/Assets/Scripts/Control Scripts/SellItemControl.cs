@@ -59,6 +59,7 @@ public class SellItemControl : MonoBehaviour
 
     public void selectItem()
     {
+        Debug.Log("selling state " + sellingState);
         _selectedItem = _invScriptRef.getSelectedItem();
         if (_selectedItem != null)
         {
@@ -115,9 +116,9 @@ public class SellItemControl : MonoBehaviour
                 "\nStats" + _totalStrength + _totalDex + _totalInt
                 + _materials + _totalValue;
 
-            _sellItemButton.GetComponentInChildren<Text>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * _sellPriceSkill.getModifiedSellPrice());
+            _sellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * _sellPriceSkill.getModifiedSellPrice());
 
-            _haggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: " + (_haggleSuccessSkill.getHaggleChance()).ToString() + "%)";
+            _haggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: " + (_haggleSuccessSkill.getHaggleChance()).ToString() + "%)";
         }
         else if (sellingState == 1)
         {
@@ -125,9 +126,9 @@ public class SellItemControl : MonoBehaviour
                 "\nStats" + _totalStrength + _totalDex + _totalInt
                 + _materials + _totalValue;
 
-            _marketSellItemButton.GetComponentInChildren<Text>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _marketModifier));
+            _marketSellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _marketModifier));
 
-            _marketHaggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: " + (_haggleSuccessSkill.getHaggleChance()).ToString() + "%)";
+            _marketHaggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: " + (_haggleSuccessSkill.getHaggleChance()).ToString() + "%)";
         }
     }
 
@@ -179,13 +180,13 @@ public class SellItemControl : MonoBehaviour
             Debug.Log("haggle success");
             haggleSucceded = true;
             if (sellingState == 0)
-                _sellItemButton.GetComponentInChildren<Text>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _haggleSuccessSkill.getModifiedPrice()));
+                _sellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _haggleSuccessSkill.getModifiedPrice()));
             else if (sellingState == 1)
-                _marketSellItemButton.GetComponentInChildren<Text>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _haggleSuccessSkill.getModifiedPrice() + _marketModifier));
+                _marketSellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _haggleSuccessSkill.getModifiedPrice() + _marketModifier));
         }
-        _haggleButton.GetComponentInChildren<Text>().text = "haggle\ncomplete";
+        _haggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\ncomplete";
         _haggleButton.interactable = false;
-        _marketHaggleButton.GetComponentInChildren<Text>().text = "haggle\ncomplete";
+        _marketHaggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\ncomplete";
         _marketHaggleButton.interactable = false;
     }
     
@@ -193,16 +194,16 @@ public class SellItemControl : MonoBehaviour
     {
         _itemData = null;
         _itemText.text = "item text";
-        _sellItemButton.GetComponentInChildren<Text>().text = "sell: [price]";
-        _haggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: n/a)";
+        _sellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: [price]";
+        _haggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: n/a)";
         _sellItemButton.interactable = false;
         _refuseButton.interactable = false;
         _haggleButton.interactable = false;
         haggleSucceded = false;
 
         _marketItemText.text = "item text";
-        _marketSellItemButton.GetComponentInChildren<Text>().text = "sell: [price]";
-        _marketHaggleButton.GetComponentInChildren<Text>().text = "haggle\n(success chance: n/a)";
+        _marketSellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: [price]";
+        _marketHaggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: n/a)";
         _marketSellItemButton.interactable = false;
         _marketRefuseButton.interactable = false;
         _marketHaggleButton.interactable = false;
