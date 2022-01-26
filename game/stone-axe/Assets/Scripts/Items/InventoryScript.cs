@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InventoryScript : MonoBehaviour
 {
-    [SerializeField] private GameObject _inventoryButtonParent;
+    //[SerializeField] private GameObject _inventoryButtonParent;
     [SerializeField]
     private GameObject _selectedItem;
     [SerializeField]
@@ -57,8 +57,13 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _descriptionText1;
     [SerializeField] private TextMeshProUGUI _descriptionText2;
     [SerializeField] private GameObject _itemsInvScroll;
+    [SerializeField] private GameObject _itemsButtonParent;
     [SerializeField] private GameObject _partsInvScroll;
+    [SerializeField] private GameObject _partsButtonParent;
     [SerializeField] private GameObject _matsInvScroll;
+    [SerializeField] private GameObject _matsButtonParent;
+    [SerializeField] private GameObject _enchInvScroll;
+    [SerializeField] private GameObject _enchButtonParent;
     [SerializeField] private GameObject _selectItemButton;
     [SerializeField] private GameObject _selectPartButton;
     [SerializeField] private GameObject _selectMatButton;
@@ -86,6 +91,9 @@ public class InventoryScript : MonoBehaviour
     private void Start()
     {
         setupItemInventory();
+        setupPartInventory();
+        setupMatInventory();
+        setupEnchantInventory();
     }
     public void setupItemInventory()
     {
@@ -102,10 +110,6 @@ public class InventoryScript : MonoBehaviour
         setStatus(state);
         setupHeader();
 
-        clearPartButtonList();
-        clearItemButtonList();
-        clearMatButtonList();
-        clearEnchantButtonList();
         int k = 0;
         foreach (GameObject item in _inventoryData.ItemInventory)
         {
@@ -116,7 +120,7 @@ public class InventoryScript : MonoBehaviour
 
                 // instatiate the button prefab
                 tempButtonList = Instantiate(_itemInfoPrefab);
-                tempButtonList.transform.SetParent(_inventoryButtonParent.transform, false);
+                tempButtonList.transform.SetParent(_itemsButtonParent.transform, false);
                 // set up button text
                 TextMeshProUGUI t = tempButtonList.GetComponentInChildren<TextMeshProUGUI>();
                 t.text = itemData.ItemName;
@@ -145,10 +149,6 @@ public class InventoryScript : MonoBehaviour
         setStatus(state);
         setupHeader();
 
-        clearItemButtonList();
-        clearPartButtonList();
-        clearMatButtonList();
-        clearEnchantButtonList();
         int k = 0;
         foreach (GameObject part in _inventoryData.PartInventory)
         {
@@ -159,10 +159,10 @@ public class InventoryScript : MonoBehaviour
 
                 // instantiate the button prefab
                 tempButtonList = Instantiate(_partInfoPrefab);
-                tempButtonList.transform.SetParent(_inventoryButtonParent.transform, false);
+                tempButtonList.transform.SetParent(_partsButtonParent.transform, false);
 
                 // set up button text
-                Text t = tempButtonList.GetComponentInChildren<Text>();
+                TextMeshProUGUI t = tempButtonList.GetComponentInChildren<TextMeshProUGUI>();
                 t.text = partData.PartName;
                 
                 // if removing part from inventory
@@ -200,10 +200,6 @@ public class InventoryScript : MonoBehaviour
         setStatus(state);
         setupHeader();
 
-        clearItemButtonList();
-        clearPartButtonList();
-        clearMatButtonList();
-        clearEnchantButtonList();
 
         int m = 0;
         foreach (GameObject mat in _inventoryData.MaterialInventory)
@@ -216,7 +212,7 @@ public class InventoryScript : MonoBehaviour
                 {
                     // instantiate the button prefab
                     tempButtonList = Instantiate(_matInfoPrefab);
-                    tempButtonList.transform.SetParent(_inventoryButtonParent.transform, false);
+                    tempButtonList.transform.SetParent(_matsButtonParent.transform, false);
 
                     // set up the button text
                     tempButtonList.GetComponentInChildren<MaterialButton>().setMatInfoText(matStore);
@@ -262,10 +258,6 @@ public class InventoryScript : MonoBehaviour
 
         setupHeader();
 
-        clearItemButtonList();
-        clearPartButtonList();
-        clearMatButtonList();
-        clearEnchantButtonList();
 
         int e = 0;
         foreach(GameObject ench in _inventoryData.EnchantInventory)
@@ -275,10 +267,10 @@ public class InventoryScript : MonoBehaviour
                 EnchantDataStorage enchData = ench.GetComponent<EnchantDataStorage>();
                 // instantiate the prefab
                 tempButtonList = Instantiate(_enchantInfoPrefab);
-                tempButtonList.transform.SetParent(_inventoryButtonParent.transform, false);
+                tempButtonList.transform.SetParent(_enchButtonParent.transform, false);
 
                 // set up button text
-                Text t = tempButtonList.GetComponentInChildren<Text>();
+                TextMeshProUGUI t = tempButtonList.GetComponentInChildren<TextMeshProUGUI>();
                 t.text = enchData.EnchantName + "\n+" + enchData.AmountOfBuff;
 
 

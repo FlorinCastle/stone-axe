@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +9,8 @@ public class MaterialButton : MonoBehaviour
     [SerializeField] private InventoryScript _invControl;
     [SerializeField] private int _myButtonIndex;
     [SerializeField] private int _matIndex;
-    [SerializeField] private Text _matNameText;
-    [SerializeField] private Text _matCountText;
+    [SerializeField] private TextMeshProUGUI _matNameText;
+    [SerializeField] private TextMeshProUGUI _matCountText;
 
     [SerializeField] private MaterialData _matRef;
 
