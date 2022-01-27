@@ -101,6 +101,7 @@ public class InventoryScript : MonoBehaviour
     }
     public void setupItemInventory(bool isRemoving, int state)
     {
+        clearItemButtonList();
         _selectedItem = null;
         
         _selectItemButton.SetActive(isRemoving);
@@ -962,23 +963,11 @@ public class InventoryScript : MonoBehaviour
     
     public void RemoveItem(GameObject item)
     {
-        /*
-        foreach (GameObject go in _itemInventoryData)
-        {
-            if (item == go)
-            {
-                int index = _itemInventoryData.IndexOf(go);
-                Destroy(item);
-                _descriptionText.text = "item text";
-                _itemInventoryData[index] = null;
-                _selectedItem = null;
-                break;
-            }
-        }
-        */
         _inventoryData.removeItem(item);
         _descriptionText1.text = "item text";
         _selectedItem = null;
+
+        setupItemInventory();
     }
     public void RemovePart(GameObject part, bool destroy)
     {
@@ -1128,23 +1117,20 @@ public class InventoryScript : MonoBehaviour
     {
         if (_UIControlRef.ShopUIEnabled == true)
         {
-            Debug.Log("shop ui enabled");
+            //Debug.Log("shop ui enabled");
             if (_UIControlRef.ShopEcoUIEnabled == false && _UIControlRef.ShopDisUIEnabled == false)
             {
                 //Debug.Log("shop eco and shop disassemble not enabled");
                 _UIControlRef.ShopEcoUIEnabled = false;
                 _UIControlRef.ShopDisUIEnabled = true;
                 _UIControlRef.ShopCraftUIEnabled = false;
-
-                //GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem();
-                //GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem();
             }
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem();
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem();
         }
         else if (_UIControlRef.MarketUIEnabled == true)
         {
-            Debug.Log("market ui enabled");
+            //Debug.Log("market ui enabled");
             if (!_UIControlRef.MarketEcoUIEnabled)
             {
                 _UIControlRef.MarketEcoUIEnabled = true;

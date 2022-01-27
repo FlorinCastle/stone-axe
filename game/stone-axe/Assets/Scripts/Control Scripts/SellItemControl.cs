@@ -59,11 +59,12 @@ public class SellItemControl : MonoBehaviour
 
     public void selectItem()
     {
-        Debug.Log("selling state " + sellingState);
+        //Debug.Log("selling state " + sellingState);
         _selectedItem = _invScriptRef.getSelectedItem();
         if (_selectedItem != null)
         {
-            if (sellingState == 0)
+            //if () // adventurer at counter
+            if (sellingState == 0) // shop level
             {
                 //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
                 setupDiscription();
@@ -71,7 +72,7 @@ public class SellItemControl : MonoBehaviour
                 _refuseButton.interactable = true;
                 _haggleButton.interactable = true;
             }
-            else if (sellingState == 1)
+            else if (sellingState == 1) // market level
             {
                 //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
                 setupDiscription();
