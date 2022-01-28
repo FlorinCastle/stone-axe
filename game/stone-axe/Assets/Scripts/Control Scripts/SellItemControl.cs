@@ -63,23 +63,26 @@ public class SellItemControl : MonoBehaviour
         _selectedItem = _invScriptRef.getSelectedItem();
         if (_selectedItem != null)
         {
-            //if () // adventurer at counter
+            setupDiscription();
+
+            /*
             if (sellingState == 0) // shop level
             {
                 //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
                 setupDiscription();
-                _sellItemButton.interactable = true;
-                _refuseButton.interactable = true;
-                _haggleButton.interactable = true;
+                //_sellItemButton.interactable = true;
+                //_refuseButton.interactable = true;
+                //_haggleButton.interactable = true;
             }
             else if (sellingState == 1) // market level
             {
                 //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
                 setupDiscription();
-                _marketSellItemButton.interactable = true;
-                _marketRefuseButton.interactable = true;
-                _marketHaggleButton.interactable = true;
+                //_marketSellItemButton.interactable = true;
+                //_marketRefuseButton.interactable = true;
+                //_marketHaggleButton.interactable = true;
             }
+            */
         }
         else
         {
@@ -97,40 +100,45 @@ public class SellItemControl : MonoBehaviour
     private string _totalValue;
     private void setupDiscription()
     {
-        // get reference to ItemDataStorage script
-        _itemData = _selectedItem.GetComponent<ItemDataStorage>();
-
-        // set up text strings
-        _itemName = "Item - " + _itemData.ItemName;
-        _materials = "\n\nMaterials\n" + _itemData.Part1.Material.Material
-            + "\n" + _itemData.Part2.Material.Material
-            + "\n" + _itemData.Part3.Material.Material;
-        _totalStrength = "\nStrenght: " + _itemData.TotalStrength;
-        _totalDex = "\nDextarity: " + _itemData.TotalDextarity;
-        _totalInt = "\nIntelegence: " + _itemData.TotalIntelegence;
-        _totalValue = "\n\nValue: " + _itemData.TotalValue;
-
-        // organize the texts
-        if (sellingState == 0)
+        if (_selectedItem != null)
         {
-            _itemText.text = _itemName +
-                "\nStats" + _totalStrength + _totalDex + _totalInt
-                + _materials + _totalValue;
+            // get reference to ItemDataStorage script
+            _itemData = _selectedItem.GetComponent<ItemDataStorage>();
 
-            _sellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * _sellPriceSkill.getModifiedSellPrice());
+            // set up text strings
+            _itemName = "Item - " + _itemData.ItemName;
+            _materials = "\n\nMaterials\n" + _itemData.Part1.Material.Material
+                + "\n" + _itemData.Part2.Material.Material
+                + "\n" + _itemData.Part3.Material.Material;
+            _totalStrength = "\nStrenght: " + _itemData.TotalStrength;
+            _totalDex = "\nDextarity: " + _itemData.TotalDextarity;
+            _totalInt = "\nIntelegence: " + _itemData.TotalIntelegence;
+            _totalValue = "\n\nValue: " + _itemData.TotalValue;
 
-            _haggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: " + (_haggleSuccessSkill.getHaggleChance()).ToString() + "%)";
+            // organize the texts
+            if (sellingState == 0)
+            {
+                _itemText.text = _itemName +
+                    "\nStats" + _totalStrength + _totalDex + _totalInt
+                    + _materials + _totalValue;
+
+                _sellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * _sellPriceSkill.getModifiedSellPrice());
+
+                _haggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: " + (_haggleSuccessSkill.getHaggleChance()).ToString() + "%)";
+            }
+            else if (sellingState == 1)
+            {
+                _marketItemText.text = _itemName +
+                    "\nStats" + _totalStrength + _totalDex + _totalInt
+                    + _materials + _totalValue;
+
+                _marketSellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _marketModifier));
+
+                _marketHaggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: " + (_haggleSuccessSkill.getHaggleChance()).ToString() + "%)";
+            }
+
         }
-        else if (sellingState == 1)
-        {
-            _marketItemText.text = _itemName +
-                "\nStats" + _totalStrength + _totalDex + _totalInt
-                + _materials + _totalValue;
-
-            _marketSellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: " + Mathf.RoundToInt(_itemData.TotalValue * (_sellPriceSkill.getModifiedSellPrice() + _marketModifier));
-
-            _marketHaggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: " + (_haggleSuccessSkill.getHaggleChance()).ToString() + "%)";
-        }
+        
     }
 
     public void sellItem()
@@ -210,24 +218,38 @@ public class SellItemControl : MonoBehaviour
         _marketHaggleButton.interactable = false;
         haggleSucceded = false;
     }
-    private bool itemSelected = false;
+    //private bool itemSelected = false;
     public void adventurerAtCounter()
     {
         if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == true)
         {
-            if (itemSelected == false)
-            {
-                _invScriptRef.selectRandomItem();
-                itemSelected = true;
-            }
             _suggestButton.interactable = true;
             _marketSuggestButton.interactable = true;
         }
         else if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == false)
         {
-            itemSelected = false;
             _suggestButton.interactable = false;
             _marketSuggestButton.interactable = false;
+        }
+        canSell(gameObject.GetComponent<GameMaster>().AdventurerAtCounter);
+    }
+    public void canSell(bool input)
+    {
+        if (sellingState == 0) // shop level
+        {
+            //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
+            setupDiscription();
+            _sellItemButton.interactable = input;
+            _refuseButton.interactable = input;
+            _haggleButton.interactable = input;
+        }
+        else if (sellingState == 1) // market level
+        {
+            //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
+            setupDiscription();
+            _marketSellItemButton.interactable = input;
+            _marketRefuseButton.interactable = input;
+            _marketHaggleButton.interactable = input;
         }
     }
 
