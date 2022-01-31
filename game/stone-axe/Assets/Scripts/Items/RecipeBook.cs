@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +19,7 @@ public class RecipeBook : MonoBehaviour
     [SerializeField] private List<FilterData> filterData;
     [SerializeField, HideInInspector] private List<GameObject> filterButtons;
     [Header("UI References")]
-    [SerializeField] private Text _recipeText;
+    [SerializeField] private TextMeshProUGUI _recipeText;
     [SerializeField] private Button _recipeSelectButton;
     [SerializeField] private GameObject _contentRef;
     [SerializeField] private GameObject _filterUI;
@@ -338,7 +339,7 @@ public class RecipeBook : MonoBehaviour
                 tempButton.transform.SetParent(_contentRef.transform, false);
                 tempButton.GetComponent<RecipeButton>().setRecipeName(itemRecipe.ItemName);
                 // set up button text
-                Text t = tempButton.GetComponentInChildren<Text>();
+                TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
                 t.text = itemRecipe.ItemName + " Recipe";
                 tempButton.name = itemRecipe.ItemName + " Recipe";
                 // add button to list
@@ -354,7 +355,7 @@ public class RecipeBook : MonoBehaviour
                 tempButton.transform.SetParent(_contentRef.transform, false);
                 tempButton.GetComponent<RecipeButton>().setRecipeName(partRecipe.PartName);
 
-                Text t = tempButton.GetComponentInChildren<Text>();
+                TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
                 t.text = partRecipe.PartName + " Recipe";
                 tempButton.name = partRecipe.PartName + " Recipe";
                 // add button to list

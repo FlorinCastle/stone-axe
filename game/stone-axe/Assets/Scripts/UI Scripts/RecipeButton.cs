@@ -25,6 +25,11 @@ public class RecipeButton : MonoBehaviour
     {
         _recipeControl.setPartRecipeInfo(_myButtonIndex);
     }
+
+    public void setRecipe()
+    {
+        _recipeControl.selectRecipe();
+    }
     /*
     public void setSelectedRecipe()
     {

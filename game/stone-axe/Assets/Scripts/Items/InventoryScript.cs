@@ -21,6 +21,8 @@ public class InventoryScript : MonoBehaviour
     private UIControl _UIControlRef;
     [SerializeField]
     private InventoryData _inventoryData;
+    [SerializeField]
+    private CraftControl _craftControlRef;
 
     private enum removingItemStatusEnum
     {
@@ -419,7 +421,7 @@ public class InventoryScript : MonoBehaviour
 
                 // set up text strings
                 _partName = "Part - " + partDataRef.PartName;
-                _material = "\n\nMaterial\n" + partDataRef.MaterialName;
+                _material = "\nMaterial\n" + partDataRef.MaterialName;
                 _partStrength = "\nStrenght: " + partDataRef.PartStr;
                 _partDex = "\nDextarity: " + partDataRef.PartDex;
                 _partInt = "\nIntelegence: " + partDataRef.PartInt;
@@ -433,14 +435,20 @@ public class InventoryScript : MonoBehaviour
 
                 // organize the texts
                 _descriptionText1.text = _partName +
-                    "\nStats" + _partStrength + _partDex + _partInt + _enchant
-                    + _material + _partValue;
+                    "\nStats" + _partStrength + _partDex + _partInt + _enchant;
+                _descriptionText2.text = _material + _partValue;
             }
             else
-                _descriptionText1.text = "new text";
+            {
+                _descriptionText1.text = "";
+                _descriptionText2.text = "";
+            }
         }
         else
-            _descriptionText1.text = "new text";
+        {
+            _descriptionText1.text = "";
+            _descriptionText2.text = "";
+        }
     }
 
     private string _matName;
@@ -470,10 +478,16 @@ public class InventoryScript : MonoBehaviour
                 _descriptionText1.text = _matName + _matType + _matLevel + _matValue + "\n" + _matStrength + _matDex + _matInt;
             }
             else
-                _descriptionText1.text = "new text";
+            {
+                _descriptionText1.text = "";
+                _descriptionText2.text = "";
+            }
         }
         else
-            _descriptionText1.text = "new text";
+        {
+            _descriptionText1.text = "";
+            _descriptionText2.text = "";
+        }
     }
 
     private string _enchantName;
@@ -1036,6 +1050,7 @@ public class InventoryScript : MonoBehaviour
         if (i != -1)
         {
             _selectedPart = _inventoryData.PartInventory[i];
+            returnSeletedPart();
             //Debug.Log("Selected part is: " + _selectedPart.name + " at index: " + i);
         }
         else
@@ -1164,13 +1179,18 @@ public class InventoryScript : MonoBehaviour
 
     public void returnSeletedPart()
     {
+        if (_craftControlRef.anyItemRecipeSelected() == true)
+        {
+            Debug.LogWarning("TODO setup code for selecting parts");
+        }
+        /*
         if (_removingStatus == removingItemStatusEnum.RemovingToCraft1)
             GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectPart1();
         else if (_removingStatus == removingItemStatusEnum.RemovingToCraft2)
             GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectPart2();
         else if (_removingStatus == removingItemStatusEnum.RemovingToCraft3)
             GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectPart3();
-        
+        */
     }
 
     public void returnSelectedMat()

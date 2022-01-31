@@ -12,6 +12,7 @@ public class CraftControl : MonoBehaviour
     [SerializeField] InventoryScript _inventoryControlReference;
     [SerializeField] RecipeBook _recipeBookRef;
     [SerializeField] QuestControl _questControlRef;
+    [SerializeField] UIControl _UIControlRef;
     [SerializeField] CFT_ReduceMaterialCost materialSkill;
     private GameMaster _gameMasterRef;
     private InventoryData _invDataRef;
@@ -130,6 +131,13 @@ public class CraftControl : MonoBehaviour
 
     public void setChosenRecipe()
     {
+        if (_UIControlRef.ShopCraftUIEnabled == false)
+        {
+            _UIControlRef.ShopEcoUIEnabled = false;
+            _UIControlRef.ShopDisUIEnabled = false;
+            _UIControlRef.ShopCraftUIEnabled = true;
+        }
+
         if (_recipeBookRef.getSelectedItemRecipe() != null)
         {
             _chosenItemRecipe = _recipeBookRef.getSelectedItemRecipe();
@@ -678,6 +686,19 @@ public class CraftControl : MonoBehaviour
         else if (_chosenPart3.GetComponent<PartDataStorage>().IsHoldingEnchant)
             return true;
 
+        return false;
+    }
+
+    public bool anyItemRecipeSelected()
+    {
+        if (_chosenItemRecipe != null)
+            return true;
+        return false;
+    }
+    public bool anyPartRecipeSelected()
+    {
+        if (_chosenPartRecipe != null)
+            return true;
         return false;
     }
 }
