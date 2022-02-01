@@ -143,6 +143,7 @@ public class InventoryScript : MonoBehaviour
     }
     public void setupPartInventory(bool isRemoving, int state)
     {
+        clearPartButtonList();
         _selectedPart = null;
         
         _selectItemButton.SetActive(false);
@@ -1153,20 +1154,6 @@ public class InventoryScript : MonoBehaviour
             }
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem();
         }
-
-        /*
-        //Debug.Log("returning item");
-        if (_removingStatus == removingItemStatusEnum.RemovingToSell)
-        {
-            //Debug.Log("returning item to sell");
-            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem();
-        }
-        else if (_removingStatus == removingItemStatusEnum.RemovingToDisassemble)
-        {
-            //Debug.Log("returning item to disassemble");
-            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem();
-        }
-        */
     }
 
     public void selectRandomItem()
@@ -1181,16 +1168,28 @@ public class InventoryScript : MonoBehaviour
     {
         if (_craftControlRef.anyItemRecipeSelected() == true)
         {
-            Debug.LogWarning("TODO setup code for selecting parts");
+            //Debug.LogWarning("TODO setup code for selecting parts");
+            foreach(PartData part1ref in _craftControlRef.checkItemRecipe().ValidParts1)
+                if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part1ref)
+                {
+                    //Debug.LogWarning("selected part matches recipe part 1");
+                    _craftControlRef.SelectPart1();
+                }
+
+            foreach(PartData part2ref in _craftControlRef.checkItemRecipe().ValidParts2)
+                if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part2ref)
+                {
+                    //Debug.LogWarning("selected part matches recipe part 2");
+                    _craftControlRef.SelectPart2();
+                }
+
+            foreach (PartData part3ref in _craftControlRef.checkItemRecipe().ValidParts3)
+                if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part3ref)
+                {
+                    //Debug.LogWarning("selected part matches recipe part 3");
+                    _craftControlRef.SelectPart3();
+                }
         }
-        /*
-        if (_removingStatus == removingItemStatusEnum.RemovingToCraft1)
-            GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectPart1();
-        else if (_removingStatus == removingItemStatusEnum.RemovingToCraft2)
-            GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectPart2();
-        else if (_removingStatus == removingItemStatusEnum.RemovingToCraft3)
-            GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectPart3();
-        */
     }
 
     public void returnSelectedMat()

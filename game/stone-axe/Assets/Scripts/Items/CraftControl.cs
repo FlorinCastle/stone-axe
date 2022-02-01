@@ -299,7 +299,6 @@ public class CraftControl : MonoBehaviour
             Debug.LogWarning("No Recipe Selected");
     }
 
-
     private EnchantDataStorage enc;
     private bool encSelected;
     private void CraftItem()
@@ -406,6 +405,9 @@ public class CraftControl : MonoBehaviour
         _inventoryControlReference.RemovePart(_chosenPart3, false);
         _chosenPart3 = null;
         _part3DataRef = null;
+
+        _inventoryControlReference.setupItemInventory();
+        _inventoryControlReference.setupPartInventory();
 
         clearItemCraftingUI();
         _recipeDropdown.value = 0;
