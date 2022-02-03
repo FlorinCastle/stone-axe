@@ -7920,10 +7920,6 @@ PrefabInstance:
       value: 1910
       objectReference: {fileID: 0}
     - target: {fileID: 8449529340530114287, guid: f63639e86282e8c4b966a496ed92f254, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 190
-      objectReference: {fileID: 0}
-    - target: {fileID: 8449529340530114287, guid: f63639e86282e8c4b966a496ed92f254, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
