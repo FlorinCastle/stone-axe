@@ -372,8 +372,11 @@ public class RecipeBook : MonoBehaviour
         foreach (ItemData itemRecipe in itemRecipes)
         {
             foreach (FilterData filter in itemRecipe.ValidFilters)
+            {
                 foreach (GameObject filterButton in filterButtons)
+                {
                     if (filter == filterButton.GetComponent<Filter>().FilterDataRef)
+                    {
                         if (filterButton.GetComponent<Filter>().FilterEnabled)
                         {
                             // instantiate the button prefab
@@ -381,31 +384,47 @@ public class RecipeBook : MonoBehaviour
                             tempButton.transform.SetParent(_contentRef.transform, false);
                             tempButton.GetComponent<RecipeButton>().setRecipeName(itemRecipe.ItemName);
                             // set up button text
-                            Text t = tempButton.GetComponentInChildren<Text>();
+                            TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
                             t.text = itemRecipe.ItemName + " Recipe";
                             tempButton.name = itemRecipe.ItemName + " Recipe";
+
+                            Debug.Log(itemRecipe.ItemName);
                             // add button to list
                             InsertButton(tempButton);
+
                         }
+                    }
+                }
+
+            }
             r++;
         }
         foreach (PartData partRecipe in partRecipes)
         {
             foreach (FilterData filter in partRecipe.ValidFilters)
+            {
                 foreach (GameObject filterButton in filterButtons)
+                {
                     if (filter == filterButton.GetComponent<Filter>().FilterDataRef)
+                    {
                         if (filterButton.GetComponent<Filter>().FilterEnabled)
                         {
                             tempButton = Instantiate(_partRecipeInfoPrefab);
                             tempButton.transform.SetParent(_contentRef.transform, false);
                             tempButton.GetComponent<RecipeButton>().setRecipeName(partRecipe.PartName);
 
-                            Text t = tempButton.GetComponentInChildren<Text>();
+                            TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
                             t.text = partRecipe.PartName + " Recipe";
                             tempButton.name = partRecipe.PartName + " Recipe";
                             // add button to list
                             InsertButton(tempButton);
+
+                            Debug.Log(partRecipe.PartName);
                         }
+                    }
+                }
+            }
+                
 
             r++;
         }

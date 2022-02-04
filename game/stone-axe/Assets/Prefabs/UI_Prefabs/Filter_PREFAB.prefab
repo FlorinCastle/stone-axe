@@ -320,7 +320,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 50}
+  m_SizeDelta: {x: 350, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &25356389209642620
 MonoBehaviour:
@@ -337,6 +337,7 @@ MonoBehaviour:
   _filterDataRef: {fileID: 0}
   _selectedCheck: {fileID: 2727329799079392587}
   _filterName: {fileID: 7058338469120308931}
+  _recipeBookRef: {fileID: 0}
 --- !u!1 &7055515743474777238
 GameObject:
   m_ObjectHideFlags: 0
