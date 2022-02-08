@@ -368,67 +368,49 @@ public class RecipeBook : MonoBehaviour
     public void setupFilteredGrid()
     {
         clearRecipeGrid();
-        int r = 0;
-        foreach (ItemData itemRecipe in itemRecipes)
+        //int r = 0;
+        foreach(ItemData itemRecipe in itemRecipes)
         {
-            foreach (FilterData filter in itemRecipe.ValidFilters)
+            //foreach(GameObject filterButton in filterButtons)
+                //if (filterButton.GetComponent<Filter>().FilterEnabled && itemRecipe.ValidFilters.Contains(filterButton.GetComponent<Filter>().FilterDataRef))
+            if (checkIfEnabledFiltersValid(itemRecipe) && enabledFilters.Count != 0)
             {
-                foreach (GameObject filterButton in filterButtons)
-                {
-                    if (filter == filterButton.GetComponent<Filter>().FilterDataRef)
-                    {
-                        if (filterButton.GetComponent<Filter>().FilterEnabled)
-                        {
-                            // instantiate the button prefab
-                            tempButton = Instantiate(_itemRecipeInfoPrefab);
-                            tempButton.transform.SetParent(_contentRef.transform, false);
-                            tempButton.GetComponent<RecipeButton>().setRecipeName(itemRecipe.ItemName);
-                            // set up button text
-                            TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
-                            t.text = itemRecipe.ItemName + " Recipe";
-                            tempButton.name = itemRecipe.ItemName + " Recipe";
+                // instantiate the button prefab
+                tempButton = Instantiate(_itemRecipeInfoPrefab);
+                tempButton.transform.SetParent(_contentRef.transform, false);
+                tempButton.GetComponent<RecipeButton>().setRecipeName(itemRecipe.ItemName);
+                // set up button text
+                TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
+                t.text = itemRecipe.ItemName + " Recipe";
+                tempButton.name = itemRecipe.ItemName + " Recipe";
 
-                            Debug.Log(itemRecipe.ItemName);
-                            // add button to list
-                            InsertButton(tempButton);
-
-                        }
-                    }
-                }
-
+                //Debug.Log(itemRecipe.ItemName);
+                // add button to list
+                InsertButton(tempButton);
+                //break;
             }
-            r++;
         }
-        foreach (PartData partRecipe in partRecipes)
+        foreach(PartData partRecipe in partRecipes)
         {
-            foreach (FilterData filter in partRecipe.ValidFilters)
+            //foreach(GameObject filterButton in filterButtons)
+                //if (filterButton.GetComponent<Filter>().FilterEnabled && partRecipe.ValidFilters.Contains(filterButton.GetComponent<Filter>().FilterDataRef))
+            if (checkIfEnabledFiltersValid(partRecipe) && enabledFilters.Count != 0)
             {
-                foreach (GameObject filterButton in filterButtons)
-                {
-                    if (filter == filterButton.GetComponent<Filter>().FilterDataRef)
-                    {
-                        if (filterButton.GetComponent<Filter>().FilterEnabled)
-                        {
-                            tempButton = Instantiate(_partRecipeInfoPrefab);
-                            tempButton.transform.SetParent(_contentRef.transform, false);
-                            tempButton.GetComponent<RecipeButton>().setRecipeName(partRecipe.PartName);
+                tempButton = Instantiate(_partRecipeInfoPrefab);
+                tempButton.transform.SetParent(_contentRef.transform, false);
+                tempButton.GetComponent<RecipeButton>().setRecipeName(partRecipe.PartName);
 
-                            TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
-                            t.text = partRecipe.PartName + " Recipe";
-                            tempButton.name = partRecipe.PartName + " Recipe";
-                            // add button to list
-                            InsertButton(tempButton);
+                TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
+                t.text = partRecipe.PartName + " Recipe";
+                tempButton.name = partRecipe.PartName + " Recipe";
 
-                            Debug.Log(partRecipe.PartName);
-                        }
-                    }
-                }
+                //Debug.Log(partRecipe.PartName);
+                // add button to list
+                InsertButton(tempButton);
+                //break;
             }
-                
-
-            r++;
         }
-        if (recipeButtons.Count == 0)
+        if (recipeButtons.Count == 0 && enabledFilters.Count == 0)
         {
             setupRecipeGrid();
         }
@@ -509,6 +491,7 @@ public class RecipeBook : MonoBehaviour
             filterPlaceholder.transform.SetParent(_filterParent.transform, false);
             filterPlaceholder.GetComponent<Filter>().FilterDataRef = filter;
             filterPlaceholder.GetComponent<Filter>().setupFilter();
+            filterPlaceholder.name = filter.FilterName + " filter";
             filterButtons.Add(filterPlaceholder);
         }
     }
@@ -516,5 +499,36 @@ public class RecipeBook : MonoBehaviour
     public void toggleFilterUI()
     {
         _filterUI.SetActive(!_filterUI.activeInHierarchy);
+    }
+
+    [SerializeField] private List<FilterData> enabledFilters;
+    public void addFilterToEnabled(FilterData filter)
+    {
+        if (enabledFilters.Contains(filter) == false)
+        {
+            enabledFilters.Add(filter);
+        }
+    }
+    public void removeFilterFromEnabled(FilterData filter)
+    {
+        if (enabledFilters.Contains(filter) == true)
+        {
+            enabledFilters.Remove(filter);
+        }
+
+    }
+    private bool checkIfEnabledFiltersValid(ItemData itemRecipe)
+    {
+        foreach(FilterData enabledFilter in enabledFilters)
+            if (itemRecipe.ValidFilters.Contains(enabledFilter) == false)
+                return false;
+        return true;
+    }
+    private bool checkIfEnabledFiltersValid(PartData partRecipe)
+    {
+        foreach (FilterData enabledFilter in enabledFilters)
+            if (partRecipe.ValidFilters.Contains(enabledFilter) == false)
+                return false;
+        return true;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class Filter : MonoBehaviour
 {
     [SerializeField] private FilterData _filterDataRef;
     [SerializeField] private Image _selectedCheck;
-    [SerializeField] private Text _filterName;
+    [SerializeField] private TextMeshProUGUI _filterName;
     [SerializeField] private RecipeBook _recipeBookRef;
 
     private void Awake()
@@ -20,6 +21,9 @@ public class Filter : MonoBehaviour
     {
         filterEnabled = !filterEnabled;
         _selectedCheck.enabled = filterEnabled;
+        if (filterEnabled == true) _recipeBookRef.addFilterToEnabled(_filterDataRef);
+        else if (filterEnabled == false) _recipeBookRef.removeFilterFromEnabled(_filterDataRef);
+
         _recipeBookRef.setupFilteredGrid();
     }
 
