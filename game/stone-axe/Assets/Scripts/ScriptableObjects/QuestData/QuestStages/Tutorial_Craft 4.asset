@@ -15,4 +15,4 @@ MonoBehaviour:
   _questStageType: 1
   _questEvent: 0
   _speaker: Tutorial
-  _dialogueLine: (click Select Recipe)
+  _dialogueLine: (go to recipes tab)

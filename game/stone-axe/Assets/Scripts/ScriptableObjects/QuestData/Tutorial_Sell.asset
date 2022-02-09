@@ -13,7 +13,19 @@ MonoBehaviour:
   m_Name: Tutorial_Sell
   m_EditorClassIdentifier: 
   _questName: Tutorial Sell
-  _questDiscription: How to Sell stuff
+  _questDiscription: 'How to Sell stuff
+
+    - go to economic tab
+
+    - then go
+    to sell
+
+    - go to inventory, then items
+
+    - select the item to sell (it
+    might already be selected)
+
+    - then click sell'
   _questType: 5
   _questStages:
   - {fileID: 11400000, guid: 6aaed135a154bd9469e6d826d3963654, type: 2}

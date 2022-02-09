@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,7 @@ public class QuestControl : MonoBehaviour
 
     [Header("UI")]
     [SerializeField]
-    private Text _questName;
+    private TextMeshProUGUI _questName;
     [SerializeField]
     private Text _questText;
     [SerializeField]
@@ -241,6 +242,7 @@ public class QuestControl : MonoBehaviour
     public void startStoryQuest(QuestData questInput)
     {
         _chosenQuest = questInput;
+        setupText();
         this.gameObject.GetComponent<DialogueControl>().CurrentQuest = questInput;
 
         if (questInput.QuestStages[_currStageIndex].StageType == "Dialogue")

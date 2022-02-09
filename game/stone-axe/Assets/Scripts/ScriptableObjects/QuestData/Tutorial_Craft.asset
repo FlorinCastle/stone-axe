@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Tutorial_Craft
   m_EditorClassIdentifier: 
   _questName: Tutorial Craft
-  _questDiscription: How to Craft stuff
+  _questDiscription: "How to Craft stuff\n- go to craft tab\n- go to recipes tab\n-
+    select the recipe to remake the disassembled item\n- go to inventory tab and
+    go to parts \n- select each of the parts\n- click craft"
   _questType: 5
   _questStages:
   - {fileID: 11400000, guid: cf4dd5b15445acc42b5282de6221b76f, type: 2}

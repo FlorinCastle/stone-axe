@@ -6,7 +6,7 @@ using UnityEngine;
 public class QuestData : ScriptableObject
 {
     public string _questName;
-    [Multiline(2)]
+    [Multiline(10)]
     public string _questDiscription;
     public enum questTypeEnum { Not_Set, OCC_Item, OCC_QuestItem, OD_Material, OCC_TotalCrafted, Tutorial, Story };
     public questTypeEnum _questType;

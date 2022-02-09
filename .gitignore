@@ -59,3 +59,4 @@ sysinfo.txt
 crashlytics-build.properties
 
 game/build.zip
+*.zip

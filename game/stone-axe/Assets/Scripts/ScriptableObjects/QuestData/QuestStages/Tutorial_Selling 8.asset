@@ -15,4 +15,4 @@ MonoBehaviour:
   _questStageType: 1
   _questEvent: 0
   _speaker: Tutorial
-  _dialogueLine: (select the item to sell)
+  _dialogueLine: (select the item to sell - it might already be selected)

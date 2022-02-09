@@ -13,7 +13,16 @@ MonoBehaviour:
   m_Name: Tutorial_Buying
   m_EditorClassIdentifier: 
   _questName: Tutorial Buying
-  _questDiscription: How to Buy stuff
+  _questDiscription: 'How to Buy stuff
+
+    - Go to Economic Tab
+
+    - Then go to
+    ''Buy''
+
+    - Click ''Generate Placeholder''
+
+    - Then click ''Buy'''
   _questType: 5
   _questStages:
   - {fileID: 11400000, guid: 89790e45c0d973f4d97e72b49a021173, type: 2}
@@ -34,4 +43,4 @@ MonoBehaviour:
   _requiredQuestItem: {fileID: 0}
   _requiredCount: 0
   _nextQuest: {fileID: 11400000, guid: 1f0c89b476d511e429ef8fa963c443ec, type: 2}
-  _storyQuestComplete: 0
+  _storyQuestComplete: 1

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca50eccd083873348a9e25e9b7b573a9, type: 3}
   m_Name: Tutorial_Disassemble 15
   m_EditorClassIdentifier: 
-  _questStageType: 5
+  _questStageType: 1
   _questEvent: 0
-  _speaker: 
-  _dialogueLine: 
+  _speaker: Faerie
+  _dialogueLine: And, tada! The item you bought is disassembled!

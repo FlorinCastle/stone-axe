@@ -13,7 +13,17 @@ MonoBehaviour:
   m_Name: Tutorial_Disassemble
   m_EditorClassIdentifier: 
   _questName: Tutorial Disassemble
-  _questDiscription: How to Disassemble stuff
+  _questDiscription: 'How to Disassemble stuff
+
+    - go to disassemble tab
+
+    -
+    go to inventory, then items
+
+    - select the item you just bought
+
+    - click
+    disassemble item'
   _questType: 5
   _questStages:
   - {fileID: 11400000, guid: c2ca8b40cad34aa46b3bebf9cdb2250d, type: 2}
@@ -23,7 +33,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7bf0058c1ca21e248a6d899b7f6efcd5, type: 2}
   - {fileID: 11400000, guid: d0f44c779ac15b3449d796d74ab3357f, type: 2}
   - {fileID: 11400000, guid: 8052b2faed40c704c850cf6168830b9e, type: 2}
-  - {fileID: 11400000, guid: ac94c85baa4fd7145a9e3a8192a67d75, type: 2}
   - {fileID: 11400000, guid: 356408c31475dc84981f74a8119ef09e, type: 2}
   - {fileID: 11400000, guid: aa59e95c7dbcd02439f7314d2b94d3e1, type: 2}
   - {fileID: 11400000, guid: 6b52c8619b82e3f4fad45dd276b06a62, type: 2}
