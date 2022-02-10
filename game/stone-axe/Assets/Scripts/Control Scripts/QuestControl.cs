@@ -19,6 +19,10 @@ public class QuestControl : MonoBehaviour
     [SerializeField] private QuestSheet _questSheet3;
 
     private QuestSheet _selectedSheet;
+    [SerializeField]
+    private GameObject _storyQuestPopupParent;
+    [SerializeField]
+    private GameObject _questStarterPrefab;
 
     [Header("UI")]
     [SerializeField]
@@ -53,6 +57,62 @@ public class QuestControl : MonoBehaviour
         if (_chosenQuest != null && shut)
             if (_chosenQuest.QuestType == "OD_Material")
                 updateQuestProgress(_chosenQuest.ReqiredMaterial);
+    }
+
+    private QuestData starterRef;
+    private GameObject p;
+    public void setupStoryQuests()
+    {
+        if (_chosenQuest == null)
+        {
+            foreach(QuestData tutQuest in _questRef.getTutorialQuests())
+            {
+                if (starterRef == null)
+                {
+                    if (tutQuest.StoryQuestComplete == false)
+                    {
+                        //Debug.Log("");
+                        starterRef = tutQuest;
+                        break;
+                    }
+                }
+                else
+                    break;
+            }
+            foreach(QuestData storyQuest in _questRef.getStoryQuests())
+            {
+                if (starterRef == null)
+                {
+                    if (storyQuest.StoryQuestComplete == false)
+                    {
+                        starterRef = storyQuest;
+                        break;
+                    }
+                }
+                else
+                    break;
+            }
+
+            p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
+            p.GetComponent<StoryQuestStarter>().QuestRef = starterRef;
+            p.GetComponent<StoryQuestStarter>().setupText();
+        }
+        else if (_chosenQuest.QuestType == "Tutorial" || _chosenQuest.QuestType == "Story")
+        {
+            Destroy(p);
+            p = null;
+            p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
+            p.GetComponent<StoryQuestStarter>().QuestRef = _chosenQuest;
+            p.GetComponent<StoryQuestStarter>().setupText();
+        }
+    }
+
+    public void resetAllQuests()
+    {
+        foreach (QuestData tutQuest in _questRef.getTutorialQuests())
+            tutQuest.StoryQuestComplete = false;
+        foreach (QuestData storyQuest in _questRef.getStoryQuests())
+            storyQuest.StoryQuestComplete = false;
     }
 
     public SaveQuestsObject saveQuests()
@@ -99,6 +159,8 @@ public class QuestControl : MonoBehaviour
                     if (storyQuest.QuestName == quest.questName)
                         storyQuest.StoryQuestComplete = true;
         }
+
+        setupStoryQuests();
     }
 
     public void forceSetQuest(QuestData quest)
@@ -108,7 +170,7 @@ public class QuestControl : MonoBehaviour
         if (quest.QuestType == "Tutorial" || quest.QuestType == "Story")
         {
             _currStageIndex = 0;
-            startStoryQuest(quest);
+            //startStoryQuest(quest);
         }
     }
     public void chooseQuestSheet(QuestSheet input)
@@ -316,6 +378,7 @@ public class QuestControl : MonoBehaviour
             if (quest.NextQuest != null && isComplete == true)
             {
                 forceSetQuest(quest.NextQuest);
+                setupStoryQuests();
             }
         }
     }

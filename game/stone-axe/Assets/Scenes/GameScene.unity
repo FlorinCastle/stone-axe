@@ -3476,6 +3476,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2920222056336807121, guid: 141109d87efa52e48a7e129a24b4fb7c, type: 3}
   m_PrefabInstance: {fileID: 2920222055057926274}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1307283905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8979059899023145511, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+  m_PrefabInstance: {fileID: 7485012191131071712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1310622674 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 991860231, guid: 7b4e9f7e9493f4e48bb88162b9b7bef1, type: 3}
@@ -4842,6 +4847,8 @@ MonoBehaviour:
   _questSheet1: {fileID: 923706211}
   _questSheet2: {fileID: 1156415821}
   _questSheet3: {fileID: 2079588263}
+  _storyQuestPopupParent: {fileID: 1307283905}
+  _questStarterPrefab: {fileID: 2496011540154331948, guid: 2d1126155ae6a4246996237dfa3beb63, type: 3}
   _questName: {fileID: 656829204}
   _questText: {fileID: 178493471}
   _newQuestButton: {fileID: 589853683}
@@ -5000,11 +5007,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _questDataList:
   - {fileID: 11400000, guid: b513f70bebd368e42865c6a21fad0df2, type: 2}
-  - {fileID: 11400000, guid: 16242dde5e7c8dc48ba0ef782e9c7174, type: 2}
-  - {fileID: 11400000, guid: eb0c1a0207564e24b997af98e0ac5496, type: 2}
-  - {fileID: 11400000, guid: 1f0c89b476d511e429ef8fa963c443ec, type: 2}
-  - {fileID: 11400000, guid: 2240dccd919c2304dacfd315d1845e62, type: 2}
   - {fileID: 11400000, guid: 29b15c4c3e08a9641a2275deb3ef5764, type: 2}
+  - {fileID: 11400000, guid: 16242dde5e7c8dc48ba0ef782e9c7174, type: 2}
+  - {fileID: 11400000, guid: 1f0c89b476d511e429ef8fa963c443ec, type: 2}
+  - {fileID: 11400000, guid: eb0c1a0207564e24b997af98e0ac5496, type: 2}
+  - {fileID: 11400000, guid: 2240dccd919c2304dacfd315d1845e62, type: 2}
   - {fileID: 11400000, guid: 1ed3daa3503ec394590cab46f07d9c64, type: 2}
   - {fileID: 11400000, guid: d9324e77a67796f4a96063873d355bff, type: 2}
   - {fileID: 11400000, guid: 97835c6312c7ee8429ccf6e228e37b7b, type: 2}
@@ -7447,6 +7454,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 1734993353}
+    - target: {fileID: 2669941305443254377, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 1734993360}
     - target: {fileID: 2669941305443254377, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgument
       value: 

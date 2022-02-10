@@ -43,4 +43,4 @@ MonoBehaviour:
   _requiredQuestItem: {fileID: 0}
   _requiredCount: 0
   _nextQuest: {fileID: 11400000, guid: 1f0c89b476d511e429ef8fa963c443ec, type: 2}
-  _storyQuestComplete: 1
+  _storyQuestComplete: 0

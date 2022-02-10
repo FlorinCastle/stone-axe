@@ -51,7 +51,7 @@ public class DialogueControl : MonoBehaviour
         else
         {
             Debug.LogWarning("No more stages! " + _currentStoryQuest.QuestName);
-            if (_currentStoryQuest.NextQuest == null)
+            //if (_currentStoryQuest.NextQuest == null)
                 _dialogueUI.SetActive(false);
             this.gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuest, true);
         }
