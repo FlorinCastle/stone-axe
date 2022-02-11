@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Crest
   m_EditorClassIdentifier: 
   _partName: Crest
-  _material: {fileID: 11400000, guid: bab2bdbbc182b62418f2378a9c99c460, type: 2}
+  _partLevelReq: 4
+  _material: {fileID: 11400000, guid: 3daa26c81517ad7469d747e94fe5e2f4, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
   - {fileID: 11400000, guid: 3daa26c81517ad7469d747e94fe5e2f4, type: 2}

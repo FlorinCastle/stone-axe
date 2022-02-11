@@ -170,14 +170,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: 76bd0065f11d4bf4b910a384a801a781, type: 2}
   _materialName: Ruby
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 3
+  _subMatType: 0
+  _levelRequirement: 18
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _baseCostPerUnit: 21
+  _addedStrength: 3
+  _addedDextarity: 10
+  _addedIntelligence: 12
 --- !u!4 &45332345
 Transform:
   m_ObjectHideFlags: 0
@@ -445,14 +445,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
   _materialName: Iron
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 0
+  _subMatType: 0
+  _levelRequirement: 0
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _baseCostPerUnit: 3
+  _addedStrength: 5
+  _addedDextarity: 0
+  _addedIntelligence: 2
 --- !u!4 &278551873
 Transform:
   m_ObjectHideFlags: 0
@@ -710,13 +710,13 @@ MonoBehaviour:
   _matDataRef: {fileID: 11400000, guid: bab2bdbbc182b62418f2378a9c99c460, type: 2}
   _materialName: Wolf Leather
   _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _subMatType: 3
+  _levelRequirement: 5
   _quantity: 500
-  _baseCostPerUnit: 7
+  _baseCostPerUnit: 8
   _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _addedDextarity: 6
+  _addedIntelligence: 2
 --- !u!4 &390707512
 Transform:
   m_ObjectHideFlags: 0
@@ -824,11 +824,11 @@ MonoBehaviour:
   _materialName: Cotton
   _materialType: 2
   _subMatType: 2
-  _levelRequirement: 4
+  _levelRequirement: 9
   _quantity: 500
-  _baseCostPerUnit: 7
+  _baseCostPerUnit: 12
   _addedStrength: 4
-  _addedDextarity: 2
+  _addedDextarity: 7
   _addedIntelligence: 5
 --- !u!4 &430117867
 Transform:
@@ -1043,14 +1043,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: cf84968d70a35c74c9218b4b8c41277e, type: 2}
   _materialName: Copper
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 0
+  _subMatType: 0
+  _levelRequirement: 0
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _baseCostPerUnit: 3
+  _addedStrength: 3
+  _addedDextarity: 3
+  _addedIntelligence: 1
 --- !u!4 &522287033
 Transform:
   m_ObjectHideFlags: 0
@@ -1386,14 +1386,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: 43c581baf585f0243ada9274c3bbcfc1, type: 2}
   _materialName: Dark Wood
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 1
+  _subMatType: 0
+  _levelRequirement: 22
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _baseCostPerUnit: 25
+  _addedStrength: 8
+  _addedDextarity: 10
+  _addedIntelligence: 11
 --- !u!4 &626174166
 Transform:
   m_ObjectHideFlags: 0
@@ -1444,14 +1444,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: 3206576d24b36594e9db6032fd6fdfb1, type: 2}
   _materialName: Bronze
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 0
+  _subMatType: 0
+  _levelRequirement: 2
   _quantity: 500
-  _baseCostPerUnit: 7
+  _baseCostPerUnit: 5
   _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _addedDextarity: 3
+  _addedIntelligence: 2
 --- !u!4 &632123608
 Transform:
   m_ObjectHideFlags: 0
@@ -1779,14 +1779,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: f9ff7a3994c4ed340b791d693187aa9d, type: 2}
   _materialName: Emerald
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 3
+  _subMatType: 0
+  _levelRequirement: 0
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
+  _baseCostPerUnit: 3
+  _addedStrength: 1
   _addedDextarity: 2
-  _addedIntelligence: 5
+  _addedIntelligence: 4
 --- !u!4 &736261974
 Transform:
   m_ObjectHideFlags: 0
@@ -1903,14 +1903,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
   _materialName: Steel
-  _materialType: 2
-  _subMatType: 2
+  _materialType: 0
+  _subMatType: 0
   _levelRequirement: 4
   _quantity: 500
   _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _addedStrength: 7
+  _addedDextarity: 1
+  _addedIntelligence: 3
 --- !u!4 &785228226
 Transform:
   m_ObjectHideFlags: 0
@@ -1972,14 +1972,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: 440de40f604fd0743a0a66493279ad73, type: 2}
   _materialName: Spruce Wood
-  _materialType: 2
-  _subMatType: 2
+  _materialType: 1
+  _subMatType: 0
   _levelRequirement: 4
   _quantity: 500
   _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _addedStrength: 3
+  _addedDextarity: 4
+  _addedIntelligence: 4
 --- !u!4 &827355729
 Transform:
   m_ObjectHideFlags: 0
@@ -2027,12 +2027,12 @@ MonoBehaviour:
   _materialName: Linen
   _materialType: 2
   _subMatType: 2
-  _levelRequirement: 4
+  _levelRequirement: 0
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
+  _baseCostPerUnit: 3
+  _addedStrength: 1
   _addedDextarity: 2
-  _addedIntelligence: 5
+  _addedIntelligence: 4
 --- !u!4 &838816080
 Transform:
   m_ObjectHideFlags: 0
@@ -2083,14 +2083,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
   _materialName: Oak Wood
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 1
+  _subMatType: 0
+  _levelRequirement: 0
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
+  _baseCostPerUnit: 3
+  _addedStrength: 1
   _addedDextarity: 2
-  _addedIntelligence: 5
+  _addedIntelligence: 4
 --- !u!4 &865996845
 Transform:
   m_ObjectHideFlags: 0
@@ -2190,13 +2190,13 @@ MonoBehaviour:
   _matDataRef: {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
   _materialName: Boar Leather
   _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _subMatType: 3
+  _levelRequirement: 0
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _baseCostPerUnit: 3
+  _addedStrength: 1
+  _addedDextarity: 4
+  _addedIntelligence: 2
 --- !u!4 &894461087
 Transform:
   m_ObjectHideFlags: 0
@@ -2612,14 +2612,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: bc64ff08a64fd02419b35d00f9263aad, type: 2}
   _materialName: Sapphire
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 3
+  _subMatType: 0
+  _levelRequirement: 10
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _baseCostPerUnit: 13
+  _addedStrength: 1
+  _addedDextarity: 6
+  _addedIntelligence: 10
 --- !u!4 &921780376
 Transform:
   m_ObjectHideFlags: 0
@@ -3243,14 +3243,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: c1142bc72c55dd94fb96dfd69001e16b, type: 2}
   _materialName: Mythril
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 0
+  _subMatType: 1
+  _levelRequirement: 12
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _baseCostPerUnit: 15
+  _addedStrength: 7
+  _addedDextarity: 5
+  _addedIntelligence: 7
 --- !u!4 &1206177733
 Transform:
   m_ObjectHideFlags: 0
@@ -3566,14 +3566,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: 56c2efc7d77a43a49bccc0f0ab800c69, type: 2}
   _materialName: Rose Wood
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 1
+  _subMatType: 0
+  _levelRequirement: 13
   _quantity: 500
-  _baseCostPerUnit: 7
+  _baseCostPerUnit: 16
   _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _addedDextarity: 8
+  _addedIntelligence: 8
 --- !u!4 &1345701833
 Transform:
   m_ObjectHideFlags: 0
@@ -3620,13 +3620,13 @@ MonoBehaviour:
   _matDataRef: {fileID: 11400000, guid: 3daa26c81517ad7469d747e94fe5e2f4, type: 2}
   _materialName: Dragon Leather
   _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _subMatType: 3
+  _levelRequirement: 23
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _baseCostPerUnit: 28
+  _addedStrength: 10
+  _addedDextarity: 12
+  _addedIntelligence: 8
 --- !u!4 &1347242010
 Transform:
   m_ObjectHideFlags: 0
@@ -4307,14 +4307,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: 9a249b9e603da774cb4202555c78ceff, type: 2}
   _materialName: Birch Wood
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 1
+  _subMatType: 0
+  _levelRequirement: 0
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _baseCostPerUnit: 3
+  _addedStrength: 1
+  _addedDextarity: 4
+  _addedIntelligence: 2
 --- !u!4 &1604204365
 Transform:
   m_ObjectHideFlags: 0
@@ -4372,13 +4372,13 @@ MonoBehaviour:
   _matDataRef: {fileID: 11400000, guid: d905eb4a07023d74ea23a7f665c720dd, type: 2}
   _materialName: Magic Beast Leather
   _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _subMatType: 3
+  _levelRequirement: 16
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _baseCostPerUnit: 19
+  _addedStrength: 7
+  _addedDextarity: 10
+  _addedIntelligence: 6
 --- !u!4 &1623394689
 Transform:
   m_ObjectHideFlags: 0
@@ -4612,8 +4612,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerName: test
   _shopName: test
+  _playerSpecies: 
+  _playerColor: -1
   _currentCurrency: 100000
-  _totalExperience: 1000
+  _totalExperience: 0
   _level: 0
   _currentSkillPoints: 0
   _shopLevel: {fileID: 696845878}
@@ -4678,7 +4680,14 @@ MonoBehaviour:
   _newGameMenu: {fileID: 5986173108268856757}
   _playerName: {fileID: 1956532292}
   _shopName: {fileID: 1760857662}
-  _startNewGameButton: {fileID: 1869840807}
+  _startNewGameButton: {fileID: 2054372394}
+  playerSpecies: 
+  playerColor: -1
+  _playerSpeciesDropdown: {fileID: 5986173108268856759}
+  _colorMenu: {fileID: 1947852053}
+  _colorMenuParent: {fileID: 2107648990}
+  _colorSamplePrefab: {fileID: 5551671162801225145, guid: 709d40b66eb23454f8e2f7b3c3734be5, type: 3}
+  colorButtonRefs: []
 --- !u!114 &1734993354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4695,13 +4704,14 @@ MonoBehaviour:
   enchantScript: {fileID: 449962360}
   _inventoryRef: {fileID: 1181822452}
   _inventoryControl: {fileID: 1181822451}
-  _gameMaster: {fileID: 0}
+  _gameMaster: {fileID: 1734993350}
   _buyPriceSkill: {fileID: 672557554}
   _haggleSkill: {fileID: 1013641663}
   itemText: {fileID: 2058711590}
   buyButton: {fileID: 1691505869}
   haggleButton: {fileID: 1784629680}
   generateButton: {fileID: 737813096}
+  _gameMasterRef: {fileID: 1734993351}
   _generatedItem: {fileID: 0}
   _generatedEnchant: {fileID: 0}
 --- !u!114 &1734993355
@@ -4903,11 +4913,17 @@ MonoBehaviour:
   - {fileID: 895723969961948674, guid: ba1a61c6ce004ed45b1348f906e20d6d, type: 3}
   - {fileID: 895723969961948674, guid: 4318ce667c647634abd32178aeb36f84, type: 3}
   - {fileID: 895723969961948674, guid: d12c54f560d0e444598d4deabd71147a, type: 3}
+  _playerSpecies:
+  - {fileID: 11400000, guid: faac5658c44210b4f8c25b795233b062, type: 2}
+  - {fileID: 11400000, guid: fc491033180c96f4c8b4c00b7b728e08, type: 2}
+  - {fileID: 11400000, guid: 5068122a98071c14d9744def6012cdc7, type: 2}
   _counterPoint: {fileID: 255712865}
   _craftPoint: {fileID: 1050278251}
   _disassemblePoint: {fileID: 613819774}
   _stallPoint: {fileID: 203683713}
   _questBoardPoint: {fileID: 1352527055}
+  playerColor: -1
+  playerSpecies: 
 --- !u!114 &1734993363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5243,14 +5259,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: 06b9aebefd67bea4fad7a9ec99861549, type: 2}
   _materialName: Diamond
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 3
+  _subMatType: 0
+  _levelRequirement: 25
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _baseCostPerUnit: 28
+  _addedStrength: 5
+  _addedDextarity: 12
+  _addedIntelligence: 15
 --- !u!4 &1770642850
 Transform:
   m_ObjectHideFlags: 0
@@ -5376,17 +5392,6 @@ GameObject:
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2107381938502917871, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
   m_PrefabInstance: {fileID: 7485012191131071712}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1869840807 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2669941305443254377, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
-  m_PrefabInstance: {fileID: 5986173108268856756}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -5525,6 +5530,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6acc76b30f70444f878171e1829da9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1947852053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7190381597281020173, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+  m_PrefabInstance: {fileID: 5986173108268856756}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1949616016
 GameObject:
   m_ObjectHideFlags: 0
@@ -5622,12 +5632,12 @@ MonoBehaviour:
   _materialName: Silk
   _materialType: 2
   _subMatType: 2
-  _levelRequirement: 4
+  _levelRequirement: 15
   _quantity: 500
-  _baseCostPerUnit: 7
+  _baseCostPerUnit: 18
   _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _addedDextarity: 8
+  _addedIntelligence: 10
 --- !u!4 &1981408627
 Transform:
   m_ObjectHideFlags: 0
@@ -5689,14 +5699,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _matDataRef: {fileID: 11400000, guid: e1b6489bf01c8894e91101a6e9bf9f02, type: 2}
   _materialName: Silver
-  _materialType: 2
-  _subMatType: 2
-  _levelRequirement: 4
+  _materialType: 0
+  _subMatType: 1
+  _levelRequirement: 8
   _quantity: 500
-  _baseCostPerUnit: 7
-  _addedStrength: 4
-  _addedDextarity: 2
-  _addedIntelligence: 5
+  _baseCostPerUnit: 10
+  _addedStrength: 2
+  _addedDextarity: 6
+  _addedIntelligence: 7
 --- !u!4 &2028957405
 Transform:
   m_ObjectHideFlags: 0
@@ -5720,6 +5730,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2054372394 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7738296511988906245, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+  m_PrefabInstance: {fileID: 5986173108268856756}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2057420426 stripped
@@ -5775,6 +5796,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6881805138879236072, guid: 141109d87efa52e48a7e129a24b4fb7c, type: 3}
   m_PrefabInstance: {fileID: 2920222055057926274}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2107648990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3141956009682111663, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+  m_PrefabInstance: {fileID: 5986173108268856756}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2120494065 stripped
 MonoBehaviour:
@@ -7337,7 +7363,7 @@ PrefabInstance:
     - target: {fileID: 429254003245248604, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1734993351}
+      objectReference: {fileID: 1734993353}
     - target: {fileID: 429254003245248604, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
@@ -7434,6 +7460,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 908857082}
+    - target: {fileID: 2167358934178257028, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306779199791098171, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_text
+      value: Select Species
+      objectReference: {fileID: 0}
     - target: {fileID: 2669941305443254377, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -7558,6 +7592,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 908857082}
+    - target: {fileID: 3883429936874352534, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1734993353}
+    - target: {fileID: 3883429936874352534, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1734993353}
     - target: {fileID: 3908704672236528131, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
       propertyPath: m_SizeDelta.x
       value: -500
@@ -7622,6 +7664,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4957595073117428413, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 17.414978
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989643162680044316, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5600232035446919935, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -7634,6 +7684,14 @@ PrefabInstance:
       propertyPath: _deleteGameButton
       value: 
       objectReference: {fileID: 1319147915}
+    - target: {fileID: 5614084499517710606, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1734993353}
+    - target: {fileID: 5614084499517710606, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 908857082}
     - target: {fileID: 5616632575691192845, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -7702,6 +7760,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6254980420098605017, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 8.539124
+      objectReference: {fileID: 0}
     - target: {fileID: 6675308510053424231, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
       propertyPath: _loadGameButton
       value: 
@@ -7738,6 +7800,38 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1734993366}
+    - target: {fileID: 7738296511988906245, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1734993353}
+    - target: {fileID: 7738296511988906245, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 908857082}
+    - target: {fileID: 7738296511988906245, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1734993351}
+    - target: {fileID: 7738296511988906245, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1734993353}
+    - target: {fileID: 7738296511988906245, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 1734993353}
+    - target: {fileID: 7738296511988906245, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 1734993360}
+    - target: {fileID: 7738296511988906245, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 736132774}
+    - target: {fileID: 7738296511988906245, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 369422302}
     - target: {fileID: 8035139953897408210, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -7818,6 +7912,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6677607640269489756, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
   m_PrefabInstance: {fileID: 5986173108268856756}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5986173108268856759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3883429936874352534, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+  m_PrefabInstance: {fileID: 5986173108268856756}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6051002520397472582
 PrefabInstance:
   m_ObjectHideFlags: 0

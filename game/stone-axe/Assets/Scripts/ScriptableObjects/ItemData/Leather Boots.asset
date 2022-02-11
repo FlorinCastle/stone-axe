@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Leather Boots
   m_EditorClassIdentifier: 
   _itemName: Leather Boots
-  _levelRequirement: 0
+  _levelRequirement: 6
   _part1: {fileID: 11400000, guid: 215355c14ba8d7f4898c9bbbad3aa36c, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 215355c14ba8d7f4898c9bbbad3aa36c, type: 2}

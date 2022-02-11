@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   _itemName: Axe
-  _levelRequirement: 0
+  _levelRequirement: 2
   _part1: {fileID: 11400000, guid: 300b4734fd9a8484cbf9034e96ce4099, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 300b4734fd9a8484cbf9034e96ce4099, type: 2}

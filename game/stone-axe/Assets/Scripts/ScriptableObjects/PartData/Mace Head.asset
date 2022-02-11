@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Mace Head
   m_EditorClassIdentifier: 
   _partName: Mace Head
+  _partLevelReq: 6
   _material: {fileID: 11400000, guid: d723de8e21a61ed4fbf8330932dd62f3, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: d723de8e21a61ed4fbf8330932dd62f3, type: 2}

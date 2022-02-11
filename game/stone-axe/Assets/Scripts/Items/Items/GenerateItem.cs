@@ -20,13 +20,15 @@ public class GenerateItem : MonoBehaviour
     private TextMeshProUGUI buyButtonText;
     private TextMeshProUGUI haggleButtonText;
 
+    [SerializeField] private GameMaster _gameMasterRef;
+
     private bool haggleSucceded = false;
 
     //[SerializeField] InventoryScriptableObject inventoryStorage;
 
     private void Awake()
     {
-        _gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
+        //_gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
         buyButtonText = buyButton.GetComponentInChildren<TextMeshProUGUI>();
         haggleButtonText = haggleButton.GetComponentInChildren<TextMeshProUGUI>();
         haggleButtonText.text = "haggle\n(success chance: n/a)";
@@ -35,9 +37,21 @@ public class GenerateItem : MonoBehaviour
 
     [SerializeField] private ItemData _generatedItem;
     [SerializeField] private EnchantData _generatedEnchant;
+    // setup for level restrictions yet
     public void GenerateRandomItem()
     {
+        //Debug.LogWarning("Implement level locking here!");
         _generatedItem = itemScript.chooseItem();
+        do
+        {
+            _generatedItem = itemScript.chooseItem();
+        } while (_generatedItem.ItemLevel > _gameMasterRef.GetLevel);
+        /*
+        if (_generatedItem.ItemLevel > _gameMasterRef.GetLevel)
+        {
+            Debug.LogWarning("level is too high!");
+        }
+        */
         //Debug.Log("generated item: " + _generatedItem.ItemName);
         int ranEnchChance = Random.Range(0, 1000);
         if (ranEnchChance >= 100)

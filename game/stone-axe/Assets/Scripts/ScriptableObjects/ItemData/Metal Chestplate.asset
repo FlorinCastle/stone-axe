@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Metal Chestplate
   m_EditorClassIdentifier: 
   _itemName: Metal Chestplate
-  _levelRequirement: 0
+  _levelRequirement: 8
   _part1: {fileID: 11400000, guid: f70d2bad399cf524a96f80c3af711fc4, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: f70d2bad399cf524a96f80c3af711fc4, type: 2}

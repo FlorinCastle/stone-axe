@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Axe Handle
   m_EditorClassIdentifier: 
   _partName: Axe Handle
-  _material: {fileID: 11400000, guid: 9a249b9e603da774cb4202555c78ceff, type: 2}
+  _partLevelReq: 2
+  _material: {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}
   - {fileID: 11400000, guid: 7ba3f56a6cf24c6498a633f016021027, type: 2}

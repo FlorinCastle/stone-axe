@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bowstring
   m_EditorClassIdentifier: 
   _partName: Bowstring
+  _partLevelReq: 5
   _material: {fileID: 0}
   _validMaterials:
   - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}

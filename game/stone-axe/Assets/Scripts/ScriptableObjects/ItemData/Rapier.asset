@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rapier
   m_EditorClassIdentifier: 
   _itemName: Rapier
-  _levelRequirement: 0
+  _levelRequirement: 14
   _part1: {fileID: 11400000, guid: 72e487bb1e4195d44a79d0e2469de4fc, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 72e487bb1e4195d44a79d0e2469de4fc, type: 2}

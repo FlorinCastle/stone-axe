@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mace
   m_EditorClassIdentifier: 
   _itemName: Mace
-  _levelRequirement: 0
+  _levelRequirement: 6
   _part1: {fileID: 11400000, guid: 73e59a353565ffa459c35863677b8235, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 73e59a353565ffa459c35863677b8235, type: 2}

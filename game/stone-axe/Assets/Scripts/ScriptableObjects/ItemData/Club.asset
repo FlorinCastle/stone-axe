@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Club
   m_EditorClassIdentifier: 
   _itemName: Club
-  _levelRequirement: 0
+  _levelRequirement: 6
   _part1: {fileID: 11400000, guid: 403fd0f130fe77345b6dde9bbc6d02b4, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 403fd0f130fe77345b6dde9bbc6d02b4, type: 2}

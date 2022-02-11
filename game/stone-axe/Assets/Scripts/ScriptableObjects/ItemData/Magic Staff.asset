@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Magic Staff
   m_EditorClassIdentifier: 
   _itemName: Magic Staff
-  _levelRequirement: 0
+  _levelRequirement: 5
   _part1: {fileID: 11400000, guid: c1bd77792eb18c346b125fdd86575f6c, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: c1bd77792eb18c346b125fdd86575f6c, type: 2}

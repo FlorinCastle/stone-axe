@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Spear Head
   m_EditorClassIdentifier: 
   _partName: Spear Head
-  _material: {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
+  _partLevelReq: 11
+  _material: {fileID: 11400000, guid: cf84968d70a35c74c9218b4b8c41277e, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: d723de8e21a61ed4fbf8330932dd62f3, type: 2}
   - {fileID: 11400000, guid: 3206576d24b36594e9db6032fd6fdfb1, type: 2}

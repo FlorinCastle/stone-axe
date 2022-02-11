@@ -99,12 +99,23 @@ public class QuestControl : MonoBehaviour
         }
         else if (_chosenQuest.QuestType == "Tutorial" || _chosenQuest.QuestType == "Story")
         {
-            Destroy(p);
-            p = null;
+            //Destroy(p);
+            //p = null;
             p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
             p.GetComponent<StoryQuestStarter>().QuestRef = _chosenQuest;
             p.GetComponent<StoryQuestStarter>().setupText();
         }
+    }
+
+    public void removeStarter()
+    {
+        if (p != null)
+        {
+            Destroy(p);
+            p = null;
+        }
+        else if (p == null)
+            Debug.LogWarning("QuestControl - Quest Starter Game Object (variable p) is null!");
     }
 
     public void resetAllQuests()

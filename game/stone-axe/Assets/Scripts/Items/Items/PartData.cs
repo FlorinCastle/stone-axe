@@ -7,6 +7,8 @@ public class PartData : ScriptableObject
     [SerializeField]
     private string _partName;
     [SerializeField]
+    private int _partLevelReq;
+    [SerializeField]
     private MaterialData _material;
     [SerializeField]
     private List<MaterialData> _validMaterials;
@@ -31,19 +33,9 @@ public class PartData : ScriptableObject
 
     private int ranIndex;
 
-    public string PartName
-    {
-        get
-        {
-            return _partName;
-        }
-    }
-    
-    public MaterialData Material
-    {
-        get => _material;
-        set => _material = value;
-    }
+    public string PartName { get => _partName; }
+    public int PartLevelReq { get => _partLevelReq; }
+    public MaterialData Material { get => _material; set => _material = value; }
 
     public string RandomMaterial
     {
@@ -74,11 +66,8 @@ public class PartData : ScriptableObject
     public int BaseCost { get { return _baseCost; } }
 
     public int PartStrenght { get { return _baseStrenght + _material.AddedStrength; } }
-
     public int BaseStrenght { get { return _baseStrenght; } }
-
     public int PartDextarity { get { return _baseDextarity + _material.AddedDextarity; } }
-
     public int BaseDextarity { get { return _baseDextarity; } }
     public int PartIntelligence { get { return _baseIntelligence + _material.AddedIntelligence; } } 
     public int BaseIntelligence { get { return _baseIntelligence; } }

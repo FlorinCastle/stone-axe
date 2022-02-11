@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Metal Boots
   m_EditorClassIdentifier: 
   _itemName: Metal Boots
-  _levelRequirement: 0
+  _levelRequirement: 9
   _part1: {fileID: 11400000, guid: ae18cc95557949a4b9b7418752302dda, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: ae18cc95557949a4b9b7418752302dda, type: 2}

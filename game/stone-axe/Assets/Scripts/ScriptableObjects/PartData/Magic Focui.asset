@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Magic Focui
   m_EditorClassIdentifier: 
   _partName: Magic Focui
+  _partLevelReq: 16
   _material: {fileID: 11400000, guid: c1142bc72c55dd94fb96dfd69001e16b, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: d723de8e21a61ed4fbf8330932dd62f3, type: 2}

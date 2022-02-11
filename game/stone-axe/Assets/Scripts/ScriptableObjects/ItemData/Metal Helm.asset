@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Metal Helm
   m_EditorClassIdentifier: 
   _itemName: Metal Helm
-  _levelRequirement: 0
+  _levelRequirement: 7
   _part1: {fileID: 11400000, guid: 72cbac9fec11bce4180859c1057550fd, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 72cbac9fec11bce4180859c1057550fd, type: 2}

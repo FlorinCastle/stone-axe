@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Magic Hat
   m_EditorClassIdentifier: 
   _itemName: Magic Hat
-  _levelRequirement: 0
+  _levelRequirement: 5
   _part1: {fileID: 11400000, guid: 4610915c03b054a49a878f1adccee3c5, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 4610915c03b054a49a878f1adccee3c5, type: 2}

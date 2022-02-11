@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Mace Handle
   m_EditorClassIdentifier: 
   _partName: Mace Handle
+  _partLevelReq: 6
   _material: {fileID: 11400000, guid: e1b6489bf01c8894e91101a6e9bf9f02, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: d723de8e21a61ed4fbf8330932dd62f3, type: 2}

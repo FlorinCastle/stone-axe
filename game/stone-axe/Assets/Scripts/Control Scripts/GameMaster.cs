@@ -8,6 +8,8 @@ public class GameMaster : MonoBehaviour
 {
     [SerializeField] private string _playerName = "test";
     [SerializeField] private string _shopName = "test";
+    [SerializeField, HideInInspector] private string _playerSpecies = "";
+    [SerializeField, HideInInspector] private int _playerColor = -1;
     [SerializeField] private int _currentCurrency;
     [SerializeField] private int _totalExperience;
     [SerializeField] private int _level;
@@ -84,6 +86,9 @@ public class GameMaster : MonoBehaviour
 
     public string PlayerName { get => _playerName; set => _playerName = value; }
     public string ShopName { get => _shopName; set => _shopName = value; }
+    public string PlayerSpecies { get => _playerSpecies; set => _playerSpecies = value; }
+    public int PlayerColor { get => _playerColor; set => _playerColor = value; }
+
     public void setTotalExperience(int value) { _totalExperience = value; }
     public int GetTotalExperience { get => _totalExperience; } 
     public void setLevel(int value) { _level = value; }
@@ -151,6 +156,8 @@ public class GameMaster : MonoBehaviour
         {
             playerName = _playerName,
             shopName = _shopName,
+            playerSpecies = _playerSpecies,
+            //playerColor = _playerColor,
             currentCurency = _currentCurrency,
             currentExp = _totalExperience,
             level = _level,
@@ -337,6 +344,8 @@ public class GameMaster : MonoBehaviour
     {
         public string playerName;
         public string shopName;
+        public string playerSpecies;
+        //public int playerColor;
         public int currentCurency;
         public int currentExp;
         public int level;

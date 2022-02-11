@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Boot Body
   m_EditorClassIdentifier: 
   _partName: Boot Body
+  _partLevelReq: 6
   _material: {fileID: 11400000, guid: 3daa26c81517ad7469d747e94fe5e2f4, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}

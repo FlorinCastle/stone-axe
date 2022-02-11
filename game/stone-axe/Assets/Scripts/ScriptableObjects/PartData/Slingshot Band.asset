@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Slingshot Band
   m_EditorClassIdentifier: 
   _partName: Slingshot Band
+  _partLevelReq: 2
   _material: {fileID: 0}
   _validMaterials:
   - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}

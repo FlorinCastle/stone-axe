@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Spear
   m_EditorClassIdentifier: 
   _itemName: Spear
-  _levelRequirement: 0
+  _levelRequirement: 11
   _part1: {fileID: 11400000, guid: e62467babd0438644855f3dc79591821, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: e62467babd0438644855f3dc79591821, type: 2}

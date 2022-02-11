@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Ring Gem
   m_EditorClassIdentifier: 
   _partName: Ring Gem
-  _material: {fileID: 11400000, guid: f9ff7a3994c4ed340b791d693187aa9d, type: 2}
+  _partLevelReq: 7
+  _material: {fileID: 11400000, guid: 76bd0065f11d4bf4b910a384a801a781, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: 06b9aebefd67bea4fad7a9ec99861549, type: 2}
   - {fileID: 11400000, guid: f9ff7a3994c4ed340b791d693187aa9d, type: 2}

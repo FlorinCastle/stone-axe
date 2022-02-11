@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Great Sword Handle
   m_EditorClassIdentifier: 
   _partName: Great Sword Handle
-  _material: {fileID: 11400000, guid: 440de40f604fd0743a0a66493279ad73, type: 2}
+  _partLevelReq: 10
+  _material: {fileID: 11400000, guid: 7ba3f56a6cf24c6498a633f016021027, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}
   - {fileID: 11400000, guid: 7ba3f56a6cf24c6498a633f016021027, type: 2}

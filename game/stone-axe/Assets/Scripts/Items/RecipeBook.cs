@@ -34,14 +34,14 @@ public class RecipeBook : MonoBehaviour
 
     private void Awake()
     {
+        _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+
         _recipeSelectButton.interactable = false; // temp till I get all the code set up
         recipeButtons = new List<GameObject>();
         setupRecipeGrid();
         _recipeText.text = "";
         setupFilterUI();
         _filterUI.SetActive(false);
-
-        _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
     }
 
     public void disableRecipeSelectButton()
@@ -193,6 +193,7 @@ public class RecipeBook : MonoBehaviour
 
     private GameObject tempButton;
 
+    // should be setup for level locking
     public void setupQuestRecipeGrid()
     {
         QuestData currQuest = _gameMasterRef.GetComponent<QuestControl>().CurrentQuest;
@@ -211,6 +212,7 @@ public class RecipeBook : MonoBehaviour
         }
     }
 
+    // should be setup for level locking
     public void setupSpecialQuestRecipeGrid()
     {
         QuestData currQuest = _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest;
@@ -236,7 +238,7 @@ public class RecipeBook : MonoBehaviour
         r++;
         foreach (ItemData itemRecipe in itemRecipes)
         {
-            if (itemRecipe != null)
+            if (itemRecipe != null && (itemRecipe.ItemLevel <= _gameMasterRef.GetLevel))
             {
                 // instantiate the button prefab
                 tempButton = Instantiate(_itemRecipeInfoPrefab);
@@ -253,7 +255,7 @@ public class RecipeBook : MonoBehaviour
         }
         foreach (PartData partRecipe in partRecipes)
         {
-            if (partRecipe != null)
+            if (partRecipe != null && (partRecipe.PartLevelReq <= _gameMasterRef.GetLevel))
             {
                 tempButton = Instantiate(_partRecipeInfoPrefab);
                 tempButton.transform.SetParent(_contentRef.transform, false);
@@ -269,6 +271,7 @@ public class RecipeBook : MonoBehaviour
         }
 
     }
+    // shold be setup for level locking
     public void setupStoryQuestRecipeGrid()
     {
         QuestData currQuest = _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest;
@@ -293,7 +296,7 @@ public class RecipeBook : MonoBehaviour
         r++;
         foreach (ItemData itemRecipe in itemRecipes)
         {
-            if (itemRecipe != null && itemRecipe != reqItem)
+            if (itemRecipe != null && itemRecipe != reqItem && (itemRecipe.ItemLevel <= _gameMasterRef.GetLevel))
             {
                 // instantiate the button prefab
                 tempButton = Instantiate(_itemRecipeInfoPrefab);
@@ -310,7 +313,7 @@ public class RecipeBook : MonoBehaviour
         }
         foreach (PartData partRecipe in partRecipes)
         {
-            if (partRecipe != null)
+            if (partRecipe != null && (partRecipe.PartLevelReq <= _gameMasterRef.GetLevel))
             {
                 tempButton = Instantiate(_partRecipeInfoPrefab);
                 tempButton.transform.SetParent(_contentRef.transform, false);
@@ -326,13 +329,14 @@ public class RecipeBook : MonoBehaviour
         }
     }
 
+    // setup for level locking
     public void setupRecipeGrid()
     {
         clearRecipeGrid();
         int r = 0;
         foreach (ItemData itemRecipe in itemRecipes)
         {
-            if (itemRecipe != null)
+            if (itemRecipe != null && (itemRecipe.ItemLevel <= _gameMasterRef.GetLevel))
             {
                 // instantiate the button prefab
                 tempButton = Instantiate(_itemRecipeInfoPrefab);
@@ -349,7 +353,7 @@ public class RecipeBook : MonoBehaviour
         }
         foreach (PartData partRecipe in partRecipes)
         {
-            if (partRecipe != null)
+            if (partRecipe != null && (partRecipe.PartLevelReq <= _gameMasterRef.GetLevel))
             {
                 tempButton = Instantiate(_partRecipeInfoPrefab);
                 tempButton.transform.SetParent(_contentRef.transform, false);
@@ -365,15 +369,14 @@ public class RecipeBook : MonoBehaviour
         }
     }
 
+    // setup for level locking
     public void setupFilteredGrid()
     {
         clearRecipeGrid();
         //int r = 0;
         foreach(ItemData itemRecipe in itemRecipes)
         {
-            //foreach(GameObject filterButton in filterButtons)
-                //if (filterButton.GetComponent<Filter>().FilterEnabled && itemRecipe.ValidFilters.Contains(filterButton.GetComponent<Filter>().FilterDataRef))
-            if (checkIfEnabledFiltersValid(itemRecipe) && enabledFilters.Count != 0)
+            if (checkIfEnabledFiltersValid(itemRecipe) && enabledFilters.Count != 0 && (itemRecipe.ItemLevel <= _gameMasterRef.GetLevel))
             {
                 // instantiate the button prefab
                 tempButton = Instantiate(_itemRecipeInfoPrefab);
@@ -392,9 +395,7 @@ public class RecipeBook : MonoBehaviour
         }
         foreach(PartData partRecipe in partRecipes)
         {
-            //foreach(GameObject filterButton in filterButtons)
-                //if (filterButton.GetComponent<Filter>().FilterEnabled && partRecipe.ValidFilters.Contains(filterButton.GetComponent<Filter>().FilterDataRef))
-            if (checkIfEnabledFiltersValid(partRecipe) && enabledFilters.Count != 0)
+            if (checkIfEnabledFiltersValid(partRecipe) && enabledFilters.Count != 0 && (partRecipe.PartLevelReq <= _gameMasterRef.GetLevel))
             {
                 tempButton = Instantiate(_partRecipeInfoPrefab);
                 tempButton.transform.SetParent(_contentRef.transform, false);

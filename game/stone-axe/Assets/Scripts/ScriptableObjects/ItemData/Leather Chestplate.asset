@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Leather Chestplate
   m_EditorClassIdentifier: 
   _itemName: Leather Chestplate
-  _levelRequirement: 0
+  _levelRequirement: 5
   _part1: {fileID: 11400000, guid: 286a78c5e15496d4db2548299eab7ba7, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 286a78c5e15496d4db2548299eab7ba7, type: 2}

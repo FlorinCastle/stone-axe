@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Runes
   m_EditorClassIdentifier: 
   _partName: Runes
+  _partLevelReq: 16
   _material: {fileID: 11400000, guid: c1142bc72c55dd94fb96dfd69001e16b, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: c1142bc72c55dd94fb96dfd69001e16b, type: 2}

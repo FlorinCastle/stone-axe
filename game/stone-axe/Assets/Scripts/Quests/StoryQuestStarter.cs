@@ -21,6 +21,7 @@ public class StoryQuestStarter : MonoBehaviour
     public void startQuest()
     {
         _questControlRef.startStoryQuest(_questRef);
+        _questControlRef.removeStarter();
     }
 
     public void setupText()

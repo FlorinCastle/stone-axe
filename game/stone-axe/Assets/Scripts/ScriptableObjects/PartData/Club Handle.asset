@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Club Handle
   m_EditorClassIdentifier: 
   _partName: Club Handle
-  _material: {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
+  _partLevelReq: 2
+  _material: {fileID: 11400000, guid: 56c2efc7d77a43a49bccc0f0ab800c69, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}
   - {fileID: 11400000, guid: 7ba3f56a6cf24c6498a633f016021027, type: 2}

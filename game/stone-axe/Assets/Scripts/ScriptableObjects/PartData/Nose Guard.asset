@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Nose Guard
   m_EditorClassIdentifier: 
   _partName: Nose Guard
-  _material: {fileID: 11400000, guid: d905eb4a07023d74ea23a7f665c720dd, type: 2}
+  _partLevelReq: 4
+  _material: {fileID: 11400000, guid: 3daa26c81517ad7469d747e94fe5e2f4, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: bab2bdbbc182b62418f2378a9c99c460, type: 2}
   - {fileID: 11400000, guid: d905eb4a07023d74ea23a7f665c720dd, type: 2}

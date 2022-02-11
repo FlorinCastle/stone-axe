@@ -212,6 +212,8 @@ public class InventoryScript : MonoBehaviour
             {
                 MaterialDataStorage matStore = mat.GetComponent<MaterialDataStorage>();
                 // if level req is met
+                //Debug.LogWarning("InvScript - matStore.LevelRequirement of " + matStore.Material + ": " + matStore.LevelRequirement);
+                //Debug.LogWarning("InvScript - _gameMaster.GetLevel: " + _gameMaster.GetLevel);
                 if (matStore.LevelRequirement <= _gameMaster.GetLevel)
                 {
                     // instantiate the button prefab

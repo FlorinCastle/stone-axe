@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Metal Shield
   m_EditorClassIdentifier: 
   _itemName: Metal Shield
-  _levelRequirement: 0
+  _levelRequirement: 9
   _part1: {fileID: 11400000, guid: d0640d2ae56a64241a508e572e8b0103, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: d0640d2ae56a64241a508e572e8b0103, type: 2}

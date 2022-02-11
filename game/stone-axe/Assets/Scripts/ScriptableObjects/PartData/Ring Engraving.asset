@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Ring Engraving
   m_EditorClassIdentifier: 
   _partName: Ring Engraving
+  _partLevelReq: 7
   _material: {fileID: 11400000, guid: 1c6922521da018d4da3540a399c1bef6, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: d723de8e21a61ed4fbf8330932dd62f3, type: 2}

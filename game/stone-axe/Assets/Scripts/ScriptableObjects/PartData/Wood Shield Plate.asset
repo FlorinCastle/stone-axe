@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Wood Shield Plate
   m_EditorClassIdentifier: 
   _partName: Wood Shield Plate
-  _material: {fileID: 11400000, guid: 56c2efc7d77a43a49bccc0f0ab800c69, type: 2}
+  _partLevelReq: 6
+  _material: {fileID: 11400000, guid: 43c581baf585f0243ada9274c3bbcfc1, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}
   - {fileID: 11400000, guid: 7ba3f56a6cf24c6498a633f016021027, type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Battle Fan
   m_EditorClassIdentifier: 
   _itemName: Battle Fan
-  _levelRequirement: 0
+  _levelRequirement: 17
   _part1: {fileID: 11400000, guid: ccfaf60207da31d499d49b94846621e3, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: ccfaf60207da31d499d49b94846621e3, type: 2}

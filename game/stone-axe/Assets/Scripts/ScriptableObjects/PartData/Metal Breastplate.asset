@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Metal Breastplate
   m_EditorClassIdentifier: 
   _partName: Metal Breastplate
+  _partLevelReq: 8
   _material: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: d723de8e21a61ed4fbf8330932dd62f3, type: 2}

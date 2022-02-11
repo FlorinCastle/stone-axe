@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bow Grip
   m_EditorClassIdentifier: 
   _partName: Bow Grip
+  _partLevelReq: 5
   _material: {fileID: 0}
   _validMaterials:
   - {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}

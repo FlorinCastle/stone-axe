@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Glave
   m_EditorClassIdentifier: 
   _itemName: Glave
-  _levelRequirement: 0
+  _levelRequirement: 14
   _part1: {fileID: 11400000, guid: 6b7061e9f995d3340aea8f1b8470bef7, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 6b7061e9f995d3340aea8f1b8470bef7, type: 2}

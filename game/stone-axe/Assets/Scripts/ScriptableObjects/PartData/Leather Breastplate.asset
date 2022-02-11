@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Leather Breastplate
   m_EditorClassIdentifier: 
   _partName: Leather Breastplate
-  _material: {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
+  _partLevelReq: 5
+  _material: {fileID: 11400000, guid: d905eb4a07023d74ea23a7f665c720dd, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
   - {fileID: 11400000, guid: 3daa26c81517ad7469d747e94fe5e2f4, type: 2}

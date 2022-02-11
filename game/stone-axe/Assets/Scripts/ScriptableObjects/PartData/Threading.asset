@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Threading
   m_EditorClassIdentifier: 
   _partName: Threading
-  _material: {fileID: 11400000, guid: c1142bc72c55dd94fb96dfd69001e16b, type: 2}
+  _partLevelReq: 6
+  _material: {fileID: 11400000, guid: 1e9b7f9659be5de4aa93d81c837a7562, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: 1e9b7f9659be5de4aa93d81c837a7562, type: 2}
   - {fileID: 11400000, guid: 8b123dc586a3f244b83f83b0ffc64992, type: 2}

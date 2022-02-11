@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,6 +35,16 @@ public class UIControl : MonoBehaviour
     [SerializeField] InputField _playerName;
     [SerializeField] InputField _shopName;
     [SerializeField] Button _startNewGameButton;
+    [Header("Player Creation")]
+    [SerializeField, HideInInspector] private string playerSpecies = "";
+    [SerializeField, HideInInspector] private int playerColor = -1;
+    [SerializeField] private TMP_Dropdown _playerSpeciesDropdown;
+    [SerializeField] private GameObject _colorMenu;
+    [SerializeField] private GameObject _colorMenuParent;
+    [SerializeField] private GameObject _colorSamplePrefab;
+    private List<string> speciesOptions;
+    private List<Color32> playerColors;
+    [SerializeField, HideInInspector] private List<GameObject> colorButtonRefs;
 
     private void Awake()
     {
@@ -76,9 +87,53 @@ public class UIControl : MonoBehaviour
         if (_settingsButton != null) _settingsButton.interactable = true;
         if (_creditsButton != null) _creditsButton.interactable = false;
     }
-    private void setupNewGameMenu()
+    public void setupNewGameMenu()
     {
         _startNewGameButton.interactable = false;
+        _playerSpeciesDropdown.ClearOptions();
+        speciesOptions = new List<string>();
+        speciesOptions.Add("Select Species");
+        foreach(AdventurerData species in this.gameObject.GetComponent<PlayerManager>().PlayerSpecies)
+        {
+            speciesOptions.Add(species.AdventurerSpecies);
+        }
+        _playerSpeciesDropdown.AddOptions(speciesOptions);
+    }
+    public void setupPlayerColorMenu()
+    {
+        if (_playerSpeciesDropdown.value != 0)
+        {
+            if (colorButtonRefs.Count != 0)
+            {
+                foreach(GameObject go in colorButtonRefs)
+                    Destroy(go);
+                colorButtonRefs.Clear();
+            }
+
+            _colorMenu.SetActive(true);
+            string speciesName = speciesOptions[_playerSpeciesDropdown.value];
+            //Debug.LogWarning(speciesName);
+            if (speciesName == "Elf")
+                playerColors = this.gameObject.GetComponent<AdventurerMaterials>().ElfColors;
+            else if (speciesName == "Human")
+                playerColors = this.gameObject.GetComponent<AdventurerMaterials>().HumanColors;
+            else if (speciesName == "Lizardman")
+                playerColors = this.gameObject.GetComponent<AdventurerMaterials>().LizardColors;
+
+            PlayerSpecies = speciesName;
+            int i = 0;
+            foreach(Color32 color in playerColors)
+            {
+                GameObject go = Instantiate(_colorSamplePrefab, _colorMenuParent.transform);
+                go.GetComponent<PlayerColor>().setupColor(color, i);
+                colorButtonRefs.Add(go);
+                i++;
+            }
+        }
+        else if (_playerSpeciesDropdown.value == 0)
+        {
+            _colorMenu.SetActive(false);
+        }
     }
     public void setupLoadGameMenu()
     {
@@ -110,6 +165,7 @@ public class UIControl : MonoBehaviour
         storePlayerVariables();
         PlayerName = "";
         ShopName = "";
+        _playerSpeciesDropdown.value = 0;
         _newGameMenu.SetActive(false);
         _startNewGameButton.interactable = false;
     }
@@ -137,20 +193,48 @@ public class UIControl : MonoBehaviour
     {
         _startNewGameButton.interactable = false;
     }
+    public void updatePlayerSpecies()
+    {
+        if (_playerSpeciesDropdown.value == 0)
+        {
+            playerSpecies = "";
+            //this.gameObject.GetComponent<PlayerManager>().setPlayerHead("");
+        }
+        else
+        {
+            playerSpecies = speciesOptions[_playerSpeciesDropdown.value];
+            this.gameObject.GetComponent<PlayerManager>().setPlayerHead(playerSpecies);
+        }
+    }
+    public void updatePlayerColor(int value, Color32 color)
+    {
+        playerColor = value;
+        this.gameObject.GetComponent<PlayerManager>().setPlayerColor(value, color);
+
+        foreach(GameObject go in colorButtonRefs)
+        {
+            if (go.GetComponent<PlayerColor>().ColorIndexRef != value)
+                go.GetComponent<PlayerColor>().setButtonInteractable();
+            else
+                go.GetComponent<PlayerColor>().setButtonNotInteractable();
+        }
+    }
     public void checkInputData()
     {
-        if (_playerName.text != "" && _shopName.text != "")
+        if (_playerName.text != "" && _shopName.text != "" && playerSpecies != "" && playerColor != -1)
         {
-            Debug.Log("has all required text");
+            Debug.Log("has all required values");
             _startNewGameButton.interactable = true;
         }
-        else if (_playerName.text == "" || _shopName.text == "")
+        else if (_playerName.text == "" || _shopName.text == "" || playerSpecies == "" || playerColor == -1)
             _startNewGameButton.interactable = false;
     }
     public void storePlayerVariables()
     {
         this.gameObject.GetComponent<GameMaster>().PlayerName = PlayerName;
         this.gameObject.GetComponent<GameMaster>().ShopName = ShopName;
+        this.gameObject.GetComponent<GameMaster>().PlayerSpecies = PlayerSpecies;
+        this.gameObject.GetComponent<GameMaster>().PlayerColor = PlayerColor;
     }
     public void hideHighlights()
     {
@@ -166,6 +250,8 @@ public class UIControl : MonoBehaviour
     public bool OptionsUIActive { get => optionsPopup.activeInHierarchy; }
     public string PlayerName { get => _playerName.text; set => _playerName.text = value; }
     public string ShopName { get => _shopName.text; set => _shopName.text = value; }
+    public string PlayerSpecies { get => playerSpecies; set => playerSpecies = value; }
+    public int PlayerColor { get => playerColor; set => playerColor = value; }
 
     public bool ShopUIEnabled { get => shopUI.activeInHierarchy; }
     public bool MarketUIEnabled { get => marketUI.activeInHierarchy; }

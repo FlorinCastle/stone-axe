@@ -21,6 +21,7 @@ public class Item : MonoBehaviour
     */
     public ItemData chooseItem()
     {
+        //generateItem();
         ranItem = Random.Range(0, _itemDataList.Count);
         _generatedItem = _itemDataList[ranItem];
 

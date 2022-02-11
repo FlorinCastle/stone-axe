@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Hat Lining
   m_EditorClassIdentifier: 
   _partName: Hat Lining
+  _partLevelReq: 5
   _material: {fileID: 11400000, guid: 8b123dc586a3f244b83f83b0ffc64992, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: ba1c5e625e5ab5e4fa7ec67ccab1e890, type: 2}

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Ring Band
   m_EditorClassIdentifier: 
   _partName: Ring Band
-  _material: {fileID: 11400000, guid: 3206576d24b36594e9db6032fd6fdfb1, type: 2}
+  _partLevelReq: 7
+  _material: {fileID: 11400000, guid: e1b6489bf01c8894e91101a6e9bf9f02, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: d723de8e21a61ed4fbf8330932dd62f3, type: 2}
   - {fileID: 11400000, guid: 3206576d24b36594e9db6032fd6fdfb1, type: 2}

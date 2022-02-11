@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Scythe Blade
   m_EditorClassIdentifier: 
   _partName: Scythe Blade
+  _partLevelReq: 25
   _material: {fileID: 0}
   _validMaterials:
   - {fileID: 11400000, guid: d723de8e21a61ed4fbf8330932dd62f3, type: 2}

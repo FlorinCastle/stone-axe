@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wood Shield
   m_EditorClassIdentifier: 
   _itemName: Wood Shield
-  _levelRequirement: 0
+  _levelRequirement: 6
   _part1: {fileID: 11400000, guid: 9c7f6729ed6912646947da69c78ea188, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 9c7f6729ed6912646947da69c78ea188, type: 2}

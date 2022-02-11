@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Magician's Orb
   m_EditorClassIdentifier: 
   _itemName: Magician's Orb
-  _levelRequirement: 0
+  _levelRequirement: 16
   _part1: {fileID: 11400000, guid: 0c394eafc001483488e07fe06842f262, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 0c394eafc001483488e07fe06842f262, type: 2}

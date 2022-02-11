@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Staff Core
   m_EditorClassIdentifier: 
   _partName: Staff Core
+  _partLevelReq: 3
   _material: {fileID: 11400000, guid: 9a249b9e603da774cb4202555c78ceff, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}

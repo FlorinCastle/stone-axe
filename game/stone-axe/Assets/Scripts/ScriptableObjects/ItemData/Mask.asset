@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mask
   m_EditorClassIdentifier: 
   _itemName: Mask
-  _levelRequirement: 0
+  _levelRequirement: 12
   _part1: {fileID: 11400000, guid: 5e34043c014e5fa4fb9c73f082a31433, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 5e34043c014e5fa4fb9c73f082a31433, type: 2}

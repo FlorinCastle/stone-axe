@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Soles
   m_EditorClassIdentifier: 
   _partName: Soles
+  _partLevelReq: 6
   _material: {fileID: 11400000, guid: bab2bdbbc182b62418f2378a9c99c460, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
