@@ -1095,7 +1095,9 @@ public class InventoryScript : MonoBehaviour
     public GameObject getSelectedPart()
     {
         if (_selectedPart != null)
+        {
             return _selectedPart;
+        }
 
         return null;
     }
@@ -1166,32 +1168,47 @@ public class InventoryScript : MonoBehaviour
         returnSelectedItem();
     }
 
+    [SerializeField] private int partLastFilled = 0;
     public void returnSeletedPart()
     {
+        bool phb = false;
         if (_craftControlRef.anyItemRecipeSelected() == true)
         {
             //Debug.LogWarning("TODO setup code for selecting parts");
             foreach(PartData part1ref in _craftControlRef.checkItemRecipe().ValidParts1)
-                if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part1ref)
+                if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part1ref
+                    && (partLastFilled == 0 || partLastFilled == 3 || _craftControlRef.Part1Set() == false || _craftControlRef.AllPartsSet() == true)
+                    && phb == false)
                 {
-                    //Debug.LogWarning("selected part matches recipe part 1");
+                    Debug.LogWarning("selected part matches recipe part 1");
                     _craftControlRef.SelectPart1();
+                    partLastFilled = 1;
+                    phb = true;
                 }
 
             foreach(PartData part2ref in _craftControlRef.checkItemRecipe().ValidParts2)
-                if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part2ref)
+                if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part2ref
+                    && (partLastFilled == 0 || partLastFilled == 1 || _craftControlRef.Part2Set() == false || _craftControlRef.AllPartsSet() == true)
+                    && phb == false)
                 {
-                    //Debug.LogWarning("selected part matches recipe part 2");
+                    Debug.LogWarning("selected part matches recipe part 2");
                     _craftControlRef.SelectPart2();
+                    partLastFilled = 2;
+                    phb = true;
                 }
 
             foreach (PartData part3ref in _craftControlRef.checkItemRecipe().ValidParts3)
-                if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part3ref)
+                if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part3ref
+                    && (partLastFilled == 0 || partLastFilled == 2 || _craftControlRef.Part3Set() == false || _craftControlRef.AllPartsSet() == true)
+                    && phb == false)
                 {
-                    //Debug.LogWarning("selected part matches recipe part 3");
+                    Debug.LogWarning("selected part matches recipe part 3");
                     _craftControlRef.SelectPart3();
+                    partLastFilled = 3;
+                    phb = true;
                 }
         }
+        phb = false;
     }
 
     public void returnSelectedMat()

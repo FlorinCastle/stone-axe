@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 714f26b78ced1a048a0e934b6afc597f, type: 3}
-  m_Name: Emerald
+  m_Name: Glass
   m_EditorClassIdentifier: 
-  _materialName: Emerald
+  _materialName: Glass
   _materialType: 3
   _subMatType: 0
-  _levelRequirement: 5
-  _baseCostPerUnit: 3
-  _addedStrength: 1
-  _addedDextarity: 2
-  _addedIntelligence: 4
+  _levelRequirement: 0
+  _baseCostPerUnit: 2
+  _addedStrength: 0
+  _addedDextarity: 1
+  _addedIntelligence: 5

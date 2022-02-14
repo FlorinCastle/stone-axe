@@ -242,7 +242,9 @@ public class CraftControl : MonoBehaviour
 
     public void SelectPart1()
     {
-        _chosenPart1 = _inventoryControlReference.getSelectedPart();
+        if (_inventoryControlReference.getSelectedPart() != _chosenPart2 && _inventoryControlReference.getSelectedPart() != _chosenPart3)
+            _chosenPart1 = _inventoryControlReference.getSelectedPart();
+
         if (_chosenPart1 != null)
             setupDiscription(1, _chosenPart1);
         else
@@ -250,7 +252,9 @@ public class CraftControl : MonoBehaviour
     }
     public void SelectPart2()
     {
-        _chosenPart2 = _inventoryControlReference.getSelectedPart();
+        if (_inventoryControlReference.getSelectedPart() != _chosenPart1 && _inventoryControlReference.getSelectedPart() != _chosenPart3)
+            _chosenPart2 = _inventoryControlReference.getSelectedPart();
+
         if (_chosenPart2 != null)
             setupDiscription(2, _chosenPart2);
         else
@@ -258,7 +262,9 @@ public class CraftControl : MonoBehaviour
     }
     public void SelectPart3()
     {
-        _chosenPart3 = _inventoryControlReference.getSelectedPart();
+        if (_inventoryControlReference.getSelectedPart() != _chosenPart1 && _inventoryControlReference.getSelectedPart() != _chosenPart2)
+            _chosenPart3 = _inventoryControlReference.getSelectedPart();
+
         if (_chosenPart3 != null)
             setupDiscription(3, _chosenPart3);
         else
@@ -702,5 +708,32 @@ public class CraftControl : MonoBehaviour
         if (_chosenPartRecipe != null)
             return true;
         return false;
+    }
+
+    public bool Part1Set()
+    {
+        if (_chosenPart1 != null)
+            return true;
+        else return false;
+    }
+    public bool Part2Set()
+    {
+        if (_chosenPart2 != null)
+            return true;
+        else return false;
+    }
+
+    public bool Part3Set()
+    {
+        if (_chosenPart3 != null)
+            return true;
+        else return false;
+    }
+
+    public bool AllPartsSet()
+    {
+        if (_chosenPart1 != null && _chosenPart2 != null && _chosenPart3 != null)
+            return true;
+        else return false;
     }
 }

@@ -54,6 +54,7 @@ MonoBehaviour:
   _itemIndex: 0
   _partIndex: 0
   _enchIndex: 0
+  selfButtonRef: {fileID: 2134036369237802158}
 --- !u!1 &7952774947201763059
 GameObject:
   m_ObjectHideFlags: 0
