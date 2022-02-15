@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewMaterialData", menuName = "MaterialData", order = 51)]
+[CreateAssetMenu(fileName = "NewMaterialData", menuName = "ScriptableObjects/MaterialData", order = 51)]
 public class MaterialData : ScriptableObject
 {
     public string _materialName;

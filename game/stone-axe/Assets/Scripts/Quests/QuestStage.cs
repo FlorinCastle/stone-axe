@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewQuestStage", menuName = "QuestStage", order = 57)]
+[CreateAssetMenu(fileName = "NewQuestStage", menuName = "ScriptableObjects/QuestStage", order = 57)]
 public class QuestStage : ScriptableObject
 {
     public enum questStageEnum { Not_Set, Dialogue, Craft_Item, Sell_Item, Buy_Item, Disassemble_Item, Force_Event };

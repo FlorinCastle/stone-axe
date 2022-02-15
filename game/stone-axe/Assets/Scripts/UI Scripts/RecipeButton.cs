@@ -7,6 +7,7 @@ public class RecipeButton : MonoBehaviour
     [SerializeField] private RecipeBook _recipeControl;
     [SerializeField, HideInInspector] private int _myButtonIndex;
     [SerializeField, HideInInspector] private string _recipeName;
+    private bool _canCraft;
 
     private void Awake()
     {
@@ -16,14 +17,19 @@ public class RecipeButton : MonoBehaviour
     public void setItemRecipeInfoText()
     {
         _recipeControl.setItemRecipeInfo(_myButtonIndex);
+        if (_canCraft == true)
+            setRecipe();
     }
     public void setQuestItemReceipeInfoText()
     {
         _recipeControl.setQuestItemRecipeInfo(_myButtonIndex);
+        setRecipe();
     }
     public void setPartRecipeInfoText()
     {
         _recipeControl.setPartRecipeInfo(_myButtonIndex);
+        if (_canCraft == true)
+            setRecipe();
     }
 
     public void setRecipe()
@@ -41,4 +47,6 @@ public class RecipeButton : MonoBehaviour
 
     public void setMyIndex(int value) { _myButtonIndex = value; }
     public int GetMyIndex { get => _myButtonIndex; }
+
+    public bool CanCraft { set => _canCraft = value; }
 }

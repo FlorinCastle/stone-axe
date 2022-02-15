@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewQuestItemData", menuName = "QuestItemData", order = 59)]
+[CreateAssetMenu(fileName = "NewQuestItemData", menuName = "ScriptableObjects/QuestItemData", order = 59)]
 public class QuestItemData : ScriptableObject
 {
     [SerializeField]
     private string _qItemName;
-    [Multiline(2)]
+    [TextArea(1,10)]
     [SerializeField]
     private string _qItemLore;
     [SerializeField]

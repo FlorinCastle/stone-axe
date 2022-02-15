@@ -346,7 +346,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 7101203654489843692}
         m_TargetAssemblyTypeName: RecipeButton, Assembly-CSharp
-        m_MethodName: setRecipe
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -388,9 +388,9 @@ RectTransform:
   m_Father: {fileID: 5472600866893866497}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20, y: -20}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -20, y: 20}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7248440467402672920

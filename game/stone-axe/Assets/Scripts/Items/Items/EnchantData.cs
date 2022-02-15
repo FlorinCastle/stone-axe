@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "NewEnchantData", menuName = "EnchantData", order = 54)]
+[CreateAssetMenu(fileName = "NewEnchantData", menuName = "ScriptableObjects/EnchantData", order = 54)]
 public class EnchantData : ScriptableObject
 {
     [Header("Enchant Data")]

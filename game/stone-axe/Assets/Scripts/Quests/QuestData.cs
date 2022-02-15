@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewQuestData", menuName = "QuestData", order = 56)]
+[CreateAssetMenu(fileName = "NewQuestData", menuName = "ScriptableObjects/QuestData", order = 56)]
 public class QuestData : ScriptableObject
 {
     public string _questName;
-    [Multiline(10)]
+    [TextArea(1,10)]
     public string _questDiscription;
     public enum questTypeEnum { Not_Set, OCC_Item, OCC_QuestItem, OD_Material, OCC_TotalCrafted, Tutorial, Story };
     public questTypeEnum _questType;

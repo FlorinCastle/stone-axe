@@ -15,6 +15,8 @@ public class ExperienceManager : MonoBehaviour
 
     [SerializeField] private SkillManager _skillMgrRef;
 
+    [SerializeField] private List<LevelUpData> _levelUpData;
+
     private int prevUpdatedLevel = 0;
     private float prevEXPPercent = 0f;
 
@@ -48,6 +50,7 @@ public class ExperienceManager : MonoBehaviour
             else if (levelMark > _gameMasterRef.GetTotalExperience)
             {
                 setupLevelUpMenu(counter);
+
                 break;
             }
         }
@@ -83,7 +86,39 @@ public class ExperienceManager : MonoBehaviour
 
     public void setupLevelUpMenu(int level)
     {
-        _levelUpMenuText.text = "leveled up to Level " + level;
+        _levelUpMenuText.text = "leveled up to Level " + level + "!\n";
+        LevelUpData currLvl = _levelUpData[level];
+
+        if (currLvl.ItemRecipeUnlocks.Count > 0)
+        {
+            if (currLvl.ItemRecipeUnlocks.Count > 1)
+                _levelUpMenuText.text += "\nItem Recipes Unlocked!";
+            else
+                _levelUpMenuText.text += "\nItem Recipe Unlocked!";
+
+            foreach (ItemData itemRec in currLvl.ItemRecipeUnlocks)
+                _levelUpMenuText.text += "\n" + itemRec.ItemName;
+        }
+        if (currLvl.PartRecipeUnlocks.Count > 0)
+        {
+            if (currLvl.PartRecipeUnlocks.Count > 1)
+                _levelUpMenuText.text += "\nPart Recipes Unlocked!";
+            else
+                _levelUpMenuText.text += "\nPart Recipe Unlocked!";
+
+            foreach (PartData partRec in currLvl.PartRecipeUnlocks)
+                _levelUpMenuText.text += "\n" + partRec.PartName;
+        }
+        if (currLvl.MaterialUnlocks.Count > 0)
+        {
+            if (currLvl.PartRecipeUnlocks.Count > 1)
+                _levelUpMenuText.text += "\nMaterials Unlocked!";
+            else
+                _levelUpMenuText.text += "\nMaterial Unlocked!";
+
+            foreach (MaterialData matUnlock in currLvl.MaterialUnlocks)
+                _levelUpMenuText.text += "\n" + matUnlock.Material;
+        }
         _levelUpMenu.SetActive(true);
     }
 

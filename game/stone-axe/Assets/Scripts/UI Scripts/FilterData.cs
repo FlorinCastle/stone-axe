@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewFilterData", menuName = "FilterData", order = 58)]
+[CreateAssetMenu(fileName = "NewFilterData", menuName = "ScriptableObjects/FilterData", order = 58)]
 public class FilterData : ScriptableObject
 {
     public string _filterName;

@@ -12,6 +12,7 @@ public class RecipeBook : MonoBehaviour
     [SerializeField, HideInInspector] private List<string> itemRecipeName;
     [SerializeField, HideInInspector] private List<string> partRecipeName;
     [SerializeField, HideInInspector] private List<GameObject> recipeButtons;
+    [SerializeField, HideInInspector] private List<GameObject> upcomingRecipeButtons;
     [SerializeField, HideInInspector] private ItemData _selectedItemRecipe;
     [SerializeField, HideInInspector] private QuestItemData _selectedQuestItemRecipe;
     [SerializeField, HideInInspector] private PartData _selectedPartRecipe;
@@ -24,6 +25,9 @@ public class RecipeBook : MonoBehaviour
     [SerializeField] private GameObject _contentRef;
     [SerializeField] private GameObject _filterUI;
     [SerializeField] private GameObject _filterParent;
+    [SerializeField] private GameObject _upcomingRecipesButton;
+    [SerializeField] private GameObject _upRecButtonCheck;
+
     [Header("Prefabs")]
     [SerializeField] private GameObject _itemRecipeInfoPrefab;
     [SerializeField] private GameObject _questItemRecipeInfoPrefab;
@@ -212,6 +216,9 @@ public class RecipeBook : MonoBehaviour
         }
     }
 
+    [SerializeField, HideInInspector] private List<ItemData> levelLockedItems;
+    [SerializeField, HideInInspector] private List<PartData> levelLockedParts;
+
     // should be setup for level locking
     public void setupSpecialQuestRecipeGrid()
     {
@@ -220,6 +227,7 @@ public class RecipeBook : MonoBehaviour
         QuestItemData questItem = currQuest.RequiredQuestItem;
 
         clearRecipeGrid();
+        clearUpcomingRecipesLists();
         int r = 0;
         
         if (questItem != null)
@@ -244,6 +252,7 @@ public class RecipeBook : MonoBehaviour
                 tempButton = Instantiate(_itemRecipeInfoPrefab);
                 tempButton.transform.SetParent(_contentRef.transform, false);
                 tempButton.GetComponent<RecipeButton>().setRecipeName(itemRecipe.ItemName);
+                tempButton.GetComponent<RecipeButton>().CanCraft = true;
                 // set up button text
                 Text t = tempButton.GetComponentInChildren<Text>();
                 t.text = itemRecipe.ItemName + " Recipe";
@@ -251,6 +260,8 @@ public class RecipeBook : MonoBehaviour
                 // add button to list
                 InsertButton(tempButton);
             }
+            else
+                levelLockedItems.Add(itemRecipe);
             r++;
         }
         foreach (PartData partRecipe in partRecipes)
@@ -260,6 +271,7 @@ public class RecipeBook : MonoBehaviour
                 tempButton = Instantiate(_partRecipeInfoPrefab);
                 tempButton.transform.SetParent(_contentRef.transform, false);
                 tempButton.GetComponent<RecipeButton>().setRecipeName(partRecipe.PartName);
+                tempButton.GetComponent<RecipeButton>().CanCraft = true;
 
                 Text t = tempButton.GetComponentInChildren<Text>();
                 t.text = partRecipe.PartName + " Recipe";
@@ -267,6 +279,8 @@ public class RecipeBook : MonoBehaviour
                 // add button to list
                 InsertButton(tempButton);
             }
+            else
+                levelLockedParts.Add(partRecipe);
             r++;
         }
 
@@ -278,6 +292,7 @@ public class RecipeBook : MonoBehaviour
 
         ItemData reqItem = currQuest.RequiredItem;
         clearRecipeGrid();
+        clearUpcomingRecipesLists();
         int r = 0;
 
         if (reqItem != null)
@@ -302,6 +317,7 @@ public class RecipeBook : MonoBehaviour
                 tempButton = Instantiate(_itemRecipeInfoPrefab);
                 tempButton.transform.SetParent(_contentRef.transform, false);
                 tempButton.GetComponent<RecipeButton>().setRecipeName(itemRecipe.ItemName);
+                tempButton.GetComponent<RecipeButton>().CanCraft = true;
                 // set up button text
                 Text t = tempButton.GetComponentInChildren<Text>();
                 t.text = itemRecipe.ItemName + " Recipe";
@@ -318,6 +334,7 @@ public class RecipeBook : MonoBehaviour
                 tempButton = Instantiate(_partRecipeInfoPrefab);
                 tempButton.transform.SetParent(_contentRef.transform, false);
                 tempButton.GetComponent<RecipeButton>().setRecipeName(partRecipe.PartName);
+                tempButton.GetComponent<RecipeButton>().CanCraft = true;
 
                 Text t = tempButton.GetComponentInChildren<Text>();
                 t.text = partRecipe.PartName + " Recipe";
@@ -333,6 +350,7 @@ public class RecipeBook : MonoBehaviour
     public void setupRecipeGrid()
     {
         clearRecipeGrid();
+        clearUpcomingRecipesLists();
         int r = 0;
         foreach (ItemData itemRecipe in itemRecipes)
         {
@@ -342,6 +360,7 @@ public class RecipeBook : MonoBehaviour
                 tempButton = Instantiate(_itemRecipeInfoPrefab);
                 tempButton.transform.SetParent(_contentRef.transform, false);
                 tempButton.GetComponent<RecipeButton>().setRecipeName(itemRecipe.ItemName);
+                tempButton.GetComponent<RecipeButton>().CanCraft = true;
                 // set up button text
                 TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
                 t.text = itemRecipe.ItemName + " Recipe";
@@ -349,6 +368,8 @@ public class RecipeBook : MonoBehaviour
                 // add button to list
                 InsertButton(tempButton);
             }
+            else
+                levelLockedItems.Add(itemRecipe);
             r++;
         }
         foreach (PartData partRecipe in partRecipes)
@@ -358,6 +379,7 @@ public class RecipeBook : MonoBehaviour
                 tempButton = Instantiate(_partRecipeInfoPrefab);
                 tempButton.transform.SetParent(_contentRef.transform, false);
                 tempButton.GetComponent<RecipeButton>().setRecipeName(partRecipe.PartName);
+                tempButton.GetComponent<RecipeButton>().CanCraft = true;
 
                 TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
                 t.text = partRecipe.PartName + " Recipe";
@@ -365,6 +387,8 @@ public class RecipeBook : MonoBehaviour
                 // add button to list
                 InsertButton(tempButton);
             }
+            else
+                levelLockedParts.Add(partRecipe);
             r++;
         }
     }
@@ -373,6 +397,7 @@ public class RecipeBook : MonoBehaviour
     public void setupFilteredGrid()
     {
         clearRecipeGrid();
+        clearUpcomingRecipesLists();
         //int r = 0;
         foreach(ItemData itemRecipe in itemRecipes)
         {
@@ -382,6 +407,7 @@ public class RecipeBook : MonoBehaviour
                 tempButton = Instantiate(_itemRecipeInfoPrefab);
                 tempButton.transform.SetParent(_contentRef.transform, false);
                 tempButton.GetComponent<RecipeButton>().setRecipeName(itemRecipe.ItemName);
+                tempButton.GetComponent<RecipeButton>().CanCraft = true;
                 // set up button text
                 TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
                 t.text = itemRecipe.ItemName + " Recipe";
@@ -400,6 +426,7 @@ public class RecipeBook : MonoBehaviour
                 tempButton = Instantiate(_partRecipeInfoPrefab);
                 tempButton.transform.SetParent(_contentRef.transform, false);
                 tempButton.GetComponent<RecipeButton>().setRecipeName(partRecipe.PartName);
+                tempButton.GetComponent<RecipeButton>().CanCraft = true;
 
                 TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
                 t.text = partRecipe.PartName + " Recipe";
@@ -416,6 +443,60 @@ public class RecipeBook : MonoBehaviour
             setupRecipeGrid();
         }
     }
+    private void setupUpcomingRecipes()
+    {
+        foreach(ItemData itemRecipe in levelLockedItems)
+        {
+            tempButton = Instantiate(_itemRecipeInfoPrefab);
+            tempButton.transform.SetParent(_contentRef.transform, false);
+            tempButton.GetComponent<RecipeButton>().setRecipeName(itemRecipe.ItemName);
+            tempButton.GetComponent<RecipeButton>().CanCraft = false;
+
+            TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
+            t.text = itemRecipe.ItemName + " Recipe";
+            tempButton.name = itemRecipe.ItemName + " Recipe";
+            InsertUpcomingRecipeButton(tempButton);
+        }
+        foreach(PartData partRecipe in levelLockedParts)
+        {
+            tempButton = Instantiate(_partRecipeInfoPrefab);
+            tempButton.transform.SetParent(_contentRef.transform, false);
+            tempButton.GetComponent<RecipeButton>().setRecipeName(partRecipe.PartName);
+            tempButton.GetComponent<RecipeButton>().CanCraft = false;
+
+            TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
+            t.text = partRecipe.PartName + " Recipe";
+            tempButton.name = partRecipe.PartName + " Recipe";
+            InsertUpcomingRecipeButton(tempButton);
+        }
+    }
+    private bool upcomingRecipesBool = false;
+    public void toggleUpcomingRecipes()
+    {
+        clearUpcomingRecipesLists();
+        upcomingRecipesBool = !upcomingRecipesBool;
+
+        _upRecButtonCheck.SetActive(upcomingRecipesBool);
+
+        if (upcomingRecipesBool == false)
+        {
+            if (enabledFilters.Count > 0)
+                setupFilteredGrid();
+            else
+                setupRecipeGrid();
+        }
+        else if (upcomingRecipesBool == true)
+        {
+            Debug.Log("placeholder");
+            if (enabledFilters.Count > 0)
+                setupFilteredGrid();
+            else
+                setupRecipeGrid();
+            setupUpcomingRecipes();
+        }
+            
+    }
+
 
     private void clearRecipeGrid()
     {
@@ -423,10 +504,25 @@ public class RecipeBook : MonoBehaviour
             Destroy(go);
         recipeButtons.Clear();
     }
+    private void clearUpcomingRecipesLists()
+    {
+        if (levelLockedItems.Count > 0)
+            levelLockedItems.Clear();
+        if (levelLockedParts.Count > 0)
+            levelLockedParts.Clear();
+    }
 
     private int InsertButton(GameObject button)
     {
         recipeButtons.Add(button);
+        int i = recipeButtons.IndexOf(button);
+        button.GetComponent<RecipeButton>().setMyIndex(i);
+        return i;
+    }
+
+    private int InsertUpcomingRecipeButton(GameObject button)
+    {
+        upcomingRecipeButtons.Add(button);
         int i = recipeButtons.IndexOf(button);
         button.GetComponent<RecipeButton>().setMyIndex(i);
         return i;

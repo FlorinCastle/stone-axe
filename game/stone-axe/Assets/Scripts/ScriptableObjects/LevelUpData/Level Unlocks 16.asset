@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ccce9e5a2e66644ba9c6abc11e692e, type: 3}
+  m_Name: Level Unlocks 16
+  m_EditorClassIdentifier: 
+  _levelNumber: 16
+  _levelName: Level 16
+  _itemRecipes:
+  - {fileID: 11400000, guid: 59a5daa1f6a2f874c9eb0539ce579fc9, type: 2}
+  _partRecipes:
+  - {fileID: 11400000, guid: 0513c3377d7ea804d9acd816f5bf297e, type: 2}
+  - {fileID: 11400000, guid: 0c394eafc001483488e07fe06842f262, type: 2}
+  - {fileID: 11400000, guid: 72bc31ccfff37364d9c2bb261e5fc262, type: 2}
+  _materials:
+  - {fileID: 11400000, guid: d905eb4a07023d74ea23a7f665c720dd, type: 2}

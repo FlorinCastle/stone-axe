@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ccce9e5a2e66644ba9c6abc11e692e, type: 3}
+  m_Name: Level Unlocks 5
+  m_EditorClassIdentifier: 
+  _levelNumber: 5
+  _levelName: Level 5
+  _itemRecipes:
+  - {fileID: 11400000, guid: 1290e948f56d0254bba3585d484ec368, type: 2}
+  - {fileID: 11400000, guid: 1b1076a3c3227784aa410f6d474bc6d4, type: 2}
+  - {fileID: 11400000, guid: 5e48911da7163ba4da64e4c06ff0bdcc, type: 2}
+  _partRecipes:
+  - {fileID: 11400000, guid: bd12b16edaea7834eb767d8915e7c36a, type: 2}
+  - {fileID: 11400000, guid: e6008839e5faca343b35824fef1bf1e4, type: 2}
+  - {fileID: 11400000, guid: c3d93897133f0fb48827cc5fb05406aa, type: 2}
+  - {fileID: 11400000, guid: 286a78c5e15496d4db2548299eab7ba7, type: 2}
+  - {fileID: 11400000, guid: ac58c2151275da14cba38ad548c01080, type: 2}
+  - {fileID: 11400000, guid: fe146dee6d212ca4c867bbd1433d82dd, type: 2}
+  - {fileID: 11400000, guid: 5fd14e94acdbed646adbc330ce56f516, type: 2}
+  - {fileID: 11400000, guid: 1db831a4cc8973644ad3184133a922d7, type: 2}
+  _materials:
+  - {fileID: 11400000, guid: bab2bdbbc182b62418f2378a9c99c460, type: 2}
+  - {fileID: 11400000, guid: f9ff7a3994c4ed340b791d693187aa9d, type: 2}

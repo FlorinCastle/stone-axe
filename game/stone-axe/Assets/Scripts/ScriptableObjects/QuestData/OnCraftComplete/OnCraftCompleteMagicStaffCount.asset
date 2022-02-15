@@ -19,6 +19,6 @@ MonoBehaviour:
   _requiredItem: {fileID: 11400000, guid: 12b9378bea6d9d047a49e6f140e0be49, type: 2}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 0}
-  _requiredCount: 0
+  _requiredCount: 3
   _nextQuest: {fileID: 0}
   _storyQuestComplete: 0

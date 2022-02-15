@@ -44,6 +44,8 @@ public class QuestDataEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+        //EditorStyles.textArea.wordWrap = true;
+
         EditorGUILayout.PropertyField(questName);
         EditorGUILayout.PropertyField(questType);
 

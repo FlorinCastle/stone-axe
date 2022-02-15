@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea40fb9319c29d949a348c58871d2658, type: 3}
+  m_Name: Scythe
+  m_EditorClassIdentifier: 
+  _itemName: Scythe
+  _levelRequirement: 21
+  _part1: {fileID: 0}
+  _validPart1:
+  - {fileID: 11400000, guid: b903c6f2f49e04545b1b8240924e5e5e, type: 2}
+  _part2: {fileID: 0}
+  _validPart2:
+  - {fileID: 11400000, guid: efa36cf510bc17140aaca20e1a356078, type: 2}
+  _part3: {fileID: 0}
+  _validPart3:
+  - {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
+  _baseCost: 30
+  _baseStrenght: 7
+  _baseDextarity: 6
+  _baseIntelligence: 2
+  _isEnchanted: 1
+  _filters:
+  - {fileID: 11400000, guid: b8da9b853241afa4ab2ed683bf25b60d, type: 2}
+  - {fileID: 11400000, guid: 84bdb7edb11b7884cbdc4b82c07006c2, type: 2}
+  - {fileID: 11400000, guid: f6700d05ccb26f74ab2d5b80c5b1ede7, type: 2}
+  - {fileID: 11400000, guid: 2180dc8a0f249464a8d24835a92f1a13, type: 2}

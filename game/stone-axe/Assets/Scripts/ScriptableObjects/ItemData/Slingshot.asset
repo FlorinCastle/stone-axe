@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea40fb9319c29d949a348c58871d2658, type: 3}
-  m_Name: testing recipe
+  m_Name: Slingshot
   m_EditorClassIdentifier: 
-  _itemName: testing recipe
-  _levelRequirement: 0
+  _itemName: Slingshot
+  _levelRequirement: 2
   _part1: {fileID: 0}
   _validPart1:
-  - {fileID: 11400000, guid: 9da3680434e2c3e49806b931b533c9be, type: 2}
+  - {fileID: 11400000, guid: e7939820462ef46499eab51663d16504, type: 2}
   _part2: {fileID: 0}
   _validPart2:
-  - {fileID: 11400000, guid: 481856a10254f7946b4cbdab8856a0cf, type: 2}
+  - {fileID: 11400000, guid: f832b3f18adf623428e1807898f44ec7, type: 2}
   _part3: {fileID: 0}
   _validPart3:
-  - {fileID: 11400000, guid: 9da3680434e2c3e49806b931b533c9be, type: 2}
-  _baseCost: 20
-  _baseStrenght: 6
-  _baseDextarity: 3
+  - {fileID: 11400000, guid: d83b87228aa78194b89ecf2e60c04b1e, type: 2}
+  _baseCost: 26
+  _baseStrenght: 2
+  _baseDextarity: 6
   _baseIntelligence: 1
   _isEnchanted: 1
   _filters:

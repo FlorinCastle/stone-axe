@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1788957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 541083809664905720, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+  m_PrefabInstance: {fileID: 7485012191131071712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2323471 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1489998276868703643, guid: f08ae8c8c4af81c41953df121b1b0127, type: 3}
@@ -1319,6 +1324,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a985e60eb5bf1bb47ba670d951fb0bce, type: 2}
   - {fileID: 11400000, guid: a493ee3734db1cb45b54cb2d2dab464b, type: 2}
   - {fileID: 11400000, guid: 76e3e1cbc34b1b14e809869a16ec3fff, type: 2}
+  - {fileID: 11400000, guid: 84af43aae5540d44b8ddccda24e53a97, type: 2}
   - {fileID: 11400000, guid: acf1e4d8a12ca5941ae90c1ca33ac6ae, type: 2}
   - {fileID: 11400000, guid: 60bee362faf67e840b65be712fa59bea, type: 2}
   - {fileID: 11400000, guid: b8b977f5f1d225b498df2fa83b7a81ac, type: 2}
@@ -2799,7 +2805,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934415189}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92834512dd8674f409655588f2cea386, type: 3}
   m_Name: 
@@ -4010,11 +4016,13 @@ MonoBehaviour:
   itemRecipes:
   - {fileID: 11400000, guid: 0aba0d063fffe684d90c0df5e99560d8, type: 2}
   - {fileID: 11400000, guid: 8c78c5a05914d354d80ef88c5344d4d7, type: 2}
+  - {fileID: 11400000, guid: 5e48911da7163ba4da64e4c06ff0bdcc, type: 2}
   - {fileID: 11400000, guid: 0d8a16659a360f840b620dba77990d5c, type: 2}
   - {fileID: 11400000, guid: a5470c59a42290e4c869ea2a05cc86ef, type: 2}
-  - {fileID: 11400000, guid: 91fb751a65abbaf4b976cba894815bac, type: 2}
+  - {fileID: 11400000, guid: e80d50e2c498ed948b3beb709318a21b, type: 2}
   - {fileID: 11400000, guid: fe1c77c733c5dc94b9126fa2a3c6efbf, type: 2}
   - {fileID: 11400000, guid: a084be0ea0243e4428615fcf42110262, type: 2}
+  - {fileID: 11400000, guid: 10d6df90d0d66bc4c981499caeb48609, type: 2}
   - {fileID: 11400000, guid: e778a1f84b84c1945a504059fbca7c02, type: 2}
   - {fileID: 11400000, guid: 1290e948f56d0254bba3585d484ec368, type: 2}
   - {fileID: 11400000, guid: 16c07a1bc7946874099458679b04ecf2, type: 2}
@@ -4029,9 +4037,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5e57fb373a7d5d343a8f58dd3c275d6c, type: 2}
   - {fileID: 11400000, guid: a985e60eb5bf1bb47ba670d951fb0bce, type: 2}
   - {fileID: 11400000, guid: a493ee3734db1cb45b54cb2d2dab464b, type: 2}
+  - {fileID: 11400000, guid: 16b2fa54cf3863e46b2c88045853b3c8, type: 2}
   - {fileID: 11400000, guid: 76e3e1cbc34b1b14e809869a16ec3fff, type: 2}
+  - {fileID: 11400000, guid: 84af43aae5540d44b8ddccda24e53a97, type: 2}
   - {fileID: 11400000, guid: acf1e4d8a12ca5941ae90c1ca33ac6ae, type: 2}
   - {fileID: 11400000, guid: 60bee362faf67e840b65be712fa59bea, type: 2}
+  - {fileID: 11400000, guid: 0fda6977a8c8ca14fb19aba7bb1e01cd, type: 2}
   - {fileID: 11400000, guid: b8b977f5f1d225b498df2fa83b7a81ac, type: 2}
   - {fileID: 11400000, guid: 1f65688b1bb60484a85acc7f1d1720d3, type: 2}
   partRecipes:
@@ -4132,6 +4143,7 @@ MonoBehaviour:
   itemRecipeName: []
   partRecipeName: []
   recipeButtons: []
+  upcomingRecipeButtons: []
   _selectedItemRecipe: {fileID: 0}
   _selectedQuestItemRecipe: {fileID: 0}
   _selectedPartRecipe: {fileID: 0}
@@ -4158,10 +4170,14 @@ MonoBehaviour:
   _contentRef: {fileID: 376593970}
   _filterUI: {fileID: 1399127325}
   _filterParent: {fileID: 1525597079}
+  _upcomingRecipesButton: {fileID: 1788957}
+  _upRecButtonCheck: {fileID: 1959134676}
   _itemRecipeInfoPrefab: {fileID: 8912375786389494097, guid: ce380822c8bbf4e40affef4cee31c9c8, type: 3}
   _questItemRecipeInfoPrefab: {fileID: 8912375786389494097, guid: bce95d3bc0f54d046995524078fd3e0d, type: 3}
   _partRecipeInfoPrefab: {fileID: 8912375786389494097, guid: 1ce0fc505dac85946b2d841f7b7796e9, type: 3}
   _filterPrefab: {fileID: 5012010766321343822, guid: fd3d8ebb878c91a46967eeeb20617474, type: 3}
+  levelLockedItems: []
+  levelLockedParts: []
   enabledFilters: []
 --- !u!4 &1427857946
 Transform:
@@ -4686,7 +4702,7 @@ MonoBehaviour:
   _playerSpecies: 
   _playerColor: -1
   _currentCurrency: 100000
-  _totalExperience: 0
+  _totalExperience: 10
   _level: 0
   _currentSkillPoints: 0
   _shopLevel: {fileID: 696845878}
@@ -4853,6 +4869,33 @@ MonoBehaviour:
   _levelUpMenuText: {fileID: 108923760}
   _levelMarks: 0a000000140000001e00000028000000320000003c00000046000000500000005a000000640000006e00000078000000820000008c00000096000000a0000000aa000000b4000000be000000c8000000d2000000dc000000e6000000f0000000fa000000
   _skillMgrRef: {fileID: 1734993358}
+  _levelUpData:
+  - {fileID: 11400000, guid: e0034047b5a4c234797598e38023f8c6, type: 2}
+  - {fileID: 11400000, guid: 754336ab2f3ca6a489e53bcaf65906e0, type: 2}
+  - {fileID: 11400000, guid: f27ef2a2fa33c704281497b6bed847d5, type: 2}
+  - {fileID: 11400000, guid: 028501c99b1458f4d87d779ee7c2248e, type: 2}
+  - {fileID: 11400000, guid: ce71b74ad2fb08c46b1352e9e9faa846, type: 2}
+  - {fileID: 11400000, guid: f0d937ce17cd4e64883d0f414f8141ca, type: 2}
+  - {fileID: 11400000, guid: 73e1965c8f0917e488efa5ff142dd88a, type: 2}
+  - {fileID: 11400000, guid: c99b5e0300e98c544b67bbbfec21ccd1, type: 2}
+  - {fileID: 11400000, guid: a8f965f953975bc489309c807f6864e8, type: 2}
+  - {fileID: 11400000, guid: 4ca544a5ba55c184a8c1e8147937b07f, type: 2}
+  - {fileID: 11400000, guid: 88b82617e7677554fbddb286484b7739, type: 2}
+  - {fileID: 11400000, guid: 8707de995748eb8418490ee0d983ff88, type: 2}
+  - {fileID: 11400000, guid: ac9f2a7ffba26eb48bc0189798965ca9, type: 2}
+  - {fileID: 11400000, guid: 088d343c13f067a4c86fb9c88c4017aa, type: 2}
+  - {fileID: 11400000, guid: de93bb02baff8954a818fa1d2ada6673, type: 2}
+  - {fileID: 11400000, guid: c8421c931f330fa439c154c37271a113, type: 2}
+  - {fileID: 11400000, guid: 7e8f87a29a43b9e4393241e65f4a6beb, type: 2}
+  - {fileID: 11400000, guid: e6185c262c3de2e4f915120e184f2b89, type: 2}
+  - {fileID: 11400000, guid: 0488ab881bdb45f41ad225e983630854, type: 2}
+  - {fileID: 11400000, guid: 04556336a7be3ee4d8fbcfdde3a83811, type: 2}
+  - {fileID: 11400000, guid: d69c760f8b5a6744caf49e4801613990, type: 2}
+  - {fileID: 11400000, guid: d40d9696692b6cd4ab021f85ba6c2b70, type: 2}
+  - {fileID: 11400000, guid: 02deac2a7bf3d7645a7ff18e63847e2d, type: 2}
+  - {fileID: 11400000, guid: 4a59f0ebf1dd5b746b8b15f9b6b64a1d, type: 2}
+  - {fileID: 11400000, guid: b9fe6947cacd3104bbed05c7edeb9aee, type: 2}
+  - {fileID: 11400000, guid: 61a6468a1dc389245b46b36f9bf4755f, type: 2}
 --- !u!114 &1734993358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5180,6 +5223,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 19ac8c9401c607544b04bab44d08cb06, type: 2}
   - {fileID: 11400000, guid: 91c65078f10549d409f92402f96ea758, type: 2}
   - {fileID: 11400000, guid: 26ebbc11caead7d4fb428c77e1963354, type: 2}
+  - {fileID: 11400000, guid: 8b36be9bf1275ac4ab945d6be869c26f, type: 2}
+  - {fileID: 11400000, guid: 7a704c9b945fb5142932ce38bc4e5e9b, type: 2}
   - {fileID: 11400000, guid: 87b18551b49d9634b81dbda1b259492f, type: 2}
   - {fileID: 11400000, guid: 6f4059b203bbce7469ce98617b668ba2, type: 2}
   - {fileID: 11400000, guid: 9bab471dbeea5f94abb0c676477ee317, type: 2}
@@ -5193,6 +5238,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: adf9ed708a057c9488d7c7c7f01d5f49, type: 2}
   - {fileID: 11400000, guid: ec296aa6d734f194596c33df786c152e, type: 2}
   - {fileID: 11400000, guid: cb1dcdd64795ab04e8c32a5614a76906, type: 2}
+  - {fileID: 11400000, guid: 4bf78cde294803641841204c77669434, type: 2}
   - {fileID: 11400000, guid: 853a3a0f48779d8449266f55634d56d1, type: 2}
   _tutorialQuests: []
   _storyQuests: []
@@ -5672,6 +5718,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1959134676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8718306707375576437, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+  m_PrefabInstance: {fileID: 7485012191131071712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1981408625
 GameObject:
   m_ObjectHideFlags: 0
@@ -9707,6 +9758,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3204336125184705898, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1427857945}
     - target: {fileID: 3358872014299837505, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3
