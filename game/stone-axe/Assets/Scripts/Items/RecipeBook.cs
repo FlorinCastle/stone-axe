@@ -32,6 +32,8 @@ public class RecipeBook : MonoBehaviour
     [SerializeField] private GameObject _itemRecipeInfoPrefab;
     [SerializeField] private GameObject _questItemRecipeInfoPrefab;
     [SerializeField] private GameObject _partRecipeInfoPrefab;
+    [SerializeField] private GameObject _upcomingItemRecipePrefab;
+    [SerializeField] private GameObject _upcomingPartRecipePrefab;
     [SerializeField] private GameObject _filterPrefab;
 
     private GameMaster _gameMasterRef;
@@ -165,29 +167,42 @@ public class RecipeBook : MonoBehaviour
             }
         }
     }
-    /*
-    public void setSelectedRecipe(int index)
+
+    public void setUpcomingRecipeInfo (int index)
     {
-        if (index != -1)
+        if (index == -1)
+            _recipeText.text = "placeholder";
+        else
         {
-            GameObject button = recipeButtons[index];
+            GameObject button = upcomingRecipeButtons[index];
             foreach (ItemData itemRecipe in itemRecipes)
             {
                 if (itemRecipe.ItemName == button.GetComponent<RecipeButton>().GetRecipeName)
                 {
-                    Debug.Log("Selected recipe is an Item");
+                    _recipeText.text = itemRecipe.ItemName + "\nParts:\nValid Part 1: ";
+                    foreach (PartData valid1 in itemRecipe.ValidParts1)
+                        _recipeText.text += valid1.PartName + " ";
+
+                    _recipeText.text += "\nValid Part 2: ";
+                    foreach (PartData valid2 in itemRecipe.ValidParts2)
+                        _recipeText.text += valid2.PartName + " ";
+
+                    _recipeText.text += "\nValid Part 3: ";
+                    foreach (PartData valid3 in itemRecipe.ValidParts3)
+                        _recipeText.text += valid3.PartName + " ";
                 }
             }
             foreach (PartData partRecipe in partRecipes)
             {
                 if (partRecipe.PartName == button.GetComponent<RecipeButton>().GetRecipeName)
                 {
-                    Debug.Log("Selected recipe is a Part");
+                    _recipeText.text = partRecipe.PartName + "\nValid Material Types:\n";
+                    foreach (string matName in partRecipe.ValidMaterials)
+                        _recipeText.text += matName + "\n";
                 }
             }
         }
     }
-    */
     public void clearSelectedRecipe()
     {
         _selectedItemRecipe = null;
@@ -447,7 +462,7 @@ public class RecipeBook : MonoBehaviour
     {
         foreach(ItemData itemRecipe in levelLockedItems)
         {
-            tempButton = Instantiate(_itemRecipeInfoPrefab);
+            tempButton = Instantiate(_upcomingItemRecipePrefab);
             tempButton.transform.SetParent(_contentRef.transform, false);
             tempButton.GetComponent<RecipeButton>().setRecipeName(itemRecipe.ItemName);
             tempButton.GetComponent<RecipeButton>().CanCraft = false;
@@ -459,7 +474,7 @@ public class RecipeBook : MonoBehaviour
         }
         foreach(PartData partRecipe in levelLockedParts)
         {
-            tempButton = Instantiate(_partRecipeInfoPrefab);
+            tempButton = Instantiate(_upcomingPartRecipePrefab);
             tempButton.transform.SetParent(_contentRef.transform, false);
             tempButton.GetComponent<RecipeButton>().setRecipeName(partRecipe.PartName);
             tempButton.GetComponent<RecipeButton>().CanCraft = false;
@@ -487,7 +502,7 @@ public class RecipeBook : MonoBehaviour
         }
         else if (upcomingRecipesBool == true)
         {
-            Debug.Log("placeholder");
+            //Debug.Log("placeholder");
             if (enabledFilters.Count > 0)
                 setupFilteredGrid();
             else
@@ -502,7 +517,10 @@ public class RecipeBook : MonoBehaviour
     {
         foreach (GameObject go in recipeButtons)
             Destroy(go);
+        foreach (GameObject fgo in upcomingRecipeButtons)
+            Destroy(fgo);
         recipeButtons.Clear();
+        upcomingRecipeButtons.Clear();
     }
     private void clearUpcomingRecipesLists()
     {
@@ -523,7 +541,7 @@ public class RecipeBook : MonoBehaviour
     private int InsertUpcomingRecipeButton(GameObject button)
     {
         upcomingRecipeButtons.Add(button);
-        int i = recipeButtons.IndexOf(button);
+        int i = upcomingRecipeButtons.IndexOf(button);
         button.GetComponent<RecipeButton>().setMyIndex(i);
         return i;
     }

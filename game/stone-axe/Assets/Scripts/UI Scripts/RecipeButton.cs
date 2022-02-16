@@ -5,7 +5,7 @@ using UnityEngine;
 public class RecipeButton : MonoBehaviour
 {
     [SerializeField] private RecipeBook _recipeControl;
-    [SerializeField, HideInInspector] private int _myButtonIndex;
+    [SerializeField] private int _myButtonIndex;
     [SerializeField, HideInInspector] private string _recipeName;
     private bool _canCraft;
 
@@ -31,17 +31,15 @@ public class RecipeButton : MonoBehaviour
         if (_canCraft == true)
             setRecipe();
     }
+    public void setUpcomingRecipeInfoText()
+    {
+        _recipeControl.setUpcomingRecipeInfo(_myButtonIndex);
+    }
 
     public void setRecipe()
     {
         _recipeControl.selectRecipe();
     }
-    /*
-    public void setSelectedRecipe()
-    {
-        _recipeControl.setSelectedRecipe(_myButtonIndex);
-    }
-    */
     public void setRecipeName(string name) { _recipeName = name; }
     public string GetRecipeName { get => _recipeName; }
 
