@@ -185,8 +185,8 @@ public class DisassembleItemControl : MonoBehaviour
 
         _selectedItem = null;
 
-        _itemNameText.text = "item chosen: [item name]";
-        _itemText.text = "placeholder text";
+        _itemNameText.text = "item chosen: [choose item]";
+        _itemText.text = "";
 
         _disassembleButton.interactable = false;
 

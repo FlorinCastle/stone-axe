@@ -33,6 +33,7 @@ public class GenerateItem : MonoBehaviour
         haggleButtonText = haggleButton.GetComponentInChildren<TextMeshProUGUI>();
         haggleButtonText.text = "haggle\n(success chance: n/a)";
         generateButton.interactable = false;
+        itemText.text = "wait for an adventurer to arrive that offers an item to buy";
     }
 
     [SerializeField] private ItemData _generatedItem;

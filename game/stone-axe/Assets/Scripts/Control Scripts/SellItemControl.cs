@@ -44,12 +44,14 @@ public class SellItemControl : MonoBehaviour
         _haggleButton.interactable = false;
         _suggestButton.interactable = false;
         _haggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: n/a)";
+        _itemText.text = "choose item to sell";
 
         _marketSellItemButton.interactable = false;
         _marketRefuseButton.interactable = false;
         _marketHaggleButton.interactable = false;
         _marketSuggestButton.interactable = false;
         _marketHaggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: n/a)";
+        _itemText.text = "choose item to sell";
     }
 
     public void suggestAlt()

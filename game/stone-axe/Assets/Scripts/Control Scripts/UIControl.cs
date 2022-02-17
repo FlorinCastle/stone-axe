@@ -24,6 +24,8 @@ public class UIControl : MonoBehaviour
     [SerializeField] GameObject marketEconomicSubUI;
     [SerializeField] GameObject questSubUI;
     [Header("Main Menu UI")]
+    [SerializeField] GameObject _mainUIElements;
+    [SerializeField] GameObject _creditsUI;
     [SerializeField] Button _continueButton;
     [SerializeField] Button _newGameButton;
     [SerializeField] Button _loadGameButton;
@@ -85,7 +87,7 @@ public class UIControl : MonoBehaviour
 
         if (_newGameButton != null) _newGameButton.interactable = true;
         if (_settingsButton != null) _settingsButton.interactable = true;
-        if (_creditsButton != null) _creditsButton.interactable = false;
+        if (_creditsButton != null) _creditsButton.interactable = true;
     }
     public void setupNewGameMenu()
     {
@@ -243,6 +245,17 @@ public class UIControl : MonoBehaviour
             st.hideHighlight();
         }
         
+    }
+
+    public void loadCredits()
+    {
+        _mainUIElements.SetActive(false);
+        _creditsUI.SetActive(true);
+    }
+    public void loadMainMenu()
+    {
+        _creditsUI.SetActive(false);
+        _mainUIElements.SetActive(true);
     }
 
     public bool MainMenuUIActive { get => mainMenuUI.activeInHierarchy; }

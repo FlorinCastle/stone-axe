@@ -1177,7 +1177,7 @@ public class InventoryScript : MonoBehaviour
             //Debug.LogWarning("TODO setup code for selecting parts");
             foreach(PartData part1ref in _craftControlRef.checkItemRecipe().ValidParts1)
                 if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part1ref
-                    && (partLastFilled == 0 || partLastFilled == 3 || _craftControlRef.Part1Set() == false || _craftControlRef.AllPartsSet() == true)
+                    && (partLastFilled == 0 || partLastFilled == 2 || partLastFilled == 3 || _craftControlRef.Part1Set() == false || _craftControlRef.AllPartsSet() == true)
                     && phb == false)
                 {
                     Debug.LogWarning("selected part matches recipe part 1");
@@ -1188,7 +1188,7 @@ public class InventoryScript : MonoBehaviour
 
             foreach(PartData part2ref in _craftControlRef.checkItemRecipe().ValidParts2)
                 if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part2ref
-                    && (partLastFilled == 0 || partLastFilled == 1 || _craftControlRef.Part2Set() == false || _craftControlRef.AllPartsSet() == true)
+                    && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 3 || _craftControlRef.Part2Set() == false || _craftControlRef.AllPartsSet() == true)
                     && phb == false)
                 {
                     Debug.LogWarning("selected part matches recipe part 2");
@@ -1199,7 +1199,7 @@ public class InventoryScript : MonoBehaviour
 
             foreach (PartData part3ref in _craftControlRef.checkItemRecipe().ValidParts3)
                 if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part3ref
-                    && (partLastFilled == 0 || partLastFilled == 2 || _craftControlRef.Part3Set() == false || _craftControlRef.AllPartsSet() == true)
+                    && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 2 || _craftControlRef.Part3Set() == false || _craftControlRef.AllPartsSet() == true)
                     && phb == false)
                 {
                     Debug.LogWarning("selected part matches recipe part 3");
