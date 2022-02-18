@@ -57,6 +57,8 @@ public class CraftControl : MonoBehaviour
     [SerializeField] PartData _chosenPartRecipe;
     [SerializeField] MaterialData _chosenPartMaterial;
     [SerializeField] GameObject _optionalChosenEnchant;
+    [Header("Quest Item Crafting")]
+    [SerializeField] QuestItemData _chosenQuestRecipe;
 
     [SerializeField, HideInInspector] private List<string> recipeDropOptions;
     [SerializeField, HideInInspector] private List<string> itemRecipeOptions;
@@ -142,6 +144,7 @@ public class CraftControl : MonoBehaviour
         {
             _chosenItemRecipe = _recipeBookRef.getSelectedItemRecipe();
             _chosenPartRecipe = null;
+            _chosenQuestRecipe = null;
 
             _itemCraftingUI.SetActive(true);
             clearItemCraftingUI();
@@ -154,6 +157,7 @@ public class CraftControl : MonoBehaviour
         {
             _chosenItemRecipe = null;
             _chosenPartRecipe = _recipeBookRef.getSeletedPartRecipe();
+            _chosenQuestRecipe = null;
 
             _itemCraftingUI.SetActive(false);
             clearItemCraftingUI();
@@ -162,6 +166,19 @@ public class CraftControl : MonoBehaviour
             setupPartRecipeStats();
 
             _selectedRecipeText.text = "selected:\n" + _chosenPartRecipe.PartName;
+        }
+        else if (_recipeBookRef.getSelectedQuestRecipe() != null)
+        {
+            _chosenItemRecipe = null;
+            _chosenPartRecipe = null;
+            _chosenQuestRecipe = _recipeBookRef.getSelectedQuestRecipe();
+
+            _itemCraftingUI.SetActive(true);
+            clearItemCraftingUI();
+            _partCraftingUI.SetActive(false);
+            clearPartCraftingUI();
+
+            _selectedRecipeText.text = "selected:\n" + _chosenQuestRecipe.QuestItemName;
         }
     }
 
@@ -269,6 +286,27 @@ public class CraftControl : MonoBehaviour
             setupDiscription(3, _chosenPart3);
         else
             Debug.LogWarning("No Part 3 Selected!");
+    }
+    public void SelectQPart1()
+    {
+        if (_inventoryControlReference.getSelectedItem() != null)
+            _chosenPart1 = _inventoryControlReference.getSelectedItem();
+        else if (_inventoryControlReference.getSelectedPart() != null)
+            _chosenPart1 = _inventoryControlReference.getSelectedPart();
+    }
+    public void SelectQPart2()
+    {
+        if (_inventoryControlReference.getSelectedItem() != null)
+            _chosenPart2 = _inventoryControlReference.getSelectedItem();
+        else if (_inventoryControlReference.getSelectedPart() != null)
+            _chosenPart2 = _inventoryControlReference.getSelectedPart();
+    }
+    public void SelectQPart3()
+    {
+        if (_inventoryControlReference.getSelectedItem() != null)
+            _chosenPart3 = _inventoryControlReference.getSelectedItem();
+        else if (_inventoryControlReference.getSelectedPart() != null)
+            _chosenPart3 = _inventoryControlReference.getSelectedPart();
     }
 
     public void SelectMat()
@@ -674,16 +712,9 @@ public class CraftControl : MonoBehaviour
             //Debug.LogWarning("No Recipe selected!");
     }
 
-    public ItemData checkItemRecipe()
-    {
-
-        return _chosenItemRecipe;
-    }
-
-    public PartData checkPartRecipe()
-    {
-        return _chosenPartRecipe;
-    }
+    public ItemData checkItemRecipe() { return _chosenItemRecipe; }
+    public PartData checkPartRecipe() { return _chosenPartRecipe; }
+    public QuestItemData checkQuestRecipe() { return _chosenQuestRecipe; }
 
     private bool checkIfAnyPartEnchanted()
     {

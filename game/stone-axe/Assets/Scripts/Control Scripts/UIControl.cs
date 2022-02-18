@@ -26,6 +26,7 @@ public class UIControl : MonoBehaviour
     [Header("Main Menu UI")]
     [SerializeField] GameObject _mainUIElements;
     [SerializeField] GameObject _creditsUI;
+    [SerializeField] private TextMeshProUGUI _creditsText;
     [SerializeField] Button _continueButton;
     [SerializeField] Button _newGameButton;
     [SerializeField] Button _loadGameButton;
@@ -70,6 +71,7 @@ public class UIControl : MonoBehaviour
 
         _startNewGameButton.interactable = false;
         setupMainMenu();
+        setupCreditsText();
     }
 
     public void setupMainMenu()
@@ -158,6 +160,24 @@ public class UIControl : MonoBehaviour
                 st.setupTexts();
             }
         }
+    }
+    public void setupCreditsText()
+    {
+        string phs = "";
+        CreditsManager creditsRef = this.gameObject.GetComponentInChildren<CreditsManager>();
+        if (creditsRef.ProductionCredit != "")
+            phs += "Production Credit\n" + creditsRef.ProductionCredit + "\n\n";
+
+        if (creditsRef.MusicCredit != "")
+            phs += "Music Credit\n" + creditsRef.MusicCredit + "\n\n";
+
+        if (creditsRef.ArtCredit != "")
+            phs += "Art Credit\n" + creditsRef.ArtCredit + "\n\n";
+
+        if (creditsRef.OtherCredit != "")
+            phs += "Other Credit\n" + creditsRef.OtherCredit + "\n\n";
+
+        _creditsText.text = phs;
     }
 
     public void unloadUI(GameObject UIInput) { UIInput.SetActive(false); } 

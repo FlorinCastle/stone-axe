@@ -11,6 +11,8 @@ TagManager:
   - SaveTracker
   - QuestMaster
   - AudioMaster
+  - ItemData
+  - PartData
   layers:
   - Default
   - TransparentFX

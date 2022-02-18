@@ -252,7 +252,7 @@ public class RecipeBook : MonoBehaviour
             tempButton.transform.SetParent(_contentRef.transform, false);
             tempButton.GetComponent<RecipeButton>().setRecipeName(questItem.QuestItemName);
             // set up button text
-            Text t = tempButton.GetComponentInChildren<Text>();
+            TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
             t.text = questItem.QuestItemName + " Recipe";
             tempButton.name = questItem.QuestItemName + " Recipe";
             // add button to list
@@ -269,7 +269,7 @@ public class RecipeBook : MonoBehaviour
                 tempButton.GetComponent<RecipeButton>().setRecipeName(itemRecipe.ItemName);
                 tempButton.GetComponent<RecipeButton>().CanCraft = true;
                 // set up button text
-                Text t = tempButton.GetComponentInChildren<Text>();
+                TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
                 t.text = itemRecipe.ItemName + " Recipe";
                 tempButton.name = itemRecipe.ItemName + " Recipe";
                 // add button to list
@@ -288,7 +288,7 @@ public class RecipeBook : MonoBehaviour
                 tempButton.GetComponent<RecipeButton>().setRecipeName(partRecipe.PartName);
                 tempButton.GetComponent<RecipeButton>().CanCraft = true;
 
-                Text t = tempButton.GetComponentInChildren<Text>();
+                TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
                 t.text = partRecipe.PartName + " Recipe";
                 tempButton.name = partRecipe.PartName + " Recipe";
                 // add button to list
@@ -512,7 +512,6 @@ public class RecipeBook : MonoBehaviour
             
     }
 
-
     private void clearRecipeGrid()
     {
         foreach (GameObject go in recipeButtons)
@@ -548,7 +547,7 @@ public class RecipeBook : MonoBehaviour
 
     private bool anyRecipeSelected()
     {
-        if (_selectedItemRecipe != null || _selectedPartRecipe != null)
+        if (_selectedItemRecipe != null || _selectedPartRecipe != null || _selectedQuestItemRecipe != null)
             return true;
 
         return false;
@@ -588,15 +587,9 @@ public class RecipeBook : MonoBehaviour
         return null;
     }
 
-    public ItemData getSelectedItemRecipe()
-    {
-        return _selectedItemRecipe;
-    }
-
-    public PartData getSeletedPartRecipe()
-    {
-        return _selectedPartRecipe;
-    }
+    public ItemData getSelectedItemRecipe() { return _selectedItemRecipe; }
+    public PartData getSeletedPartRecipe() { return _selectedPartRecipe; }
+    public QuestItemData getSelectedQuestRecipe() { return _selectedQuestItemRecipe; }
 
     public void setupFilterUI()
     {

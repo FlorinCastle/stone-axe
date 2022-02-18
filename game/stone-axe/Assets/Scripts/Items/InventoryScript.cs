@@ -1135,7 +1135,31 @@ public class InventoryScript : MonoBehaviour
 
     public void returnSelectedItem()
     {
-        if (_UIControlRef.ShopUIEnabled == true)
+        if (_UIControlRef.ShopCraftUIEnabled == true)
+        {
+            if (_craftControlRef.checkQuestRecipe() != null)
+            {
+                // check 'part 1'
+                questPart1();
+                // check 'part 2'
+                questPart2();
+                // check 'part 3'
+                questPart3();
+
+            }
+            else
+            {
+                if (_UIControlRef.ShopEcoUIEnabled == false && _UIControlRef.ShopDisUIEnabled == false)
+                {
+                    _UIControlRef.ShopEcoUIEnabled = false;
+                    _UIControlRef.ShopDisUIEnabled = true;
+                    _UIControlRef.ShopCraftUIEnabled = false;
+                }
+                GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem();
+                GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem();
+            }
+        }
+        else if (_UIControlRef.ShopUIEnabled == true)
         {
             //Debug.Log("shop ui enabled");
             if (_UIControlRef.ShopEcoUIEnabled == false && _UIControlRef.ShopDisUIEnabled == false)
@@ -1209,6 +1233,91 @@ public class InventoryScript : MonoBehaviour
                 }
         }
         phb = false;
+    }
+
+    private void questPart1()
+    {
+        bool phb = false;
+        if (_selectedItem != null)
+        {
+            ItemData item = getItemData();
+            if (item == _craftControlRef.checkQuestRecipe().ItemPart1 && phb == false)
+            {
+                Debug.LogWarning("selected item matches recipe part 1");
+                _craftControlRef.SelectQPart1();
+
+                phb = true;
+            }
+        }
+        else if (_selectedPart != null)
+        {
+            if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart1 && phb == false)
+            {
+                Debug.LogWarning("selected item matches recipe part 1");
+                _craftControlRef.SelectQPart1();
+
+                phb = true;
+            }
+        }
+    }
+    private void questPart2()
+    {
+        bool phb = false;
+        if (_selectedItem != null)
+        {
+            ItemData item = getItemData();
+            if (item == _craftControlRef.checkQuestRecipe().ItemPart2 && phb == false)
+            {
+                Debug.LogWarning("selected item matches recipe part 2");
+                _craftControlRef.SelectQPart2();
+
+                phb = true;
+            }
+        }
+        else if (_selectedPart != null)
+        {
+            if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart2 && phb == false)
+            {
+                Debug.LogWarning("selected item matches recipe part 1");
+                _craftControlRef.SelectQPart2();
+
+                phb = true;
+            }
+        }
+    }
+    private void questPart3()
+    {
+        bool phb = false;
+        if (_selectedItem != null)
+        {
+            ItemData item = getItemData();
+            if (item == _craftControlRef.checkQuestRecipe().ItemPart3 && phb == false)
+            {
+                Debug.LogWarning("selected item matches recipe part 3");
+                _craftControlRef.SelectQPart3();
+
+                phb = true;
+            }
+        }
+        else if (_selectedPart != null)
+        {
+            if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart3 && phb == false)
+            {
+                Debug.LogWarning("selected item matches recipe part 1");
+                _craftControlRef.SelectQPart3();
+
+                phb = true;
+            }
+        }
+    }
+
+    private ItemData getItemData()
+    {
+        foreach(ItemData item in GameObject.FindGameObjectWithTag("ItemData").GetComponent<Item>().getItemDataRef())
+            if (item.ItemName == _selectedItem.GetComponent<ItemDataStorage>().ItemName)
+                return item;
+
+        return null;
     }
 
     public void returnSelectedMat()
