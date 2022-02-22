@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelNumber: 1
   _levelName: Level 1
-  _itemRecipes: []
-  _partRecipes: []
+  _itemRecipes:
+  - {fileID: 11400000, guid: cf4632fb9ce824141ae74483c4236efb, type: 2}
+  _partRecipes:
+  - {fileID: 11400000, guid: e49304032ca5f4a42a4174e9b7e82ae9, type: 2}
+  - {fileID: 11400000, guid: fa4eff662f1c61048b3cfc587842c462, type: 2}
   _materials: []

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea40fb9319c29d949a348c58871d2658, type: 3}
-  m_Name: Knife - wip
+  m_Name: Knife
   m_EditorClassIdentifier: 
-  _itemName: Knife - wip
-  _levelRequirement: 0
+  _itemName: Knife
+  _levelRequirement: 4
   _part1: {fileID: 0}
   _validPart1:
   - {fileID: 11400000, guid: e3cc8df0e98069140b17e5354a017bd9, type: 2}
@@ -23,9 +23,9 @@ MonoBehaviour:
   _part3: {fileID: 0}
   _validPart3:
   - {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
-  _baseCost: 0
-  _baseStrenght: 0
-  _baseDextarity: 0
-  _baseIntelligence: 0
+  _baseCost: 27
+  _baseStrenght: 3
+  _baseDextarity: 9
+  _baseIntelligence: 2
   _isEnchanted: 0
   _filters: []

@@ -16,10 +16,12 @@ MonoBehaviour:
   _levelName: Level 4
   _itemRecipes:
   - {fileID: 11400000, guid: 16c07a1bc7946874099458679b04ecf2, type: 2}
+  - {fileID: 11400000, guid: 8e249b1a87d22f145a4f00752b238b22, type: 2}
   _partRecipes:
   - {fileID: 11400000, guid: f42da3e3febdbfd458add1214f07a7ca, type: 2}
   - {fileID: 11400000, guid: 2d5adce6fefcae548a99d308f80210b3, type: 2}
   - {fileID: 11400000, guid: b9ef74e0e026be94b8892956950e09c8, type: 2}
+  - {fileID: 11400000, guid: e3cc8df0e98069140b17e5354a017bd9, type: 2}
   _materials:
   - {fileID: 11400000, guid: 440de40f604fd0743a0a66493279ad73, type: 2}
   - {fileID: 11400000, guid: ba1c5e625e5ab5e4fa7ec67ccab1e890, type: 2}
