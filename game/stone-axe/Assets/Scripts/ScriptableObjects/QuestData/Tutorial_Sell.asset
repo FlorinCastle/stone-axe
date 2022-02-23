@@ -53,4 +53,6 @@ MonoBehaviour:
   _requiredQuestItem: {fileID: 0}
   _requiredCount: 0
   _nextQuest: {fileID: 0}
+  _unlocksQuests:
+  - {fileID: 11400000, guid: b513f70bebd368e42865c6a21fad0df2, type: 2}
   _storyQuestComplete: 0

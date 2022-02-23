@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 906549ced2b40c84c8a9474b679e6739, type: 3}
-  m_Name: StoryQuest
+  m_Name: Story_DebtI
   m_EditorClassIdentifier: 
-  _questName: Story Quest
+  _questName: 'Story: Debt I'
   _questDiscription: story quest
   _questType: 6
+  _questStages: []
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 0}
   _requiredCount: 0
-  _nextQuest: {fileID: 0}
+  _nextQuest: {fileID: 11400000, guid: 92f434d561190024ca947a8a6b909584, type: 2}
+  _unlocksQuests:
+  - {fileID: 11400000, guid: 92f434d561190024ca947a8a6b909584, type: 2}
   _storyQuestComplete: 0

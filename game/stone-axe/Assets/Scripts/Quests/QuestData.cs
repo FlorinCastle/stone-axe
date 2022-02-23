@@ -17,6 +17,7 @@ public class QuestData : ScriptableObject
     public QuestItemData _requiredQuestItem;
     public int _requiredCount;
     public QuestData _nextQuest;
+    public List<QuestData> _unlocksQuests;
 
     public bool _storyQuestComplete;
 
@@ -31,4 +32,5 @@ public class QuestData : ScriptableObject
     public int ReqiredCount { get => _requiredCount; }
     public bool StoryQuestComplete { get => _storyQuestComplete; set => _storyQuestComplete = value; }
     public QuestData NextQuest { get => _nextQuest; }
+    public List<QuestData> QuestUnlocks { get => _unlocksQuests; }
 }

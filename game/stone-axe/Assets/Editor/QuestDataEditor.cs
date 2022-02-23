@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
+using UnityEditor;
 
 [CustomEditor(typeof(QuestData)), CanEditMultipleObjects]
 public class QuestDataEditor : Editor
@@ -16,7 +16,8 @@ public class QuestDataEditor : Editor
         reqQItem,
         reqCount,
         questComplete,
-        nextQuest;
+        nextQuest,
+        questUnlocks;
 
     private void OnEnable()
     {
@@ -31,6 +32,7 @@ public class QuestDataEditor : Editor
         reqCount = serializedObject.FindProperty("_requiredCount");
         questComplete = serializedObject.FindProperty("_storyQuestComplete");
         nextQuest = serializedObject.FindProperty("_nextQuest");
+        questUnlocks = serializedObject.FindProperty("_unlocksQuests");
     }
 
     /* Disregard this
@@ -64,6 +66,7 @@ public class QuestDataEditor : Editor
                 reqCount.intValue = 0;
                 questComplete.boolValue = false;
                 nextQuest.objectReferenceValue = null;
+                questUnlocks.ClearArray();
                 break;
 
             case QuestData.questTypeEnum.OCC_QuestItem:
@@ -73,6 +76,7 @@ public class QuestDataEditor : Editor
                 reqCount.intValue = 0;
                 questComplete.boolValue = false;
                 nextQuest.objectReferenceValue = null;
+                questUnlocks.ClearArray();
                 break;
 
             case QuestData.questTypeEnum.OD_Material:
@@ -82,6 +86,7 @@ public class QuestDataEditor : Editor
                 EditorGUILayout.PropertyField(reqCount, new GUIContent("Material Count"));
                 questComplete.boolValue = false;
                 nextQuest.objectReferenceValue = null;
+                questUnlocks.ClearArray();
                 break;
 
             case QuestData.questTypeEnum.OCC_TotalCrafted:
@@ -91,6 +96,7 @@ public class QuestDataEditor : Editor
                 EditorGUILayout.PropertyField(reqCount, new GUIContent("Item Count"));
                 questComplete.boolValue = false;
                 nextQuest.objectReferenceValue = null;
+                questUnlocks.ClearArray();
                 break;
 
             case QuestData.questTypeEnum.Tutorial:
@@ -101,6 +107,7 @@ public class QuestDataEditor : Editor
                 EditorGUILayout.PropertyField(questStages);
                 EditorGUILayout.PropertyField(questComplete, new GUIContent("This Quest Complete"));
                 EditorGUILayout.PropertyField(nextQuest);
+                EditorGUILayout.PropertyField(questUnlocks);
                 break;
 
             case QuestData.questTypeEnum.Story:
@@ -111,6 +118,7 @@ public class QuestDataEditor : Editor
                 EditorGUILayout.PropertyField(questStages);
                 EditorGUILayout.PropertyField(questComplete, new GUIContent("This Quest Complete"));
                 EditorGUILayout.PropertyField(nextQuest);
+                EditorGUILayout.PropertyField(questUnlocks, new GUIContent("Quest Unlocks"));
                 break;
         }
 
