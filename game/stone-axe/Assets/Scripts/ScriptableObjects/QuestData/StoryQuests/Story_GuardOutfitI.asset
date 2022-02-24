@@ -15,7 +15,8 @@ MonoBehaviour:
   _questName: 'Story: Guard Outfit I'
   _questDiscription: story quest
   _questType: 6
-  _questStages: []
+  _questStages:
+  - {fileID: 11400000, guid: aee8d99ae3b36c745aff68da5934d86d, type: 2}
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 0}

@@ -15,7 +15,8 @@ MonoBehaviour:
   _questName: 'Story: Knightly Regular II'
   _questDiscription: story quest
   _questType: 6
-  _questStages: []
+  _questStages:
+  - {fileID: 11400000, guid: adbb5c14fcd87b645a157ef41aebb425, type: 2}
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 0}

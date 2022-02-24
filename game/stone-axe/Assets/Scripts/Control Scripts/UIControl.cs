@@ -8,36 +8,37 @@ using UnityEngine.UI;
 public class UIControl : MonoBehaviour
 {
     [Header("UI")]
-    [SerializeField] GameObject mainMenuUI;
-    [SerializeField] GameObject gameShopUI;
-    [SerializeField] GameObject optionsPopup;
-    [SerializeField] GameObject shopUI;
-    [SerializeField] GameObject marketUI;
-    [Header("Shop UI")]
+    [SerializeField] private GameObject mainMenuUI;
+    [SerializeField] private GameObject gameShopUI;
+    [SerializeField] private GameObject optionsPopup;
+    [SerializeField] private GameObject shopUI;
+    [SerializeField] private GameObject marketUI;
     [Header("Sub UI")]
-    [SerializeField] GameObject economicSubUI;
-    [SerializeField] GameObject disassembleSubUI;
-    [SerializeField] GameObject craftSubUI;
-    [SerializeField] GameObject inventoryUI;
-    [SerializeField] GameObject skillTreeUI;
+    [SerializeField] private TextMeshProUGUI _currencyText;
+    [Header("Shop UI")]
+    [SerializeField] private GameObject economicSubUI;
+    [SerializeField] private GameObject disassembleSubUI;
+    [SerializeField] private GameObject craftSubUI;
+    [SerializeField] private GameObject inventoryUI;
+    [SerializeField] private GameObject skillTreeUI;
     [Header("Market UI")]
-    [SerializeField] GameObject marketEconomicSubUI;
-    [SerializeField] GameObject questSubUI;
+    [SerializeField] private GameObject marketEconomicSubUI;
+    [SerializeField] private GameObject questSubUI;
     [Header("Main Menu UI")]
-    [SerializeField] GameObject _mainUIElements;
-    [SerializeField] GameObject _creditsUI;
+    [SerializeField] private GameObject _mainUIElements;
+    [SerializeField] private GameObject _creditsUI;
     [SerializeField] private TextMeshProUGUI _creditsText;
-    [SerializeField] Button _continueButton;
-    [SerializeField] Button _newGameButton;
-    [SerializeField] Button _loadGameButton;
-    [SerializeField] Button _settingsButton;
-    [SerializeField] Button _creditsButton;
-    [SerializeField] GameObject _loadGameMenu;
-    [SerializeField] GameObject _newGameMenu;
+    [SerializeField] private Button _continueButton;
+    [SerializeField] private Button _newGameButton;
+    [SerializeField] private Button _loadGameButton;
+    [SerializeField] private Button _settingsButton;
+    [SerializeField] private Button _creditsButton;
+    [SerializeField] private GameObject _loadGameMenu;
+    [SerializeField] private GameObject _newGameMenu;
     [Header("New Game UI")]
-    [SerializeField] InputField _playerName;
-    [SerializeField] InputField _shopName;
-    [SerializeField] Button _startNewGameButton;
+    [SerializeField] private InputField _playerName;
+    [SerializeField] private InputField _shopName;
+    [SerializeField] private Button _startNewGameButton;
     [Header("Player Creation")]
     [SerializeField, HideInInspector] private string playerSpecies = "";
     [SerializeField, HideInInspector] private int playerColor = -1;
@@ -72,6 +73,7 @@ public class UIControl : MonoBehaviour
         _startNewGameButton.interactable = false;
         setupMainMenu();
         setupCreditsText();
+        updateCurrencyText();
     }
 
     public void setupMainMenu()
@@ -276,6 +278,11 @@ public class UIControl : MonoBehaviour
     {
         _creditsUI.SetActive(false);
         _mainUIElements.SetActive(true);
+    }
+
+    public void updateCurrencyText()
+    {
+        _currencyText.text = this.gameObject.GetComponent<GameMaster>().CurrentCurrency.ToString();
     }
 
     public bool MainMenuUIActive { get => mainMenuUI.activeInHierarchy; }

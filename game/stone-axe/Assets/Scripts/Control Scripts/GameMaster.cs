@@ -40,9 +40,11 @@ public class GameMaster : MonoBehaviour
         loadSaveGames();
     }
 
+    public int CurrentCurrency { get => _currentCurrency; }
     public void addCurrency(int value)
     {
         _currentCurrency += value;
+        this.gameObject.GetComponent<UIControl>().updateCurrencyText();
     }
     public bool removeCurrency(int value)
     {
@@ -51,11 +53,11 @@ public class GameMaster : MonoBehaviour
         if (temp >= 0)
         {
             _currentCurrency = temp;
+            this.gameObject.GetComponent<UIControl>().updateCurrencyText();
             return true;
         }
         else if (temp < 0)
             return false;
-
         return false;
     }
 

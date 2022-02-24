@@ -15,10 +15,12 @@ MonoBehaviour:
   _questName: 'Story: Guard Outfit II'
   _questDiscription: story quest
   _questType: 6
-  _questStages: []
+  _questStages:
+  - {fileID: 11400000, guid: baf16de4320ad6c44bbeac2daa190543, type: 2}
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 0}
   _requiredCount: 0
   _nextQuest: {fileID: 0}
+  _unlocksQuests: []
   _storyQuestComplete: 0

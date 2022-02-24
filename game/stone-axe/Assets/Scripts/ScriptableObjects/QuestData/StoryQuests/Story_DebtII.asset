@@ -15,7 +15,8 @@ MonoBehaviour:
   _questName: 'Story: Debt II'
   _questDiscription: story quest
   _questType: 6
-  _questStages: []
+  _questStages:
+  - {fileID: 11400000, guid: aeeaa6fa5df44fc4b996c062777f2290, type: 2}
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 0}

@@ -15,7 +15,8 @@ MonoBehaviour:
   _questName: 'Story: Noble Sneak I'
   _questDiscription: story quest
   _questType: 6
-  _questStages: []
+  _questStages:
+  - {fileID: 11400000, guid: a3c2aaee9749ce943b9368fdaeb8daea, type: 2}
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 0}
