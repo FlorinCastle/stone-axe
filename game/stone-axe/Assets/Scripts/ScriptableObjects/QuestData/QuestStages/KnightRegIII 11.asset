@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca50eccd083873348a9e25e9b7b573a9, type: 3}
-  m_Name: KnightRegIII 1
+  m_Name: KnightRegIII 11
   m_EditorClassIdentifier: 
-  _questStageType: 1
+  _questStageType: 2
   _questEvent: 0
-  _speaker: Door
-  _dialogueLine: '*ka-chack*'
+  _speaker: 
+  _dialogueLine: 

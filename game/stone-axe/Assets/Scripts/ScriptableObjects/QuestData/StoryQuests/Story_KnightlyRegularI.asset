@@ -18,6 +18,22 @@ MonoBehaviour:
   _questType: 6
   _questStages:
   - {fileID: 11400000, guid: 9ab996bb6c0d0274992d64dd6290e2ba, type: 2}
+  - {fileID: 11400000, guid: e80222249f2bab0479ac0724acaef3a3, type: 2}
+  - {fileID: 11400000, guid: 9e1921e6ffd6497418db61dc30beb27b, type: 2}
+  - {fileID: 11400000, guid: b12dd64e40d0e764eb48404f83f6a488, type: 2}
+  - {fileID: 11400000, guid: 0464f3e392e0dda4fa60549ca5c6294b, type: 2}
+  - {fileID: 11400000, guid: 53bca034a618a6b4f87512e469d17922, type: 2}
+  - {fileID: 11400000, guid: f78692e90dbb8794489062624f8ceb81, type: 2}
+  - {fileID: 11400000, guid: e9fb99b307c70f749b11cd9e932e36df, type: 2}
+  - {fileID: 11400000, guid: e63cf30b29cfd6d4fbe5bfcd2915c68c, type: 2}
+  - {fileID: 11400000, guid: b074c844cc0e6bf4ca5ae3b7510a3edd, type: 2}
+  - {fileID: 11400000, guid: 18afe2bfe014c0d4e8685c2125ebe6b8, type: 2}
+  - {fileID: 11400000, guid: f61c99f3024ad474ea5f3fd6e8af7c88, type: 2}
+  - {fileID: 11400000, guid: 1d77e43424912bc48923fe470b22e43a, type: 2}
+  - {fileID: 11400000, guid: f763289124f3a5448958938a21b2851f, type: 2}
+  - {fileID: 11400000, guid: 8394cd9c76dad2844b7305dff5d207a7, type: 2}
+  - {fileID: 11400000, guid: 3ef9591f892a1d749a28b9218e23e468, type: 2}
+  - {fileID: 11400000, guid: 076a712969b4f87479824a0843bc9c6e, type: 2}
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 0}
