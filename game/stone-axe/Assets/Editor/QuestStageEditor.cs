@@ -12,6 +12,9 @@ public class QuestStageEditor : Editor
         dialogueSpeaker,
         questEvent,
         itemToGet,
+        part1Mat,
+        part2Mat,
+        part3Mat,
         currencyValue;
 
     private void OnEnable()
@@ -21,6 +24,9 @@ public class QuestStageEditor : Editor
         dialogueSpeaker = serializedObject.FindProperty("_speaker");
         questEvent = serializedObject.FindProperty("_questEvent");
         itemToGet = serializedObject.FindProperty("_itemToGet");
+        part1Mat = serializedObject.FindProperty("_part1Mat");
+        part2Mat = serializedObject.FindProperty("_part2Mat");
+        part3Mat = serializedObject.FindProperty("_part3Mat");
         currencyValue = serializedObject.FindProperty("_currencyValue");
     }
 
@@ -91,6 +97,16 @@ public class QuestStageEditor : Editor
                     case QuestStage.questEvent.Get_Item:
                         currencyValue.intValue = 0;
                         EditorGUILayout.PropertyField(itemToGet);
+                        if (itemToGet.objectReferenceValue != null)
+                        {
+                            ItemData item = (ItemData)itemToGet.objectReferenceValue;
+
+                            EditorGUILayout.PropertyField(part1Mat, new GUIContent("Part 1 - " + item.Part1.PartName));
+                            EditorGUILayout.PropertyField(part2Mat, new GUIContent("Part 2 - " + item.Part2.PartName));
+                            EditorGUILayout.PropertyField(part3Mat, new GUIContent("Part 3 - " + item.Part3.PartName));
+
+                        }
+
                         break;
                     case QuestStage.questEvent.Get_Currency:
                         EditorGUILayout.PropertyField(currencyValue);
@@ -102,3 +118,14 @@ public class QuestStageEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+/*
+ * 
+                        if (itemToGet != null)
+                        {
+                            ItemData item = (ItemData)itemToGet.objectReferenceValue;
+                            if (item.Part1.ValidMaterialData.Contains((MaterialData)part1Mat.objectReferenceValue))
+                                EditorGUILayout.PropertyField(part1Mat);
+                            else
+                                part1Mat = null;
+                        }
+*/

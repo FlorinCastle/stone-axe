@@ -421,6 +421,16 @@ public class QuestControl : MonoBehaviour
                 Debug.LogWarning("Quest Event: Summon Adventurer");
                 this.gameObject.GetComponent<AdventurerMaster>().spawnAdventurer();
             }
+            else if (currStage.QuestEvent == "Get_Item")
+            {
+                Debug.LogWarning("Quest Event: Get Item");
+                this.gameObject.GetComponent<GenerateItem>().GeneratePresetItem(currStage.ItemToGet, currStage.Part1Mat, currStage.Part2Mat, currStage.Part3Mat);
+            }
+            else if (currStage.QuestEvent == "Get_Currency")
+            {
+                Debug.LogWarning("Quest Event: Get Currency");
+                this.gameObject.GetComponent<GameMaster>().addCurrency(currStage.CurrencyValue);
+            }
         }
     }
 

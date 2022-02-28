@@ -70,6 +70,15 @@ public class GenerateItem : MonoBehaviour
         haggleButtonText.text = "haggle\n(success chance: " + (_haggleSkill.getHaggleChance()).ToString() + "%)";
         haggleButton.interactable = true;
     }
+    public void GeneratePresetItem(ItemData item, MaterialData part1Mat, MaterialData part2Mat, MaterialData part3Mat)
+    {
+        _generatedItem = item;
+        _generatedItem.Part1.Material = part1Mat;
+        _generatedItem.Part2.Material = part2Mat;
+        _generatedItem.Part3.Material = part3Mat;
+        _inventoryRef.InsertItem(_generatedItem);
+        //_generatedItem = null;
+    }
     public void GenerateRandomEnchant()
     {
         _generatedEnchant = enchantScript.chooseEnchant();
