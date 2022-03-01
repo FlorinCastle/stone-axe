@@ -1062,7 +1062,10 @@ public class InventoryScript : MonoBehaviour
     public void setSelectedMat(MaterialData data)
     {
         if (data != null)
+        {
             _selectedMat = data;
+            returnSelectedMat();
+        }
         else
             Debug.LogWarning("No mat input!");
     }
@@ -1322,8 +1325,12 @@ public class InventoryScript : MonoBehaviour
 
     public void returnSelectedMat()
     {
-        if (_removingStatus == removingItemStatusEnum.RemovingToCraftMat)
+        //if (_removingStatus == removingItemStatusEnum.RemovingToCraftMat)
+        if (_craftControlRef.anyPartRecipeSelected() == true)
+        {
             GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectMat();
+
+        }
     }
 
     public void returnSelectedEnchant()

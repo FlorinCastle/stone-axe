@@ -13,7 +13,7 @@ public class QuestStage : ScriptableObject
 
     public string _speaker;
     public string _dialogueLine;
-    public ItemData _itemToGet;
+    public ItemData _item;
     public MaterialData _part1Mat;
     public MaterialData _part2Mat;
     public MaterialData _part3Mat;
@@ -24,7 +24,7 @@ public class QuestStage : ScriptableObject
     public string QuestEvent { get => _questEvent.ToString(); }
     public string DialogueSpeaker { get => _speaker; }
     public string DialogueLine { get => _dialogueLine; }
-    public ItemData ItemToGet { get => _itemToGet; }
+    public ItemData ItemToGet { get => _item; }
     public MaterialData Part1Mat { get => _part1Mat; }
     public MaterialData Part2Mat { get => _part2Mat; }
     public MaterialData Part3Mat { get => _part3Mat; }

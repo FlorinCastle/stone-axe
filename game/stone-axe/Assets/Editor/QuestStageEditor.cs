@@ -23,7 +23,7 @@ public class QuestStageEditor : Editor
         dialogueLine = serializedObject.FindProperty("_dialogueLine");
         dialogueSpeaker = serializedObject.FindProperty("_speaker");
         questEvent = serializedObject.FindProperty("_questEvent");
-        itemToGet = serializedObject.FindProperty("_itemToGet");
+        itemToGet = serializedObject.FindProperty("_item");
         part1Mat = serializedObject.FindProperty("_part1Mat");
         part2Mat = serializedObject.FindProperty("_part2Mat");
         part3Mat = serializedObject.FindProperty("_part3Mat");
@@ -60,7 +60,8 @@ public class QuestStageEditor : Editor
                 dialogueSpeaker.stringValue = "";
                 dialogueLine.stringValue = "";
                 currencyValue.intValue = 0;
-                itemToGet = null;
+                //itemToGet = null;
+                EditorGUILayout.PropertyField(itemToGet, new GUIContent("Item to Craft"));
                 break;
 
             case QuestStage.questStageEnum.Sell_Item:
@@ -96,7 +97,7 @@ public class QuestStageEditor : Editor
                 {
                     case QuestStage.questEvent.Get_Item:
                         currencyValue.intValue = 0;
-                        EditorGUILayout.PropertyField(itemToGet);
+                        EditorGUILayout.PropertyField(itemToGet, new GUIContent("Item to Get"));
                         if (itemToGet.objectReferenceValue != null)
                         {
                             ItemData item = (ItemData)itemToGet.objectReferenceValue;

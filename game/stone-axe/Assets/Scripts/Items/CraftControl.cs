@@ -504,8 +504,11 @@ public class CraftControl : MonoBehaviour
             partDataStorageRef = null;
             _chosenPartMaterial = null;
 
+            _inventoryControlReference.setupPartInventory();
+
             clearPartCraftingUI();
             _recipeDropdown.value = 0;
+            Debug.LogWarning("crafting part success");
 
         }
     }

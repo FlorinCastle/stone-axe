@@ -16,5 +16,8 @@ MonoBehaviour:
   _questEvent: 2
   _speaker: 
   _dialogueLine: 
-  _itemToGet: {fileID: 0}
+  _item: {fileID: 11400000, guid: 63e61075efb7cf44eb8e25b1382a3fd1, type: 2}
+  _part1Mat: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
+  _part2Mat: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
+  _part3Mat: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
   _currencyValue: 0
