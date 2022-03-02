@@ -49,21 +49,24 @@ public class ItemDataEditor : Editor
         EditorGUI.BeginDisabledGroup(true);
         EditorGUILayout.PropertyField(part1);
         if (part1.objectReferenceValue == null && validPart1.arraySize > 0)
-            part1 = validPart1.GetArrayElementAtIndex(0);
+            part1.objectReferenceValue = validPart1.GetArrayElementAtIndex(0).objectReferenceValue;
+        //EditorGUILayout.PropertyField(part1);
         EditorGUI.EndDisabledGroup();
 
         EditorGUILayout.PropertyField(validPart2);
         EditorGUI.BeginDisabledGroup(true);
         EditorGUILayout.PropertyField(part2);
         if (part2.objectReferenceValue == null && validPart2.arraySize > 0)
-            part2 = validPart2.GetArrayElementAtIndex(0);
+            part2.objectReferenceValue = validPart2.GetArrayElementAtIndex(0).objectReferenceValue;
+        //EditorGUILayout.PropertyField(part2);
         EditorGUI.EndDisabledGroup();
 
         EditorGUILayout.PropertyField(validPart3);
         EditorGUI.BeginDisabledGroup(true);
         EditorGUILayout.PropertyField(part3);
         if (part3.objectReferenceValue == null && validPart3.arraySize > 0)
-            part3 = validPart3.GetArrayElementAtIndex(0);
+            part3.objectReferenceValue = validPart3.GetArrayElementAtIndex(0).objectReferenceValue;
+        //EditorGUILayout.PropertyField(part3);
         EditorGUI.EndDisabledGroup();
 
         EditorGUILayout.PropertyField(baseCost);

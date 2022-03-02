@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: Dagger
   _levelRequirement: 1
-  _part1: {fileID: 0}
+  _part1: {fileID: 11400000, guid: e49304032ca5f4a42a4174e9b7e82ae9, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: e49304032ca5f4a42a4174e9b7e82ae9, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: fa4eff662f1c61048b3cfc587842c462, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: fa4eff662f1c61048b3cfc587842c462, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 20
   _baseStrenght: 3
   _baseDextarity: 6
   _baseIntelligence: 1
-  _isEnchanted: 0
+  _isEnchanted: 1
   _filters: []

@@ -8,7 +8,7 @@ public class QuestStage : ScriptableObject
     public enum questStageEnum { Not_Set, Dialogue, Craft_Item, Sell_Item, Buy_Item, Disassemble_Item, Force_Event };
     public questStageEnum _questStageType;
 
-    public enum questEvent { Not_Set, Summon_Adventurer, Get_Item, Get_Currency };
+    public enum questEvent { Not_Set, Summon_Adventurer, Get_Item, Get_Currency, Summon_NPC };
     public questEvent _questEvent;
 
     public string _speaker;
@@ -18,6 +18,7 @@ public class QuestStage : ScriptableObject
     public MaterialData _part2Mat;
     public MaterialData _part3Mat;
     public int _currencyValue;
+    public GameObject _npcRef;
 
 
     public string StageType { get => _questStageType.ToString(); }
@@ -29,4 +30,5 @@ public class QuestStage : ScriptableObject
     public MaterialData Part2Mat { get => _part2Mat; }
     public MaterialData Part3Mat { get => _part3Mat; }
     public int CurrencyValue { get => _currencyValue; }
+    public GameObject NPCRef { get => _npcRef; }
 }

@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca50eccd083873348a9e25e9b7b573a9, type: 3}
   m_Name: KnightRegIII 12
   m_EditorClassIdentifier: 
-  _questStageType: 1
+  _questStageType: 2
   _questEvent: 0
-  _speaker: You
-  _dialogueLine: And...done!
+  _speaker: 
+  _dialogueLine: 
+  _item: {fileID: 11400000, guid: 63e61075efb7cf44eb8e25b1382a3fd1, type: 2}
+  _part1Mat: {fileID: 0}
+  _part2Mat: {fileID: 0}
+  _part3Mat: {fileID: 0}
+  _currencyValue: 0

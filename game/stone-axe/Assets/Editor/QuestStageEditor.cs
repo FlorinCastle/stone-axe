@@ -15,7 +15,8 @@ public class QuestStageEditor : Editor
         part1Mat,
         part2Mat,
         part3Mat,
-        currencyValue;
+        currencyValue,
+        npcRef;
 
     private void OnEnable()
     {
@@ -28,6 +29,7 @@ public class QuestStageEditor : Editor
         part2Mat = serializedObject.FindProperty("_part2Mat");
         part3Mat = serializedObject.FindProperty("_part3Mat");
         currencyValue = serializedObject.FindProperty("_currencyValue");
+        npcRef = serializedObject.FindProperty("_npcRef");
     }
 
     public override void OnInspectorGUI()
@@ -44,7 +46,8 @@ public class QuestStageEditor : Editor
                 dialogueSpeaker.stringValue = "";
                 dialogueLine.stringValue = "";
                 currencyValue.intValue = 0;
-                itemToGet = null;
+                itemToGet.objectReferenceValue = null;
+                npcRef.objectReferenceValue = null;
                 break;
 
             case QuestStage.questStageEnum.Dialogue:
@@ -52,7 +55,8 @@ public class QuestStageEditor : Editor
                 EditorGUILayout.PropertyField(dialogueSpeaker);
                 EditorGUILayout.PropertyField(dialogueLine);
                 currencyValue.intValue = 0;
-                itemToGet = null;
+                itemToGet.objectReferenceValue = null;
+                npcRef.objectReferenceValue = null;
                 break;
 
             case QuestStage.questStageEnum.Craft_Item:
@@ -62,6 +66,7 @@ public class QuestStageEditor : Editor
                 currencyValue.intValue = 0;
                 //itemToGet = null;
                 EditorGUILayout.PropertyField(itemToGet, new GUIContent("Item to Craft"));
+                npcRef.objectReferenceValue = null;
                 break;
 
             case QuestStage.questStageEnum.Sell_Item:
@@ -69,7 +74,8 @@ public class QuestStageEditor : Editor
                 dialogueSpeaker.stringValue = "";
                 dialogueLine.stringValue = "";
                 currencyValue.intValue = 0;
-                itemToGet = null;
+                itemToGet.objectReferenceValue = null;
+                npcRef.objectReferenceValue = null;
                 break;
 
             case QuestStage.questStageEnum.Buy_Item:
@@ -77,7 +83,8 @@ public class QuestStageEditor : Editor
                 dialogueSpeaker.stringValue = "";
                 dialogueLine.stringValue = "";
                 currencyValue.intValue = 0;
-                itemToGet = null;
+                itemToGet.objectReferenceValue = null;
+                npcRef.objectReferenceValue = null;
                 break;
 
             case QuestStage.questStageEnum.Disassemble_Item:
@@ -85,7 +92,8 @@ public class QuestStageEditor : Editor
                 dialogueSpeaker.stringValue = "";
                 dialogueLine.stringValue = "";
                 currencyValue.intValue = 0;
-                itemToGet = null;
+                itemToGet.objectReferenceValue = null;
+                npcRef.objectReferenceValue = null;
                 break;
 
             case QuestStage.questStageEnum.Force_Event:
@@ -107,11 +115,19 @@ public class QuestStageEditor : Editor
                             EditorGUILayout.PropertyField(part3Mat, new GUIContent("Part 3 - " + item.Part3.PartName));
 
                         }
-
+                        npcRef.objectReferenceValue = null;
                         break;
+
                     case QuestStage.questEvent.Get_Currency:
                         EditorGUILayout.PropertyField(currencyValue);
-                        itemToGet = null;
+                        itemToGet.objectReferenceValue = null;
+                        npcRef.objectReferenceValue = null;
+                        break;
+
+                    case QuestStage.questEvent.Summon_NPC:
+                        currencyValue.intValue = 0;
+                        EditorGUILayout.PropertyField(npcRef, new GUIContent("NPC Prefab Reference"));
+                        itemToGet.objectReferenceValue = null;
                         break;
                 }
                 break;

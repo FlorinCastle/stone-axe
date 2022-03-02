@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: KnightRegI 7
   m_EditorClassIdentifier: 
   _questStageType: 6
-  _questEvent: 0
+  _questEvent: 4
   _speaker: 
   _dialogueLine: 
-  _itemToGet: {fileID: 0}
+  _item: {fileID: 0}
+  _part1Mat: {fileID: 0}
+  _part2Mat: {fileID: 0}
+  _part3Mat: {fileID: 0}
   _currencyValue: 0
+  _npcRef: {fileID: 0}

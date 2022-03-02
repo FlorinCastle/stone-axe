@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: Crossbow
   _levelRequirement: 9
-  _part1: {fileID: 0}
+  _part1: {fileID: 11400000, guid: 5fd14e94acdbed646adbc330ce56f516, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 5fd14e94acdbed646adbc330ce56f516, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: 1db831a4cc8973644ad3184133a922d7, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: 1db831a4cc8973644ad3184133a922d7, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: a5cd216a585a9714bb347972e8b56308, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: a5cd216a585a9714bb347972e8b56308, type: 2}
   _baseCost: 28

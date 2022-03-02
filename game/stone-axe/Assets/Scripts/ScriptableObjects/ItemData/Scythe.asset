@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: Scythe
   _levelRequirement: 21
-  _part1: {fileID: 0}
+  _part1: {fileID: 11400000, guid: b903c6f2f49e04545b1b8240924e5e5e, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: b903c6f2f49e04545b1b8240924e5e5e, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: efa36cf510bc17140aaca20e1a356078, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: efa36cf510bc17140aaca20e1a356078, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 30

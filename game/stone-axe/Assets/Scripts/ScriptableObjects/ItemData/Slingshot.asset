@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: Slingshot
   _levelRequirement: 2
-  _part1: {fileID: 0}
+  _part1: {fileID: 11400000, guid: e7939820462ef46499eab51663d16504, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: e7939820462ef46499eab51663d16504, type: 2}
-  _part2: {fileID: 0}
+  _part2: {fileID: 11400000, guid: f832b3f18adf623428e1807898f44ec7, type: 2}
   _validPart2:
   - {fileID: 11400000, guid: f832b3f18adf623428e1807898f44ec7, type: 2}
-  _part3: {fileID: 0}
+  _part3: {fileID: 11400000, guid: d83b87228aa78194b89ecf2e60c04b1e, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: d83b87228aa78194b89ecf2e60c04b1e, type: 2}
   _baseCost: 26

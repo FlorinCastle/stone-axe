@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca50eccd083873348a9e25e9b7b573a9, type: 3}
   m_Name: KnightRegIII 18
   m_EditorClassIdentifier: 
-  _questStageType: 6
-  _questEvent: 3
-  _speaker: 
-  _dialogueLine: 
+  _questStageType: 1
+  _questEvent: 0
+  _speaker: You
+  _dialogueLine: Will do. Have a good day.
   _itemToGet: {fileID: 0}
-  _currencyValue: 500
+  _currencyValue: 0

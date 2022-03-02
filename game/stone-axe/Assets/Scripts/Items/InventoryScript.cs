@@ -1083,6 +1083,7 @@ public class InventoryScript : MonoBehaviour
         if (i != -1)
         {
             _selectedEnchant = _inventoryData.EnchantInventory[i];
+            returnSelectedEnchant();
         }
         else
             Debug.Log("example button selected");
@@ -1335,7 +1336,8 @@ public class InventoryScript : MonoBehaviour
 
     public void returnSelectedEnchant()
     {
-        if (_removingStatus == removingItemStatusEnum.RemovingToEnchant)
+        //if (_removingStatus == removingItemStatusEnum.RemovingToEnchant)
+        if (_craftControlRef.anyPartRecipeSelected() == true)
             GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectEnchant();
     }
 
