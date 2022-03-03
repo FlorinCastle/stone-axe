@@ -17,6 +17,7 @@ MonoBehaviour:
   _questType: 6
   _questStages:
   - {fileID: 11400000, guid: adbb5c14fcd87b645a157ef41aebb425, type: 2}
+  - {fileID: 11400000, guid: 13bc73925043d0b44b06b1aa38c969ae, type: 2}
   - {fileID: 11400000, guid: 8a6c306177c67154f9e830c10fae39c8, type: 2}
   - {fileID: 11400000, guid: 4e96d7794069df146a27036f826ce1fb, type: 2}
   - {fileID: 11400000, guid: a0a2189754fbbe34abf15459ec63c820, type: 2}
