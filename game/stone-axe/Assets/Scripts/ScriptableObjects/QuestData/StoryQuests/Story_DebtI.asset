@@ -17,6 +17,24 @@ MonoBehaviour:
   _questType: 6
   _questStages:
   - {fileID: 11400000, guid: d03b9913b5df70b418acf1fe75bb4abb, type: 2}
+  - {fileID: 11400000, guid: 8d996223fa93204469023e8a99ceff5d, type: 2}
+  - {fileID: 11400000, guid: 3aa772c5da1696b4f9d1f12dd321eaa1, type: 2}
+  - {fileID: 11400000, guid: 051b52afc9f71974db63d7856f7c3e0f, type: 2}
+  - {fileID: 11400000, guid: ffefda6ca5213e540b62000c5f6ce109, type: 2}
+  - {fileID: 11400000, guid: ff5855bd813506942a500373d255aa5b, type: 2}
+  - {fileID: 11400000, guid: 9e1179e6bee484d409a88a051ea79bed, type: 2}
+  - {fileID: 11400000, guid: 1889fdf3800b29344922d217973662c8, type: 2}
+  - {fileID: 11400000, guid: af5b19a058787ab4c9ab762db952e2f3, type: 2}
+  - {fileID: 11400000, guid: e34eb538ca973124fa3433beafc0b74f, type: 2}
+  - {fileID: 11400000, guid: d4524695a9b324f47bfda98613984d84, type: 2}
+  - {fileID: 11400000, guid: 0ef5abbcd11546847af5c1893abb9642, type: 2}
+  - {fileID: 11400000, guid: 1115d8f288cdd554f8319110dcd96dcd, type: 2}
+  - {fileID: 11400000, guid: b85f58e02a0fff743b0935eaf7d7c916, type: 2}
+  - {fileID: 11400000, guid: d7abff52607897f46bbf8ab56cbd1340, type: 2}
+  - {fileID: 11400000, guid: fd7012cd75042d748a61c302abce6f45, type: 2}
+  - {fileID: 11400000, guid: ed4ce86ae9e23db43aa0d6ed873054ea, type: 2}
+  - {fileID: 11400000, guid: f824097997c378d4d9486bfe44abadd6, type: 2}
+  - {fileID: 11400000, guid: 6d41aad745c2b4348a01f5d7a4c1b870, type: 2}
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 0}

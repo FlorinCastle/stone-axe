@@ -96,6 +96,16 @@ public class QuestStageEditor : Editor
                 npcRef.objectReferenceValue = null;
                 break;
 
+            case QuestStage.questStageEnum.Have_Currency:
+                questEvent.enumValueIndex = 0;
+                dialogueSpeaker.stringValue = "";
+                dialogueLine.stringValue = "";
+                EditorGUILayout.PropertyField(currencyValue, new GUIContent("Currency to Earn"));
+                //currencyValue.intValue = 0;
+                itemToGet.objectReferenceValue = null;
+                npcRef.objectReferenceValue = null;
+                break;
+
             case QuestStage.questStageEnum.Force_Event:
                 EditorGUILayout.PropertyField(questEvent);
                 dialogueSpeaker.stringValue = "";
@@ -119,7 +129,13 @@ public class QuestStageEditor : Editor
                         break;
 
                     case QuestStage.questEvent.Get_Currency:
-                        EditorGUILayout.PropertyField(currencyValue);
+                        EditorGUILayout.PropertyField(currencyValue, new GUIContent("Currency to Get"));
+                        itemToGet.objectReferenceValue = null;
+                        npcRef.objectReferenceValue = null;
+                        break;
+
+                    case QuestStage.questEvent.Remove_Currency:
+                        EditorGUILayout.PropertyField(currencyValue, new GUIContent("Currency to Remove"));
                         itemToGet.objectReferenceValue = null;
                         npcRef.objectReferenceValue = null;
                         break;
@@ -129,6 +145,13 @@ public class QuestStageEditor : Editor
                         EditorGUILayout.PropertyField(npcRef, new GUIContent("NPC Prefab Reference"));
                         itemToGet.objectReferenceValue = null;
                         break;
+
+                    case QuestStage.questEvent.Dismiss_Quest_NPC:
+                        currencyValue.intValue = 0;
+                        npcRef.objectReferenceValue = null;
+                        itemToGet.objectReferenceValue = null;
+                        break;
+
                 }
                 break;
         }

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca50eccd083873348a9e25e9b7b573a9, type: 3}
-  m_Name: DebtII 1
+  m_Name: DebtII 16
   m_EditorClassIdentifier: 
   _questStageType: 1
   _questEvent: 0
-  _speaker: Narration
-  _dialogueLine: "After explaining what happened to Faerie when she awakens\u2026"
+  _speaker: Debt Collector
+  _dialogueLine: Well, you can do that. Or you can aim for a higher amount?
   _item: {fileID: 0}
   _part1Mat: {fileID: 0}
   _part2Mat: {fileID: 0}

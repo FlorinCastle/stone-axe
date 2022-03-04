@@ -5,10 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewQuestStage", menuName = "ScriptableObjects/QuestStage", order = 57)]
 public class QuestStage : ScriptableObject
 {
-    public enum questStageEnum { Not_Set, Dialogue, Craft_Item, Sell_Item, Buy_Item, Disassemble_Item, Force_Event };
+    public enum questStageEnum { Not_Set, Dialogue, Craft_Item, Sell_Item, Buy_Item, Disassemble_Item, Have_Currency, Force_Event };
     public questStageEnum _questStageType;
 
-    public enum questEvent { Not_Set, Summon_Adventurer, Get_Item, Get_Currency, Summon_NPC };
+    public enum questEvent { Not_Set, Summon_Adventurer, Get_Item, Get_Currency, Remove_Currency, Summon_NPC, Dismiss_Quest_NPC };
     public questEvent _questEvent;
 
     public string _speaker;
