@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: KnightRegI 10
   m_EditorClassIdentifier: 
   _questStageType: 6
-  _questEvent: 2
+  _questEvent: 0
   _speaker: 
   _dialogueLine: 
-  _item: {fileID: 11400000, guid: 60bee362faf67e840b65be712fa59bea, type: 2}
+  _item: {fileID: 0}
   _part1Mat: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
   _part2Mat: {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
   _part3Mat: {fileID: 11400000, guid: cf84968d70a35c74c9218b4b8c41277e, type: 2}
   _currencyValue: 0
+  _npcRef: {fileID: 0}

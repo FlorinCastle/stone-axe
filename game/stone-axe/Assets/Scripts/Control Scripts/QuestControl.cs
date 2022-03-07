@@ -320,6 +320,8 @@ public class QuestControl : MonoBehaviour
 
         if (questInput.QuestStages[_currStageIndex].StageType == "Dialogue")
             this.gameObject.GetComponent<DialogueControl>().startDialogue(_currStageIndex);
+        else
+            Debug.LogError("This quest starts with a non-Dialogue stage!\nNote to Dev: Implement this quest's start in code!\nLine: 324 Method: startStoryQuest(QuestData questInput)");
     }
     public void nextStage()
     {
@@ -413,6 +415,10 @@ public class QuestControl : MonoBehaviour
         {
             Debug.LogWarning("Quest Stage: Sell item!");
         }
+        else if (currStage.StageType == "Have_Currency")
+        {
+            Debug.LogWarning("Quest Stage: Have currency!");
+        }
         else if (currStage.StageType == "Force_Event")
         {
             Debug.LogWarning("Quest Stage: Force Event!");
@@ -420,6 +426,17 @@ public class QuestControl : MonoBehaviour
             {
                 Debug.LogWarning("Quest Event: Summon Adventurer");
                 this.gameObject.GetComponent<AdventurerMaster>().spawnAdventurer();
+            }
+            else if (currStage.QuestEvent == "Summon_NPC")
+            {
+                Debug.LogWarning("Quest Event: Summon Story NPC");
+                if (currStage.NPCRef != null) this.gameObject.GetComponent<AdventurerMaster>().spawnNPC(currStage.NPCRef);
+                else Debug.LogError("NPC Ref for " + quest.QuestName + " Stage: " + currStage.name + " is not asigned!");
+            }
+            else if (currStage.QuestEvent == "Dismiss_Quest_NPC")
+            {
+                Debug.LogWarning("Quest Event: Dismiss Story NPCs");
+                this.gameObject.GetComponent<AdventurerMaster>().dismissNPCs();
             }
             else if (currStage.QuestEvent == "Get_Item")
             {
@@ -430,6 +447,11 @@ public class QuestControl : MonoBehaviour
             {
                 Debug.LogWarning("Quest Event: Get Currency");
                 this.gameObject.GetComponent<GameMaster>().addCurrency(currStage.CurrencyValue);
+            }
+            else if (currStage.QuestEvent == "Remove_Currency")
+            {
+                Debug.LogWarning("Quest Event: Remove Currency");
+                this.gameObject.GetComponent<GameMaster>().removeCurrency(currStage.CurrencyValue);
             }
         }
     }

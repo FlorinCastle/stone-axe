@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: KnightRegIV 20
   m_EditorClassIdentifier: 
   _questStageType: 6
-  _questEvent: 3
+  _questEvent: 0
   _speaker: 
   _dialogueLine: 
   _item: {fileID: 0}

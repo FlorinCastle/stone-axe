@@ -83,6 +83,28 @@ public class AdventurerMaster : MonoBehaviour
         if (this.gameObject.GetComponent<GameMaster>().ShopActive == true)
             _soundMaster.playDoorSound();
     }
+    private GameObject npcPlaceholder;
+    private List<GameObject> _NPCs;
+    public void spawnNPC(GameObject NPCRef)
+    {
+        npcPlaceholder = Instantiate(NPCRef, _walkingPoints[0].gameObject.transform, false);
+        npcPlaceholder.transform.parent = null;
+        // call out to npc component
+            // set the target
+            // setup the npc
+
+        _NPCs.Add(npcPlaceholder);
+        if (this.gameObject.GetComponent<GameMaster>().ShopActive == true)
+            _soundMaster.playDoorSound();
+    }
+    public void dismissNPCs()
+    {
+        foreach(GameObject npc in _NPCs)
+        {
+            // check if the npc component exists
+                // dismiss the npc
+        }
+    }
 
     public Color chooseAdvColor(string advType)
     {
