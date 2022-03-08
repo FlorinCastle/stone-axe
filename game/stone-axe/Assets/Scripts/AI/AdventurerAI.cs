@@ -65,7 +65,8 @@ public class AdventurerAI : MonoBehaviour
                     dismissed = false;
                     setCurentTarget(_currentTarget.GetComponent<LinePoint>().NextPoint);
                 }
-                else if (_currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<LinePoint>() != null && _currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<LinePoint>().IsOccupied == true)
+                else if (_currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<LinePoint>() != null
+                    && _currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<LinePoint>().IsOccupied == true)
                 { // if at line point and next point is also a line point that has an adventurer waiting
                     dismissed = false;
                     //Debug.Log("waiting");

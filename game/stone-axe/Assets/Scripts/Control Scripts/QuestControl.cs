@@ -430,13 +430,13 @@ public class QuestControl : MonoBehaviour
             else if (currStage.QuestEvent == "Summon_NPC")
             {
                 Debug.LogWarning("Quest Event: Summon Story NPC");
-                if (currStage.NPCRef != null) this.gameObject.GetComponent<AdventurerMaster>().spawnNPC(currStage.NPCRef);
+                if (currStage.NPCRef != null) this.gameObject.GetComponent<NPC_Master>().spawnNPC(currStage.NPCRef);
                 else Debug.LogError("NPC Ref for " + quest.QuestName + " Stage: " + currStage.name + " is not asigned!");
             }
             else if (currStage.QuestEvent == "Dismiss_Quest_NPC")
             {
                 Debug.LogWarning("Quest Event: Dismiss Story NPCs");
-                this.gameObject.GetComponent<AdventurerMaster>().dismissNPCs();
+                this.gameObject.GetComponent<NPC_Master>().dismissNPCs();
             }
             else if (currStage.QuestEvent == "Get_Item")
             {

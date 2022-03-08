@@ -37,12 +37,50 @@ public class NPC_AI : MonoBehaviour
             IsMoving = false;
             // todo: do code for npc movement
             Debug.LogWarning("TODO - set up code for npc movement");
+            if (_currentTarget.GetComponent<WalkingPoint>() == true)
+            {
+                dismissed = false;
+                setCurentTarget(_currentTarget.GetComponent<WalkingPoint>().NextPoint);
+            }
+            else if (_currentTarget.GetComponent<NPCPoint>() == true)
+            {
+                _currentTarget.GetComponent<NPCPoint>().IsOccupied = true;
+                if (_currentTarget.GetComponent<NPCPoint>().NextPoint.GetComponent<NPCPoint>() != null
+                    && _currentTarget.GetComponent<NPCPoint>().NextPoint.GetComponent<NPCPoint>().IsOccupied == false)
+                {
+                    _currentTarget.GetComponent<NPCPoint>().IsOccupied = false;
+                    dismissed = false;
+                    setCurentTarget(_currentTarget.GetComponent<NPCPoint>().NextPoint);
+                }
+                else if (_currentTarget.GetComponent<NPCPoint>().NextPoint.GetComponent<NPCPoint>() != null
+                    && _currentTarget.GetComponent<NPCPoint>().NextPoint.GetComponent<NPCPoint>().IsOccupied == true)
+                {
+                    dismissed = false;
+                }
+                else if (dismissed == true && _currentTarget.GetComponent<NPCPoint>().NextPoint.GetComponent<WalkingPoint>() != null)
+                {
+                    _currentTarget.GetComponent<NPCPoint>().IsOccupied = false;
+                    dismissed = false;
+                    setCurentTarget(_currentTarget.GetComponent<NPCPoint>().NextPoint);
+                }
+            }
         }
 
         if (Vector3.Angle(transform.forward, _targetPosition - this.transform.position) < 10f)
             IsMoving = true;
     }
+    public void setupNPC(GameObject NPCRef)
+    {
+
+    }
+
+    public void setCurentTarget(GameObject target)
+    {
+        _currentTarget = target;
+        _targetPosition = new Vector3(target.transform.position.x, this.gameObject.transform.position.y, target.transform.position.z);
+    }
 
 
     public bool IsMoving { set => _move = value; }
+    public bool IsDismissed { set => dismissed = value; }
 }

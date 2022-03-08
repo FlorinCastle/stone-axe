@@ -83,6 +83,7 @@ public class AdventurerMaster : MonoBehaviour
         if (this.gameObject.GetComponent<GameMaster>().ShopActive == true)
             _soundMaster.playDoorSound();
     }
+    /*
     private GameObject npcPlaceholder;
     private List<GameObject> _NPCs;
     public void spawnNPC(GameObject NPCRef)
@@ -105,7 +106,7 @@ public class AdventurerMaster : MonoBehaviour
                 // dismiss the npc
         }
     }
-
+    */
     public Color chooseAdvColor(string advType)
     {
         if (advType == "Elf")
