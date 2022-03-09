@@ -47,7 +47,7 @@ public class ExperienceManager : MonoBehaviour
                 if (_gameMasterRef.GetLevel < counter)
                     _skillMgrRef.AddSkillPoint();
             }
-            else if (levelMark > _gameMasterRef.GetTotalExperience)
+            else if (levelMark > _gameMasterRef.GetTotalExperience && counter > prevUpdatedLevel)
             {
                 setupLevelUpMenu(counter);
 

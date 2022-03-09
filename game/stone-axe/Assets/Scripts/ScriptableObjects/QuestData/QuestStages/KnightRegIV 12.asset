@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca50eccd083873348a9e25e9b7b573a9, type: 3}
   m_Name: KnightRegIV 12
   m_EditorClassIdentifier: 
-  _questStageType: 6
-  _questEvent: 0
+  _questStageType: 7
+  _questEvent: 2
   _speaker: 
   _dialogueLine: 
-  _item: {fileID: 0}
+  _item: {fileID: 11400000, guid: ac371d19494540b47805cf400362dfe3, type: 2}
   _part1Mat: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
   _part2Mat: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
   _part3Mat: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}

@@ -6,7 +6,7 @@ public class Quest : MonoBehaviour
 {
     [Header("Quest Tracking")]
     [SerializeField] List<QuestData> _questDataList;
-    [SerializeField] List<QuestData> _tutorialQuests;
+    [SerializeField, HideInInspector] List<QuestData> _tutorialQuests;
     [SerializeField, HideInInspector] List<QuestData> _storyQuests;
     [SerializeField, HideInInspector] List<QuestData> _onCraftItemQuests;
     [SerializeField, HideInInspector] List<QuestData> _onCraftQuestItemQuests;

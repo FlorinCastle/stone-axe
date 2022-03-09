@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca50eccd083873348a9e25e9b7b573a9, type: 3}
   m_Name: KnightRegIII 19
   m_EditorClassIdentifier: 
-  _questStageType: 6
-  _questEvent: 0
+  _questStageType: 7
+  _questEvent: 3
   _speaker: 
   _dialogueLine: 
   _item: {fileID: 0}

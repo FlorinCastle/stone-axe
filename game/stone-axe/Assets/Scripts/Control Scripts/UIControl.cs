@@ -247,7 +247,7 @@ public class UIControl : MonoBehaviour
     {
         if (_playerName.text != "" && _shopName.text != "" && playerSpecies != "" && playerColor != -1)
         {
-            Debug.Log("has all required values");
+            //Debug.Log("has all required values");
             _startNewGameButton.interactable = true;
         }
         else if (_playerName.text == "" || _shopName.text == "" || playerSpecies == "" || playerColor == -1)

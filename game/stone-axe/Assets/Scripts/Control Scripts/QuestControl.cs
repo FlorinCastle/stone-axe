@@ -38,6 +38,9 @@ public class QuestControl : MonoBehaviour
     private int reqItemCount = 0;
     private int currentItemCount = 0;
     private bool shut = false;
+    private bool star = false;
+
+    [SerializeField, HideInInspector] private List<QuestData> _unlockedQuests;
 
     private void Awake()
     {
@@ -57,12 +60,19 @@ public class QuestControl : MonoBehaviour
         if (_chosenQuest != null && shut)
             if (_chosenQuest.QuestType == "OD_Material")
                 updateQuestProgress(_chosenQuest.ReqiredMaterial);
+
+        if (this.gameObject.GetComponent<UIControl>().ShopUIActive == true && star == false)
+        {
+            setupStoryQuests();
+            star = true;
+        }
     }
 
-    private QuestData starterRef;
+    [SerializeField] private QuestData starterRef;
     private GameObject p;
     public void setupStoryQuests()
     {
+        Debug.Log("setting up story quests!");
         if (_chosenQuest == null)
         {
             foreach(QuestData tutQuest in _questRef.getTutorialQuests())
@@ -92,19 +102,34 @@ public class QuestControl : MonoBehaviour
                 else
                     break;
             }
-
+            setupStarter();
+            /*
             p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
             p.GetComponent<StoryQuestStarter>().QuestRef = starterRef;
             p.GetComponent<StoryQuestStarter>().setupText();
+            */
         }
         else if (_chosenQuest.QuestType == "Tutorial" || _chosenQuest.QuestType == "Story")
         {
             //Destroy(p);
             //p = null;
+            setupStarter();
+            /*
             p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
             p.GetComponent<StoryQuestStarter>().QuestRef = _chosenQuest;
             p.GetComponent<StoryQuestStarter>().setupText();
+            */
         }
+    }
+
+    public void setupStarter()
+    {
+        p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
+        if (_chosenQuest == null)
+            p.GetComponent<StoryQuestStarter>().QuestRef = starterRef;
+        else
+            p.GetComponent<StoryQuestStarter>().QuestRef = _chosenQuest;
+        p.GetComponent<StoryQuestStarter>().setupText();
     }
 
     public void removeStarter()
@@ -177,6 +202,7 @@ public class QuestControl : MonoBehaviour
     public void forceSetQuest(QuestData quest)
     {
         _chosenQuest = quest;
+        Debug.Log("chosen quest is: " + quest.QuestName);
         setupText();
         if (quest.QuestType == "Tutorial" || quest.QuestType == "Story")
         {
@@ -385,12 +411,22 @@ public class QuestControl : MonoBehaviour
     // overload 4 (story & tutorial quest)
     public void updateQuestProgress(QuestData quest, bool isComplete)
     {
+        Debug.Log("updating quest progress");
         if (quest.QuestType == "Tutorial")
         {
             quest.StoryQuestComplete = isComplete;
             if (quest.NextQuest != null && isComplete == true)
             {
+                Debug.Log("this quest is complete; next quest is not null");
                 forceSetQuest(quest.NextQuest);
+                foreach (QuestData unlockedQ in quest.QuestUnlocks)
+                    _unlockedQuests.Add(unlockedQ);
+                setupStoryQuests();
+            }
+            if (quest.NextQuest == null && isComplete == true)
+            {
+                foreach (QuestData unlockedQ in quest.QuestUnlocks)
+                    _unlockedQuests.Add(unlockedQ);
                 setupStoryQuests();
             }
         }
@@ -481,4 +517,5 @@ public class SaveQuestsObject
     public QuestObject currentQuest;
     public int currentQuestStage;
     public List<QuestObject> completedQuests;
+    public List<QuestObject> unlockedQuests;
 }

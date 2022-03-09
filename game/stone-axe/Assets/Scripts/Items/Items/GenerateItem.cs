@@ -53,7 +53,7 @@ public class GenerateItem : MonoBehaviour
             Debug.LogWarning("level is too high!");
         }
         */
-        Debug.Log("generated item: " + _generatedItem.ItemName);
+        //Debug.Log("generated item: " + _generatedItem.ItemName);
         int ranEnchChance = Random.Range(0, 1000);
         if (ranEnchChance >= 100)
         {

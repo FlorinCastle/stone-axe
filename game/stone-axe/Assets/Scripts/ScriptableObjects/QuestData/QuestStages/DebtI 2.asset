@@ -21,4 +21,4 @@ MonoBehaviour:
   _part2Mat: {fileID: 0}
   _part3Mat: {fileID: 0}
   _currencyValue: 0
-  _npcRef: {fileID: 0}
+  _npcRef: {fileID: 2822056689991755846, guid: de8ea3c698605e84285c8a202339e6ba, type: 3}
