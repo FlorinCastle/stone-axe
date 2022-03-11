@@ -312,7 +312,8 @@ public class CraftControl : MonoBehaviour
     public void SelectMat()
     {
         _chosenPartMaterial = _inventoryControlReference.getSelectedMat();
-        if (_chosenPartMaterial != null)
+        if (_chosenPartMaterial != null && _chosenPartRecipe.ValidMaterialData.Contains(_chosenPartMaterial))
+        //if (_chosenPartMaterial != null)
         {
             // setup discription
             setupMatDiscription(_chosenPartMaterial);

@@ -79,9 +79,10 @@ public class QuestControl : MonoBehaviour
             {
                 if (starterRef == null)
                 {
+                    //Debug.Log("tutorial: starter ref is not assigned!");
                     if (tutQuest.StoryQuestComplete == false)
                     {
-                        //Debug.Log("");
+                        //Debug.Log("asigning starter tutorial");
                         starterRef = tutQuest;
                         break;
                     }
@@ -93,8 +94,10 @@ public class QuestControl : MonoBehaviour
             {
                 if (starterRef == null)
                 {
+                    //Debug.Log("story: starter ref is not assigned!");
                     if (storyQuest.StoryQuestComplete == false)
                     {
+                        //Debug.Log("asigning starter story");
                         starterRef = storyQuest;
                         break;
                     }
@@ -103,22 +106,18 @@ public class QuestControl : MonoBehaviour
                     break;
             }
             setupStarter();
-            /*
-            p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
-            p.GetComponent<StoryQuestStarter>().QuestRef = starterRef;
-            p.GetComponent<StoryQuestStarter>().setupText();
-            */
         }
         else if (_chosenQuest.QuestType == "Tutorial" || _chosenQuest.QuestType == "Story")
         {
             //Destroy(p);
             //p = null;
-            setupStarter();
-            /*
-            p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
-            p.GetComponent<StoryQuestStarter>().QuestRef = _chosenQuest;
-            p.GetComponent<StoryQuestStarter>().setupText();
-            */
+            if (_chosenQuest.StoryQuestComplete == false)
+                setupStarter();
+            else
+            {
+                Debug.Log("TODO: set up code to set up starters for unlocked and not complete quests");
+
+            }
         }
     }
 
@@ -154,7 +153,8 @@ public class QuestControl : MonoBehaviour
     public SaveQuestsObject saveQuests()
     {
 
-        List <QuestObject> completedQuestList = new List<QuestObject>();
+        List<QuestObject> completedQuestList = new List<QuestObject>();
+        List<QuestObject> unlockedQuestList = new List<QuestObject>(); 
         foreach(QuestData tutQuest in _questRef.getTutorialQuests())
             if (tutQuest.StoryQuestComplete == true)
                 completedQuestList.Add(_questRef.saveQuest(tutQuest));
@@ -163,11 +163,15 @@ public class QuestControl : MonoBehaviour
             if (stryQuest.StoryQuestComplete == true)
                 completedQuestList.Add(_questRef.saveQuest(stryQuest));
 
+        foreach (QuestData unlockQuest in _unlockedQuests)
+            unlockedQuestList.Add(_questRef.saveQuest(unlockQuest));
+
         SaveQuestsObject questObject = new SaveQuestsObject
         {
             currentQuest = _questRef.saveQuest(_chosenQuest),
             currentQuestStage = _currStageIndex,
             completedQuests = completedQuestList,
+            unlockedQuests = unlockedQuestList,
         };
 
         return questObject;
@@ -187,13 +191,32 @@ public class QuestControl : MonoBehaviour
         foreach (QuestObject quest in questsSave.completedQuests)
         {
             if (quest.questType == "Tutorial")
+            {
                 foreach (QuestData tutQuest in _questRef.getTutorialQuests())
                     if (tutQuest.QuestName == quest.questName)
                         tutQuest.StoryQuestComplete = true;
+            }
             else if (quest.questType == "Story")
+            {
                 foreach (QuestData storyQuest in _questRef.getStoryQuests())
                     if (storyQuest.QuestName == quest.questName)
                         storyQuest.StoryQuestComplete = true;
+            }
+        }
+        foreach (QuestObject quest in questsSave.unlockedQuests)
+        {
+            if (quest.questType == "Tutorial")
+            {
+                foreach (QuestData tutQuest in _questRef.getTutorialQuests())
+                    if (tutQuest.QuestName == quest.questName)
+                        _unlockedQuests.Add(tutQuest);
+            }
+            else if (quest.questType == "Story")
+            {
+                foreach (QuestData storyQuest in _questRef.getStoryQuests())
+                    if (storyQuest.QuestName == quest.questName)
+                        _unlockedQuests.Add(storyQuest);
+            }
         }
 
         setupStoryQuests();
