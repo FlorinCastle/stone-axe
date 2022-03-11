@@ -5,7 +5,7 @@ using UnityEngine;
 public class NPC_AI : MonoBehaviour
 {
     private bool _move;
-    private bool dismissed;
+    [SerializeField] private bool dismissed;
 
     [SerializeField] private GameObject _currentTarget;
     private Vector3 _targetPosition;
@@ -36,7 +36,7 @@ public class NPC_AI : MonoBehaviour
         {
             IsMoving = false;
             // todo: do code for npc movement
-            Debug.LogWarning("TODO - set up code for npc movement");
+            //Debug.LogWarning("TODO - set up code for npc movement");
             if (_currentTarget.GetComponent<WalkingPoint>() == true)
             {
                 dismissed = false;
@@ -56,6 +56,25 @@ public class NPC_AI : MonoBehaviour
                     && _currentTarget.GetComponent<NPCPoint>().NextPoint.GetComponent<NPCPoint>().IsOccupied == true)
                 {
                     dismissed = false;
+                }
+                else if (dismissed == false)
+                {
+                    // advance quest
+                    //Debug.Log("TODO: setup code for npc quest triggering");
+                    
+                    if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
+                        (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" ||
+                        gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Story"))
+                    {
+                        if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Force_Event" &&
+                            gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.QuestEvent == "Summon_NPC")
+                        {
+                            Debug.LogWarning("Quest Notif - NPC at counter");
+                            gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
+                        }
+                    }
+                    
+
                 }
                 else if (dismissed == true && _currentTarget.GetComponent<NPCPoint>().NextPoint.GetComponent<WalkingPoint>() != null)
                 {

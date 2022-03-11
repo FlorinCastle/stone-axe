@@ -15,6 +15,8 @@ public class InventoryData : MonoBehaviour
     // enchant inventory
     [SerializeField] private List<GameObject> _enchantInventoryData;
 
+    [SerializeField] private InventoryScript _invControlRef;
+
     public SaveMaterialsObject saveMaterials()
     {
         List<SaveMatObject> matObjects = new List<SaveMatObject>();
@@ -89,11 +91,13 @@ public class InventoryData : MonoBehaviour
     {
         _itemInventoryData.Add(item);
         item.GetComponent<ItemDataStorage>().setInventoryIndex(_itemInventoryData.IndexOf(item));
+        _invControlRef.setupItemInventory();
         return _itemInventoryData.IndexOf(item);
     }
     public int insertPartData(GameObject part)
     {
         _partInventoryData.Add(part);
+        _invControlRef.setupPartInventory();
         return _partInventoryData.IndexOf(part);
     }
     public int insertEnchantData(GameObject enchant, int i)
@@ -104,6 +108,7 @@ public class InventoryData : MonoBehaviour
     public int insertEnchantData(GameObject enchant)
     {
         _enchantInventoryData.Add(enchant);
+        _invControlRef.setupEnchantInventory();
         return _enchantInventoryData.IndexOf(enchant);
     }
 

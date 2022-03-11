@@ -11,7 +11,7 @@ public class QuestControl : MonoBehaviour
     private InventoryData _invDataRef;
     [SerializeField]
     private QuestData _chosenQuest;
-    [SerializeField, HideInInspector]
+    [SerializeField]
     private int _currStageIndex = 0;
 
     [SerializeField] private QuestSheet _questSheet1;
@@ -41,6 +41,7 @@ public class QuestControl : MonoBehaviour
     private bool star = false;
 
     [SerializeField, HideInInspector] private List<QuestData> _unlockedQuests;
+    [SerializeField, HideInInspector] private List<GameObject> _questStarterGOs;
 
     private void Awake()
     {
@@ -72,7 +73,7 @@ public class QuestControl : MonoBehaviour
     private GameObject p;
     public void setupStoryQuests()
     {
-        Debug.Log("setting up story quests!");
+        //Debug.Log("setting up story quests!");
         if (_chosenQuest == null)
         {
             foreach(QuestData tutQuest in _questRef.getTutorialQuests())
@@ -115,20 +116,43 @@ public class QuestControl : MonoBehaviour
                 setupStarter();
             else
             {
-                Debug.Log("TODO: set up code to set up starters for unlocked and not complete quests");
-
+                //Debug.Log("TODO: set up code to set up starters for unlocked and not complete quests");
+                foreach (QuestData unlockQuest in _unlockedQuests)
+                    if (unlockQuest.StoryQuestComplete == false)
+                    {
+                        //Debug.Log(unlockQuest.QuestName + " is not complete!");
+                        setupStarter(unlockQuest);
+                    }
             }
         }
     }
 
     public void setupStarter()
     {
+        if (_chosenQuest != null || starterRef != null)
+        {
+            p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
+            if (_chosenQuest == null)
+                p.GetComponent<StoryQuestStarter>().QuestRef = starterRef;
+            else
+                p.GetComponent<StoryQuestStarter>().QuestRef = _chosenQuest;
+
+            _questStarterGOs.Add(p);
+            p.GetComponent<StoryQuestStarter>().setupText();
+        }
+    }
+    public void setupStarter(QuestData qes)
+    {
         p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
-        if (_chosenQuest == null)
-            p.GetComponent<StoryQuestStarter>().QuestRef = starterRef;
+        if (qes != null)
+        {
+            p.GetComponent<StoryQuestStarter>().QuestRef = qes;
+
+            _questStarterGOs.Add(p);
+            p.GetComponent<StoryQuestStarter>().setupText();
+        }
         else
-            p.GetComponent<StoryQuestStarter>().QuestRef = _chosenQuest;
-        p.GetComponent<StoryQuestStarter>().setupText();
+            Debug.LogError("QuestControl.setupStarter(QuestData qes) - qes is Null!");
     }
 
     public void removeStarter()
@@ -140,6 +164,23 @@ public class QuestControl : MonoBehaviour
         }
         else if (p == null)
             Debug.LogWarning("QuestControl - Quest Starter Game Object (variable p) is null!");
+    }
+    public void removeStarter(GameObject g)
+    {
+        if (g != null)
+        {
+            foreach(GameObject go in _questStarterGOs)
+                if (g.gameObject == go.gameObject)
+                {
+                    Debug.Log("QuestControl _questStarterGOs contains starter!");
+                    int i = _questStarterGOs.IndexOf(go);
+                    Destroy(go);
+                    _questStarterGOs.RemoveAt(i);
+                    break;
+                }
+        }
+        else if (g == null)
+            Debug.LogWarning("QuestControl> removeStater(GameObject g) - (variable g) is null!");
     }
 
     public void resetAllQuests()
@@ -364,13 +405,14 @@ public class QuestControl : MonoBehaviour
     public void startStoryQuest(QuestData questInput)
     {
         _chosenQuest = questInput;
+        _currStageIndex = 0;
         setupText();
         this.gameObject.GetComponent<DialogueControl>().CurrentQuest = questInput;
 
         if (questInput.QuestStages[_currStageIndex].StageType == "Dialogue")
             this.gameObject.GetComponent<DialogueControl>().startDialogue(_currStageIndex);
         else
-            Debug.LogError("This quest starts with a non-Dialogue stage!\nNote to Dev: Implement this quest's start in code!\nLine: 324 Method: startStoryQuest(QuestData questInput)");
+            Debug.LogError("This quest starts with a non-Dialogue stage!\nNote to Dev: Implement this quest's start in code!\nLine: 411 Method: startStoryQuest(QuestData questInput)");
     }
     public void nextStage()
     {
@@ -434,7 +476,7 @@ public class QuestControl : MonoBehaviour
     // overload 4 (story & tutorial quest)
     public void updateQuestProgress(QuestData quest, bool isComplete)
     {
-        Debug.Log("updating quest progress");
+        //Debug.Log("updating quest progress");
         if (quest.QuestType == "Tutorial")
         {
             quest.StoryQuestComplete = isComplete;

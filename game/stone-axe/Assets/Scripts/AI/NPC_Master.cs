@@ -16,7 +16,7 @@ public class NPC_Master : MonoBehaviour
     }
 
     private GameObject npcPlaceholder;
-    private List<GameObject> _NPCs;
+    [SerializeField,HideInInspector] private List<GameObject> _NPCs;
     public void spawnNPC(GameObject NPCRef)
     {
         npcPlaceholder = Instantiate(NPCRef, _walkingPoints[0].gameObject.transform, false);

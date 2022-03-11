@@ -9,6 +9,7 @@ public class StoryQuestStarter : MonoBehaviour
     //[SerializeField]
     private QuestControl _questControlRef;
     [SerializeField] private QuestData _questRef;
+    [SerializeField] private GameObject _selfRef;
     [Header("UI")]
     [SerializeField] private GameObject _basicDetails;
     [SerializeField] private TextMeshProUGUI _text; 
@@ -21,7 +22,8 @@ public class StoryQuestStarter : MonoBehaviour
     public void startQuest()
     {
         _questControlRef.startStoryQuest(_questRef);
-        _questControlRef.removeStarter();
+        //_questControlRef.removeStarter();
+        _questControlRef.removeStarter(_selfRef);
     }
 
     public void setupText()
@@ -33,4 +35,5 @@ public class StoryQuestStarter : MonoBehaviour
     public void hideDetails() { _basicDetails.SetActive(false); }
 
     public QuestData QuestRef { get => _questRef; set => _questRef = value; }
+    public GameObject SelfRef { get => _selfRef; }
 }

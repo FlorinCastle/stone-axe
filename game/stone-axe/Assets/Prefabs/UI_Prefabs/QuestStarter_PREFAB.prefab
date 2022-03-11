@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questRef: {fileID: 0}
+  _selfRef: {fileID: 2496011540154331948}
   _basicDetails: {fileID: 1099500377204798241}
   _text: {fileID: 3344036287048408109}
 --- !u!1 &4644331084194396393
