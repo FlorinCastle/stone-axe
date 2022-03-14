@@ -10,41 +10,23 @@ public class InventoryButton : MonoBehaviour
     [SerializeField] private int _itemIndex;
     [SerializeField] private int _partIndex;
     [SerializeField] private int _enchIndex;
+    [Header("References")]
+    [SerializeField] private GameObject _isNewImage;
     
     private void Awake()
     {
         _invControl = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>();
     }
 
-    public void setItemInfoText()
-    {
-        _invControl.setItemDetailText(_itemIndex);
-    }
+    public void setItemInfoText() { _invControl.setItemDetailText(_itemIndex); }
+    public void setPartInfoText() { _invControl.setPartDetailText(_partIndex); }
+    public void setEncInfoText() { _invControl.setEnchantDetailText(_enchIndex); }
 
-    public void setPartInfoText()
-    {
-        _invControl.setPartDetailText(_partIndex);
-    }
+    public void setSelectedItem() { _invControl.setSelectedItem(_itemIndex); }
+    public void setSelectedPart() { _invControl.setSelectedPart(_partIndex); }
+    public void setSelectedEnchant() { _invControl.setSelectedEnchant(_enchIndex); }
 
-    public void setEncInfoText()
-    {
-        _invControl.setEnchantDetailText(_enchIndex);
-    }
-
-    public void setSelectedItem()
-    {
-        _invControl.setSelectedItem(_itemIndex);
-    }
-
-    public void setSelectedPart()
-    {
-        _invControl.setSelectedPart(_partIndex);
-    }
-
-    public void setSelectedEnchant()
-    {
-        _invControl.setSelectedEnchant(_enchIndex);
-    }
+    public void setIsNew(bool value) { _isNewImage.SetActive(value); }
 
     public void setMyIndex(int i) { _myButtonIndex = i; }
     public int MyIndex { get => _myButtonIndex; }

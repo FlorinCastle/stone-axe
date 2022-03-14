@@ -170,11 +170,16 @@ public class SellItemControl : MonoBehaviour
         clearSellMenu();
         this.gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
 
-        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null && _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial")
+        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
+            (this.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" ||
+            this.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Story"))
         {
-            Debug.LogWarning("Quest Notif - Sell Done");
-            _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
+            if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Sell_Item")
+            {
+                Debug.LogWarning("Quest Notif - Sell Done");
+                _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
 
+            }
         }
     }
 
@@ -204,7 +209,7 @@ public class SellItemControl : MonoBehaviour
     public void clearSellMenu()
     {
         _itemData = null;
-        _itemText.text = "item text";
+        _itemText.text = "choose item";
         _sellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: [price]";
         _haggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: n/a)";
         _sellItemButton.interactable = false;
@@ -212,7 +217,7 @@ public class SellItemControl : MonoBehaviour
         _haggleButton.interactable = false;
         haggleSucceded = false;
 
-        _marketItemText.text = "item text";
+        _marketItemText.text = "choose item";
         _marketSellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: [price]";
         _marketHaggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: n/a)";
         _marketSellItemButton.interactable = false;

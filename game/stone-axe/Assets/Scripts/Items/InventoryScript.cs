@@ -127,6 +127,8 @@ public class InventoryScript : MonoBehaviour
                 // set up button text
                 TextMeshProUGUI t = tempButtonList.GetComponentInChildren<TextMeshProUGUI>();
                 t.text = itemData.ItemName;
+                // set button data
+                tempButtonList.GetComponent<InventoryButton>().setIsNew(itemData.IsNew);
 
                 // add button to list
                 InsertItemButton(tempButtonList, k);

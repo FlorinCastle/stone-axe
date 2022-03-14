@@ -171,9 +171,10 @@ public class GenerateItem : MonoBehaviour
         _generatedItem = null;
         buyButton.interactable = false;
         buyButtonText.text = "buy: [price]";
-        itemText.text = "item text";
+        itemText.text = "choose item";
         haggleButton.interactable = false;
         haggleButtonText.text = "haggle\n(success chance: n/a)";
+        this.gameObject.GetComponent<SellItemControl>().clearSellMenu();
     }
     public void adventurerAtCounter()
     {

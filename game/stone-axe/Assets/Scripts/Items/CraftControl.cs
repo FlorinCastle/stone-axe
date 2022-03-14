@@ -457,10 +457,15 @@ public class CraftControl : MonoBehaviour
         clearItemCraftingUI();
         _recipeDropdown.value = 0;
 
-        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null && _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial")
+        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
+            (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" ||
+            _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Story"))
         {
-            Debug.LogWarning("Quest Notif - Craft Done");
-            _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
+            if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Craft_Item")
+            {
+                Debug.LogWarning("Quest Notif - Craft Done");
+                _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
+            }
 
         }
     }

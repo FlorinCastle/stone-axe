@@ -189,12 +189,17 @@ public class DisassembleItemControl : MonoBehaviour
         _itemText.text = "";
 
         _disassembleButton.interactable = false;
+        this.gameObject.GetComponent<SellItemControl>().clearSellMenu();
 
         if (this.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
-            this.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial")
+            (this.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" ||
+            this.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Story"))
         {
-            Debug.LogWarning("Quest Notif - Disassemble Minigame Done");
-            this.gameObject.GetComponent<QuestControl>().nextStage();
+            if (this.gameObject.GetComponent<QuestControl>().CurrentStage.QuestEvent == "Disassemble_Item") { }
+            {
+                Debug.LogWarning("Quest Notif - Disassemble Minigame Done");
+                this.gameObject.GetComponent<QuestControl>().nextStage();
+            }
         }
     }
 }
