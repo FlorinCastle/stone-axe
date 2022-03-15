@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Story_KnightlyRegularII
   m_EditorClassIdentifier: 
   _questName: 'Story: Knightly Regular II'
-  _questDiscription: story quest
+  _questDiscription: The armored knight requests that you remake their spare chestplate
   _questType: 6
   _questStages:
   - {fileID: 11400000, guid: e09ef00ea76d20b4698dbc1ce32bad51, type: 2}
@@ -43,4 +43,5 @@ MonoBehaviour:
   _nextQuest: {fileID: 11400000, guid: 80a2ae7c035daf64fa457f43f3b71ab2, type: 2}
   _unlocksQuests:
   - {fileID: 11400000, guid: 80a2ae7c035daf64fa457f43f3b71ab2, type: 2}
+  _requiredPlayerLevel: 8
   _storyQuestComplete: 0

@@ -18,6 +18,7 @@ public class QuestData : ScriptableObject
     public int _requiredCount;
     public QuestData _nextQuest;
     public List<QuestData> _unlocksQuests;
+    public int _requiredPlayerLevel;
 
     public bool _storyQuestComplete;
 
@@ -30,6 +31,7 @@ public class QuestData : ScriptableObject
     public MaterialData ReqiredMaterial { get => _requiredMaterial; }
     public QuestItemData RequiredQuestItem { get => _requiredQuestItem; }
     public int ReqiredCount { get => _requiredCount; }
+    public int RequiredPlayerLevel { get => _requiredPlayerLevel; }
     public bool StoryQuestComplete { get => _storyQuestComplete; set => _storyQuestComplete = value; }
     public QuestData NextQuest { get => _nextQuest; }
     public List<QuestData> QuestUnlocks { get => _unlocksQuests; }

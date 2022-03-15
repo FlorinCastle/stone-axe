@@ -9,6 +9,7 @@ public class QuestDataEditor : Editor
     public SerializedProperty
         questName,
         questType,
+        reqLevel,
         questDiscription,
         questStages,
         reqItem,
@@ -23,6 +24,7 @@ public class QuestDataEditor : Editor
     {
         questName = serializedObject.FindProperty("_questName");
         questType = serializedObject.FindProperty("_questType");
+        reqLevel = serializedObject.FindProperty("_requiredPlayerLevel");
         questDiscription = serializedObject.FindProperty("_questDiscription");
         questStages = serializedObject.FindProperty("_questStages");
 
@@ -50,6 +52,7 @@ public class QuestDataEditor : Editor
 
         EditorGUILayout.PropertyField(questName);
         EditorGUILayout.PropertyField(questType);
+        EditorGUILayout.PropertyField(reqLevel, new GUIContent("Unlock Level"));
 
         QuestData.questTypeEnum PHQuestType = (QuestData.questTypeEnum)questType.enumValueIndex;
 

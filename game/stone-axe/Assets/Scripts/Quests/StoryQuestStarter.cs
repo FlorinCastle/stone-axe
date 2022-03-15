@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StoryQuestStarter : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class StoryQuestStarter : MonoBehaviour
     [SerializeField] private GameObject _selfRef;
     [Header("UI")]
     [SerializeField] private GameObject _basicDetails;
-    [SerializeField] private TextMeshProUGUI _text; 
+    [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private Button _buttonRef;
 
     private void Awake()
     {
@@ -21,9 +23,17 @@ public class StoryQuestStarter : MonoBehaviour
 
     public void startQuest()
     {
-        _questControlRef.startStoryQuest(_questRef);
-        //_questControlRef.removeStarter();
-        _questControlRef.removeStarter(_selfRef);
+        if (_questControlRef.gameObject.GetComponent<GameMaster>().GetLevel >= _questRef.RequiredPlayerLevel)
+        {
+            _questControlRef.startStoryQuest(_questRef);
+            //_questControlRef.removeStarter();
+            _questControlRef.removeStarter(_selfRef);
+            hideDetails();
+        }
+        else
+        {
+            StartCoroutine(cantStartQuest());
+        }
     }
 
     public void setupText()
@@ -36,4 +46,13 @@ public class StoryQuestStarter : MonoBehaviour
 
     public QuestData QuestRef { get => _questRef; set => _questRef = value; }
     public GameObject SelfRef { get => _selfRef; }
+
+    IEnumerator cantStartQuest()
+    {
+        _text.text = "Level not high enough! Level: " + _questRef.RequiredPlayerLevel;
+        yield return new WaitForSeconds(5f);
+        setupText();
+
+        yield return null;
+    }
 }

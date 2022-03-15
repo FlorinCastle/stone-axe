@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Story_KnightlyRegularIV
   m_EditorClassIdentifier: 
   _questName: 'Story: Knightly Regular IV'
-  _questDiscription: story quest
+  _questDiscription: The armored knight requests that you remake their helm
   _questType: 6
   _questStages:
   - {fileID: 11400000, guid: b4e5d88b15e97fc4dacdb31473a39f14, type: 2}
@@ -47,4 +47,5 @@ MonoBehaviour:
   _requiredCount: 0
   _nextQuest: {fileID: 0}
   _unlocksQuests: []
+  _requiredPlayerLevel: 7
   _storyQuestComplete: 0
