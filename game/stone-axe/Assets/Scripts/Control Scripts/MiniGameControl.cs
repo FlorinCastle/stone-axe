@@ -115,6 +115,12 @@ public class MiniGameControl : MonoBehaviour
         _disassembleCompleteButton.interactable = false;
         _craftCompletButton.interactable = false;
 
+        foreach(GameObject point in _hitPointMarkers)
+        {
+            Destroy(point);
+        }
+        _hitPointMarkers.Clear();
+
         pointsHit = 0;
     }
 

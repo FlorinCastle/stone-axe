@@ -175,10 +175,11 @@ public class GameMaster : MonoBehaviour
 
         string json = JsonUtility.ToJson(saveInvObj, true);
         //Debug.Log(json);
-        string savePath = Application.dataPath + "/save_" + _playerName + "_" + _shopName + ".txt";
+        string savePath = Application.persistentDataPath + "/save_" + _playerName + "_" + _shopName + ".txt";
         File.WriteAllText(savePath, json);
         if (!_saveGameList.Contains(savePath))
             _saveGameList.Add(savePath);
+        saveSaveGames();
     }
     public void loadGame()
     {
@@ -263,14 +264,14 @@ public class GameMaster : MonoBehaviour
             saveGamePaths = _saveGameList,
         };
         string json = JsonUtility.ToJson(saveObj, true);
-        string savePath = Application.dataPath + "/save.txt";
+        string savePath = Application.persistentDataPath + "/save.txt";
         File.WriteAllText(savePath, json);
     }
     public void loadSaveGames()
     {
-        if (File.Exists(Application.dataPath + "/save.txt"))
+        if (File.Exists(Application.persistentDataPath + "/save.txt"))
         {
-            string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
+            string saveString = File.ReadAllText(Application.persistentDataPath + "/save.txt");
 
             SaveData saveObject = JsonUtility.FromJson<SaveData>(saveString);
 
@@ -289,9 +290,9 @@ public class GameMaster : MonoBehaviour
 
     public bool checkIfAnySavesExist()
     {
-        if (File.Exists(Application.dataPath + "/save.txt"))
+        if (File.Exists(Application.persistentDataPath + "/save.txt"))
         {
-            string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
+            string saveString = File.ReadAllText(Application.persistentDataPath + "/save.txt");
 
             SaveData saveObject = JsonUtility.FromJson<SaveData>(saveString);
             List<string> saveList = saveObject.saveGamePaths;

@@ -335,6 +335,7 @@ public class CraftControl : MonoBehaviour
 
     public void Craft()
     {
+        _gameMasterRef.gameObject.GetComponent<MiniGameControl>().resetHitPoints();
         if (_chosenItemRecipe != null)
             CraftItem();
         else if (_chosenPartRecipe != null)

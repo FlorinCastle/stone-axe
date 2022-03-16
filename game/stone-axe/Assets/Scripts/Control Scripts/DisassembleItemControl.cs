@@ -82,6 +82,7 @@ public class DisassembleItemControl : MonoBehaviour
     
     public void disassembleItem()
     {
+        this.gameObject.GetComponent<MiniGameControl>().resetHitPoints();
         int ran = Random.Range(0, 100);
         
         if (ran >= Mathf.RoundToInt(disassembleSkill.getFullDisassembleChance()))
