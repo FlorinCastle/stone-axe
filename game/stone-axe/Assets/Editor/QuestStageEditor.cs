@@ -128,6 +128,22 @@ public class QuestStageEditor : Editor
                         npcRef.objectReferenceValue = null;
                         break;
 
+                    case QuestStage.questEvent.Force_For_Sale:
+                        currencyValue.intValue = 0;
+                        EditorGUILayout.PropertyField(itemToGet, new GUIContent("Item to Force for Sale"));
+                        if (itemToGet.objectReferenceValue != null)
+                        {
+                            ItemData item = (ItemData)itemToGet.objectReferenceValue;
+
+                            EditorGUILayout.PropertyField(part1Mat, new GUIContent("Part 1 - " + item.Part1.PartName));
+                            EditorGUILayout.PropertyField(part2Mat, new GUIContent("Part 2 - " + item.Part2.PartName));
+                            EditorGUILayout.PropertyField(part3Mat, new GUIContent("Part 3 - " + item.Part3.PartName));
+
+                        }
+                        npcRef.objectReferenceValue = null;
+                        break;
+
+
                     case QuestStage.questEvent.Get_Currency:
                         EditorGUILayout.PropertyField(currencyValue, new GUIContent("Currency to Get"));
                         itemToGet.objectReferenceValue = null;

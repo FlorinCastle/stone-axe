@@ -16,7 +16,7 @@ public class MiniGameControl : MonoBehaviour
 
     [Header("Data")]
     [SerializeField] private List<GameObject> _hitPointMarkers;
-    [SerializeField, HideInInspector]private List<int> chosenHitPoints;
+    [SerializeField] private List<int> chosenHitPoints;
     [Header("UI")]
     [SerializeField] private Text _pointsToHitText;
     [SerializeField] private Button _disassembleCompleteButton;
@@ -50,6 +50,7 @@ public class MiniGameControl : MonoBehaviour
 
     public void startDisassemblyMiniGame()
     {
+        //Debug.Log("Disassembly MiniGame Start!");
         _craftingMinigameUI.SetActive(false);
         _disassemblyMinigameUI.SetActive(true);
         populateHitPoints();
@@ -65,25 +66,27 @@ public class MiniGameControl : MonoBehaviour
     {
         chosenHitPoints.Clear();
 
+        
         if (_disassemblyMinigameUI.activeInHierarchy == true)
             finalPointsToHit = calculateDisasembleHitPoints();
         else if (_craftingMinigameUI.activeInHierarchy == true)
             finalPointsToHit = calculateCraftHitPoints();
-
+        
         for (int j = 0; j < finalPointsToHit; j++)
         {
             int k = Random.Range(0, _hitPointMarkers.Count);
             if (chosenHitPoints.Contains(k) == false)
                 chosenHitPoints.Add(k);
-            else if (chosenHitPoints.Contains(k))
-                j--;
+            //else if (chosenHitPoints.Contains(k))
+            //    j--;
         }
-
+        
         foreach (int l in chosenHitPoints)
         {
             GameObject ph = Instantiate(_hitPointPrefab);
             ph.transform.SetParent(_hitPointMarkers[l].transform, false);
         }
+        
     }
 
     private int calculateDisasembleHitPoints()
@@ -115,11 +118,11 @@ public class MiniGameControl : MonoBehaviour
         _disassembleCompleteButton.interactable = false;
         _craftCompletButton.interactable = false;
 
-        foreach(GameObject point in _hitPointMarkers)
+        foreach(int i in chosenHitPoints)
         {
-            Destroy(point);
+            _hitPointMarkers[i].gameObject.GetComponent<HitPointMarker>().clearHitPoint();
         }
-        _hitPointMarkers.Clear();
+        chosenHitPoints.Clear();
 
         pointsHit = 0;
     }

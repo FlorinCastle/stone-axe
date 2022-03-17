@@ -43,4 +43,5 @@ MonoBehaviour:
   _nextQuest: {fileID: 11400000, guid: 2240dccd919c2304dacfd315d1845e62, type: 2}
   _unlocksQuests:
   - {fileID: 11400000, guid: 2240dccd919c2304dacfd315d1845e62, type: 2}
-  _storyQuestComplete: 0
+  _requiredPlayerLevel: 0
+  _storyQuestComplete: 1

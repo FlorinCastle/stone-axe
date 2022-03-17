@@ -542,7 +542,12 @@ public class QuestControl : MonoBehaviour
             else if (currStage.QuestEvent == "Get_Item")
             {
                 Debug.LogWarning("Quest Event: Get Item");
-                this.gameObject.GetComponent<GenerateItem>().GeneratePresetItem(currStage.ItemToGet, currStage.Part1Mat, currStage.Part2Mat, currStage.Part3Mat);
+                this.gameObject.GetComponent<GenerateItem>().GeneratePresetItem(currStage.ItemToGet, currStage.Part1Mat, currStage.Part2Mat, currStage.Part3Mat, true);
+            }
+            else if (currStage.QuestEvent == "Force_For_Sale")
+            {
+                Debug.LogWarning("Quest Event: Force For Sale");
+                this.gameObject.GetComponent<GenerateItem>().GeneratePresetItem(currStage.ItemToGet, currStage.Part1Mat, currStage.Part2Mat, currStage.Part3Mat, false);
             }
             else if (currStage.QuestEvent == "Get_Currency")
             {

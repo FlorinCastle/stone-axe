@@ -8,7 +8,7 @@ public class QuestStage : ScriptableObject
     public enum questStageEnum { Not_Set, Dialogue, Craft_Item, Sell_Item, Buy_Item, Disassemble_Item, Have_Currency, Force_Event };
     public questStageEnum _questStageType;
 
-    public enum questEvent { Not_Set, Summon_Adventurer, Get_Item, Get_Currency, Remove_Currency, Summon_NPC, Dismiss_Quest_NPC };
+    public enum questEvent { Not_Set, Summon_Adventurer, Get_Item, Get_Currency, Remove_Currency, Summon_NPC, Dismiss_Quest_NPC, Force_For_Sale };
     public questEvent _questEvent;
 
     public string _speaker;

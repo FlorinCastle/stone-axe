@@ -63,20 +63,40 @@ public class GenerateItem : MonoBehaviour
         else
             _generatedItem.setIsEnchanted(false);
 
-        generateItemText();
+        generateItemText(true);
         itemText.text = _generatedText;
         buyButtonText.text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * _buyPriceSkill.getModifiedBuyPrice());
         buyButton.interactable = true;
         haggleButtonText.text = "haggle\n(success chance: " + (_haggleSkill.getHaggleChance()).ToString() + "%)";
         haggleButton.interactable = true;
     }
-    public void GeneratePresetItem(ItemData item, MaterialData part1Mat, MaterialData part2Mat, MaterialData part3Mat)
+    public void GeneratePresetItem(ItemData item, MaterialData part1Mat, MaterialData part2Mat, MaterialData part3Mat, bool forceInsert)
     {
         _generatedItem = item;
         _generatedItem.Part1.Material = part1Mat;
         _generatedItem.Part2.Material = part2Mat;
         _generatedItem.Part3.Material = part3Mat;
-        _inventoryRef.InsertItem(_generatedItem);
+        if (forceInsert == false)
+        {
+            int ranEnchChance = Random.Range(0, 1000);
+            if (ranEnchChance >= 100)
+            {
+                _generatedEnchant = enchantScript.chooseEnchant();
+                _generatedItem.setIsEnchanted(true);
+            }
+            else
+                _generatedItem.setIsEnchanted(false);
+
+            generateItemText(false);
+            itemText.text = _generatedText;
+            buyButtonText.text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * _buyPriceSkill.getModifiedBuyPrice());
+            buyButton.interactable = true;
+            haggleButtonText.text = "haggle\n(success chance: " + (_haggleSkill.getHaggleChance()).ToString() + "%)";
+            haggleButton.interactable = true;
+
+        }
+        else if (forceInsert == true)
+            _inventoryRef.InsertItem(_generatedItem);
         //_generatedItem = null;
     }
     public void GenerateRandomEnchant()
@@ -200,10 +220,14 @@ public class GenerateItem : MonoBehaviour
     private bool _isEnchanted;
     private string _enchant;
 
-    private void generateItemText()
+    private void generateItemText(bool randomMats)
     {
         _itemName = "Item - " + _generatedItem.ItemName;
-        _materials = "\n\nMaterials\n" + _generatedItem.RandomMaterials;
+        if (randomMats == true) _materials = "\n\nMaterials\n" + _generatedItem.RandomMaterials;
+        else if (randomMats == false) _materials = "\n\nMaterials\n" +
+                _generatedItem.Part1.Material.Material + "\n" +
+                _generatedItem.Part2.Material.Material + "\n" +
+                _generatedItem.Part3.Material.Material;
 
         _totalStrenght = "\nStrenght: " + _generatedItem.TotalStrength;
         _totalDex = "\nDextarity: " + _generatedItem.TotalDextarity;

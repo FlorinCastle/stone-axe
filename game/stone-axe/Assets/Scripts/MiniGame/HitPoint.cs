@@ -14,6 +14,13 @@ public class HitPoint : MonoBehaviour
     public void pointHit()
     {
         _mGControlRef.increaseHitCount();
+        this.gameObject.GetComponentInParent<HitPointMarker>().ResetHitPoint();
+        Destroy(this.gameObject);
+    }
+
+    public void clearPoint()
+    {
+        this.gameObject.GetComponentInParent<HitPointMarker>().ResetHitPoint();
         Destroy(this.gameObject);
     }
 }
