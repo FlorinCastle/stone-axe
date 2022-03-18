@@ -34,6 +34,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8394cd9c76dad2844b7305dff5d207a7, type: 2}
   - {fileID: 11400000, guid: 3ef9591f892a1d749a28b9218e23e468, type: 2}
   - {fileID: 11400000, guid: 076a712969b4f87479824a0843bc9c6e, type: 2}
+  - {fileID: 11400000, guid: 32736fb3ec2b3f043b23543a767a7db1, type: 2}
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 0}
@@ -41,4 +42,5 @@ MonoBehaviour:
   _nextQuest: {fileID: 11400000, guid: 807ded92744f1a645903d5bfb83707a7, type: 2}
   _unlocksQuests:
   - {fileID: 11400000, guid: 807ded92744f1a645903d5bfb83707a7, type: 2}
+  _requiredPlayerLevel: 0
   _storyQuestComplete: 0

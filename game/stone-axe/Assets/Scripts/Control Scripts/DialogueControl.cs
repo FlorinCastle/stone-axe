@@ -28,9 +28,12 @@ public class DialogueControl : MonoBehaviour
 
     public void setupDialogueLine()
     {
+        index = this.gameObject.GetComponent<QuestControl>().CurrentStageIndex;
         if (index < _currentStoryQuest.QuestStages.Count)
         {
-            this.gameObject.GetComponent<QuestControl>().CurrentStageIndex = index;
+            //this.gameObject.GetComponent<QuestControl>().CurrentStageIndex = index; // p sure issue is this line
+            //index = this.gameObject.GetComponent<QuestControl>().CurrentStageIndex;
+
             QuestStage currStage = _currentStoryQuest.QuestStages[index];
             //Debug.LogWarning("setupDialogueLine - " + _currentStoryQuest.QuestName + " " + index);
             if (currStage.StageType == "Dialogue")
@@ -50,11 +53,15 @@ public class DialogueControl : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("No more stages! " + _currentStoryQuest.QuestName);
-            //if (_currentStoryQuest.NextQuest == null)
-                _dialogueUI.SetActive(false);
-            this.gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuest, true);
+            dialogeQuestEnd();
         }
+    }
+    public void dialogeQuestEnd()
+    {
+        Debug.LogWarning("No more stages! " + _currentStoryQuest.QuestName);
+        //if (_currentStoryQuest.NextQuest == null)
+        _dialogueUI.SetActive(false);
+        this.gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuest, true);
     }
     /*
     public void nextStage()

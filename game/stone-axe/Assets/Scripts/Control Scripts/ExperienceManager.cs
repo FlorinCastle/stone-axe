@@ -50,7 +50,7 @@ public class ExperienceManager : MonoBehaviour
             else if (levelMark > _gameMasterRef.GetTotalExperience && counter > prevUpdatedLevel)
             {
                 setupLevelUpMenu(counter);
-
+                //_gameMasterRef.updateLevelLocks();
                 break;
             }
         }
@@ -59,6 +59,7 @@ public class ExperienceManager : MonoBehaviour
         _skillMgrRef.setTotalSkillPoints(counter);
         _levelTxt.text = "level: " + _gameMasterRef.GetLevel;
         prevUpdatedLevel = _gameMasterRef.GetLevel;
+        _gameMasterRef.updateLevelLocks();
     }
 
     public void updateEXPSlider()

@@ -86,6 +86,25 @@ public class GameMaster : MonoBehaviour
             this.gameObject.GetComponent<PlayerManager>().spawnPlayer();
     }
 
+    public void updateLevelLocks()
+    {
+        GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().setupRecipeGrid();
+    }
+    public void updatePlayerPosition()
+    {
+        if (this.gameObject.GetComponent<UIControl>().ShopEcoUIEnabled == true)
+            this.gameObject.GetComponent<PlayerManager>().warpToCounter();
+        if (this.gameObject.GetComponent<UIControl>().ShopDisUIEnabled == true)
+            this.gameObject.GetComponent<PlayerManager>().warpToDisassemble();
+        if (this.gameObject.GetComponent<UIControl>().ShopCraftUIEnabled == true)
+            this.gameObject.GetComponent<PlayerManager>().warpToCraft();
+        if (this.gameObject.GetComponent<UIControl>().MarketEcoUIEnabled == true)
+            this.gameObject.GetComponent<PlayerManager>().warpToStall();
+        if (this.gameObject.GetComponent<UIControl>().MarketQuestUIEnabled == true)
+            this.gameObject.GetComponent<PlayerManager>().warpToQuestBoard();
+
+    }
+
     public string PlayerName { get => _playerName; set => _playerName = value; }
     public string ShopName { get => _shopName; set => _shopName = value; }
     public string PlayerSpecies { get => _playerSpecies; set => _playerSpecies = value; }

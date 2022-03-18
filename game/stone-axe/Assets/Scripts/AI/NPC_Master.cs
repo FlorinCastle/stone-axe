@@ -16,7 +16,7 @@ public class NPC_Master : MonoBehaviour
     }
 
     private GameObject npcPlaceholder;
-    [SerializeField,HideInInspector] private List<GameObject> _NPCs;
+    //[SerializeField,HideInInspector] private List<GameObject> _NPCs;
     public void spawnNPC(GameObject NPCRef)
     {
         npcPlaceholder = Instantiate(NPCRef, _walkingPoints[0].gameObject.transform, false);
@@ -27,7 +27,7 @@ public class NPC_Master : MonoBehaviour
         // setup the npc
         //npcPlaceholder.GetComponent<NPC_AI>().setupNPC(NPCRef);
 
-        _NPCs.Add(npcPlaceholder);
+        _npcList.Add(npcPlaceholder);
         if (this.gameObject.GetComponent<GameMaster>().ShopActive == true)
             _soundMaster.playDoorSound();
     }
@@ -35,6 +35,15 @@ public class NPC_Master : MonoBehaviour
     {
         foreach(GameObject npc in _npcList)
             if (npc.GetComponent<NPC_AI>() != null)
+            {
+                Debug.Log("Dismissing NPC: " + npc.name);
                 npc.GetComponent<NPC_AI>().IsDismissed = true;
+            }
+    }
+    public void removeNPC(GameObject npcRef)
+    {
+        Debug.Log(npcRef.name + " - I YEET MYSELF!");
+        _npcList.Remove(npcRef);
+        Destroy(npcRef);
     }
 }

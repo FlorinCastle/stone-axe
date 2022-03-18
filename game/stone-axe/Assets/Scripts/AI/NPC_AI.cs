@@ -40,7 +40,10 @@ public class NPC_AI : MonoBehaviour
             if (_currentTarget.GetComponent<WalkingPoint>() == true)
             {
                 dismissed = false;
-                setCurentTarget(_currentTarget.GetComponent<WalkingPoint>().NextPoint);
+                if (_currentTarget.GetComponent<WalkingPoint>().FinalPoint == true) // if at final point, YEET THYSELF
+                    gameMasterRef.gameObject.GetComponent<NPC_Master>().removeNPC(this.gameObject);
+                else // otherwise, proceed
+                    setCurentTarget(_currentTarget.GetComponent<WalkingPoint>().NextPoint);
             }
             else if (_currentTarget.GetComponent<NPCPoint>() == true)
             {

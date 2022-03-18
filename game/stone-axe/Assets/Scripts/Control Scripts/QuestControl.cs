@@ -417,7 +417,11 @@ public class QuestControl : MonoBehaviour
     public void nextStage()
     {
         _currStageIndex++;
-        this.gameObject.GetComponent<DialogueControl>().setupDialogueLine();
+        if (_currStageIndex < CurrentQuest.QuestStages.Count)
+            this.gameObject.GetComponent<DialogueControl>().setupDialogueLine();
+        else if (_currStageIndex >= CurrentQuest.QuestStages.Count)
+            this.gameObject.GetComponent<DialogueControl>().dialogeQuestEnd();
+
     }
 
     //overload 1 (basic item crafting)
@@ -543,16 +547,19 @@ public class QuestControl : MonoBehaviour
             {
                 Debug.LogWarning("Quest Event: Get Item");
                 this.gameObject.GetComponent<GenerateItem>().GeneratePresetItem(currStage.ItemToGet, currStage.Part1Mat, currStage.Part2Mat, currStage.Part3Mat, true);
+                nextStage();
             }
             else if (currStage.QuestEvent == "Force_For_Sale")
             {
                 Debug.LogWarning("Quest Event: Force For Sale");
                 this.gameObject.GetComponent<GenerateItem>().GeneratePresetItem(currStage.ItemToGet, currStage.Part1Mat, currStage.Part2Mat, currStage.Part3Mat, false);
+                nextStage();
             }
             else if (currStage.QuestEvent == "Get_Currency")
             {
                 Debug.LogWarning("Quest Event: Get Currency");
                 this.gameObject.GetComponent<GameMaster>().addCurrency(currStage.CurrencyValue);
+                nextStage();
             }
             else if (currStage.QuestEvent == "Remove_Currency")
             {
