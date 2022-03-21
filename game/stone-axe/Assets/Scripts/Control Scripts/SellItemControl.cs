@@ -66,25 +66,6 @@ public class SellItemControl : MonoBehaviour
         if (_selectedItem != null)
         {
             setupDiscription();
-
-            /*
-            if (sellingState == 0) // shop level
-            {
-                //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
-                setupDiscription();
-                //_sellItemButton.interactable = true;
-                //_refuseButton.interactable = true;
-                //_haggleButton.interactable = true;
-            }
-            else if (sellingState == 1) // market level
-            {
-                //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
-                setupDiscription();
-                //_marketSellItemButton.interactable = true;
-                //_marketRefuseButton.interactable = true;
-                //_marketHaggleButton.interactable = true;
-            }
-            */
         }
         else
         {
@@ -232,11 +213,15 @@ public class SellItemControl : MonoBehaviour
         {
             _suggestButton.interactable = true;
             _marketSuggestButton.interactable = true;
+            // get random item
+            GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>().selectRandomItem();
         }
         else if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == false)
         {
             _suggestButton.interactable = false;
             _marketSuggestButton.interactable = false;
+            // clear selected item
+            clearSellMenu();
         }
         canSell(gameObject.GetComponent<GameMaster>().AdventurerAtCounter);
     }

@@ -25,6 +25,7 @@ public class AdventurerAI : MonoBehaviour
     }
 
     private Vector3 newDirection;
+    private bool selected = false;
     private void FixedUpdate()
     {
         if (_move == true) // if moving
@@ -75,16 +76,23 @@ public class AdventurerAI : MonoBehaviour
                 { // if at line point and next point is a walking point and adventurer has been dismissed (head of line, basically)
                     _currentTarget.GetComponent<LinePoint>().IsOccupied = false;
                     gameMasterRef.AdventurerAtCounter = false;
-                    GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().adventurerAtCounter();
-                    GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GenerateItem>().adventurerAtCounter();
+                    if (selected == false)
+                    {
+                        selected = true;
+                        gameMasterRef.adventurerEco();
+                    }
+
                     dismissed = false;
                     setCurentTarget(_currentTarget.GetComponent<LinePoint>().NextPoint);
                 }
                 else if (_currentTarget.GetComponent<LinePoint>().HeadOfLine == true)
                 { // if at line point that is head of line
                     gameMasterRef.AdventurerAtCounter = true;
-                    gameMasterRef.gameObject.GetComponent<SellItemControl>().adventurerAtCounter();
-                    gameMasterRef.gameObject.GetComponent<GenerateItem>().adventurerAtCounter();
+                    if (selected == false)
+                    {
+                        selected = true;
+                        gameMasterRef.adventurerEco();
+                    }
 
                     if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
                         (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" ||

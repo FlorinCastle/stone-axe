@@ -34,14 +34,16 @@ public class QuestControl : MonoBehaviour
     [SerializeField]
     private Button _completeQuestButton;
 
+    [Header("Quest Organization")]
     [SerializeField] private List<QuestData> _repeatableQuests;
+    [SerializeField, HideInInspector] private List<QuestData> _unlockedQuests;
+    [SerializeField, HideInInspector] private List<GameObject> _questStarterGOs;
+    [SerializeField] private QuestData _enableAdventurersOnComplete;
+
     private int reqItemCount = 0;
     private int currentItemCount = 0;
     private bool shut = false;
     private bool star = false;
-
-    [SerializeField, HideInInspector] private List<QuestData> _unlockedQuests;
-    [SerializeField, HideInInspector] private List<GameObject> _questStarterGOs;
 
     private void Awake()
     {
@@ -234,8 +236,12 @@ public class QuestControl : MonoBehaviour
             if (quest.questType == "Tutorial")
             {
                 foreach (QuestData tutQuest in _questRef.getTutorialQuests())
+                {
                     if (tutQuest.QuestName == quest.questName)
                         tutQuest.StoryQuestComplete = true;
+                    if (tutQuest == _enableAdventurersOnComplete)
+                        gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
+                }
             }
             else if (quest.questType == "Story")
             {
@@ -484,19 +490,26 @@ public class QuestControl : MonoBehaviour
         if (quest.QuestType == "Tutorial")
         {
             quest.StoryQuestComplete = isComplete;
+            if (quest == _enableAdventurersOnComplete)
+            {
+                gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
+            }
+
             if (quest.NextQuest != null && isComplete == true)
             {
                 Debug.Log("this quest is complete; next quest is not null");
-                forceSetQuest(quest.NextQuest);
+                //forceSetQuest(quest.NextQuest);
                 foreach (QuestData unlockedQ in quest.QuestUnlocks)
                     _unlockedQuests.Add(unlockedQ);
                 setupStoryQuests();
+                _chosenQuest = null;
             }
             if (quest.NextQuest == null && isComplete == true)
             {
                 foreach (QuestData unlockedQ in quest.QuestUnlocks)
                     _unlockedQuests.Add(unlockedQ);
                 setupStoryQuests();
+                _chosenQuest = null;
             }
         }
     }

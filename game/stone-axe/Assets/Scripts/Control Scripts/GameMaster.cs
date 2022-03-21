@@ -105,6 +105,39 @@ public class GameMaster : MonoBehaviour
 
     }
 
+    private bool spawnAdvent = false;
+    public void toggleAdventurers(bool toggle)
+    {
+        spawnAdvent = toggle;
+        if (toggle == true)
+            gameObject.GetComponent<AdventurerMaster>().startAdventurerSpawn();
+        else if (toggle == false)
+            gameObject.GetComponent<AdventurerMaster>().disableAdventurerSpawn();
+    }
+    public void toggleAdventurerSpawn()
+    {
+        spawnAdvent = !spawnAdvent;
+        if (spawnAdvent == true)
+            this.gameObject.GetComponent<AdventurerMaster>().startAdventurerSpawn();
+        else if (spawnAdvent == false)
+            this.gameObject.GetComponent<AdventurerMaster>().disableAdventurerSpawn();
+    }
+    public void adventurerEco()
+    {
+        if (adventurerAtCounter == true)
+        {
+            gameObject.GetComponent<SellItemControl>().adventurerAtCounter();
+            gameObject.GetComponent<GenerateItem>().adventurerAtCounter();
+        }
+        else if (adventurerAtCounter == false)
+        {
+            gameObject.GetComponent<SellItemControl>().adventurerAtCounter();
+            gameObject.GetComponent<GenerateItem>().adventurerAtCounter();
+        }
+        else
+            Debug.LogWarning("GameMaster.adventurerEco(): something broke!");
+    }
+
     public string PlayerName { get => _playerName; set => _playerName = value; }
     public string ShopName { get => _shopName; set => _shopName = value; }
     public string PlayerSpecies { get => _playerSpecies; set => _playerSpecies = value; }
@@ -323,15 +356,6 @@ public class GameMaster : MonoBehaviour
         else { Debug.LogWarning("No save game data exists!"); return false; }
     }
 
-    private bool spawnAdvent = false;
-    public void toggleAdventurerSpawn()
-    {
-        spawnAdvent = !spawnAdvent;
-        if (spawnAdvent == true)
-            this.gameObject.GetComponent<AdventurerMaster>().startAdventurerSpawn();
-        else if (spawnAdvent == false)
-            this.gameObject.GetComponent<AdventurerMaster>().disableAdventurerSpawn();
-    }
     public void clearSelectedSave()
     {
         SelectedSave = "";

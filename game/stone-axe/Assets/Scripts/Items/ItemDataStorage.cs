@@ -6,7 +6,9 @@ public class ItemDataStorage : MonoBehaviour
     [SerializeField] private string _itemName;
     [SerializeField] private int _totalValue;
     [SerializeField] private int inventoryIndex;
+    [SerializeField] private ItemData _receipeRef;
     [SerializeField] private bool _isNew;
+    [SerializeField] private bool _forQuest;
 
     [Header("Item Stats")]
     [SerializeField] private int _totalStrength;
@@ -54,6 +56,8 @@ public class ItemDataStorage : MonoBehaviour
 
     public void setTotalValue(int value) { _totalValue = value; }
     public int TotalValue { get => _totalValue; }
+
+    public ItemData ItemRecipeRef { get => _receipeRef; set => _receipeRef = value; }
 
     public bool IsNew { get => _isNew; set => _isNew = value; }
 

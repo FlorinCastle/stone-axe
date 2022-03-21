@@ -47,13 +47,7 @@ public class GenerateItem : MonoBehaviour
         {
             _generatedItem = itemScript.chooseItem();
         } while (_generatedItem.ItemLevel > _gameMasterRef.GetLevel);
-        /*
-        if (_generatedItem.ItemLevel > _gameMasterRef.GetLevel)
-        {
-            Debug.LogWarning("level is too high!");
-        }
-        */
-        //Debug.Log("generated item: " + _generatedItem.ItemName);
+
         int ranEnchChance = Random.Range(0, 1000);
         if (ranEnchChance >= 100)
         {
@@ -124,12 +118,7 @@ public class GenerateItem : MonoBehaviour
                 }
             }
         }
-        _generatedItem = null;
-        buyButton.interactable = false;
-        buyButtonText.text = "buy: [price]";
-        itemText.text = "item text";
-        haggleButton.interactable = false;
-        haggleButtonText.text = "haggle\n(success chance: n/a)";
+        clearBuyMenu();
         this.gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
 
         if (_gameMaster.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
@@ -165,12 +154,7 @@ public class GenerateItem : MonoBehaviour
     {
         if (_generatedItem != null)
             _inventoryRef.InsertItem(_generatedItem);
-        _generatedItem = null;
-        buyButton.interactable = false;
-        buyButtonText.text = "buy: [price]";
-        itemText.text = "item text";
-        haggleButton.interactable = false;
-        haggleButtonText.text = "haggle\n(success chance: n/a)";
+        clearBuyMenu();
     }
     public void forceInsertEnchant()
     {
@@ -188,23 +172,29 @@ public class GenerateItem : MonoBehaviour
             _gameMaster.GetComponent<DisassembleItemControl>().selectItem();
             _gameMaster.GetComponent<DisassembleItemControl>().disassembleItem();
         }
+        clearBuyMenu();
+        this.gameObject.GetComponent<SellItemControl>().clearSellMenu();
+    }
+    public void clearBuyMenu()
+    {
         _generatedItem = null;
         buyButton.interactable = false;
         buyButtonText.text = "buy: [price]";
-        itemText.text = "choose item";
+        itemText.text = "item text";
         haggleButton.interactable = false;
         haggleButtonText.text = "haggle\n(success chance: n/a)";
-        this.gameObject.GetComponent<SellItemControl>().clearSellMenu();
     }
     public void adventurerAtCounter()
     {
         if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == true)
         {
             generateButton.interactable = true;
+            GenerateRandomItem();
         }
         else if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == false)
         {
             generateButton.interactable = false;
+            clearBuyMenu();
         }
     }
 

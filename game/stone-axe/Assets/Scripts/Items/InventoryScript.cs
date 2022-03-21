@@ -1091,6 +1091,12 @@ public class InventoryScript : MonoBehaviour
             Debug.Log("example button selected");
     }
 
+    public void selectRandomItem()
+    {
+        int r = Random.Range(0, _inventoryData.ItemInventory.Count - 1);
+        setSelectedItem(r);
+    }
+
     public GameObject getSelectedItem()
     {
         if (_selectedItem != null) 
@@ -1141,6 +1147,7 @@ public class InventoryScript : MonoBehaviour
 
     public void returnSelectedItem()
     {
+        // for quest item crafting
         if (_UIControlRef.ShopCraftUIEnabled == true)
         {
             if (_craftControlRef.checkQuestRecipe() != null)
@@ -1151,7 +1158,6 @@ public class InventoryScript : MonoBehaviour
                 questPart2();
                 // check 'part 3'
                 questPart3();
-
             }
             else
             {
@@ -1165,6 +1171,7 @@ public class InventoryScript : MonoBehaviour
                 GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem();
             }
         }
+        // for selling in shop
         else if (_UIControlRef.ShopUIEnabled == true)
         {
             //Debug.Log("shop ui enabled");
@@ -1178,6 +1185,7 @@ public class InventoryScript : MonoBehaviour
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem();
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem();
         }
+        // for selling in market
         else if (_UIControlRef.MarketUIEnabled == true)
         {
             //Debug.Log("market ui enabled");
@@ -1189,7 +1197,7 @@ public class InventoryScript : MonoBehaviour
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem();
         }
     }
-
+    /*
     public void selectRandomItem()
     {
         _removingStatus = removingItemStatusEnum.RemovingToSell;
@@ -1197,7 +1205,7 @@ public class InventoryScript : MonoBehaviour
 
         returnSelectedItem();
     }
-
+    */
     [SerializeField] private int partLastFilled = 0;
     public void returnSeletedPart()
     {
