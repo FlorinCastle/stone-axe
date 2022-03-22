@@ -60,6 +60,7 @@ public class ItemDataStorage : MonoBehaviour
     public ItemData ItemRecipeRef { get => _receipeRef; set => _receipeRef = value; }
 
     public bool IsNew { get => _isNew; set => _isNew = value; }
+    public bool IsForQuest { get => _forQuest; set => _forQuest = value; }
 
     public void setTotalStrenght(int value) { _totalStrength = value; }
     public int TotalStrength{ get => _totalStrength; }

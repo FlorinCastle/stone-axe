@@ -27,6 +27,7 @@ public class DisassembleItemControl : MonoBehaviour
 
         if (_invDataRef == null)
             _invDataRef = _invScriptRef.gameObject.GetComponent<InventoryData>();
+        _disassembleButton.interactable = false;
     }
 
     public void chooseItem()

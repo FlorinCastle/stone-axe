@@ -19,8 +19,13 @@ public class UIControl : MonoBehaviour
     [SerializeField] private GameObject economicSubUI;
     [SerializeField] private GameObject disassembleSubUI;
     [SerializeField] private GameObject craftSubUI;
+    [SerializeField] private GameObject itemCraftingUI;
+    [SerializeField] private GameObject partCraftingUI;
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private GameObject skillTreeUI;
+    [SerializeField] private GameObject shopSellMenu;
+    [SerializeField] private GameObject shopBuyMenu;
+    [SerializeField] private GameObject miniGameUI;
     [Header("Market UI")]
     [SerializeField] private GameObject marketEconomicSubUI;
     [SerializeField] private GameObject questSubUI;
@@ -211,6 +216,48 @@ public class UIControl : MonoBehaviour
 
         // only required line
         this.gameObject.GetComponent<DialogueControl>().startDialogue();
+    }
+
+    public void shopEcoMenuEnabled(bool input)
+    {
+        economicSubUI.SetActive(input);
+    }
+    public void shopBuyMenuEnabled(bool input)
+    {
+        shopBuyMenu.SetActive(input);
+    }
+    public void shopSellMenuEnabled(bool input)
+    {
+        shopSellMenu.SetActive(input);
+    }
+    public void disassembleMenuEnabled(bool input)
+    {
+        disassembleSubUI.SetActive(input);
+    }
+    public void craftMenuEnabled(bool input)
+    {
+        craftSubUI.SetActive(input);
+    }
+    public void marketSellMenuEnabled(bool input)
+    {
+        marketEconomicSubUI.SetActive(input);
+    }
+    public void marketQuestMenuEnabled(bool input)
+    {
+        questSubUI.SetActive(input);
+    }
+    public void miniGameUIEnabled(bool input)
+    {
+        miniGameUI.SetActive(input);
+    }
+
+    public void itemCraftMenuEnabled (bool input)
+    {
+        itemCraftingUI.SetActive(input);
+    }
+    public void partCraftMenuEnabled(bool input)
+    {
+        partCraftingUI.SetActive(input);
     }
 
     public void updatingInputData()

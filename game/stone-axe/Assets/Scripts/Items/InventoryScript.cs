@@ -129,6 +129,7 @@ public class InventoryScript : MonoBehaviour
                 t.text = itemData.ItemName;
                 // set button data
                 tempButtonList.GetComponent<InventoryButton>().setIsNew(itemData.IsNew);
+                tempButtonList.GetComponent<InventoryButton>().setIsForQuest(itemData.IsForQuest);
 
                 // add button to list
                 InsertItemButton(tempButtonList, k);

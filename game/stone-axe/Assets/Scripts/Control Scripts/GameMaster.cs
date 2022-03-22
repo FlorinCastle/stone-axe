@@ -24,6 +24,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private GameObject _toMarketButton;
     private InventoryData _invData;
     private InventoryScript _invScript;
+    private UIControl _uiControlRef;
     [Header("save tracking")]
     [SerializeField] private List<SaveTracker> _saveTrackerScripts;
     [SerializeField]
@@ -31,11 +32,13 @@ public class GameMaster : MonoBehaviour
     [SerializeField]
     private string _selectedSave;
 
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
         _invData = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryData>();
         _invScript = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>();
+        _uiControlRef = gameObject.GetComponent<UIControl>();
 
         loadSaveGames();
     }
@@ -84,6 +87,62 @@ public class GameMaster : MonoBehaviour
         this.gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
         if (this.gameObject.GetComponent<PlayerManager>().PlayerExists == false)
             this.gameObject.GetComponent<PlayerManager>().spawnPlayer();
+    }
+
+    public void loadShopBuyMenu()
+    {
+        _uiControlRef.shopEcoMenuEnabled(true);
+        _uiControlRef.shopBuyMenuEnabled(true);
+        _uiControlRef.disassembleMenuEnabled(false);
+        _uiControlRef.shopSellMenuEnabled(false);
+        _uiControlRef.craftMenuEnabled(false);
+
+        updatePlayerPosition();
+    }
+    public void loadShopSellMenu()
+    {
+        _uiControlRef.shopEcoMenuEnabled(true);
+        _uiControlRef.shopSellMenuEnabled(true);
+        _uiControlRef.disassembleMenuEnabled(false);
+        _uiControlRef.shopBuyMenuEnabled(false);
+        _uiControlRef.craftMenuEnabled(false);
+
+        updatePlayerPosition();
+    }
+    public void loadDisassembleMenu()
+    {
+        _uiControlRef.disassembleMenuEnabled(true);
+        _uiControlRef.shopEcoMenuEnabled(false);
+        _uiControlRef.shopBuyMenuEnabled(false);
+        _uiControlRef.shopSellMenuEnabled(false);
+        _uiControlRef.craftMenuEnabled(false);
+
+        updatePlayerPosition();
+    }
+    public void loadCraftMenu()
+    {
+        _uiControlRef.craftMenuEnabled(true);
+        _uiControlRef.disassembleMenuEnabled(false);
+        _uiControlRef.shopEcoMenuEnabled(false);
+        _uiControlRef.shopBuyMenuEnabled(false);
+        _uiControlRef.shopSellMenuEnabled(false);
+
+        updatePlayerPosition();
+
+    }
+    public void loadMarketSellMenu()
+    {
+        _uiControlRef.marketSellMenuEnabled(true);
+        _uiControlRef.marketQuestMenuEnabled(false);
+
+        updatePlayerPosition();
+    }
+    public void loadMarketQuestBoard()
+    {
+        _uiControlRef.marketQuestMenuEnabled(true);
+        _uiControlRef.marketSellMenuEnabled(false);
+
+        updatePlayerPosition();
     }
 
     public void updateLevelLocks()

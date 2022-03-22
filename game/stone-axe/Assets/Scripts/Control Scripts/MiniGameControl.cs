@@ -22,12 +22,15 @@ public class MiniGameControl : MonoBehaviour
     [SerializeField] private Button _disassembleCompleteButton;
     [SerializeField] private Button _craftCompletButton;
 
+    private UIControl _uiControlRef;
+
     private int baseHitPointCount = 5;
     private int finalPointsToHit = 5;
     private int pointsHit = 0;
 
     private void Awake()
     {
+        _uiControlRef = gameObject.GetComponent<UIControl>();
         _craftingMinigameUI.SetActive(false);
         _disassemblyMinigameUI.SetActive(false);
         updateHitpointText();
@@ -47,6 +50,14 @@ public class MiniGameControl : MonoBehaviour
             this.gameObject.GetComponent<QuestControl>().nextStage();
         }
     }
+    public void stopCraftingMiniGame()
+    {
+        _craftingMinigameUI.SetActive(false);
+        _uiControlRef.itemCraftMenuEnabled(false);
+        _uiControlRef.partCraftMenuEnabled(false);
+        _uiControlRef.craftMenuEnabled(false);
+        _uiControlRef.miniGameUIEnabled(false);
+    }
 
     public void startDisassemblyMiniGame()
     {
@@ -60,6 +71,11 @@ public class MiniGameControl : MonoBehaviour
             Debug.LogWarning("Quest Notif - Disassemble Minigame");
             this.gameObject.GetComponent<QuestControl>().nextStage();
         }
+    }
+    public void stopDisassembleMiniGame()
+    {
+        _disassemblyMinigameUI.SetActive(false);
+        _uiControlRef.miniGameUIEnabled(false);
     }
 
     private void populateHitPoints()

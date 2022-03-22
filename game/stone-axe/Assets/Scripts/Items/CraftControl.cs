@@ -450,6 +450,7 @@ public class CraftControl : MonoBehaviour
                     if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet == _chosenItemRecipe)
                     {
                         Debug.LogWarning("Quest Notif - Craft Done");
+                        itemDataStorageRef.IsForQuest = true;
                         _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
                     }
                 }
