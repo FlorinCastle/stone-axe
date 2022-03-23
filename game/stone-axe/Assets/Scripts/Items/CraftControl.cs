@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,6 +46,10 @@ public class CraftControl : MonoBehaviour
     [SerializeField] GameObject _chosenPart1;
     [SerializeField] GameObject _chosenPart2;
     [SerializeField] GameObject _chosenPart3;
+    [Space(5)]
+    [SerializeField] TextMeshProUGUI _part1Name;
+    [SerializeField] TextMeshProUGUI _part2Name;
+    [SerializeField] TextMeshProUGUI _part3Name;
     // [SerializeField] MaterialData _chosenMat;
     private PartDataStorage _part1DataRef;
     private PartDataStorage _part2DataRef;
@@ -131,6 +136,7 @@ public class CraftControl : MonoBehaviour
         }
     }
 
+    // add code to this to set up parts text
     public void setChosenRecipe()
     {
         if (_UIControlRef.ShopCraftUIEnabled == false)
@@ -153,6 +159,10 @@ public class CraftControl : MonoBehaviour
             clearPartCraftingUI();
 
             _selectedRecipeText.text = "selected:\n" + _chosenItemRecipe.ItemName;
+
+            _part1Name.text = _chosenItemRecipe.Part1.PartName;
+            _part2Name.text = _chosenItemRecipe.Part2.PartName;
+            _part3Name.text = _chosenItemRecipe.Part3.PartName;
         }
         else if (_recipeBookRef.getSeletedPartRecipe() != null)
         {
@@ -183,16 +193,31 @@ public class CraftControl : MonoBehaviour
         }
     }
 
+    public void clearCraftingUI()
+    {
+        clearItemCraftingUI();
+        clearPartCraftingUI();
+        _cancelCraftButton.interactable = false;
+        _craftButton.interactable = false;
+    }
+
     private void clearItemCraftingUI()
     {
         _chosenPart1 = null;
         _part1Discription.text = "choose part";
+        if (_chosenItemRecipe == null && _chosenPartRecipe == null && _chosenQuestRecipe == null)
+            _part1Name.text = "part 1";
         _chosenPart2 = null;
         _part2Discription.text = "choose part";
+        if (_chosenItemRecipe == null && _chosenPartRecipe == null && _chosenQuestRecipe == null)
+            _part2Name.text = "part 2";
         _chosenPart3 = null;
         _part3Discription.text = "choose part";
+        if (_chosenItemRecipe == null && _chosenPartRecipe == null && _chosenQuestRecipe == null)
+            _part3Name.text = "part 3";
 
-        _selectedRecipeText.text = "selected:\nnone";
+        if (_chosenItemRecipe == null && _chosenPartRecipe == null && _chosenQuestRecipe == null)
+            _selectedRecipeText.text = "selected:\nnone";
 
         _finalStatsText1.text = "select [part1, part2, part3]";
         _finalStatsText2.text = "";
@@ -204,7 +229,8 @@ public class CraftControl : MonoBehaviour
         _partRecipeStats2.text = "";
         _matDiscription.text = "choose material";
 
-        _selectedRecipeText.text = "selected:\nnone";
+        if (_chosenItemRecipe == null && _chosenPartRecipe == null && _chosenQuestRecipe == null)
+            _selectedRecipeText.text = "selected:\nnone";
 
         _partStatsText1.text = "select [material]";
         _partStatsText2.text = "";
@@ -267,6 +293,8 @@ public class CraftControl : MonoBehaviour
             setupDiscription(1, _chosenPart1);
         else
             Debug.LogWarning("No Part 1 Selected!");
+
+        _cancelCraftButton.interactable = true;
     }
     public void SelectPart2()
     {
@@ -277,6 +305,8 @@ public class CraftControl : MonoBehaviour
             setupDiscription(2, _chosenPart2);
         else
             Debug.LogWarning("No Part 2 Selected!");
+
+        _cancelCraftButton.interactable = true;
     }
     public void SelectPart3()
     {
@@ -287,6 +317,8 @@ public class CraftControl : MonoBehaviour
             setupDiscription(3, _chosenPart3);
         else
             Debug.LogWarning("No Part 3 Selected!");
+
+        _cancelCraftButton.interactable = true;
     }
     public void SelectQPart1()
     {
@@ -294,6 +326,8 @@ public class CraftControl : MonoBehaviour
             _chosenPart1 = _inventoryControlReference.getSelectedItem();
         else if (_inventoryControlReference.getSelectedPart() != null)
             _chosenPart1 = _inventoryControlReference.getSelectedPart();
+
+        _cancelCraftButton.interactable = true;
     }
     public void SelectQPart2()
     {
@@ -301,6 +335,8 @@ public class CraftControl : MonoBehaviour
             _chosenPart2 = _inventoryControlReference.getSelectedItem();
         else if (_inventoryControlReference.getSelectedPart() != null)
             _chosenPart2 = _inventoryControlReference.getSelectedPart();
+
+        _cancelCraftButton.interactable = true;
     }
     public void SelectQPart3()
     {
@@ -308,6 +344,8 @@ public class CraftControl : MonoBehaviour
             _chosenPart3 = _inventoryControlReference.getSelectedItem();
         else if (_inventoryControlReference.getSelectedPart() != null)
             _chosenPart3 = _inventoryControlReference.getSelectedPart();
+
+        _cancelCraftButton.interactable = true;
     }
 
     public void SelectMat()
@@ -321,6 +359,8 @@ public class CraftControl : MonoBehaviour
         }
         else
             Debug.LogWarning("No Mat Selected");
+
+        _cancelCraftButton.interactable = true;
     }
 
     public void SelectEnchant()
@@ -332,6 +372,8 @@ public class CraftControl : MonoBehaviour
         }
         else
             Debug.LogWarning("No Enchant Selected!");
+
+        _cancelCraftButton.interactable = true;
     }
 
     public void Craft()
@@ -483,7 +525,6 @@ public class CraftControl : MonoBehaviour
         _recipeDropdown.value = 0;
 
     }
-
     private void CraftPart()
     {
         if (_invDataRef.getMaterial(_chosenPartMaterial.Material).CanRemoveAmount(_chosenPartRecipe.UnitsOfMaterialNeeded))
@@ -776,7 +817,6 @@ public class CraftControl : MonoBehaviour
             return true;
         else return false;
     }
-
     public bool Part3Set()
     {
         if (_chosenPart3 != null)
@@ -789,5 +829,59 @@ public class CraftControl : MonoBehaviour
         if (_chosenPart1 != null && _chosenPart2 != null && _chosenPart3 != null)
             return true;
         else return false;
+    }
+
+    public string Part1Type()
+    {
+        if (_chosenItemRecipe != null)
+            return "part";
+        else if (_chosenQuestRecipe != null)
+        {
+            if (_chosenQuestRecipe.ItemPart1.GetType().ToString() == "ItemData")
+            {
+                Debug.Log("type match: item data");
+                return "item";
+            }
+            else if (_chosenQuestRecipe.ItemPart1.GetType().ToString() == "PartData")
+            {
+                Debug.Log("type match: part data");
+                return "part";
+            }
+        }
+        return null;
+    }
+    public string Part2Type()
+    {
+        if (_chosenItemRecipe != null)
+            return "part";
+        else if (_chosenQuestRecipe != null)
+            if (_chosenQuestRecipe.ItemPart2.GetType().ToString() == "ItemData")
+            {
+                Debug.Log("type match: item data");
+                return "item";
+            }
+            else if (_chosenQuestRecipe.ItemPart1.GetType().ToString() == "PartData")
+            {
+                Debug.Log("type match: part data");
+                return "part";
+            }
+        return null;
+    }
+    public string Part3Type()
+    {
+        if (_chosenItemRecipe != null)
+            return "part";
+        else if (_chosenQuestRecipe != null)
+            if (_chosenQuestRecipe.ItemPart2.GetType().ToString() == "ItemData")
+            {
+                Debug.Log("type match: item data");
+                return "item";
+            }
+            else if (_chosenQuestRecipe.ItemPart1.GetType().ToString() == "PartData")
+            {
+                Debug.Log("type match: part data");
+                return "part";
+            }
+        return null;
     }
 }

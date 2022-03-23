@@ -107,6 +107,8 @@ public class GameMaster : MonoBehaviour
         _uiControlRef.shopBuyMenuEnabled(false);
         _uiControlRef.craftMenuEnabled(false);
 
+        _uiControlRef.openItemInv();
+
         updatePlayerPosition();
     }
     public void loadDisassembleMenu()
@@ -116,6 +118,8 @@ public class GameMaster : MonoBehaviour
         _uiControlRef.shopBuyMenuEnabled(false);
         _uiControlRef.shopSellMenuEnabled(false);
         _uiControlRef.craftMenuEnabled(false);
+
+        _uiControlRef.openItemInv();
 
         updatePlayerPosition();
     }
@@ -127,8 +131,9 @@ public class GameMaster : MonoBehaviour
         _uiControlRef.shopBuyMenuEnabled(false);
         _uiControlRef.shopSellMenuEnabled(false);
 
-        updatePlayerPosition();
+        _uiControlRef.openRecipesUI();
 
+        updatePlayerPosition();
     }
     public void loadMarketSellMenu()
     {

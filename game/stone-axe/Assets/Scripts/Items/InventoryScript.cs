@@ -66,10 +66,10 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private GameObject _matsButtonParent;
     [SerializeField] private GameObject _enchInvScroll;
     [SerializeField] private GameObject _enchButtonParent;
-    [SerializeField] private GameObject _selectItemButton;
-    [SerializeField] private GameObject _selectPartButton;
-    [SerializeField] private GameObject _selectMatButton;
-    [SerializeField] private GameObject _selectEnchantButton;
+    //[SerializeField] private GameObject _selectItemButton;
+    //[SerializeField] private GameObject _selectPartButton;
+    //[SerializeField] private GameObject _selectMatButton;
+    //[SerializeField] private GameObject _selectEnchantButton;
     [Header("Prefabs")]
     [SerializeField] private GameObject _itemDataStoragePrefab;
     [SerializeField] private GameObject _partDataStoragePrefab;
@@ -106,12 +106,12 @@ public class InventoryScript : MonoBehaviour
         clearItemButtonList();
         _selectedItem = null;
         
-        _selectItemButton.SetActive(isRemoving);
-        _selectPartButton.SetActive(false);
-        _selectMatButton.SetActive(false);
-        _selectEnchantButton.SetActive(false);
-        setStatus(state);
-        setupHeader();
+        //_selectItemButton.SetActive(isRemoving);
+        //_selectPartButton.SetActive(false);
+        //_selectMatButton.SetActive(false);
+        //_selectEnchantButton.SetActive(false);
+        //setStatus(state);
+        //setupHeader();
 
         int k = 0;
         foreach (GameObject item in _inventoryData.ItemInventory)
@@ -148,13 +148,14 @@ public class InventoryScript : MonoBehaviour
     {
         clearPartButtonList();
         _selectedPart = null;
-        
+        /*
         _selectItemButton.SetActive(false);
         _selectPartButton.SetActive(isRemoving);
         _selectMatButton.SetActive(false);
         _selectEnchantButton.SetActive(false);
         setStatus(state);
         setupHeader();
+        */
 
         int k = 0;
         foreach (GameObject part in _inventoryData.PartInventory)
@@ -199,14 +200,14 @@ public class InventoryScript : MonoBehaviour
     public void setupMatInventory(bool isRemoving, int state)
     {
         _selectedMat = null;
-
+        /*
         _selectItemButton.SetActive(false);
         _selectPartButton.SetActive(false);
         _selectMatButton.SetActive(isRemoving);
         _selectEnchantButton.SetActive(false);
         setStatus(state);
         setupHeader();
-
+        */
 
         int m = 0;
         foreach (GameObject mat in _inventoryData.MaterialInventory)
@@ -258,15 +259,15 @@ public class InventoryScript : MonoBehaviour
     public void setupEnchantInventory(bool isRemoving, int state)
     {
         _selectedEnchant = null;
+        /*
+        //_selectItemButton.SetActive(false);
+        //_selectPartButton.SetActive(false);
+        //_selectMatButton.SetActive(false);
+        //_selectEnchantButton.SetActive(isRemoving);
+        //setStatus(state);
 
-        _selectItemButton.SetActive(false);
-        _selectPartButton.SetActive(false);
-        _selectMatButton.SetActive(false);
-        _selectEnchantButton.SetActive(isRemoving);
-        setStatus(state);
-
-        setupHeader();
-
+        //setupHeader();
+        */
 
         int e = 0;
         foreach(GameObject ench in _inventoryData.EnchantInventory)

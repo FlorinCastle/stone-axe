@@ -22,10 +22,16 @@ public class UIControl : MonoBehaviour
     [SerializeField] private GameObject itemCraftingUI;
     [SerializeField] private GameObject partCraftingUI;
     [SerializeField] private GameObject inventoryUI;
+    [SerializeField] private GameObject receipeUI;
     [SerializeField] private GameObject skillTreeUI;
     [SerializeField] private GameObject shopSellMenu;
     [SerializeField] private GameObject shopBuyMenu;
     [SerializeField] private GameObject miniGameUI;
+    [Space(5)]
+    [SerializeField] private GameObject itemsScrollView;
+    [SerializeField] private GameObject partsScrollView;
+    [SerializeField] private GameObject matsScrollView;
+    [SerializeField] private GameObject enchantsScrollView;
     [Header("Market UI")]
     [SerializeField] private GameObject marketEconomicSubUI;
     [SerializeField] private GameObject questSubUI;
@@ -258,6 +264,97 @@ public class UIControl : MonoBehaviour
     public void partCraftMenuEnabled(bool input)
     {
         partCraftingUI.SetActive(input);
+    }
+
+    public void openInvUI()
+    {
+        receipeUI.SetActive(false);
+        inventoryUI.SetActive(true);
+    }
+    public void openRecipesUI()
+    {
+        inventoryUI.SetActive(false);
+        receipeUI.SetActive(true);
+
+    }
+
+    public void openPart1Inv()
+    {
+        // if part 1 'receipe' is a itemdata
+        if (GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().Part1Type().Equals("item"))
+        {
+            openItemInv();
+        }
+        // else if part 1 'recipe' is an partdata
+        else if (GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().Part1Type().Equals("part"))
+        {
+            openPartInv();
+        }
+        else if (GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().Part1Type() == null)
+            Debug.LogWarning("UIControl.openPart1Inv(): something broke!");
+    }
+    public void openPart2Inv()
+    {
+        // if part 2 'receipe' is a itemdata
+        if (GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().Part2Type() == "item")
+        {
+            openItemInv();
+        }
+        // else if part 2 'recipe' is an partdata
+        else if (GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().Part2Type() == "part")
+        {
+            openPartInv();
+        }
+        else if (GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().Part2Type() == null)
+            Debug.LogWarning("UIControl.openPart2Inv(): something broke!");
+    }
+    public void openPart3Inv()
+    {
+        // if part 3 'receipe' is a itemdata
+        if (GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().Part3Type() == "item")
+        {
+            openItemInv();
+        }
+        // else if part 3 'recipe' is an partdata
+        else if (GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().Part3Type() == "part")
+        {
+            openPartInv();
+        }
+        else if (GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().Part3Type() == null)
+            Debug.LogWarning("UIControl.openPart3Inv(): something broke!");
+    }
+
+    public void openItemInv()
+    {
+        openInvUI();
+        partsScrollView.SetActive(false);
+        matsScrollView.SetActive(false);
+        enchantsScrollView.SetActive(false);
+        itemsScrollView.SetActive(true);
+    }
+    public void openPartInv()
+    {
+        openInvUI();
+        itemsScrollView.SetActive(false);
+        matsScrollView.SetActive(false);
+        enchantsScrollView.SetActive(false);
+        partsScrollView.SetActive(true);
+    }
+    public void openMatInv()
+    {
+        openInvUI();
+        itemsScrollView.SetActive(false);
+        partsScrollView.SetActive(false);
+        enchantsScrollView.SetActive(false);
+        matsScrollView.SetActive(true);
+    }
+    public void openEnchInv()
+    {
+        openInvUI();
+        itemsScrollView.SetActive(false);
+        partsScrollView.SetActive(false);
+        matsScrollView.SetActive(false);
+        enchantsScrollView.SetActive(true);
     }
 
     public void updatingInputData()
