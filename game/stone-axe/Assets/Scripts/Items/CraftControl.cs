@@ -369,11 +369,16 @@ public class CraftControl : MonoBehaviour
         if (_optionalChosenEnchant != null)
         {
             setupEnchDiscription(_optionalChosenEnchant);
+            _cancelCraftButton.interactable = true;
         }
-        else
+        else if (_optionalChosenEnchant == null)
+        {
             Debug.LogWarning("No Enchant Selected!");
-
-        _cancelCraftButton.interactable = true;
+            setupEnchDiscription();
+            if (_chosenPartMaterial != null)
+                _cancelCraftButton.interactable = true;
+        }
+        //_cancelCraftButton.interactable = true;
     }
 
     public void Craft()
@@ -614,12 +619,17 @@ public class CraftControl : MonoBehaviour
         updateFinalStatsText();
     }
 
+    private void setupEnchDiscription()
+    {
+        _encDiscription.text = "choose optional enchant";
+    }
     private void setupEnchDiscription(GameObject enchant)
     {
-        EnchantDataStorage data = enchant.GetComponent<EnchantDataStorage>();
-
-        _encDiscription.text = "Type: " + data.EnchantName + "+" + data.AmountOfBuff;
-
+        if (enchant.GetComponent<EnchantDataStorage>() != null)
+        {
+            EnchantDataStorage data = enchant.GetComponent<EnchantDataStorage>();
+            _encDiscription.text = "Type: " + data.EnchantName + "+" + data.AmountOfBuff;
+        }
         updateFinalStatsText();
     }
 

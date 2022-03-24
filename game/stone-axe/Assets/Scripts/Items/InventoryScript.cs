@@ -66,18 +66,16 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private GameObject _matsButtonParent;
     [SerializeField] private GameObject _enchInvScroll;
     [SerializeField] private GameObject _enchButtonParent;
-    //[SerializeField] private GameObject _selectItemButton;
-    //[SerializeField] private GameObject _selectPartButton;
-    //[SerializeField] private GameObject _selectMatButton;
-    //[SerializeField] private GameObject _selectEnchantButton;
     [Header("Prefabs")]
     [SerializeField] private GameObject _itemDataStoragePrefab;
     [SerializeField] private GameObject _partDataStoragePrefab;
     [SerializeField] private GameObject _enchantDataStoragePrefab;
+    [Space(5)]
     [SerializeField] private GameObject _itemInfoPrefab;
     [SerializeField] private GameObject _partInfoPrefab;
     [SerializeField] private GameObject _matInfoPrefab;
     [SerializeField] private GameObject _enchantInfoPrefab;
+    [SerializeField] private GameObject _enchantCancelPrefab;
 
     private GameObject tempButtonList;
 
@@ -92,6 +90,11 @@ public class InventoryScript : MonoBehaviour
 
     private void Start()
     {
+        setupInventory();
+    }
+
+    public void setupInventory()
+    {
         setupItemInventory();
         setupPartInventory();
         setupMatInventory();
@@ -105,13 +108,6 @@ public class InventoryScript : MonoBehaviour
     {
         clearItemButtonList();
         _selectedItem = null;
-        
-        //_selectItemButton.SetActive(isRemoving);
-        //_selectPartButton.SetActive(false);
-        //_selectMatButton.SetActive(false);
-        //_selectEnchantButton.SetActive(false);
-        //setStatus(state);
-        //setupHeader();
 
         int k = 0;
         foreach (GameObject item in _inventoryData.ItemInventory)
@@ -148,14 +144,6 @@ public class InventoryScript : MonoBehaviour
     {
         clearPartButtonList();
         _selectedPart = null;
-        /*
-        _selectItemButton.SetActive(false);
-        _selectPartButton.SetActive(isRemoving);
-        _selectMatButton.SetActive(false);
-        _selectEnchantButton.SetActive(false);
-        setStatus(state);
-        setupHeader();
-        */
 
         int k = 0;
         foreach (GameObject part in _inventoryData.PartInventory)
@@ -200,14 +188,6 @@ public class InventoryScript : MonoBehaviour
     public void setupMatInventory(bool isRemoving, int state)
     {
         _selectedMat = null;
-        /*
-        _selectItemButton.SetActive(false);
-        _selectPartButton.SetActive(false);
-        _selectMatButton.SetActive(isRemoving);
-        _selectEnchantButton.SetActive(false);
-        setStatus(state);
-        setupHeader();
-        */
 
         int m = 0;
         foreach (GameObject mat in _inventoryData.MaterialInventory)
@@ -258,18 +238,18 @@ public class InventoryScript : MonoBehaviour
     }
     public void setupEnchantInventory(bool isRemoving, int state)
     {
+        clearEnchantButtonList();
         _selectedEnchant = null;
-        /*
-        //_selectItemButton.SetActive(false);
-        //_selectPartButton.SetActive(false);
-        //_selectMatButton.SetActive(false);
-        //_selectEnchantButton.SetActive(isRemoving);
-        //setStatus(state);
-
-        //setupHeader();
-        */
 
         int e = 0;
+        if (_UIControlRef.CraftPartUIEnabled == true)
+        {
+            tempButtonList = Instantiate(_enchantCancelPrefab);
+            tempButtonList.transform.SetParent(_enchButtonParent.transform, false);
+
+            InsertEnchantButton(tempButtonList, -1);
+        }
+
         foreach(GameObject ench in _inventoryData.EnchantInventory)
         {
             if (ench != null)
@@ -975,11 +955,29 @@ public class InventoryScript : MonoBehaviour
     private int InsertEnchantButton(GameObject button, int l)
     {
         _enchantButtonList.Add(button);
-        for (int i = 0; i < _enchantButtonList.Count; i++)
-            if (_enchantButtonList[i] == button)
-                button.GetComponent<InventoryButton>().setMyIndex(i);
-        button.GetComponent<InventoryButton>().setEnchantIndex(l);
-        return button.GetComponent<InventoryButton>().MyIndex;
+        if (button.GetComponent<InventoryButton>() != null)
+        {
+            for (int i = 0; i < _enchantButtonList.Count; i++)
+                if (_enchantButtonList[i] == button)
+                {
+                    button.GetComponent<InventoryButton>().setMyIndex(i);
+                    break;
+                }
+            button.GetComponent<InventoryButton>().setEnchantIndex(l);
+            return button.GetComponent<InventoryButton>().MyIndex;
+        }
+        else if (button.GetComponent<EnchantCancelButton>() != null)
+        {
+            for (int i = 0; i < _enchantButtonList.Count; i++)
+                if (_enchantButtonList[i] == button)
+                {
+                    button.GetComponent<EnchantCancelButton>().setMyIndex(i);
+                    break;
+                }
+            button.GetComponent<EnchantCancelButton>().setEnchantIndex(l);
+            return button.GetComponent<EnchantCancelButton>().MyIndex;
+        }
+        return -1;
     }
     
     public void RemoveItem(GameObject item)
@@ -1087,6 +1085,11 @@ public class InventoryScript : MonoBehaviour
         if (i != -1)
         {
             _selectedEnchant = _inventoryData.EnchantInventory[i];
+            returnSelectedEnchant();
+        }
+        else if (i == -1)
+        {
+            _selectedEnchant = null;
             returnSelectedEnchant();
         }
         else

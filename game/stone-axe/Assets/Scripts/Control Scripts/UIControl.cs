@@ -27,6 +27,12 @@ public class UIControl : MonoBehaviour
     [SerializeField] private GameObject shopSellMenu;
     [SerializeField] private GameObject shopBuyMenu;
     [SerializeField] private GameObject miniGameUI;
+    [SerializeField] private Button _toMarketButton;
+    [Space(5)]
+    [SerializeField] private Button _buyTabButton;
+    [SerializeField] private Button _sellTabButton;
+    [SerializeField] private Button _disassembleTabButton;
+    [SerializeField] private Button _craftTabButton;
     [Space(5)]
     [SerializeField] private GameObject itemsScrollView;
     [SerializeField] private GameObject partsScrollView;
@@ -85,6 +91,8 @@ public class UIControl : MonoBehaviour
         setupMainMenu();
         setupCreditsText();
         updateCurrencyText();
+
+        gameObject.GetComponent<GameMaster>().marketAccessable(false);
     }
 
     public void setupMainMenu()
@@ -257,6 +265,12 @@ public class UIControl : MonoBehaviour
         miniGameUI.SetActive(input);
     }
 
+    public void marketAccessable(bool input)
+    {
+        Debug.Log("market accessable: " + input.ToString());
+        _toMarketButton.interactable = input;
+    }
+
     public void itemCraftMenuEnabled (bool input)
     {
         itemCraftingUI.SetActive(input);
@@ -266,10 +280,58 @@ public class UIControl : MonoBehaviour
         partCraftingUI.SetActive(input);
     }
 
+    public void shopBuyAccessableOnly()
+    {
+        Debug.Log("UIControl.shopBuyAccessableOnly() has been called!");
+        gameObject.GetComponent<GameMaster>().loadShopBuyMenu();
+        _buyTabButton.interactable = true;
+        _sellTabButton.interactable = false;
+        _disassembleTabButton.interactable = false;
+        _craftTabButton.interactable = false;
+    }
+    public void shopSellAccessableOnly()
+    {
+        Debug.Log("UIControl.shopSellAccessableOnly() has been called!");
+        gameObject.GetComponent<GameMaster>().loadShopSellMenu();
+        _buyTabButton.interactable = false;
+        _sellTabButton.interactable = true;
+        _disassembleTabButton.interactable = false;
+        _craftTabButton.interactable = false;
+    }
+    public void shopDisassembleAccessableOnly()
+    {
+        Debug.Log("UIControl.shopDisassembleAccessableOnly() has been called!");
+        gameObject.GetComponent<GameMaster>().loadDisassembleMenu();
+        _buyTabButton.interactable = false;
+        _sellTabButton.interactable = false;
+        _disassembleTabButton.interactable = true;
+        _craftTabButton.interactable = false;
+    }
+    public void shopCraftAccessableOnly()
+    {
+        Debug.Log("UIControl.shopCraftAccessableOnly() has been called!");
+        gameObject.GetComponent<GameMaster>().loadCraftMenu();
+        _buyTabButton.interactable = false;
+        _sellTabButton.interactable = false;
+        _disassembleTabButton.interactable = false;
+        _craftTabButton.interactable = true;
+    }
+    public void shopAllTabsAccessable()
+    {
+        _buyTabButton.interactable = true;
+        _sellTabButton.interactable = true;
+        _disassembleTabButton.interactable = true;
+        _craftTabButton.interactable = true;
+    }
+
     public void openInvUI()
     {
         receipeUI.SetActive(false);
         inventoryUI.SetActive(true);
+        if (ShopCraftUIEnabled == true)
+        {
+            GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>().setupInventory();
+        }
     }
     public void openRecipesUI()
     {
@@ -351,6 +413,8 @@ public class UIControl : MonoBehaviour
     public void openEnchInv()
     {
         openInvUI();
+        if (CraftPartUIEnabled == true)
+            GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>().setupEnchantInventory();
         itemsScrollView.SetActive(false);
         partsScrollView.SetActive(false);
         matsScrollView.SetActive(false);
@@ -443,6 +507,8 @@ public class UIControl : MonoBehaviour
     public bool ShopEcoUIEnabled { get => economicSubUI.activeInHierarchy; set => economicSubUI.SetActive(value); }
     public bool ShopDisUIEnabled { get => disassembleSubUI.activeInHierarchy; set => disassembleSubUI.SetActive(value); }
     public bool ShopCraftUIEnabled { get => craftSubUI.activeInHierarchy; set => craftSubUI.SetActive(value); }
+    public bool CraftItemUIEnabled { get => itemCraftingUI.activeInHierarchy; }
+    public bool CraftPartUIEnabled { get => partCraftingUI.activeInHierarchy; }
     public bool MarketEcoUIEnabled { get => marketEconomicSubUI.activeInHierarchy; set => marketEconomicSubUI.SetActive(value); }
     public bool MarketQuestUIEnabled { get => questSubUI.activeInHierarchy; set => questSubUI.SetActive(value); }
 }

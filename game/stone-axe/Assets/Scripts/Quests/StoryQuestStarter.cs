@@ -23,7 +23,8 @@ public class StoryQuestStarter : MonoBehaviour
 
     public void startQuest()
     {
-        if (_questControlRef.gameObject.GetComponent<GameMaster>().GetLevel >= _questRef.RequiredPlayerLevel)
+        if (_questControlRef.gameObject.GetComponent<GameMaster>().GetLevel >= _questRef.RequiredPlayerLevel &&
+            _questControlRef.CurrentQuest == null)
         {
             _questControlRef.startStoryQuest(_questRef);
             //_questControlRef.removeStarter();
@@ -49,7 +50,13 @@ public class StoryQuestStarter : MonoBehaviour
 
     IEnumerator cantStartQuest()
     {
-        _text.text = "Level not high enough! Level: " + _questRef.RequiredPlayerLevel;
+        if (_questControlRef.CurrentQuest != null)
+        {
+            _text.text = "Quest already active!";
+        }
+        else
+            _text.text = "Level not high enough! Level: " + _questRef.RequiredPlayerLevel;
+
         yield return new WaitForSeconds(5f);
         setupText();
 

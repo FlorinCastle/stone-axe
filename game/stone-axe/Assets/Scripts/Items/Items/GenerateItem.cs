@@ -119,6 +119,7 @@ public class GenerateItem : MonoBehaviour
             }
         }
         clearBuyMenu();
+
         this.gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
 
         if (_gameMaster.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&

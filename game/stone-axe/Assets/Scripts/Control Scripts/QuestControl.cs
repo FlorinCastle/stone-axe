@@ -240,7 +240,11 @@ public class QuestControl : MonoBehaviour
                     if (tutQuest.QuestName == quest.questName)
                         tutQuest.StoryQuestComplete = true;
                     if (tutQuest == _enableAdventurersOnComplete)
+                    {
                         gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
+                        // ui control, enable to market button
+                        gameObject.GetComponent<GameMaster>().marketAccessable(true);
+                    }
                 }
             }
             else if (quest.questType == "Story")
@@ -493,6 +497,8 @@ public class QuestControl : MonoBehaviour
             if (quest == _enableAdventurersOnComplete)
             {
                 gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
+                gameObject.GetComponent<GameMaster>().marketAccessable(true);
+                gameObject.GetComponent<UIControl>().shopAllTabsAccessable();
             }
 
             if (quest.NextQuest != null && isComplete == true)
@@ -519,19 +525,35 @@ public class QuestControl : MonoBehaviour
         {
             Debug.LogWarning("Quest Stage: Buy item!");
             // code should work
+            if (quest.QuestType == "Tutorial")
+            {
+                gameObject.GetComponent<UIControl>().shopBuyAccessableOnly();
+            }
+        }
+        else if (currStage.StageType == "Sell_Item")
+        {
+            Debug.LogWarning("Quest Stage: Sell item!");
+            if (quest.QuestType == "Tutorial")
+            {
+                gameObject.GetComponent<UIControl>().shopSellAccessableOnly();
+            }
         }
         else if (currStage.StageType == "Disassemble_Item")
         {
             Debug.LogWarning("Quest Stage: Disassemble item!");
             // code should work
+            if (quest.QuestType == "Tutorial")
+            {
+                gameObject.GetComponent<UIControl>().shopDisassembleAccessableOnly();
+            }
         }
         else if (currStage.StageType == "Craft_Item")
         {
             Debug.LogWarning("Quest Stage: Craft item!");
-        }
-        else if (currStage.StageType == "Sell_Item")
-        {
-            Debug.LogWarning("Quest Stage: Sell item!");
+            if (quest.QuestType == "Tutorial")
+            {
+                gameObject.GetComponent<UIControl>().shopCraftAccessableOnly();
+            }
         }
         else if (currStage.StageType == "Have_Currency")
         {

@@ -64,6 +64,13 @@ public class GameMaster : MonoBehaviour
         return false;
     }
 
+    public void marketAccessable(bool input)
+    {
+        gameObject.GetComponent<UIControl>().marketAccessable(input);
+        if (input == false)
+            loadShopLevel();
+    }
+
     public void loadMarketLevel()
     {
         _shopLevel.SetActive(false);
@@ -84,7 +91,15 @@ public class GameMaster : MonoBehaviour
         _toShopButton.SetActive(false);
         _toMarketButton.SetActive(true);
         this.gameObject.GetComponent<SellItemControl>().SellingState = 0;
-        this.gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
+
+        //if (gameObject.GetComponent<QuestControl>().CurrentQuest != null && gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial")
+        if (gameObject.GetComponent<QuestControl>().CurrentQuest != null)
+        {   if (gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType != "Tutorial")
+                this.gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
+        }
+        else if (gameObject.GetComponent<QuestControl>().CurrentQuest == null)
+            this.gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
+
         if (this.gameObject.GetComponent<PlayerManager>().PlayerExists == false)
             this.gameObject.GetComponent<PlayerManager>().spawnPlayer();
     }
