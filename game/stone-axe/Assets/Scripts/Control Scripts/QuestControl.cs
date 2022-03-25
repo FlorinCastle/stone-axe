@@ -9,6 +9,7 @@ public class QuestControl : MonoBehaviour
     [SerializeField]
     private Quest _questRef;
     private InventoryData _invDataRef;
+    private InventoryScript _invControlRef;
     [SerializeField]
     private QuestData _chosenQuest;
     [SerializeField]
@@ -49,6 +50,7 @@ public class QuestControl : MonoBehaviour
     {
         _repeatableQuests = _questRef.getRepeatableQuests();
         _invDataRef = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryData>();
+        _invControlRef = _invDataRef.gameObject.GetComponent<InventoryScript>();
     }
 
     private void Start()
@@ -609,8 +611,11 @@ public class QuestControl : MonoBehaviour
         _completeQuestButton.interactable = false;
         if (_chosenQuest.QuestType == "OD_Material")
         {
-            //_chosenQuest.ReqiredMaterial.RemoveMat(_chosenQuest.ReqiredCount);
-            _invDataRef.getMaterial(_chosenQuest.ReqiredMaterial.Material).RemoveMat(_chosenQuest.ReqiredCount);
+            _invControlRef.RemoveMatAmount(_invDataRef.getMaterial(_chosenQuest.ReqiredMaterial.Material), _chosenQuest.ReqiredCount);
+        }
+        else if (_chosenQuest.QuestType == "OCC_Item" || _chosenQuest.QuestType == "OCC_TotalCrafted" || _chosenQuest.QuestType == "OCC_QuestItem")
+        {
+            _invControlRef.RemoveQuestItems();
         }
         _chosenQuest = null;
         setupText();

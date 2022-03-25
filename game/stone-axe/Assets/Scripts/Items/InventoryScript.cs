@@ -992,7 +992,24 @@ public class InventoryScript : MonoBehaviour
     {
         _inventoryData.removePart(part, destroy);
     }
-    
+    public void RemoveMatAmount(MaterialDataStorage mat, int amount)
+    {
+        mat.RemoveMat(amount);
+    }
+
+    public void RemoveQuestItems()
+    {
+        for (int i = _inventoryData.ItemInventory.Count-1; i >= 0; i--)
+        {
+            if (_inventoryData.ItemInventory[i] != null)
+                if (_inventoryData.ItemInventory[i].GetComponent<ItemDataStorage>().IsForQuest == true)
+                {
+                    Debug.Log(_inventoryData.ItemInventory[i].GetComponent<ItemDataStorage>().ItemName + " is for quest!");
+                    _inventoryData.removeItem(_inventoryData.ItemInventory[i]);
+                }
+        }
+    }
+
     private void clearItemButtonList()
     {
         foreach (GameObject go in _itemButtonList)
@@ -1044,7 +1061,8 @@ public class InventoryScript : MonoBehaviour
         if (i != -1)
         {
             _selectedItem = _inventoryData.ItemInventory[i];
-            returnSelectedItem();
+            if (_selectedItem.GetComponent<ItemDataStorage>().IsForQuest == false)
+                returnSelectedItem();
             //Debug.Log("Selected item is: " + _selectedItem.name + " at index: " + i); 
         }
         else
