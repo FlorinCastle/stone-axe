@@ -18,7 +18,9 @@ public class QuestDataEditor : Editor
         reqCount,
         questComplete,
         nextQuest,
-        questUnlocks;
+        questUnlocks,
+        rewardCurrency,
+        rewardEXP;
 
     private void OnEnable()
     {
@@ -35,6 +37,9 @@ public class QuestDataEditor : Editor
         questComplete = serializedObject.FindProperty("_storyQuestComplete");
         nextQuest = serializedObject.FindProperty("_nextQuest");
         questUnlocks = serializedObject.FindProperty("_unlocksQuests");
+
+        rewardCurrency = serializedObject.FindProperty("_rewardCurrency");
+        rewardEXP = serializedObject.FindProperty("_rewardEXP");
     }
 
     /* Disregard this
@@ -124,6 +129,10 @@ public class QuestDataEditor : Editor
                 EditorGUILayout.PropertyField(questUnlocks, new GUIContent("Quest Unlocks"));
                 break;
         }
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Quest Rewards", EditorStyles.boldLabel);
+        EditorGUILayout.PropertyField(rewardEXP, new GUIContent("EXP Reward"));
+        EditorGUILayout.PropertyField(rewardCurrency, new GUIContent("Currency Reward"));
 
         serializedObject.ApplyModifiedProperties();
     }

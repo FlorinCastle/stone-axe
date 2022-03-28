@@ -414,6 +414,14 @@ public class QuestControl : MonoBehaviour
             return false;
     }
 
+    private void distributeQuestRewards()
+    {
+        if (_chosenQuest.RewardedCurrency > 0)
+            gameObject.GetComponent<GameMaster>().addCurrency(_chosenQuest.RewardedCurrency);
+        if (_chosenQuest.RewardedEXP > 0)
+            gameObject.GetComponent<ExperienceManager>().addExperience(_chosenQuest.RewardedEXP);
+    }
+
     public void startStoryQuest(QuestData questInput)
     {
         _chosenQuest = questInput;
@@ -617,6 +625,8 @@ public class QuestControl : MonoBehaviour
         {
             _invControlRef.RemoveQuestItems();
         }
+        distributeQuestRewards();
+
         _chosenQuest = null;
         setupText();
         currentItemCount = 0;

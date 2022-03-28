@@ -71,6 +71,29 @@ public class GameMaster : MonoBehaviour
             loadShopLevel();
     }
 
+    public void loadMainMenu()
+    {
+        _uiControlRef.optionsUIEnabled(false);
+        _shopLevel.SetActive(false);
+        _uiControlRef.mainMenuEnabled(true);
+        _uiControlRef.gameUIEnabled(false);
+        saveGame();
+        _uiControlRef.mainMenu();
+    }
+
+    public void shopToMarket()
+    {
+        loadMarketLevel();
+        gameObject.GetComponent<SellItemControl>().clearSellMenu();
+        updatePlayerPosition();
+    }
+    public void MarketToShop()
+    {
+        loadShopLevel();
+        gameObject.GetComponent<SellItemControl>().clearSellMenu();
+        updatePlayerPosition();
+    }
+
     public void loadMarketLevel()
     {
         _shopLevel.SetActive(false);

@@ -232,42 +232,22 @@ public class UIControl : MonoBehaviour
         this.gameObject.GetComponent<DialogueControl>().startDialogue();
     }
 
-    public void shopEcoMenuEnabled(bool input)
-    {
-        economicSubUI.SetActive(input);
-    }
-    public void shopBuyMenuEnabled(bool input)
-    {
-        shopBuyMenu.SetActive(input);
-    }
-    public void shopSellMenuEnabled(bool input)
-    {
-        shopSellMenu.SetActive(input);
-    }
-    public void disassembleMenuEnabled(bool input)
-    {
-        disassembleSubUI.SetActive(input);
-    }
-    public void craftMenuEnabled(bool input)
-    {
-        craftSubUI.SetActive(input);
-    }
-    public void marketSellMenuEnabled(bool input)
-    {
-        marketEconomicSubUI.SetActive(input);
-    }
-    public void marketQuestMenuEnabled(bool input)
-    {
-        questSubUI.SetActive(input);
-    }
-    public void miniGameUIEnabled(bool input)
-    {
-        miniGameUI.SetActive(input);
-    }
+    public void mainMenuEnabled(bool input) { mainMenuUI.SetActive(input); }
+    public void gameUIEnabled (bool input) { gameShopUI.SetActive(input); }
+    public void optionsUIEnabled(bool input) { optionsPopup.SetActive(input); }
+
+    public void shopEcoMenuEnabled(bool input) { economicSubUI.SetActive(input); }
+    public void shopBuyMenuEnabled(bool input) { shopBuyMenu.SetActive(input); }
+    public void shopSellMenuEnabled(bool input) { shopSellMenu.SetActive(input); }
+    public void disassembleMenuEnabled(bool input) { disassembleSubUI.SetActive(input); }
+    public void craftMenuEnabled(bool input) { craftSubUI.SetActive(input); }
+    public void marketSellMenuEnabled(bool input) { marketEconomicSubUI.SetActive(input); }
+    public void marketQuestMenuEnabled(bool input) { questSubUI.SetActive(input); }
+    public void miniGameUIEnabled(bool input) { miniGameUI.SetActive(input); }
 
     public void marketAccessable(bool input)
     {
-        Debug.Log("market accessable: " + input.ToString());
+        //Debug.Log("market accessable: " + input.ToString());
         _toMarketButton.interactable = input;
     }
 
