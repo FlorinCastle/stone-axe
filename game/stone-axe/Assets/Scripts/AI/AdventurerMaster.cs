@@ -13,6 +13,7 @@ public class AdventurerMaster : MonoBehaviour
     [SerializeField] private List<GameObject> _currentAdventurers;
     [SerializeField] private List<WalkingPoint> _walkingPoints;
     [SerializeField] private List<LinePoint> _linePoints;
+    [SerializeField] private GameObject _headOfLine;
     [SerializeField] private List<AdventurerData> _adventurerData;
     [SerializeField] private bool advSpawnEnabled;
     [SerializeField] private Slider _spawnProgressSlider;
@@ -55,6 +56,15 @@ public class AdventurerMaster : MonoBehaviour
             if (adventurer.GetComponent<AdventurerAI>() != null)
                 adventurer.GetComponent<AdventurerAI>().IsDismissed = true;
     }
+    public void dismissHeadOfLine()
+    {
+        foreach (GameObject adventurer in _currentAdventurers)
+            if (adventurer.GetComponent<AdventurerAI>() != null)
+            {
+                if (adventurer.GetComponent<AdventurerAI>().CurrentTarget == _headOfLine)
+                    adventurer.GetComponent<AdventurerAI>().IsDismissed = true;
+            }
+    }
     public void removeAdventurer(GameObject adventurer)
     {
         _currentAdventurers.Remove(adventurer);
@@ -68,6 +78,11 @@ public class AdventurerMaster : MonoBehaviour
             Destroy(go);
 
         _currentAdventurers.Clear();
+
+        foreach(LinePoint linePoint in _linePoints)
+        {
+            linePoint.IsOccupied = false;
+        }
     }
 
     private GameObject advPlaceholder;

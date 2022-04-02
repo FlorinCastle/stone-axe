@@ -383,7 +383,7 @@ public class CraftControl : MonoBehaviour
 
     public void Craft()
     {
-        _gameMasterRef.gameObject.GetComponent<MiniGameControl>().resetHitPoints();
+        //_gameMasterRef.gameObject.GetComponent<MiniGameControl>().resetHitPoints();
         if (_chosenItemRecipe != null)
             CraftItem();
         else if (_chosenPartRecipe != null)
@@ -531,6 +531,7 @@ public class CraftControl : MonoBehaviour
 
         clearItemCraftingUI();
         _recipeDropdown.value = 0;
+        _gameMasterRef.gameObject.GetComponent<MiniGameControl>().stopCraftingMiniGame();
 
     }
     private void CraftPart()
@@ -578,6 +579,7 @@ public class CraftControl : MonoBehaviour
             clearPartCraftingUI();
             _recipeDropdown.value = 0;
             Debug.LogWarning("crafting part success");
+            _gameMasterRef.gameObject.GetComponent<MiniGameControl>().stopCraftingMiniGame();
 
         }
     }

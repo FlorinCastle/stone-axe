@@ -12,6 +12,7 @@ public class QuestStage : ScriptableObject
     public questEvent _questEvent;
 
     public string _speaker;
+    [TextArea(1, 10)]
     public string _dialogueLine;
     public ItemData _item;
     public MaterialData _part1Mat;

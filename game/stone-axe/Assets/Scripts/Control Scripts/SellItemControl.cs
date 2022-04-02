@@ -214,7 +214,16 @@ public class SellItemControl : MonoBehaviour
             _suggestButton.interactable = true;
             _marketSuggestButton.interactable = true;
             // get random item
-            GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>().selectRandomItem();
+            if (GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>().ItemInvSize > 0)
+            {
+                GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>().selectRandomItem();
+            }
+            else
+            {
+                if (gameObject.GetComponent<GameMaster>().MarketActive == true)
+                    this.gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
+
+            }
         }
         else if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == false)
         {

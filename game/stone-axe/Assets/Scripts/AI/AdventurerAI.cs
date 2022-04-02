@@ -162,4 +162,6 @@ public class AdventurerAI : MonoBehaviour
         else
             Debug.LogWarning("Adventurer Data for " + this.gameObject.name + " is not assigned! Use chooseRace() first then use setupAdventurerModel()");
     }
+
+    public GameObject CurrentTarget { get => _currentTarget; }
 }

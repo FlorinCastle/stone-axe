@@ -15,4 +15,11 @@ MonoBehaviour:
   _questStageType: 1
   _questEvent: 0
   _speaker: Tutorial
-  _dialogueLine: (select the item to sell - it might already be selected)
+  _dialogueLine: (select the item to sell - one might already be selected. Adventurers
+    can be smart sometimes)
+  _item: {fileID: 0}
+  _part1Mat: {fileID: 0}
+  _part2Mat: {fileID: 0}
+  _part3Mat: {fileID: 0}
+  _currencyValue: 0
+  _npcRef: {fileID: 0}

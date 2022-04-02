@@ -82,8 +82,21 @@ public class QuestControl : MonoBehaviour
         {
             foreach(QuestData tutQuest in _questRef.getTutorialQuests())
             {
+                if (tutQuest == _enableAdventurersOnComplete)
+                {
+                    gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
+                    // ui control, enable to market button
+                    gameObject.GetComponent<GameMaster>().marketAccessable(true);
+                }
+
+
                 if (starterRef == null)
                 {
+                    if (tutQuest.QuestUnlocks.Count > 0)
+                        foreach (QuestData temp in tutQuest.QuestUnlocks)
+                            if (_unlockedQuests.Contains(temp) == false)
+                                _unlockedQuests.Add(temp);
+
                     //Debug.Log("tutorial: starter ref is not assigned!");
                     if (tutQuest.StoryQuestComplete == false)
                     {
@@ -91,6 +104,7 @@ public class QuestControl : MonoBehaviour
                         starterRef = tutQuest;
                         break;
                     }
+
                 }
                 else
                     break;
@@ -99,6 +113,11 @@ public class QuestControl : MonoBehaviour
             {
                 if (starterRef == null)
                 {
+                    if (storyQuest.QuestUnlocks.Count > 0)
+                        foreach (QuestData temp in storyQuest.QuestUnlocks)
+                            if (_unlockedQuests.Contains(temp) == false)
+                                _unlockedQuests.Add(temp);
+
                     //Debug.Log("story: starter ref is not assigned!");
                     if (storyQuest.StoryQuestComplete == false)
                     {
@@ -240,7 +259,9 @@ public class QuestControl : MonoBehaviour
                 foreach (QuestData tutQuest in _questRef.getTutorialQuests())
                 {
                     if (tutQuest.QuestName == quest.questName)
+                    {
                         tutQuest.StoryQuestComplete = true;
+                    }
                     if (tutQuest == _enableAdventurersOnComplete)
                     {
                         gameObject.GetComponent<GameMaster>().toggleAdventurers(true);

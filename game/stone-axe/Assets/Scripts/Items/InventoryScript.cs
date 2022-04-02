@@ -122,7 +122,7 @@ public class InventoryScript : MonoBehaviour
                 tempButtonList.transform.SetParent(_itemsButtonParent.transform, false);
                 // set up button text
                 TextMeshProUGUI t = tempButtonList.GetComponentInChildren<TextMeshProUGUI>();
-                t.text = itemData.ItemName;
+                t.text = itemData.Part1.MaterialName + " " + itemData.ItemName;
                 // set button data
                 tempButtonList.GetComponent<InventoryButton>().setIsNew(itemData.IsNew);
                 tempButtonList.GetComponent<InventoryButton>().setIsForQuest(itemData.IsForQuest);
@@ -159,7 +159,7 @@ public class InventoryScript : MonoBehaviour
 
                 // set up button text
                 TextMeshProUGUI t = tempButtonList.GetComponentInChildren<TextMeshProUGUI>();
-                t.text = partData.PartName;
+                t.text = partData.MaterialName + " " + partData.PartName;
                 
                 // if removing part from inventory
                 if (isRemoving == true)
@@ -516,7 +516,7 @@ public class InventoryScript : MonoBehaviour
 
         // convert data from scriptable object to gameobject
         //  stats
-        itemDataStorageTemp.name = item.ItemName;
+        itemDataStorageTemp.name = item.Part1.Material.Material + " " + item.ItemName;
         itemDataScriptRef.setItemName(item.ItemName);
         itemDataScriptRef.setTotalValue(item.TotalValue);
         itemDataScriptRef.setTotalStrenght(item.TotalStrength);
@@ -1414,4 +1414,6 @@ public class InventoryScript : MonoBehaviour
 
         return false;
     }
+
+    public int ItemInvSize { get => _inventoryData.ItemInventory.Count; }
 }

@@ -80,6 +80,7 @@ public class MiniGameControl : MonoBehaviour
 
     private void populateHitPoints()
     {
+        resetHitPoints();
         chosenHitPoints.Clear();
 
         
@@ -88,15 +89,18 @@ public class MiniGameControl : MonoBehaviour
         else if (_craftingMinigameUI.activeInHierarchy == true)
             finalPointsToHit = calculateCraftHitPoints();
         
-        for (int j = 0; j < finalPointsToHit; j++)
+        for (int j = finalPointsToHit; j > 0; j--)
         {
             int k = Random.Range(0, _hitPointMarkers.Count);
             if (chosenHitPoints.Contains(k) == false)
                 chosenHitPoints.Add(k);
-            //else if (chosenHitPoints.Contains(k))
-            //    j--;
+            else if (chosenHitPoints.Contains(k) == true)
+            {
+                Debug.Log("MiniGameControl.chosenHitPoints contains " + k);
+                j++;
+            }
         }
-        
+
         foreach (int l in chosenHitPoints)
         {
             GameObject ph = Instantiate(_hitPointPrefab);
