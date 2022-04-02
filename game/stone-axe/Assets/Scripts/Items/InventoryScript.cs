@@ -126,6 +126,7 @@ public class InventoryScript : MonoBehaviour
                 // set button data
                 tempButtonList.GetComponent<InventoryButton>().setIsNew(itemData.IsNew);
                 tempButtonList.GetComponent<InventoryButton>().setIsForQuest(itemData.IsForQuest);
+                tempButtonList.GetComponent<InventoryButton>().setIsEnchanted(itemData.IsEnchanted);
 
                 // add button to list
                 InsertItemButton(tempButtonList, k);
@@ -160,7 +161,11 @@ public class InventoryScript : MonoBehaviour
                 // set up button text
                 TextMeshProUGUI t = tempButtonList.GetComponentInChildren<TextMeshProUGUI>();
                 t.text = partData.MaterialName + " " + partData.PartName;
-                
+
+                // set button data
+                //tempButtonList.GetComponent<InventoryButton>().setIsNew(partData.IsNew);
+                tempButtonList.GetComponent<InventoryButton>().setIsEnchanted(partData.IsHoldingEnchant);
+
                 // if removing part from inventory
                 if (isRemoving == true)
                 {

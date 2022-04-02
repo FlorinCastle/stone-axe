@@ -49,7 +49,7 @@ public class GenerateItem : MonoBehaviour
         } while (_generatedItem.ItemLevel > _gameMasterRef.GetLevel);
 
         int ranEnchChance = Random.Range(0, 1000);
-        if (ranEnchChance >= 100)
+        if (ranEnchChance <= 100)
         {
             _generatedEnchant = enchantScript.chooseEnchant();
             _generatedItem.setIsEnchanted(true);

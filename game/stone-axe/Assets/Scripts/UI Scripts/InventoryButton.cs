@@ -13,6 +13,7 @@ public class InventoryButton : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject _isNewImage;
     [SerializeField] private GameObject _forQuestImage;
+    [SerializeField] private GameObject _isEnchantedImage;
     
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class InventoryButton : MonoBehaviour
 
     public void setIsNew(bool value) { _isNewImage.SetActive(value); }
     public void setIsForQuest(bool value) { _forQuestImage.SetActive(value); }
+    public void setIsEnchanted(bool value) { _isEnchantedImage.SetActive(value); }
 
     public void setMyIndex(int i) { _myButtonIndex = i; }
     public int MyIndex { get => _myButtonIndex; }
