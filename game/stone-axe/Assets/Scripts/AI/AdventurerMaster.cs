@@ -9,6 +9,7 @@ public class AdventurerMaster : MonoBehaviour
     //[SerializeField] private int _timer;
     [SerializeField] private GameObject _adventurerPrefab;
     [SerializeField] private AdventurerMaterials _adventurerMats;
+    [SerializeField] private float _adventuturerWaitTimeBeforeMove;
 
     [SerializeField] private List<GameObject> _currentAdventurers;
     [SerializeField] private List<WalkingPoint> _walkingPoints;
@@ -188,4 +189,11 @@ public class AdventurerMaster : MonoBehaviour
     }
 
     public List<AdventurerData> GetAdvRaceList { get => _adventurerData; }
+    public float AdventurerWaitTime { get => _adventuturerWaitTimeBeforeMove; }
+    public int GetMyIndex(GameObject adv)
+    {
+        if (_currentAdventurers.Contains(adv))
+            return _currentAdventurers.IndexOf(adv);
+        return -1;
+    }
 }

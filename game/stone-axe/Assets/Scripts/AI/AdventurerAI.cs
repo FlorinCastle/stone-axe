@@ -27,6 +27,7 @@ public class AdventurerAI : MonoBehaviour
 
     private Vector3 newDirection;
     private bool selected = false;
+    private bool beingHandled = false;
     private void FixedUpdate()
     {
         if (_move == true) // if moving
@@ -64,15 +65,23 @@ public class AdventurerAI : MonoBehaviour
                 if (_currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<LinePoint>() != null
                     && _currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<LinePoint>().IsOccupied == false)
                 { // if at line point and next point is also a line point that does not have an adventurer
+                    if (beingHandled == false)
+                    {
+                        StartCoroutine(WaitThenGo());
+                    }
+                    /*
                     _currentTarget.GetComponent<LinePoint>().IsOccupied = false;
                     dismissed = false;
                     setCurentTarget(_currentTarget.GetComponent<LinePoint>().NextPoint);
+                    */
                 }
                 else if (_currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<LinePoint>() != null && _currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<LinePoint>().IsOccupied == true)
                 { // if at line point and next point is also a line point that has an adventurer waiting
                     dismissed = false;
+                    /*
                     if (_prevTarget.GetComponent<LinePoint>() == true)
                         _prevTarget.GetComponent<LinePoint>().IsOccupied = false;
+                    */
                 }
                 else if (dismissed == true && _currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<WalkingPoint>() != null)
                 { // if at line point and next point is a walking point and adventurer has been dismissed (head of line, basically)
@@ -163,6 +172,19 @@ public class AdventurerAI : MonoBehaviour
         }
         else
             Debug.LogWarning("Adventurer Data for " + this.gameObject.name + " is not assigned! Use chooseRace() first then use setupAdventurerModel()");
+    }
+
+    private IEnumerator WaitThenGo()
+    {
+        Debug.Log(gameObject.name + " - AdventurerAI.WaitThenGo() Coroutine has started!");
+        beingHandled = true;
+        if (_advMaster.GetMyIndex(gameObject) != 0)
+            yield return new WaitForSeconds(_advMaster.AdventurerWaitTime);
+        _currentTarget.GetComponent<LinePoint>().IsOccupied = false;
+        dismissed = false;
+        setCurentTarget(_currentTarget.GetComponent<LinePoint>().NextPoint);
+
+        beingHandled = false;
     }
 
     public GameObject CurrentTarget { get => _currentTarget; }
