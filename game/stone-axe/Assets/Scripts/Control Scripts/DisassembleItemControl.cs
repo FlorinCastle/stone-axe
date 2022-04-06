@@ -32,7 +32,7 @@ public class DisassembleItemControl : MonoBehaviour
 
     public void chooseItem()
     {
-        _invScriptRef.setupItemInventory(true,2);
+        _invScriptRef.setupItemInventory();
     }
 
     public void selectItem()

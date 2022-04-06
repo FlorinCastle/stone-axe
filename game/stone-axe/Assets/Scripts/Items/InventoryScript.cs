@@ -58,14 +58,26 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private Button _headerButtonEnchants;
     [SerializeField] private TextMeshProUGUI _descriptionText1;
     [SerializeField] private TextMeshProUGUI _descriptionText2;
+    [Space(5)]
     [SerializeField] private GameObject _itemsInvScroll;
     [SerializeField] private GameObject _itemsButtonParent;
+    [SerializeField] private List<FilterData> _itemsFilterData;
+    [SerializeField] private FilterData _currentItemFilter;
+    [Space(5)]
     [SerializeField] private GameObject _partsInvScroll;
     [SerializeField] private GameObject _partsButtonParent;
+    [SerializeField] private List<FilterData> _partsFilterData;
+    [SerializeField] private FilterData _currentPartFilter;
+    [Space(5)]
     [SerializeField] private GameObject _matsInvScroll;
     [SerializeField] private GameObject _matsButtonParent;
+    [SerializeField] private List<FilterData> _matsFilterData;
+    [SerializeField] private FilterData _currentMatFilter;
+    [Space(5)]
     [SerializeField] private GameObject _enchInvScroll;
     [SerializeField] private GameObject _enchButtonParent;
+    [SerializeField] private List<FilterData> _enchFilterData;
+    [SerializeField] private FilterData _currentEnchFilter;
     [Header("Prefabs")]
     [SerializeField] private GameObject _itemDataStoragePrefab;
     [SerializeField] private GameObject _partDataStoragePrefab;
@@ -86,6 +98,11 @@ public class InventoryScript : MonoBehaviour
         if (_inventoryData == null)
             _inventoryData = this.gameObject.GetComponent<InventoryData>();
 
+        _currentItemFilter = _itemsFilterData[0];
+        _currentPartFilter = _partsFilterData[0];
+        _currentMatFilter = _matsFilterData[0];
+        _currentEnchFilter = _enchFilterData[0];
+        _UIControlRef.setupInvFilterUI();
     }
 
     private void Start()
@@ -101,10 +118,6 @@ public class InventoryScript : MonoBehaviour
         setupEnchantInventory();
     }
     public void setupItemInventory()
-    {
-        setupItemInventory(false, 0);
-    }
-    public void setupItemInventory(bool isRemoving, int state)
     {
         clearItemButtonList();
         _selectedItem = null;
@@ -255,7 +268,7 @@ public class InventoryScript : MonoBehaviour
             InsertEnchantButton(tempButtonList, -1);
         }
 
-        foreach(GameObject ench in _inventoryData.EnchantInventory)
+        foreach (GameObject ench in _inventoryData.EnchantInventory)
         {
             if (ench != null)
             {
@@ -392,7 +405,7 @@ public class InventoryScript : MonoBehaviour
             else { _descriptionText1.text = ""; _descriptionText2.text = ""; }
             //Debug.Log("Item Detail Text set for - item index: " + index);
         }
-        else { _descriptionText1.text = "";  _descriptionText2.text = ""; }
+        else { _descriptionText1.text = ""; _descriptionText2.text = ""; }
     }
 
     private string _partName;
@@ -529,7 +542,7 @@ public class InventoryScript : MonoBehaviour
         itemDataScriptRef.setTotalInt(item.TotalIntelegence);
 
         //  parts
-            // part 1
+        // part 1
         part1DataStorageTemp = Instantiate(_partDataStoragePrefab);
         part1DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part1DataScriptRef = part1DataStorageTemp.GetComponent<PartDataStorage>();
@@ -546,7 +559,7 @@ public class InventoryScript : MonoBehaviour
         // store ref of part 1 in item script
         itemDataScriptRef.setPart1(part1DataScriptRef);
 
-            // part 2
+        // part 2
         part2DataStorageTemp = Instantiate(_partDataStoragePrefab);
         part2DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part2DataScriptRef = part2DataStorageTemp.GetComponent<PartDataStorage>();
@@ -576,11 +589,11 @@ public class InventoryScript : MonoBehaviour
         part3DataScriptRef.setPartStr(item.Part3.PartStrenght);
         part3DataScriptRef.setPartDex(item.Part3.PartDextarity);
         part3DataScriptRef.setPartInt(item.Part3.PartIntelligence);
-        part3DataScriptRef.setValue(item.Part3.TotalCurrentValue); 
+        part3DataScriptRef.setValue(item.Part3.TotalCurrentValue);
         // store ref of part 3 in item script
         itemDataScriptRef.setPart3(part3DataScriptRef);
 
-            // enchantment
+        // enchantment
         itemDataScriptRef.setIsEnchanted(item.IsEnchanted);
         if (item.IsEnchanted)
         {
@@ -610,7 +623,7 @@ public class InventoryScript : MonoBehaviour
         itemDataScriptRef.setTotalInt(item.totalIntellegence);
 
         // parts
-            // part 1
+        // part 1
         part1DataStorageTemp = Instantiate(_partDataStoragePrefab);
         part1DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part1DataScriptRef = part1DataStorageTemp.GetComponent<PartDataStorage>();
@@ -627,7 +640,7 @@ public class InventoryScript : MonoBehaviour
         // store ref of part 1 in item script
         itemDataScriptRef.setPart1(part1DataScriptRef);
 
-            // part 2
+        // part 2
         part2DataStorageTemp = Instantiate(_partDataStoragePrefab);
         part2DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part2DataScriptRef = part2DataStorageTemp.GetComponent<PartDataStorage>();
@@ -644,7 +657,7 @@ public class InventoryScript : MonoBehaviour
         // store ref of part 1 in item script
         itemDataScriptRef.setPart2(part2DataScriptRef);
 
-            // part 3
+        // part 3
         part3DataStorageTemp = Instantiate(_partDataStoragePrefab);
         part3DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part3DataScriptRef = part3DataStorageTemp.GetComponent<PartDataStorage>();
@@ -708,7 +721,7 @@ public class InventoryScript : MonoBehaviour
         //  stats
         partDataStorageTemp.name = part.partName;
         partDataScriptRef.setPartName(part.partName);
-        partDataScriptRef.setMaterial(_inventoryData.getMaterialData(part.materialName)); 
+        partDataScriptRef.setMaterial(_inventoryData.getMaterialData(part.materialName));
         partDataScriptRef.setPartStr(part.partStrength);
         partDataScriptRef.setPartDex(part.partDextarity);
         partDataScriptRef.setPartInt(part.partIntellegence);
@@ -779,7 +792,7 @@ public class InventoryScript : MonoBehaviour
 
         return false;
     }
-    private bool EnchantSlotEmpty (int index)
+    private bool EnchantSlotEmpty(int index)
     {
         if (_inventoryData.EnchantInventory[index] == null)
             return true;
@@ -984,7 +997,7 @@ public class InventoryScript : MonoBehaviour
         }
         return -1;
     }
-    
+
     public void RemoveItem(GameObject item)
     {
         _inventoryData.removeItem(item);
@@ -1004,7 +1017,7 @@ public class InventoryScript : MonoBehaviour
 
     public void RemoveQuestItems()
     {
-        for (int i = _inventoryData.ItemInventory.Count-1; i >= 0; i--)
+        for (int i = _inventoryData.ItemInventory.Count - 1; i >= 0; i--)
         {
             if (_inventoryData.ItemInventory[i] != null)
                 if (_inventoryData.ItemInventory[i].GetComponent<ItemDataStorage>().IsForQuest == true)
@@ -1127,9 +1140,9 @@ public class InventoryScript : MonoBehaviour
 
     public GameObject getSelectedItem()
     {
-        if (_selectedItem != null) 
+        if (_selectedItem != null)
             return _selectedItem;
-         
+
         return null;
     }
     public GameObject getSelectedPart()
@@ -1241,7 +1254,7 @@ public class InventoryScript : MonoBehaviour
         if (_craftControlRef.anyItemRecipeSelected() == true)
         {
             //Debug.LogWarning("TODO setup code for selecting parts");
-            foreach(PartData part1ref in _craftControlRef.checkItemRecipe().ValidParts1)
+            foreach (PartData part1ref in _craftControlRef.checkItemRecipe().ValidParts1)
                 if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part1ref
                     && (partLastFilled == 0 || partLastFilled == 2 || partLastFilled == 3 || _craftControlRef.Part1Set() == false || _craftControlRef.AllPartsSet() == true)
                     && phb == false)
@@ -1252,7 +1265,7 @@ public class InventoryScript : MonoBehaviour
                     phb = true;
                 }
 
-            foreach(PartData part2ref in _craftControlRef.checkItemRecipe().ValidParts2)
+            foreach (PartData part2ref in _craftControlRef.checkItemRecipe().ValidParts2)
                 if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part2ref
                     && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 3 || _craftControlRef.Part2Set() == false || _craftControlRef.AllPartsSet() == true)
                     && phb == false)
@@ -1355,11 +1368,51 @@ public class InventoryScript : MonoBehaviour
 
     private ItemData getItemData()
     {
-        foreach(ItemData item in GameObject.FindGameObjectWithTag("ItemData").GetComponent<Item>().getItemDataRef())
+        foreach (ItemData item in GameObject.FindGameObjectWithTag("ItemData").GetComponent<Item>().getItemDataRef())
             if (item.ItemName == _selectedItem.GetComponent<ItemDataStorage>().ItemName)
                 return item;
 
         return null;
+    }
+
+    public void nextItemFilter()
+    {
+        int i = _itemsFilterData.IndexOf(_currentItemFilter);
+        if ((i + 1) > _itemsFilterData.Count - 1)
+            i = 0;
+        else
+            i += 1;
+        _currentItemFilter = _itemsFilterData[i];
+    }
+    public void nextPartFilter()
+    {
+        int p = _partsFilterData.IndexOf(_currentPartFilter);
+        if ((p + 1) > _partsFilterData.Count - 1)
+            p = 0;
+        else
+            p += 1;
+        _currentPartFilter = _partsFilterData[p];
+
+    }
+    public void nextMatFilter()
+    {
+        int m = _matsFilterData.IndexOf(_currentMatFilter);
+        if ((m + 1) > _matsFilterData.Count - 1)
+            m = 0;
+        else
+            m += 1;
+        _currentMatFilter = _matsFilterData[m];
+
+    }
+    public void nextEnchFilter()
+    {
+        int e = _enchFilterData.IndexOf(_currentEnchFilter);
+        if ((e + 1) > _enchFilterData.Count - 1)
+            e = 0;
+        else
+            e += 1;
+        _currentEnchFilter = _enchFilterData[e];
+
     }
 
     public void returnSelectedMat()
@@ -1421,4 +1474,12 @@ public class InventoryScript : MonoBehaviour
     }
 
     public int ItemInvSize { get => _inventoryData.ItemInventory.Count; }
+    public List<FilterData> ItemFilterData { get => _itemsFilterData; }
+    public FilterData CurrentItemFilter { get => _currentItemFilter; set => _currentItemFilter = value; }
+    public List<FilterData> PartFilterData { get => _partsFilterData; }
+    public FilterData CurrentPartFilter { get => _currentPartFilter; set => _currentPartFilter = value; }
+    public List<FilterData> MatFilterData { get => _matsFilterData; }
+    public FilterData CurrentMatFilter { get => _currentMatFilter; set => _currentMatFilter = value; }
+    public List<FilterData> EnchFilterData { get => _enchFilterData; }
+    public FilterData CurrentEnchFilter { get => _currentEnchFilter; set => _currentEnchFilter = value; }
 }

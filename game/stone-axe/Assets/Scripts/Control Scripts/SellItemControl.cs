@@ -56,7 +56,7 @@ public class SellItemControl : MonoBehaviour
 
     public void suggestAlt()
     {
-        _invScriptRef.setupItemInventory(true,1);
+        _invScriptRef.setupItemInventory();
     }
 
     public void selectItem()

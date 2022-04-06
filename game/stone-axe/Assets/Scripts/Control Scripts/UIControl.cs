@@ -35,9 +35,13 @@ public class UIControl : MonoBehaviour
     [SerializeField] private Button _craftTabButton;
     [Space(5)]
     [SerializeField] private GameObject itemsScrollView;
+    [SerializeField] private TextMeshProUGUI _itemsSortText;
     [SerializeField] private GameObject partsScrollView;
+    [SerializeField] private TextMeshProUGUI _partsSortText;
     [SerializeField] private GameObject matsScrollView;
+    [SerializeField] private TextMeshProUGUI _matsSortText;
     [SerializeField] private GameObject enchantsScrollView;
+    [SerializeField] private TextMeshProUGUI _enchantsSortText;
     [Header("Market UI")]
     [SerializeField] private GameObject marketEconomicSubUI;
     [SerializeField] private GameObject questSubUI;
@@ -399,6 +403,50 @@ public class UIControl : MonoBehaviour
         partsScrollView.SetActive(false);
         matsScrollView.SetActive(false);
         enchantsScrollView.SetActive(true);
+    }
+
+    public void setupInvFilterUI()
+    {
+        setupItemInvFilterUI();
+        setupPartInvFilterUI();
+        setupMatInvFilterUI();
+        setupEnchInvFilterUI();
+    }
+    private void setupItemInvFilterUI()
+    {
+        _itemsSortText.text = "sort: " + gameObject.GetComponent<GameMaster>().InvScriptRef.CurrentItemFilter.FilterName;
+    }
+    public void nextItemInvFilter()
+    {
+        gameObject.GetComponent<GameMaster>().InvScriptRef.nextItemFilter();
+        setupItemInvFilterUI();
+    }
+    private void setupPartInvFilterUI()
+    {
+        _partsSortText.text = "sort: " + gameObject.GetComponent<GameMaster>().InvScriptRef.CurrentPartFilter.FilterName;
+    }
+    public void nextPartInvFilter()
+    {
+        gameObject.GetComponent<GameMaster>().InvScriptRef.nextPartFilter();
+        setupPartInvFilterUI();
+    }
+    private void setupMatInvFilterUI()
+    {
+        _enchantsSortText.text = "sort: " + gameObject.GetComponent<GameMaster>().InvScriptRef.CurrentMatFilter.FilterName;
+    }
+    public void nextMatInvFilter()
+    {
+        gameObject.GetComponent<GameMaster>().InvScriptRef.nextMatFilter();
+        setupMatInvFilterUI();
+    }
+    private void setupEnchInvFilterUI()
+    {
+        _enchantsSortText.text = "sort: " + gameObject.GetComponent<GameMaster>().InvScriptRef.CurrentEnchFilter.FilterName;
+    }
+    public void nextEnchInvFilter()
+    {
+        gameObject.GetComponent<GameMaster>().InvScriptRef.nextEnchFilter();
+        setupEnchInvFilterUI();
     }
 
     public void updatingInputData()

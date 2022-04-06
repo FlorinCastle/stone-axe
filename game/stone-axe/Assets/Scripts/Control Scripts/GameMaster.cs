@@ -23,9 +23,9 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private GameObject _toShopButton;
     [SerializeField] private GameObject _toMarketButton;
     private InventoryData _invData;
-    private InventoryScript _invScript;
+    [SerializeField] private InventoryScript _invScript;
     private UIControl _uiControlRef;
-    [Header("save tracking")]
+    [Header("Save Tracking")]
     [SerializeField] private List<SaveTracker> _saveTrackerScripts;
     [SerializeField]
     private List<string> _saveGameList;
@@ -117,7 +117,7 @@ public class GameMaster : MonoBehaviour
 
         //if (gameObject.GetComponent<QuestControl>().CurrentQuest != null && gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial")
         if (gameObject.GetComponent<QuestControl>().CurrentQuest != null)
-        {   if (gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType != "Tutorial")
+        { if (gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType != "Tutorial")
                 this.gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
         }
         else if (gameObject.GetComponent<QuestControl>().CurrentQuest == null)
@@ -246,12 +246,13 @@ public class GameMaster : MonoBehaviour
     public int PlayerColor { get => _playerColor; set => _playerColor = value; }
 
     public void setTotalExperience(int value) { _totalExperience = value; }
-    public int GetTotalExperience { get => _totalExperience; } 
+    public int GetTotalExperience { get => _totalExperience; }
     public void setLevel(int value) { _level = value; }
-    public int GetLevel { get => _level; } 
+    public int GetLevel { get => _level; }
     public void setCurrentSkillPoints(int value) { _currentSkillPoints = value; }
     public int GetCurrentSkillPoints { get => _currentSkillPoints; }
     public bool AdventurerAtCounter { get => adventurerAtCounter; set => adventurerAtCounter = value; }
+    public InventoryScript InvScriptRef { get => _invScript; }
     public bool ShopActive { get => _shopLevel.activeInHierarchy; }
     public bool MarketActive { get => _marketLevel.activeInHierarchy; }
     public List<SaveTracker> SaveTrackers { get => _saveTrackerScripts; }
