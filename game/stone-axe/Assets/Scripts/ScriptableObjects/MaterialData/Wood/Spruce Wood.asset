@@ -16,8 +16,9 @@ MonoBehaviour:
   _materialType: 1
   _subMatType: 0
   _levelRequirement: 4
-  _quantity: 500
   _baseCostPerUnit: 7
   _addedStrength: 3
   _addedDextarity: 4
   _addedIntelligence: 4
+  _validFilters:
+  - {fileID: 11400000, guid: 41a74dd2ea47c6f42b361565e865b3aa, type: 2}

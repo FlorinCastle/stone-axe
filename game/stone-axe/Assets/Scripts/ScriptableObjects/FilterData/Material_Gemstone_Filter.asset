@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3164c9b5e299814ba7ea4bdc5524074, type: 3}
   m_Name: Material_Gemstone_Filter
   m_EditorClassIdentifier: 
-  _filterName: Metal
-  _hasSubFilters: 1
-  _subFilters:
-  - {fileID: 11400000, guid: ecee1f96866bfa54abdd16f9872f8af0, type: 2}
-  - {fileID: 11400000, guid: 9fbaae89baca66344a9e3db4d2074318, type: 2}
+  _filterName: Gemstone
+  _hasSubFilters: 0
+  _subFilters: []

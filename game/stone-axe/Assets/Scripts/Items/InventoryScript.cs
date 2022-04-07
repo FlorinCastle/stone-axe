@@ -91,6 +91,9 @@ public class InventoryScript : MonoBehaviour
 
     private GameObject tempButtonList;
 
+    [SerializeField, HideInInspector] private List<GameObject> holderList;
+    [SerializeField, HideInInspector] private List<GameObject> setupList;
+
     private void Awake()
     {
         if (_gameMaster == null)
@@ -122,82 +125,249 @@ public class InventoryScript : MonoBehaviour
         clearItemButtonList();
         _selectedItem = null;
 
-        int k = 0;
-        foreach (GameObject item in _inventoryData.ItemInventory)
+        if (_currentItemFilter.Equals(_itemsFilterData[0]))
         {
-            if (item != null)
+            int k = 0;
+            foreach (GameObject item in _inventoryData.ItemInventory)
             {
-                // get reference to ItemDataStorage script
-                ItemDataStorage itemData = item.GetComponent<ItemDataStorage>();
+                if (item != null)
+                {
+                    // get reference to ItemDataStorage script
+                    ItemDataStorage itemData = item.GetComponent<ItemDataStorage>();
 
-                // instatiate the button prefab
-                tempButtonList = Instantiate(_itemInfoPrefab);
-                tempButtonList.transform.SetParent(_itemsButtonParent.transform, false);
-                // set up button text
-                TextMeshProUGUI t = tempButtonList.GetComponentInChildren<TextMeshProUGUI>();
-                t.text = itemData.Part1.MaterialName + " " + itemData.ItemName;
-                // set button data
-                tempButtonList.GetComponent<InventoryButton>().setIsNew(itemData.IsNew);
-                tempButtonList.GetComponent<InventoryButton>().setIsForQuest(itemData.IsForQuest);
-                tempButtonList.GetComponent<InventoryButton>().setIsEnchanted(itemData.IsEnchanted);
-
-                // add button to list
-                InsertItemButton(tempButtonList, k);
+                    itemStorageSetup(itemData, k);
+                }
+                k++;
             }
-            k++;
         }
+        else
+        {
+            int k = 0;
+            foreach (GameObject item in _inventoryData.ItemInventory)
+            {
+                if (item != null)
+                {
+                    ItemDataStorage itemDat = item.GetComponent<ItemDataStorage>();
+
+                    if (itemDat.ItemRecipeRef.ValidFilters.Contains(_currentItemFilter))
+                    {
+                        Debug.Log("InventoryScript.setupItemInventory(): " + itemDat.ItemName + " has the filter: " + _currentItemFilter.FilterName);
+                        itemStorageSetup(itemDat, k);
+                        setupList.Add(item);
+                        k++;
+                    }
+                    else if (itemDat.Part1.Material.ValidFilters.Contains(_currentItemFilter))
+                    {
+                        Debug.Log("InventoryScript.setupItemInventory(): " + itemDat.ItemName + " Part1.Material has the filter: " + _currentItemFilter.FilterName);
+                        itemStorageSetup(itemDat, k);
+                        setupList.Add(item);
+                        k++;
+                    }
+                    else
+                        holderList.Add(item);
+                }
+            }
+            foreach (GameObject item in holderList)
+            {
+                if (item != null)
+                {
+                    ItemDataStorage itemDat = item.GetComponent<ItemDataStorage>();
+                    itemStorageSetup(itemDat, k);
+                }
+                k++;
+            }
+            holderList.Clear();
+            setupList.Clear();
+        }
+        
         _descriptionText1.text = "";
         _descriptionText2.text = "";
     }
 
-    public void setupPartInventory()
+    private void itemStorageSetup(ItemDataStorage dat, int k)
     {
-        setupPartInventory(false, 0);
+        // instatiate the button prefab
+        tempButtonList = Instantiate(_itemInfoPrefab);
+        tempButtonList.transform.SetParent(_itemsButtonParent.transform, false);
+        // set up button text
+        TextMeshProUGUI t = tempButtonList.GetComponentInChildren<TextMeshProUGUI>();
+        t.text = dat.Part1.MaterialName + " " + dat.ItemName;
+        // set button data
+        tempButtonList.GetComponent<InventoryButton>().setIsNew(dat.IsNew);
+        tempButtonList.GetComponent<InventoryButton>().setIsForQuest(dat.IsForQuest);
+        tempButtonList.GetComponent<InventoryButton>().setIsEnchanted(dat.IsEnchanted);
+
+        int j = _inventoryData.ItemInventory.IndexOf(dat.gameObject);
+
+        // add button to list
+        InsertItemButton(tempButtonList, j);
     }
-    public void setupPartInventory(bool isRemoving, int state)
+    /* Old Code for itemStorageSetup()
+    // instatiate the button prefab
+    tempButtonList = Instantiate(_itemInfoPrefab);
+    tempButtonList.transform.SetParent(_itemsButtonParent.transform, false);
+    // set up button text
+    TextMeshProUGUI t = tempButtonList.GetComponentInChildren<TextMeshProUGUI>();
+    t.text = itemData.Part1.MaterialName + " " + itemData.ItemName;
+    // set button data
+    tempButtonList.GetComponent<InventoryButton>().setIsNew(itemData.IsNew);
+    tempButtonList.GetComponent<InventoryButton>().setIsForQuest(itemData.IsForQuest);
+    tempButtonList.GetComponent<InventoryButton>().setIsEnchanted(itemData.IsEnchanted);
+
+    // add button to list
+    InsertItemButton(tempButtonList, k);
+    */
+
+    public void setupPartInventory()
     {
         clearPartButtonList();
         _selectedPart = null;
 
-        int k = 0;
-        foreach (GameObject part in _inventoryData.PartInventory)
+        if (_currentPartFilter.Equals(_partsFilterData[0])) // if current filter is Defualt
         {
-            if (part != null)
+            int k = 0;
+            foreach (GameObject part in _inventoryData.PartInventory)
             {
-                // get reference to ItemDataStorage script
-                PartDataStorage partData = part.GetComponent<PartDataStorage>();
-
-                // instantiate the button prefab
-                tempButtonList = Instantiate(_partInfoPrefab);
-                tempButtonList.transform.SetParent(_partsButtonParent.transform, false);
-
-                // set up button text
-                TextMeshProUGUI t = tempButtonList.GetComponentInChildren<TextMeshProUGUI>();
-                t.text = partData.MaterialName + " " + partData.PartName;
-
-                // set button data
-                //tempButtonList.GetComponent<InventoryButton>().setIsNew(partData.IsNew);
-                tempButtonList.GetComponent<InventoryButton>().setIsEnchanted(partData.IsHoldingEnchant);
-
-                // if removing part from inventory
-                if (isRemoving == true)
+                if (part != null)
                 {
-                    if (state == 3 || state == 4 || state == 5)
-                    {
-                        if (checkIfPartIsValid(state, partData))
-                            tempButtonList.GetComponentInChildren<Button>().interactable = true;
-                        else
-                            tempButtonList.GetComponentInChildren<Button>().interactable = false;
-                    }
-                }
+                    // get reference to ItemDataStorage script
+                    PartDataStorage partData = part.GetComponent<PartDataStorage>();
 
-                // add button to list
-                InsertPartButton(tempButtonList, k);
+                    partStorageSetup(partData, k);
+                }
+                k++;
             }
-            k++;
         }
+        else if (_currentPartFilter.Equals(_partsFilterData[1])) // if current filter is for craft
+        {
+            int k = 0;
+            if (_craftControlRef.checkItemRecipe() != null)
+            {
+                Debug.Log("recipe selected!");
+                foreach (GameObject part in _inventoryData.PartInventory)
+                {
+                    PartDataStorage partData = part.GetComponent<PartDataStorage>();
+                    if (_craftControlRef.checkItemRecipe().ValidParts1.Contains(partData.RecipeData))
+                    {
+                        partStorageSetup(partData, k);
+                        k++;
+                    }
+                    else if (_craftControlRef.checkItemRecipe().ValidParts2.Contains(partData.RecipeData))
+                    {
+                        partStorageSetup(partData, k);
+                        k++;
+                    }
+                    else if (_craftControlRef.checkItemRecipe().ValidParts3.Contains(partData.RecipeData))
+                    {
+                        partStorageSetup(partData, k);
+                        k++;
+                    }
+                    else
+                        holderList.Add(part);
+                }
+                foreach (GameObject part in holderList)
+                {
+                    if (part != null)
+                    {
+                        PartDataStorage partData = part.GetComponent<PartDataStorage>();
+                        partStorageSetup(partData, k);
+                    }
+                    k++;
+                }
+            }
+            else
+            {
+                Debug.Log("no receipe selected");
+                foreach (GameObject part in _inventoryData.PartInventory)
+                {
+                    if (part != null)
+                    {
+                        // get reference to ItemDataStorage script
+                        PartDataStorage partData = part.GetComponent<PartDataStorage>();
+                        partStorageSetup(partData, k);
+                    }
+                    k++;
+                }
+            }
+            holderList.Clear();
+            setupList.Clear();
+        }
+        else
+        {
+            int k = 0;
+            foreach (GameObject part in _inventoryData.PartInventory)
+            {
+                if (part != null)
+                {
+                    PartDataStorage partDat = part.GetComponent<PartDataStorage>();
+                    if (partDat.Material.ValidFilters.Contains(_currentPartFilter))
+                    {
+                        Debug.Log("InventoryScript.setupPartInventory(): " + partDat.PartName + ".Material has the filter: " + _currentPartFilter.FilterName);
+                        partStorageSetup(partDat, k);
+                        setupList.Add(part);
+                    }
+                    else
+                        holderList.Add(part);
+                }
+                k++;
+            }
+            foreach (GameObject part in holderList)
+            {
+                if (part != null)
+                {
+                    PartDataStorage partDat = part.GetComponent<PartDataStorage>();
+                    partStorageSetup(partDat, k);
+                }
+                k++;
+            }
+            holderList.Clear();
+            setupList.Clear();
+        }
+
         _descriptionText1.text = "new text";
     }
+
+    private void partStorageSetup(PartDataStorage dat, int k)
+    {
+        // get reference to ItemDataStorage script
+        PartDataStorage partData = dat.GetComponent<PartDataStorage>();
+
+        // instantiate the button prefab
+        tempButtonList = Instantiate(_partInfoPrefab);
+        tempButtonList.transform.SetParent(_partsButtonParent.transform, false);
+
+        // set up button text
+        TextMeshProUGUI t = tempButtonList.GetComponentInChildren<TextMeshProUGUI>();
+        t.text = partData.MaterialName + " " + partData.PartName;
+
+        // set button data
+        //tempButtonList.GetComponent<InventoryButton>().setIsNew(partData.IsNew);
+        tempButtonList.GetComponent<InventoryButton>().setIsEnchanted(partData.IsHoldingEnchant);
+
+        int j = _inventoryData.PartInventory.IndexOf(dat.gameObject);
+
+        // add button to list
+        InsertPartButton(tempButtonList, j);
+    }
+    /* Old code for partStorageSetup()
+    // get reference to ItemDataStorage script
+    PartDataStorage partData = part.GetComponent<PartDataStorage>();
+
+    // instantiate the button prefab
+    tempButtonList = Instantiate(_partInfoPrefab);
+    tempButtonList.transform.SetParent(_partsButtonParent.transform, false);
+
+    // set up button text
+    TextMeshProUGUI t = tempButtonList.GetComponentInChildren<TextMeshProUGUI>();
+    t.text = partData.MaterialName + " " + partData.PartName;
+
+    // set button data
+    //tempButtonList.GetComponent<InventoryButton>().setIsNew(partData.IsNew);
+    tempButtonList.GetComponent<InventoryButton>().setIsEnchanted(partData.IsHoldingEnchant);
+
+    // add button to list
+    //InsertPartButton(tempButtonList, k);
+    */
 
     public void setupMatInventory()
     {
@@ -537,6 +707,7 @@ public class InventoryScript : MonoBehaviour
         itemDataStorageTemp.name = item.Part1.Material.Material + " " + item.ItemName;
         itemDataScriptRef.setItemName(item.ItemName);
         itemDataScriptRef.setTotalValue(item.TotalValue);
+        itemDataScriptRef.ItemRecipeRef = item;
         itemDataScriptRef.setTotalStrenght(item.TotalStrength);
         itemDataScriptRef.setTotalDex(item.TotalDextarity);
         itemDataScriptRef.setTotalInt(item.TotalIntelegence);
@@ -1383,6 +1554,8 @@ public class InventoryScript : MonoBehaviour
         else
             i += 1;
         _currentItemFilter = _itemsFilterData[i];
+
+        setupItemInventory();
     }
     public void nextPartFilter()
     {
@@ -1393,6 +1566,7 @@ public class InventoryScript : MonoBehaviour
             p += 1;
         _currentPartFilter = _partsFilterData[p];
 
+        setupPartInventory();
     }
     public void nextMatFilter()
     {

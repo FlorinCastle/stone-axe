@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewMaterialData", menuName = "ScriptableObjects/MaterialData", order = 51)]
@@ -25,28 +26,14 @@ public class MaterialData : ScriptableObject
     public int _addedDextarity;
     //[SerializeField]
     public int _addedIntelligence;
-    /*
-    public int AddMat(int value) { _quantity += value; return value; }
-    public int RemoveMat(int value)
-    {
-        if (CanRemoveAmount(value))
-            _quantity -= value;
-        return _quantity;
-    }
-
-    public bool CanRemoveAmount(int value)
-    {
-        if (value <= _quantity)
-            return true;
-        return false;
-    }
-    */
+    public List<FilterData> _validFilters;
 
     public int LevelRequirement { get => _levelRequirement; }
     public string Material { get => _materialName; }
     public string MaterialType { get => _materialType.ToString(); }
     public string SubMaterialType { get => _subMatType.ToString(); }
     //public int MaterialCount { get => _quantity; set => _quantity = value; }
+    public List<FilterData> ValidFilters { get => _validFilters; }
     public int BaseCostPerUnit { get => _baseCostPerUnit; }
     public int AddedStrength { get => _addedStrength; }
     public int AddedDextarity { get => _addedDextarity; }

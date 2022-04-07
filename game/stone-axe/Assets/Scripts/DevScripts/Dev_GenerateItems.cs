@@ -15,6 +15,7 @@ public class Dev_GenerateItems : MonoBehaviour
 
     void Start()
     {
+        /*
         if (_generateItemRef != null)
         {
             for (int i = 0; i < _itemsToGenerateCount; i++)
@@ -24,6 +25,8 @@ public class Dev_GenerateItems : MonoBehaviour
                 //Debug.Log("Creating item #" + (i+1));
             }
         }
+        */
+        StartCoroutine(generateItems());
         if (_generateItemRef != null)
         {
             for (int j = 0; j < _totalEnchantsToGenerate; j++)
@@ -42,5 +45,19 @@ public class Dev_GenerateItems : MonoBehaviour
                 //Debug.Log("Creating and disassembling item #" + (p+1));
             }
         }
+    }
+
+    private IEnumerator generateItems()
+    {
+        if (_generateItemRef != null)
+        {
+            for (int i = 0; i < _itemsToGenerateCount; i++)
+            {
+                _generateItemRef.GenerateRandomItem();
+                _generateItemRef.forceInsertItem();
+                //Debug.Log("Creating item #" + (i+1));
+            }
+        }
+        yield return null;
     }
 }

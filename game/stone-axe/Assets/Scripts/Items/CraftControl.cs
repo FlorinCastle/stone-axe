@@ -266,20 +266,25 @@ public class CraftControl : MonoBehaviour
         _recipeDropdown.AddOptions(recipeDropOptions);
     }
 
+    /* Old code? I think?
     public void invPart1Setup()
     {
-        _inventoryControlReference.setupPartInventory(true, 3);
+        //_inventoryControlReference.setupPartInventory(true, 3);
+        _inventoryControlReference.setupPartInventory();
     }
 
     public void invPart2Setup()
     {
-        _inventoryControlReference.setupPartInventory(true, 4);
+        //_inventoryControlReference.setupPartInventory(true, 4);
+        _inventoryControlReference.setupPartInventory();
     }
 
     public void invPart3Setup()
     {
-        _inventoryControlReference.setupPartInventory(true, 5);
+        //_inventoryControlReference.setupPartInventory(true, 5);
+        _inventoryControlReference.setupPartInventory();
     }
+    */
 
     public void invMatSetup() { _inventoryControlReference.setupMatInventory(true, 6); }
     public void invEnchSetup() { _inventoryControlReference.setupEnchantInventory(true, 7); }

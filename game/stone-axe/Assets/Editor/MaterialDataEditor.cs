@@ -13,8 +13,8 @@ public class MaterialDataEditor : Editor
         subClothType,
         matName,
         levelRequirement,
-        //quantity,
         baseCostPerUnit,
+        validFilters,
         addedStr,
         addedDex,
         addedInt;
@@ -23,12 +23,11 @@ public class MaterialDataEditor : Editor
     {
         baseMatType = serializedObject.FindProperty("_materialType");
         subMatType = serializedObject.FindProperty("_subMatType");
-        //subMetalType = MaterialData.;
 
         matName = serializedObject.FindProperty("_materialName");
         levelRequirement = serializedObject.FindProperty("_levelRequirement");
-        //quantity = serializedObject.FindProperty("_quantity");
         baseCostPerUnit = serializedObject.FindProperty("_baseCostPerUnit");
+        validFilters = serializedObject.FindProperty("_validFilters");
         addedStr = serializedObject.FindProperty("_addedStrength");
         addedDex = serializedObject.FindProperty("_addedDextarity");
         addedInt = serializedObject.FindProperty("_addedIntelligence");
@@ -58,6 +57,7 @@ public class MaterialDataEditor : Editor
         EditorGUILayout.PropertyField(levelRequirement, new GUIContent("Level Requirement"));
         //EditorGUILayout.PropertyField(quantity, new GUIContent("Quantity"));
         EditorGUILayout.PropertyField(baseCostPerUnit, new GUIContent("Base Cost Per Unit"));
+        EditorGUILayout.PropertyField(validFilters, new GUIContent("Valid Filters"));
         EditorGUILayout.LabelField("Material Stats", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(addedStr, new GUIContent("Added Strength"));
         EditorGUILayout.PropertyField(addedDex, new GUIContent("Added Dextarity"));

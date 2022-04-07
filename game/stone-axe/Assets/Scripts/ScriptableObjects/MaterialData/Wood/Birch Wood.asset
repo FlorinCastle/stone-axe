@@ -20,3 +20,5 @@ MonoBehaviour:
   _addedStrength: 1
   _addedDextarity: 4
   _addedIntelligence: 2
+  _validFilters:
+  - {fileID: 11400000, guid: 41a74dd2ea47c6f42b361565e865b3aa, type: 2}
