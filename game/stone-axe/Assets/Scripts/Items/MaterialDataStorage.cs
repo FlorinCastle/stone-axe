@@ -37,6 +37,7 @@ public class MaterialDataStorage : MonoBehaviour
     public int AddMat(int value) { _quantity += value; return value; }
     public int RemoveMat(int value)
     {
+        Debug.Log(_materialName + " - MaterialDataStorage.RemoveMat(): removing mat amount: " + value);
         if (CanRemoveAmount(value))
             _quantity -= value;
         return _quantity;

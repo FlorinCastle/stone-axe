@@ -1804,6 +1804,17 @@ MonoBehaviour:
   _woodMaterials: []
   _clothMaterials: []
   _gemstoneMaterials: []
+--- !u!114 &686137002 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4231724336933524692, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+  m_PrefabInstance: {fileID: 7485012191131071712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &696845878 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3338347829840685397, guid: 3781c41004e2121428bad7173f24d3d0, type: 3}
@@ -3498,15 +3509,10 @@ MonoBehaviour:
   _UIControlRef: {fileID: 1734993353}
   _inventoryData: {fileID: 0}
   _craftControlRef: {fileID: 1221333022}
-  _removingStatus: 0
   _itemButtonList: []
   _partButtonList: []
   _materialButtonList: []
   _enchantButtonList: []
-  _headerButtonItems: {fileID: 0}
-  _headerButtonParts: {fileID: 0}
-  _headerButtonMaterials: {fileID: 0}
-  _headerButtonEnchants: {fileID: 0}
   _descriptionText1: {fileID: 2079557043}
   _descriptionText2: {fileID: 1183857700}
   _itemsInvScroll: {fileID: 46187953}
@@ -5292,7 +5298,7 @@ MonoBehaviour:
   partsScrollView: {fileID: 1303400238}
   _partsSortText: {fileID: 1810265769}
   matsScrollView: {fileID: 661566310}
-  _matsSortText: {fileID: 1779402561}
+  _matsSortText: {fileID: 686137002}
   enchantsScrollView: {fileID: 656693665}
   _enchantsSortText: {fileID: 1309805511}
   marketEconomicSubUI: {fileID: 262306977}
@@ -5973,17 +5979,6 @@ Transform:
   m_Father: {fileID: 658161906}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1779402561 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5268909197968509817, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
-  m_PrefabInstance: {fileID: 7485012191131071712}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1784629680 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4375706234229936638, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}

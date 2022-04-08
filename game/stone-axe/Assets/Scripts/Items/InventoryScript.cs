@@ -23,7 +23,7 @@ public class InventoryScript : MonoBehaviour
     private InventoryData _inventoryData;
     [SerializeField]
     private CraftControl _craftControlRef;
-
+    /*
     private enum removingItemStatusEnum
     {
         NotRemoving,            // int 0
@@ -35,27 +35,27 @@ public class InventoryScript : MonoBehaviour
         RemovingToCraftMat,     // int 6
         RemovingToEnchant       // int 7
     }
+    */
     [Header("Data")]
-    [SerializeField] private removingItemStatusEnum _removingStatus;
+    //[SerializeField] private removingItemStatusEnum _removingStatus;
 
     // item inventory
-    //[SerializeField] private List<GameObject> _itemInventoryData;
     [SerializeField] private List<GameObject> _itemButtonList;
     // part inventory
-    //[SerializeField] private List<GameObject> _partInventoryData;
     [SerializeField] private List<GameObject> _partButtonList;
     // material inventory
-    //[SerializeField] private List<MaterialData> materialInventory;
     [SerializeField] private List<GameObject> _materialButtonList;
     // enchant inventory
-    //[SerializeField] private List<GameObject> _enchantInventoryData;
     [SerializeField] private List<GameObject> _enchantButtonList;
 
+    //[SerializeField] public Color _validFilterColor;
+
+
     [Header("UI References")]
-    [SerializeField] private Button _headerButtonItems;
-    [SerializeField] private Button _headerButtonParts;
-    [SerializeField] private Button _headerButtonMaterials;
-    [SerializeField] private Button _headerButtonEnchants;
+    // [SerializeField] private Button _headerButtonItems;
+    // [SerializeField] private Button _headerButtonParts;
+    // [SerializeField] private Button _headerButtonMaterials;
+    // [SerializeField] private Button _headerButtonEnchants;
     [SerializeField] private TextMeshProUGUI _descriptionText1;
     [SerializeField] private TextMeshProUGUI _descriptionText2;
     [Space(5)]
@@ -135,7 +135,7 @@ public class InventoryScript : MonoBehaviour
                     // get reference to ItemDataStorage script
                     ItemDataStorage itemData = item.GetComponent<ItemDataStorage>();
 
-                    itemStorageSetup(itemData, k);
+                    itemStorageSetup(itemData, k, true);
                 }
                 k++;
             }
@@ -152,14 +152,14 @@ public class InventoryScript : MonoBehaviour
                     if (itemDat.ItemRecipeRef.ValidFilters.Contains(_currentItemFilter))
                     {
                         Debug.Log("InventoryScript.setupItemInventory(): " + itemDat.ItemName + " has the filter: " + _currentItemFilter.FilterName);
-                        itemStorageSetup(itemDat, k);
+                        itemStorageSetup(itemDat, k, true);
                         setupList.Add(item);
                         k++;
                     }
                     else if (itemDat.Part1.Material.ValidFilters.Contains(_currentItemFilter))
                     {
                         Debug.Log("InventoryScript.setupItemInventory(): " + itemDat.ItemName + " Part1.Material has the filter: " + _currentItemFilter.FilterName);
-                        itemStorageSetup(itemDat, k);
+                        itemStorageSetup(itemDat, k, true);
                         setupList.Add(item);
                         k++;
                     }
@@ -172,7 +172,7 @@ public class InventoryScript : MonoBehaviour
                 if (item != null)
                 {
                     ItemDataStorage itemDat = item.GetComponent<ItemDataStorage>();
-                    itemStorageSetup(itemDat, k);
+                    itemStorageSetup(itemDat, k, false);
                 }
                 k++;
             }
@@ -184,7 +184,7 @@ public class InventoryScript : MonoBehaviour
         _descriptionText2.text = "";
     }
 
-    private void itemStorageSetup(ItemDataStorage dat, int k)
+    private void itemStorageSetup(ItemDataStorage dat, int k, bool isFilterValid)
     {
         // instatiate the button prefab
         tempButtonList = Instantiate(_itemInfoPrefab);
@@ -196,6 +196,11 @@ public class InventoryScript : MonoBehaviour
         tempButtonList.GetComponent<InventoryButton>().setIsNew(dat.IsNew);
         tempButtonList.GetComponent<InventoryButton>().setIsForQuest(dat.IsForQuest);
         tempButtonList.GetComponent<InventoryButton>().setIsEnchanted(dat.IsEnchanted);
+
+        if (isFilterValid == true)
+            tempButtonList.GetComponent<InventoryButton>().setAlpha(1f);
+        else if (isFilterValid == false)
+            tempButtonList.GetComponent<InventoryButton>().setAlpha(.6f);
 
         int j = _inventoryData.ItemInventory.IndexOf(dat.gameObject);
 
@@ -232,8 +237,7 @@ public class InventoryScript : MonoBehaviour
                 {
                     // get reference to ItemDataStorage script
                     PartDataStorage partData = part.GetComponent<PartDataStorage>();
-
-                    partStorageSetup(partData, k);
+                    partStorageSetup(partData, k, true);
                 }
                 k++;
             }
@@ -249,17 +253,17 @@ public class InventoryScript : MonoBehaviour
                     PartDataStorage partData = part.GetComponent<PartDataStorage>();
                     if (_craftControlRef.checkItemRecipe().ValidParts1.Contains(partData.RecipeData))
                     {
-                        partStorageSetup(partData, k);
+                        partStorageSetup(partData, k, true);
                         k++;
                     }
                     else if (_craftControlRef.checkItemRecipe().ValidParts2.Contains(partData.RecipeData))
                     {
-                        partStorageSetup(partData, k);
+                        partStorageSetup(partData, k, true);
                         k++;
                     }
                     else if (_craftControlRef.checkItemRecipe().ValidParts3.Contains(partData.RecipeData))
                     {
-                        partStorageSetup(partData, k);
+                        partStorageSetup(partData, k, true);
                         k++;
                     }
                     else
@@ -270,21 +274,21 @@ public class InventoryScript : MonoBehaviour
                     if (part != null)
                     {
                         PartDataStorage partData = part.GetComponent<PartDataStorage>();
-                        partStorageSetup(partData, k);
+                        partStorageSetup(partData, k, false);
                     }
                     k++;
                 }
             }
             else
             {
-                Debug.Log("no receipe selected");
+                Debug.Log("InventoryScript.setupPartInventory(): no receipe selected");
                 foreach (GameObject part in _inventoryData.PartInventory)
                 {
                     if (part != null)
                     {
                         // get reference to ItemDataStorage script
                         PartDataStorage partData = part.GetComponent<PartDataStorage>();
-                        partStorageSetup(partData, k);
+                        partStorageSetup(partData, k, true);
                     }
                     k++;
                 }
@@ -303,7 +307,7 @@ public class InventoryScript : MonoBehaviour
                     if (partDat.Material.ValidFilters.Contains(_currentPartFilter))
                     {
                         Debug.Log("InventoryScript.setupPartInventory(): " + partDat.PartName + ".Material has the filter: " + _currentPartFilter.FilterName);
-                        partStorageSetup(partDat, k);
+                        partStorageSetup(partDat, k, true);
                         setupList.Add(part);
                     }
                     else
@@ -316,7 +320,7 @@ public class InventoryScript : MonoBehaviour
                 if (part != null)
                 {
                     PartDataStorage partDat = part.GetComponent<PartDataStorage>();
-                    partStorageSetup(partDat, k);
+                    partStorageSetup(partDat, k, false);
                 }
                 k++;
             }
@@ -327,7 +331,7 @@ public class InventoryScript : MonoBehaviour
         _descriptionText1.text = "new text";
     }
 
-    private void partStorageSetup(PartDataStorage dat, int k)
+    private void partStorageSetup(PartDataStorage dat, int k, bool isFilterValid)
     {
         // get reference to ItemDataStorage script
         PartDataStorage partData = dat.GetComponent<PartDataStorage>();
@@ -343,6 +347,11 @@ public class InventoryScript : MonoBehaviour
         // set button data
         //tempButtonList.GetComponent<InventoryButton>().setIsNew(partData.IsNew);
         tempButtonList.GetComponent<InventoryButton>().setIsEnchanted(partData.IsHoldingEnchant);
+
+        if (isFilterValid == true)
+            tempButtonList.GetComponent<InventoryButton>().setAlpha(1f);
+        else if (isFilterValid == false)
+            tempButtonList.GetComponent<InventoryButton>().setAlpha(.6f);
 
         int j = _inventoryData.PartInventory.IndexOf(dat.gameObject);
 
@@ -371,55 +380,154 @@ public class InventoryScript : MonoBehaviour
 
     public void setupMatInventory()
     {
-        setupMatInventory(false, 0);
-    }
-    public void setupMatInventory(bool isRemoving, int state)
-    {
+        clearMatButtonList();
         _selectedMat = null;
 
-        int m = 0;
-        foreach (GameObject mat in _inventoryData.MaterialInventory)
+        if (_currentMatFilter.Equals(_matsFilterData[0])) // if current filter is Default
         {
-            if (mat.GetComponent<MaterialDataStorage>() != null)
+            int m = 0;
+            foreach (GameObject mat in _inventoryData.MaterialInventory)
             {
-                MaterialDataStorage matStore = mat.GetComponent<MaterialDataStorage>();
-                // if level req is met
-                //Debug.LogWarning("InvScript - matStore.LevelRequirement of " + matStore.Material + ": " + matStore.LevelRequirement);
-                //Debug.LogWarning("InvScript - _gameMaster.GetLevel: " + _gameMaster.GetLevel);
-                if (matStore.LevelRequirement <= _gameMaster.GetLevel)
+                if (mat.GetComponent<MaterialDataStorage>() != null)
                 {
-                    // instantiate the button prefab
-                    tempButtonList = Instantiate(_matInfoPrefab);
-                    tempButtonList.transform.SetParent(_matsButtonParent.transform, false);
-
-                    // set up the button text
-                    tempButtonList.GetComponentInChildren<MaterialButton>().setMatInfoText(matStore);
-
-                    // set material
-                    tempButtonList.GetComponentInChildren<MaterialButton>().MaterialData = matStore.MatDataRef;
-
-                    // if removing from inventory
-                    if (isRemoving == true)
+                    MaterialDataStorage matStore = mat.GetComponent<MaterialDataStorage>();
+                    // if level req is met
+                    if (matStore.LevelRequirement <= _gameMaster.GetLevel)
                     {
-                        if (state == 6)
-                        {
-                            if (checkIfMatIsValid(state, matStore.MatDataRef))
-                                tempButtonList.GetComponentInChildren<Button>().interactable = true;
-                            else
-                                tempButtonList.GetComponentInChildren<Button>().interactable = false;
-                        }
+                        matStorageSetup(matStore, m, true);
+                        m++;
                     }
-                    // add button to list
-                    InsertMatButton(tempButtonList, m);
-                    m++;
                 }
             }
-            //m++;
         }
-        _descriptionText1.text = "new text";
+        else if (_currentMatFilter.Equals(_matsFilterData[1]))
+        {
+            int m = 0;
+            if (_craftControlRef.checkPartRecipe() != null)
+            {
+                foreach (GameObject mat in _inventoryData.MaterialInventory)
+                {
+                    MaterialDataStorage matStore = mat.GetComponent<MaterialDataStorage>();
+                    if (_craftControlRef.checkPartRecipe().ValidMaterialData.Contains(matStore.MatDataRef))
+                    {
+                        if (matStore.LevelRequirement <= _gameMaster.GetLevel)
+                        {
+                            matStorageSetup(matStore, m, true);
+                            m++;
+                        }
+                    }
+                    else
+                        holderList.Add(mat);
+                }
+                foreach (GameObject mat in holderList)
+                {
+                    if (mat != null)
+                    {
+                        MaterialDataStorage matStore = mat.GetComponent<MaterialDataStorage>();
+                        if (matStore.LevelRequirement <= _gameMaster.GetLevel)
+                        {
+                            matStorageSetup(matStore, m, false);
+                            m++;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("InventoryScript.setupMatInventory(): no receipe selected");
+                foreach (GameObject mat in _inventoryData.MaterialInventory)
+                {
+                    if (mat.GetComponent<MaterialDataStorage>() != null)
+                    {
+                        MaterialDataStorage matStore = mat.GetComponent<MaterialDataStorage>();
+                        // if level req is met
+                        if (matStore.LevelRequirement <= _gameMaster.GetLevel)
+                        {
+                            matStorageSetup(matStore, m, true);
+                            m++;
+                        }
+                    }
+                }
 
+            }
+            holderList.Clear();
+            setupList.Clear();
+        }
+        else
+        {
+            int m = 0;
+            foreach (GameObject mat in _inventoryData.MaterialInventory)
+            {
+                MaterialDataStorage matStore = mat.GetComponent<MaterialDataStorage>();
+                if (matStore.MatDataRef.ValidFilters.Contains(_currentMatFilter))
+                {
+                    // if level req is met
+                    if (matStore.LevelRequirement <= _gameMaster.GetLevel)
+                    {
+                        Debug.Log("InventoryScript.setupMatInventory(): " + matStore.Material + ".Material has the filter: " + _currentMatFilter.FilterName);
+                        matStorageSetup(matStore, m, true);
+                        m++;
+                    }
+                }
+                else
+                    holderList.Add(mat);
+            }
+            foreach (GameObject mat in holderList)
+            {
+                if (mat != null)
+                {
+                    MaterialDataStorage matStore = mat.GetComponent<MaterialDataStorage>();
+                    if (matStore.LevelRequirement <= _gameMaster.GetLevel)
+                    {
+                        matStorageSetup(matStore, m, false);
+                        m++;
+                    }
+                }
+            }
+
+            holderList.Clear();
+            setupList.Clear();
+        }
+
+        _descriptionText1.text = "new text";
     }
 
+    private void matStorageSetup(MaterialDataStorage dat, int m, bool isFilterValid)
+    {
+        // instantiate the button prefab
+        tempButtonList = Instantiate(_matInfoPrefab);
+        tempButtonList.transform.SetParent(_matsButtonParent.transform, false);
+
+        // set up the button text
+        tempButtonList.GetComponentInChildren<MaterialButton>().setMatInfoText(dat);
+
+        if (isFilterValid == true)
+            tempButtonList.GetComponent<MaterialButton>().setAlpha(1f);
+        else if (isFilterValid == false)
+            tempButtonList.GetComponent<MaterialButton>().setAlpha(.6f);
+
+        // set material
+        tempButtonList.GetComponentInChildren<MaterialButton>().MaterialData = dat.MatDataRef;
+
+        int j = _inventoryData.MaterialInventory.IndexOf(dat.gameObject);
+
+        // add button to list
+        InsertMatButton(tempButtonList, j);
+    }
+    /* Old code for matStorageSetup()
+    // instantiate the button prefab
+    tempButtonList = Instantiate(_matInfoPrefab);
+    tempButtonList.transform.SetParent(_matsButtonParent.transform, false);
+
+    // set up the button text
+    tempButtonList.GetComponentInChildren<MaterialButton>().setMatInfoText(matStore);
+
+    // set material
+    tempButtonList.GetComponentInChildren<MaterialButton>().MaterialData = matStore.MatDataRef;
+
+    // add button to list
+    InsertMatButton(tempButtonList, m);
+    */
     public void setupEnchantInventory()
     {
         setupEnchantInventory(false, 0);
@@ -464,6 +572,7 @@ public class InventoryScript : MonoBehaviour
     private ColorBlock PartColorBlock;
     private ColorBlock MaterialColorBlock;
     private ColorBlock EnchantColorBlock;
+    /* old code
     private void setupHeader()
     {
         //Debug.Log("Setting up Inventory Header - current status: " + _removingStatus.ToString());
@@ -522,6 +631,7 @@ public class InventoryScript : MonoBehaviour
         _headerButtonMaterials.colors = MaterialColorBlock;
         _headerButtonEnchants.colors = EnchantColorBlock;
     }
+    */
 
     private string _itemName;
     private string _materials;
@@ -1338,7 +1448,7 @@ public class InventoryScript : MonoBehaviour
             return _selectedEnchant;
         return null;
     }
-
+    /* old code
     private void setStatus(int value)
     {
         //Debug.Log("setStatus - value = " + value);
@@ -1356,7 +1466,7 @@ public class InventoryScript : MonoBehaviour
             Debug.LogWarning("Invalid input status!");
         }
     }
-
+    */
     public void returnSelectedItem()
     {
         // for quest item crafting
@@ -1577,6 +1687,7 @@ public class InventoryScript : MonoBehaviour
             m += 1;
         _currentMatFilter = _matsFilterData[m];
 
+        setupMatInventory();
     }
     public void nextEnchFilter()
     {

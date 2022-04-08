@@ -432,7 +432,7 @@ public class UIControl : MonoBehaviour
     }
     private void setupMatInvFilterUI()
     {
-        _enchantsSortText.text = "sort: " + gameObject.GetComponent<GameMaster>().InvScriptRef.CurrentMatFilter.FilterName;
+        _matsSortText.text = "sort: " + gameObject.GetComponent<GameMaster>().InvScriptRef.CurrentMatFilter.FilterName;
     }
     public void nextMatInvFilter()
     {

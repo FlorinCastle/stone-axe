@@ -266,6 +266,7 @@ MonoBehaviour:
   _itemIndex: 0
   _partIndex: 0
   _enchIndex: 0
+  _buttonImage: {fileID: 4857750357557147657}
   _isNewImage: {fileID: 6784514862389325262}
   _forQuestImage: {fileID: 8645756716396554223}
   _isEnchantedImage: {fileID: 6317877357332990072}

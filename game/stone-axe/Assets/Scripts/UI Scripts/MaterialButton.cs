@@ -13,6 +13,7 @@ public class MaterialButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _matCountText;
 
     [SerializeField] private MaterialData _matRef;
+    [SerializeField] private Image _buttonImage;
 
 
     private void Awake()
@@ -34,6 +35,13 @@ public class MaterialButton : MonoBehaviour
     public void setSelectedMat()
     {
         _invControl.setSelectedMat(_matRef);
+    }
+
+    public void setAlpha(float alpha)
+    {
+        var tempColor = _buttonImage.color;
+        tempColor.a = alpha;
+        _buttonImage.color = tempColor;
     }
 
     public void setMyIndex(int i) { _myButtonIndex = i; }

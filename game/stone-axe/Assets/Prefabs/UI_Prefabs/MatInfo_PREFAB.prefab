@@ -335,6 +335,7 @@ MonoBehaviour:
   _matNameText: {fileID: 6134063406431616118}
   _matCountText: {fileID: 3887997442772391031}
   _matRef: {fileID: 0}
+  _buttonImage: {fileID: 4679955071463453495}
 --- !u!1 &3557794890399832781
 GameObject:
   m_ObjectHideFlags: 0

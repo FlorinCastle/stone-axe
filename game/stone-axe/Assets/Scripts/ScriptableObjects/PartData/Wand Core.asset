@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Wand Core
   m_EditorClassIdentifier: 
   _partName: Wand Core
-  _material: {fileID: 0}
+  _partLevelReq: 0
+  _material: {fileID: 11400000, guid: bc64ff08a64fd02419b35d00f9263aad, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}
   - {fileID: 11400000, guid: 7ba3f56a6cf24c6498a633f016021027, type: 2}
@@ -26,6 +27,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f9ff7a3994c4ed340b791d693187aa9d, type: 2}
   - {fileID: 11400000, guid: 76bd0065f11d4bf4b910a384a801a781, type: 2}
   - {fileID: 11400000, guid: bc64ff08a64fd02419b35d00f9263aad, type: 2}
+  - {fileID: 11400000, guid: 79d7b9558890cde459a3f646d1bc6329, type: 2}
   _validMaterialTypes:
   - Wood
   - Gemstone

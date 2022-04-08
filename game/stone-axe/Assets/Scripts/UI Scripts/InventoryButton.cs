@@ -11,6 +11,7 @@ public class InventoryButton : MonoBehaviour
     [SerializeField] private int _partIndex;
     [SerializeField] private int _enchIndex;
     [Header("References")]
+    [SerializeField] private Image _buttonImage;
     [SerializeField] private GameObject _isNewImage;
     [SerializeField] private GameObject _forQuestImage;
     [SerializeField] private GameObject _isEnchantedImage;
@@ -31,6 +32,13 @@ public class InventoryButton : MonoBehaviour
     public void setIsNew(bool value) { _isNewImage.SetActive(value); }
     public void setIsForQuest(bool value) { _forQuestImage.SetActive(value); }
     public void setIsEnchanted(bool value) { _isEnchantedImage.SetActive(value); }
+
+    public void setAlpha(float alpha)
+    {
+        var tempColor = _buttonImage.color;
+        tempColor.a = alpha;
+        _buttonImage.color = tempColor;
+    }
 
     public void setMyIndex(int i) { _myButtonIndex = i; }
     public int MyIndex { get => _myButtonIndex; }

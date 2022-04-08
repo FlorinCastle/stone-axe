@@ -284,10 +284,10 @@ public class CraftControl : MonoBehaviour
         //_inventoryControlReference.setupPartInventory(true, 5);
         _inventoryControlReference.setupPartInventory();
     }
-    */
 
     public void invMatSetup() { _inventoryControlReference.setupMatInventory(true, 6); }
     public void invEnchSetup() { _inventoryControlReference.setupEnchantInventory(true, 7); }
+    */
 
     public void SelectPart1()
     {
@@ -566,6 +566,7 @@ public class CraftControl : MonoBehaviour
 
             // remove right amount of materials
             _invDataRef.getMaterial(_chosenPartMaterial.Material).RemoveMat(Mathf.RoundToInt(_chosenPartRecipe.UnitsOfMaterialNeeded * materialSkill.getModifiedMatAmount()));
+            _inventoryControlReference.setupMatInventory();
 
             // insert crafted part into inventory script
             _inventoryControlReference.InsertPart(partDataStorageTemp);
