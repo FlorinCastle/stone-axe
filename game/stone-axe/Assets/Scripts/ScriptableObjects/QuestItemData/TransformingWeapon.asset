@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _qItemName: Transforming Weapon
   _qItemLore: A large Sword and Shield that can combine to become a large axe
+  _qItemUnlockLevel: 9
   _qItemPart1: {fileID: 11400000, guid: 5e57fb373a7d5d343a8f58dd3c275d6c, type: 2}
   _qItemPart2: {fileID: 11400000, guid: 60bee362faf67e840b65be712fa59bea, type: 2}
   _qItemPart3: {fileID: 11400000, guid: 0c394eafc001483488e07fe06842f262, type: 2}

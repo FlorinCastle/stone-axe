@@ -15,6 +15,7 @@ MonoBehaviour:
   _qItemName: Futristic Armor
   _qItemLore: Pure metal armor that could potentally have transformative capabilities.
     The wearer should probably be very flexable to use this armor to it's full potental
+  _qItemUnlockLevel: 9
   _qItemPart1: {fileID: 11400000, guid: 4dbc718975fd40c40b54fa407bfa6aa1, type: 2}
   _qItemPart2: {fileID: 11400000, guid: ac371d19494540b47805cf400362dfe3, type: 2}
   _qItemPart3: {fileID: 11400000, guid: 63e61075efb7cf44eb8e25b1382a3fd1, type: 2}

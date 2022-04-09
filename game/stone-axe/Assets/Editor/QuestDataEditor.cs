@@ -55,6 +55,10 @@ public class QuestDataEditor : Editor
         serializedObject.Update();
         //EditorStyles.textArea.wordWrap = true;
 
+        ItemData itemRef = (ItemData)reqItem.objectReferenceValue;
+        MaterialData matRef = (MaterialData)reqMat.objectReferenceValue;
+        QuestItemData qItemRef = (QuestItemData)reqQItem.objectReferenceValue;
+
         EditorGUILayout.PropertyField(questName);
         EditorGUILayout.PropertyField(questType);
         EditorGUILayout.PropertyField(reqLevel, new GUIContent("Unlock Level"));
@@ -69,6 +73,7 @@ public class QuestDataEditor : Editor
 
             case QuestData.questTypeEnum.OCC_Item:
                 EditorGUILayout.PropertyField(reqItem, new GUIContent("Required Item"));
+                reqLevel.intValue = itemRef.ItemLevel;
                 reqMat.objectReferenceValue = null;
                 reqQItem.objectReferenceValue = null;
                 reqCount.intValue = 0;
@@ -81,6 +86,7 @@ public class QuestDataEditor : Editor
                 reqItem.objectReferenceValue = null;
                 reqMat.objectReferenceValue = null;
                 EditorGUILayout.PropertyField(reqQItem, new GUIContent("Required Item"));
+                reqLevel.intValue = qItemRef.QuestItemUnlockLevel;
                 reqCount.intValue = 0;
                 questComplete.boolValue = false;
                 nextQuest.objectReferenceValue = null;
@@ -90,6 +96,7 @@ public class QuestDataEditor : Editor
             case QuestData.questTypeEnum.OD_Material:
                 reqItem.objectReferenceValue = null;
                 EditorGUILayout.PropertyField(reqMat, new GUIContent("Required Material"));
+                reqLevel.intValue = matRef.LevelRequirement;
                 reqQItem.objectReferenceValue = null;
                 EditorGUILayout.PropertyField(reqCount, new GUIContent("Material Count"));
                 questComplete.boolValue = false;
@@ -99,6 +106,7 @@ public class QuestDataEditor : Editor
 
             case QuestData.questTypeEnum.OCC_TotalCrafted:
                 EditorGUILayout.PropertyField(reqItem, new GUIContent("Required Item"));
+                reqLevel.intValue = itemRef.ItemLevel;
                 reqMat.objectReferenceValue = null;
                 reqQItem.objectReferenceValue = null;
                 EditorGUILayout.PropertyField(reqCount, new GUIContent("Item Count"));

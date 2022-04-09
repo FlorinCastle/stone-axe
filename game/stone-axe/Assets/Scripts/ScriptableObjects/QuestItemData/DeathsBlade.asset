@@ -15,6 +15,7 @@ MonoBehaviour:
   _qItemName: Death's Blade
   _qItemLore: A weapon used by Death to shepherd souls onward. The requester's jokes
     are quite chuckleworthy
+  _qItemUnlockLevel: 25
   _qItemPart1: {fileID: 11400000, guid: b903c6f2f49e04545b1b8240924e5e5e, type: 2}
   _qItemPart2: {fileID: 11400000, guid: efa36cf510bc17140aaca20e1a356078, type: 2}
   _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}

@@ -18,6 +18,7 @@ MonoBehaviour:
 
     The otherworldly eye crystal embeded
     where the shaft meets the head seems to be looking for...something. Or somewhere.'
+  _qItemUnlockLevel: 16
   _qItemPart1: {fileID: 11400000, guid: 300b4734fd9a8484cbf9034e96ce4099, type: 2}
   _qItemPart2: {fileID: 11400000, guid: 0c394eafc001483488e07fe06842f262, type: 2}
   _qItemPart3: {fileID: 11400000, guid: 49f0d999a34fb044cacc4c7d5a6c3cb1, type: 2}

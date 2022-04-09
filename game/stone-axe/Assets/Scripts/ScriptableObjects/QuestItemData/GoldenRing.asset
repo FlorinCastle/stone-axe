@@ -15,6 +15,7 @@ MonoBehaviour:
   _qItemName: Golden Ring
   _qItemLore: A ring forged by a madman to use to control the wearers of similer
     rings. A bit warm to the touch
+  _qItemUnlockLevel: 7
   _qItemPart1: {fileID: 11400000, guid: f1788bbd3600cb047a0f4fbfceae01fe, type: 2}
   _qItemPart2: {fileID: 11400000, guid: 527d41718bdee5e4293d614e3c8918c9, type: 2}
   _qItemPart3: {fileID: 11400000, guid: 4543bb96cd0ed64468c9c287671e0483, type: 2}

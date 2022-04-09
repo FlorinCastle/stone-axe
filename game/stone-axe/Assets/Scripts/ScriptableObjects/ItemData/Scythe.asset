@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Scythe
   m_EditorClassIdentifier: 
   _itemName: Scythe
-  _levelRequirement: 21
+  _levelRequirement: 25
   _part1: {fileID: 11400000, guid: b903c6f2f49e04545b1b8240924e5e5e, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: b903c6f2f49e04545b1b8240924e5e5e, type: 2}

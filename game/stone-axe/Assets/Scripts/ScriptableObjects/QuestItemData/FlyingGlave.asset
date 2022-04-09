@@ -15,6 +15,7 @@ MonoBehaviour:
   _qItemName: Flying Glave
   _qItemLore: A Glave weapon that allows for the user to perform great feats of acrobatics
     in the air
+  _qItemUnlockLevel: 14
   _qItemPart1: {fileID: 11400000, guid: 49f0d999a34fb044cacc4c7d5a6c3cb1, type: 2}
   _qItemPart2: {fileID: 11400000, guid: 6b7061e9f995d3340aea8f1b8470bef7, type: 2}
   _qItemPart3: {fileID: 11400000, guid: 6b7061e9f995d3340aea8f1b8470bef7, type: 2}

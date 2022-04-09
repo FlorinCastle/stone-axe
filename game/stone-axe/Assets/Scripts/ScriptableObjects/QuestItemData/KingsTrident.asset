@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _qItemName: King's Trident
   _qItemLore: A weapon wielded by the King of the Ocean
+  _qItemUnlockLevel: 21
   _qItemPart1: {fileID: 11400000, guid: 3243aed26c5f6ec4983acfb212955a01, type: 2}
   _qItemPart2: {fileID: 11400000, guid: c413c0c91c2cdb249a71bea58b9b388f, type: 2}
   _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}

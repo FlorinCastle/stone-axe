@@ -15,7 +15,14 @@ MonoBehaviour:
   _questName: Have Magic Beast Leather
   _questDiscription: have this material
   _questType: 3
+  _questStages: []
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 11400000, guid: d905eb4a07023d74ea23a7f665c720dd, type: 2}
+  _requiredQuestItem: {fileID: 0}
   _requiredCount: 5
   _nextQuest: {fileID: 0}
+  _unlocksQuests: []
+  _requiredPlayerLevel: 16
+  _storyQuestComplete: 0
+  _rewardCurrency: 0
+  _rewardEXP: 0

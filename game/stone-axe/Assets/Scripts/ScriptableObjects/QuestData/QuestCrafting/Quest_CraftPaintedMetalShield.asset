@@ -15,8 +15,14 @@ MonoBehaviour:
   _questName: Craft Painted Metal Shield
   _questDiscription: 
   _questType: 2
+  _questStages: []
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 11400000, guid: 9a7142e62edff5947a351c90839d4f22, type: 2}
   _requiredCount: 0
   _nextQuest: {fileID: 0}
+  _unlocksQuests: []
+  _requiredPlayerLevel: 9
+  _storyQuestComplete: 0
+  _rewardCurrency: 0
+  _rewardEXP: 0

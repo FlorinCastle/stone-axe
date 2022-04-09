@@ -46,6 +46,7 @@ public class ItemDataEditor : Editor
         EditorGUILayout.PropertyField(levelReq, new GUIContent("Level Requirement"));
 
         EditorGUILayout.PropertyField(validPart1);
+
         EditorGUI.BeginDisabledGroup(true);
         EditorGUILayout.PropertyField(part1);
         if (part1.objectReferenceValue == null && validPart1.arraySize > 0)
@@ -68,6 +69,19 @@ public class ItemDataEditor : Editor
             part3.objectReferenceValue = validPart3.GetArrayElementAtIndex(0).objectReferenceValue;
         //EditorGUILayout.PropertyField(part3);
         EditorGUI.EndDisabledGroup();
+
+        PartData part1ref = (PartData)part1.objectReferenceValue;
+        PartData part2ref = (PartData)part2.objectReferenceValue;
+        PartData part3ref = (PartData)part3.objectReferenceValue;
+
+        if (levelReq.intValue <= part1ref.PartLevelReq)
+            levelReq.intValue = part1ref.PartLevelReq;
+        if (levelReq.intValue <= part2ref.PartLevelReq)
+            levelReq.intValue = part2ref.PartLevelReq;
+        if (levelReq.intValue <= part3ref.PartLevelReq)
+            levelReq.intValue = part3ref.PartLevelReq;
+
+        //levelReq = 0;
 
         EditorGUILayout.PropertyField(baseCost);
         EditorGUILayout.PropertyField(baseStr, new GUIContent("Base Strength"));

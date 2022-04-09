@@ -15,6 +15,7 @@ MonoBehaviour:
   _qItemName: Wanderer's Bastard
   _qItemLore: An old bastard sword, well used by an once-young wanderer, now gone,
     but not forgotten
+  _qItemUnlockLevel: 10
   _qItemPart1: {fileID: 11400000, guid: 9a92fa346eeb8b64cb85eb2639ff48b8, type: 2}
   _qItemPart2: {fileID: 11400000, guid: 48a17134923977d46939fce7f931a600, type: 2}
   _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}

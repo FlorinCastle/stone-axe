@@ -62,8 +62,8 @@ public class ItemData : ScriptableObject
         set => _part3 = value;
     }
 
-    public string RandomMaterials { get => _part1.RandomMaterial + "\n" + _part2.RandomMaterial + "\n" + _part3.RandomMaterial; }
-    public string Materials { get => _part1.RandomMaterial + "\n" + _part2.RandomMaterial + "\n" + _part3.RandomMaterial; }
+    //public string RandomMaterials { get => _part1.RandomMaterial + "\n" + _part2.RandomMaterial + "\n" + _part3.RandomMaterial; }
+    //public string Materials { get => _part1.RandomMaterial + "\n" + _part2.RandomMaterial + "\n" + _part3.RandomMaterial; }
     public List<PartData> ValidParts1 { get => _validPart1; }
     public List<PartData> ValidParts2 { get => _validPart2; } 
     public List<PartData> ValidParts3 { get => _validPart3; }

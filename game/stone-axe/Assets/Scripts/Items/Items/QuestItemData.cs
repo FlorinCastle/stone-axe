@@ -11,19 +11,13 @@ public class QuestItemData : ScriptableObject
     [SerializeField]
     private string _qItemLore;
     [SerializeField]
+    private int _qItemUnlockLevel;
+    [SerializeField]
     private ScriptableObject _qItemPart1;
     [SerializeField]
     private ScriptableObject _qItemPart2;
     [SerializeField]
     private ScriptableObject _qItemPart3;
-    /*
-    public ItemData _qItemItem1;
-    public PartData _qItemPart1;
-    public ItemData _qItemItem2;
-    public PartData _qItemPart2;
-    public ItemData _qItemItem3;
-    public PartData _qItemPart3;
-    */
     [SerializeField]
     private int _baseCost;
     [SerializeField]
@@ -36,6 +30,7 @@ public class QuestItemData : ScriptableObject
 
     public string QuestItemName { get => _qItemName; }
     public string QuestItemLore { get => _qItemLore; }
+    public int QuestItemUnlockLevel { get => _qItemUnlockLevel; }
 
     public ScriptableObject ItemPart1 { get => _qItemPart1; }
     public ScriptableObject ItemPart2 { get => _qItemPart2; }

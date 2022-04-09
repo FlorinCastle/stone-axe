@@ -22,6 +22,7 @@ public class SkillManager : MonoBehaviour
     [SerializeField] private ECO_IncSellPrice _ECOIncSellPrice;
     [SerializeField] private ECO_DecBuyPrice _ECODecBuyPrice;
     [SerializeField] private ECO_HaggleSuccess _ECOHaggleSuccess;
+    [SerializeField] private ECO_EnchBoostedChance _ECOEnchBoostedChance;
     [SerializeField] private DIS_DisassembleChance _DISDisassembleChance;
     [SerializeField] private DIS_EnchantRemoval _DISEnchantRemoval;
     [SerializeField] private DIS_HitReduction _DISHitReduction;

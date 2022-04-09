@@ -16,6 +16,7 @@ MonoBehaviour:
   _qItemLore: A perfectly round metal shield painted with a tri-color design. Used
     by a particular guardian knight in defense of first his country, then the people
     wronged by the shortsightedness of said country
+  _qItemUnlockLevel: 9
   _qItemPart1: {fileID: 11400000, guid: d0640d2ae56a64241a508e572e8b0103, type: 2}
   _qItemPart2: {fileID: 11400000, guid: 7edf5f63ae38079448e1da1af9cc66e1, type: 2}
   _qItemPart3: {fileID: 11400000, guid: 5d102162b4ad7a748bc2a31b842bafef, type: 2}

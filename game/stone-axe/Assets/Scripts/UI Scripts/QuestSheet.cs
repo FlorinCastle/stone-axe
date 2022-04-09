@@ -44,7 +44,7 @@ public class QuestSheet : MonoBehaviour
         if (_questRef != null)
         {
             _headerText.text = _questRef.QuestName;
-            _bodyText.text = "quest tpe: " + _questRef.QuestType + "\n\n" + _questRef.QuestDiscription;
+            _bodyText.text = "quest type: " + _questRef.QuestType + "\n\n" + _questRef.QuestDiscription + "\n\nquest level: " + _questRef.RequiredPlayerLevel;
             _selfButtonRef.interactable = true;
         }
         else

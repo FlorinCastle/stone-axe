@@ -41,14 +41,42 @@ public class GenerateItem : MonoBehaviour
     // setup for level restrictions yet
     public void GenerateRandomItem()
     {
-        //Debug.LogWarning("Implement level locking here!");
+        // get a random item that is level complient
         _generatedItem = itemScript.chooseItem();
         do
         {
             _generatedItem = itemScript.chooseItem();
         } while (_generatedItem.ItemLevel > _gameMasterRef.GetLevel);
 
+        // get materials
+        int ranMatP1Int = 0;
+        do
+        {
+            ranMatP1Int = Random.Range(0, _generatedItem.Part1.ValidMaterialData.Count);
+            _generatedItem.Part1.Material = _generatedItem.Part1.ValidMaterialData[ranMatP1Int];
+        } while (_generatedItem.Part1.ValidMaterialData[ranMatP1Int].LevelRequirement > _gameMasterRef.GetLevel);
+        int ranMatP2Int = 0;
+        do
+        {
+            ranMatP2Int = Random.Range(0, _generatedItem.Part2.ValidMaterialData.Count);
+            _generatedItem.Part2.Material = _generatedItem.Part2.ValidMaterialData[ranMatP2Int];
+        } while (_generatedItem.Part2.ValidMaterialData[ranMatP2Int].LevelRequirement > _gameMasterRef.GetLevel);
+        int ranMatP3Int = 0;
+        do
+        {
+            ranMatP3Int = Random.Range(0, _generatedItem.Part3.ValidMaterialData.Count);
+            _generatedItem.Part3.Material = _generatedItem.Part3.ValidMaterialData[ranMatP3Int];
+        } while (_generatedItem.Part3.ValidMaterialData[ranMatP3Int].LevelRequirement > _gameMasterRef.GetLevel);
+
+
+        _generatedItem.Part1.Material = _generatedItem.Part1.ValidMaterialData[ranMatP1Int];
+        _generatedItem.Part2.Material = _generatedItem.Part2.ValidMaterialData[ranMatP2Int];
+        _generatedItem.Part3.Material = _generatedItem.Part3.ValidMaterialData[ranMatP3Int];
+
+
+        // get chance of item being enchanted
         int ranEnchChance = Random.Range(0, 1000);
+        Debug.LogWarning("TODO - GenerateItem.GenerateRandomItem(): ADD CODE FOR BOOSTED ENCHANT CHANCE AROUND ABOUT HERE!");
         if (ranEnchChance <= 100)
         {
             _generatedEnchant = enchantScript.chooseEnchant();
@@ -57,7 +85,7 @@ public class GenerateItem : MonoBehaviour
         else
             _generatedItem.setIsEnchanted(false);
 
-        generateItemText(true);
+        generateItemText();
         itemText.text = _generatedText;
         buyButtonText.text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * _buyPriceSkill.getModifiedBuyPrice());
         buyButton.interactable = true;
@@ -73,6 +101,7 @@ public class GenerateItem : MonoBehaviour
         if (forceInsert == false)
         {
             int ranEnchChance = Random.Range(0, 1000);
+            Debug.LogWarning("TODO - GenerateItem.GeneratePresetItem(): ADD CODE FOR BOOSTED ENCHANT CHANCE AROUND ABOUT HERE!");
             if (ranEnchChance >= 100)
             {
                 _generatedEnchant = enchantScript.chooseEnchant();
@@ -81,7 +110,7 @@ public class GenerateItem : MonoBehaviour
             else
                 _generatedItem.setIsEnchanted(false);
 
-            generateItemText(false);
+            generateItemText();
             itemText.text = _generatedText;
             buyButtonText.text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * _buyPriceSkill.getModifiedBuyPrice());
             buyButton.interactable = true;
@@ -211,14 +240,14 @@ public class GenerateItem : MonoBehaviour
     private bool _isEnchanted;
     private string _enchant;
 
-    private void generateItemText(bool randomMats)
+    private void generateItemText()
     {
         _itemName = "Item - " + _generatedItem.ItemName;
-        if (randomMats == true) _materials = "\n\nMaterials\n" + _generatedItem.RandomMaterials;
-        else if (randomMats == false) _materials = "\n\nMaterials\n" +
-                _generatedItem.Part1.Material.Material + "\n" +
-                _generatedItem.Part2.Material.Material + "\n" +
-                _generatedItem.Part3.Material.Material;
+
+        _materials = "\n\nMaterials\n" +
+            _generatedItem.Part1.Material.Material + "\n" +
+            _generatedItem.Part2.Material.Material + "\n" +
+            _generatedItem.Part3.Material.Material;
 
         _totalStrenght = "\nStrenght: " + _generatedItem.TotalStrength;
         _totalDex = "\nDextarity: " + _generatedItem.TotalDextarity;
@@ -240,7 +269,6 @@ public class GenerateItem : MonoBehaviour
             + _enchant
             + _totalValue;
     }
-
     public EnchantData getEnchantment
     {
         get => _generatedEnchant;

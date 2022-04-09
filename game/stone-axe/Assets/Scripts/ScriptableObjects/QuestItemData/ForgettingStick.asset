@@ -15,6 +15,7 @@ MonoBehaviour:
   _qItemName: Forgetting Stick
   _qItemLore: This is a stick that casts only one spell. A forgetting spell. Here
     let me show you how it works...This is a stick that only casts one spell
+  _qItemUnlockLevel: 16
   _qItemPart1: {fileID: 11400000, guid: 0c394eafc001483488e07fe06842f262, type: 2}
   _qItemPart2: {fileID: 11400000, guid: 0513c3377d7ea804d9acd816f5bf297e, type: 2}
   _qItemPart3: {fileID: 11400000, guid: 72bc31ccfff37364d9c2bb261e5fc262, type: 2}

@@ -21,4 +21,8 @@ MonoBehaviour:
   _requiredQuestItem: {fileID: 11400000, guid: b8eb68a16f6f59a4095c7cb7c2f4bedc, type: 2}
   _requiredCount: 0
   _nextQuest: {fileID: 0}
+  _unlocksQuests: []
+  _requiredPlayerLevel: 16
   _storyQuestComplete: 0
+  _rewardCurrency: 0
+  _rewardEXP: 0

@@ -15,6 +15,7 @@ MonoBehaviour:
   _qItemName: Smiling Mask
   _qItemLore: A circular white full-face mask with a simple yet creepy black smile
     engraved upon it
+  _qItemUnlockLevel: 12
   _qItemPart1: {fileID: 11400000, guid: 5e34043c014e5fa4fb9c73f082a31433, type: 2}
   _qItemPart2: {fileID: 11400000, guid: 42bc6ee626b3d044e91f12ace9a9c689, type: 2}
   _qItemPart3: {fileID: 11400000, guid: 577d2d7ce159cf045870956b4233f3db, type: 2}

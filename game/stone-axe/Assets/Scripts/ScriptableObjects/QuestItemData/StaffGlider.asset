@@ -15,6 +15,7 @@ MonoBehaviour:
   _qItemName: Staff Glider
   _qItemLore: A glider made for the use of a particular group of people that utilized
     control over the air to soar through the sky
+  _qItemUnlockLevel: 17
   _qItemPart1: {fileID: 11400000, guid: 8c78c5a05914d354d80ef88c5344d4d7, type: 2}
   _qItemPart2: {fileID: 11400000, guid: 8c78c5a05914d354d80ef88c5344d4d7, type: 2}
   _qItemPart3: {fileID: 11400000, guid: 12b9378bea6d9d047a49e6f140e0be49, type: 2}

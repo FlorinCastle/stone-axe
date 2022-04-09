@@ -133,8 +133,6 @@ public class QuestControl : MonoBehaviour
         }
         else if (_chosenQuest.QuestType == "Tutorial" || _chosenQuest.QuestType == "Story")
         {
-            //Destroy(p);
-            //p = null;
             if (_chosenQuest.StoryQuestComplete == false)
                 setupStarter();
             else
@@ -328,6 +326,10 @@ public class QuestControl : MonoBehaviour
         if (_questSheet1 != null)
         {
             int i = Random.Range(0, _repeatableQuests.Count);
+            do
+            {
+                i = Random.Range(0, _repeatableQuests.Count);
+            } while (_repeatableQuests[i].RequiredPlayerLevel > gameObject.GetComponent<GameMaster>().GetLevel);
             _questSheet1.Quest = _repeatableQuests[i];
             _questSheet1.setQuestDetails();
 
@@ -339,6 +341,10 @@ public class QuestControl : MonoBehaviour
         if (_questSheet2 != null)
         {
             int j = Random.Range(0, _repeatableQuests.Count);
+            do
+            {
+                j = Random.Range(0, _repeatableQuests.Count);
+            } while (_repeatableQuests[j].RequiredPlayerLevel > gameObject.GetComponent<GameMaster>().GetLevel);
             _questSheet2.Quest = _repeatableQuests[j];
             _questSheet2.setQuestDetails();
 
@@ -350,6 +356,10 @@ public class QuestControl : MonoBehaviour
         if (_questSheet3 != null)
         {
             int k = Random.Range(0, _repeatableQuests.Count);
+            do
+            {
+                k = Random.Range(0, _repeatableQuests.Count);
+            } while (_repeatableQuests[k].RequiredPlayerLevel > gameObject.GetComponent<GameMaster>().GetLevel);
             _questSheet3.Quest = _repeatableQuests[k];
             _questSheet3.setQuestDetails();
 

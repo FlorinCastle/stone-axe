@@ -15,6 +15,7 @@ MonoBehaviour:
   _qItemName: 6-Fingered Sword
   _qItemLore: A beautiful rapier crafted by a now gone smith. Can be used left or
     right handed
+  _qItemUnlockLevel: 14
   _qItemPart1: {fileID: 11400000, guid: 72e487bb1e4195d44a79d0e2469de4fc, type: 2}
   _qItemPart2: {fileID: 11400000, guid: 481856a10254f7946b4cbdab8856a0cf, type: 2}
   _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}

@@ -15,7 +15,14 @@ MonoBehaviour:
   _questName: Have Silk
   _questDiscription: have this material
   _questType: 3
+  _questStages: []
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 11400000, guid: 9e75d77f4858d6643b4e74d870a9ff74, type: 2}
+  _requiredQuestItem: {fileID: 0}
   _requiredCount: 5
   _nextQuest: {fileID: 0}
+  _unlocksQuests: []
+  _requiredPlayerLevel: 15
+  _storyQuestComplete: 0
+  _rewardCurrency: 0
+  _rewardEXP: 0

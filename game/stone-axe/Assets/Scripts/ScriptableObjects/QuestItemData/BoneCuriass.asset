@@ -15,6 +15,7 @@ MonoBehaviour:
   _qItemName: Bone Curiass
   _qItemLore: A chestplate made of the bones of a truely monsterious creature. Very
     protective
+  _qItemUnlockLevel: 5
   _qItemPart1: {fileID: 11400000, guid: 286a78c5e15496d4db2548299eab7ba7, type: 2}
   _qItemPart2: {fileID: 11400000, guid: c3d93897133f0fb48827cc5fb05406aa, type: 2}
   _qItemPart3: {fileID: 11400000, guid: ac58c2151275da14cba38ad548c01080, type: 2}

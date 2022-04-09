@@ -15,6 +15,7 @@ MonoBehaviour:
   _qItemName: Black Spiked Cuirass
   _qItemLore: Black chestplate with spikes and deep red accents across the breastplate.
     A dark, otherworldly aura from a demonic creature emits from this armor
+  _qItemUnlockLevel: 8
   _qItemPart1: {fileID: 11400000, guid: f70d2bad399cf524a96f80c3af711fc4, type: 2}
   _qItemPart2: {fileID: 11400000, guid: 78fefe8565bb40848918725f3bbc3740, type: 2}
   _qItemPart3: {fileID: 11400000, guid: ac58c2151275da14cba38ad548c01080, type: 2}
