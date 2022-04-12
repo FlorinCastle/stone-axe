@@ -1568,6 +1568,10 @@ public class InventoryScript : MonoBehaviour
                     phb = true;
                 }
         }
+        else if (_UIControlRef.ShopDisUIEnabled == true)
+        {
+            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectPart();
+        }
         phb = false;
     }
 

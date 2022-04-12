@@ -10,8 +10,9 @@ public class GenerateItem : MonoBehaviour
     [SerializeField] private InventoryScript _inventoryRef;
     [SerializeField] private GameObject _inventoryControl;
     [SerializeField] private GameObject _gameMaster;
-    [SerializeField] private ECO_DecBuyPrice _buyPriceSkill;
-    [SerializeField] private ECO_HaggleSuccess _haggleSkill;
+    [SerializeField] private SkillManager _skillManager;
+    //[SerializeField] private ECO_DecBuyPrice _buyPriceSkill;
+    //[SerializeField] private ECO_HaggleSuccess _haggleSkill;
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI itemText;
     [SerializeField] private Button buyButton;
@@ -76,8 +77,8 @@ public class GenerateItem : MonoBehaviour
 
         // get chance of item being enchanted
         int ranEnchChance = Random.Range(0, 1000);
-        Debug.LogWarning("TODO - GenerateItem.GenerateRandomItem(): ADD CODE FOR BOOSTED ENCHANT CHANCE AROUND ABOUT HERE!");
-        if (ranEnchChance <= 100)
+        //Debug.LogWarning("TODO - GenerateItem.GenerateRandomItem(): ADD CODE FOR BOOSTED ENCHANT CHANCE AROUND ABOUT HERE!");
+        if (ranEnchChance <= (100 + _skillManager.EnchantChanceRef.getAddedEnchChance()))
         {
             _generatedEnchant = enchantScript.chooseEnchant();
             _generatedItem.setIsEnchanted(true);
@@ -87,9 +88,9 @@ public class GenerateItem : MonoBehaviour
 
         generateItemText();
         itemText.text = _generatedText;
-        buyButtonText.text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * _buyPriceSkill.getModifiedBuyPrice());
+        buyButtonText.text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * _skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice());
         buyButton.interactable = true;
-        haggleButtonText.text = "haggle\n(success chance: " + (_haggleSkill.getHaggleChance()).ToString() + "%)";
+        haggleButtonText.text = "haggle\n(success chance: " + (_skillManager.HagglePriceRef.getHaggleChance()).ToString() + "%)";
         haggleButton.interactable = true;
     }
     public void GeneratePresetItem(ItemData item, MaterialData part1Mat, MaterialData part2Mat, MaterialData part3Mat, bool forceInsert)
@@ -101,8 +102,8 @@ public class GenerateItem : MonoBehaviour
         if (forceInsert == false)
         {
             int ranEnchChance = Random.Range(0, 1000);
-            Debug.LogWarning("TODO - GenerateItem.GeneratePresetItem(): ADD CODE FOR BOOSTED ENCHANT CHANCE AROUND ABOUT HERE!");
-            if (ranEnchChance >= 100)
+            //Debug.LogWarning("TODO - GenerateItem.GeneratePresetItem(): ADD CODE FOR BOOSTED ENCHANT CHANCE AROUND ABOUT HERE!");
+            if (ranEnchChance <= (100 + _skillManager.EnchantChanceRef.getAddedEnchChance()))
             {
                 _generatedEnchant = enchantScript.chooseEnchant();
                 _generatedItem.setIsEnchanted(true);
@@ -112,9 +113,9 @@ public class GenerateItem : MonoBehaviour
 
             generateItemText();
             itemText.text = _generatedText;
-            buyButtonText.text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * _buyPriceSkill.getModifiedBuyPrice());
+            buyButtonText.text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * _skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice());
             buyButton.interactable = true;
-            haggleButtonText.text = "haggle\n(success chance: " + (_haggleSkill.getHaggleChance()).ToString() + "%)";
+            haggleButtonText.text = "haggle\n(success chance: " + (_skillManager.HagglePriceRef.getHaggleChance()).ToString() + "%)";
             haggleButton.interactable = true;
 
         }
@@ -132,7 +133,7 @@ public class GenerateItem : MonoBehaviour
         {
             if (haggleSucceded == false)
             {
-                if (this.gameObject.GetComponent<GameMaster>().removeCurrency(Mathf.RoundToInt(_generatedItem.TotalValue * _buyPriceSkill.getModifiedBuyPrice())))
+                if (this.gameObject.GetComponent<GameMaster>().removeCurrency(Mathf.RoundToInt(_generatedItem.TotalValue * _skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice())))
                 {
                     _inventoryRef.InsertItem(_generatedItem);
                     this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
@@ -140,7 +141,7 @@ public class GenerateItem : MonoBehaviour
             }
             else if (haggleSucceded == true)
             {
-                if (this.gameObject.GetComponent<GameMaster>().removeCurrency(Mathf.RoundToInt(_generatedItem.TotalValue * (_buyPriceSkill.getModifiedBuyPrice() + _haggleSkill.getModifiedPrice()))))
+                if (this.gameObject.GetComponent<GameMaster>().removeCurrency(Mathf.RoundToInt(_generatedItem.TotalValue * (_skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice() + _skillManager.HagglePriceRef.getModifiedPrice()))))
                 {
                     _inventoryRef.InsertItem(_generatedItem);
                     this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
@@ -166,16 +167,16 @@ public class GenerateItem : MonoBehaviour
     {
         int ran = Random.Range(0, 100);
         Debug.Log("ran is " + ran.ToString());
-        if (ran >= Mathf.RoundToInt(_haggleSkill.getHaggleChance()))
+        if (ran >= Mathf.RoundToInt(_skillManager.HagglePriceRef.getHaggleChance()))
         {
             Debug.Log("haggle fail");
             haggleSucceded = false;
         }
-        else if (ran < Mathf.RoundToInt(_haggleSkill.getHaggleChance()))
+        else if (ran < Mathf.RoundToInt(_skillManager.HagglePriceRef.getHaggleChance()))
         {
             Debug.Log("haggle success");
             haggleSucceded = true;
-            buyButton.GetComponentInChildren<Text>().text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * (_buyPriceSkill.getModifiedBuyPrice() + _haggleSkill.getModifiedPrice()));
+            buyButton.GetComponentInChildren<Text>().text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * (_skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice() + _skillManager.HagglePriceRef.getModifiedPrice()));
         }
         haggleButton.GetComponentInChildren<Text>().text = "haggle\ncomplete";
         haggleButton.interactable = false;

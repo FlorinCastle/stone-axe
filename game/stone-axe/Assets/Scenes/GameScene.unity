@@ -2079,6 +2079,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &748829745 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1646385323528434576, guid: 62b8a4b35d6f0e747ad4be3742790f0e, type: 3}
+  m_PrefabInstance: {fileID: 8800852278949653270}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b7b25d4e7d15449b79b84133539275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &765421722 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7039565662093584868, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -5285,9 +5296,11 @@ MonoBehaviour:
   inventoryUI: {fileID: 493045093}
   receipeUI: {fileID: 511436702}
   skillTreeUI: {fileID: 1166277327}
+  questUI: {fileID: 679954418}
   shopSellMenu: {fileID: 7485012191131071721}
   shopBuyMenu: {fileID: 7485012191131071713}
   miniGameUI: {fileID: 1696650682}
+  dialogeUI: {fileID: 7485012191131071719}
   _toMarketButton: {fileID: 7485012191131071726}
   _buyTabButton: {fileID: 921268443}
   _sellTabButton: {fileID: 655855113}
@@ -5340,8 +5353,7 @@ MonoBehaviour:
   _inventoryRef: {fileID: 1181822452}
   _inventoryControl: {fileID: 1181822451}
   _gameMaster: {fileID: 1734993350}
-  _buyPriceSkill: {fileID: 672557554}
-  _haggleSkill: {fileID: 1013641663}
+  _skillManager: {fileID: 1734993358}
   itemText: {fileID: 2058711590}
   buyButton: {fileID: 1691505869}
   haggleButton: {fileID: 1784629680}
@@ -5391,7 +5403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _invScriptRef: {fileID: 0}
   _uIControlRef: {fileID: 0}
-  _selectedItem: {fileID: 0}
+  _selectedObject: {fileID: 0}
   disassembleSkill: {fileID: 1310622674}
   reducedMatSkill: {fileID: 2027709418}
   enchantRemovalSkill: {fileID: 1912071572}
@@ -5466,7 +5478,7 @@ MonoBehaviour:
   _ECOIncSellPrice: {fileID: 1807804930}
   _ECODecBuyPrice: {fileID: 672557554}
   _ECOHaggleSuccess: {fileID: 1013641663}
-  _ECOEnchBoostedChance: {fileID: 0}
+  _ECOEnchBoostedChance: {fileID: 748829745}
   _DISDisassembleChance: {fileID: 1310622674}
   _DISEnchantRemoval: {fileID: 1912071572}
   _DISHitReduction: {fileID: 191321953}
@@ -7503,14 +7515,6 @@ PrefabInstance:
     - target: {fileID: 7089586596255122515, guid: 917aa56b33f32f04983529814c902ef6, type: 3}
       propertyPath: m_SizeDelta.x
       value: -17
-      objectReference: {fileID: 0}
-    - target: {fileID: 7137302375020060503, guid: 917aa56b33f32f04983529814c902ef6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.00012207031
-      objectReference: {fileID: 0}
-    - target: {fileID: 7137302375020060503, guid: 917aa56b33f32f04983529814c902ef6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 7750048762572302170, guid: 917aa56b33f32f04983529814c902ef6, type: 3}
       propertyPath: m_AnchorMax.x

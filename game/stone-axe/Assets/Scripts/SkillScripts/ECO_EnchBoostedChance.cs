@@ -83,20 +83,11 @@ public class ECO_EnchBoostedChance : MonoBehaviour
 
     // TODO: SET UP SKILL STUFF FOR BOOSTED ENCHANT CHANCE HERE!
 
-    /*
-    public float getHaggleChance()
+    public int getAddedEnchChance()
     {
         for (int i = 0; i <= maxLevel; i++)
             if (i == currentLevel)
-                return (30f + 10f * i);
-        return 30.0f;
+                return (50 * currentLevel);
+        return 0;
     }
-    public float getModifiedPrice()
-    {
-        for (int i = 0; i <= maxLevel; i++)
-            if (i == currentLevel)
-                return (0.05f + (0.05f * i));
-        return 0.05f;
-    }
-    */
 }

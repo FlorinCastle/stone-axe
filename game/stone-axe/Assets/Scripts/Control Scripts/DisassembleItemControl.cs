@@ -8,7 +8,7 @@ public class DisassembleItemControl : MonoBehaviour
     [SerializeField] private InventoryScript _invScriptRef;
     private InventoryData _invDataRef;
     [SerializeField] private UIControl _uIControlRef;
-    [SerializeField] private GameObject _selectedItem;
+    [SerializeField] private GameObject _selectedObject;
     [SerializeField] private DIS_DisassembleChance disassembleSkill;
     [SerializeField] private CFT_ReduceMaterialCost reducedMatSkill;
     [SerializeField] private DIS_EnchantRemoval enchantRemovalSkill;
@@ -37,14 +37,20 @@ public class DisassembleItemControl : MonoBehaviour
 
     public void selectItem()
     {
-        _selectedItem = _invScriptRef.getSelectedItem();
-        selectItem(_selectedItem);
+        _selectedObject = _invScriptRef.getSelectedItem();
+        selectItem(_selectedObject);
+    }
+
+    public void selectPart()
+    {
+        _selectedObject = _invScriptRef.getSelectedPart();
+        selectPart(_selectedObject);
     }
 
     public void selectItem(GameObject item)
     {
-        _selectedItem = item;
-        if (_selectedItem != null)
+        _selectedObject = item;
+        if (_selectedObject != null)
         {
             setupTexts();
             _disassembleButton.interactable = true;
@@ -56,55 +62,101 @@ public class DisassembleItemControl : MonoBehaviour
         }
     }
 
-    private string header = "parts gained\n";
+    public void selectPart(GameObject part)
+    {
+        _selectedObject = part;
+        if (_selectedObject != null)
+        {
+            setupTexts();
+            _disassembleButton.interactable = true;
+        }
+        else
+        {
+            Debug.Log("No Part Selected!");
+            _disassembleButton.interactable = false;
+        }
+    }
+
+    private string header;
     private string part1;
     private string part2;
     private string part3;
+    private string body;
     private string ench;
     private void setupTexts()
     {
-        ItemDataStorage itemData = _selectedItem.GetComponent<ItemDataStorage>();
-        _itemNameText.text = "item chosen: " + itemData.ItemName;
 
-        part1 = itemData.Part1.MaterialName + " " + itemData.Part1.PartName + "\n";
-        part2 = itemData.Part2.MaterialName + " " + itemData.Part2.PartName + "\n";
-        part3 = itemData.Part3.MaterialName + " " + itemData.Part3.PartName;
-        if (itemData.IsEnchanted)
+        if (_selectedObject.GetComponent<ItemDataStorage>() != null)
         {
-            ench = "\n" + itemData.Enchantment.EnchantName + " +" + itemData.Enchantment.AmountOfBuff;
+            ItemDataStorage itemData = _selectedObject.GetComponent<ItemDataStorage>();
+            header = "parts gained\n";
+            _itemNameText.text = "item chosen: " + itemData.ItemName;
+
+            part1 = itemData.Part1.MaterialName + " " + itemData.Part1.PartName + "\n";
+            part2 = itemData.Part2.MaterialName + " " + itemData.Part2.PartName + "\n";
+            part3 = itemData.Part3.MaterialName + " " + itemData.Part3.PartName + "\n";
+            if (itemData.IsEnchanted)
+            {
+                ench = "\n" + itemData.Enchantment.EnchantName + " +" + itemData.Enchantment.AmountOfBuff;
+            }
+            else
+                ench = "";
+
+            _itemText.text = header + part1 + part2 + part3 + ench;
         }
-        else
-            ench = "";
+        else if (_selectedObject.GetComponent<PartDataStorage>() != null)
+        {
+            PartDataStorage partData = _selectedObject.GetComponent<PartDataStorage>();
+            header = "materials ";
+            _itemNameText.text = "part chosen: " + partData.PartName;
 
-        _itemText.text = header + part1 + part2 + part3 + ench;
+            body = partData.MaterialName + " " + partData.RecipeData.UnitsOfMaterialNeeded + "\n";
+            if (partData.IsHoldingEnchant)
+            {
+                ench = "\n" + partData.Enchantment.EnchantName + " +" + partData.Enchantment.AmountOfBuff;
+                header += "and enchant ";
+            }
+            else
+                ench = "";
 
+            header += "gained\n";
+
+            _itemText.text = header + body + ench;
+        }
+    }
+    
+    public void disassebleObject()
+    {
+        if (_selectedObject.GetComponent<ItemDataStorage>() != null)
+            disassembleItem();
+        else if (_selectedObject.GetComponent<PartDataStorage>() != null)
+            disassemblePart();
     }
 
-    
     public void disassembleItem()
     {
-        this.gameObject.GetComponent<MiniGameControl>().resetHitPoints();
+        gameObject.GetComponent<MiniGameControl>().resetHitPoints();
         int ran = Random.Range(0, 100);
         
         if (ran >= Mathf.RoundToInt(disassembleSkill.getFullDisassembleChance()))
         {
             // move part1 transform parent to inventory
-            GameObject part1 = _selectedItem.GetComponent<ItemDataStorage>().Part1.gameObject;
+            GameObject part1 = _selectedObject.GetComponent<ItemDataStorage>().Part1.gameObject;
             _invScriptRef.InsertPart(part1);
             part1.transform.parent = _invScriptRef.gameObject.transform;
 
             // move part2 
-            GameObject part2 = _selectedItem.GetComponent<ItemDataStorage>().Part2.gameObject;
+            GameObject part2 = _selectedObject.GetComponent<ItemDataStorage>().Part2.gameObject;
             _invScriptRef.InsertPart(part2);
             part2.transform.parent = _invScriptRef.gameObject.transform;
 
             // move part 3
-            GameObject part3 = _selectedItem.GetComponent<ItemDataStorage>().Part3.gameObject;
+            GameObject part3 = _selectedObject.GetComponent<ItemDataStorage>().Part3.gameObject;
             _invScriptRef.InsertPart(part3);
             part3.transform.parent = _invScriptRef.gameObject.transform;
 
             // move enchantment, if enchanted
-            if (_selectedItem.GetComponent<ItemDataStorage>().IsEnchanted)
+            if (_selectedObject.GetComponent<ItemDataStorage>().IsEnchanted)
             {
                 int ranEnc = Random.Range(0, 100);
                 //Debug.Log("ranEnc: " + ranEnc.ToString());
@@ -113,7 +165,7 @@ public class DisassembleItemControl : MonoBehaviour
                 {
                     int chosenEnchantedPart = Random.Range(0, 3);
 
-                        GameObject enc = _selectedItem.GetComponent<ItemDataStorage>().Enchantment.gameObject;
+                        GameObject enc = _selectedObject.GetComponent<ItemDataStorage>().Enchantment.gameObject;
                     if (chosenEnchantedPart == 0) // part 1 selected
                     {
                         part1.GetComponent<PartDataStorage>().setEnchantment(enc.GetComponent<EnchantDataStorage>());
@@ -143,7 +195,7 @@ public class DisassembleItemControl : MonoBehaviour
                 else if (ranEnc < Mathf.RoundToInt(enchantRemovalSkill.getEnchantRemovalChance()))
                 {
                     //Debug.Log("adding enchant to inventory");
-                    GameObject enc = _selectedItem.GetComponent<ItemDataStorage>().Enchantment.gameObject;
+                    GameObject enc = _selectedObject.GetComponent<ItemDataStorage>().Enchantment.gameObject;
 
                     _invScriptRef.InsertEnchatment(enc);
                     enc.transform.parent = _invScriptRef.gameObject.transform;
@@ -156,24 +208,24 @@ public class DisassembleItemControl : MonoBehaviour
         {
             //Debug.LogWarning("TODO: re-setup code so item can be fully disassembled");
             // get reference to part 1, get material composition and add to appropriate material ref
-            GameObject part1 = _selectedItem.GetComponent<ItemDataStorage>().Part1.gameObject;
+            GameObject part1 = _selectedObject.GetComponent<ItemDataStorage>().Part1.gameObject;
             string ph1 = part1.GetComponent<PartDataStorage>().Material.Material;
             _invDataRef.getMaterial(ph1).AddMat(Mathf.RoundToInt(part1.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
 
             // part 2
-            GameObject part2 = _selectedItem.GetComponent<ItemDataStorage>().Part2.gameObject;
+            GameObject part2 = _selectedObject.GetComponent<ItemDataStorage>().Part2.gameObject;
             string ph2 = part2.GetComponent<PartDataStorage>().Material.Material;
             _invDataRef.getMaterial(ph2).AddMat(Mathf.RoundToInt(part2.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
 
             // part 3
-            GameObject part3 = _selectedItem.GetComponent<ItemDataStorage>().Part3.gameObject;
+            GameObject part3 = _selectedObject.GetComponent<ItemDataStorage>().Part3.gameObject;
             string ph3 = part3.GetComponent<PartDataStorage>().Material.Material;
             _invDataRef.getMaterial(ph3).AddMat(Mathf.RoundToInt(part3.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
 
             // move enchantment if enchanted
-            if (_selectedItem.GetComponent<ItemDataStorage>().IsEnchanted)
+            if (_selectedObject.GetComponent<ItemDataStorage>().IsEnchanted)
             {
-                GameObject enc = _selectedItem.GetComponent<ItemDataStorage>().Enchantment.gameObject;
+                GameObject enc = _selectedObject.GetComponent<ItemDataStorage>().Enchantment.gameObject;
 
                 _invScriptRef.InsertEnchatment(enc);
                 enc.transform.parent = _invScriptRef.gameObject.transform;
@@ -181,11 +233,11 @@ public class DisassembleItemControl : MonoBehaviour
         }
         // remove item from inventory
         //_invScriptRef.RemoveItem(_selectedItem.GetComponent<ItemDataStorage>().InventoryIndex);
-        _invScriptRef.RemoveItem(_selectedItem);
+        _invScriptRef.RemoveItem(_selectedObject);
 
         this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
 
-        _selectedItem = null;
+        _selectedObject = null;
 
         _itemNameText.text = "item chosen: [choose item]";
         _itemText.text = "";
@@ -203,5 +255,33 @@ public class DisassembleItemControl : MonoBehaviour
                 this.gameObject.GetComponent<QuestControl>().nextStage();
             }
         }
+    }
+    public void disassemblePart()
+    {
+        gameObject.GetComponent<MiniGameControl>().resetHitPoints();
+
+        // get reference to material and add to appropriate material ref
+        string ph1 = _selectedObject.GetComponent<PartDataStorage>().Material.Material;
+        _invDataRef.getMaterial(ph1).AddMat(Mathf.RoundToInt(_selectedObject.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
+        // move enchantment if enchanted
+        if (_selectedObject.GetComponent<PartDataStorage>().IsHoldingEnchant)
+        {
+            GameObject enc = _selectedObject.GetComponent<PartDataStorage>().Enchantment.gameObject;
+
+            _invScriptRef.InsertEnchatment(enc);
+            enc.transform.parent = _invScriptRef.gameObject.transform;
+        }
+
+        // remove part from inventory
+        _invScriptRef.RemovePart(_selectedObject, true);
+
+        gameObject.GetComponent<ExperienceManager>().addExperience(1);
+
+        _selectedObject = null;
+
+        _itemNameText.text = "item chosen: [choose item]";
+        _itemText.text = "";
+
+        _disassembleButton.interactable = false;
     }
 }

@@ -24,9 +24,11 @@ public class UIControl : MonoBehaviour
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private GameObject receipeUI;
     [SerializeField] private GameObject skillTreeUI;
+    [SerializeField] private GameObject questUI;
     [SerializeField] private GameObject shopSellMenu;
     [SerializeField] private GameObject shopBuyMenu;
     [SerializeField] private GameObject miniGameUI;
+    [SerializeField] private GameObject dialogeUI;
     [SerializeField] private Button _toMarketButton;
     [Space(5)]
     [SerializeField] private Button _buyTabButton;
@@ -97,6 +99,24 @@ public class UIControl : MonoBehaviour
         updateCurrencyText();
 
         gameObject.GetComponent<GameMaster>().marketAccessable(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (dialogeUI.activeInHierarchy == false)
+            {
+                if (optionsPopup.activeInHierarchy == true)
+                    optionsPopup.SetActive(false);
+                else if (skillTreeUI.activeInHierarchy == true)
+                    skillTreeUI.SetActive(false);
+                else if (questUI.activeInHierarchy == true)
+                    questUI.SetActive(false);
+                else if (optionsPopup.activeInHierarchy == false)
+                    optionsPopup.SetActive(true);
+            }
+        }
     }
 
     public void setupMainMenu()

@@ -78,19 +78,16 @@ public class SkillManager : MonoBehaviour
 
 
     }
-
     public void updateSkillPoints()
     {
         _skillPointsText.text = _currentSkillPoints.ToString();
     }
-
     public bool hasFreeSkillPoint()
     {
         if (_currentSkillPoints >= 1)
             return true;
         return false;
     }
-
 
     public void setTotalSkillPoints(int value) { _totalSkillPoints = value; }
     public int GetTotalSkillPoints { get => _totalSkillPoints; }
@@ -99,6 +96,16 @@ public class SkillManager : MonoBehaviour
     public int GetCurrentSkillPoints { get => _currentSkillPoints; }
     public void AddSkillPoint() { _currentSkillPoints++; }
     public void RemoveSkillPoint() { _currentSkillPoints--; }
+
+    public ECO_IncSellPrice IncreaseSellPriceRef { get => _ECOIncSellPrice; }
+    public ECO_DecBuyPrice DecreaseBuyPriceRef { get => _ECODecBuyPrice; }
+    public ECO_HaggleSuccess HagglePriceRef { get => _ECOHaggleSuccess; }
+    public ECO_EnchBoostedChance EnchantChanceRef { get => _ECOEnchBoostedChance; }
+    public DIS_DisassembleChance DisassembleItemRef { get => _DISDisassembleChance; }
+    public DIS_EnchantRemoval RetreaveEnchantRef { get => _DISEnchantRemoval; }
+    public DIS_HitReduction DisassembleHitReductionRef { get => _DISHitReduction; }
+    public CFT_ReduceMaterialCost ReduceMatUseRef { get => _CFTReduceMaterialCost; }
+    public CFT_HitReduction CraftHitReductionRef { get => _CFTHitReduction; }
 }
 [System.Serializable]
 public class SaveSkillsObject
