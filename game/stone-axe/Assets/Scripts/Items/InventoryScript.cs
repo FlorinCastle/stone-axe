@@ -279,6 +279,40 @@ public class InventoryScript : MonoBehaviour
                     k++;
                 }
             }
+            else if (_craftControlRef.checkQuestRecipe() != null)
+            {
+                Debug.Log("quest recipe selected!");
+                foreach (GameObject part in _inventoryData.PartInventory)
+                {
+                    PartDataStorage partData = part.GetComponent<PartDataStorage>();
+                    if (_craftControlRef.checkQuestRecipe().ItemPart1.Equals(partData.RecipeData))
+                    {
+                        partStorageSetup(partData, k, true);
+                        k++;
+                    }
+                    else if (_craftControlRef.checkQuestRecipe().ItemPart2.Equals(partData.RecipeData))
+                    {
+                        partStorageSetup(partData, k, true);
+                        k++;
+                    }
+                    else if (_craftControlRef.checkQuestRecipe().ItemPart3.Equals(partData.RecipeData))
+                    {
+                        partStorageSetup(partData, k, true);
+                        k++;
+                    }
+                    else
+                        holderList.Add(part);
+                }
+                foreach (GameObject part in holderList)
+                {
+                    if (part != null)
+                    {
+                        PartDataStorage partData = part.GetComponent<PartDataStorage>();
+                        partStorageSetup(partData, k, false);
+                    }
+                    k++;
+                }
+            }
             else
             {
                 Debug.Log("InventoryScript.setupPartInventory(): no receipe selected");
@@ -1360,9 +1394,12 @@ public class InventoryScript : MonoBehaviour
         if (i != -1)
         {
             _selectedItem = _inventoryData.ItemInventory[i];
+            _selectedPart = null;
+            _selectedMat = null;
+            _selectedEnchant = null;
             if (_selectedItem.GetComponent<ItemDataStorage>().IsForQuest == false)
                 returnSelectedItem();
-            //Debug.Log("Selected item is: " + _selectedItem.name + " at index: " + i); 
+            Debug.Log("Selected item is: " + _selectedItem.name + " at index: " + i); 
         }
         else
             Debug.Log("example button selected");
@@ -1372,8 +1409,11 @@ public class InventoryScript : MonoBehaviour
         if (i != -1)
         {
             _selectedPart = _inventoryData.PartInventory[i];
+            _selectedItem = null;
+            _selectedMat = null;
+            _selectedEnchant = null;
             returnSeletedPart();
-            //Debug.Log("Selected part is: " + _selectedPart.name + " at index: " + i);
+            Debug.Log("Selected part is: " + _selectedPart.name + " at index: " + i);
         }
         else
             Debug.Log("example button selected");
@@ -1383,6 +1423,9 @@ public class InventoryScript : MonoBehaviour
         if (data != null)
         {
             _selectedMat = data;
+            _selectedItem = null;
+            _selectedPart = null;
+            _selectedEnchant = null;
             returnSelectedMat();
         }
         else
@@ -1393,6 +1436,9 @@ public class InventoryScript : MonoBehaviour
         if (i != -1)
         {
             _selectedMat = _inventoryData.MaterialInventory[i].GetComponent<MaterialDataStorage>().MatDataRef;
+            _selectedItem = null;
+            _selectedPart = null;
+            _selectedEnchant = null;
         }
         else
             Debug.Log("example button selected");
@@ -1402,10 +1448,16 @@ public class InventoryScript : MonoBehaviour
         if (i != -1)
         {
             _selectedEnchant = _inventoryData.EnchantInventory[i];
+            _selectedItem = null;
+            _selectedPart = null;
+            _selectedMat = null;
             returnSelectedEnchant();
         }
         else if (i == -1)
         {
+            _selectedEnchant = null;
+            _selectedPart = null;
+            _selectedMat = null;
             _selectedEnchant = null;
             returnSelectedEnchant();
         }
@@ -1534,6 +1586,7 @@ public class InventoryScript : MonoBehaviour
         bool phb = false;
         if (_craftControlRef.anyItemRecipeSelected() == true)
         {
+            Debug.Log("Selected part is valid for recipe!");
             //Debug.LogWarning("TODO setup code for selecting parts");
             foreach (PartData part1ref in _craftControlRef.checkItemRecipe().ValidParts1)
                 if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part1ref
@@ -1568,6 +1621,37 @@ public class InventoryScript : MonoBehaviour
                     phb = true;
                 }
         }
+        else if (_craftControlRef.anyQuestRecipeSelected() == true)
+        {
+            Debug.Log("Selected part is valid for quest recipe!");
+            if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart1
+                && (partLastFilled == 0 || partLastFilled == 2 || partLastFilled == 3 || _craftControlRef.Part1Set() == false || _craftControlRef.AllPartsSet() == true)
+                && phb == false)
+            {
+                Debug.LogWarning("selected part matches recipe part 1");
+                _craftControlRef.SelectQPart1();
+                partLastFilled = 1;
+                phb = true;
+            }
+            if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart2
+                && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 3 || _craftControlRef.Part2Set() == false || _craftControlRef.AllPartsSet() == true)
+                && phb == false)
+            {
+                Debug.LogWarning("selected part matches recipe part 2");
+                _craftControlRef.SelectQPart2();
+                partLastFilled = 2;
+                phb = true;
+            }
+            if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart3
+                && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 2 || _craftControlRef.Part3Set() == false || _craftControlRef.AllPartsSet() == true)
+                && phb == false)
+            {
+                Debug.LogWarning("selected part matches recipe part 3");
+                _craftControlRef.SelectQPart3();
+                partLastFilled = 3;
+                phb = true;
+            }
+        }
         else if (_UIControlRef.ShopDisUIEnabled == true)
         {
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectPart();
@@ -1577,6 +1661,7 @@ public class InventoryScript : MonoBehaviour
 
     private void questPart1()
     {
+        Debug.Log("checking quest part 1");
         bool phb = false;
         if (_selectedItem != null)
         {
@@ -1602,6 +1687,7 @@ public class InventoryScript : MonoBehaviour
     }
     private void questPart2()
     {
+        Debug.Log("checking quest part 2");
         bool phb = false;
         if (_selectedItem != null)
         {
@@ -1618,7 +1704,7 @@ public class InventoryScript : MonoBehaviour
         {
             if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart2 && phb == false)
             {
-                Debug.LogWarning("selected item matches recipe part 1");
+                Debug.LogWarning("selected item matches recipe part 2");
                 _craftControlRef.SelectQPart2();
 
                 phb = true;
@@ -1627,6 +1713,8 @@ public class InventoryScript : MonoBehaviour
     }
     private void questPart3()
     {
+        Debug.Log("checking quest part 3");
+
         bool phb = false;
         if (_selectedItem != null)
         {
@@ -1643,7 +1731,7 @@ public class InventoryScript : MonoBehaviour
         {
             if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart3 && phb == false)
             {
-                Debug.LogWarning("selected item matches recipe part 1");
+                Debug.LogWarning("selected item matches recipe part 3");
                 _craftControlRef.SelectQPart3();
 
                 phb = true;

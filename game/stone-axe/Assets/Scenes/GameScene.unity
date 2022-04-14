@@ -5843,6 +5843,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb1dcdd64795ab04e8c32a5614a76906, type: 2}
   - {fileID: 11400000, guid: 4bf78cde294803641841204c77669434, type: 2}
   - {fileID: 11400000, guid: 853a3a0f48779d8449266f55634d56d1, type: 2}
+  - {fileID: 11400000, guid: daf048bc4d4d3ae41b1d9503ad05c2b5, type: 2}
+  - {fileID: 11400000, guid: 92f434d561190024ca947a8a6b909584, type: 2}
+  - {fileID: 11400000, guid: a0250f8e4f6ec384fbf4e8f7f00ec586, type: 2}
+  - {fileID: 11400000, guid: 94b119a43ebafcf469f3cf82a5766683, type: 2}
+  - {fileID: 11400000, guid: 2b6f58fb78813004ebb38a8b28cce32d, type: 2}
+  - {fileID: 11400000, guid: b513f70bebd368e42865c6a21fad0df2, type: 2}
+  - {fileID: 11400000, guid: 807ded92744f1a645903d5bfb83707a7, type: 2}
+  - {fileID: 11400000, guid: 80a2ae7c035daf64fa457f43f3b71ab2, type: 2}
+  - {fileID: 11400000, guid: 184f51a8522bf8f428fe8693954f0d87, type: 2}
+  - {fileID: 11400000, guid: b870c2b58f9bab3458542540cf3ac3d2, type: 2}
+  - {fileID: 11400000, guid: cf74b2413199451459bbc2c2d06e840e, type: 2}
   _tutorialQuests: []
   _storyQuests: []
   _onCraftItemQuests: []
@@ -10614,6 +10625,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 7485012191131071721}
+    - target: {fileID: 4203455513401673299, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4375706234229936638, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -11741,6 +11756,10 @@ PrefabInstance:
     - target: {fileID: 7928666210197343571, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7947340734062370930, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7961410955708722427, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_PresetInfoIsWorld

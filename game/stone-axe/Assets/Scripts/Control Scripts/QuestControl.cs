@@ -37,8 +37,8 @@ public class QuestControl : MonoBehaviour
 
     [Header("Quest Organization")]
     [SerializeField] private List<QuestData> _repeatableQuests;
-    [SerializeField, HideInInspector] private List<QuestData> _unlockedQuests;
-    [SerializeField, HideInInspector] private List<GameObject> _questStarterGOs;
+    [SerializeField] private List<QuestData> _unlockedQuests;
+    [SerializeField] private List<GameObject> _questStarterGOs;
     [SerializeField] private QuestData _enableAdventurersOnComplete;
 
     private int reqItemCount = 0;
@@ -89,22 +89,22 @@ public class QuestControl : MonoBehaviour
                     gameObject.GetComponent<GameMaster>().marketAccessable(true);
                 }
 
-
                 if (starterRef == null)
                 {
-                    if (tutQuest.QuestUnlocks.Count > 0)
-                        foreach (QuestData temp in tutQuest.QuestUnlocks)
-                            if (_unlockedQuests.Contains(temp) == false)
-                                _unlockedQuests.Add(temp);
-
                     //Debug.Log("tutorial: starter ref is not assigned!");
-                    if (tutQuest.StoryQuestComplete == false)
+                    if (tutQuest.StoryQuestComplete == false && _unlockedQuests.Contains(tutQuest))
                     {
                         //Debug.Log("asigning starter tutorial");
                         starterRef = tutQuest;
                         break;
                     }
-
+                    if (tutQuest.QuestUnlocks.Count > 0 && tutQuest.StoryQuestComplete == true)
+                        foreach (QuestData temp in tutQuest.QuestUnlocks)
+                            if (_unlockedQuests.Contains(temp) == false)
+                            {
+                                //Debug.Log(tutQuest.QuestName + " - Adding Unlocked Quest: " + temp.QuestName);
+                                _unlockedQuests.Add(temp);
+                            }
                 }
                 else
                     break;
@@ -113,18 +113,20 @@ public class QuestControl : MonoBehaviour
             {
                 if (starterRef == null)
                 {
-                    if (storyQuest.QuestUnlocks.Count > 0)
-                        foreach (QuestData temp in storyQuest.QuestUnlocks)
-                            if (_unlockedQuests.Contains(temp) == false)
-                                _unlockedQuests.Add(temp);
-
                     //Debug.Log("story: starter ref is not assigned!");
-                    if (storyQuest.StoryQuestComplete == false)
+                    if (storyQuest.StoryQuestComplete == false && _unlockedQuests.Contains(storyQuest))
                     {
                         //Debug.Log("asigning starter story");
                         starterRef = storyQuest;
                         break;
                     }
+                    if (storyQuest.QuestUnlocks.Count > 0 && storyQuest.StoryQuestComplete == true)
+                        foreach (QuestData temp in storyQuest.QuestUnlocks)
+                            if (_unlockedQuests.Contains(temp) == false)
+                            {
+                                //Debug.Log(storyQuest.QuestName + " - Adding Unlocked Quest: " + temp.QuestName);
+                                _unlockedQuests.Add(temp);
+                            }
                 }
                 else
                     break;

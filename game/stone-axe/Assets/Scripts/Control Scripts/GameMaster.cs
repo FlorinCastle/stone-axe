@@ -190,7 +190,10 @@ public class GameMaster : MonoBehaviour
 
     public void updateLevelLocks()
     {
-        GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().setupRecipeGrid();
+        if (gameObject.GetComponent<QuestControl>().CurrentQuest != null)
+            Debug.Log("temp");
+        else
+            GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().setupRecipeGrid();
     }
     public void updatePlayerPosition()
     {

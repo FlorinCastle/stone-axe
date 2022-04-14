@@ -54,6 +54,9 @@ public class CraftControl : MonoBehaviour
     private PartDataStorage _part1DataRef;
     private PartDataStorage _part2DataRef;
     private PartDataStorage _part3DataRef;
+    private ItemDataStorage _qPart1DataRef;
+    private ItemDataStorage _qPart2DataRef;
+    private ItemDataStorage _qPart3DataRef;
     private GameObject itemDataStorageTemp;
     private ItemDataStorage itemDataStorageRef;
     private GameObject partDataStorageTemp;
@@ -330,7 +333,15 @@ public class CraftControl : MonoBehaviour
         if (_inventoryControlReference.getSelectedItem() != null)
             _chosenPart1 = _inventoryControlReference.getSelectedItem();
         else if (_inventoryControlReference.getSelectedPart() != null)
-            _chosenPart1 = _inventoryControlReference.getSelectedPart();
+        {
+            if (_inventoryControlReference.getSelectedPart() != _chosenPart2 && _inventoryControlReference.getSelectedPart() != _chosenPart3)
+                _chosenPart1 = _inventoryControlReference.getSelectedPart();
+        }
+
+        if (_chosenPart1 != null)
+            setupDiscription(1, _chosenPart1);
+        else
+            Debug.LogWarning("No Part 1 Selected!");
 
         _cancelCraftButton.interactable = true;
     }
@@ -339,7 +350,15 @@ public class CraftControl : MonoBehaviour
         if (_inventoryControlReference.getSelectedItem() != null)
             _chosenPart2 = _inventoryControlReference.getSelectedItem();
         else if (_inventoryControlReference.getSelectedPart() != null)
-            _chosenPart2 = _inventoryControlReference.getSelectedPart();
+        {
+            if (_inventoryControlReference.getSelectedPart() != _chosenPart1 && _inventoryControlReference.getSelectedPart() != _chosenPart3)
+                _chosenPart2 = _inventoryControlReference.getSelectedPart();
+        }
+
+        if (_chosenPart2 != null)
+            setupDiscription(2, _chosenPart2);
+        else
+            Debug.LogWarning("No Part 2 Selected!");
 
         _cancelCraftButton.interactable = true;
     }
@@ -348,7 +367,15 @@ public class CraftControl : MonoBehaviour
         if (_inventoryControlReference.getSelectedItem() != null)
             _chosenPart3 = _inventoryControlReference.getSelectedItem();
         else if (_inventoryControlReference.getSelectedPart() != null)
-            _chosenPart3 = _inventoryControlReference.getSelectedPart();
+        {
+            if (_inventoryControlReference.getSelectedPart() != _chosenPart1 && _inventoryControlReference.getSelectedPart() != _chosenPart2)
+                _chosenPart3 = _inventoryControlReference.getSelectedPart();
+        }
+
+        if (_chosenPart3 != null)
+            setupDiscription(3, _chosenPart3);
+        else
+            Debug.LogWarning("No Part 3 Selected!");
 
         _cancelCraftButton.interactable = true;
     }
@@ -592,33 +619,40 @@ public class CraftControl : MonoBehaviour
 
     private void setupDiscription(int i, GameObject part)
     {
-        PartDataStorage data = part.GetComponent<PartDataStorage>();
-        if (i == 1)
+        Debug.Log(part.name);
+        if (part.GetComponent<PartDataStorage>() != null)
         {
-            _part1Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
-            if (data.IsHoldingEnchant == true)
+            PartDataStorage data = part.GetComponent<PartDataStorage>();
+            if (i == 1)
             {
-                _part1Discription.text += "\nEnchant: " + data.Enchantment.EnchantName + " +" + data.Enchantment.AmountOfBuff;
+                _part1Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
+                if (data.IsHoldingEnchant == true)
+                {
+                    _part1Discription.text += "\nEnchant: " + data.Enchantment.EnchantName + " +" + data.Enchantment.AmountOfBuff;
+                }
             }
-        }
-        else if (i == 2)
-        {
-            _part2Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
-            if (data.IsHoldingEnchant == true)
+            else if (i == 2)
             {
-                _part2Discription.text += "\nEnchant: " + data.Enchantment.EnchantName + " +" + data.Enchantment.AmountOfBuff;
+                _part2Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
+                if (data.IsHoldingEnchant == true)
+                {
+                    _part2Discription.text += "\nEnchant: " + data.Enchantment.EnchantName + " +" + data.Enchantment.AmountOfBuff;
+                }
             }
-        }
-        else if (i == 3)
-        {
-            _part3Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
-            if (data.IsHoldingEnchant == true)
+            else if (i == 3)
             {
-                _part3Discription.text += "\nEnchant: " + data.Enchantment.EnchantName + " +" + data.Enchantment.AmountOfBuff;
+                _part3Discription.text = data.PartName + "\nPart Strenght: " + data.PartStr + "\nPart Dextartity: " + data.PartDex + "\nPart Intelegence: " + data.PartInt;
+                if (data.IsHoldingEnchant == true)
+                {
+                    _part3Discription.text += "\nEnchant: " + data.Enchantment.EnchantName + " +" + data.Enchantment.AmountOfBuff;
+                }
             }
+            else
+                Debug.LogWarning("i value is invalid!");
         }
         else
-            Debug.LogWarning("i value is invalid!");
+            Debug.LogError("CraftControl.setupDiscription(): GameObject part does not contain Component PartDataStorage");
+               
 
         updateFinalStatsText();
     }
@@ -650,7 +684,7 @@ public class CraftControl : MonoBehaviour
     private string finalStatsString2;
 
     private string _itemName;
-    private string _materials;
+    private string _compData;
     private string _totalStrength;
     private string _totalDex;
     private string _totalInt;
@@ -681,8 +715,7 @@ public class CraftControl : MonoBehaviour
                 _part3DataRef = _chosenPart3.GetComponent<PartDataStorage>();
 
                 _itemName = "Item - " + _chosenItemRecipe.ItemName;
-                _materials = "Materials\n"
-                    + _part1DataRef.MaterialName + "\n" + _part2DataRef.MaterialName + "\n" + _part3DataRef.MaterialName;
+                _compData = "Materials\n" + _part1DataRef.MaterialName + "\n" + _part2DataRef.MaterialName + "\n" + _part3DataRef.MaterialName;
                 _totalStrength = "\nStrenght: " + (_part1DataRef.PartStr + _part2DataRef.PartStr + _part3DataRef.PartStr).ToString();
                 _totalDex = "\nDextarity: " + (_part1DataRef.PartDex + _part2DataRef.PartDex + _part3DataRef.PartDex).ToString();
                 _totalInt = "\nIntelegence: " + (_part1DataRef.PartInt + _part2DataRef.PartInt + _part3DataRef.PartInt).ToString();
@@ -740,7 +773,7 @@ public class CraftControl : MonoBehaviour
                 _totalValue = "\n\nValue: " + _value.ToString();
 
                 finalStatsString1 = _itemName + "\nStats" + _totalStrength + _totalDex + _totalInt + _totalValue;
-                finalStatsString2 = _materials + _finalEnchant;
+                finalStatsString2 = _compData + _finalEnchant;
                 _finalStatsText1.text = finalStatsString1;
                 _finalStatsText2.text = finalStatsString2;
                 _craftButton.interactable = true;
@@ -793,6 +826,63 @@ public class CraftControl : MonoBehaviour
                 _craftButton.interactable = false;
             }
         }
+        else if (_chosenQuestRecipe != null)
+        {
+            if (_chosenPart1 != null && _chosenPart2 != null && _chosenPart3 != null)
+            {
+                if (_chosenPart1.GetComponent<PartDataStorage>() != null) _part1DataRef = _chosenPart1.GetComponent<PartDataStorage>();
+                else if (_chosenPart1.GetComponent<ItemDataStorage>() != null) _qPart1DataRef = _chosenPart1.GetComponent<ItemDataStorage>();
+
+                if (_chosenPart2.GetComponent<PartDataStorage>() != null) _part2DataRef = _chosenPart2.GetComponent<PartDataStorage>();
+                else if (_chosenPart2.GetComponent<ItemDataStorage>() != null) _qPart2DataRef = _chosenPart2.GetComponent<ItemDataStorage>();
+
+                if (_chosenPart3.GetComponent<PartDataStorage>() != null) _part3DataRef = _chosenPart3.GetComponent<PartDataStorage>();
+                else if (_chosenPart3.GetComponent<ItemDataStorage>() != null) _qPart3DataRef = _chosenPart3.GetComponent<ItemDataStorage>();
+                // quest item composition
+                _itemName = "Item - " + _chosenQuestRecipe.QuestItemName;
+                if (_part1DataRef != null) _compData = "Part 1 Mat: " + _part1DataRef.MaterialName;
+                else if (_qPart1DataRef != null) _compData = "Item 1 Materials: " + _qPart1DataRef.Part1.MaterialName + " " + _qPart1DataRef.Part2.MaterialName + " " + _qPart1DataRef.Part3.MaterialName;
+
+                if (_part2DataRef != null) _compData += "\nPart 2 Mat: " + _part2DataRef.MaterialName;
+                else if (_qPart2DataRef != null) _compData += "\nItem 2 Materials: " + _qPart2DataRef.Part1.MaterialName + " " + _qPart2DataRef.Part2.MaterialName + " " + _qPart2DataRef.Part3.MaterialName;
+
+                if (_part3DataRef != null) _compData += "\nPart 3 Mat: " + _part3DataRef.MaterialName;
+                else if (_qPart3DataRef != null) _compData += "\nItem 3 Materials: " + _qPart3DataRef.Part1.MaterialName + " " + _qPart3DataRef.Part2.MaterialName + " " + _qPart3DataRef.Part3.MaterialName;
+                // quest item total strength
+                _totalStrength = "\nStrenght: " + "[wip code]";
+                // quest item total dex
+                _totalDex = "\nDextarity: " + "[wip code]";
+                // quest item total int
+                _totalInt = "\nIntelegence: " + "[wip code]";
+                // quest item total value
+                _totalValue = "\n\nValue: " + "[wip code]";
+
+                _finalEnchant = "";
+                if (checkIfAnyPartEnchanted() == true)
+                {
+                    _finalEnchant = "\n\nEnchantment:\n" + "[wip code]";
+                }
+
+                finalStatsString1 = _itemName + "\nStats" + _totalStrength + _totalDex + _totalInt + _totalValue;
+                finalStatsString2 = _compData + _finalEnchant;
+                _finalStatsText1.text = finalStatsString1;
+                _finalStatsText2.text = finalStatsString2;
+            }
+            else
+            {
+                finalStatsString += "select ";
+                if (_chosenPart1 == null)
+                    finalStatsString += "part1 ";
+                if (_chosenPart2 == null)
+                    finalStatsString += "part2 ";
+                if (_chosenPart3 == null)
+                    finalStatsString += "part3";
+
+                _finalStatsText1.text = finalStatsString;
+                _finalStatsText2.text = "";
+                _craftButton.interactable = false;
+            }
+        }
         //else
             //Debug.LogWarning("No Recipe selected!");
     }
@@ -805,9 +895,15 @@ public class CraftControl : MonoBehaviour
     {
         if (_chosenPart1.GetComponent<PartDataStorage>().IsHoldingEnchant)
             return true;
+        else if (_chosenPart1.GetComponent<ItemDataStorage>().IsEnchanted)
+            return true;
         else if (_chosenPart2.GetComponent<PartDataStorage>().IsHoldingEnchant)
             return true;
+        else if (_chosenPart2.GetComponent<ItemDataStorage>().IsEnchanted)
+            return true;
         else if (_chosenPart3.GetComponent<PartDataStorage>().IsHoldingEnchant)
+            return true;
+        else if (_chosenPart3.GetComponent<ItemDataStorage>().IsEnchanted)
             return true;
 
         return false;
@@ -822,6 +918,12 @@ public class CraftControl : MonoBehaviour
     public bool anyPartRecipeSelected()
     {
         if (_chosenPartRecipe != null)
+            return true;
+        return false;
+    }
+    public bool anyQuestRecipeSelected()
+    {
+        if (_chosenQuestRecipe != null)
             return true;
         return false;
     }

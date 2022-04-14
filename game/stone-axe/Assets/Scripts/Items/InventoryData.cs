@@ -125,6 +125,7 @@ public class InventoryData : MonoBehaviour
                 break;
             }
         }
+        _invControlRef.setupItemInventory();
         correctItemIndex();
     }
 
