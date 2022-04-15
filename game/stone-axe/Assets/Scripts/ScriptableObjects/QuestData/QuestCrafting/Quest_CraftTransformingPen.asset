@@ -15,8 +15,14 @@ MonoBehaviour:
   _questName: Craft Transforming Pen
   _questDiscription: 
   _questType: 2
+  _questStages: []
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 11400000, guid: 5a32c4cfb8f9abb40aebba43cf17a330, type: 2}
   _requiredCount: 0
   _nextQuest: {fileID: 0}
+  _unlocksQuests: []
+  _requiredPlayerLevel: 8
+  _storyQuestComplete: 0
+  _rewardCurrency: 1000
+  _rewardEXP: 2

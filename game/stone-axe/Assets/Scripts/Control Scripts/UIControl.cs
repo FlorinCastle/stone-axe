@@ -393,9 +393,9 @@ public class UIControl : MonoBehaviour
     public void openItemInv()
     {
         openInvUI();
-        partsScrollView.SetActive(false);
         matsScrollView.SetActive(false);
         enchantsScrollView.SetActive(false);
+        partsScrollView.SetActive(false);
         itemsScrollView.SetActive(true);
     }
     public void openPartInv()
@@ -559,4 +559,8 @@ public class UIControl : MonoBehaviour
     public bool CraftPartUIEnabled { get => partCraftingUI.activeInHierarchy; }
     public bool MarketEcoUIEnabled { get => marketEconomicSubUI.activeInHierarchy; set => marketEconomicSubUI.SetActive(value); }
     public bool MarketQuestUIEnabled { get => questSubUI.activeInHierarchy; set => questSubUI.SetActive(value); }
+    public bool InventoryItemUIEnabled { get => itemsScrollView.activeInHierarchy; }
+    public bool InventoryPartUIEnabled { get => partsScrollView.activeInHierarchy; }
+    public bool InventoryMatUIEnabled { get => matsScrollView.activeInHierarchy; }
+    public bool InventoryEnchantUIEnabled { get => enchantsScrollView.activeInHierarchy; }
 }

@@ -420,7 +420,9 @@ public class CraftControl : MonoBehaviour
             CraftItem();
         else if (_chosenPartRecipe != null)
             CraftPart();
-        
+        else if (_chosenQuestRecipe != null)
+            CraftQuestItem();
+
         else
             Debug.LogWarning("No Recipe Selected");
     }
@@ -562,7 +564,7 @@ public class CraftControl : MonoBehaviour
         _inventoryControlReference.setupPartInventory();
 
         clearItemCraftingUI();
-        _recipeDropdown.value = 0;
+        //_recipeDropdown.value = 0;
         _gameMasterRef.gameObject.GetComponent<MiniGameControl>().stopCraftingMiniGame();
 
     }
@@ -615,6 +617,56 @@ public class CraftControl : MonoBehaviour
             _gameMasterRef.gameObject.GetComponent<MiniGameControl>().stopCraftingMiniGame();
 
         }
+    }
+    private void CraftQuestItem()
+    {
+        // remove parts
+        if (_chosenPart1.GetComponent<PartDataStorage>() != null)
+            _inventoryControlReference.RemovePart(_chosenPart1, true);
+        else if (_chosenPart1.GetComponent<ItemDataStorage>() != null)
+            _inventoryControlReference.RemoveItem(_chosenPart1);
+
+        if (_chosenPart2.GetComponent<PartDataStorage>() != null)
+            _inventoryControlReference.RemovePart(_chosenPart2, true);
+        else if (_chosenPart2.GetComponent<ItemDataStorage>() != null)
+            _inventoryControlReference.RemoveItem(_chosenPart2);
+
+        if (_chosenPart3.GetComponent<PartDataStorage>() != null)
+            _inventoryControlReference.RemovePart(_chosenPart3, true);
+        else if (_chosenPart3.GetComponent<ItemDataStorage>() != null)
+            _inventoryControlReference.RemoveItem(_chosenPart3);
+
+        // add experience???
+        //GameObject.FindGameObjectWithTag("GameMaster").GetComponent<ExperienceManager>().addExperience(4);
+
+        // quest checks
+        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null && _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "OCC_QuestItem")
+        {
+            if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.RequiredQuestItem == _chosenQuestRecipe)
+            {
+                Debug.Log("Quest Notif - Quest Craft Done");
+                _gameMasterRef.gameObject.GetComponent<QuestControl>().completeQuest();
+            }
+            else if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.RequiredQuestItem == null)
+                Debug.LogError("Verify if quest has required item recipe assigned.\nQuest name: " + _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestName);
+        }
+        // clear selected crafting compnents
+        _chosenItemRecipe = null;
+        itemDataStorageTemp = null;
+        itemDataStorageRef = null;
+        _chosenPart1 = null;
+        _part1DataRef = null;
+        _chosenPart2 = null;
+        _part2DataRef = null;
+        _chosenPart3 = null;
+        _part3DataRef = null;
+
+        _inventoryControlReference.setupItemInventory();
+        _inventoryControlReference.setupPartInventory();
+
+        clearItemCraftingUI();
+        //_recipeDropdown.value = 0;
+        _gameMasterRef.gameObject.GetComponent<MiniGameControl>().stopCraftingMiniGame();
     }
 
     private void setupDiscription(int i, GameObject part)
@@ -830,43 +882,128 @@ public class CraftControl : MonoBehaviour
         {
             if (_chosenPart1 != null && _chosenPart2 != null && _chosenPart3 != null)
             {
-                if (_chosenPart1.GetComponent<PartDataStorage>() != null) _part1DataRef = _chosenPart1.GetComponent<PartDataStorage>();
-                else if (_chosenPart1.GetComponent<ItemDataStorage>() != null) _qPart1DataRef = _chosenPart1.GetComponent<ItemDataStorage>();
+                int str = 0;
+                int dex = 0;
+                int intel = 0;
+                int value = 0;
+                if (true)
+                {
+                    if (_chosenPart1.GetComponent<PartDataStorage>() != null) _part1DataRef = _chosenPart1.GetComponent<PartDataStorage>();
+                    else if (_chosenPart1.GetComponent<ItemDataStorage>() != null) _qPart1DataRef = _chosenPart1.GetComponent<ItemDataStorage>();
 
-                if (_chosenPart2.GetComponent<PartDataStorage>() != null) _part2DataRef = _chosenPart2.GetComponent<PartDataStorage>();
-                else if (_chosenPart2.GetComponent<ItemDataStorage>() != null) _qPart2DataRef = _chosenPart2.GetComponent<ItemDataStorage>();
+                    if (_chosenPart2.GetComponent<PartDataStorage>() != null) _part2DataRef = _chosenPart2.GetComponent<PartDataStorage>();
+                    else if (_chosenPart2.GetComponent<ItemDataStorage>() != null) _qPart2DataRef = _chosenPart2.GetComponent<ItemDataStorage>();
 
-                if (_chosenPart3.GetComponent<PartDataStorage>() != null) _part3DataRef = _chosenPart3.GetComponent<PartDataStorage>();
-                else if (_chosenPart3.GetComponent<ItemDataStorage>() != null) _qPart3DataRef = _chosenPart3.GetComponent<ItemDataStorage>();
-                // quest item composition
-                _itemName = "Item - " + _chosenQuestRecipe.QuestItemName;
-                if (_part1DataRef != null) _compData = "Part 1 Mat: " + _part1DataRef.MaterialName;
-                else if (_qPart1DataRef != null) _compData = "Item 1 Materials: " + _qPart1DataRef.Part1.MaterialName + " " + _qPart1DataRef.Part2.MaterialName + " " + _qPart1DataRef.Part3.MaterialName;
+                    if (_chosenPart3.GetComponent<PartDataStorage>() != null) _part3DataRef = _chosenPart3.GetComponent<PartDataStorage>();
+                    else if (_chosenPart3.GetComponent<ItemDataStorage>() != null) _qPart3DataRef = _chosenPart3.GetComponent<ItemDataStorage>();
+                    // quest item composition
+                    _itemName = "Item - " + _chosenQuestRecipe.QuestItemName;
+                    if (_part1DataRef != null) _compData = "Part 1 Mat: " + _part1DataRef.MaterialName;
+                    else if (_qPart1DataRef != null) _compData = "Item 1 Materials: " + _qPart1DataRef.Part1.MaterialName + " " + _qPart1DataRef.Part2.MaterialName + " " + _qPart1DataRef.Part3.MaterialName;
 
-                if (_part2DataRef != null) _compData += "\nPart 2 Mat: " + _part2DataRef.MaterialName;
-                else if (_qPart2DataRef != null) _compData += "\nItem 2 Materials: " + _qPart2DataRef.Part1.MaterialName + " " + _qPart2DataRef.Part2.MaterialName + " " + _qPart2DataRef.Part3.MaterialName;
+                    if (_part2DataRef != null) _compData += "\nPart 2 Mat: " + _part2DataRef.MaterialName;
+                    else if (_qPart2DataRef != null) _compData += "\nItem 2 Materials: " + _qPart2DataRef.Part1.MaterialName + " " + _qPart2DataRef.Part2.MaterialName + " " + _qPart2DataRef.Part3.MaterialName;
 
-                if (_part3DataRef != null) _compData += "\nPart 3 Mat: " + _part3DataRef.MaterialName;
-                else if (_qPart3DataRef != null) _compData += "\nItem 3 Materials: " + _qPart3DataRef.Part1.MaterialName + " " + _qPart3DataRef.Part2.MaterialName + " " + _qPart3DataRef.Part3.MaterialName;
-                // quest item total strength
-                _totalStrength = "\nStrenght: " + "[wip code]";
-                // quest item total dex
-                _totalDex = "\nDextarity: " + "[wip code]";
-                // quest item total int
-                _totalInt = "\nIntelegence: " + "[wip code]";
-                // quest item total value
-                _totalValue = "\n\nValue: " + "[wip code]";
+                    if (_part3DataRef != null) _compData += "\nPart 3 Mat: " + _part3DataRef.MaterialName;
+                    else if (_qPart3DataRef != null) _compData += "\nItem 3 Materials: " + _qPart3DataRef.Part1.MaterialName + " " + _qPart3DataRef.Part2.MaterialName + " " + _qPart3DataRef.Part3.MaterialName;
+
+                    // quest item total strength
+                    if (_chosenPart1.GetComponent<PartDataStorage>() != null) str += _chosenPart1.GetComponent<PartDataStorage>().PartStr;
+                    else if (_chosenPart1.GetComponent<ItemDataStorage>() != null) str += _chosenPart1.GetComponent<ItemDataStorage>().TotalStrength;
+
+                    if (_chosenPart2.GetComponent<PartDataStorage>() != null) str += _chosenPart2.GetComponent<PartDataStorage>().PartStr;
+                    else if (_chosenPart2.GetComponent<ItemDataStorage>() != null) str += _chosenPart2.GetComponent<ItemDataStorage>().TotalStrength;
+
+                    if (_chosenPart3.GetComponent<PartDataStorage>() != null) str += _chosenPart3.GetComponent<PartDataStorage>().PartStr;
+                    else if (_chosenPart3.GetComponent<ItemDataStorage>() != null) str += _chosenPart3.GetComponent<ItemDataStorage>().TotalStrength;
+
+                    // quest item total dextarity
+                    if (_chosenPart1.GetComponent<PartDataStorage>() != null) dex += _chosenPart1.GetComponent<PartDataStorage>().PartDex;
+                    else if (_chosenPart1.GetComponent<ItemDataStorage>() != null) dex += _chosenPart1.GetComponent<ItemDataStorage>().TotalDextarity;
+
+                    if (_chosenPart2.GetComponent<PartDataStorage>() != null) dex += _chosenPart2.GetComponent<PartDataStorage>().PartDex;
+                    else if (_chosenPart2.GetComponent<ItemDataStorage>() != null) dex += _chosenPart2.GetComponent<ItemDataStorage>().TotalDextarity;
+
+                    if (_chosenPart3.GetComponent<PartDataStorage>() != null) dex += _chosenPart3.GetComponent<PartDataStorage>().PartDex;
+                    else if (_chosenPart3.GetComponent<ItemDataStorage>() != null) dex += _chosenPart3.GetComponent<ItemDataStorage>().TotalDextarity;
+
+                    // quest item total intelegence
+                    if (_chosenPart1.GetComponent<PartDataStorage>() != null) intel += _chosenPart1.GetComponent<PartDataStorage>().PartInt;
+                    else if (_chosenPart1.GetComponent<ItemDataStorage>() != null) intel += _chosenPart1.GetComponent<ItemDataStorage>().TotalIntelegence;
+
+                    if (_chosenPart2.GetComponent<PartDataStorage>() != null) intel += _chosenPart2.GetComponent<PartDataStorage>().PartInt;
+                    else if (_chosenPart2.GetComponent<ItemDataStorage>() != null) intel += _chosenPart2.GetComponent<ItemDataStorage>().TotalIntelegence;
+
+                    if (_chosenPart3.GetComponent<PartDataStorage>() != null) intel += _chosenPart3.GetComponent<PartDataStorage>().PartInt;
+                    else if (_chosenPart3.GetComponent<ItemDataStorage>() != null) intel += _chosenPart3.GetComponent<ItemDataStorage>().TotalIntelegence;
+
+                    if (_chosenPart1.GetComponent<PartDataStorage>() != null) value += _chosenPart1.GetComponent<PartDataStorage>().Value;
+                    else if (_chosenPart1.GetComponent<ItemDataStorage>() != null) value += _chosenPart1.GetComponent<ItemDataStorage>().TotalValue;
+
+                    if (_chosenPart2.GetComponent<PartDataStorage>() != null) value += _chosenPart2.GetComponent<PartDataStorage>().Value;
+                    else if (_chosenPart2.GetComponent<ItemDataStorage>() != null) value += _chosenPart2.GetComponent<ItemDataStorage>().TotalValue;
+
+                    if (_chosenPart3.GetComponent<PartDataStorage>() != null) value += _chosenPart3.GetComponent<PartDataStorage>().Value;
+                    else if (_chosenPart3.GetComponent<ItemDataStorage>() != null) value += _chosenPart3.GetComponent<ItemDataStorage>().TotalValue;
+
+                }
+                
 
                 _finalEnchant = "";
                 if (checkIfAnyPartEnchanted() == true)
                 {
-                    _finalEnchant = "\n\nEnchantment:\n" + "[wip code]";
+                    _finalEnchant = "\n\nEnchantment:\n";
+                    if (_chosenPart1.GetComponent<PartDataStorage>() != null && _chosenPart1.GetComponent<PartDataStorage>().IsHoldingEnchant == true)
+                    {
+                        _finalEnchant += _chosenPart1.GetComponent<PartDataStorage>().Enchantment.EnchantName + " +" + _chosenPart1.GetComponent<PartDataStorage>().Enchantment.AmountOfBuff;
+                        encant = _chosenPart1.GetComponent<PartDataStorage>().Enchantment;
+                        _value += encant.AddedValueOfEnchant;
+                    }
+                    else if (_chosenPart1.GetComponent<ItemDataStorage>() != null && _chosenPart1.GetComponent<ItemDataStorage>().IsEnchanted == true)
+                    {
+                        _finalEnchant += _chosenPart1.GetComponent<ItemDataStorage>().Enchantment.EnchantName + " +" + _chosenPart1.GetComponent<ItemDataStorage>().Enchantment.AmountOfBuff;
+                        encant = _chosenPart1.GetComponent<ItemDataStorage>().Enchantment;
+                        _value += encant.AddedValueOfEnchant;
+                    }
+                    else if (_chosenPart2.GetComponent<PartDataStorage>() != null && _chosenPart2.GetComponent<PartDataStorage>().IsHoldingEnchant == true)
+                    {
+                        _finalEnchant += _chosenPart2.GetComponent<PartDataStorage>().Enchantment.EnchantName + " +" + _chosenPart2.GetComponent<PartDataStorage>().Enchantment.AmountOfBuff;
+                        encant = _chosenPart2.GetComponent<PartDataStorage>().Enchantment;
+                        _value += encant.AddedValueOfEnchant;
+                    }
+                    else if (_chosenPart2.GetComponent<ItemDataStorage>() != null && _chosenPart2.GetComponent<ItemDataStorage>().IsEnchanted == true)
+                    {
+                        _finalEnchant += _chosenPart2.GetComponent<ItemDataStorage>().Enchantment.EnchantName + " +" + _chosenPart2.GetComponent<ItemDataStorage>().Enchantment.AmountOfBuff;
+                        encant = _chosenPart2.GetComponent<ItemDataStorage>().Enchantment;
+                        _value += encant.AddedValueOfEnchant;
+                    }
+                    else if (_chosenPart3.GetComponent<PartDataStorage>() != null && _chosenPart3.GetComponent<PartDataStorage>().IsHoldingEnchant == true)
+                    {
+                        _finalEnchant += _chosenPart3.GetComponent<PartDataStorage>().Enchantment.EnchantName + " +" + _chosenPart3.GetComponent<PartDataStorage>().Enchantment.AmountOfBuff;
+                        encant = _chosenPart3.GetComponent<PartDataStorage>().Enchantment;
+                        _value += encant.AddedValueOfEnchant;
+                    }
+                    else if (_chosenPart3.GetComponent<ItemDataStorage>() != null && _chosenPart3.GetComponent<ItemDataStorage>().IsEnchanted == true)
+                    {
+                        _finalEnchant += _chosenPart3.GetComponent<ItemDataStorage>().Enchantment.EnchantName + " +" + _chosenPart3.GetComponent<ItemDataStorage>().Enchantment.AmountOfBuff;
+                        encant = _chosenPart3.GetComponent<ItemDataStorage>().Enchantment;
+                        _value += encant.AddedValueOfEnchant;
+                    }
                 }
+
+                _totalStrength = "\nStrenght: " + str.ToString();
+                // quest item total dex
+                _totalDex = "\nDextarity: " + dex.ToString();
+                // quest item total int
+                _totalInt = "\nIntelegence: " + intel.ToString();
+                // quest item total value
+                _totalValue = "\n\nValue: " + value.ToString();
 
                 finalStatsString1 = _itemName + "\nStats" + _totalStrength + _totalDex + _totalInt + _totalValue;
                 finalStatsString2 = _compData + _finalEnchant;
                 _finalStatsText1.text = finalStatsString1;
                 _finalStatsText2.text = finalStatsString2;
+                _craftButton.interactable = true;
             }
             else
             {
@@ -893,18 +1030,18 @@ public class CraftControl : MonoBehaviour
 
     private bool checkIfAnyPartEnchanted()
     {
-        if (_chosenPart1.GetComponent<PartDataStorage>().IsHoldingEnchant)
-            return true;
-        else if (_chosenPart1.GetComponent<ItemDataStorage>().IsEnchanted)
-            return true;
-        else if (_chosenPart2.GetComponent<PartDataStorage>().IsHoldingEnchant)
-            return true;
-        else if (_chosenPart2.GetComponent<ItemDataStorage>().IsEnchanted)
-            return true;
-        else if (_chosenPart3.GetComponent<PartDataStorage>().IsHoldingEnchant)
-            return true;
-        else if (_chosenPart3.GetComponent<ItemDataStorage>().IsEnchanted)
-            return true;
+        if (_chosenPart1.GetComponent<PartDataStorage>() != null && _chosenPart1.GetComponent<PartDataStorage>().IsHoldingEnchant)
+                return true;
+        else if (_chosenPart1.GetComponent<ItemDataStorage>() != null && _chosenPart1.GetComponent<ItemDataStorage>().IsEnchanted)
+                return true;
+        else if (_chosenPart2.GetComponent<PartDataStorage>() != null && _chosenPart2.GetComponent<PartDataStorage>().IsHoldingEnchant)
+                return true;
+        else if (_chosenPart2.GetComponent<ItemDataStorage>() != null && _chosenPart2.GetComponent<ItemDataStorage>().IsEnchanted)
+                return true;
+        else if (_chosenPart3.GetComponent<PartDataStorage>() != null && _chosenPart3.GetComponent<PartDataStorage>().IsHoldingEnchant)
+                return true;
+        else if (_chosenPart3.GetComponent<ItemDataStorage>() != null && _chosenPart3.GetComponent<ItemDataStorage>().IsEnchanted)
+                return true;
 
         return false;
     }

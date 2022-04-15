@@ -15,8 +15,14 @@ MonoBehaviour:
   _questName: Craft Star Wand
   _questDiscription: 
   _questType: 2
+  _questStages: []
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 11400000, guid: 30fa3fe65aa15ea4584a3f86c25390ec, type: 2}
   _requiredCount: 0
   _nextQuest: {fileID: 0}
+  _unlocksQuests: []
+  _requiredPlayerLevel: 0
+  _storyQuestComplete: 0
+  _rewardCurrency: 1000
+  _rewardEXP: 2

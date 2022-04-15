@@ -157,7 +157,13 @@ public class GameMaster : MonoBehaviour
         _uiControlRef.shopSellMenuEnabled(false);
         _uiControlRef.craftMenuEnabled(false);
 
-        _uiControlRef.openItemInv();
+        _uiControlRef.openInvUI();
+        if (_uiControlRef.InventoryItemUIEnabled == true)
+            _uiControlRef.openItemInv();
+        else if (_uiControlRef.InventoryPartUIEnabled == true)
+            _uiControlRef.openPartInv();
+        else
+            _uiControlRef.openItemInv();
 
         updatePlayerPosition();
     }
