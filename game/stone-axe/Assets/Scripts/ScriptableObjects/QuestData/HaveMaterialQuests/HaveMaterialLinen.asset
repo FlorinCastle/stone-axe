@@ -15,7 +15,14 @@ MonoBehaviour:
   _questName: Have Linen
   _questDiscription: have this material
   _questType: 3
+  _questStages: []
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 11400000, guid: 8b123dc586a3f244b83f83b0ffc64992, type: 2}
+  _requiredQuestItem: {fileID: 0}
   _requiredCount: 5
   _nextQuest: {fileID: 0}
+  _unlocksQuests: []
+  _requiredPlayerLevel: 0
+  _storyQuestComplete: 0
+  _rewardCurrency: 30
+  _rewardEXP: 2

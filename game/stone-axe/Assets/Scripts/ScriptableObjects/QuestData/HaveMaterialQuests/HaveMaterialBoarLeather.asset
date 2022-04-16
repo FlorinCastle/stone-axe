@@ -15,7 +15,14 @@ MonoBehaviour:
   _questName: Have Boar Leather
   _questDiscription: have this material
   _questType: 3
+  _questStages: []
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
+  _requiredQuestItem: {fileID: 0}
   _requiredCount: 5
   _nextQuest: {fileID: 0}
+  _unlocksQuests: []
+  _requiredPlayerLevel: 0
+  _storyQuestComplete: 0
+  _rewardCurrency: 30
+  _rewardEXP: 2

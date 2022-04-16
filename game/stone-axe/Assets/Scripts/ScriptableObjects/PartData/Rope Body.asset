@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partName: Rope Body
   _partLevelReq: 18
-  _material: {fileID: 0}
+  _material: {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
   - {fileID: 11400000, guid: 1e9b7f9659be5de4aa93d81c837a7562, type: 2}

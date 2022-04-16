@@ -15,7 +15,14 @@ MonoBehaviour:
   _questName: Have Copper
   _questDiscription: have this material
   _questType: 3
+  _questStages: []
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 11400000, guid: cf84968d70a35c74c9218b4b8c41277e, type: 2}
+  _requiredQuestItem: {fileID: 0}
   _requiredCount: 5
   _nextQuest: {fileID: 0}
+  _unlocksQuests: []
+  _requiredPlayerLevel: 0
+  _storyQuestComplete: 0
+  _rewardCurrency: 30
+  _rewardEXP: 2

@@ -21,4 +21,8 @@ MonoBehaviour:
   _requiredQuestItem: {fileID: 0}
   _requiredCount: 3
   _nextQuest: {fileID: 0}
+  _unlocksQuests: []
+  _requiredPlayerLevel: 0
   _storyQuestComplete: 0
+  _rewardCurrency: 345
+  _rewardEXP: 3

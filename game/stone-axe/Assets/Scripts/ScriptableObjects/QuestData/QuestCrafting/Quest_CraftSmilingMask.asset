@@ -23,7 +23,7 @@ MonoBehaviour:
   _requiredCount: 0
   _nextQuest: {fileID: 0}
   _unlocksQuests: []
-  _requiredPlayerLevel: 14
+  _requiredPlayerLevel: 8
   _storyQuestComplete: 0
   _rewardCurrency: 1000
   _rewardEXP: 2

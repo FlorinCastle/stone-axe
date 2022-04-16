@@ -80,6 +80,11 @@ public class QuestDataEditor : Editor
                 questComplete.boolValue = false;
                 nextQuest.objectReferenceValue = null;
                 questUnlocks.ClearArray();
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField("Quest Rewards", EditorStyles.boldLabel);
+                EditorGUILayout.PropertyField(rewardEXP, new GUIContent("EXP Reward"));
+                EditorGUILayout.PropertyField(rewardCurrency, new GUIContent("Currency Reward"));
+                rewardCurrency.intValue = ((int)(itemRef.TotalValue * (1.5f)));
                 break;
 
             case QuestData.questTypeEnum.OCC_QuestItem:
@@ -91,6 +96,12 @@ public class QuestDataEditor : Editor
                 questComplete.boolValue = false;
                 nextQuest.objectReferenceValue = null;
                 questUnlocks.ClearArray();
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField("Quest Rewards", EditorStyles.boldLabel);
+                EditorGUILayout.PropertyField(rewardEXP, new GUIContent("EXP Reward"));
+                EditorGUILayout.PropertyField(rewardCurrency, new GUIContent("Currency Reward"));
+                if (qItemRef != null && rewardCurrency.intValue <= 1000)
+                    rewardCurrency.intValue = qItemRef.BaseCost + 1000;
                 break;
 
             case QuestData.questTypeEnum.OD_Material:
@@ -102,6 +113,11 @@ public class QuestDataEditor : Editor
                 questComplete.boolValue = false;
                 nextQuest.objectReferenceValue = null;
                 questUnlocks.ClearArray();
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField("Quest Rewards", EditorStyles.boldLabel);
+                EditorGUILayout.PropertyField(rewardEXP, new GUIContent("EXP Reward"));
+                EditorGUILayout.PropertyField(rewardCurrency, new GUIContent("Currency Reward"));
+                rewardCurrency.intValue = matRef.BaseCostPerUnit * (reqCount.intValue + 3);
                 break;
 
             case QuestData.questTypeEnum.OCC_TotalCrafted:
@@ -113,6 +129,14 @@ public class QuestDataEditor : Editor
                 questComplete.boolValue = false;
                 nextQuest.objectReferenceValue = null;
                 questUnlocks.ClearArray();
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField("Quest Rewards", EditorStyles.boldLabel);
+                EditorGUILayout.PropertyField(rewardEXP, new GUIContent("EXP Reward"));
+                EditorGUILayout.PropertyField(rewardCurrency, new GUIContent("Currency Reward"));
+                if (reqCount.intValue == 0)
+                    reqCount.intValue = 3;
+
+                rewardCurrency.intValue = itemRef.TotalValue * (reqCount.intValue + 2);
                 break;
 
             case QuestData.questTypeEnum.Tutorial:
@@ -124,6 +148,10 @@ public class QuestDataEditor : Editor
                 EditorGUILayout.PropertyField(questComplete, new GUIContent("This Quest Complete"));
                 EditorGUILayout.PropertyField(nextQuest);
                 EditorGUILayout.PropertyField(questUnlocks);
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField("Quest Rewards", EditorStyles.boldLabel);
+                EditorGUILayout.PropertyField(rewardEXP, new GUIContent("EXP Reward"));
+                EditorGUILayout.PropertyField(rewardCurrency, new GUIContent("Currency Reward"));
                 break;
 
             case QuestData.questTypeEnum.Story:
@@ -135,13 +163,18 @@ public class QuestDataEditor : Editor
                 EditorGUILayout.PropertyField(questComplete, new GUIContent("This Quest Complete"));
                 EditorGUILayout.PropertyField(nextQuest);
                 EditorGUILayout.PropertyField(questUnlocks, new GUIContent("Quest Unlocks"));
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField("Quest Rewards", EditorStyles.boldLabel);
+                EditorGUILayout.PropertyField(rewardEXP, new GUIContent("EXP Reward"));
+                EditorGUILayout.PropertyField(rewardCurrency, new GUIContent("Currency Reward"));
                 break;
         }
+        /*
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Quest Rewards", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(rewardEXP, new GUIContent("EXP Reward"));
         EditorGUILayout.PropertyField(rewardCurrency, new GUIContent("Currency Reward"));
-
+        */
         serializedObject.ApplyModifiedProperties();
     }
 }

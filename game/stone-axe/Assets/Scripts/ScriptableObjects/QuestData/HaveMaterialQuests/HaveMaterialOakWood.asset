@@ -15,7 +15,14 @@ MonoBehaviour:
   _questName: Have Oak Wood
   _questDiscription: have this material
   _questType: 3
+  _questStages: []
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
+  _requiredQuestItem: {fileID: 0}
   _requiredCount: 5
   _nextQuest: {fileID: 0}
+  _unlocksQuests: []
+  _requiredPlayerLevel: 0
+  _storyQuestComplete: 0
+  _rewardCurrency: 30
+  _rewardEXP: 2
