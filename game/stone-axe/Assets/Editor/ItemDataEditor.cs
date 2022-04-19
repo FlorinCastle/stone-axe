@@ -18,8 +18,8 @@ public class ItemDataEditor : Editor
         baseCost,
         baseStr,
         baseDex,
-        baseInt,
-        isEnch;
+        baseInt;
+        //isEnch;
 
     private void OnEnable()
     {
@@ -35,7 +35,7 @@ public class ItemDataEditor : Editor
         baseStr = serializedObject.FindProperty("_baseStrenght");
         baseDex = serializedObject.FindProperty("_baseDextarity");
         baseInt = serializedObject.FindProperty("_baseIntelligence");
-        isEnch = serializedObject.FindProperty("_isEnchanted");
+        //isEnch = serializedObject.FindProperty("_isEnchanted");
     }
 
     public override void OnInspectorGUI()
@@ -87,7 +87,7 @@ public class ItemDataEditor : Editor
         EditorGUILayout.PropertyField(baseStr, new GUIContent("Base Strength"));
         EditorGUILayout.PropertyField(baseDex, new GUIContent("Base Dextarity"));
         EditorGUILayout.PropertyField(baseInt, new GUIContent("Base Intelligence"));
-        EditorGUILayout.PropertyField(isEnch, new GUIContent("Is Enchanted"));
+        //EditorGUILayout.PropertyField(isEnch, new GUIContent("Is Enchanted"));
 
         serializedObject.ApplyModifiedProperties();
     }

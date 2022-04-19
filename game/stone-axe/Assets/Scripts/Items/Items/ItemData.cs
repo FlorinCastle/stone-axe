@@ -43,6 +43,7 @@ public class ItemData : ScriptableObject
     public int TotalDextarity { get => _baseDextarity + _part1.PartDextarity + _part2.PartDextarity + _part3.PartDextarity; }
     public int TotalIntelegence { get => _baseIntelligence + _part1.PartIntelligence + _part2.PartIntelligence + _part3.PartIntelligence; }
 
+    // Not happy about having to have this code here :/
     public bool IsEnchanted { get => _isEnchanted; }
     public void setIsEnchanted(bool value) { _isEnchanted = value; }
 

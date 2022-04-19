@@ -18,7 +18,7 @@ public class ExperienceManager : MonoBehaviour
     [SerializeField] private List<LevelUpData> _levelUpData;
 
     private int prevUpdatedLevel = 0;
-    private float prevEXPPercent = 0f;
+    //private float prevEXPPercent = 0f;
 
     private void Awake()
     {

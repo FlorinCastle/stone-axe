@@ -57,7 +57,7 @@ public class DisassembleItemControl : MonoBehaviour
         }
         else
         {
-            Debug.Log("No Item selected!");
+            Debug.LogError("No Item selected!");
             _disassembleButton.interactable = false;
         }
     }
@@ -72,7 +72,7 @@ public class DisassembleItemControl : MonoBehaviour
         }
         else
         {
-            Debug.Log("No Part Selected!");
+            Debug.LogError("No Part Selected!");
             _disassembleButton.interactable = false;
         }
     }

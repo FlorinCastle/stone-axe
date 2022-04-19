@@ -48,14 +48,8 @@ public class InventoryScript : MonoBehaviour
     // enchant inventory
     [SerializeField] private List<GameObject> _enchantButtonList;
 
-    //[SerializeField] public Color _validFilterColor;
-
 
     [Header("UI References")]
-    // [SerializeField] private Button _headerButtonItems;
-    // [SerializeField] private Button _headerButtonParts;
-    // [SerializeField] private Button _headerButtonMaterials;
-    // [SerializeField] private Button _headerButtonEnchants;
     [SerializeField] private TextMeshProUGUI _descriptionText1;
     [SerializeField] private TextMeshProUGUI _descriptionText2;
     [Space(5)]
@@ -362,7 +356,8 @@ public class InventoryScript : MonoBehaviour
             setupList.Clear();
         }
 
-        _descriptionText1.text = "new text";
+        _descriptionText1.text = "";
+        _descriptionText2.text = "";
     }
 
     private void partStorageSetup(PartDataStorage dat, int k, bool isFilterValid)
@@ -523,7 +518,8 @@ public class InventoryScript : MonoBehaviour
             setupList.Clear();
         }
 
-        _descriptionText1.text = "new text";
+        _descriptionText1.text = "";
+        _descriptionText2.text = "";
     }
 
     private void matStorageSetup(MaterialDataStorage dat, int m, bool isFilterValid)
@@ -599,7 +595,8 @@ public class InventoryScript : MonoBehaviour
             }
             e++;
         }
-        _descriptionText1.text = "new text";
+        _descriptionText1.text = "";
+        _descriptionText2.text = "";
     }
 
     private ColorBlock ItemColorBlock;
@@ -824,11 +821,10 @@ public class InventoryScript : MonoBehaviour
 
                 _descriptionText1.text = _enchantName + _valueOfBuff;
             }
-            else
-                _descriptionText1.text = "new text";
+            else { _descriptionText1.text = ""; _descriptionText2.text = ""; }
         }
-        else
-            _descriptionText1.text = "new text";
+        else { _descriptionText1.text = ""; _descriptionText2.text = "";
+        }
     }
 
     private GameObject itemDataStorageTemp;
@@ -1092,7 +1088,7 @@ public class InventoryScript : MonoBehaviour
 
         return enchantDataStorageTemp;
     }
-
+    /* old code
     private bool ItemSlotEmpty(int index)
     {
         if (_inventoryData.ItemInventory[index] == null)
@@ -1161,7 +1157,7 @@ public class InventoryScript : MonoBehaviour
         mat = _inventoryData.MaterialInventory[index].GetComponent<MaterialDataStorage>().MatDataRef;
         return true;
     }
-
+    */
     // insert an item/part/material, return the index where it was inserted. -1 if error.
     public int InsertItem(ItemData item)
     {
