@@ -12,6 +12,7 @@ public class QuestStageEditor : Editor
         dialogueSpeaker,
         questEvent,
         itemToGet,
+        itemCount,
         part1Mat,
         part2Mat,
         part3Mat,
@@ -25,6 +26,7 @@ public class QuestStageEditor : Editor
         dialogueSpeaker = serializedObject.FindProperty("_speaker");
         questEvent = serializedObject.FindProperty("_questEvent");
         itemToGet = serializedObject.FindProperty("_item");
+        itemCount = serializedObject.FindProperty("_itemCount");
         part1Mat = serializedObject.FindProperty("_part1Mat");
         part2Mat = serializedObject.FindProperty("_part2Mat");
         part3Mat = serializedObject.FindProperty("_part3Mat");
@@ -64,8 +66,13 @@ public class QuestStageEditor : Editor
                 dialogueSpeaker.stringValue = "";
                 dialogueLine.stringValue = "";
                 currencyValue.intValue = 0;
-                //itemToGet = null;
                 EditorGUILayout.PropertyField(itemToGet, new GUIContent("Item to Craft"));
+                if (itemToGet.objectReferenceValue != null)
+                {
+                    EditorGUILayout.PropertyField(itemCount, new GUIContent("Amount to Craft"));
+                    if (itemCount.intValue <= 0)
+                        itemCount.intValue = 1;
+                }
                 npcRef.objectReferenceValue = null;
                 break;
 
@@ -75,6 +82,7 @@ public class QuestStageEditor : Editor
                 dialogueLine.stringValue = "";
                 currencyValue.intValue = 0;
                 itemToGet.objectReferenceValue = null;
+                itemCount.intValue = 0;
                 npcRef.objectReferenceValue = null;
                 break;
 
@@ -84,6 +92,7 @@ public class QuestStageEditor : Editor
                 dialogueLine.stringValue = "";
                 currencyValue.intValue = 0;
                 itemToGet.objectReferenceValue = null;
+                itemCount.intValue = 0;
                 npcRef.objectReferenceValue = null;
                 break;
 
@@ -93,6 +102,7 @@ public class QuestStageEditor : Editor
                 dialogueLine.stringValue = "";
                 currencyValue.intValue = 0;
                 itemToGet.objectReferenceValue = null;
+                itemCount.intValue = 0;
                 npcRef.objectReferenceValue = null;
                 break;
 
@@ -103,6 +113,7 @@ public class QuestStageEditor : Editor
                 EditorGUILayout.PropertyField(currencyValue, new GUIContent("Currency to Earn"));
                 //currencyValue.intValue = 0;
                 itemToGet.objectReferenceValue = null;
+                itemCount.intValue = 0;
                 npcRef.objectReferenceValue = null;
                 break;
 
@@ -124,6 +135,9 @@ public class QuestStageEditor : Editor
                             EditorGUILayout.PropertyField(part2Mat, new GUIContent("Part 2 - " + item.Part2.PartName));
                             EditorGUILayout.PropertyField(part3Mat, new GUIContent("Part 3 - " + item.Part3.PartName));
 
+                            EditorGUILayout.PropertyField(itemCount, new GUIContent("Amount to Get"));
+                            if (itemCount.intValue <= 0)
+                                itemCount.intValue = 1;
                         }
                         npcRef.objectReferenceValue = null;
                         break;
@@ -147,12 +161,14 @@ public class QuestStageEditor : Editor
                     case QuestStage.questEvent.Get_Currency:
                         EditorGUILayout.PropertyField(currencyValue, new GUIContent("Currency to Get"));
                         itemToGet.objectReferenceValue = null;
+                        itemCount.intValue = 0;
                         npcRef.objectReferenceValue = null;
                         break;
 
                     case QuestStage.questEvent.Remove_Currency:
                         EditorGUILayout.PropertyField(currencyValue, new GUIContent("Currency to Remove"));
                         itemToGet.objectReferenceValue = null;
+                        itemCount.intValue = 0;
                         npcRef.objectReferenceValue = null;
                         break;
 
@@ -160,12 +176,14 @@ public class QuestStageEditor : Editor
                         currencyValue.intValue = 0;
                         EditorGUILayout.PropertyField(npcRef, new GUIContent("NPC Prefab Reference"));
                         itemToGet.objectReferenceValue = null;
+                        itemCount.intValue = 0;
                         break;
 
                     case QuestStage.questEvent.Dismiss_Quest_NPC:
                         currencyValue.intValue = 0;
                         npcRef.objectReferenceValue = null;
                         itemToGet.objectReferenceValue = null;
+                        itemCount.intValue = 0;
                         break;
 
                 }
@@ -174,14 +192,3 @@ public class QuestStageEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
-/*
- * 
-                        if (itemToGet != null)
-                        {
-                            ItemData item = (ItemData)itemToGet.objectReferenceValue;
-                            if (item.Part1.ValidMaterialData.Contains((MaterialData)part1Mat.objectReferenceValue))
-                                EditorGUILayout.PropertyField(part1Mat);
-                            else
-                                part1Mat = null;
-                        }
-*/

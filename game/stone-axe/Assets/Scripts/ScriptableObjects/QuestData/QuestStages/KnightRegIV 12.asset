@@ -17,6 +17,7 @@ MonoBehaviour:
   _speaker: 
   _dialogueLine: 
   _item: {fileID: 11400000, guid: ac371d19494540b47805cf400362dfe3, type: 2}
+  _itemCount: 1
   _part1Mat: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
   _part2Mat: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}
   _part3Mat: {fileID: 11400000, guid: 0bfc410c3b649f740be462574c6aefac, type: 2}

@@ -17,7 +17,9 @@ MonoBehaviour:
   _speaker: 
   _dialogueLine: 
   _item: {fileID: 11400000, guid: 60bee362faf67e840b65be712fa59bea, type: 2}
+  _itemCount: 1
   _part1Mat: {fileID: 0}
   _part2Mat: {fileID: 0}
   _part3Mat: {fileID: 0}
   _currencyValue: 0
+  _npcRef: {fileID: 0}

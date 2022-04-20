@@ -8,13 +8,14 @@ public class QuestStage : ScriptableObject
     public enum questStageEnum { Not_Set, Dialogue, Craft_Item, Sell_Item, Buy_Item, Disassemble_Item, Have_Currency, Force_Event };
     public questStageEnum _questStageType;
 
-    public enum questEvent { Not_Set, Summon_Adventurer, Get_Item, Get_Currency, Remove_Currency, Summon_NPC, Dismiss_Quest_NPC, Force_For_Sale };
+    public enum questEvent { Not_Set, Summon_Adventurer, Get_Item, Remove_Quest_Items, Get_Currency, Remove_Currency, Summon_NPC, Dismiss_Quest_NPC, Force_For_Sale };
     public questEvent _questEvent;
 
     public string _speaker;
     [TextArea(1, 10)]
     public string _dialogueLine;
     public ItemData _item;
+    public int _itemCount;
     public MaterialData _part1Mat;
     public MaterialData _part2Mat;
     public MaterialData _part3Mat;
@@ -27,6 +28,7 @@ public class QuestStage : ScriptableObject
     public string DialogueSpeaker { get => _speaker; }
     public string DialogueLine { get => _dialogueLine; }
     public ItemData ItemToGet { get => _item; }
+    public int CountToGet { get => _itemCount; }
     public MaterialData Part1Mat { get => _part1Mat; }
     public MaterialData Part2Mat { get => _part2Mat; }
     public MaterialData Part3Mat { get => _part3Mat; }

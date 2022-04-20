@@ -17,10 +17,46 @@ MonoBehaviour:
   _questType: 6
   _questStages:
   - {fileID: 11400000, guid: baf16de4320ad6c44bbeac2daa190543, type: 2}
+  - {fileID: 11400000, guid: c6f75688a3c87ca4a9fdb07eb00433bc, type: 2}
+  - {fileID: 11400000, guid: 9d309110e543aff46a3438d42ddd2db5, type: 2}
+  - {fileID: 11400000, guid: aba768dcb7a2d7343bed8f6c31e041bc, type: 2}
+  - {fileID: 11400000, guid: 6cc2b59119ce61146af68668e3574f30, type: 2}
+  - {fileID: 11400000, guid: a9ade5f1e672b6a4aa8a4d88e0e7efee, type: 2}
+  - {fileID: 11400000, guid: 6d3100a1713c48248972b4db9ef97cdf, type: 2}
+  - {fileID: 11400000, guid: 60aed9359cf290042a5dc8bc3962b69d, type: 2}
+  - {fileID: 11400000, guid: f33ad1e35bec6bf4f8d38b63213caa22, type: 2}
+  - {fileID: 11400000, guid: 64fac981ab069db42b8ed89f4fd4b054, type: 2}
+  - {fileID: 11400000, guid: 370a1bb04d085994ca887f5e642f5f3f, type: 2}
+  - {fileID: 11400000, guid: f7aa6ad7f2dad2041a8e86c238e9ef62, type: 2}
+  - {fileID: 11400000, guid: e1ab714b0ccf5504ebd81785892ae849, type: 2}
+  - {fileID: 11400000, guid: f523f1b71acd3414783ed8387a9d75f6, type: 2}
+  - {fileID: 11400000, guid: 61f1e1d10d0b5fc4381ab5a480173853, type: 2}
+  - {fileID: 11400000, guid: b41b5bfe66e24c34fb5ada548921f148, type: 2}
+  - {fileID: 11400000, guid: 318d2cd72e3b0c8488dc9df3eb75c38f, type: 2}
+  - {fileID: 11400000, guid: e3e95d55722917c42a60cb52a22d22af, type: 2}
+  - {fileID: 11400000, guid: 78ab6654166d7954c887137f1873f82b, type: 2}
+  - {fileID: 11400000, guid: 2c6034fe7a086dd468b8462905d65e9b, type: 2}
+  - {fileID: 11400000, guid: ec02723c38fccf444ba1dbc1f1c75238, type: 2}
+  - {fileID: 11400000, guid: 126a2225ee38d6b4694ad028846f3316, type: 2}
+  - {fileID: 11400000, guid: c80558889fdc64541a0157e676dd3e45, type: 2}
+  - {fileID: 11400000, guid: 82e57a9efd826724b93d4b1924d5850d, type: 2}
+  - {fileID: 11400000, guid: 26bb8d999a68b854cb6c6d0d52f04017, type: 2}
+  - {fileID: 11400000, guid: eb9f62bc46c3a4446913ef1f6ba10c23, type: 2}
+  - {fileID: 11400000, guid: 72b72861e211e304ca5fdce652b3b0fe, type: 2}
+  - {fileID: 11400000, guid: ee31ba753ca6153409eb4af4793d6c3d, type: 2}
+  - {fileID: 11400000, guid: 8af36ae63096f53498010738f398498c, type: 2}
+  - {fileID: 11400000, guid: 0abc6f0b984b0a949ba20473237a6dd0, type: 2}
+  - {fileID: 11400000, guid: f2967be247df99a40aa338710045b9a8, type: 2}
+  - {fileID: 11400000, guid: 76001f65b2300f5439d263dbe6523eb8, type: 2}
+  - {fileID: 11400000, guid: ac82ac6e22665fb468295f815f53c2aa, type: 2}
+  - {fileID: 11400000, guid: 9fdba2791edafb74bb1867cb705f0e83, type: 2}
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 0}
   _requiredCount: 0
   _nextQuest: {fileID: 0}
   _unlocksQuests: []
+  _requiredPlayerLevel: 11
   _storyQuestComplete: 0
+  _rewardCurrency: 0
+  _rewardEXP: 0
