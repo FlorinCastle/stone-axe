@@ -63,6 +63,10 @@ public class UIControl : MonoBehaviour
     [SerializeField] private InputField _playerName;
     [SerializeField] private InputField _shopName;
     [SerializeField] private Button _startNewGameButton;
+    [Header("Load Game UI")]
+    [SerializeField] private Button _loadGameUIButton;
+    [SerializeField] private Button _deleteGameUIButton;
+
     [Header("Player Creation")]
     [SerializeField, HideInInspector] private string playerSpecies = "";
     [SerializeField, HideInInspector] private int playerColor = -1;
@@ -255,6 +259,12 @@ public class UIControl : MonoBehaviour
 
         // only required line
         this.gameObject.GetComponent<DialogueControl>().startDialogue();
+    }
+
+    public void saveGameSelected(bool value)
+    {
+        _loadGameUIButton.interactable = value;
+        _deleteGameUIButton.interactable = value;
     }
 
     public void mainMenuEnabled(bool input) { mainMenuUI.SetActive(input); }

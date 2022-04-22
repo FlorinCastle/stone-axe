@@ -40,6 +40,7 @@ public class MiniGameControl : MonoBehaviour
 
     public void startCraftingMiniGame()
     {
+        _uiControlRef.miniGameUIEnabled(true);
         _craftingMinigameUI.SetActive(true);
         _disassemblyMinigameUI.SetActive(false);
         populateHitPoints();
@@ -62,6 +63,7 @@ public class MiniGameControl : MonoBehaviour
     public void startDisassemblyMiniGame()
     {
         //Debug.Log("Disassembly MiniGame Start!");
+        _uiControlRef.miniGameUIEnabled(true);
         _craftingMinigameUI.SetActive(false);
         _disassemblyMinigameUI.SetActive(true);
         populateHitPoints();
@@ -126,7 +128,7 @@ public class MiniGameControl : MonoBehaviour
     {
         pointsHit++;
         updateHitpointText();
-        if (pointsHit == baseHitPointCount)
+        if (pointsHit == finalPointsToHit)
         {
             _disassembleCompleteButton.interactable = true;
             _craftCompletButton.interactable = true;
@@ -149,6 +151,6 @@ public class MiniGameControl : MonoBehaviour
 
     public void updateHitpointText()
     {
-        _pointsToHitText.text = "points to hit (" + pointsHit + "/" + baseHitPointCount + ")";
+        _pointsToHitText.text = "points to hit (" + pointsHit + "/" + finalPointsToHit + ")";
     }
 }

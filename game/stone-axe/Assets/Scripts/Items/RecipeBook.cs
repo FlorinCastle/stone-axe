@@ -573,15 +573,22 @@ public class RecipeBook : MonoBehaviour
     {
         return itemRecipes[i];
     }
+    public ItemData getItemRecipe(string value)
+    {
+        foreach (ItemData item in itemRecipes)
+            if (item.ItemName == value)
+                return item;
+        return null;
+    }
 
     public PartData getPartRecipe(int i)
     {
         return partRecipes[i];
     }
-    public PartData getPartRecipe(string name)
+    public PartData getPartRecipe(string value)
     {
         foreach (PartData part in partRecipes)
-            if (part.PartName == name)
+            if (part.PartName == value)
                 return part;
             //else Debug.LogWarning("Can not find recipe for: " + name);
         return null;

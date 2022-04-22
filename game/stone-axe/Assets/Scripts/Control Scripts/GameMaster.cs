@@ -25,6 +25,10 @@ public class GameMaster : MonoBehaviour
     private InventoryData _invData;
     [SerializeField] private InventoryScript _invScript;
     private UIControl _uiControlRef;
+    [SerializeField]
+    private GameObject saveTrackerParent;
+    [Header("Prefabs")]
+    [SerializeField] private GameObject _saveHolderPrefab;
     [Header("Save Tracking")]
     [SerializeField] private List<SaveTracker> _saveTrackerScripts;
     [SerializeField]
@@ -443,6 +447,10 @@ public class GameMaster : MonoBehaviour
     }
     public void loadSaveGames()
     {
+        foreach (SaveTracker st in _saveTrackerScripts)
+            Destroy(st.gameObject);
+        _saveTrackerScripts.Clear();
+
         if (File.Exists(Application.persistentDataPath + "/save.txt"))
         {
             string saveString = File.ReadAllText(Application.persistentDataPath + "/save.txt");
@@ -454,8 +462,12 @@ public class GameMaster : MonoBehaviour
             int i = 0;
             foreach (string sg_string in _saveGameList)
             {
-                _saveTrackerScripts[i].SaveReference = sg_string;
+                //_saveTrackerScripts[i].SaveReference = sg_string;
                 i++;
+                GameObject stTemp = Instantiate(_saveHolderPrefab, saveTrackerParent.transform);
+                stTemp.GetComponent<SaveTracker>().SaveReference = sg_string;
+                stTemp.GetComponent<SaveTracker>().Index = i;
+                _saveTrackerScripts.Add(stTemp.GetComponent<SaveTracker>());
             }
         }
         else

@@ -31,6 +31,7 @@ public class ItemDataStorage : MonoBehaviour
             itemName = _itemName,
             totalValue = _totalValue,
             invIndex = inventoryIndex,
+            recipeName = _receipeRef.ItemName,
             totalStrenght = _totalStrength,
             totalDextarity = _totalDextarity,
             totalIntellegence = _totalIntelegence,
@@ -95,6 +96,7 @@ public class SaveItemObject
     public string itemName;
     public int totalValue;
     public int invIndex;
+    public string recipeName;
     public int totalStrenght;
     public int totalDextarity;
     public int totalIntellegence;

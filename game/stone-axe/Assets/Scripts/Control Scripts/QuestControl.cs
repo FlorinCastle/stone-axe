@@ -482,7 +482,7 @@ public class QuestControl : MonoBehaviour
         if (questInput.QuestStages[_currStageIndex].StageType == "Dialogue")
             this.gameObject.GetComponent<DialogueControl>().startDialogue(_currStageIndex);
         else
-            Debug.LogError("This quest starts with a non-Dialogue stage!\nNote to Dev: Implement this quest's start in code!\nLine: 411 Method: startStoryQuest(QuestData questInput)");
+            Debug.LogError("This quest starts with a non-Dialogue stage!\nNote to Dev: Implement this quest's start in code!\nLine: 485 Method: startStoryQuest(QuestData questInput)");
     }
     public void nextStage()
     {
