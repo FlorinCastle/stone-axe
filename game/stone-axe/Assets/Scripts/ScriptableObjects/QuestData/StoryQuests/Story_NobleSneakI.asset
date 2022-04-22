@@ -17,11 +17,27 @@ MonoBehaviour:
   _questType: 6
   _questStages:
   - {fileID: 11400000, guid: a3c2aaee9749ce943b9368fdaeb8daea, type: 2}
+  - {fileID: 11400000, guid: 661f00f3d3daf144fbc8ca1a7e4df89b, type: 2}
+  - {fileID: 11400000, guid: 60cd3a011bf423746a217b7b01d9b04a, type: 2}
+  - {fileID: 11400000, guid: ee4e7909f95085e4f84ba04a0b040077, type: 2}
+  - {fileID: 11400000, guid: f93c5ac3c2146784f87c56c1a5991353, type: 2}
+  - {fileID: 11400000, guid: b8d534f336af8dc4fba0b36928638d17, type: 2}
+  - {fileID: 11400000, guid: 3a55a8f050aeaec428c42d914d1d77de, type: 2}
+  - {fileID: 11400000, guid: 53fc231ea4f3e4c47b6a9407ea57ef0c, type: 2}
+  - {fileID: 11400000, guid: 1103d1b64798b9b4aa86787893e63267, type: 2}
+  - {fileID: 11400000, guid: 266389fdcb10ef94192dbc58e5d6eef5, type: 2}
+  - {fileID: 11400000, guid: f60f48425b7f91b41b50f8b95513d628, type: 2}
+  - {fileID: 11400000, guid: ef1aa632591c90c4c849cc8042ff0426, type: 2}
+  - {fileID: 11400000, guid: 0fd8af0fe7ebee2438765c91664b5d3d, type: 2}
+  - {fileID: 11400000, guid: 486a6f49458538544ac3da3730949a76, type: 2}
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 0}
   _requiredCount: 0
-  _nextQuest: {fileID: 0}
+  _nextQuest: {fileID: 11400000}
   _unlocksQuests:
   - {fileID: 11400000, guid: cf74b2413199451459bbc2c2d06e840e, type: 2}
+  _requiredPlayerLevel: 7
   _storyQuestComplete: 0
+  _rewardCurrency: 0
+  _rewardEXP: 0

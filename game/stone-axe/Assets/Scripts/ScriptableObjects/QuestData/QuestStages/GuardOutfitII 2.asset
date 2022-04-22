@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GuardOutfitII 2
   m_EditorClassIdentifier: 
   _questStageType: 7
-  _questEvent: 5
+  _questEvent: 6
   _speaker: 
   _dialogueLine: 
   _item: {fileID: 0}
@@ -22,4 +22,4 @@ MonoBehaviour:
   _part2Mat: {fileID: 0}
   _part3Mat: {fileID: 0}
   _currencyValue: 0
-  _npcRef: {fileID: 0}
+  _npcRef: {fileID: 2822056689991755846, guid: 4f8fffb1b6a42b949b2e2ecbbb769d93, type: 3}

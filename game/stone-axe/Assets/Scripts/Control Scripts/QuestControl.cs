@@ -407,6 +407,23 @@ public class QuestControl : MonoBehaviour
             {
                 _questName.text += "";
             }
+            else if (_chosenQuest.QuestType == "Story")
+            {
+                _questText.text += "\n\nCurrent step: ";
+                Debug.Log("QuestControl.setupText() CurrentStage == " + CurrentStage.StageType.ToString());
+                if (CurrentStage.StageType.ToString() == "Dialogue")
+                    _questText.text += "Chat with " + CurrentStage.DialogueSpeaker;
+                else if (CurrentStage.StageType.ToString() == "Craft_Item")
+                    _questText.text += "Craft " + CurrentStage.ItemToGet.ItemName;
+                else if (CurrentStage.StageType.ToString() == "Sell_Item")
+                    _questText.text += "Sell " + CurrentStage.ItemToGet.ItemName;
+                else if (CurrentStage.StageType.ToString() == "Buy_Item")
+                    _questText.text += "Buy " + CurrentStage.ItemToGet.ItemName;
+                else if (CurrentStage.StageType.ToString() == "Disassemble_Item")
+                    _questText.text += "Disassemble Item";
+                else if (CurrentStage.StageType.ToString() == "Have_Currency")
+                    _questText.text += "Have Currency value of " + CurrentStage.CurrencyValue; 
+            }
         }
         else
         {

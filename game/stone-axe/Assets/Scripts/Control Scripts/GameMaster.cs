@@ -194,6 +194,16 @@ public class GameMaster : MonoBehaviour
         updatePlayerPosition();
     }
 
+    public void loadQuestMenu()
+    {
+        _uiControlRef.questUIEnabled(true);
+        gameObject.GetComponent<QuestControl>().setupText();
+    }
+    public void unloadQuestMenu()
+    {
+        _uiControlRef.questUIEnabled(false);
+    }
+
     public void updateLevelLocks()
     {
         if (gameObject.GetComponent<QuestControl>().CurrentQuest != null)

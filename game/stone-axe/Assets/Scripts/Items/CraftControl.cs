@@ -429,6 +429,7 @@ public class CraftControl : MonoBehaviour
 
     private EnchantDataStorage enc;
     private bool encSelected;
+    private int craftCount;
     private void CraftItem()
     {
         //Debug.Log("crafting");
@@ -521,9 +522,16 @@ public class CraftControl : MonoBehaviour
                 {
                     if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet == _chosenItemRecipe)
                     {
-                        Debug.LogWarning("Quest Notif - Craft Done");
                         itemDataStorageRef.IsForQuest = true;
-                        _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
+                        craftCount++;
+
+                        if (craftCount >= _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.CountToGet)
+                        {
+                            Debug.LogWarning("Quest Notif - Craft(s) Done");
+                            //itemDataStorageRef.IsForQuest = true;
+                            _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
+                            craftCount = 0;
+                        }
                     }
                 }
                 else if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet == null)

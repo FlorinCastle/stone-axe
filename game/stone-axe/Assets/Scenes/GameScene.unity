@@ -5300,6 +5300,7 @@ MonoBehaviour:
   shopSellMenu: {fileID: 7485012191131071721}
   shopBuyMenu: {fileID: 7485012191131071713}
   miniGameUI: {fileID: 1696650682}
+  questDetailUI: {fileID: 679954418}
   dialogeUI: {fileID: 7485012191131071719}
   _toMarketButton: {fileID: 7485012191131071726}
   _buyTabButton: {fileID: 921268443}
@@ -8924,41 +8925,13 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6064659084706931268, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6064659084706931268, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6064659084706931268, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1734993353}
+      objectReference: {fileID: 1734993351}
     - target: {fileID: 6064659084706931268, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 908857082}
-    - target: {fileID: 6064659084706931268, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6064659084706931268, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: playButtonClickSound
-      objectReference: {fileID: 0}
-    - target: {fileID: 6064659084706931268, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: SoundMaster, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6064659084706931268, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6064659084706931268, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 6064659084847465799, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -11076,15 +11049,11 @@ PrefabInstance:
     - target: {fileID: 6132820171498886256, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1734993353}
+      objectReference: {fileID: 1734993351}
     - target: {fileID: 6132820171498886256, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 908857082}
-    - target: {fileID: 6132820171498886256, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 679954418}
     - target: {fileID: 6290840026315454170, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_IsActive
       value: 0

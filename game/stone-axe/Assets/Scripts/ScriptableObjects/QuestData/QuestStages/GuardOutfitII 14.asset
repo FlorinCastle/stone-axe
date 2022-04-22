@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GuardOutfitII 14
   m_EditorClassIdentifier: 
   _questStageType: 7
-  _questEvent: 6
+  _questEvent: 7
   _speaker: 
   _dialogueLine: 
   _item: {fileID: 0}

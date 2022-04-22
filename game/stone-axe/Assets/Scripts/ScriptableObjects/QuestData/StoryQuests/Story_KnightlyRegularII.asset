@@ -36,6 +36,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6101cbffe45538042be6f340c3f5a8b1, type: 2}
   - {fileID: 11400000, guid: adc29d81e76cb104488ce025bcd65088, type: 2}
   - {fileID: 11400000, guid: bc8af6b66ef3e8d4f9ff122c31bb3997, type: 2}
+  - {fileID: 11400000, guid: 655e946b9c837db4ba35efc4c2479b81, type: 2}
+  - {fileID: 11400000, guid: 4e4f800ca8a3a3e48bc939d269ba9245, type: 2}
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
   _requiredQuestItem: {fileID: 0}
@@ -45,3 +47,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 80a2ae7c035daf64fa457f43f3b71ab2, type: 2}
   _requiredPlayerLevel: 8
   _storyQuestComplete: 0
+  _rewardCurrency: 0
+  _rewardEXP: 0

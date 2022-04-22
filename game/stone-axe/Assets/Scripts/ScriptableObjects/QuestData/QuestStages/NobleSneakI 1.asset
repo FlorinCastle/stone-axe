@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _questStageType: 1
   _questEvent: 0
-  _speaker: 
-  _dialogueLine: 
+  _speaker: Door
+  _dialogueLine: '*ka-chack*'
   _item: {fileID: 0}
+  _itemCount: 0
   _part1Mat: {fileID: 0}
   _part2Mat: {fileID: 0}
   _part3Mat: {fileID: 0}

@@ -28,6 +28,7 @@ public class UIControl : MonoBehaviour
     [SerializeField] private GameObject shopSellMenu;
     [SerializeField] private GameObject shopBuyMenu;
     [SerializeField] private GameObject miniGameUI;
+    [SerializeField] private GameObject questDetailUI;
     [SerializeField] private GameObject dialogeUI;
     [SerializeField] private Button _toMarketButton;
     [Space(5)]
@@ -268,6 +269,7 @@ public class UIControl : MonoBehaviour
     public void marketSellMenuEnabled(bool input) { marketEconomicSubUI.SetActive(input); }
     public void marketQuestMenuEnabled(bool input) { questSubUI.SetActive(input); }
     public void miniGameUIEnabled(bool input) { miniGameUI.SetActive(input); }
+    public void questUIEnabled(bool input) { questDetailUI.SetActive(input); }
 
     public void marketAccessable(bool input)
     {
