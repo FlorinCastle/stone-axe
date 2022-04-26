@@ -13,9 +13,8 @@ public class UIControl : MonoBehaviour
     [SerializeField] private GameObject optionsPopup;
     [SerializeField] private GameObject shopUI;
     [SerializeField] private GameObject marketUI;
-    [Header("Sub UI")]
-    [SerializeField] private TextMeshProUGUI _currencyText;
     [Header("Shop UI")]
+    [SerializeField] private TextMeshProUGUI _currencyText;
     [SerializeField] private GameObject economicSubUI;
     [SerializeField] private GameObject disassembleSubUI;
     [SerializeField] private GameObject craftSubUI;
@@ -45,6 +44,26 @@ public class UIControl : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _matsSortText;
     [SerializeField] private GameObject enchantsScrollView;
     [SerializeField] private TextMeshProUGUI _enchantsSortText;
+    [Header("Button Group - ShopUI")]
+    [SerializeField] private ButtonGroup _shopUIGroupScript;
+    [SerializeField] private Button _buyUIButton;
+    [SerializeField] private Button _sellUIButton;
+    [SerializeField] private Button _disaUIButton;
+    [SerializeField] private Button _craftUIButton;
+    [Header("Button Group - MarketUI")]
+    [SerializeField] private ButtonGroup _marketUIGroupScript;
+    [SerializeField] private Button _mSellUIButton;
+    [SerializeField] private Button _mQuestUIButton;
+    [Header("ButtonGroup - BottomUI")]
+    [SerializeField] private ButtonGroup _bottomUIGroupScript;
+    [SerializeField] private Button _invUIButton;
+    [SerializeField] private Button _recipesUIButton;
+    [Header("ButtonGroup - InvUI")]
+    [SerializeField] private ButtonGroup _invUIGroupScript;
+    [SerializeField] private Button _itemsUIButton;
+    [SerializeField] private Button _partsUIButton;
+    [SerializeField] private Button _matsUIButton;
+    [SerializeField] private Button _enchUIButton;
     [Header("Market UI")]
     [SerializeField] private GameObject marketEconomicSubUI;
     [SerializeField] private GameObject questSubUI;
@@ -59,15 +78,13 @@ public class UIControl : MonoBehaviour
     [SerializeField] private Button _creditsButton;
     [SerializeField] private GameObject _loadGameMenu;
     [SerializeField] private GameObject _newGameMenu;
+    [Header("Load Game UI")]
+    [SerializeField] private Button _loadGameUIButton;
+    [SerializeField] private Button _deleteGameUIButton;
     [Header("New Game UI")]
     [SerializeField] private InputField _playerName;
     [SerializeField] private InputField _shopName;
     [SerializeField] private Button _startNewGameButton;
-    [Header("Load Game UI")]
-    [SerializeField] private Button _loadGameUIButton;
-    [SerializeField] private Button _deleteGameUIButton;
-
-    [Header("Player Creation")]
     [SerializeField, HideInInspector] private string playerSpecies = "";
     [SerializeField, HideInInspector] private int playerColor = -1;
     [SerializeField] private TMP_Dropdown _playerSpeciesDropdown;
@@ -287,14 +304,8 @@ public class UIControl : MonoBehaviour
         _toMarketButton.interactable = input;
     }
 
-    public void itemCraftMenuEnabled (bool input)
-    {
-        itemCraftingUI.SetActive(input);
-    }
-    public void partCraftMenuEnabled(bool input)
-    {
-        partCraftingUI.SetActive(input);
-    }
+    public void itemCraftMenuEnabled (bool input) { itemCraftingUI.SetActive(input); }
+    public void partCraftMenuEnabled(bool input) { partCraftingUI.SetActive(input); }
 
     public void shopBuyAccessableOnly()
     {
@@ -353,7 +364,6 @@ public class UIControl : MonoBehaviour
     {
         inventoryUI.SetActive(false);
         receipeUI.SetActive(true);
-
     }
 
     public void openPart1Inv()
@@ -409,6 +419,7 @@ public class UIControl : MonoBehaviour
         enchantsScrollView.SetActive(false);
         partsScrollView.SetActive(false);
         itemsScrollView.SetActive(true);
+        IUI_ItemsSelected();
     }
     public void openPartInv()
     {
@@ -417,6 +428,7 @@ public class UIControl : MonoBehaviour
         matsScrollView.SetActive(false);
         enchantsScrollView.SetActive(false);
         partsScrollView.SetActive(true);
+        IUI_PartsSelected();
     }
     public void openMatInv()
     {
@@ -425,6 +437,7 @@ public class UIControl : MonoBehaviour
         partsScrollView.SetActive(false);
         enchantsScrollView.SetActive(false);
         matsScrollView.SetActive(true);
+        IUI_MatsSelected();
     }
     public void openEnchInv()
     {
@@ -435,6 +448,7 @@ public class UIControl : MonoBehaviour
         partsScrollView.SetActive(false);
         matsScrollView.SetActive(false);
         enchantsScrollView.SetActive(true);
+        IUI_EnchSelected();
     }
 
     public void setupInvFilterUI()
@@ -575,4 +589,35 @@ public class UIControl : MonoBehaviour
     public bool InventoryPartUIEnabled { get => partsScrollView.activeInHierarchy; }
     public bool InventoryMatUIEnabled { get => matsScrollView.activeInHierarchy; }
     public bool InventoryEnchantUIEnabled { get => enchantsScrollView.activeInHierarchy; }
+
+    public void BUI_InvSelected() { _bottomUIGroupScript.ButtonSelected(_invUIButton); }
+    public void BUI_RecipesSelected() {  _bottomUIGroupScript.ButtonSelected(_recipesUIButton); }
+
+    public void IUI_ItemsSelected() { _invUIGroupScript.ButtonSelected(_itemsUIButton); }
+    public void IUI_PartsSelected() { _invUIGroupScript.ButtonSelected(_partsUIButton); }
+    public void IUI_MatsSelected() { _invUIGroupScript.ButtonSelected(_matsUIButton); }
+    public void IUI_EnchSelected() { _invUIGroupScript.ButtonSelected(_enchUIButton); }
+
+    /*
+    [Header("Button Group - ShopUI")]
+    [SerializeField] private ButtonGroup _shopUIGroupScript;
+    [SerializeField] private Button _buyUIButton;
+    [SerializeField] private Button _sellUIButton;
+    [SerializeField] private Button _disaUIButton;
+    [SerializeField] private Button _craftUIButton;
+    [Header("Button Group - MarketUI")]
+    [SerializeField] private ButtonGroup _marketUIGroupScript;
+    [SerializeField] private Button _mSellUIButton;
+    [SerializeField] private Button _mQuestUIButton;
+    [Header("ButtonGroup - BottomUI")]
+    [SerializeField] private ButtonGroup _bottomUIGroupScript;
+    [SerializeField] private Button _invUIButton;
+    [SerializeField] private Button _recipesUIButton;
+    [Header("ButtonGroup - InvUI")]
+    [SerializeField] private ButtonGroup _invUIGroupScript;
+    [SerializeField] private Button _itemsUIButton;
+    [SerializeField] private Button _partsUIButton;
+    [SerializeField] private Button _matsUIButton;
+    [SerializeField] private Button _enchUIButton;
+    */
 }

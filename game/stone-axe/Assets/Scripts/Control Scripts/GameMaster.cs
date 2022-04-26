@@ -151,6 +151,9 @@ public class GameMaster : MonoBehaviour
 
         _uiControlRef.openItemInv();
 
+        _uiControlRef.BUI_InvSelected();
+        _uiControlRef.IUI_ItemsSelected();
+
         updatePlayerPosition();
     }
     public void loadDisassembleMenu()
@@ -162,12 +165,22 @@ public class GameMaster : MonoBehaviour
         _uiControlRef.craftMenuEnabled(false);
 
         _uiControlRef.openInvUI();
+        _uiControlRef.BUI_InvSelected();
         if (_uiControlRef.InventoryItemUIEnabled == true)
+        {
             _uiControlRef.openItemInv();
+            _uiControlRef.IUI_ItemsSelected();
+        }
         else if (_uiControlRef.InventoryPartUIEnabled == true)
+        {
             _uiControlRef.openPartInv();
+            _uiControlRef.IUI_PartsSelected();
+        }
         else
+        {
             _uiControlRef.openItemInv();
+            _uiControlRef.IUI_ItemsSelected();
+        }
 
         updatePlayerPosition();
     }
@@ -180,6 +193,8 @@ public class GameMaster : MonoBehaviour
         _uiControlRef.shopSellMenuEnabled(false);
 
         _uiControlRef.openRecipesUI();
+        // bottom ui - recipes ui
+        _uiControlRef.BUI_RecipesSelected();
 
         updatePlayerPosition();
     }

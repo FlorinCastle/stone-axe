@@ -255,6 +255,8 @@ public class DisassembleItemControl : MonoBehaviour
                 this.gameObject.GetComponent<QuestControl>().nextStage();
             }
         }
+
+        gameObject.GetComponent<MiniGameControl>().stopDisassembleMiniGame();
     }
     public void disassemblePart()
     {
@@ -283,5 +285,7 @@ public class DisassembleItemControl : MonoBehaviour
         _itemText.text = "";
 
         _disassembleButton.interactable = false;
+
+        gameObject.GetComponent<MiniGameControl>().stopDisassembleMiniGame();
     }
 }
