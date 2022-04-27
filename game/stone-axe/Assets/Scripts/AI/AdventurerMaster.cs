@@ -49,6 +49,7 @@ public class AdventurerMaster : MonoBehaviour
         advSpawnEnabled = false;
         _spawnProgressSlider.gameObject.SetActive(false);
         StopCoroutine(advCoroutine);
+        Debug.Log("AdventurerMaster.disableAdventurerSpawn(): Stopped Adventurer Spawn Coroutine");
         return advSpawnEnabled;
     } 
     public void dismissAdventurers()

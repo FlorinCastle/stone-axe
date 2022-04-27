@@ -85,7 +85,7 @@ public class CraftControl : MonoBehaviour
         updateFinalStatsText();
         _itemCraftingUI.SetActive(false);
         _partCraftingUI.SetActive(false);
-        _selectedRecipeText.text = "selected:\nnone";
+        _selectedRecipeText.text = "none";
     }
 
     public void checkSelection()
@@ -161,7 +161,7 @@ public class CraftControl : MonoBehaviour
             _partCraftingUI.SetActive(false);
             clearPartCraftingUI();
 
-            _selectedRecipeText.text = "selected:\n" + _chosenItemRecipe.ItemName;
+            _selectedRecipeText.text = _chosenItemRecipe.ItemName;
 
             _part1Name.text = _chosenItemRecipe.Part1.PartName;
             _part2Name.text = _chosenItemRecipe.Part2.PartName;
@@ -179,7 +179,7 @@ public class CraftControl : MonoBehaviour
             clearPartCraftingUI();
             setupPartRecipeStats();
 
-            _selectedRecipeText.text = "selected:\n" + _chosenPartRecipe.PartName;
+            _selectedRecipeText.text = _chosenPartRecipe.PartName;
         }
         else if (_recipeBookRef.getSelectedQuestRecipe() != null)
         {
@@ -192,7 +192,7 @@ public class CraftControl : MonoBehaviour
             _partCraftingUI.SetActive(false);
             clearPartCraftingUI();
 
-            _selectedRecipeText.text = "selected:\n" + _chosenQuestRecipe.QuestItemName;
+            _selectedRecipeText.text = _chosenQuestRecipe.QuestItemName;
         }
     }
 
@@ -220,7 +220,7 @@ public class CraftControl : MonoBehaviour
             _part3Name.text = "part 3";
 
         if (_chosenItemRecipe == null && _chosenPartRecipe == null && _chosenQuestRecipe == null)
-            _selectedRecipeText.text = "selected:\nnone";
+            _selectedRecipeText.text = "none";
 
         _finalStatsText1.text = "select [part1, part2, part3]";
         _finalStatsText2.text = "";
@@ -233,7 +233,7 @@ public class CraftControl : MonoBehaviour
         _matDiscription.text = "choose material";
 
         if (_chosenItemRecipe == null && _chosenPartRecipe == null && _chosenQuestRecipe == null)
-            _selectedRecipeText.text = "selected:\nnone";
+            _selectedRecipeText.text = "none";
 
         _partStatsText1.text = "select [material]";
         _partStatsText2.text = "";
@@ -1054,6 +1054,16 @@ public class CraftControl : MonoBehaviour
         return false;
     }
 
+    public bool anyRecipeSelected()
+    {
+        if (_chosenItemRecipe != null)
+            return true;
+        else if (_chosenPartRecipe != null)
+            return true;
+        else if (_chosenQuestRecipe != null)
+            return true;
+        return false;
+    }
     public bool anyItemRecipeSelected()
     {
         if (_chosenItemRecipe != null)

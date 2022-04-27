@@ -96,6 +96,8 @@ public class InventoryScript : MonoBehaviour
             _gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         if (_inventoryData == null)
             _inventoryData = this.gameObject.GetComponent<InventoryData>();
+        if (_recipeBookRef == null)
+            _recipeBookRef = GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>();
 
         _currentItemFilter = _itemsFilterData[0];
         _currentPartFilter = _partsFilterData[0];
@@ -1534,12 +1536,15 @@ public class InventoryScript : MonoBehaviour
             }
             else
             {
-                if (_UIControlRef.ShopEcoUIEnabled == false && _UIControlRef.ShopDisUIEnabled == false)
+                if (_craftControlRef.anyRecipeSelected() == false && _UIControlRef.ShopEcoUIEnabled == false && _UIControlRef.ShopDisUIEnabled == false)
                 {
+                    _gameMaster.loadDisassembleMenu();
+                    /*
                     _UIControlRef.ShopEcoUIEnabled = false;
                     _UIControlRef.ShopDisUIEnabled = true;
                     _UIControlRef.ShopCraftUIEnabled = false;
-                }
+                    */
+                } 
                 GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem();
                 GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem();
             }

@@ -77,6 +77,7 @@ public class GameMaster : MonoBehaviour
 
     public void loadMainMenu()
     {
+        toggleAdventurers(false);
         _uiControlRef.optionsUIEnabled(false);
         _shopLevel.SetActive(false);
         _uiControlRef.mainMenuEnabled(true);
@@ -131,6 +132,29 @@ public class GameMaster : MonoBehaviour
             this.gameObject.GetComponent<PlayerManager>().spawnPlayer();
     }
 
+    public void startNewGame()
+    {
+        _uiControlRef.newGameUIEnabled(false);
+        _uiControlRef.mainMenuEnabled(false);
+        _uiControlRef.gameUIEnabled(true);
+        loadShopLevel();
+        gameObject.GetComponent<QuestControl>().resetAllQuests();
+    }
+    public void startLoadedGame()
+    {
+        loadSelectedGame();
+        _uiControlRef.loadGameUIEnabled(false);
+        _uiControlRef.mainMenuEnabled(false);
+        _uiControlRef.gameUIEnabled(true);
+        loadShopLevel();
+    }
+    public void backLoad()
+    {
+        clearSelectedSave();
+        _uiControlRef.loadGameUIEnabled(false);
+        _uiControlRef.setupMainMenu();
+    }
+
     public void loadShopBuyMenu()
     {
         _uiControlRef.shopEcoMenuEnabled(true);
@@ -158,6 +182,7 @@ public class GameMaster : MonoBehaviour
     }
     public void loadDisassembleMenu()
     {
+        _uiControlRef.SUI_DisassembleSelected();
         _uiControlRef.disassembleMenuEnabled(true);
         _uiControlRef.shopEcoMenuEnabled(false);
         _uiControlRef.shopBuyMenuEnabled(false);
@@ -437,10 +462,21 @@ public class GameMaster : MonoBehaviour
                 saveSaveGames();
             }
             else
-                Debug.LogWarning("Not a valid save path OR file does not exist!");
+                Debug.LogError("Not a valid save path OR file does not exist!");
         }
         else
-            Debug.LogWarning("Not a valid save path OR file does not exist!");
+            Debug.LogError("Not a valid save path OR file does not exist!");
+
+        _uiControlRef.setupLoadGameMenu();
+        _uiControlRef.setupMainMenu();
+    }
+
+    public void continueGame()
+    {
+        quickLoadGame();
+        _uiControlRef.gameUIEnabled(true);
+        loadShopLevel();
+        _uiControlRef.mainMenuEnabled(false);
     }
 
     public void quickLoadGame()

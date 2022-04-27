@@ -160,6 +160,8 @@ public class UIControl : MonoBehaviour
     }
     public void setupNewGameMenu()
     {
+        _newGameMenu.SetActive(true);
+
         _startNewGameButton.interactable = false;
         _playerSpeciesDropdown.ClearOptions();
         speciesOptions = new List<string>();
@@ -208,7 +210,9 @@ public class UIControl : MonoBehaviour
     }
     public void setupLoadGameMenu()
     {
-        this.gameObject.GetComponent<GameMaster>().loadSaveGames();
+        _loadGameMenu.SetActive(true);
+
+        gameObject.GetComponent<GameMaster>().loadSaveGames();
         List<SaveTracker> saveTrackers = this.gameObject.GetComponent<GameMaster>().SaveTrackers;
         foreach (SaveTracker st in saveTrackers)
         {
@@ -284,9 +288,11 @@ public class UIControl : MonoBehaviour
         _deleteGameUIButton.interactable = value;
     }
 
-    public void mainMenuEnabled(bool input) { mainMenuUI.SetActive(input); }
+    public void mainMenuEnabled (bool input) { mainMenuUI.SetActive(input); }
     public void gameUIEnabled (bool input) { gameShopUI.SetActive(input); }
-    public void optionsUIEnabled(bool input) { optionsPopup.SetActive(input); }
+    public void optionsUIEnabled (bool input) { optionsPopup.SetActive(input); }
+    public void newGameUIEnabled (bool input) { _newGameMenu.SetActive(input); }
+    public void loadGameUIEnabled (bool input) { _loadGameMenu.SetActive(input); }
 
     public void shopEcoMenuEnabled(bool input) { economicSubUI.SetActive(input); }
     public void shopBuyMenuEnabled(bool input) { shopBuyMenu.SetActive(input); }
@@ -556,7 +562,7 @@ public class UIControl : MonoBehaviour
         _mainUIElements.SetActive(false);
         _creditsUI.SetActive(true);
     }
-    public void loadMainMenu()
+    public void loadMainMenuFromCredits()
     {
         _creditsUI.SetActive(false);
         _mainUIElements.SetActive(true);
@@ -589,6 +595,14 @@ public class UIControl : MonoBehaviour
     public bool InventoryPartUIEnabled { get => partsScrollView.activeInHierarchy; }
     public bool InventoryMatUIEnabled { get => matsScrollView.activeInHierarchy; }
     public bool InventoryEnchantUIEnabled { get => enchantsScrollView.activeInHierarchy; }
+
+    public void SUI_BuySelected() { _shopUIGroupScript.ButtonSelected(_buyUIButton); }
+    public void SUI_SellSelected() { _shopUIGroupScript.ButtonSelected(_sellUIButton); }
+    public void SUI_DisassembleSelected() { _shopUIGroupScript.ButtonSelected(_disaUIButton); }
+    public void SUI_CraftSelected() { _shopUIGroupScript.ButtonSelected(_craftUIButton); }
+
+    public void MUI_SellSelected() { _marketUIGroupScript.ButtonSelected(_mSellUIButton); }
+    public void MUI_QuestSelected() { _marketUIGroupScript.ButtonSelected(_mQuestUIButton); }
 
     public void BUI_InvSelected() { _bottomUIGroupScript.ButtonSelected(_invUIButton); }
     public void BUI_RecipesSelected() {  _bottomUIGroupScript.ButtonSelected(_recipesUIButton); }
