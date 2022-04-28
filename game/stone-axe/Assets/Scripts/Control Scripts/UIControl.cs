@@ -596,10 +596,30 @@ public class UIControl : MonoBehaviour
     public bool InventoryMatUIEnabled { get => matsScrollView.activeInHierarchy; }
     public bool InventoryEnchantUIEnabled { get => enchantsScrollView.activeInHierarchy; }
 
+    public void selectActiveShopUI()
+    {
+        if (shopBuyMenu.activeInHierarchy == true)
+            SUI_BuySelected();
+        else if (shopSellMenu.activeInHierarchy == true)
+            SUI_SellSelected();
+        else if (disassembleSubUI.activeInHierarchy == true)
+            SUI_DisassembleSelected();
+        else if (craftSubUI.activeInHierarchy == true)
+            SUI_CraftSelected();
+    }
+
     public void SUI_BuySelected() { _shopUIGroupScript.ButtonSelected(_buyUIButton); }
     public void SUI_SellSelected() { _shopUIGroupScript.ButtonSelected(_sellUIButton); }
     public void SUI_DisassembleSelected() { _shopUIGroupScript.ButtonSelected(_disaUIButton); }
     public void SUI_CraftSelected() { _shopUIGroupScript.ButtonSelected(_craftUIButton); }
+
+    public void selectActiveMarketUI()
+    {
+        if (marketEconomicSubUI.activeInHierarchy == true)
+            MUI_SellSelected();
+        else if (questSubUI.activeInHierarchy == true)
+            MUI_QuestSelected();
+    }
 
     public void MUI_SellSelected() { _marketUIGroupScript.ButtonSelected(_mSellUIButton); }
     public void MUI_QuestSelected() { _marketUIGroupScript.ButtonSelected(_mQuestUIButton); }

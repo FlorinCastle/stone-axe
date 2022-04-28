@@ -36,7 +36,6 @@ public class GameMaster : MonoBehaviour
     [SerializeField]
     private string _selectedSave;
 
-
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -107,6 +106,9 @@ public class GameMaster : MonoBehaviour
         _marketSubUI.SetActive(true);
         _toShopButton.SetActive(true);
         _toMarketButton.SetActive(false);
+
+        _uiControlRef.selectActiveMarketUI();
+
         this.gameObject.GetComponent<SellItemControl>().SellingState = 1;
         this.gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
     }
@@ -118,18 +120,21 @@ public class GameMaster : MonoBehaviour
         _marketSubUI.SetActive(false);
         _toShopButton.SetActive(false);
         _toMarketButton.SetActive(true);
-        this.gameObject.GetComponent<SellItemControl>().SellingState = 0;
+
+        _uiControlRef.selectActiveShopUI();
+
+        gameObject.GetComponent<SellItemControl>().SellingState = 0;
 
         //if (gameObject.GetComponent<QuestControl>().CurrentQuest != null && gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial")
         if (gameObject.GetComponent<QuestControl>().CurrentQuest != null)
         { if (gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType != "Tutorial")
-                this.gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
+                gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
         }
         else if (gameObject.GetComponent<QuestControl>().CurrentQuest == null)
-            this.gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
+            gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
 
-        if (this.gameObject.GetComponent<PlayerManager>().PlayerExists == false)
-            this.gameObject.GetComponent<PlayerManager>().spawnPlayer();
+        if (gameObject.GetComponent<PlayerManager>().PlayerExists == false)
+            gameObject.GetComponent<PlayerManager>().spawnPlayer();
     }
 
     public void startNewGame()
@@ -163,6 +168,8 @@ public class GameMaster : MonoBehaviour
         _uiControlRef.shopSellMenuEnabled(false);
         _uiControlRef.craftMenuEnabled(false);
 
+        _uiControlRef.SUI_BuySelected();
+
         updatePlayerPosition();
     }
     public void loadShopSellMenu()
@@ -174,6 +181,8 @@ public class GameMaster : MonoBehaviour
         _uiControlRef.craftMenuEnabled(false);
 
         _uiControlRef.openItemInv();
+
+        _uiControlRef.SUI_SellSelected();
 
         _uiControlRef.BUI_InvSelected();
         _uiControlRef.IUI_ItemsSelected();
@@ -207,6 +216,8 @@ public class GameMaster : MonoBehaviour
             _uiControlRef.IUI_ItemsSelected();
         }
 
+        _uiControlRef.SUI_DisassembleSelected();
+
         updatePlayerPosition();
     }
     public void loadCraftMenu()
@@ -218,6 +229,8 @@ public class GameMaster : MonoBehaviour
         _uiControlRef.shopSellMenuEnabled(false);
 
         _uiControlRef.openRecipesUI();
+
+        _uiControlRef.SUI_CraftSelected();
         // bottom ui - recipes ui
         _uiControlRef.BUI_RecipesSelected();
 
@@ -227,6 +240,7 @@ public class GameMaster : MonoBehaviour
     {
         _uiControlRef.marketSellMenuEnabled(true);
         _uiControlRef.marketQuestMenuEnabled(false);
+        _uiControlRef.MUI_SellSelected();
 
         updatePlayerPosition();
     }
@@ -234,6 +248,7 @@ public class GameMaster : MonoBehaviour
     {
         _uiControlRef.marketQuestMenuEnabled(true);
         _uiControlRef.marketSellMenuEnabled(false);
+        _uiControlRef.MUI_QuestSelected();
 
         updatePlayerPosition();
     }
@@ -267,7 +282,6 @@ public class GameMaster : MonoBehaviour
             this.gameObject.GetComponent<PlayerManager>().warpToStall();
         if (this.gameObject.GetComponent<UIControl>().MarketQuestUIEnabled == true)
             this.gameObject.GetComponent<PlayerManager>().warpToQuestBoard();
-
     }
 
     private bool spawnAdvent = false;
@@ -477,6 +491,7 @@ public class GameMaster : MonoBehaviour
         _uiControlRef.gameUIEnabled(true);
         loadShopLevel();
         _uiControlRef.mainMenuEnabled(false);
+        loadShopSellMenu();
     }
 
     public void quickLoadGame()

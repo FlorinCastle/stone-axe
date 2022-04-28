@@ -312,44 +312,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
-        m_MethodName: unloadUI
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 5986173107023473856}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
-        m_MethodName: loadUI
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameMaster, Assembly-CSharp
-        m_MethodName: quickLoadGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameMaster, Assembly-CSharp
-        m_MethodName: loadShopLevel
+        m_MethodName: continueGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -607,18 +571,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
-        m_MethodName: loadUI
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 3058717458251399120}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SoundMaster, Assembly-CSharp
         m_MethodName: playButtonClickSound
@@ -2400,18 +2352,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
-        m_MethodName: loadUI
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 6677607640269489756}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: setupLoadGameMenu
         m_Mode: 1
         m_Arguments:
@@ -3103,11 +3043,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1857445243209267859, guid: 9378b704c0f51914b9bfe6b39e36d384, type: 3}
   m_PrefabInstance: {fileID: 1715484882128251179}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6677607640269489756 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5432749271667191671, guid: 9378b704c0f51914b9bfe6b39e36d384, type: 3}
-  m_PrefabInstance: {fileID: 1715484882128251179}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3533700294933966594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3116,9 +3051,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 8802389431967477173}
     m_Modifications:
     - target: {fileID: 1443316589577236331, guid: 0eae72d11c905ee4198d76c3a11aa1c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 5986173107023473856}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443316589577236331, guid: 0eae72d11c905ee4198d76c3a11aa1c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1979480335702249682, guid: 0eae72d11c905ee4198d76c3a11aa1c5, type: 3}
       propertyPath: m_Name
       value: NewGameUI
@@ -3216,11 +3155,6 @@ PrefabInstance:
 --- !u!224 &3356754232475252532 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2278732912285358134, guid: 0eae72d11c905ee4198d76c3a11aa1c5, type: 3}
-  m_PrefabInstance: {fileID: 3533700294933966594}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3058717458251399120 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1979480335702249682, guid: 0eae72d11c905ee4198d76c3a11aa1c5, type: 3}
   m_PrefabInstance: {fileID: 3533700294933966594}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7906074904644094100
@@ -3364,13 +3298,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ba4d6917b03cba469f02d0434484591, type: 3}
---- !u!224 &2861293731255929874 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5336024770854962310, guid: 8ba4d6917b03cba469f02d0434484591, type: 3}
-  m_PrefabInstance: {fileID: 7906074904644094100}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5962669856852928898 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4541789619591897366, guid: 8ba4d6917b03cba469f02d0434484591, type: 3}
+  m_PrefabInstance: {fileID: 7906074904644094100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2861293731255929874 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5336024770854962310, guid: 8ba4d6917b03cba469f02d0434484591, type: 3}
   m_PrefabInstance: {fileID: 7906074904644094100}
   m_PrefabAsset: {fileID: 0}
