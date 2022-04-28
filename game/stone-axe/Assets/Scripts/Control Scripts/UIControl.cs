@@ -143,7 +143,7 @@ public class UIControl : MonoBehaviour
 
     public void setupMainMenu()
     {
-        if(File.Exists(Application.persistentDataPath + "/save.txt") && this.gameObject.GetComponent<GameMaster>().checkIfAnySavesExist())
+        if(File.Exists(Application.persistentDataPath + "/save1.txt") && this.gameObject.GetComponent<GameMaster>().checkIfAnySavesExist())
         {
             if (_continueButton != null) _continueButton.interactable = true;
             if (_loadGameButton != null) _loadGameButton.interactable = true;

@@ -264,6 +264,7 @@ public class QuestControl : MonoBehaviour
                     }
                     if (tutQuest == _enableAdventurersOnComplete)
                     {
+                        Debug.Log("QuestControl() toggling adventurers - DEBUG");
                         gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
                         // ui control, enable to market button
                         gameObject.GetComponent<GameMaster>().marketAccessable(true);
