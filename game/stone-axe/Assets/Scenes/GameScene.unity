@@ -5422,6 +5422,7 @@ MonoBehaviour:
   _playerName: {fileID: 1956532292}
   _shopName: {fileID: 1760857662}
   _startNewGameButton: {fileID: 2054372394}
+  _isNotValidUI: {fileID: 1957978208}
   playerSpecies: 
   playerColor: -1
   _playerSpeciesDropdown: {fileID: 5986173108268856759}
@@ -6409,6 +6410,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1957978208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3735205577493487, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+  m_PrefabInstance: {fileID: 5986173108268856756}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1959134676 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8718306707375576437, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}

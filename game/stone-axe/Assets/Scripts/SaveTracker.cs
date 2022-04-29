@@ -21,7 +21,7 @@ public class SaveTracker : MonoBehaviour
     {
         if (_saveRef != "")
         {
-            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().SelectedSave = _saveRef;
+            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>().selectSave(_saveRef);
             Debug.Log(this.gameObject.name + " selected");
             showHighlight();
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<UIControl>().saveGameSelected(true);

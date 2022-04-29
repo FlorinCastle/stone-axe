@@ -85,6 +85,7 @@ public class UIControl : MonoBehaviour
     [SerializeField] private InputField _playerName;
     [SerializeField] private InputField _shopName;
     [SerializeField] private Button _startNewGameButton;
+    [SerializeField] private GameObject _isNotValidUI;
     [SerializeField, HideInInspector] private string playerSpecies = "";
     [SerializeField, HideInInspector] private int playerColor = -1;
     [SerializeField] private TMP_Dropdown _playerSpeciesDropdown;
@@ -255,12 +256,14 @@ public class UIControl : MonoBehaviour
     public void loadUI(GameObject UIInput) { UIInput.SetActive(true); } 
     public void unloadNewGameUI()
     {
-        storePlayerVariables();
+        //storePlayerVariables();
         PlayerName = "";
         ShopName = "";
         _playerSpeciesDropdown.value = 0;
-        _newGameMenu.SetActive(false);
         _startNewGameButton.interactable = false;
+        storePlayerVariables();
+        _isNotValidUI.SetActive(false);
+        _newGameMenu.SetActive(false);
     }
     public void mainMenu()
     {
@@ -535,9 +538,20 @@ public class UIControl : MonoBehaviour
     {
         if (_playerName.text != "" && _shopName.text != "" && playerSpecies != "" && playerColor != -1)
         {
-            //Debug.Log("has all required values");
-            _startNewGameButton.interactable = true;
+            if (gameObject.GetComponent<GameMaster>().AllPlayerNames().Contains(_playerName.text) == false &&
+                gameObject.GetComponent<GameMaster>().AllShopNames().Contains(_shopName.text) == false)
+            {
+                //Debug.Log("has all required values");
+                _startNewGameButton.interactable = true;
+                _isNotValidUI.SetActive(false);
+                storePlayerVariables();
+            }
+            else
+                _isNotValidUI.SetActive(true);
         }
+        else if (gameObject.GetComponent<GameMaster>().AllPlayerNames().Contains(_playerName.text) == true &&
+            gameObject.GetComponent<GameMaster>().AllShopNames().Contains(_shopName.text) == true)
+                _isNotValidUI.SetActive(true);
         else if (_playerName.text == "" || _shopName.text == "" || playerSpecies == "" || playerColor == -1)
             _startNewGameButton.interactable = false;
     }

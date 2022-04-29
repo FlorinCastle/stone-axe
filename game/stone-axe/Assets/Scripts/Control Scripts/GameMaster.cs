@@ -156,6 +156,8 @@ public class GameMaster : MonoBehaviour
     }
     public void backLoad()
     {
+        _playerName = "";
+        _shopName = "";
         clearSelectedSave();
         _uiControlRef.loadGameUIEnabled(false);
         _uiControlRef.setupMainMenu();
@@ -338,6 +340,39 @@ public class GameMaster : MonoBehaviour
     public bool MarketActive { get => _marketLevel.activeInHierarchy; }
     public List<SaveTracker> SaveTrackers { get => _saveTrackerScripts; }
     public string SelectedSave { get => _selectedSave; set => _selectedSave = value; }
+    public List<string> AllPlayerNames()
+    {
+        List<string> setPlayerNames = new List<string>();
+        foreach (string savePath in _saveGameList)
+            if (File.Exists(savePath))
+            {
+                string saveString = File.ReadAllText(savePath);
+                SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+
+                setPlayerNames.Add(saveObject.playerName);
+            }
+        return setPlayerNames;
+    }
+    public List<string> AllShopNames()
+    {
+        List<string> setShopNames = new List<string>();
+        foreach (string savePath in _saveGameList)
+            if (File.Exists(savePath))
+            {
+                string saveString = File.ReadAllText(savePath);
+                SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+
+                setShopNames.Add(saveObject.shopName);
+            }
+        return setShopNames;
+    }
+
+    public void selectSave(string save)
+    {
+        SelectedSave = save;
+        _playerName = JsonUtility.FromJson<SaveObject>(File.ReadAllText(save)).playerName;
+        _shopName = JsonUtility.FromJson<SaveObject>(File.ReadAllText(save)).shopName;
+    }
 
     public void clearSavedData()
     {
@@ -494,9 +529,14 @@ public class GameMaster : MonoBehaviour
         {
             if (_saveGameList.Contains(_selectedSave))
             {
-                Debug.LogWarning("deleting file: " + _selectedSave);
+                _playerName = JsonUtility.FromJson<SaveObject>(File.ReadAllText(_selectedSave)).playerName;
+                _shopName = JsonUtility.FromJson<SaveObject>(File.ReadAllText(_selectedSave)).shopName;
+
+                Debug.LogWarning("deleting save game: " + _playerName + " " + _shopName);
                 _saveGameList.Remove(_selectedSave);
-                File.Delete(_selectedSave);
+                if (Directory.Exists(Application.persistentDataPath + "/" + _playerName + "_" + _shopName) == true)
+                    Directory.Delete(Application.persistentDataPath + "/" + _playerName + "_" + _shopName, true);
+                //File.Delete(_selectedSave);
                 saveSaveGames();
             }
             else
@@ -626,6 +666,7 @@ public class GameMaster : MonoBehaviour
 
     private class SaveData
     {
+        //public string saveDateTime;
         public List<string> saveGamePaths;
     }
     private class SaveObject
