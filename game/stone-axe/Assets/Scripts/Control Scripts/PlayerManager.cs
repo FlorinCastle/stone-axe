@@ -50,11 +50,11 @@ public class PlayerManager : MonoBehaviour
 
         playerColor = playerSave.playerColor;
         if (playerSave.playerSpecies == "Elf")
-            _playerColor = this.gameObject.GetComponent<AdventurerMaterials>().ElfColors[playerColor];
+            _playerColor = gameObject.GetComponent<AdventurerMaterials>().ElfColors[playerColor];
         else if (playerSave.playerSpecies == "Human")
-            _playerColor = this.gameObject.GetComponent<AdventurerMaterials>().HumanColors[playerColor];
+            _playerColor = gameObject.GetComponent<AdventurerMaterials>().HumanColors[playerColor];
         else if (playerSave.playerSpecies == "Lizardman")
-            _playerColor = this.gameObject.GetComponent<AdventurerMaterials>().LizardColors[playerColor];
+            _playerColor = gameObject.GetComponent<AdventurerMaterials>().LizardColors[playerColor];
     }
 
 

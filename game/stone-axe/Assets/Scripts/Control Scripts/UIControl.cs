@@ -71,6 +71,7 @@ public class UIControl : MonoBehaviour
     [SerializeField] private GameObject _mainUIElements;
     [SerializeField] private GameObject _creditsUI;
     [SerializeField] private TextMeshProUGUI _creditsText;
+    [SerializeField] private TextMeshProUGUI _continueText;
     [SerializeField] private Button _continueButton;
     [SerializeField] private Button _newGameButton;
     [SerializeField] private Button _loadGameButton;
@@ -146,7 +147,7 @@ public class UIControl : MonoBehaviour
     {
         if(File.Exists(Application.persistentDataPath + "/save1.txt") && this.gameObject.GetComponent<GameMaster>().checkIfAnySavesExist())
         {
-            if (_continueButton != null) _continueButton.interactable = true;
+            if (_continueButton != null) setupContinueUI(); //_continueButton.interactable = true;
             if (_loadGameButton != null) _loadGameButton.interactable = true;
         }
         else
@@ -252,6 +253,16 @@ public class UIControl : MonoBehaviour
         _creditsText.text = phs;
     }
 
+    public void setupContinueUI()
+    {
+        if (File.Exists(Application.persistentDataPath + "/save1.txt") && gameObject.GetComponent<GameMaster>().checkIfAnySavesExist())
+        {
+            _continueButton.interactable = true;
+
+            _continueText.text = "continue game: " + gameObject.GetComponent<GameMaster>().getMostRecentSaveString(); 
+        }
+    }
+
     public void unloadUI(GameObject UIInput) { UIInput.SetActive(false); } 
     public void loadUI(GameObject UIInput) { UIInput.SetActive(true); } 
     public void unloadNewGameUI()
@@ -267,10 +278,10 @@ public class UIControl : MonoBehaviour
     }
     public void mainMenu()
     {
-        this.gameObject.GetComponent<GameMaster>().saveGame();
-        this.gameObject.GetComponent<GameMaster>().clearSavedData();
-        this.gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
-        this.gameObject.GetComponent<PlayerManager>().removePlayer();
+        //this.gameObject.GetComponent<GameMaster>().saveGame();
+        gameObject.GetComponent<GameMaster>().clearSavedData();
+        gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
+        gameObject.GetComponent<PlayerManager>().removePlayer();
         setupMainMenu();
     } 
     public void quitGame() { Application.Quit(); }

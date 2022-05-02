@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameMaster : MonoBehaviour
 {
@@ -36,6 +37,9 @@ public class GameMaster : MonoBehaviour
     private List<string> _saveGameList;
     [SerializeField]
     private string _selectedSave;
+
+    [SerializeField]
+    private string _mostRecentSave;
 
     private void Awake()
     {
@@ -424,13 +428,17 @@ public class GameMaster : MonoBehaviour
 
         PlayerSave savePlayer = this.GetComponent<PlayerManager>().savePlayer();
 
+        string currentTime = DateTime.Now.ToString();
+
+        Debug.Log("GameMaster.saveGame().currentTime: " + currentTime);
+
         // put this object's data into save object
         SaveObject saveInvObj = new SaveObject
         {
             playerName = _playerName,
             shopName = _shopName,
-            playerSpecies = _playerSpecies,
-            //playerColor = _playerColor,
+            saveDateTime = currentTime,
+            //playerSpecies = _playerSpecies,
             currentCurency = _currentCurrency,
             currentExp = _totalExperience,
             level = _level,
@@ -507,6 +515,8 @@ public class GameMaster : MonoBehaviour
                     this.gameObject.GetComponent<QuestControl>().LoadQuests(saveObject.questSaveObject);
 
                     // load out this gameobject's data
+                    _playerName = saveObject.playerName;
+                    _shopName = saveObject.shopName;
                     _currentCurrency = saveObject.currentCurency;
                     _totalExperience = saveObject.currentExp;
                     _level = saveObject.level;
@@ -560,7 +570,7 @@ public class GameMaster : MonoBehaviour
 
     public void quickLoadGame()
     {
-        _selectedSave = _saveGameList[0];
+        _selectedSave = _mostRecentSave;
         loadGame();
     }
     public void loadSelectedGame() { loadGame(); }
@@ -663,18 +673,50 @@ public class GameMaster : MonoBehaviour
         return saveObject.shopName;
     }
 
+    public string getMostRecentSaveString()
+    {
+        if (File.Exists(Application.persistentDataPath + "/save1.txt"))
+        {
+            string saveString = File.ReadAllText(Application.persistentDataPath + "/save1.txt");
+
+            SaveData saveObject = JsonUtility.FromJson<SaveData>(saveString);
+
+            List<string> saveList = saveObject.saveGamePaths;
+
+            string mostRecentSave = File.ReadAllText(saveList[0]);
+
+            var mostRecentDateTime = DateTime.Parse(JsonUtility.FromJson<SaveObject>(mostRecentSave).saveDateTime);
+
+            foreach (string sg_string in saveList)
+            {
+                var saveDateTime = DateTime.Parse(JsonUtility.FromJson<SaveObject>(File.ReadAllText(sg_string)).saveDateTime);
+
+                if (saveDateTime >= mostRecentDateTime)
+                {
+                    mostRecentDateTime = saveDateTime;
+                    mostRecentSave = sg_string;
+                }
+            }
+            string ret = JsonUtility.FromJson<SaveObject>(File.ReadAllText(mostRecentSave)).playerName + " / "
+                + JsonUtility.FromJson<SaveObject>(File.ReadAllText(mostRecentSave)).shopName;
+
+            _mostRecentSave = mostRecentSave;
+
+            return ret;
+        }
+        return "";
+    }
 
     private class SaveData
     {
-        //public string saveDateTime;
         public List<string> saveGamePaths;
     }
     private class SaveObject
     {
         public string playerName;
         public string shopName;
-        public string playerSpecies;
-        //public int playerColor;
+        public string saveDateTime;
+        //public string playerSpecies;
         public int currentCurency;
         public int currentExp;
         public int level;
