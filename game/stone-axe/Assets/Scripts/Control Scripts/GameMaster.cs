@@ -144,11 +144,13 @@ public class GameMaster : MonoBehaviour
 
     public void startNewGame()
     {
+        Debug.Log("GameMaster.startNewGame() - starting new game");
         _uiControlRef.newGameUIEnabled(false);
         _uiControlRef.mainMenuEnabled(false);
         _uiControlRef.gameUIEnabled(true);
         loadShopLevel();
         gameObject.GetComponent<QuestControl>().resetAllQuests();
+        gameObject.GetComponent<QuestControl>().setupStoryQuests();
     }
     public void startLoadedGame()
     {

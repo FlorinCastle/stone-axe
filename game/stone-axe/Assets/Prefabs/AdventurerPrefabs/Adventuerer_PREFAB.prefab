@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _advRaceRef: {fileID: 0}
+  _move: 0
   _currentTarget: {fileID: 0}
   _headMark: {fileID: 8603199528162263960}
 --- !u!95 &3695382923491057050

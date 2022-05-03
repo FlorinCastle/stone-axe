@@ -66,7 +66,7 @@ public class QuestControl : MonoBehaviour
             if (_chosenQuest.QuestType == "OD_Material")
                 updateQuestProgress(_chosenQuest.ReqiredMaterial);
 
-        if (this.gameObject.GetComponent<UIControl>().ShopUIActive == true && star == false)
+        if (gameObject.GetComponent<UIControl>().ShopUIActive == true && star == false)
         {
             setupStoryQuests();
             star = true;
@@ -77,13 +77,16 @@ public class QuestControl : MonoBehaviour
     private GameObject p;
     public void setupStoryQuests()
     {
-        //Debug.Log("setting up story quests!");
+        //Debug.Log("QuestControl.setupStoryQuests() - setting up story quests");
         if (_chosenQuest == null)
         {
-            foreach(QuestData tutQuest in _questRef.getTutorialQuests())
+            //Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is null");
+            foreach (QuestData tutQuest in _questRef.getTutorialQuests())
             {
+                //Debug.Log("QuestControl.setupStoryQuests() - tutQuest is " + tutQuest.QuestName);
                 if (tutQuest == _enableAdventurersOnComplete)
                 {
+                    //Debug.Log("QuestControl.setupStoryQuests() - enabling adventurers");
                     gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
                     // ui control, enable to market button
                     gameObject.GetComponent<GameMaster>().marketAccessable(true);
@@ -91,7 +94,7 @@ public class QuestControl : MonoBehaviour
 
                 if (starterRef == null)
                 {
-                    //Debug.Log("tutorial: starter ref is not assigned!");
+                    //Debug.Log("QuestControl.setupStoryQuests() - starterRef is null");
                     if (tutQuest.StoryQuestComplete == false && _unlockedQuests.Contains(tutQuest))
                     {
                         //Debug.Log("asigning starter tutorial");
@@ -135,6 +138,7 @@ public class QuestControl : MonoBehaviour
         }
         else if (_chosenQuest.QuestType == "Tutorial" || _chosenQuest.QuestType == "Story")
         {
+            //Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is either Tutorial or Story");
             if (_chosenQuest.StoryQuestComplete == false)
                 setupStarter();
             else
@@ -208,10 +212,14 @@ public class QuestControl : MonoBehaviour
 
     public void resetAllQuests()
     {
+        Debug.Log("QuestControl.resetAllQuests() - resetting quests");
         foreach (QuestData tutQuest in _questRef.getTutorialQuests())
             tutQuest.StoryQuestComplete = false;
         foreach (QuestData storyQuest in _questRef.getStoryQuests())
             storyQuest.StoryQuestComplete = false;
+
+        _unlockedQuests.Clear();
+        _unlockedQuests.Add(_questRef.getTutorialQuests()[0]);
     }
 
     public SaveQuestsObject saveQuests()

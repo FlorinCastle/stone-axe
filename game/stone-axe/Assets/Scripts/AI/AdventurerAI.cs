@@ -8,6 +8,7 @@ public class AdventurerAI : MonoBehaviour
     private AdventurerMaster _advMaster;
     [SerializeField] private AdventurerData _advRaceRef;
     private Vector4 _advColorRef;
+    [SerializeField]
     private bool _move;
     private bool dismissed;
 
@@ -31,7 +32,10 @@ public class AdventurerAI : MonoBehaviour
     private void FixedUpdate()
     {
         if (_move == true) // if moving
+        {
             this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position, _targetPosition, 0.1f);
+            gameObject.GetComponent<Animator>().SetBool("Walk", true);
+        }
         else if (_move == false) // rotate toward next point, but don't move
         {
             Vector3 targetDirection = _targetPosition - this.gameObject.transform.position;
@@ -40,12 +44,14 @@ public class AdventurerAI : MonoBehaviour
             newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
 
             transform.rotation = Quaternion.LookRotation(newDirection);
+            gameObject.GetComponent<Animator>().SetBool("Walk", false);
         }
 
         if (this.gameObject.transform.position.x == _targetPosition.x && this.gameObject.transform.position.z == _targetPosition.z) // if adventurer is at a point
         {
             //Debug.Log("position reached");
             IsMoving = false;
+            //gameObject.GetComponent<Animator>().SetBool("Walk", false);
 
             if (_currentTarget.GetComponent<WalkingPoint>() == true) // if at walking point
             {
@@ -78,6 +84,7 @@ public class AdventurerAI : MonoBehaviour
                 else if (_currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<LinePoint>() != null && _currentTarget.GetComponent<LinePoint>().NextPoint.GetComponent<LinePoint>().IsOccupied == true)
                 { // if at line point and next point is also a line point that has an adventurer waiting
                     dismissed = false;
+                    gameObject.GetComponent<Animator>().SetBool("Walk", false);
                     /*
                     if (_prevTarget.GetComponent<LinePoint>() == true)
                         _prevTarget.GetComponent<LinePoint>().IsOccupied = false;
@@ -94,11 +101,13 @@ public class AdventurerAI : MonoBehaviour
                     }
 
                     dismissed = false;
+                    gameObject.GetComponent<Animator>().SetBool("Walk", true);
                     setCurentTarget(_currentTarget.GetComponent<LinePoint>().NextPoint);
                 }
                 else if (_currentTarget.GetComponent<LinePoint>().HeadOfLine == true)
                 { // if at line point that is head of line
                     gameMasterRef.AdventurerAtCounter = true;
+                    gameObject.GetComponent<Animator>().SetBool("Walk", false);
                     if (selected == false)
                     {
                         selected = true;
@@ -120,8 +129,10 @@ public class AdventurerAI : MonoBehaviour
             }
         }
 
-        if (Vector3.Angle(transform.forward, _targetPosition - this.transform.position) < 10f)
+        if (Vector3.Angle(transform.forward, _targetPosition - this.transform.position) < 10f && !(this.gameObject.transform.position.x == _targetPosition.x && this.gameObject.transform.position.z == _targetPosition.z))
+        {
             IsMoving = true;
+        }
     }
 
     public void setupAdventurer()
