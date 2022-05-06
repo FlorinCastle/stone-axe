@@ -18,8 +18,8 @@ MonoBehaviour:
   maxLevel: 5
   requiredPlayerLevel: 0
   addPointButton: {fileID: 4041827551631192513}
-  skillLevelText: {fileID: 4041827551257068435}
-  skillBodyText: {fileID: 4041827550099163789}
+  skillLevelText: {fileID: 1027758115829128791}
+  skillBodyText: {fileID: 1171761964676942768}
 --- !u!1001 &3483555353644735987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 598811200459005406, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
       propertyPath: m_Name
-      value: SkillPanel_PREFAB
+      value: SkillPanel_IncSellPrice_PREFAB Variant
       objectReference: {fileID: 0}
     - target: {fileID: 598811200685759973, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
       propertyPath: m_Text
@@ -123,6 +123,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 786513746725210721, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_text
+      value: Increase Sell Price
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
 --- !u!1 &4041827550174232621 stripped
@@ -130,15 +134,15 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 598811200459005406, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
   m_PrefabInstance: {fileID: 3483555353644735987}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4041827550099163789 stripped
+--- !u!114 &1171761964676942768 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 598811200384128894, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2313438913362236995, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
   m_PrefabInstance: {fileID: 3483555353644735987}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4041827551631192513 stripped
@@ -146,14 +150,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 598811200867445810, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
   m_PrefabInstance: {fileID: 3483555353644735987}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4041827551257068435 stripped
+--- !u!114 &1027758115829128791 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 598811201576050272, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4475249461205042084, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
   m_PrefabInstance: {fileID: 3483555353644735987}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

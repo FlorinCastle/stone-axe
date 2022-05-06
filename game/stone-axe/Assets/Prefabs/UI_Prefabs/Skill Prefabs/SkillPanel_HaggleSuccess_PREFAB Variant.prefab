@@ -18,8 +18,8 @@ MonoBehaviour:
   maxLevel: 5
   requiredPlayerLevel: 0
   addPointButton: {fileID: 2046181190784465694}
-  skillLevelText: {fileID: 2046181190008211788}
-  skillBodyText: {fileID: 2046181191267795026}
+  skillLevelText: {fileID: 3040315412606817416}
+  skillBodyText: {fileID: 3760757484490588527}
 --- !u!1001 &1453001794277971756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56,14 +56,6 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 598811200459005405, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 280
-      objectReference: {fileID: 0}
-    - target: {fileID: 598811200459005405, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 598811200459005405, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -97,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 598811200459005405, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -104
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 598811200459005405, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -131,6 +123,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 786513746725210721, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_text
+      value: Haggle Success Chance
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
 --- !u!1 &2046181191191874290 stripped
@@ -138,15 +134,15 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 598811200459005406, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
   m_PrefabInstance: {fileID: 1453001794277971756}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2046181191267795026 stripped
+--- !u!114 &3760757484490588527 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 598811200384128894, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2313438913362236995, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
   m_PrefabInstance: {fileID: 1453001794277971756}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2046181190784465694 stripped
@@ -154,14 +150,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 598811200867445810, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
   m_PrefabInstance: {fileID: 1453001794277971756}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2046181190008211788 stripped
+--- !u!114 &3040315412606817416 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 598811201576050272, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4475249461205042084, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
   m_PrefabInstance: {fileID: 1453001794277971756}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

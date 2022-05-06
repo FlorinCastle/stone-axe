@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +14,8 @@ public class DIS_DisassembleChance : MonoBehaviour
     [SerializeField] private int requiredPlayerLevel = 0;
     [Header("UI")]
     [SerializeField] private GameObject addPointButton;
-    [SerializeField] private Text skillLevelText;
-    [SerializeField] private Text skillBodyText;
+    [SerializeField] private TextMeshProUGUI skillLevelText;
+    [SerializeField] private TextMeshProUGUI skillBodyText;
 
     private void Awake()
     {

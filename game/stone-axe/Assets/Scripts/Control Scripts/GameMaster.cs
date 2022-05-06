@@ -679,6 +679,7 @@ public class GameMaster : MonoBehaviour
     {
         if (File.Exists(Application.persistentDataPath + "/save1.txt"))
         {
+            Debug.Log("GameMaster.getMostRecentSaveString() - save1.txt exists!");
             string saveString = File.ReadAllText(Application.persistentDataPath + "/save1.txt");
 
             SaveData saveObject = JsonUtility.FromJson<SaveData>(saveString);

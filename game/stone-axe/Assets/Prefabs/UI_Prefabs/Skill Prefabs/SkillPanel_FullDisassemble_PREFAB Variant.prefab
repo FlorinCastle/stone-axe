@@ -18,8 +18,8 @@ MonoBehaviour:
   maxLevel: 5
   requiredPlayerLevel: 0
   addPointButton: {fileID: 3301884806385367850}
-  skillLevelText: {fileID: 3301884805676157304}
-  skillBodyText: {fileID: 3301884806833012838}
+  skillLevelText: {fileID: 1983420628174361788}
+  skillBodyText: {fileID: 398354500188160347}
 --- !u!1001 &2710534902232733464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56,10 +56,6 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 598811200459005405, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 598811200459005405, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -93,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 598811200459005405, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 98
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 598811200459005405, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -109,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 598811200459005406, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
       propertyPath: m_Name
-      value: SkillPanel_FullDisassemble_PREFAB
+      value: SkillPanel_FullDisassemble_PREFAB Variant
       objectReference: {fileID: 0}
     - target: {fileID: 598811200685759973, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
       propertyPath: m_Text
@@ -131,6 +127,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 786513746725210721, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_text
+      value: Full Disassembly Chance
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
 --- !u!1 &3301884806757026502 stripped
@@ -138,15 +138,15 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 598811200459005406, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
   m_PrefabInstance: {fileID: 2710534902232733464}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3301884806833012838 stripped
+--- !u!114 &398354500188160347 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 598811200384128894, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2313438913362236995, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
   m_PrefabInstance: {fileID: 2710534902232733464}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3301884806385367850 stripped
@@ -154,14 +154,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 598811200867445810, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
   m_PrefabInstance: {fileID: 2710534902232733464}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3301884805676157304 stripped
+--- !u!114 &1983420628174361788 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 598811201576050272, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4475249461205042084, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
   m_PrefabInstance: {fileID: 2710534902232733464}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
