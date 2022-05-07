@@ -151,6 +151,29 @@ public class AdventurerMaster : MonoBehaviour
         return Color.magenta;
     }
 
+    public int getAdvColorRef(string advType, Color32 col)
+    {
+        if (advType == "Elf")
+        {
+            if (_adventurerMats.ElfColors.Contains(col))
+                return _adventurerMats.ElfColors.IndexOf(col) + 1;
+            return 0;
+        }
+        else if (advType == "Human")
+        {
+            if (_adventurerMats.HumanColors.Contains(col))
+                return _adventurerMats.HumanColors.IndexOf(col) + 1;
+            return 0;
+        }
+        else if (advType == "Lizardman")
+        {
+            if (_adventurerMats.LizardColors.Contains(col))
+                return _adventurerMats.LizardColors.IndexOf(col) + 1;
+            return 0;
+        }
+        return 0;
+    }
+
     IEnumerator AdventurerSpawn()
     {
         //StartCoroutine(AdventurerTimer());
@@ -189,6 +212,7 @@ public class AdventurerMaster : MonoBehaviour
             yield return null;
         }
     }
+
 
     public List<AdventurerData> GetAdvRaceList { get => _adventurerData; }
     public float AdventurerWaitTime { get => _adventuturerWaitTimeBeforeMove; }

@@ -14,6 +14,7 @@ public class GenerateItem : MonoBehaviour
     //[SerializeField] private ECO_DecBuyPrice _buyPriceSkill;
     //[SerializeField] private ECO_HaggleSuccess _haggleSkill;
     [Header("UI")]
+    [SerializeField] private TextMeshProUGUI advText;
     [SerializeField] private TextMeshProUGUI itemText;
     [SerializeField] private Button buyButton;
     [SerializeField] private Button haggleButton;
@@ -35,6 +36,7 @@ public class GenerateItem : MonoBehaviour
         haggleButtonText.text = "haggle\n(success chance: n/a)";
         generateButton.interactable = false;
         itemText.text = "wait for an adventurer to arrive that offers an item to buy";
+        advText.text = "Awaiting Adventurer Arrival";
     }
 
     [SerializeField] private ItemData _generatedItem;
@@ -116,8 +118,10 @@ public class GenerateItem : MonoBehaviour
             buyButtonText.text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * _skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice());
             buyButton.interactable = true;
             haggleButtonText.text = "haggle\n(success chance: " + (_skillManager.HagglePriceRef.getHaggleChance()).ToString() + "%)";
-            haggleButton.interactable = true;
 
+            advText.text = "Awaiting Adventurer Arrival";
+
+            haggleButton.interactable = true;
         }
         else if (forceInsert == true)
             _inventoryRef.InsertItem(_generatedItem);
@@ -214,12 +218,15 @@ public class GenerateItem : MonoBehaviour
         itemText.text = "item text";
         haggleButton.interactable = false;
         haggleButtonText.text = "haggle\n(success chance: n/a)";
+        advText.text = "Awaiting Adventurer Arrival";
     }
-    public void adventurerAtCounter()
+    public void adventurerAtCounter(AdventurerAI aiRef)
     {
         if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == true)
         {
             generateButton.interactable = true;
+            advText.text = "Adventurer [name]\n" + aiRef.AdventurerType;
+
             GenerateRandomItem();
         }
         else if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == false)

@@ -11,12 +11,14 @@ public class SellItemControl : MonoBehaviour
     [SerializeField] private GameObject _selectedItem;
     private GameMaster _gameMasterRef;
     [Header("Shop UI")]
+    [SerializeField] private TextMeshProUGUI _advText;
     [SerializeField] private Text _itemText;
     [SerializeField] private Button _sellItemButton;
     [SerializeField] private Button _refuseButton;
     [SerializeField] private Button _haggleButton;
     [SerializeField] private Button _suggestButton;
     [Header("Market UI")]
+    [SerializeField] private TextMeshProUGUI _marketAdvText;
     [SerializeField] private Text _marketItemText;
     [SerializeField] private Button _marketSellItemButton;
     [SerializeField] private Button _marketRefuseButton;
@@ -52,6 +54,9 @@ public class SellItemControl : MonoBehaviour
         _marketSuggestButton.interactable = false;
         _marketHaggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: n/a)";
         _itemText.text = "choose item to sell";
+
+        _advText.text = "Awaiting Adventurer Arrival";
+        _marketAdvText.text = "Awaiting Adventurer Arrival";
     }
 
     public void suggestAlt()
@@ -193,6 +198,9 @@ public class SellItemControl : MonoBehaviour
         _itemText.text = "choose item";
         _sellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: [price]";
         _haggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: n/a)";
+
+        _advText.text = "Awaiting Adventurer Arrival";
+
         _sellItemButton.interactable = false;
         _refuseButton.interactable = false;
         _haggleButton.interactable = false;
@@ -201,18 +209,33 @@ public class SellItemControl : MonoBehaviour
         _marketItemText.text = "choose item";
         _marketSellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: [price]";
         _marketHaggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: n/a)";
+
+        _marketAdvText.text = "Awaiting Adventurer Arrival";
+
         _marketSellItemButton.interactable = false;
         _marketRefuseButton.interactable = false;
         _marketHaggleButton.interactable = false;
         haggleSucceded = false;
     }
     //private bool itemSelected = false;
-    public void adventurerAtCounter()
+    public void adventurerAtCounter(AdventurerAI aiRef)
     {
         if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == true)
         {
             _suggestButton.interactable = true;
             _marketSuggestButton.interactable = true;
+
+            if (aiRef != null)
+            {
+                _advText.text = "Adventurer [name]\n"+ aiRef.AdventurerType;
+                _marketAdvText.text = "Adventurer [name]\n" + aiRef.AdventurerType;
+            }
+            else
+            {
+                _advText.text = "Awaiting Adventurer Arrival";
+                _marketAdvText.text = "Awaiting Adventurer Arrival";
+            }
+
             // get random item
             if (GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>().ItemInvSize > 0)
             {
@@ -222,13 +245,14 @@ public class SellItemControl : MonoBehaviour
             {
                 if (gameObject.GetComponent<GameMaster>().MarketActive == true)
                     this.gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
-
             }
         }
         else if (gameObject.GetComponent<GameMaster>().AdventurerAtCounter == false)
         {
             _suggestButton.interactable = false;
             _marketSuggestButton.interactable = false;
+
+            _advText.text = "Awaiting Adventurer Arrival";
             // clear selected item
             clearSellMenu();
         }
@@ -240,17 +264,36 @@ public class SellItemControl : MonoBehaviour
         {
             //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
             setupDiscription();
-            _sellItemButton.interactable = input;
-            _refuseButton.interactable = input;
-            _haggleButton.interactable = input;
+            if (GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>().ItemInvSize > 0)
+            {
+                _sellItemButton.interactable = input;
+                _refuseButton.interactable = input;
+                _haggleButton.interactable = input;
+            }
+            else
+            {
+                _sellItemButton.interactable = false;
+                _refuseButton.interactable = false;
+                _haggleButton.interactable = false;
+            }
         }
         else if (sellingState == 1) // market level
         {
             //Debug.Log(_selectedItem.GetComponent<ItemDataStorage>().ItemName);
             setupDiscription();
-            _marketSellItemButton.interactable = input;
-            _marketRefuseButton.interactable = input;
-            _marketHaggleButton.interactable = input;
+
+            if (GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>().ItemInvSize > 0)
+            {
+                _marketSellItemButton.interactable = input;
+                _marketRefuseButton.interactable = input;
+                _marketHaggleButton.interactable = input;
+            }
+            else
+            {
+                _marketSellItemButton.interactable = false;
+                _marketRefuseButton.interactable = false;
+                _marketHaggleButton.interactable = false;
+            }
         }
     }
 

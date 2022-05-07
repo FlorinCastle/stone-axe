@@ -97,7 +97,7 @@ public class AdventurerAI : MonoBehaviour
                     if (selected == false)
                     {
                         selected = true;
-                        gameMasterRef.adventurerEco();
+                        gameMasterRef.adventurerEco(this);
                     }
 
                     dismissed = false;
@@ -111,7 +111,7 @@ public class AdventurerAI : MonoBehaviour
                     if (selected == false)
                     {
                         selected = true;
-                        gameMasterRef.adventurerEco();
+                        gameMasterRef.adventurerEco(this);
                     }
 
                     if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
@@ -140,6 +140,8 @@ public class AdventurerAI : MonoBehaviour
         chooseRace();
         setupAdventurerModel();
         chooseAdvColor();
+
+        gameObject.name = _advRaceRef.AdventurerSpecies + "_Color" + _advMaster.getAdvColorRef(_advRaceRef.AdventurerSpecies, _advColor);
     }
 
     public void setCurentTarget(GameObject target)
@@ -160,7 +162,7 @@ public class AdventurerAI : MonoBehaviour
     //private Renderer _renderer;
     private Renderer[] _renderers;
     private MaterialPropertyBlock _propBlock;
-    private Color32 _advColor;
+    [SerializeField] private Color32 _advColor;
     private void chooseAdvColor()
     {
         _renderers = this.gameObject.GetComponentsInChildren<Renderer>();
@@ -187,10 +189,13 @@ public class AdventurerAI : MonoBehaviour
 
     private IEnumerator WaitThenGo()
     {
-        Debug.Log(gameObject.name + " - AdventurerAI.WaitThenGo() Coroutine has started!");
+        Debug.Log(gameObject.name + ".AdventurerAI.WaitThenGo() Coroutine has started!");
         beingHandled = true;
         if (_advMaster.GetMyIndex(gameObject) != 0)
+        {
+            Debug.Log(gameObject.name + ".AdventurerAI.WaitThenGo(): waiting for " + _advMaster.AdventurerWaitTime + " seconds");
             yield return new WaitForSeconds(_advMaster.AdventurerWaitTime);
+        }
         _currentTarget.GetComponent<LinePoint>().IsOccupied = false;
         dismissed = false;
         setCurentTarget(_currentTarget.GetComponent<LinePoint>().NextPoint);
@@ -199,4 +204,5 @@ public class AdventurerAI : MonoBehaviour
     }
 
     public GameObject CurrentTarget { get => _currentTarget; }
+    public string AdventurerType { get => _advRaceRef.AdventurerSpecies; }
 }

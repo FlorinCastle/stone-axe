@@ -313,17 +313,17 @@ public class GameMaster : MonoBehaviour
         else if (spawnAdvent == false)
             this.gameObject.GetComponent<AdventurerMaster>().disableAdventurerSpawn();
     }
-    public void adventurerEco()
+    public void adventurerEco(AdventurerAI aiRef)
     {
         if (adventurerAtCounter == true)
         {
-            gameObject.GetComponent<SellItemControl>().adventurerAtCounter();
-            gameObject.GetComponent<GenerateItem>().adventurerAtCounter();
+            gameObject.GetComponent<SellItemControl>().adventurerAtCounter(aiRef);
+            gameObject.GetComponent<GenerateItem>().adventurerAtCounter(aiRef);
         }
         else if (adventurerAtCounter == false)
         {
-            gameObject.GetComponent<SellItemControl>().adventurerAtCounter();
-            gameObject.GetComponent<GenerateItem>().adventurerAtCounter();
+            gameObject.GetComponent<SellItemControl>().adventurerAtCounter(null);
+            gameObject.GetComponent<GenerateItem>().adventurerAtCounter(null);
         }
         else
             Debug.LogWarning("GameMaster.adventurerEco(): something broke!");
