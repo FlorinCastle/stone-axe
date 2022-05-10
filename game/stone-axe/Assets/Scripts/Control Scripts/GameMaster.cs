@@ -272,6 +272,13 @@ public class GameMaster : MonoBehaviour
         _uiControlRef.questUIEnabled(false);
     }
 
+    public void loadSkillMenu()
+    {
+        _uiControlRef.skillUIEnabled(true);
+        gameObject.GetComponent<SkillManager>().updateSkillPoints();
+        gameObject.GetComponent<SkillManager>().setupSkillUI();
+    }
+
     public void updateLevelLocks()
     {
         if (gameObject.GetComponent<QuestControl>().CurrentQuest != null)

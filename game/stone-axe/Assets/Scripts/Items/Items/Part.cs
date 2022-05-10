@@ -7,8 +7,12 @@ public class Part : MonoBehaviour
     [Header("Part Tracker")]
     [SerializeField] List<PartData> _partDataList;
     [SerializeField] List<PartData> _metalBasedParts;
+    [SerializeField] List<PartData> _basicMetalBasedParts;
+    [SerializeField] List<PartData> _magicMetalBasedParts;
     [SerializeField] List<PartData> _woodBasedParts;
     [SerializeField] List<PartData> _clothBasedParts;
+    [SerializeField] List<PartData> _wovenClothBasedParts;
+    [SerializeField] List<PartData> _leatherBasedParts;
     [SerializeField] List<PartData> _gemstoneBasedParts;
 
     private void Awake()
@@ -19,21 +23,41 @@ public class Part : MonoBehaviour
             {
                 if (validMat == "Metal")
                 {
-                    _metalBasedParts.Add(part);
+                    if (!_metalBasedParts.Contains(part)) _metalBasedParts.Add(part);
+                }
+                if (validMat == "Basic Metal")
+                {
+                    if (!_metalBasedParts.Contains(part)) _metalBasedParts.Add(part);
+                    if (!_basicMetalBasedParts.Contains(part)) _basicMetalBasedParts.Add(part);
+                }
+                if (validMat == "Magic Metal")
+                {
+                    if (!_metalBasedParts.Contains(part)) _metalBasedParts.Add(part);
+                    if (!_magicMetalBasedParts.Contains(part)) _magicMetalBasedParts.Add(part);
                 }
                 if (validMat == "Wood")
                 {
-                    _woodBasedParts.Add(part);
+                    if (!_woodBasedParts.Contains(part)) _woodBasedParts.Add(part);
                 }
                 if (validMat == "Cloth")
                 {
-                    _clothBasedParts.Add(part);
+                    if (!_clothBasedParts.Contains(part)) _clothBasedParts.Add(part);
+                }
+                if (validMat == "Woven Cloth")
+                {
+                    if (!_clothBasedParts.Contains(part)) _clothBasedParts.Add(part);
+                    if (!_wovenClothBasedParts.Contains(part)) _wovenClothBasedParts.Add(part);
+                }
+                if (validMat == "Leather")
+                {
+                    if (!_clothBasedParts.Contains(part)) _clothBasedParts.Add(part);
+                    if (!_leatherBasedParts.Contains(part)) _leatherBasedParts.Add(part);
                 }
                 if (validMat == "Gemstone")
                 {
-                    _gemstoneBasedParts.Add(part);
+                    if (!_gemstoneBasedParts.Contains(part)) _gemstoneBasedParts.Add(part);
                 }
-                if (validMat != "Metal" && validMat != "Wood" && validMat != "Cloth" && validMat != "Gemstone")
+                if (validMat != "Metal" && validMat != "Basic Metal" && validMat != "Magic Metal" && validMat != "Wood" && validMat != "Cloth" && validMat != "Woven Cloth" && validMat != "Leather" && validMat != "Gemstone")
                     Debug.LogError("Can not catigorize: " + part.PartName);
             }
         }

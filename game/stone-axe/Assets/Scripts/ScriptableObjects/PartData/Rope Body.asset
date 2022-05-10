@@ -25,7 +25,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bab2bdbbc182b62418f2378a9c99c460, type: 2}
   - {fileID: 11400000, guid: ba1c5e625e5ab5e4fa7ec67ccab1e890, type: 2}
   _validMaterialTypes:
-  - Cloth
+  - Woven Cloth
+  - Leather
   _unitsOfMaterialNeeded: 5
   _baseCost: 9
   _baseStrenght: 1

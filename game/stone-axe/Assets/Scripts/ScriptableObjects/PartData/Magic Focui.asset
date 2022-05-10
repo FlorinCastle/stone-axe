@@ -20,7 +20,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c1142bc72c55dd94fb96dfd69001e16b, type: 2}
   - {fileID: 11400000, guid: e1b6489bf01c8894e91101a6e9bf9f02, type: 2}
   _validMaterialTypes:
-  - Metal
+  - Magic Metal
   _unitsOfMaterialNeeded: 2
   _baseCost: 8
   _baseStrenght: 0

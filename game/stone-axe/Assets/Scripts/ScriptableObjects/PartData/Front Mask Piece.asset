@@ -46,7 +46,8 @@ MonoBehaviour:
   _validMaterialTypes:
   - Wood
   - Metal
-  - Cloth
+  - Woven Cloth
+  - Leather
   - Gemstone
   _unitsOfMaterialNeeded: 2
   _baseCost: 6

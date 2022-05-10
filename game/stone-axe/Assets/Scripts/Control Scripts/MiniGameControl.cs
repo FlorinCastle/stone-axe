@@ -84,7 +84,6 @@ public class MiniGameControl : MonoBehaviour
     {
         resetHitPoints();
         chosenHitPoints.Clear();
-
         
         if (_disassemblyMinigameUI.activeInHierarchy == true)
             finalPointsToHit = calculateDisasembleHitPoints();
@@ -147,6 +146,7 @@ public class MiniGameControl : MonoBehaviour
         chosenHitPoints.Clear();
 
         pointsHit = 0;
+        updateHitpointText();
     }
 
     public void updateHitpointText()

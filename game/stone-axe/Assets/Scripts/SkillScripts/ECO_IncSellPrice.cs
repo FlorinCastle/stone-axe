@@ -15,6 +15,7 @@ public class ECO_IncSellPrice : MonoBehaviour
     [SerializeField] private GameObject addPointButton;
     [SerializeField] private TextMeshProUGUI skillLevelText;
     [SerializeField] private TextMeshProUGUI skillBodyText;
+    [SerializeField] private GameObject removePointButton;
 
     private void Awake()
     {
@@ -57,6 +58,21 @@ public class ECO_IncSellPrice : MonoBehaviour
             }
         }
         updateSkillTexts();
+    }
+    public void removeLevel()
+    {
+        if (currentLevel > 0)
+        {
+            currentLevel--;
+
+            _skillManagerRef.AddSkillPoint();
+            _skillManagerRef.updateSkillPoints();
+
+            if (currentLevel == 0)
+                removePointButton.GetComponent<Button>().interactable = false;
+        }
+        else if (currentLevel == 0)
+            removePointButton.GetComponent<Button>().interactable = false;
     }
     public void updateSkillTexts()
     {

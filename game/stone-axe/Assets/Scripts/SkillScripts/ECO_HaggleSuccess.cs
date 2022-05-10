@@ -15,6 +15,7 @@ public class ECO_HaggleSuccess : MonoBehaviour
     [SerializeField] private GameObject addPointButton;
     [SerializeField] private TextMeshProUGUI skillLevelText;
     [SerializeField] private TextMeshProUGUI skillBodyText;
+    [SerializeField] private GameObject removePointButton;
 
     private void Awake()
     {

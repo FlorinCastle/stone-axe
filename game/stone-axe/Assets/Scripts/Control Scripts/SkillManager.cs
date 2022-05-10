@@ -89,6 +89,13 @@ public class SkillManager : MonoBehaviour
         return false;
     }
 
+    public void setupSkillUI()
+    {
+        Debug.LogError("SkillManager.setupSkillUI(): PUT THE CODE FOR CONTROLLING TURNING ON AND OFF THE SKILL POINTS UI HERE!");
+        /* GO THROUGH EACH SKILL SCRIPT AND TURN ON/OFF THE ADD AND MINUS BUTTONS FOR POINTS
+         */
+    }
+
     public void setTotalSkillPoints(int value) { _totalSkillPoints = value; }
     public int GetTotalSkillPoints { get => _totalSkillPoints; }
 

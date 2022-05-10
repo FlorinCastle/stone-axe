@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partName: Wand Body
   _partLevelReq: 0
-  _material: {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}
+  _material: {fileID: 11400000, guid: ac183ad9e71590047a3376f7a6b7fed6, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}
   - {fileID: 11400000, guid: 7ba3f56a6cf24c6498a633f016021027, type: 2}
@@ -28,7 +28,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e1b6489bf01c8894e91101a6e9bf9f02, type: 2}
   _validMaterialTypes:
   - Wood
-  - Metal
+  - Magic Metal
   _unitsOfMaterialNeeded: 3
   _baseCost: 7
   _baseStrenght: 0

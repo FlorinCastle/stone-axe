@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partName: Wand Handle
   _partLevelReq: 0
-  _material: {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}
+  _material: {fileID: 11400000, guid: 9a249b9e603da774cb4202555c78ceff, type: 2}
   _validMaterials:
   - {fileID: 11400000, guid: a40b5ea5ece10194fb533b008cd929bf, type: 2}
   - {fileID: 11400000, guid: 7ba3f56a6cf24c6498a633f016021027, type: 2}
@@ -28,7 +28,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e1b6489bf01c8894e91101a6e9bf9f02, type: 2}
   _validMaterialTypes:
   - Wood
-  - Metal
+  - Magic Metal
   _unitsOfMaterialNeeded: 2
   _baseCost: 6
   _baseStrenght: 0

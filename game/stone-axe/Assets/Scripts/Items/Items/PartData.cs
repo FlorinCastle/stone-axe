@@ -50,6 +50,7 @@ public class PartData : ScriptableObject
 
     public List<MaterialData> ValidMaterialData { get => _validMaterials; }
 
+    // bug here
     public List<string> ValidMaterials { get => _validMaterialTypes; }
 
     public int UnitsOfMaterialNeeded { get => _unitsOfMaterialNeeded; }

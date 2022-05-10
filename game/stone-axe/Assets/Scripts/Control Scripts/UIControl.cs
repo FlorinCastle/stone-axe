@@ -324,6 +324,8 @@ public class UIControl : MonoBehaviour
     public void miniGameUIEnabled(bool input) { miniGameUI.SetActive(input); }
     public void questUIEnabled(bool input) { questDetailUI.SetActive(input); }
 
+    public void skillUIEnabled(bool input) { skillTreeUI.SetActive(input); }
+
     public void marketAccessable(bool input)
     {
         //Debug.Log("market accessable: " + input.ToString());
@@ -445,6 +447,7 @@ public class UIControl : MonoBehaviour
         enchantsScrollView.SetActive(false);
         partsScrollView.SetActive(false);
         itemsScrollView.SetActive(true);
+        BUI_InvSelected();
         IUI_ItemsSelected();
     }
     public void openPartInv()
@@ -454,6 +457,7 @@ public class UIControl : MonoBehaviour
         matsScrollView.SetActive(false);
         enchantsScrollView.SetActive(false);
         partsScrollView.SetActive(true);
+        BUI_InvSelected();
         IUI_PartsSelected();
     }
     public void openMatInv()

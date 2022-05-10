@@ -21,7 +21,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3daa26c81517ad7469d747e94fe5e2f4, type: 2}
   - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
   _validMaterialTypes:
-  - Cloth
+  - Leather
   _unitsOfMaterialNeeded: 2
   _baseCost: 4
   _baseStrenght: 1

@@ -28,7 +28,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e1b6489bf01c8894e91101a6e9bf9f02, type: 2}
   _validMaterialTypes:
   - Wood
-  - Metal
+  - Magic Metal
   _unitsOfMaterialNeeded: 3
   _baseCost: 5
   _baseStrenght: 1
