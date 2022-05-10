@@ -44,7 +44,7 @@ public class DIS_DisassembleChance : MonoBehaviour
             if (currentLevel > maxLevel)
             {
                 currentLevel = maxLevel;
-                removeAddButton();
+                checkButtons(); // removeAddButton();
             }
             else
             {
@@ -52,12 +52,31 @@ public class DIS_DisassembleChance : MonoBehaviour
                 _skillManagerRef.updateSkillPoints();
                 if (_skillManagerRef.GetCurrentSkillPoints == 0)
                 {
-                    addPointButton.GetComponent<Button>().interactable = false;
+                    //addPointButton.GetComponent<Button>().interactable = false;
+                    checkButtons();
+                    _skillManagerRef.setupSkillUI();
                 }
                 else if (currentLevel == maxLevel)
-                    removeAddButton();
+                    checkButtons(); //removeAddButton();
             }
         }
+        updateSkillTexts();
+    }
+    public void removeLevel()
+    {
+        if (currentLevel > 0)
+        {
+            currentLevel--;
+
+            _skillManagerRef.AddSkillPoint();
+            _skillManagerRef.updateSkillPoints();
+
+            if (currentLevel == 0)
+                removePointButton.GetComponent<Button>().interactable = false;
+        }
+        else if (currentLevel == 0)
+            removePointButton.GetComponent<Button>().interactable = false;
+        _skillManagerRef.setupSkillUI();
         updateSkillTexts();
     }
     public void updateSkillTexts()
@@ -70,6 +89,19 @@ public class DIS_DisassembleChance : MonoBehaviour
     {
         addPointButton.SetActive(false);
     }
+    public void checkButtons()
+    {
+        if (currentLevel > 0)
+            removePointButton.GetComponent<Button>().interactable = true;
+        else if (currentLevel == 0)
+            removePointButton.GetComponent<Button>().interactable = false;
+
+        if (_skillManagerRef.hasFreeSkillPoint())
+            addPointButton.GetComponent<Button>().interactable = true;
+        else
+            addPointButton.GetComponent<Button>().interactable = false;
+    }
+
     private void setupSkillLevelText()
     {
         skillLevelText.text = currentLevel + " / " + maxLevel;

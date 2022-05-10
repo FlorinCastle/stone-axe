@@ -20,6 +20,7 @@ MonoBehaviour:
   addPointButton: {fileID: 4041827551631192513}
   skillLevelText: {fileID: 1027758115829128791}
   skillBodyText: {fileID: 1171761964676942768}
+  removePointButton: {fileID: 2119805869648583863}
 --- !u!1001 &3483555353644735987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -123,6 +124,22 @@ PrefabInstance:
       propertyPath: m_text
       value: Increase Sell Price
       objectReference: {fileID: 0}
+    - target: {fileID: 8664167337755895588, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2029208072}
+    - target: {fileID: 8664167337755895588, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: removeLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664167337755895588, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ECO_IncSellPrice, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664167337755895588, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
 --- !u!1 &4041827550174232621 stripped
@@ -157,3 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2119805869648583863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3256950349555466564, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+  m_PrefabInstance: {fileID: 3483555353644735987}
+  m_PrefabAsset: {fileID: 0}

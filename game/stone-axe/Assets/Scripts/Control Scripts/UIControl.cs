@@ -129,7 +129,7 @@ public class UIControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (dialogeUI.activeInHierarchy == false)
+            if (dialogeUI.activeInHierarchy == false || miniGameUI.activeInHierarchy == false)
             {
                 if (optionsPopup.activeInHierarchy == true)
                     optionsPopup.SetActive(false);

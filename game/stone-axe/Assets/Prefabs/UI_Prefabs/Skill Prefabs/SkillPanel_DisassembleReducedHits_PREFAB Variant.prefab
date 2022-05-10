@@ -20,6 +20,7 @@ MonoBehaviour:
   addPointButton: {fileID: 6400372526854304288}
   skillLevelText: {fileID: 7964212243305455030}
   skillBodyText: {fileID: 8108497023817140305}
+  removePointButton: {fileID: 9056409462658424662}
 --- !u!1001 &5809036014947884562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133,7 +134,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 786513746725210721, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
       propertyPath: m_fontSize
-      value: 18
+      value: 19.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664167337755895588, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5308371626658473099}
+    - target: {fileID: 8664167337755895588, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: removeLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664167337755895588, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DIS_HitReduction, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664167337755895588, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
@@ -169,3 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &9056409462658424662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3256950349555466564, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+  m_PrefabInstance: {fileID: 5809036014947884562}
+  m_PrefabAsset: {fileID: 0}

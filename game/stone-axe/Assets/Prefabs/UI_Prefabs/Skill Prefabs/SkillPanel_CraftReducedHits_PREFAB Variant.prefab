@@ -20,6 +20,7 @@ MonoBehaviour:
   addPointButton: {fileID: 1011753213761261793}
   skillLevelText: {fileID: 4061780800776028023}
   skillBodyText: {fileID: 2765179238467676816}
+  removePointButton: {fileID: 3131722084098882967}
 --- !u!1001 &451802189831290067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131,6 +132,22 @@ PrefabInstance:
       propertyPath: m_text
       value: Reduce Required Craft Hits
       objectReference: {fileID: 0}
+    - target: {fileID: 8664167337755895588, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6667913639635752588}
+    - target: {fileID: 8664167337755895588, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: removeLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664167337755895588, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CFT_HitReduction, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664167337755895588, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
 --- !u!1 &1011753212027429133 stripped
@@ -165,3 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3131722084098882967 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3256950349555466564, guid: f5912a0a0ec32e247a7d25ef9c2b11e7, type: 3}
+  m_PrefabInstance: {fileID: 451802189831290067}
+  m_PrefabAsset: {fileID: 0}
