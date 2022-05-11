@@ -129,7 +129,7 @@ public class UIControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (dialogeUI.activeInHierarchy == false || miniGameUI.activeInHierarchy == false)
+            if (dialogeUI.activeInHierarchy == false)
             {
                 if (optionsPopup.activeInHierarchy == true)
                     optionsPopup.SetActive(false);
@@ -137,6 +137,10 @@ public class UIControl : MonoBehaviour
                     skillTreeUI.SetActive(false);
                 else if (questUI.activeInHierarchy == true)
                     questUI.SetActive(false);
+                else if (gameObject.GetComponent<ExperienceManager>().LevelUpUIActive() == true)
+                    gameObject.GetComponent<ExperienceManager>().collapseLevelUpMenu();
+                else if (miniGameUI.activeInHierarchy == true)
+                    gameObject.GetComponent<MiniGameControl>().stopCraftingMiniGame();
                 else if (optionsPopup.activeInHierarchy == false)
                     optionsPopup.SetActive(true);
             }
@@ -467,6 +471,7 @@ public class UIControl : MonoBehaviour
         partsScrollView.SetActive(false);
         enchantsScrollView.SetActive(false);
         matsScrollView.SetActive(true);
+        BUI_InvSelected();
         IUI_MatsSelected();
     }
     public void openEnchInv()
@@ -478,6 +483,7 @@ public class UIControl : MonoBehaviour
         partsScrollView.SetActive(false);
         matsScrollView.SetActive(false);
         enchantsScrollView.SetActive(true);
+        BUI_InvSelected();
         IUI_EnchSelected();
     }
 

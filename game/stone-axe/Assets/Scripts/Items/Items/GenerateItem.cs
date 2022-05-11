@@ -215,7 +215,7 @@ public class GenerateItem : MonoBehaviour
         _generatedItem = null;
         buyButton.interactable = false;
         buyButtonText.text = "buy: [price]";
-        itemText.text = "item text";
+        itemText.text = "wait for an adventurer to arrive that offers an item to buy";
         haggleButton.interactable = false;
         haggleButtonText.text = "haggle\n(success chance: n/a)";
         advText.text = "Awaiting Adventurer Arrival";

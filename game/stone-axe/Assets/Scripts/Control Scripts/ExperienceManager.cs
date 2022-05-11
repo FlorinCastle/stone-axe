@@ -129,6 +129,8 @@ public class ExperienceManager : MonoBehaviour
         _levelUpMenuText.text = "placeholder\nif you see this, something went wrong";
     }
 
+    public bool LevelUpUIActive() { return _levelUpMenu.activeInHierarchy; }
+
     /* does not work for some reason >:(
     public void smoothUpdateEXPSlider()
     {

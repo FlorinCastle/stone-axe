@@ -21,7 +21,7 @@ public class CraftControl : MonoBehaviour
     [Header("UI")]
     [SerializeField] GameObject _itemCraftingUI;
     [SerializeField] GameObject _partCraftingUI;
-    [SerializeField] Dropdown _recipeDropdown;
+    //[SerializeField] Dropdown _recipeDropdown;
     [SerializeField] Button _craftButton;
     [SerializeField] Button _cancelCraftButton;
     // item crafting
@@ -81,16 +81,16 @@ public class CraftControl : MonoBehaviour
         _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         _invDataRef = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryData>();
 
-        setupRecipeDropdown();
+        //setupRecipeDropdown();
         updateFinalStatsText();
         _itemCraftingUI.SetActive(false);
         _partCraftingUI.SetActive(false);
         _selectedRecipeText.text = "none";
     }
-
+    /*
     public void checkSelection()
     {
-        string selection = _recipeDropdown.options[_recipeDropdown.value].text;
+        //string selection = _recipeDropdown.options[_recipeDropdown.value].text;
         int index = 0;
         if (selection == "Choose Recipe")
         {
@@ -138,7 +138,7 @@ public class CraftControl : MonoBehaviour
             }
         }
     }
-
+    */
     // add code to this to set up parts text
     public void setChosenRecipe()
     {
@@ -166,6 +166,8 @@ public class CraftControl : MonoBehaviour
             _part1Name.text = _chosenItemRecipe.Part1.PartName;
             _part2Name.text = _chosenItemRecipe.Part2.PartName;
             _part3Name.text = _chosenItemRecipe.Part3.PartName;
+
+            _cancelCraftButton.interactable = true;
         }
         else if (_recipeBookRef.getSeletedPartRecipe() != null)
         {
@@ -180,6 +182,8 @@ public class CraftControl : MonoBehaviour
             setupPartRecipeStats();
 
             _selectedRecipeText.text = _chosenPartRecipe.PartName;
+
+            _cancelCraftButton.interactable = true;
         }
         else if (_recipeBookRef.getSelectedQuestRecipe() != null)
         {
@@ -193,15 +197,32 @@ public class CraftControl : MonoBehaviour
             clearPartCraftingUI();
 
             _selectedRecipeText.text = _chosenQuestRecipe.QuestItemName;
+
+            _cancelCraftButton.interactable = true;
         }
     }
 
     public void clearCraftingUI()
     {
-        clearItemCraftingUI();
-        clearPartCraftingUI();
-        _cancelCraftButton.interactable = false;
-        _craftButton.interactable = false;
+        if (anyRecipeSelected() && (_chosenPart1 != null || _chosenPart2 != null || _chosenPart3 != null || _chosenPartMaterial != null || _optionalChosenEnchant != null))
+        {
+            Debug.Log("CraftControl.clearCraftingUI(): clearing selected parts/mat/enchant");
+            clearItemCraftingUI();
+            clearPartCraftingUI();
+            _craftButton.interactable = false;
+        }
+        else
+        {
+            Debug.Log("CraftControl.clearCraftingUI(): clearing entire ui");
+            clearItemCraftingUI();
+            clearPartCraftingUI();
+            _cancelCraftButton.interactable = false;
+            _craftButton.interactable = false;
+
+            _UIControlRef.itemCraftMenuEnabled(false);
+            _UIControlRef.partCraftMenuEnabled(false);
+            _UIControlRef.craftMenuEnabled(false);
+        }
     }
 
     private void clearItemCraftingUI()
@@ -228,8 +249,10 @@ public class CraftControl : MonoBehaviour
 
     private void clearPartCraftingUI()
     {
-        _partRecipeStats1.text = "placeholder";
-        _partRecipeStats2.text = "";
+        //_partRecipeStats1.text = "placeholder";
+        //_partRecipeStats2.text = "";
+        _chosenPartMaterial = null;
+        _optionalChosenEnchant = null;
         _matDiscription.text = "choose material";
 
         if (_chosenItemRecipe == null && _chosenPartRecipe == null && _chosenQuestRecipe == null)
@@ -252,6 +275,7 @@ public class CraftControl : MonoBehaviour
         _partRecipeStats2.text = "Base Stats\nBase Strenght: " + _chosenPartRecipe.BaseStrenght + "\nBase Intellegence: " + _chosenPartRecipe.BaseIntelligence + "\nBase Dextarity: " + _chosenPartRecipe.BaseDextarity;
     }
 
+    /* old code
     private void setupRecipeDropdown()
     {
         _recipeDropdown.ClearOptions();
@@ -268,8 +292,9 @@ public class CraftControl : MonoBehaviour
 
         _recipeDropdown.AddOptions(recipeDropOptions);
     }
+    */
 
-    /* Old code? I think?
+    /* Old useless code
     public void invPart1Setup()
     {
         //_inventoryControlReference.setupPartInventory(true, 3);
@@ -620,7 +645,7 @@ public class CraftControl : MonoBehaviour
             _inventoryControlReference.setupPartInventory();
 
             clearPartCraftingUI();
-            _recipeDropdown.value = 0;
+            //_recipeDropdown.value = 0;
             Debug.LogWarning("crafting part success");
             _gameMasterRef.gameObject.GetComponent<MiniGameControl>().stopCraftingMiniGame();
 
