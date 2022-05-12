@@ -149,7 +149,7 @@ public class UIControl : MonoBehaviour
 
     public void setupMainMenu()
     {
-        if(File.Exists(Application.persistentDataPath + "/save1.txt") && this.gameObject.GetComponent<GameMaster>().checkIfAnySavesExist())
+        if(File.Exists(Application.persistentDataPath + "/save1.json") && this.gameObject.GetComponent<GameMaster>().checkIfAnySavesExist())
         {
             if (_continueButton != null) setupContinueUI(); //_continueButton.interactable = true;
             if (_loadGameButton != null) _loadGameButton.interactable = true;
@@ -259,9 +259,9 @@ public class UIControl : MonoBehaviour
 
     public void setupContinueUI()
     {
-        if (File.Exists(Application.persistentDataPath + "/save1.txt") && gameObject.GetComponent<GameMaster>().checkIfAnySavesExist())
+        if (File.Exists(Application.persistentDataPath + "/save1.json") && gameObject.GetComponent<GameMaster>().checkIfAnySavesExist())
         {
-            Debug.Log("UIControl.setupContinueUI() - save1.txt exists!");
+            Debug.Log("UIControl.setupContinueUI() - save1.json exists!");
             _continueButton.interactable = true;
 
             _continueText.text = "continue game: " + gameObject.GetComponent<GameMaster>().getMostRecentSaveString(); 

@@ -51,12 +51,9 @@ public class ECO_DecBuyPrice : MonoBehaviour
                 _skillManagerRef.updateSkillPoints();
                 if (_skillManagerRef.GetCurrentSkillPoints == 0)
                 {
-                    //addPointButton.GetComponent<Button>().interactable = false;
-                    checkButtons();
                     _skillManagerRef.setupSkillUI();
                 }
-                else if (currentLevel == maxLevel)
-                    checkButtons(); //removeAddButton();
+                checkButtons();
             }
         }
         updateSkillTexts();
@@ -95,8 +92,10 @@ public class ECO_DecBuyPrice : MonoBehaviour
         else if (currentLevel == 0)
             removePointButton.GetComponent<Button>().interactable = false;
 
-        if (_skillManagerRef.hasFreeSkillPoint())
+        if (_skillManagerRef.hasFreeSkillPoint() && currentLevel != maxLevel)
             addPointButton.GetComponent<Button>().interactable = true;
+        else if (currentLevel == maxLevel)
+            addPointButton.GetComponent<Button>().interactable = false;
         else
             addPointButton.GetComponent<Button>().interactable = false;
     }

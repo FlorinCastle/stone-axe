@@ -221,6 +221,20 @@ public class QuestControl : MonoBehaviour
         _unlockedQuests.Clear();
         _unlockedQuests.Add(_questRef.getTutorialQuests()[0]);
     }
+    public void skipTutorialQuests()
+    {
+        Debug.Log("QuestControl.skipTutorialQuests() - skipping tutorial quests");
+        foreach (QuestData tutQuest in _questRef.getTutorialQuests())
+        {
+            tutQuest.StoryQuestComplete = true;
+            _unlockedQuests.Add(tutQuest);
+        }
+        foreach (QuestData storyQuest in _questRef.getStoryQuests())
+            storyQuest.StoryQuestComplete = false;
+
+        _unlockedQuests.Clear();
+        _unlockedQuests.Add(_questRef.getTutorialQuests()[_questRef.getTutorialQuests().Count - 1].QuestUnlocks[0]);
+    }
 
     public SaveQuestsObject saveQuests()
     {

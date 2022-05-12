@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEditor;
-using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
@@ -32,6 +31,7 @@ public class GameMaster : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] private GameObject _saveHolderPrefab;
     [Header("Save Tracking")]
+    [SerializeField] private Toggle _skipTutorialQuestsToggle;
     [SerializeField] private List<SaveTracker> _saveTrackerScripts;
     [SerializeField]
     private List<string> _saveGameList;
@@ -41,6 +41,8 @@ public class GameMaster : MonoBehaviour
     [SerializeField]
     private string _mostRecentSave;
 
+    private bool skipTutorial;
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -49,6 +51,11 @@ public class GameMaster : MonoBehaviour
         _uiControlRef = gameObject.GetComponent<UIControl>();
 
         loadSaveGames();
+    }
+
+    public void setSkipTutorial()
+    {
+        skipTutorial = _skipTutorialQuestsToggle.isOn;
     }
 
     public int CurrentCurrency { get => _currentCurrency; }
@@ -149,7 +156,11 @@ public class GameMaster : MonoBehaviour
         _uiControlRef.mainMenuEnabled(false);
         _uiControlRef.gameUIEnabled(true);
         loadShopLevel();
-        gameObject.GetComponent<QuestControl>().resetAllQuests();
+        if (skipTutorial == false)
+            gameObject.GetComponent<QuestControl>().resetAllQuests();
+        else if (skipTutorial == true)
+            gameObject.GetComponent<QuestControl>().skipTutorialQuests();
+        //Debug.Log("GameMaster.startNewGame(): Skipping Tutorial");
         gameObject.GetComponent<QuestControl>().setupStoryQuests();
     }
     public void startLoadedGame()
@@ -468,14 +479,14 @@ public class GameMaster : MonoBehaviour
 
 
         //Debug.Log(json);
-        string savePath = Application.persistentDataPath + "/" + _playerName + "_" + _shopName + "/save_" + _playerName + "_" + _shopName + "1.txt";
+        string savePath = Application.persistentDataPath + "/" + _playerName + "_" + _shopName + "/save_" + _playerName + "_" + _shopName + "1.json";
 
         if (File.Exists(savePath) == true)
         {
-            string savePath2 = Application.persistentDataPath + "/" + _playerName + "_" + _shopName + "/save_" + _playerName + "_" + _shopName + "2.txt";
+            string savePath2 = Application.persistentDataPath + "/" + _playerName + "_" + _shopName + "/save_" + _playerName + "_" + _shopName + "2.json";
             if (File.Exists(savePath2))
             {
-                string savePath3 = Application.persistentDataPath + "/" + _playerName + "_" + _shopName + "/save_" + _playerName + "_" + _shopName + "3.txt";
+                string savePath3 = Application.persistentDataPath + "/" + _playerName + "_" + _shopName + "/save_" + _playerName + "_" + _shopName + "3.json";
                 if (File.Exists(savePath3))
                     File.Delete(savePath3);
                 File.Move(savePath2, savePath3);
@@ -493,7 +504,7 @@ public class GameMaster : MonoBehaviour
     {
         foreach (string savePath in _saveGameList)
         {
-            //if (File.Exists(Application.dataPath + "/save.txt"))
+            //if (File.Exists(Application.dataPath + "/save.json"))
             if (_selectedSave != "" && savePath == _selectedSave)
             {
                 if (File.Exists(savePath))
@@ -591,16 +602,16 @@ public class GameMaster : MonoBehaviour
             saveGamePaths = _saveGameList,
         };
         string json = JsonUtility.ToJson(saveObj, true);
-        string savePath = Application.persistentDataPath + "/save1.txt";
+        string savePath = Application.persistentDataPath + "/save1.json";
         if (File.Exists(savePath))
         {
-            string savePath2 = Application.persistentDataPath + "/save2.txt";
+            string savePath2 = Application.persistentDataPath + "/save2.json";
             if (File.Exists(savePath2))
             {
-                string savePath3 = Application.persistentDataPath + "/save3.txt";
+                string savePath3 = Application.persistentDataPath + "/save3.json";
                 if (File.Exists(savePath3))
                 {
-                    string savePath4 = Application.persistentDataPath + "/save4.txt";
+                    string savePath4 = Application.persistentDataPath + "/save4.json";
                     if (File.Exists(savePath4))
                         File.Delete(savePath4);
                     File.Move(savePath3, savePath4);
@@ -618,9 +629,9 @@ public class GameMaster : MonoBehaviour
             Destroy(st.gameObject);
         _saveTrackerScripts.Clear();
 
-        if (File.Exists(Application.persistentDataPath + "/save1.txt"))
+        if (File.Exists(Application.persistentDataPath + "/save1.json"))
         {
-            string saveString = File.ReadAllText(Application.persistentDataPath + "/save1.txt");
+            string saveString = File.ReadAllText(Application.persistentDataPath + "/save1.json");
 
             SaveData saveObject = JsonUtility.FromJson<SaveData>(saveString);
 
@@ -643,9 +654,9 @@ public class GameMaster : MonoBehaviour
 
     public bool checkIfAnySavesExist()
     {
-        if (File.Exists(Application.persistentDataPath + "/save1.txt"))
+        if (File.Exists(Application.persistentDataPath + "/save1.json"))
         {
-            string saveString = File.ReadAllText(Application.persistentDataPath + "/save1.txt");
+            string saveString = File.ReadAllText(Application.persistentDataPath + "/save1.json");
 
             SaveData saveObject = JsonUtility.FromJson<SaveData>(saveString);
             List<string> saveList = saveObject.saveGamePaths;
@@ -684,10 +695,10 @@ public class GameMaster : MonoBehaviour
 
     public string getMostRecentSaveString()
     {
-        if (File.Exists(Application.persistentDataPath + "/save1.txt"))
+        if (File.Exists(Application.persistentDataPath + "/save1.json"))
         {
-            Debug.Log("GameMaster.getMostRecentSaveString() - save1.txt exists!");
-            string saveString = File.ReadAllText(Application.persistentDataPath + "/save1.txt");
+            Debug.Log("GameMaster.getMostRecentSaveString() - save1.json exists!");
+            string saveString = File.ReadAllText(Application.persistentDataPath + "/save1.json");
 
             SaveData saveObject = JsonUtility.FromJson<SaveData>(saveString);
 
