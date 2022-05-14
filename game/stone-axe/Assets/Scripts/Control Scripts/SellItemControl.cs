@@ -12,14 +12,14 @@ public class SellItemControl : MonoBehaviour
     private GameMaster _gameMasterRef;
     [Header("Shop UI")]
     [SerializeField] private TextMeshProUGUI _advText;
-    [SerializeField] private Text _itemText;
+    [SerializeField] private TextMeshProUGUI _itemText;
     [SerializeField] private Button _sellItemButton;
     [SerializeField] private Button _refuseButton;
     [SerializeField] private Button _haggleButton;
     [SerializeField] private Button _suggestButton;
     [Header("Market UI")]
     [SerializeField] private TextMeshProUGUI _marketAdvText;
-    [SerializeField] private Text _marketItemText;
+    [SerializeField] private TextMeshProUGUI _marketItemText;
     [SerializeField] private Button _marketSellItemButton;
     [SerializeField] private Button _marketRefuseButton;
     [SerializeField] private Button _marketHaggleButton;

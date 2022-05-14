@@ -26,20 +26,20 @@ public class CraftControl : MonoBehaviour
     [SerializeField] Button _cancelCraftButton;
     // item crafting
     [Space(5)]
-    [SerializeField] Text _selectedRecipeText;
-    [SerializeField] Text _part1Discription;
-    [SerializeField] Text _part2Discription;
-    [SerializeField] Text _part3Discription;
-    [SerializeField] Text _finalStatsText1;
-    [SerializeField] Text _finalStatsText2;
+    [SerializeField] TextMeshProUGUI _selectedRecipeText;
+    [SerializeField] TextMeshProUGUI _part1Discription;
+    [SerializeField] TextMeshProUGUI _part2Discription;
+    [SerializeField] TextMeshProUGUI _part3Discription;
+    [SerializeField] TextMeshProUGUI _finalStatsText1;
+    [SerializeField] TextMeshProUGUI _finalStatsText2;
     // part crafting
     [Space(5)]
-    [SerializeField] Text _partRecipeStats1;
-    [SerializeField] Text _partRecipeStats2;
-    [SerializeField] Text _matDiscription;
-    [SerializeField] Text _partStatsText1;
-    [SerializeField] Text _partStatsText2;
-    [SerializeField] Text _encDiscription;
+    [SerializeField] TextMeshProUGUI _partRecipeStats1;
+    [SerializeField] TextMeshProUGUI _partRecipeStats2;
+    [SerializeField] TextMeshProUGUI _matDiscription;
+    [SerializeField] TextMeshProUGUI _partStatsText1;
+    [SerializeField] TextMeshProUGUI _partStatsText2;
+    [SerializeField] TextMeshProUGUI _encDiscription;
 
     [Header("Item Crafting")]
     [SerializeField] ItemData _chosenItemRecipe;

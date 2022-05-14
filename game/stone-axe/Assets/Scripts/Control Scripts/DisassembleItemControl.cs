@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +14,8 @@ public class DisassembleItemControl : MonoBehaviour
     [SerializeField] private CFT_ReduceMaterialCost reducedMatSkill;
     [SerializeField] private DIS_EnchantRemoval enchantRemovalSkill;
     [Header("UI")]
-    [SerializeField] private Text _itemText;
-    [SerializeField] private Text _itemNameText;
+    [SerializeField] private TextMeshProUGUI _itemText;
+    [SerializeField] private TextMeshProUGUI _itemNameText;
     [SerializeField] private Button _disassembleButton;
 
     private void Awake()
