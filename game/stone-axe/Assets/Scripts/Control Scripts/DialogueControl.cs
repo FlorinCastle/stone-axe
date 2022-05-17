@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueControl : MonoBehaviour
 {
     [SerializeField] private GameObject _dialogueUI;
-    [SerializeField] private Text _nameText;
-    [SerializeField] private Text _dialogueText;
+    [SerializeField] private TextMeshProUGUI _nameText;
+    [SerializeField] private TextMeshProUGUI _dialogueText;
 
     [SerializeField, HideInInspector] private QuestData _currentStoryQuest;
     [SerializeField, HideInInspector] private int index = 0;

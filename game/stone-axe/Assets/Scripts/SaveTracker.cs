@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,9 +9,9 @@ public class SaveTracker : MonoBehaviour
     [SerializeField] private string _saveRef;
     [SerializeField] private int _indexRef;
     [Header("UI Elements")]
-    [SerializeField] private Text _shopNameText;
-    [SerializeField] private Text _saveNumText;
-    [SerializeField] private Text _dayTimeText;
+    [SerializeField] private TextMeshProUGUI _shopNameText;
+    [SerializeField] private TextMeshProUGUI _saveNumText;
+    [SerializeField] private TextMeshProUGUI _dayTimeText;
     [SerializeField] private GameObject _selectedHighlight;
     //[SerializeField] private Button _loadGameButton;
     //[SerializeField] private Button _deleteGameButton;

@@ -1396,6 +1396,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Disassemble_UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6796250910890911824, guid: 5af0856d1dd9c894e8170e43a17edf44, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7910254740274158809, guid: 5af0856d1dd9c894e8170e43a17edf44, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
@@ -1414,6 +1418,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2173613175091363194}
     m_Modifications:
+    - target: {fileID: 1308351481982792846, guid: f5c2f7d73b3213d4b860d9d62934f8d5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913419757882367230, guid: f5c2f7d73b3213d4b860d9d62934f8d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2319156692988410446, guid: f5c2f7d73b3213d4b860d9d62934f8d5, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
@@ -1508,7 +1520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5303137765143702170, guid: f5c2f7d73b3213d4b860d9d62934f8d5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5c2f7d73b3213d4b860d9d62934f8d5, type: 3}

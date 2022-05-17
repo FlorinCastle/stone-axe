@@ -26,25 +26,29 @@ public class Dev_GenerateItems : MonoBehaviour
             }
         }
         */
-        StartCoroutine(generateItems());
-        if (_generateItemRef != null)
+        if (GameObject.FindGameObjectWithTag("GameMaster").GetComponent<UIControl>().ShopUIActive)
         {
-            for (int j = 0; j < _totalEnchantsToGenerate; j++)
+            StartCoroutine(generateItems());
+            if (_generateItemRef != null)
             {
-                _generateItemRef.GenerateRandomEnchant();
-                _generateItemRef.forceInsertEnchant();
+                for (int j = 0; j < _totalEnchantsToGenerate; j++)
+                {
+                    _generateItemRef.GenerateRandomEnchant();
+                    _generateItemRef.forceInsertEnchant();
+                }
             }
-        }
 
-        if (_dissasembleItemRef != null)
-        {
-            for (int p = 0; p < _totalItemPartsToGenerateCount; p++)
+            if (_dissasembleItemRef != null)
             {
-                _generateItemRef.GenerateRandomItem();
-                _generateItemRef.forceDisassembleItem();
-                //Debug.Log("Creating and disassembling item #" + (p+1));
+                for (int p = 0; p < _totalItemPartsToGenerateCount; p++)
+                {
+                    _generateItemRef.GenerateRandomItem();
+                    _generateItemRef.forceDisassembleItem();
+                    //Debug.Log("Creating and disassembling item #" + (p+1));
+                }
             }
         }
+        
     }
 
     private IEnumerator generateItems()

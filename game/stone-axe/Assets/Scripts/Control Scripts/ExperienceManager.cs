@@ -24,9 +24,12 @@ public class ExperienceManager : MonoBehaviour
     {
         if (_gameMasterRef == null)
             this.gameObject.GetComponent<GameMaster>();
-        //updateEXPSlider();
-        updateEXPSlider();
-        calculateLevel();
+        if (gameObject.GetComponent<UIControl>().ShopUIActive)
+        {
+            //updateEXPSlider();
+            updateEXPSlider();
+            calculateLevel();
+        }
     }
 
     public void addExperience(int value)

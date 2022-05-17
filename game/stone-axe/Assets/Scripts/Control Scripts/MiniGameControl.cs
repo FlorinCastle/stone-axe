@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +19,7 @@ public class MiniGameControl : MonoBehaviour
     [SerializeField] private List<GameObject> _hitPointMarkers;
     [SerializeField] private List<int> chosenHitPoints;
     [Header("UI")]
-    [SerializeField] private Text _pointsToHitText;
+    [SerializeField] private TextMeshProUGUI _pointsToHitText;
     [SerializeField] private Button _disassembleCompleteButton;
     [SerializeField] private Button _craftCompletButton;
 

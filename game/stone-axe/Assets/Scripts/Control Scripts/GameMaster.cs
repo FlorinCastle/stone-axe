@@ -7,39 +7,39 @@ using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
-    [SerializeField] private string _playerName = "test";
-    [SerializeField] private string _shopName = "test";
+    [SerializeField] public string _playerName = "test";
+    [SerializeField] public string _shopName = "test";
     [SerializeField, HideInInspector] private string _playerSpecies = "";
     [SerializeField, HideInInspector] private int _playerColor = -1;
-    [SerializeField] private int _currentCurrency;
-    [SerializeField] private int _totalExperience;
-    [SerializeField] private int _level;
-    [SerializeField] private int _currentSkillPoints;
+    [SerializeField] public int _currentCurrency;
+    [SerializeField] public int _totalExperience;
+    [SerializeField] public int _level;
+    [SerializeField] public int _currentSkillPoints;
     private bool adventurerAtCounter;
     [Header("UI and Level")]
-    [SerializeField] private GameObject _shopLevel;
-    [SerializeField] private GameObject _marketLevel;
-    [SerializeField] private GameObject _shopSubUI;
-    [SerializeField] private GameObject _marketSubUI;
-    [SerializeField] private GameObject _toShopButton;
-    [SerializeField] private GameObject _toMarketButton;
+    [SerializeField] public GameObject _shopLevel;
+    [SerializeField] public GameObject _marketLevel;
+    [SerializeField] public GameObject _shopSubUI;
+    [SerializeField] public GameObject _marketSubUI;
+    [SerializeField] public GameObject _toShopButton;
+    [SerializeField] public GameObject _toMarketButton;
     private InventoryData _invData;
-    [SerializeField] private InventoryScript _invScript;
+    [SerializeField] public InventoryScript _invScript;
     private UIControl _uiControlRef;
     [SerializeField]
-    private GameObject saveTrackerParent;
+    public GameObject saveTrackerParent;
     [Header("Prefabs")]
-    [SerializeField] private GameObject _saveHolderPrefab;
+    [SerializeField] public GameObject _saveHolderPrefab;
     [Header("Save Tracking")]
-    [SerializeField] private Toggle _skipTutorialQuestsToggle;
-    [SerializeField] private List<SaveTracker> _saveTrackerScripts;
+    [SerializeField] public Toggle _skipTutorialQuestsToggle;
+    [SerializeField] public List<SaveTracker> _saveTrackerScripts;
     [SerializeField]
-    private List<string> _saveGameList;
+    public List<string> _saveGameList;
     [SerializeField]
-    private string _selectedSave;
+    public string _selectedSave;
 
     [SerializeField]
-    private string _mostRecentSave;
+    public string _mostRecentSave;
 
     private bool skipTutorial;
 
@@ -156,6 +156,7 @@ public class GameMaster : MonoBehaviour
         _uiControlRef.mainMenuEnabled(false);
         _uiControlRef.gameUIEnabled(true);
         loadShopLevel();
+        setTotalExperience(0);
         if (skipTutorial == false)
             gameObject.GetComponent<QuestControl>().resetAllQuests();
         else if (skipTutorial == true)
