@@ -44,16 +44,21 @@ public class PlayerManager : MonoBehaviour
     }
     public void loadPlayerData(PlayerSave playerSave)
     {
+        if (playerSave.playerSpecies != null || playerSave.playerSpecies != "") playerSpecies = playerSave.playerSpecies;
+        else playerSpecies = gameObject.GetComponent<DefaultValues>().PlayerDefaultSpecies;
+
         foreach (GameObject pHead in _playerHeads)
-            if (pHead.name == playerSave.playerSpecies)
+            if (pHead.name == playerSpecies)
                 _playerHeadPrefabRef = pHead;
 
-        playerColor = playerSave.playerColor;
-        if (playerSave.playerSpecies == "Elf")
+        if (playerSave.playerColor != -1) playerColor = playerSave.playerColor;
+        else playerColor = gameObject.GetComponent<DefaultValues>().PlayerDefaultColor;
+
+        if (playerSpecies == "Elf")
             _playerColor = gameObject.GetComponent<AdventurerMaterials>().ElfColors[playerColor];
-        else if (playerSave.playerSpecies == "Human")
+        else if (playerSpecies == "Human")
             _playerColor = gameObject.GetComponent<AdventurerMaterials>().HumanColors[playerColor];
-        else if (playerSave.playerSpecies == "Lizardman")
+        else if (playerSpecies == "Lizardman")
             _playerColor = gameObject.GetComponent<AdventurerMaterials>().LizardColors[playerColor];
     }
 

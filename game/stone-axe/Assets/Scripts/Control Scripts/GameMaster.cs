@@ -536,8 +536,10 @@ public class GameMaster : MonoBehaviour
                     this.gameObject.GetComponent<QuestControl>().LoadQuests(saveObject.questSaveObject);
 
                     // load out this gameobject's data
-                    _playerName = saveObject.playerName;
-                    _shopName = saveObject.shopName;
+                    if (saveObject.playerName != null || saveObject.playerName != "") _playerName = saveObject.playerName;
+                    else _playerName = gameObject.GetComponent<DefaultValues>().PlayerDefaultName;
+                    if (saveObject.shopName != null || saveObject.shopName != "") _shopName = saveObject.shopName;
+                    else _shopName = gameObject.GetComponent<DefaultValues>().ShopDefaultName;
                     _currentCurrency = saveObject.currentCurency;
                     _totalExperience = saveObject.currentExp;
                     _level = saveObject.level;
