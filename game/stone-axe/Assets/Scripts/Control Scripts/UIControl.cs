@@ -565,8 +565,12 @@ public class UIControl : MonoBehaviour
     {
         if (_playerName.text != "" && _shopName.text != "" && playerSpecies != "" && playerColor != -1)
         {
-            if (gameObject.GetComponent<GameMaster>().AllPlayerNames().Contains(_playerName.text) == false &&
-                gameObject.GetComponent<GameMaster>().AllShopNames().Contains(_shopName.text) == false)
+            if (checkString(_playerName.text) || checkString(_shopName.text))
+            {
+                _isNotValidUI.SetActive(true);
+                _isNotValidUI.GetComponentInChildren<TextMeshProUGUI>().text = "Player name or Shop name contains an invalid input!";
+            }
+            else if (gameObject.GetComponent<GameMaster>().AllPlayerNames().Contains(_playerName.text) == false && gameObject.GetComponent<GameMaster>().AllShopNames().Contains(_shopName.text) == false)
             {
                 //Debug.Log("has all required values");
                 _startNewGameButton.interactable = true;
@@ -574,11 +578,16 @@ public class UIControl : MonoBehaviour
                 storePlayerVariables();
             }
             else
+            {
                 _isNotValidUI.SetActive(true);
+                _isNotValidUI.GetComponentInChildren<TextMeshProUGUI>().text = "Save with this Player Name and Shop Name already exists!";
+            }
         }
-        else if (gameObject.GetComponent<GameMaster>().AllPlayerNames().Contains(_playerName.text) == true &&
-            gameObject.GetComponent<GameMaster>().AllShopNames().Contains(_shopName.text) == true)
-                _isNotValidUI.SetActive(true);
+        else if (gameObject.GetComponent<GameMaster>().AllPlayerNames().Contains(_playerName.text) == true && gameObject.GetComponent<GameMaster>().AllShopNames().Contains(_shopName.text) == true)
+        { // if texts are already a save
+            _isNotValidUI.SetActive(true);
+            _isNotValidUI.GetComponentInChildren<TextMeshProUGUI>().text = "Save with this Player Name and Shop Name already exists!";
+        }
         else if (_playerName.text == "" || _shopName.text == "" || playerSpecies == "" || playerColor == -1)
             _startNewGameButton.interactable = false;
     }
@@ -596,6 +605,16 @@ public class UIControl : MonoBehaviour
             st.hideHighlight();
         }
         
+    }
+
+    private bool checkString(string input)
+    {
+        foreach(string st in gameObject.GetComponent<DefaultValues>().BadNameInputs)
+        {
+            if (input.Contains(st))
+                return true;
+        }
+        return false;
     }
 
     public void loadCredits()

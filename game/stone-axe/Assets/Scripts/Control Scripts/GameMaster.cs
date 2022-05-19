@@ -152,7 +152,8 @@ public class GameMaster : MonoBehaviour
     public void startNewGame()
     {
         Debug.Log("GameMaster.startNewGame() - starting new game");
-        _uiControlRef.newGameUIEnabled(false);
+        //_uiControlRef.newGameUIEnabled(false);
+        _uiControlRef.unloadNewGameUI();
         _uiControlRef.mainMenuEnabled(false);
         _uiControlRef.gameUIEnabled(true);
         loadShopLevel();

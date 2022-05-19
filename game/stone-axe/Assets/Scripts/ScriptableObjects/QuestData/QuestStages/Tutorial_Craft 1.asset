@@ -15,4 +15,11 @@ MonoBehaviour:
   _questStageType: 1
   _questEvent: 0
   _speaker: Faerie
-  _dialogueLine: Okay! Now that we have parts, let's make a new item!
+  _dialogueLine: Okay! Now that we have parts, let's make a new item (playername)!
+  _item: {fileID: 0}
+  _itemCount: 0
+  _part1Mat: {fileID: 0}
+  _part2Mat: {fileID: 0}
+  _part3Mat: {fileID: 0}
+  _currencyValue: 0
+  _npcRef: {fileID: 0}

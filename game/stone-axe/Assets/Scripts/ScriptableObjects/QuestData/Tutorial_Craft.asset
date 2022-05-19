@@ -44,6 +44,6 @@ MonoBehaviour:
   _unlocksQuests:
   - {fileID: 11400000, guid: 2240dccd919c2304dacfd315d1845e62, type: 2}
   _requiredPlayerLevel: 0
-  _storyQuestComplete: 1
+  _storyQuestComplete: 0
   _rewardCurrency: 0
   _rewardEXP: 0

@@ -8,9 +8,30 @@ public class DefaultValues : MonoBehaviour
     private string _shopName = "test";
     private string _playerSpecies = "Elf";
     private int _playerColor = 0;
+    private List<string> badNameInputs = new List<string>();
+
+    private void Awake()
+    {
+        setupBadNameList();
+    }
+
+    private void setupBadNameList()
+    {
+        badNameInputs.Add("\n");
+        badNameInputs.Add("\t");
+        badNameInputs.Add("\v");
+        badNameInputs.Add("\b");
+        badNameInputs.Add("\r");
+        badNameInputs.Add("\f");
+        badNameInputs.Add("\\");
+        badNameInputs.Add("\'");
+        badNameInputs.Add("\"");
+        badNameInputs.Add("\xd");
+    }
 
     public string PlayerDefaultName { get => _playerName; }
     public string ShopDefaultName { get => _shopName; }
     public string PlayerDefaultSpecies { get => _playerSpecies; }
     public int PlayerDefaultColor { get => _playerColor; }
+    public List<string> BadNameInputs { get => badNameInputs; }
 }

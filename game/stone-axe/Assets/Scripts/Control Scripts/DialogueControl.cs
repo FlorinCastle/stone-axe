@@ -41,7 +41,11 @@ public class DialogueControl : MonoBehaviour
             {
                 _dialogueUI.SetActive(true);
                 _nameText.text = currStage.DialogueSpeaker;
-                _dialogueText.text = currStage.DialogueLine;
+
+                string line = currStage.DialogueLine;
+                string temp1 = line.Replace("(playername)", gameObject.GetComponent<GameMaster>().PlayerName);
+                string temp2 = temp1.Replace("(shopname)", gameObject.GetComponent<GameMaster>().ShopName);
+                _dialogueText.text = temp2;
             }
             else if (currStage.StageType == "Buy_Item" || currStage.StageType == "Disassemble_Item" || currStage.StageType == "Craft_Item" || currStage.StageType == "Sell_Item" || currStage.StageType == "Force_Event")
             {

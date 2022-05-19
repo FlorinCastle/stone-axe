@@ -68,6 +68,7 @@ public class QuestControl : MonoBehaviour
 
         if (gameObject.GetComponent<UIControl>().ShopUIActive == true && star == false)
         {
+            Debug.Log("QuestControl.FixedUpdate(): setting up quests for debug");
             setupStoryQuests();
             star = true;
         }
@@ -78,6 +79,8 @@ public class QuestControl : MonoBehaviour
     public void setupStoryQuests()
     {
         //Debug.Log("QuestControl.setupStoryQuests() - setting up story quests");
+        if (_unlockedQuests.Count == 0)
+            _unlockedQuests.Add(_questRef.getTutorialQuests()[0]);
         if (_chosenQuest == null)
         {
             //Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is null");
