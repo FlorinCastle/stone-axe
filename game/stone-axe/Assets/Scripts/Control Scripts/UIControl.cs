@@ -343,7 +343,7 @@ public class UIControl : MonoBehaviour
     {
         Debug.Log("UIControl.shopBuyAccessableOnly() has been called!");
         gameObject.GetComponent<GameMaster>().loadShopBuyMenu();
-        _buyTabButton.interactable = true;
+        _buyTabButton.interactable = false; // this one
         _sellTabButton.interactable = false;
         _disassembleTabButton.interactable = false;
         _craftTabButton.interactable = false;
@@ -353,7 +353,7 @@ public class UIControl : MonoBehaviour
         Debug.Log("UIControl.shopSellAccessableOnly() has been called!");
         gameObject.GetComponent<GameMaster>().loadShopSellMenu();
         _buyTabButton.interactable = false;
-        _sellTabButton.interactable = true;
+        _sellTabButton.interactable = false; // this one
         _disassembleTabButton.interactable = false;
         _craftTabButton.interactable = false;
     }
@@ -363,7 +363,7 @@ public class UIControl : MonoBehaviour
         gameObject.GetComponent<GameMaster>().loadDisassembleMenu();
         _buyTabButton.interactable = false;
         _sellTabButton.interactable = false;
-        _disassembleTabButton.interactable = true;
+        _disassembleTabButton.interactable = false; // this one
         _craftTabButton.interactable = false;
     }
     public void shopCraftAccessableOnly()
@@ -373,7 +373,14 @@ public class UIControl : MonoBehaviour
         _buyTabButton.interactable = false;
         _sellTabButton.interactable = false;
         _disassembleTabButton.interactable = false;
-        _craftTabButton.interactable = true;
+        _craftTabButton.interactable = false; // this one
+    }
+    public void shopNoTabsAccessable()
+    {
+        _buyTabButton.interactable = false;
+        _sellTabButton.interactable = false;
+        _disassembleTabButton.interactable = false;
+        _craftTabButton.interactable = false;
     }
     public void shopAllTabsAccessable()
     {
@@ -667,11 +674,23 @@ public class UIControl : MonoBehaviour
         else if (craftSubUI.activeInHierarchy == true)
             SUI_CraftSelected();
     }
-
+    
+    // Shop ui buy button
     public void SUI_BuySelected() { _shopUIGroupScript.ButtonSelected(_buyUIButton); }
+    public void SUI_BuyDisabled() { _shopUIGroupScript.ButtonDisabled(_buyUIButton); }
+    public void SUI_BuyEnabled() { _shopUIGroupScript.ButtonEnabled(_buyUIButton); }
+    // shop ui sell button
     public void SUI_SellSelected() { _shopUIGroupScript.ButtonSelected(_sellUIButton); }
+    public void SUI_SellDisabled() { _shopUIGroupScript.ButtonDisabled(_sellUIButton); }
+    public void SUI_SellEnabled() { _shopUIGroupScript.ButtonEnabled(_sellUIButton); }
+    // shop ui disassemble button
     public void SUI_DisassembleSelected() { _shopUIGroupScript.ButtonSelected(_disaUIButton); }
+    public void SUI_DisassembleDisabled() { _shopUIGroupScript.ButtonDisabled(_disaUIButton); }
+    public void SUI_DisassembleEnabled() { _shopUIGroupScript.ButtonEnabled(_disaUIButton); }
+    // shop ui craft button
     public void SUI_CraftSelected() { _shopUIGroupScript.ButtonSelected(_craftUIButton); }
+    public void SUI_CraftDisabled() { _shopUIGroupScript.ButtonDisabled(_craftUIButton); }
+    public void SUI_CraftEnabled() { _shopUIGroupScript.ButtonEnabled(_craftUIButton); }
 
     public void selectActiveMarketUI()
     {
@@ -681,12 +700,15 @@ public class UIControl : MonoBehaviour
             MUI_QuestSelected();
     }
 
+    public ButtonGroup MUIButton_Script { get => _marketUIGroupScript; }
     public void MUI_SellSelected() { _marketUIGroupScript.ButtonSelected(_mSellUIButton); }
     public void MUI_QuestSelected() { _marketUIGroupScript.ButtonSelected(_mQuestUIButton); }
 
+    public ButtonGroup BUIButton_Script { get => _bottomUIGroupScript; }
     public void BUI_InvSelected() { _bottomUIGroupScript.ButtonSelected(_invUIButton); }
     public void BUI_RecipesSelected() {  _bottomUIGroupScript.ButtonSelected(_recipesUIButton); }
 
+    public ButtonGroup IUIButton_Script { get => _invUIGroupScript; }
     public void IUI_ItemsSelected() { _invUIGroupScript.ButtonSelected(_itemsUIButton); }
     public void IUI_PartsSelected() { _invUIGroupScript.ButtonSelected(_partsUIButton); }
     public void IUI_MatsSelected() { _invUIGroupScript.ButtonSelected(_matsUIButton); }

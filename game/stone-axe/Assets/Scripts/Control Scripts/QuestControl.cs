@@ -39,6 +39,10 @@ public class QuestControl : MonoBehaviour
     [SerializeField] private List<QuestData> _repeatableQuests;
     [SerializeField] private List<QuestData> _unlockedQuests;
     [SerializeField] private List<GameObject> _questStarterGOs;
+    [SerializeField] private QuestData _enableBuyOnComplete;
+    [SerializeField] private QuestData _enableSellOnComplete;
+    [SerializeField] private QuestData _enableDisassembleOnComplete;
+    [SerializeField] private QuestData _enableCraftOnComplete;
     [SerializeField] private QuestData _enableAdventurersOnComplete;
 
     private int reqItemCount = 0;
@@ -87,6 +91,22 @@ public class QuestControl : MonoBehaviour
             foreach (QuestData tutQuest in _questRef.getTutorialQuests())
             {
                 //Debug.Log("QuestControl.setupStoryQuests() - tutQuest is " + tutQuest.QuestName);
+                if (tutQuest == _enableBuyOnComplete)
+                {
+                    Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableBuyOnComplete");
+                }
+                if (tutQuest == _enableDisassembleOnComplete)
+                {
+                    Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableDisassembleOnComplete");
+                }
+                if (tutQuest == _enableCraftOnComplete)
+                {
+                    Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableCraftOnComplete");
+                }
+                if (tutQuest == _enableSellOnComplete)
+                {
+                    Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableSellOnComplete");
+                }
                 if (tutQuest == _enableAdventurersOnComplete)
                 {
                     //Debug.Log("QuestControl.setupStoryQuests() - enabling adventurers");
@@ -286,6 +306,22 @@ public class QuestControl : MonoBehaviour
                     if (tutQuest.QuestName == quest.questName)
                     {
                         tutQuest.StoryQuestComplete = true;
+                    }
+                    if (tutQuest == _enableBuyOnComplete)
+                    {
+                        Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableBuyOnComplete");
+                    }
+                    if (tutQuest == _enableDisassembleOnComplete)
+                    {
+                        Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableDisassembleOnComplete");
+                    }
+                    if (tutQuest == _enableCraftOnComplete)
+                    {
+                        Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableCraftOnComplete");
+                    }
+                    if (tutQuest == _enableSellOnComplete)
+                    {
+                        Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableSellOnComplete");
                     }
                     if (tutQuest == _enableAdventurersOnComplete)
                     {
@@ -580,6 +616,22 @@ public class QuestControl : MonoBehaviour
         if (quest.QuestType == "Tutorial")
         {
             quest.StoryQuestComplete = isComplete;
+            if (quest == _enableBuyOnComplete)
+            {
+                Debug.LogWarning("QuestControl.updateQuestProgress() TODO code");
+            }
+            if (quest == _enableDisassembleOnComplete)
+            {
+                Debug.LogWarning("QuestControl.updateQuestProgress() TODO code");
+            }
+            if (quest == _enableCraftOnComplete)
+            {
+                Debug.LogWarning("QuestControl.updateQuestProgress() TODO code");
+            }
+            if (quest == _enableSellOnComplete)
+            {
+                Debug.LogWarning("QuestControl.updateQuestProgress() TODO code");
+            }
             if (quest == _enableAdventurersOnComplete)
             {
                 gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
@@ -709,6 +761,11 @@ public class QuestControl : MonoBehaviour
         rerollQuest();
         _selectedSheet = null;
     }
+
+    public bool BuyQuestComplete { get => _enableBuyOnComplete.StoryQuestComplete; }
+    public bool DisassembleQuestComplete { get => _enableDisassembleOnComplete.StoryQuestComplete; }
+    public bool CraftQuestComplete { get => _enableCraftOnComplete.StoryQuestComplete; }
+    public bool SellQuestComplte { get => _enableSellOnComplete.StoryQuestComplete; }
 
     public QuestData CurrentQuest { get => _chosenQuest; }
     public QuestStage CurrentStage { get => _chosenQuest.QuestStages[_currStageIndex]; }

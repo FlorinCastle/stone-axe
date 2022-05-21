@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ public class SkillManager : MonoBehaviour
     [SerializeField] private int _currentSkillPoints;
 
     [Header("UI")]
-    [SerializeField] private Text _skillPointsText;
+    [SerializeField] private TextMeshProUGUI _skillPointsText;
     [SerializeField] private GameObject _economicSkillsContent;
     [SerializeField] private GameObject _disassemblySkillsContent;
     [SerializeField] private GameObject _craftingSkillsContent;

@@ -10,6 +10,11 @@ public class DefaultValues : MonoBehaviour
     private int _playerColor = 0;
     private List<string> badNameInputs = new List<string>();
 
+    private bool buy;
+    private bool sell;
+    private bool disassemble;
+    private bool craft;
+
     private void Awake()
     {
         setupBadNameList();
@@ -34,4 +39,9 @@ public class DefaultValues : MonoBehaviour
     public string PlayerDefaultSpecies { get => _playerSpecies; }
     public int PlayerDefaultColor { get => _playerColor; }
     public List<string> BadNameInputs { get => badNameInputs; }
+
+    public bool BuyAvailable { get => buy; }
+    public bool SellAvailable { get => sell; }
+    public bool DisassembleAvailable { get => disassemble; }
+    public bool CraftAvailable { get => craft; }
 }

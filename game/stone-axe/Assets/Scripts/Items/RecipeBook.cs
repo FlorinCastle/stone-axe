@@ -63,7 +63,7 @@ public class RecipeBook : MonoBehaviour
 
     public void selectRecipe()
     {
-        if (anyRecipeSelected())
+        if (anyRecipeSelected() && GameObject.FindGameObjectWithTag("GameMaster").GetComponent<QuestControl>().CraftQuestComplete)
         {
             CraftControl CCRef = GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>();
 

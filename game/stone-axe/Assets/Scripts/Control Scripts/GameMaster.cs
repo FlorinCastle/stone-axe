@@ -43,6 +43,11 @@ public class GameMaster : MonoBehaviour
 
     private bool skipTutorial;
 
+    private bool buyAvailable;
+    private bool sellAvailable;
+    private bool disassembleAvailable;
+    private bool craftAvailable;
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -159,9 +164,15 @@ public class GameMaster : MonoBehaviour
         loadShopLevel();
         setTotalExperience(0);
         if (skipTutorial == false)
+        {
             gameObject.GetComponent<QuestControl>().resetAllQuests();
+            _uiControlRef.shopNoTabsAccessable();
+        }
         else if (skipTutorial == true)
+        {
             gameObject.GetComponent<QuestControl>().skipTutorialQuests();
+            _uiControlRef.shopAllTabsAccessable();
+        }
         //Debug.Log("GameMaster.startNewGame(): Skipping Tutorial");
         gameObject.GetComponent<QuestControl>().setupStoryQuests();
     }
@@ -349,6 +360,7 @@ public class GameMaster : MonoBehaviour
             Debug.LogWarning("GameMaster.adventurerEco(): something broke!");
     }
 
+
     public string PlayerName { get => _playerName; set => _playerName = value; }
     public string ShopName { get => _shopName; set => _shopName = value; }
     public string PlayerSpecies { get => _playerSpecies; set => _playerSpecies = value; }
@@ -356,16 +368,21 @@ public class GameMaster : MonoBehaviour
 
     public void setTotalExperience(int value) { _totalExperience = value; }
     public int GetTotalExperience { get => _totalExperience; }
+
     public void setLevel(int value) { _level = value; }
     public int GetLevel { get => _level; }
+
     public void setCurrentSkillPoints(int value) { _currentSkillPoints = value; }
     public int GetCurrentSkillPoints { get => _currentSkillPoints; }
-    public bool AdventurerAtCounter { get => adventurerAtCounter; set => adventurerAtCounter = value; }
+
     public InventoryScript InvScriptRef { get => _invScript; }
+    public bool AdventurerAtCounter { get => adventurerAtCounter; set => adventurerAtCounter = value; }
     public bool ShopActive { get => _shopLevel.activeInHierarchy; }
     public bool MarketActive { get => _marketLevel.activeInHierarchy; }
+
     public List<SaveTracker> SaveTrackers { get => _saveTrackerScripts; }
     public string SelectedSave { get => _selectedSave; set => _selectedSave = value; }
+
     public List<string> AllPlayerNames()
     {
         List<string> setPlayerNames = new List<string>();
@@ -460,11 +477,14 @@ public class GameMaster : MonoBehaviour
             playerName = _playerName,
             shopName = _shopName,
             saveDateTime = currentTime,
-            //playerSpecies = _playerSpecies,
             currentCurency = _currentCurrency,
             currentExp = _totalExperience,
             level = _level,
             currentSkillPoints = _currentSkillPoints,
+            buyAvailable = buyAvailable,
+            sellAvailable = sellAvailable,
+            disassembleAvailable = disassembleAvailable,
+            craftAvailable = craftAvailable,
             playerSave = savePlayer,
             inventoryObjects = itemSaveList,
             partInvObjects = partSaveList,
@@ -541,6 +561,20 @@ public class GameMaster : MonoBehaviour
                     else _playerName = gameObject.GetComponent<DefaultValues>().PlayerDefaultName;
                     if (saveObject.shopName != null || saveObject.shopName != "") _shopName = saveObject.shopName;
                     else _shopName = gameObject.GetComponent<DefaultValues>().ShopDefaultName;
+                    
+                    if (saveObject.buyAvailable == true) _uiControlRef.SUI_BuyEnabled();
+                    else buyAvailable = false; _uiControlRef.SUI_BuyDisabled();
+
+                    if (saveObject.sellAvailable == true) _uiControlRef.SUI_SellEnabled();
+                    else sellAvailable = false; _uiControlRef.SUI_SellDisabled();
+
+                    if (saveObject.disassembleAvailable == true) _uiControlRef.SUI_DisassembleEnabled();
+                    else disassembleAvailable = false; _uiControlRef.SUI_DisassembleDisabled();
+
+                    if (saveObject.craftAvailable == true) _uiControlRef.SUI_CraftEnabled();
+                    else craftAvailable = false; _uiControlRef.SUI_CraftDisabled();
+                    
+
                     _currentCurrency = saveObject.currentCurency;
                     _totalExperience = saveObject.currentExp;
                     _level = saveObject.level;
@@ -732,6 +766,17 @@ public class GameMaster : MonoBehaviour
         return "";
     }
 
+    /*
+    private bool buyAvailable;
+    private bool sellAvailable;
+    private bool disassembleAvailable;
+    private bool craftAvailable;
+    */
+    public bool BuyAvailable { get => buyAvailable; set => buyAvailable = value; }
+    public bool SellAvailable { get => sellAvailable; set => sellAvailable = value; }
+    public bool DisassembleAvailable { get => disassembleAvailable; set => disassembleAvailable = value; }
+    public bool CraftAvailable { get => craftAvailable; set => craftAvailable = value; }
+
     private class SaveData
     {
         public List<string> saveGamePaths;
@@ -746,6 +791,10 @@ public class GameMaster : MonoBehaviour
         public int currentExp;
         public int level;
         public int currentSkillPoints;
+        public bool buyAvailable;
+        public bool sellAvailable;
+        public bool disassembleAvailable;
+        public bool craftAvailable;
         public PlayerSave playerSave;
         public SaveQuestsObject questSaveObject;
         public List<SaveItemObject> inventoryObjects;
