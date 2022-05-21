@@ -90,6 +90,60 @@ public class GameMaster : MonoBehaviour
         if (input == false)
             loadShopLevel();
     }
+    public void allTabsAccessable(bool input)
+    {
+        //Debug.Log("GameMaster.allTabsAccessable(input) input = " + input.ToString());
+        if (input == true)
+        {
+            gameObject.GetComponent<UIControl>().SUI_BuyEnabled();
+            gameObject.GetComponent<UIControl>().SUI_SellEnabled();
+            gameObject.GetComponent<UIControl>().SUI_DisassembleEnabled();
+            gameObject.GetComponent<UIControl>().SUI_CraftEnabled();
+        }
+        else if (input == false)
+        {
+            gameObject.GetComponent<UIControl>().SUI_BuyDisabled();
+            gameObject.GetComponent<UIControl>().SUI_SellDisabled();
+            gameObject.GetComponent<UIControl>().SUI_DisassembleDisabled();
+            gameObject.GetComponent<UIControl>().SUI_CraftDisabled();
+        }
+    }
+    public void buyAccessable(bool input)
+    {
+        Debug.Log("GameMaster.buyAccessable(input) input = " + input.ToString());
+        BuyAvailable = input;
+        if (input == true)
+            gameObject.GetComponent<UIControl>().SUI_BuyEnabled();
+        else if (input == false)
+            gameObject.GetComponent<UIControl>().SUI_BuyDisabled();
+    }
+    public void sellAccessable(bool input)
+    {
+        Debug.Log("GameMaster.sellAccessable(input) input = " + input.ToString());
+        SellAvailable = input;
+        if (input == true)
+            gameObject.GetComponent<UIControl>().SUI_SellEnabled();
+        else if (input == false)
+            gameObject.GetComponent<UIControl>().SUI_SellDisabled();
+    }
+    public void disassembleAccessable(bool input)
+    {
+        Debug.Log("GameMaster.disassembleAccessable(input) input = " + input.ToString());
+        DisassembleAvailable = input;
+        if (input == true)
+            gameObject.GetComponent<UIControl>().SUI_DisassembleEnabled();
+        else if (input == false)
+            gameObject.GetComponent<UIControl>().SUI_DisassembleDisabled();
+    }
+    public void craftAccessable(bool input)
+    {
+        Debug.Log("GameMaster.craftAccessable(input) input = " + input.ToString());
+        CraftAvailable = input;
+        if (input == true)
+            gameObject.GetComponent<UIControl>().SUI_CraftEnabled();
+        else if (input == false)
+            gameObject.GetComponent<UIControl>().SUI_CraftDisabled();
+    }
 
     public void loadMainMenu()
     {
@@ -158,6 +212,7 @@ public class GameMaster : MonoBehaviour
     {
         Debug.Log("GameMaster.startNewGame() - starting new game");
         //_uiControlRef.newGameUIEnabled(false);
+        gameObject.GetComponent<QuestControl>().setStar();
         _uiControlRef.unloadNewGameUI();
         _uiControlRef.mainMenuEnabled(false);
         _uiControlRef.gameUIEnabled(true);

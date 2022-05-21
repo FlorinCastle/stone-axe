@@ -16,6 +16,7 @@ public class RecipeBook : MonoBehaviour
     [SerializeField, HideInInspector] private ItemData _selectedItemRecipe;
     [SerializeField, HideInInspector] private QuestItemData _selectedQuestItemRecipe;
     [SerializeField, HideInInspector] private PartData _selectedPartRecipe;
+    [SerializeField] private QuestData _craftQuest;
     [Header("Filters")]
     [SerializeField] private List<FilterData> filterData;
     [SerializeField, HideInInspector] private List<GameObject> filterButtons;
@@ -63,7 +64,7 @@ public class RecipeBook : MonoBehaviour
 
     public void selectRecipe()
     {
-        if (anyRecipeSelected() && GameObject.FindGameObjectWithTag("GameMaster").GetComponent<QuestControl>().CraftQuestComplete)
+        if (anyRecipeSelected() && (GameObject.FindGameObjectWithTag("GameMaster").GetComponent<QuestControl>().CraftQuestComplete || GameObject.FindGameObjectWithTag("GameMaster").GetComponent<QuestControl>().CurrentQuest == _craftQuest))
         {
             CraftControl CCRef = GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>();
 
