@@ -15,4 +15,4 @@ MonoBehaviour:
   _questStageType: 1
   _questEvent: 0
   _speaker: Tutorial
-  _dialogueLine: (you can also just skip the minigame if you want)
+  _dialogueLine: (when all the points are gone, click Disassemble)

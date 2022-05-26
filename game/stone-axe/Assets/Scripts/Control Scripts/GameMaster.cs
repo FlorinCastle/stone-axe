@@ -341,6 +341,23 @@ public class GameMaster : MonoBehaviour
         updatePlayerPosition();
     }
 
+    public void startDisassemblyMiniGame()
+    {
+        gameObject.GetComponent<MiniGameControl>().startDisassemblyMiniGame();
+        if (gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
+            gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" &&
+            gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Have_UI_Open" &&
+            gameObject.GetComponent<QuestControl>().CurrentStage.RequiredUI == "MiniGame_UI")
+        {
+            Debug.LogWarning("Quest Notif - Disassemble Minigame");
+            gameObject.GetComponent<QuestControl>().nextStage();
+        }
+    }
+    public void startCraftMiniGame()
+    {
+
+    }
+
     public void loadQuestMenu()
     {
         _uiControlRef.questUIEnabled(true);

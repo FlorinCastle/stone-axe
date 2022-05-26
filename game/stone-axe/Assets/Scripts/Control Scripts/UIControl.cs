@@ -347,6 +347,8 @@ public class UIControl : MonoBehaviour
         _sellTabButton.interactable = false;
         _disassembleTabButton.interactable = false;
         _craftTabButton.interactable = false;
+
+        //gameObject.GetComponent<QuestControl>().nextStage();
     }
     public void shopSellAccessableOnly()
     {
@@ -356,6 +358,8 @@ public class UIControl : MonoBehaviour
         _sellTabButton.interactable = false; // this one
         _disassembleTabButton.interactable = false;
         _craftTabButton.interactable = false;
+
+        //gameObject.GetComponent<QuestControl>().nextStage();
     }
     public void shopDisassembleAccessableOnly()
     {
@@ -365,6 +369,8 @@ public class UIControl : MonoBehaviour
         _sellTabButton.interactable = false;
         _disassembleTabButton.interactable = false; // this one
         _craftTabButton.interactable = false;
+
+        gameObject.GetComponent<QuestControl>().nextStage();
     }
     public void shopCraftAccessableOnly()
     {
@@ -374,6 +380,8 @@ public class UIControl : MonoBehaviour
         _sellTabButton.interactable = false;
         _disassembleTabButton.interactable = false;
         _craftTabButton.interactable = false; // this one
+
+        //gameObject.GetComponent<QuestControl>().nextStage();
     }
     public void shopNoTabsAccessable()
     {

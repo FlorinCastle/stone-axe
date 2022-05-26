@@ -1400,7 +1400,7 @@ public class InventoryScript : MonoBehaviour
             _selectedEnchant = null;
             if (_selectedItem.GetComponent<ItemDataStorage>().IsForQuest == false)
                 returnSelectedItem();
-            Debug.Log("Selected item is: " + _selectedItem.name + " at index: " + i); 
+            //Debug.Log("Selected item is: " + _selectedItem.name + " at index: " + i); 
         }
         else
             Debug.Log("example button selected");
@@ -1414,7 +1414,7 @@ public class InventoryScript : MonoBehaviour
             _selectedMat = null;
             _selectedEnchant = null;
             returnSeletedPart();
-            Debug.Log("Selected part is: " + _selectedPart.name + " at index: " + i);
+            //Debug.Log("Selected part is: " + _selectedPart.name + " at index: " + i);
         }
         else
             Debug.Log("example button selected");

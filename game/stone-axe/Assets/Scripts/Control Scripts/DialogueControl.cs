@@ -47,7 +47,7 @@ public class DialogueControl : MonoBehaviour
                 string temp2 = temp1.Replace("(shopname)", gameObject.GetComponent<GameMaster>().ShopName);
                 _dialogueText.text = temp2;
             }
-            else if (currStage.StageType == "Buy_Item" || currStage.StageType == "Disassemble_Item" || currStage.StageType == "Craft_Item" || currStage.StageType == "Sell_Item" || currStage.StageType == "Force_Event")
+            else if (currStage.StageType == "Buy_Item" || currStage.StageType == "Disassemble_Item" || currStage.StageType == "Craft_Item" || currStage.StageType == "Sell_Item" || currStage.StageType == "Force_Event" || currStage.StageType == "Have_UI_Open")
             {
                 _dialogueUI.SetActive(false);
                 this.gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuest, currStage);

@@ -17,7 +17,9 @@ public class QuestStageEditor : Editor
         part2Mat,
         part3Mat,
         currencyValue,
-        npcRef;
+        npcRef,
+        uiRef,
+        forcedOpenUI;
 
     private void OnEnable()
     {
@@ -32,6 +34,8 @@ public class QuestStageEditor : Editor
         part3Mat = serializedObject.FindProperty("_part3Mat");
         currencyValue = serializedObject.FindProperty("_currencyValue");
         npcRef = serializedObject.FindProperty("_npcRef");
+        uiRef = serializedObject.FindProperty("_requiredUIOpen");
+        forcedOpenUI = serializedObject.FindProperty("_forcedUI");
     }
 
     public override void OnInspectorGUI()
@@ -50,6 +54,7 @@ public class QuestStageEditor : Editor
                 currencyValue.intValue = 0;
                 itemToGet.objectReferenceValue = null;
                 npcRef.objectReferenceValue = null;
+                uiRef.enumValueIndex = 0;
                 break;
 
             case QuestStage.questStageEnum.Dialogue:
@@ -59,6 +64,7 @@ public class QuestStageEditor : Editor
                 currencyValue.intValue = 0;
                 itemToGet.objectReferenceValue = null;
                 npcRef.objectReferenceValue = null;
+                uiRef.enumValueIndex = 0;
                 break;
 
             case QuestStage.questStageEnum.Craft_Item:
@@ -74,6 +80,7 @@ public class QuestStageEditor : Editor
                         itemCount.intValue = 1;
                 }
                 npcRef.objectReferenceValue = null;
+                uiRef.enumValueIndex = 0;
                 break;
 
             case QuestStage.questStageEnum.Sell_Item:
@@ -84,6 +91,7 @@ public class QuestStageEditor : Editor
                 itemToGet.objectReferenceValue = null;
                 itemCount.intValue = 0;
                 npcRef.objectReferenceValue = null;
+                uiRef.enumValueIndex = 0;
                 break;
 
             case QuestStage.questStageEnum.Buy_Item:
@@ -94,6 +102,7 @@ public class QuestStageEditor : Editor
                 itemToGet.objectReferenceValue = null;
                 itemCount.intValue = 0;
                 npcRef.objectReferenceValue = null;
+                uiRef.enumValueIndex = 0;
                 break;
 
             case QuestStage.questStageEnum.Disassemble_Item:
@@ -104,6 +113,7 @@ public class QuestStageEditor : Editor
                 itemToGet.objectReferenceValue = null;
                 itemCount.intValue = 0;
                 npcRef.objectReferenceValue = null;
+                uiRef.enumValueIndex = 0;
                 break;
 
             case QuestStage.questStageEnum.Have_Currency:
@@ -115,6 +125,7 @@ public class QuestStageEditor : Editor
                 itemToGet.objectReferenceValue = null;
                 itemCount.intValue = 0;
                 npcRef.objectReferenceValue = null;
+                uiRef.enumValueIndex = 0;
                 break;
 
             case QuestStage.questStageEnum.Force_Event:
@@ -140,6 +151,7 @@ public class QuestStageEditor : Editor
                                 itemCount.intValue = 1;
                         }
                         npcRef.objectReferenceValue = null;
+                        uiRef.enumValueIndex = 0;
                         break;
 
                     case QuestStage.questEvent.Force_For_Sale:
@@ -155,6 +167,7 @@ public class QuestStageEditor : Editor
 
                         }
                         npcRef.objectReferenceValue = null;
+                        uiRef.enumValueIndex = 0;
                         break;
 
 
@@ -163,6 +176,7 @@ public class QuestStageEditor : Editor
                         itemToGet.objectReferenceValue = null;
                         itemCount.intValue = 0;
                         npcRef.objectReferenceValue = null;
+                        uiRef.enumValueIndex = 0;
                         break;
 
                     case QuestStage.questEvent.Remove_Currency:
@@ -170,12 +184,14 @@ public class QuestStageEditor : Editor
                         itemToGet.objectReferenceValue = null;
                         itemCount.intValue = 0;
                         npcRef.objectReferenceValue = null;
+                        uiRef.enumValueIndex = 0;
                         break;
 
                     case QuestStage.questEvent.Summon_NPC:
                         currencyValue.intValue = 0;
                         EditorGUILayout.PropertyField(npcRef, new GUIContent("NPC Prefab Reference"));
                         itemToGet.objectReferenceValue = null;
+                        uiRef.enumValueIndex = 0;
                         itemCount.intValue = 0;
                         break;
 
@@ -183,10 +199,30 @@ public class QuestStageEditor : Editor
                         currencyValue.intValue = 0;
                         npcRef.objectReferenceValue = null;
                         itemToGet.objectReferenceValue = null;
+                        uiRef.enumValueIndex = 0;
                         itemCount.intValue = 0;
                         break;
 
+                    case QuestStage.questEvent.Force_Open_UI:
+                        currencyValue.intValue = 0;
+                        npcRef.objectReferenceValue = null;
+                        itemToGet.objectReferenceValue = null;
+                        uiRef.enumValueIndex = 0;
+                        itemCount.intValue = 0;
+                        EditorGUILayout.PropertyField(forcedOpenUI, new GUIContent("UI to Open"));
+                        break;
                 }
+                break;
+
+            case QuestStage.questStageEnum.Have_UI_Open:
+                questEvent.enumValueIndex = 0;
+                dialogueSpeaker.stringValue = "";
+                dialogueLine.stringValue = "";
+                currencyValue.intValue = 0;
+                itemToGet.objectReferenceValue = null;
+                itemCount.intValue = 0;
+                npcRef.objectReferenceValue = null;
+                EditorGUILayout.PropertyField(uiRef, new GUIContent("Required UI"));
                 break;
         }
         serializedObject.ApplyModifiedProperties();
