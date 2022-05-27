@@ -14,11 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _questStageType: 1
   _questEvent: 0
-  _speaker: Tutorial
-  _dialogueLine: (go to Buy Tab)
-  _item: {fileID: 0}
-  _part1Mat: {fileID: 0}
-  _part2Mat: {fileID: 0}
-  _part3Mat: {fileID: 0}
-  _currencyValue: 0
-  _npcRef: {fileID: 0}
+  _speaker: Faerie
+  _dialogueLine: So, what you need to do is buy an item from the Adventurer that
+    just arrived!

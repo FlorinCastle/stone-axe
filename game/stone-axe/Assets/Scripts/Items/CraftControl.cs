@@ -473,7 +473,7 @@ public class CraftControl : MonoBehaviour
 
         // (re)move parts
         _chosenPart1.transform.parent = itemDataStorageTemp.transform;
-        itemDataStorageRef.setPart1(_chosenPart2.GetComponent<PartDataStorage>());
+        itemDataStorageRef.setPart1(_chosenPart1.GetComponent<PartDataStorage>());
 
         _chosenPart2.transform.parent = itemDataStorageTemp.transform;
         itemDataStorageRef.setPart2(_chosenPart2.GetComponent<PartDataStorage>());
@@ -537,49 +537,74 @@ public class CraftControl : MonoBehaviour
         _inventoryControlReference.InsertItem(itemDataStorageTemp);
 
         // quest checks
-        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
-            (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" ||
-            _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Story"))
+        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null)
         {
-            if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Craft_Item")
+            if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial")
             {
-                if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet != null)
+                if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Craft_Item")
                 {
-                    if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet == _chosenItemRecipe)
+                    if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet != null)
                     {
-                        itemDataStorageRef.IsForQuest = true;
-                        craftCount++;
-
-                        if (craftCount >= _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.CountToGet)
+                        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet == _chosenItemRecipe)
                         {
-                            Debug.LogWarning("Quest Notif - Craft(s) Done");
-                            //itemDataStorageRef.IsForQuest = true;
-                            _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
-                            craftCount = 0;
+                            craftCount++;
+
+                            if (craftCount >= _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.CountToGet)
+                            {
+                                Debug.Log("Quest Notif - Craft(s) Done");
+                                _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
+                                craftCount = 0;
+                            }
                         }
                     }
+                    else if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet == null)
+                    {
+                        Debug.LogWarning("Verify if quest has required recipe assigned");
+                        _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
+                    }
                 }
-                else if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet == null)
+            }
+            else if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Story")
+            {
+                if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Craft_Item")
                 {
-                    Debug.LogWarning("Verify if quest has required recipe assigned");
-                    _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
+                    if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet != null)
+                    {
+                        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet == _chosenItemRecipe)
+                        {
+                            itemDataStorageRef.IsForQuest = true;
+                            craftCount++;
+
+                            if (craftCount >= _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.CountToGet)
+                            {
+                                Debug.Log("Quest Notif - Craft(s) Done");
+                                _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
+                                craftCount = 0;
+                            }
+                        }
+                    }
+                    else if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet == null)
+                    {
+                        Debug.LogWarning("Verify if quest has required recipe assigned");
+                        _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
+                    }
                 }
             }
-        } 
-        else if(_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null && (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "OCC_Item" || _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "OCC_TotalCrafted" || _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "OCC_QuestItem"))
-        {
-            if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.RequiredItem == _chosenItemRecipe)
+            else if(_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "OCC_Item" || _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "OCC_TotalCrafted" || _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "OCC_QuestItem")
             {
-                Debug.LogWarning("Quest Notif - Craft Done");
-                itemDataStorageRef.IsForQuest = true;
-            }
-            else if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.RequiredItem == null)
-            {
-                Debug.LogWarning("Verify if quest has required item recipe assigned.\nQuest name: " + _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestName);
+                if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.RequiredItem == _chosenItemRecipe)
+                {
+                    Debug.LogWarning("Quest Notif - Craft Done");
+                    itemDataStorageRef.IsForQuest = true;
+                }
+                else if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.RequiredItem == null)
+                {
+                    Debug.LogWarning("Verify if quest has required item recipe assigned.\nQuest name: " + _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestName);
+                }
             }
         }
 
-        // clear selected crafting componets
+        // clear selected crafting componet variables
         _chosenItemRecipe = null;
         itemDataStorageTemp = null;
         itemDataStorageRef = null;

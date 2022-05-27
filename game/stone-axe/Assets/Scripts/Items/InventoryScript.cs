@@ -338,7 +338,7 @@ public class InventoryScript : MonoBehaviour
                     PartDataStorage partDat = part.GetComponent<PartDataStorage>();
                     if (partDat.Material.ValidFilters.Contains(_currentPartFilter))
                     {
-                        Debug.Log("InventoryScript.setupPartInventory(): " + partDat.PartName + ".Material has the filter: " + _currentPartFilter.FilterName);
+                        //Debug.Log("InventoryScript.setupPartInventory(): " + partDat.PartName + ".Material has the filter: " + _currentPartFilter.FilterName);
                         partStorageSetup(partDat, k, true);
                         setupList.Add(part);
                     }
@@ -1597,7 +1597,7 @@ public class InventoryScript : MonoBehaviour
                     && (partLastFilled == 0 || partLastFilled == 2 || partLastFilled == 3 || _craftControlRef.Part1Set() == false || _craftControlRef.AllPartsSet() == true)
                     && phb == false)
                 {
-                    Debug.LogWarning("selected part matches recipe part 1");
+                    Debug.Log("selected part matches recipe part 1");
                     _craftControlRef.SelectPart1();
                     partLastFilled = 1;
                     phb = true;
@@ -1608,7 +1608,7 @@ public class InventoryScript : MonoBehaviour
                     && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 3 || _craftControlRef.Part2Set() == false || _craftControlRef.AllPartsSet() == true)
                     && phb == false)
                 {
-                    Debug.LogWarning("selected part matches recipe part 2");
+                    Debug.Log("selected part matches recipe part 2");
                     _craftControlRef.SelectPart2();
                     partLastFilled = 2;
                     phb = true;
@@ -1619,7 +1619,7 @@ public class InventoryScript : MonoBehaviour
                     && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 2 || _craftControlRef.Part3Set() == false || _craftControlRef.AllPartsSet() == true)
                     && phb == false)
                 {
-                    Debug.LogWarning("selected part matches recipe part 3");
+                    Debug.Log("selected part matches recipe part 3");
                     _craftControlRef.SelectPart3();
                     partLastFilled = 3;
                     phb = true;
@@ -1632,7 +1632,7 @@ public class InventoryScript : MonoBehaviour
                 && (partLastFilled == 0 || partLastFilled == 2 || partLastFilled == 3 || _craftControlRef.Part1Set() == false || _craftControlRef.AllPartsSet() == true)
                 && phb == false)
             {
-                Debug.LogWarning("selected part matches recipe part 1");
+                Debug.Log("selected part matches recipe part 1");
                 _craftControlRef.SelectQPart1();
                 partLastFilled = 1;
                 phb = true;
@@ -1641,7 +1641,7 @@ public class InventoryScript : MonoBehaviour
                 && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 3 || _craftControlRef.Part2Set() == false || _craftControlRef.AllPartsSet() == true)
                 && phb == false)
             {
-                Debug.LogWarning("selected part matches recipe part 2");
+                Debug.Log("selected part matches recipe part 2");
                 _craftControlRef.SelectQPart2();
                 partLastFilled = 2;
                 phb = true;
@@ -1650,7 +1650,7 @@ public class InventoryScript : MonoBehaviour
                 && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 2 || _craftControlRef.Part3Set() == false || _craftControlRef.AllPartsSet() == true)
                 && phb == false)
             {
-                Debug.LogWarning("selected part matches recipe part 3");
+                Debug.Log("selected part matches recipe part 3");
                 _craftControlRef.SelectQPart3();
                 partLastFilled = 3;
                 phb = true;

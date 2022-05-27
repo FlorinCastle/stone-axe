@@ -29,7 +29,7 @@ public class QuestControl : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _questName;
     [SerializeField]
-    private Text _questText;
+    private TextMeshProUGUI _questText;
     [SerializeField]
     private Button _newQuestButton;
     [SerializeField]
@@ -72,7 +72,7 @@ public class QuestControl : MonoBehaviour
 
         if (gameObject.GetComponent<UIControl>().ShopUIActive == true && star == false)
         {
-            Debug.Log("QuestControl.FixedUpdate(): setting up quests for debug");
+            //Debug.Log("QuestControl.FixedUpdate(): setting up quests for debug");
             setupStoryQuests();
             star = true;
         }
@@ -84,12 +84,12 @@ public class QuestControl : MonoBehaviour
     private GameObject p;
     public void setupStoryQuests()
     {
-        Debug.Log("QuestControl.setupStoryQuests() - setting up story quests");
+        //Debug.Log("QuestControl.setupStoryQuests() - setting up story quests");
         if (_unlockedQuests.Count == 0)
             _unlockedQuests.Add(_questRef.getTutorialQuests()[0]);
         if (_chosenQuest == null)
         {
-            Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is null");
+            //Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is null");
 
             gameObject.GetComponent<GameMaster>().allTabsAccessable(false);
 
@@ -98,22 +98,22 @@ public class QuestControl : MonoBehaviour
                 //Debug.Log("QuestControl.setupStoryQuests() - tutQuest is " + tutQuest.QuestName);                
                 if (tutQuest == _enableBuyOnComplete && _enableBuyOnComplete.StoryQuestComplete)
                 {
-                    Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableBuyOnComplete");
+                    //Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableBuyOnComplete");
                     gameObject.GetComponent<GameMaster>().buyAccessable(true);
                 }
                 if (tutQuest == _enableDisassembleOnComplete && _enableDisassembleOnComplete.StoryQuestComplete)
                 {
-                    Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableDisassembleOnComplete");
+                    //Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableDisassembleOnComplete");
                     gameObject.GetComponent<GameMaster>().disassembleAccessable(true);
                 }
                 if (tutQuest == _enableCraftOnComplete && _enableCraftOnComplete.StoryQuestComplete)
                 {
-                    Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableCraftOnComplete");
+                    //Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableCraftOnComplete");
                     gameObject.GetComponent<GameMaster>().craftAccessable(true);
                 }
                 if (tutQuest == _enableSellOnComplete && _enableSellOnComplete.StoryQuestComplete)
                 {
-                    Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableSellOnComplete");
+                    //Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableSellOnComplete");
                     gameObject.GetComponent<GameMaster>().sellAccessable(true);
                 }
                 if (tutQuest == _enableAdventurersOnComplete && _enableAdventurersOnComplete.StoryQuestComplete)
@@ -239,7 +239,7 @@ public class QuestControl : MonoBehaviour
             foreach(GameObject go in _questStarterGOs)
                 if (g.gameObject == go.gameObject)
                 {
-                    Debug.Log("QuestControl _questStarterGOs contains starter!");
+                    //Debug.Log("QuestControl _questStarterGOs contains starter!");
                     int i = _questStarterGOs.IndexOf(go);
                     Destroy(go);
                     _questStarterGOs.RemoveAt(i);
@@ -568,10 +568,15 @@ public class QuestControl : MonoBehaviour
     {
         _currStageIndex++;
         if (_currStageIndex < CurrentQuest.QuestStages.Count)
-            this.gameObject.GetComponent<DialogueControl>().setupDialogueLine();
+        {
+            gameObject.GetComponent<DialogueControl>().setupDialogueLine();
+            updateQuestProgress(_chosenQuest, _chosenQuest.QuestStages[_currStageIndex]);
+        }
         else if (_currStageIndex >= CurrentQuest.QuestStages.Count)
-            this.gameObject.GetComponent<DialogueControl>().dialogeQuestEnd();
-
+        {
+            gameObject.GetComponent<DialogueControl>().dialogeQuestEnd();
+            updateQuestProgress(_chosenQuest, true);
+        }
     }
 
     //overload 1 (basic item crafting)
@@ -595,7 +600,7 @@ public class QuestControl : MonoBehaviour
             }
             else if (_chosenQuest.QuestType == "Tutorial" || _chosenQuest.QuestType == "Story")
             {
-                Debug.LogWarning("PH");
+                //Debug.LogWarning("PH");
                 updateQuestProgress(_chosenQuest, _chosenQuest.QuestStages[_currStageIndex]);
             }
         }
@@ -660,31 +665,31 @@ public class QuestControl : MonoBehaviour
 
             //if (isComplete)
         }
-        Debug.Log("QuestControl().updateQuestProgress(quest, isComplete) quest: " + quest.QuestName + " setting up story quests"); 
+        //Debug.Log("QuestControl().updateQuestProgress(quest, isComplete) quest: " + quest.QuestName + " setting up story quests"); 
         setupStoryQuests();
     }
     public void updateQuestProgress(QuestData quest, QuestStage currStage)
     {
         if (currStage.StageType == "Buy_Item")
         {
-            Debug.LogWarning("Quest Stage: Buy item!");
+            Debug.Log("Quest Stage: Buy item!");
             // code should work
             if (quest.QuestType == "Tutorial")
             {
-                gameObject.GetComponent<UIControl>().shopBuyAccessableOnly();
+                //gameObject.GetComponent<UIControl>().shopBuyAccessableOnly();
             }
         }
         else if (currStage.StageType == "Sell_Item")
         {
-            Debug.LogWarning("Quest Stage: Sell item!");
+            Debug.Log("Quest Stage: Sell item!");
             if (quest.QuestType == "Tutorial")
             {
-                gameObject.GetComponent<UIControl>().shopSellAccessableOnly();
+                //gameObject.GetComponent<UIControl>().shopSellAccessableOnly();
             }
         }
         else if (currStage.StageType == "Disassemble_Item")
         {
-            Debug.LogWarning("Quest Stage: Disassemble item!");
+            Debug.Log("Quest Stage: Disassemble item!");
             // code should work
             if (quest.QuestType == "Tutorial")
             {
@@ -693,70 +698,79 @@ public class QuestControl : MonoBehaviour
         }
         else if (currStage.StageType == "Craft_Item")
         {
-            Debug.LogWarning("Quest Stage: Craft item!");
+            Debug.Log("Quest Stage: Craft item!");
             if (quest.QuestType == "Tutorial")
             {
-                gameObject.GetComponent<UIControl>().shopCraftAccessableOnly();
+                //gameObject.GetComponent<UIControl>().shopCraftAccessableOnly();
             }
         }
         else if (currStage.StageType == "Have_Currency")
         {
-            Debug.LogWarning("Quest Stage: Have currency!");
+            Debug.Log("Quest Stage: Have currency!");
         }
         else if (currStage.StageType == "Force_Event")
         {
-            Debug.LogWarning("Quest Stage: Force Event!");
+            Debug.Log("Quest Stage: Force Event!");
             if (currStage.QuestEvent == "Summon_Adventurer")
             {
-                Debug.LogWarning("Quest Event: Summon Adventurer");
+                Debug.Log("Quest Event: Summon Adventurer");
                 this.gameObject.GetComponent<AdventurerMaster>().spawnAdventurer();
             }
             else if (currStage.QuestEvent == "Summon_NPC")
             {
-                Debug.LogWarning("Quest Event: Summon Story NPC");
+                Debug.Log("Quest Event: Summon Story NPC");
                 if (currStage.NPCRef != null) this.gameObject.GetComponent<NPC_Master>().spawnNPC(currStage.NPCRef);
                 else Debug.LogError("NPC Ref for " + quest.QuestName + " Stage: " + currStage.name + " is not asigned!");
             }
             else if (currStage.QuestEvent == "Dismiss_Quest_NPC")
             {
-                Debug.LogWarning("Quest Event: Dismiss Story NPCs");
+                Debug.Log("Quest Event: Dismiss Story NPCs");
                 this.gameObject.GetComponent<NPC_Master>().dismissNPCs();
             }
             else if (currStage.QuestEvent == "Get_Item")
             {
-                Debug.LogWarning("Quest Event: Get Item");
+                Debug.Log("Quest Event: Get Item");
                 this.gameObject.GetComponent<GenerateItem>().GeneratePresetItem(currStage.ItemToGet, currStage.Part1Mat, currStage.Part2Mat, currStage.Part3Mat, true);
                 nextStage();
             }
             else if (currStage.QuestEvent == "Force_For_Sale")
             {
-                Debug.LogWarning("Quest Event: Force For Sale");
-                this.gameObject.GetComponent<GenerateItem>().GeneratePresetItem(currStage.ItemToGet, currStage.Part1Mat, currStage.Part2Mat, currStage.Part3Mat, false);
+                Debug.Log("Quest Event: Force For Sale");
+                gameObject.GetComponent<GenerateItem>().GeneratePresetItem(currStage.ItemToGet, currStage.Part1Mat, currStage.Part2Mat, currStage.Part3Mat, false);
                 nextStage();
             }
             else if (currStage.QuestEvent == "Get_Currency")
             {
-                Debug.LogWarning("Quest Event: Get Currency");
+                Debug.Log("Quest Event: Get Currency");
                 this.gameObject.GetComponent<GameMaster>().addCurrency(currStage.CurrencyValue);
                 nextStage();
             }
             else if (currStage.QuestEvent == "Remove_Currency")
             {
-                Debug.LogWarning("Quest Event: Remove Currency");
+                Debug.Log("Quest Event: Remove Currency");
                 this.gameObject.GetComponent<GameMaster>().removeCurrency(currStage.CurrencyValue);
             }
             else if (currStage.QuestEvent == "Force_Open_UI")
             {
-                Debug.LogWarning("This Quest Event has not been fully implemented");
+                //Debug.LogWarning("This Quest Event has not been fully implemented");
+                if (currStage.ForcedUI == "Buy")
+                    if (quest.QuestType == "Tutorial")
+                        gameObject.GetComponent<UIControl>().shopBuyAccessableOnly();
+                if (currStage.ForcedUI == "Sell")
+                    if (quest.QuestType == "Tutorial")
+                        gameObject.GetComponent<UIControl>().shopSellAccessableOnly();
                 if (currStage.ForcedUI == "Disassemble")
                     if (quest.QuestType == "Tutorial")
                         gameObject.GetComponent<UIControl>().shopDisassembleAccessableOnly();
+                if (currStage.ForcedUI == "Craft")
+                    if (quest.QuestType == "Tutorial")
+                        gameObject.GetComponent<UIControl>().shopCraftAccessableOnly();
             }
         }
         else if (currStage.StageType == "Have_UI_Open")
         {
-            Debug.LogWarning("Quest Stage: Have UI Open!");
-            Debug.LogWarning("This StageType has not been implemented");
+            Debug.Log("Quest Stage: Have UI Open!");
+            //Debug.LogWarning("This StageType has not been fully implemented");
             if (currStage.RequiredUI == "MiniGame_UI")
                 Debug.Log("Waiting for MiniGame_UI UI to be open");
         }

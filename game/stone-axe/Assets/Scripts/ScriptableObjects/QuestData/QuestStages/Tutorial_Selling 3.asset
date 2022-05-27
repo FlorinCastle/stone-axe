@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca50eccd083873348a9e25e9b7b573a9, type: 3}
   m_Name: Tutorial_Selling 3
   m_EditorClassIdentifier: 
-  _questStageType: 1
-  _questEvent: 0
-  _speaker: Faerie
-  _dialogueLine: Oh! Here's someone who wants to buy!
+  _questStageType: 7
+  _questEvent: 9
+  _forcedUI: 4
+  _speaker: 
+  _dialogueLine: 
+  _item: {fileID: 0}
+  _itemCount: 0
+  _part1Mat: {fileID: 0}
+  _part2Mat: {fileID: 0}
+  _part3Mat: {fileID: 0}
+  _currencyValue: 0
+  _npcRef: {fileID: 0}
+  _requiredUIOpen: 0

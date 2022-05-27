@@ -30,6 +30,7 @@ MonoBehaviour:
   _questStages:
   - {fileID: 11400000, guid: 6aaed135a154bd9469e6d826d3963654, type: 2}
   - {fileID: 11400000, guid: b0047fceaf9d4004eb68dfa803c1b82b, type: 2}
+  - {fileID: 11400000, guid: 998fc4294da50a246aedf592000e47f9, type: 2}
   - {fileID: 11400000, guid: eabfbb59bebeab941865c6b23c6cc6a8, type: 2}
   - {fileID: 11400000, guid: 188b5503a9c78b2448932a880018ff36, type: 2}
   - {fileID: 11400000, guid: f906c98d05398f04297d14cdc456ef3e, type: 2}

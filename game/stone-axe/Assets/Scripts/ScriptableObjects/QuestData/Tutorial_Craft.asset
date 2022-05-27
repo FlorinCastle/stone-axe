@@ -27,6 +27,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4c83f916e71f6c44e95dbaee54bed15c, type: 2}
   - {fileID: 11400000, guid: 87470a11dbacc25408117352381f1b1e, type: 2}
   - {fileID: 11400000, guid: 8b074642bf4e8be45ba59c2235d215b1, type: 2}
+  - {fileID: 11400000, guid: cc401207cd5784241812007d9d1de1db, type: 2}
   - {fileID: 11400000, guid: 8e62b3af23299604287ea087e495f72f, type: 2}
   - {fileID: 11400000, guid: 545188effb934594281dd5b22df8b76e, type: 2}
   - {fileID: 11400000, guid: 8b508b3aa3f83764d86513ead42397a8, type: 2}
@@ -44,6 +45,6 @@ MonoBehaviour:
   _unlocksQuests:
   - {fileID: 11400000, guid: 2240dccd919c2304dacfd315d1845e62, type: 2}
   _requiredPlayerLevel: 0
-  _storyQuestComplete: 0
+  _storyQuestComplete: 1
   _rewardCurrency: 0
   _rewardEXP: 0

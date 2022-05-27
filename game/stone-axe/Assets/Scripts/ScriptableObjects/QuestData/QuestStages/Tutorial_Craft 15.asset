@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca50eccd083873348a9e25e9b7b573a9, type: 3}
   m_Name: Tutorial_Craft 15
   m_EditorClassIdentifier: 
-  _questStageType: 1
+  _questStageType: 2
   _questEvent: 0
-  _speaker: Faerie
-  _dialogueLine: There we go! It's crafted!
+  _forcedUI: 0
+  _speaker: 
+  _dialogueLine: 
+  _item: {fileID: 11400000, guid: 60bee362faf67e840b65be712fa59bea, type: 2}
+  _itemCount: 1
+  _part1Mat: {fileID: 0}
+  _part2Mat: {fileID: 0}
+  _part3Mat: {fileID: 0}
+  _currencyValue: 0
+  _npcRef: {fileID: 0}
+  _requiredUIOpen: 0

@@ -391,17 +391,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8412383221427624969, guid: 141109d87efa52e48a7e129a24b4fb7c, type: 3}
   m_PrefabInstance: {fileID: 2920222055057926274}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &178493471 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6064659085543222955, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
-  m_PrefabInstance: {fileID: 6064659085432043188}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &187837268 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2955703587796944431, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -2151,6 +2140,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2020829247266915648, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
   m_PrefabInstance: {fileID: 7485012191131071712}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &820757658 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2326328816417137337, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
+  m_PrefabInstance: {fileID: 6064659085432043188}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &827355727
 GameObject:
   m_ObjectHideFlags: 0
@@ -5193,6 +5193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b66f1f240122184b8fbb930f33d27d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectSection: 1
   mainMenuUI: {fileID: 736132774}
   gameShopUI: {fileID: 369422302}
   optionsPopup: {fileID: 1997940092}
@@ -5214,10 +5215,6 @@ MonoBehaviour:
   questDetailUI: {fileID: 679954418}
   dialogeUI: {fileID: 7485012191131071719}
   _toMarketButton: {fileID: 7485012191131071726}
-  _buyTabButton: {fileID: 921268443}
-  _sellTabButton: {fileID: 655855113}
-  _disassembleTabButton: {fileID: 98372674}
-  _craftTabButton: {fileID: 988439265}
   itemsScrollView: {fileID: 46187953}
   _itemsSortText: {fileID: 1019287893}
   partsScrollView: {fileID: 1303400238}
@@ -5472,7 +5469,7 @@ MonoBehaviour:
   _storyQuestPopupParent: {fileID: 1307283905}
   _questStarterPrefab: {fileID: 2496011540154331948, guid: 2d1126155ae6a4246996237dfa3beb63, type: 3}
   _questName: {fileID: 656829204}
-  _questText: {fileID: 178493471}
+  _questText: {fileID: 820757658}
   _newQuestButton: {fileID: 0}
   _completeQuestButton: {fileID: 744597666}
   _repeatableQuests: []
@@ -11769,7 +11766,7 @@ PrefabInstance:
       objectReference: {fileID: 7485012191131071713}
     - target: {fileID: 6537978605409688547, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.41729322
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6537978605409688547, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_AnchorMax.y
@@ -11870,7 +11867,7 @@ PrefabInstance:
     - target: {fileID: 6751934055830707352, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1734993359}
+      objectReference: {fileID: 1734993351}
     - target: {fileID: 6751934055830707352, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -12269,7 +12266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7611934963243128113, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7656806849748668384, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_Color.b

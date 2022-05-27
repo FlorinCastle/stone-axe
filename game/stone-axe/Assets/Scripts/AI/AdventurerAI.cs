@@ -121,7 +121,7 @@ public class AdventurerAI : MonoBehaviour
                         if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Force_Event" &&
                             gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.QuestEvent == "Summon_Adventurer")
                         {
-                            Debug.LogWarning("Quest Notif - Adventurer at counter");
+                            Debug.Log("Quest Notif - Adventurer at counter");
                             gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
                         }
                     }
@@ -189,7 +189,7 @@ public class AdventurerAI : MonoBehaviour
 
     private IEnumerator WaitThenGo()
     {
-        Debug.Log(gameObject.name + ".AdventurerAI.WaitThenGo() Coroutine has started!");
+        //Debug.Log(gameObject.name + ".AdventurerAI.WaitThenGo() Coroutine has started!");
         beingHandled = true;
         if (_advMaster.GetMyIndex(gameObject) != 0)
         {

@@ -50,9 +50,9 @@ public class DialogueControl : MonoBehaviour
             else if (currStage.StageType == "Buy_Item" || currStage.StageType == "Disassemble_Item" || currStage.StageType == "Craft_Item" || currStage.StageType == "Sell_Item" || currStage.StageType == "Force_Event" || currStage.StageType == "Have_UI_Open")
             {
                 _dialogueUI.SetActive(false);
-                this.gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuest, currStage);
+                //gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuest, currStage);
 
-                Debug.LogWarning("No dialogue for this stage!");
+                //Debug.LogWarning("No dialogue for this stage!");
             }
             index++;
         }
@@ -63,10 +63,10 @@ public class DialogueControl : MonoBehaviour
     }
     public void dialogeQuestEnd()
     {
-        Debug.LogWarning("No more stages! " + _currentStoryQuest.QuestName);
+        Debug.Log("No more stages! " + _currentStoryQuest.QuestName);
         //if (_currentStoryQuest.NextQuest == null)
         _dialogueUI.SetActive(false);
-        this.gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuest, true);
+        //gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuest, true);
     }
     /*
     public void nextStage()

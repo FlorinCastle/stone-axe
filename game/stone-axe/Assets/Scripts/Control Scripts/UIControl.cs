@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class UIControl : MonoBehaviour
 {
+    public enum dataSection { UI, ShopUI, ButtonGroupShopUI, ButtonGroupMarketUI, ButtonGroupBottomUI, ButtonGroupInvUI, MarketUI, MainMenuUI, LoadGameUI, NewGameUI};
+    public dataSection selectSection;
+
     [Header("UI")]
     [SerializeField] private GameObject mainMenuUI;
     [SerializeField] private GameObject gameShopUI;
@@ -30,11 +33,11 @@ public class UIControl : MonoBehaviour
     [SerializeField] private GameObject questDetailUI;
     [SerializeField] private GameObject dialogeUI;
     [SerializeField] private Button _toMarketButton;
-    [Space(5)]
+    /*[Space(5)]
     [SerializeField] private Button _buyTabButton;
     [SerializeField] private Button _sellTabButton;
     [SerializeField] private Button _disassembleTabButton;
-    [SerializeField] private Button _craftTabButton;
+    [SerializeField] private Button _craftTabButton; */
     [Space(5)]
     [SerializeField] private GameObject itemsScrollView;
     [SerializeField] private TextMeshProUGUI _itemsSortText;
@@ -343,59 +346,59 @@ public class UIControl : MonoBehaviour
     {
         Debug.Log("UIControl.shopBuyAccessableOnly() has been called!");
         gameObject.GetComponent<GameMaster>().loadShopBuyMenu();
-        _buyTabButton.interactable = false; // this one
-        _sellTabButton.interactable = false;
-        _disassembleTabButton.interactable = false;
-        _craftTabButton.interactable = false;
+        _buyUIButton.interactable = false; // this one
+        _sellUIButton.interactable = false;
+        _disaUIButton.interactable = false;
+        _craftUIButton.interactable = false;
 
-        //gameObject.GetComponent<QuestControl>().nextStage();
+        gameObject.GetComponent<QuestControl>().nextStage();
     }
     public void shopSellAccessableOnly()
     {
         Debug.Log("UIControl.shopSellAccessableOnly() has been called!");
         gameObject.GetComponent<GameMaster>().loadShopSellMenu();
-        _buyTabButton.interactable = false;
-        _sellTabButton.interactable = false; // this one
-        _disassembleTabButton.interactable = false;
-        _craftTabButton.interactable = false;
-
-        //gameObject.GetComponent<QuestControl>().nextStage();
-    }
-    public void shopDisassembleAccessableOnly()
-    {
-        Debug.Log("UIControl.shopDisassembleAccessableOnly() has been called!");
-        gameObject.GetComponent<GameMaster>().loadDisassembleMenu();
-        _buyTabButton.interactable = false;
-        _sellTabButton.interactable = false;
-        _disassembleTabButton.interactable = false; // this one
-        _craftTabButton.interactable = false;
+        _buyUIButton.interactable = false;
+        _sellUIButton.interactable = false; // this one
+        _disaUIButton.interactable = false;
+        _craftUIButton.interactable = false;
 
         gameObject.GetComponent<QuestControl>().nextStage();
     }
-    public void shopCraftAccessableOnly()
+    public void shopDisassembleAccessableOnly() // for use in tutorial only
+    {
+        Debug.Log("UIControl.shopDisassembleAccessableOnly() has been called!");
+        gameObject.GetComponent<GameMaster>().loadDisassembleMenu();
+        _buyUIButton.interactable = false;
+        _sellUIButton.interactable = false;
+        _disaUIButton.interactable = false; // this one
+        _craftUIButton.interactable = false;
+
+        gameObject.GetComponent<QuestControl>().nextStage();
+    }
+    public void shopCraftAccessableOnly() // for use in tutorial only
     {
         Debug.Log("UIControl.shopCraftAccessableOnly() has been called!");
         gameObject.GetComponent<GameMaster>().loadCraftMenu();
-        _buyTabButton.interactable = false;
-        _sellTabButton.interactable = false;
-        _disassembleTabButton.interactable = false;
-        _craftTabButton.interactable = false; // this one
+        _buyUIButton.interactable = false;
+        _sellUIButton.interactable = false;
+        _disaUIButton.interactable = false;
+        _craftUIButton.interactable = false; // this one
 
-        //gameObject.GetComponent<QuestControl>().nextStage();
+        gameObject.GetComponent<QuestControl>().nextStage();
     }
     public void shopNoTabsAccessable()
     {
-        _buyTabButton.interactable = false;
-        _sellTabButton.interactable = false;
-        _disassembleTabButton.interactable = false;
-        _craftTabButton.interactable = false;
+        _buyUIButton.interactable = false;
+        _sellUIButton.interactable = false;
+        _disaUIButton.interactable = false;
+        _craftUIButton.interactable = false;
     }
     public void shopAllTabsAccessable()
     {
-        _buyTabButton.interactable = true;
-        _sellTabButton.interactable = true;
-        _disassembleTabButton.interactable = true;
-        _craftTabButton.interactable = true;
+        _buyUIButton.interactable = true;
+        _sellUIButton.interactable = true;
+        _disaUIButton.interactable = true;
+        _craftUIButton.interactable = true;
     }
 
     public void openInvUI()

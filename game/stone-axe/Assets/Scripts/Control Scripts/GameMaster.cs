@@ -7,39 +7,39 @@ using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
-    [SerializeField] public string _playerName = "test";
-    [SerializeField] public string _shopName = "test";
+    [SerializeField] private string _playerName = "test";
+    [SerializeField] private string _shopName = "test";
     [SerializeField, HideInInspector] private string _playerSpecies = "";
     [SerializeField, HideInInspector] private int _playerColor = -1;
-    [SerializeField] public int _currentCurrency;
-    [SerializeField] public int _totalExperience;
-    [SerializeField] public int _level;
-    [SerializeField] public int _currentSkillPoints;
+    [SerializeField] private int _currentCurrency;
+    [SerializeField] private int _totalExperience;
+    [SerializeField] private int _level;
+    [SerializeField] private int _currentSkillPoints;
     private bool adventurerAtCounter;
     [Header("UI and Level")]
-    [SerializeField] public GameObject _shopLevel;
-    [SerializeField] public GameObject _marketLevel;
-    [SerializeField] public GameObject _shopSubUI;
-    [SerializeField] public GameObject _marketSubUI;
-    [SerializeField] public GameObject _toShopButton;
-    [SerializeField] public GameObject _toMarketButton;
+    [SerializeField] private GameObject _shopLevel;
+    [SerializeField] private GameObject _marketLevel;
+    [SerializeField] private GameObject _shopSubUI;
+    [SerializeField] private GameObject _marketSubUI;
+    [SerializeField] private GameObject _toShopButton;
+    [SerializeField] private GameObject _toMarketButton;
     private InventoryData _invData;
-    [SerializeField] public InventoryScript _invScript;
+    [SerializeField] private InventoryScript _invScript;
     private UIControl _uiControlRef;
     [SerializeField]
-    public GameObject saveTrackerParent;
+    private GameObject saveTrackerParent;
     [Header("Prefabs")]
-    [SerializeField] public GameObject _saveHolderPrefab;
+    [SerializeField] private GameObject _saveHolderPrefab;
     [Header("Save Tracking")]
-    [SerializeField] public Toggle _skipTutorialQuestsToggle;
-    [SerializeField] public List<SaveTracker> _saveTrackerScripts;
+    [SerializeField] private Toggle _skipTutorialQuestsToggle;
+    [SerializeField] private List<SaveTracker> _saveTrackerScripts;
     [SerializeField]
-    public List<string> _saveGameList;
+    private List<string> _saveGameList;
     [SerializeField]
-    public string _selectedSave;
+    private string _selectedSave;
 
     [SerializeField]
-    public string _mostRecentSave;
+    private string _mostRecentSave;
 
     private bool skipTutorial;
 
@@ -110,7 +110,7 @@ public class GameMaster : MonoBehaviour
     }
     public void buyAccessable(bool input)
     {
-        Debug.Log("GameMaster.buyAccessable(input) input = " + input.ToString());
+        //Debug.Log("GameMaster.buyAccessable(input) input = " + input.ToString());
         BuyAvailable = input;
         if (input == true)
             gameObject.GetComponent<UIControl>().SUI_BuyEnabled();
@@ -119,7 +119,7 @@ public class GameMaster : MonoBehaviour
     }
     public void sellAccessable(bool input)
     {
-        Debug.Log("GameMaster.sellAccessable(input) input = " + input.ToString());
+        //Debug.Log("GameMaster.sellAccessable(input) input = " + input.ToString());
         SellAvailable = input;
         if (input == true)
             gameObject.GetComponent<UIControl>().SUI_SellEnabled();
@@ -128,7 +128,7 @@ public class GameMaster : MonoBehaviour
     }
     public void disassembleAccessable(bool input)
     {
-        Debug.Log("GameMaster.disassembleAccessable(input) input = " + input.ToString());
+        //Debug.Log("GameMaster.disassembleAccessable(input) input = " + input.ToString());
         DisassembleAvailable = input;
         if (input == true)
             gameObject.GetComponent<UIControl>().SUI_DisassembleEnabled();
@@ -137,7 +137,7 @@ public class GameMaster : MonoBehaviour
     }
     public void craftAccessable(bool input)
     {
-        Debug.Log("GameMaster.craftAccessable(input) input = " + input.ToString());
+        //Debug.Log("GameMaster.craftAccessable(input) input = " + input.ToString());
         CraftAvailable = input;
         if (input == true)
             gameObject.GetComponent<UIControl>().SUI_CraftEnabled();
@@ -355,7 +355,15 @@ public class GameMaster : MonoBehaviour
     }
     public void startCraftMiniGame()
     {
-
+        gameObject.GetComponent<MiniGameControl>().startCraftingMiniGame();
+        if (gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
+            gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" &&
+            gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Have_UI_Open" &&
+            gameObject.GetComponent<QuestControl>().CurrentStage.RequiredUI == "MiniGame_UI")
+        {
+            Debug.Log("Quest Notif - Craft Minigame");
+            gameObject.GetComponent<QuestControl>().nextStage();
+        }
     }
 
     public void loadQuestMenu()

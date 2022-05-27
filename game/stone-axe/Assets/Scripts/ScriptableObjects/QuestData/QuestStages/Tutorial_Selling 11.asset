@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca50eccd083873348a9e25e9b7b573a9, type: 3}
   m_Name: Tutorial_Selling 11
   m_EditorClassIdentifier: 
-  _questStageType: 1
+  _questStageType: 3
   _questEvent: 0
-  _speaker: Faerie
-  _dialogueLine: And done!
+  _speaker: 
+  _dialogueLine: 

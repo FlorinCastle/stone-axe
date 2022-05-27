@@ -9438,8 +9438,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MiniGameControl, Assembly-CSharp
-        m_MethodName: startCraftingMiniGame
+        m_TargetAssemblyTypeName: GameMaster, Assembly-CSharp
+        m_MethodName: startCraftMiniGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

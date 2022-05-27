@@ -15,4 +15,5 @@ MonoBehaviour:
   _questStageType: 1
   _questEvent: 0
   _speaker: Faerie
-  _dialogueLine: Now that we have a completed item, let's sell it!
+  _dialogueLine: You can check the shop's Recipe Book at any time to see what recipes
+    you have and what kinds of materials or parts you need

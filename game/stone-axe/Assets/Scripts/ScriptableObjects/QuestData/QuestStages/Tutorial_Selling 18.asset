@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _questStageType: 1
   _questEvent: 0
-  _speaker: Faerie
-  _dialogueLine: A Market Stall?
+  _speaker: Letter
+  _dialogueLine: It is with great pleasure that we, the Guild, bestow upon the holder
+    of this letter, a stall postion within the public market
