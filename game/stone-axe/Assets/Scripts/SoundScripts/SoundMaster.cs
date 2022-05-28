@@ -8,8 +8,10 @@ public class SoundMaster : MonoBehaviour
     [SerializeField] private AudioSource _music;
     [SerializeField] private AudioSource _doorSound;
     [SerializeField] private AudioSource _buttonClick;
+    [SerializeField] private AudioSource _buttonHover;
 
     public void playMusic() { _music.Play(); } 
     public void playDoorSound() { _doorSound.Play(); }
     public void playButtonClickSound() { _buttonClick.Play(); }
+    public void playButtonHoverSound() { _buttonHover.Play(); }
 }

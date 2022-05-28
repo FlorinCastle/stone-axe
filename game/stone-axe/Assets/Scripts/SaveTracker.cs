@@ -17,6 +17,15 @@ public class SaveTracker : MonoBehaviour
     //[SerializeField] private Button _deleteGameButton;
     private string shopName;
     private string playerName;
+    [SerializeField, HideInInspector] private SoundMaster _soundControl;
+
+    private void Awake()
+    {
+        _soundControl = GameObject.FindGameObjectWithTag("AudioMaster").GetComponent<SoundMaster>();
+    }
+
+    public void playMouseOverSound() { _soundControl.playButtonHoverSound(); }
+    public void playButtonClickSound() { _soundControl.playButtonClickSound(); }
 
     public void toggleSection()
     {

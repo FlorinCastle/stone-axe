@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class MaterialButton : MonoBehaviour
 {
-    [SerializeField] private InventoryScript _invControl;
+    [SerializeField, HideInInspector] private InventoryScript _invControl;
+    [SerializeField, HideInInspector] private SoundMaster _soundControl;
     [SerializeField] private int _myButtonIndex;
     [SerializeField] private int _matIndex;
     [SerializeField] private TextMeshProUGUI _matNameText;
@@ -19,7 +20,11 @@ public class MaterialButton : MonoBehaviour
     private void Awake()
     {
         _invControl = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>();
+        _soundControl = GameObject.FindGameObjectWithTag("AudioMaster").GetComponent<SoundMaster>();
     }
+
+    public void playMouseOverSound() { _soundControl.playButtonHoverSound(); }
+    public void playButtonClickSound() { _soundControl.playButtonClickSound(); }
 
     public void setMatText()
     {

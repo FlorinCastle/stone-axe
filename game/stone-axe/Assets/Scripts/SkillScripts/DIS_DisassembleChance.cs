@@ -9,6 +9,7 @@ public class DIS_DisassembleChance : MonoBehaviour
 
     [SerializeField] private SkillManager _skillManagerRef;
     [SerializeField] private GameMaster _gameMasterRef;
+    [SerializeField, HideInInspector] private SoundMaster _soundControl;
     [SerializeField] private int currentLevel = 0;
     [SerializeField] private int maxLevel = 5;
     [SerializeField] private int requiredPlayerLevel = 0;
@@ -22,6 +23,7 @@ public class DIS_DisassembleChance : MonoBehaviour
     {
         _skillManagerRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SkillManager>();
         _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+        _soundControl = GameObject.FindGameObjectWithTag("AudioMaster").GetComponent<SoundMaster>();
         if (requiredPlayerLevel <= _gameMasterRef.GetLevel)
         {
             addPointButton.GetComponent<Button>().interactable = true;
@@ -35,6 +37,9 @@ public class DIS_DisassembleChance : MonoBehaviour
         setupSkillLevelText();
         setupSkillText();
     }
+
+    public void playMouseOverSound() { _soundControl.playButtonHoverSound(); }
+    public void playButtonClickSound() { _soundControl.playButtonClickSound(); }
 
     public void addLevel()
     {

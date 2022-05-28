@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class InventoryButton : MonoBehaviour
 {
-    [SerializeField] private InventoryScript _invControl;
+    [SerializeField, HideInInspector] private InventoryScript _invControl;
+    [SerializeField, HideInInspector] private SoundMaster _soundControl;
     [SerializeField] private int _myButtonIndex;
     [SerializeField] private int _itemIndex;
     [SerializeField] private int _partIndex;
@@ -19,7 +20,11 @@ public class InventoryButton : MonoBehaviour
     private void Awake()
     {
         _invControl = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>();
+        _soundControl = GameObject.FindGameObjectWithTag("AudioMaster").GetComponent<SoundMaster>();
     }
+
+    public void playMouseOverSound() { _soundControl.playButtonHoverSound(); }
+    public void playButtonClickSound() { _soundControl.playButtonClickSound(); }
 
     public void setItemInfoText() { _invControl.setItemDetailText(_itemIndex); }
     public void setPartInfoText() { _invControl.setPartDetailText(_partIndex); }

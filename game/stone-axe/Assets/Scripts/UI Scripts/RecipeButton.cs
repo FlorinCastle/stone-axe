@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RecipeButton : MonoBehaviour
 {
-    [SerializeField] private RecipeBook _recipeControl;
+    [SerializeField, HideInInspector] private RecipeBook _recipeControl;
+    [SerializeField, HideInInspector] private SoundMaster _soundControl;
     [SerializeField] private int _myButtonIndex;
     [SerializeField, HideInInspector] private string _recipeName;
     private bool _canCraft;
@@ -12,7 +13,11 @@ public class RecipeButton : MonoBehaviour
     private void Awake()
     {
         _recipeControl = GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>();
+        _soundControl = GameObject.FindGameObjectWithTag("AudioMaster").GetComponent<SoundMaster>();
     }
+
+    public void playMouseOverSound() { _soundControl.playButtonHoverSound(); }
+    public void playButtonClickSound() { _soundControl.playButtonClickSound(); }
 
     public void setItemRecipeInfoText()
     {
