@@ -507,8 +507,8 @@ public class QuestControl : MonoBehaviour
         }
         else
         {
-            _questName.text = "quest name";
-            _questText.text = "placeholder";
+            _questName.text = "no quest accepted";
+            _questText.text = "no quest accepted";
         }
     }
     public void setupQuest()
