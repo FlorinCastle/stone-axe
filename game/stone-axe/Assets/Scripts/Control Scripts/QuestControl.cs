@@ -82,14 +82,14 @@ public class QuestControl : MonoBehaviour
 
     [SerializeField] private QuestData starterRef;
     private GameObject p;
-    public void setupStoryQuests()
+    public void setupStoryQuests() // bleh
     {
         //Debug.Log("QuestControl.setupStoryQuests() - setting up story quests");
         if (_unlockedQuests.Count == 0)
             _unlockedQuests.Add(_questRef.getTutorialQuests()[0]);
         if (_chosenQuest == null)
         {
-            //Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is null");
+            Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is null");
 
             gameObject.GetComponent<GameMaster>().allTabsAccessable(false);
 
@@ -171,7 +171,7 @@ public class QuestControl : MonoBehaviour
         }
         else if (_chosenQuest.QuestType == "Tutorial" || _chosenQuest.QuestType == "Story")
         {
-            //Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is either Tutorial or Story");
+            Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is either Tutorial or Story");
             if (_chosenQuest.StoryQuestComplete == false)
                 setupStarter();
             else
@@ -201,7 +201,7 @@ public class QuestControl : MonoBehaviour
                     p.GetComponent<StoryQuestStarter>().QuestRef = _chosenQuest;
             }
 
-            //Debug.Log("QuestControl.setupStarter(): p.QuestRef = " + p.GetComponent<StoryQuestStarter>().QuestRef.QuestName);
+            Debug.Log("QuestControl.setupStarter(): p.QuestRef = " + p.GetComponent<StoryQuestStarter>().QuestRef.QuestName);
             _questStarterGOs.Add(p);
             p.GetComponent<StoryQuestStarter>().setupText();
         }
@@ -305,6 +305,7 @@ public class QuestControl : MonoBehaviour
     }
     public void LoadQuests(SaveQuestsObject questsSave)
     {
+        Debug.LogWarning("Loading Quests");
         if (questsSave.currentQuest != null)
         {
             foreach (QuestData quest in _questRef.getAllQuests())
@@ -323,27 +324,28 @@ public class QuestControl : MonoBehaviour
                 {
                     if (tutQuest.QuestName == quest.questName)
                     {
+                        //Debug.Log("QuestControl.LoadQuests() tutQuest = " + tutQuest.QuestName + "; tutQuest.StoryQuestComplete = true");
                         tutQuest.StoryQuestComplete = true;
                     }
-                    if (tutQuest == _enableBuyOnComplete)
+                    if (tutQuest.QuestName == _enableBuyOnComplete.QuestName)
                     {
-                        Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableBuyOnComplete");
+                        //Debug.Log("QuestControl.LoadQuests() TODO code for _enableBuyOnComplete");
                     }
-                    if (tutQuest == _enableDisassembleOnComplete)
+                    if (tutQuest.QuestName == _enableDisassembleOnComplete.QuestName)
                     {
-                        Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableDisassembleOnComplete");
+                        //Debug.Log("QuestControl.LoadQuests() TODO code for _enableDisassembleOnComplete");
                     }
-                    if (tutQuest == _enableCraftOnComplete)
+                    if (tutQuest.QuestName == _enableCraftOnComplete.QuestName)
                     {
-                        Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableCraftOnComplete");
+                        //Debug.Log("QuestControl.LoadQuests() TODO code for _enableCraftOnComplete");
                     }
-                    if (tutQuest == _enableSellOnComplete)
+                    if (tutQuest.QuestName == _enableSellOnComplete.QuestName)
                     {
-                        Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableSellOnComplete");
+                        //Debug.Log("QuestControl.LoadQuests() TODO code for _enableSellOnComplete");
                     }
-                    if (tutQuest == _enableAdventurersOnComplete)
+                    if (tutQuest.QuestName == _enableAdventurersOnComplete.QuestName)
                     {
-                        Debug.Log("QuestControl() toggling adventurers - DEBUG");
+                        //Debug.Log("QuestControl() toggling adventurers - DEBUG");
                         gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
                         // ui control, enable to market button
                         gameObject.GetComponent<GameMaster>().marketAccessable(true);
@@ -373,6 +375,7 @@ public class QuestControl : MonoBehaviour
             }
         }
 
+        star = true;
         setupStoryQuests();
     }
 

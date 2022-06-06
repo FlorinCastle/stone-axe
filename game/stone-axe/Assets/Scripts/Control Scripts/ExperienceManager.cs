@@ -27,7 +27,7 @@ public class ExperienceManager : MonoBehaviour
         if (gameObject.GetComponent<UIControl>().ShopUIActive)
         {
             //updateEXPSlider();
-            updateEXPSlider();
+            //updateEXPSlider();
             calculateLevel();
         }
     }
@@ -35,7 +35,7 @@ public class ExperienceManager : MonoBehaviour
     public void addExperience(int value)
     {
         _gameMasterRef.setTotalExperience(_gameMasterRef.GetTotalExperience + value);
-        updateEXPSlider();
+        //updateEXPSlider();
         calculateLevel();
     }
 
@@ -60,9 +60,16 @@ public class ExperienceManager : MonoBehaviour
         _gameMasterRef.setLevel(counter);
         _gameMasterRef.setCurrentSkillPoints(counter);
         _skillMgrRef.setTotalSkillPoints(counter);
-        _levelTxt.text = "level: " + _gameMasterRef.GetLevel;
+        //_levelTxt.text = "level: " + _gameMasterRef.GetLevel;
+        setupEXPUI();
         prevUpdatedLevel = _gameMasterRef.GetLevel;
         _gameMasterRef.updateLevelLocks();
+    }
+
+    public void setupEXPUI()
+    {
+        _levelTxt.text = "level: " + _gameMasterRef.GetLevel;
+        updateEXPSlider();
     }
 
     public void updateEXPSlider()
@@ -133,6 +140,11 @@ public class ExperienceManager : MonoBehaviour
     }
 
     public bool LevelUpUIActive() { return _levelUpMenu.activeInHierarchy; }
+
+    public int getEXPValueForLevel(int level)
+    {
+        return _levelMarks[level];
+    }
 
     /* does not work for some reason >:(
     public void smoothUpdateEXPSlider()

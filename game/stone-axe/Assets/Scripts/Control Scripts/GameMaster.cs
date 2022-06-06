@@ -56,6 +56,15 @@ public class GameMaster : MonoBehaviour
         _uiControlRef = gameObject.GetComponent<UIControl>();
 
         loadSaveGames();
+
+        if (_uiControlRef.ShopUIActive)
+        {
+            getMostRecentSaveString();
+            _selectedSave = _mostRecentSave;
+
+            loadSelectedGame();
+        }
+            
     }
 
     public void setSkipTutorial()
@@ -632,9 +641,9 @@ public class GameMaster : MonoBehaviour
 
                     //  load out all the other data
                     // load out assigned skill points
-                    this.gameObject.GetComponent<SkillManager>().LoadSkills(saveObject.skillObject);
+                    gameObject.GetComponent<SkillManager>().LoadSkills(saveObject.skillObject);
                     // load out quest data
-                    this.gameObject.GetComponent<QuestControl>().LoadQuests(saveObject.questSaveObject);
+                    gameObject.GetComponent<QuestControl>().LoadQuests(saveObject.questSaveObject);
 
                     // load out this gameobject's data
                     if (saveObject.playerName != null || saveObject.playerName != "") _playerName = saveObject.playerName;
@@ -656,12 +665,18 @@ public class GameMaster : MonoBehaviour
                     
 
                     _currentCurrency = saveObject.currentCurency;
-                    _totalExperience = saveObject.currentExp;
                     _level = saveObject.level;
+                    _totalExperience = saveObject.currentExp;
+                    if (_totalExperience < gameObject.GetComponent<ExperienceManager>().getEXPValueForLevel(_level-1))
+                    {
+                        _totalExperience = gameObject.GetComponent<ExperienceManager>().getEXPValueForLevel(_level-1);
+                    }
+                    gameObject.GetComponent<ExperienceManager>().setupEXPUI();
+
                     _currentSkillPoints = saveObject.currentSkillPoints;
                     // load out the player data
                     //Debug.Log(saveObject.playerSave.playerHead);
-                    this.gameObject.GetComponent<PlayerManager>().loadPlayerData(saveObject.playerSave);
+                    gameObject.GetComponent<PlayerManager>().loadPlayerData(saveObject.playerSave);
                     Debug.Log("loaded save: " + saveObject.playerName + " " + saveObject.shopName);
                 }
                 else

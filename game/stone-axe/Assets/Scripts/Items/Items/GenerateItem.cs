@@ -137,24 +137,24 @@ public class GenerateItem : MonoBehaviour
         {
             if (haggleSucceded == false)
             {
-                if (this.gameObject.GetComponent<GameMaster>().removeCurrency(Mathf.RoundToInt(_generatedItem.TotalValue * _skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice())))
+                if (gameObject.GetComponent<GameMaster>().removeCurrency(Mathf.RoundToInt(_generatedItem.TotalValue * _skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice())))
                 {
                     _inventoryRef.InsertItem(_generatedItem);
-                    this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
+                    gameObject.GetComponent<ExperienceManager>().addExperience(3);
                 }
             }
             else if (haggleSucceded == true)
             {
-                if (this.gameObject.GetComponent<GameMaster>().removeCurrency(Mathf.RoundToInt(_generatedItem.TotalValue * (_skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice() + _skillManager.HagglePriceRef.getModifiedPrice()))))
+                if (gameObject.GetComponent<GameMaster>().removeCurrency(Mathf.RoundToInt(_generatedItem.TotalValue * (_skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice() + _skillManager.HagglePriceRef.getModifiedPrice()))))
                 {
                     _inventoryRef.InsertItem(_generatedItem);
-                    this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
+                    gameObject.GetComponent<ExperienceManager>().addExperience(3);
                 }
             }
         }
         clearBuyMenu();
 
-        this.gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
+        gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
 
         if (_gameMaster.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
             (_gameMaster.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" ||
@@ -208,7 +208,7 @@ public class GenerateItem : MonoBehaviour
             _gameMaster.GetComponent<DisassembleItemControl>().disassembleItem();
         }
         clearBuyMenu();
-        this.gameObject.GetComponent<SellItemControl>().clearSellMenu();
+        gameObject.GetComponent<SellItemControl>().clearSellMenu();
     }
     public void clearBuyMenu()
     {
