@@ -70,14 +70,6 @@ public class MiniGameControl : MonoBehaviour
         _craftingMinigameUI.SetActive(false);
         _disassemblyMinigameUI.SetActive(true);
         populateHitPoints();
-        /*
-        if (this.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
-            this.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial")
-        {
-            Debug.LogWarning("Quest Notif - Disassemble Minigame");
-            this.gameObject.GetComponent<QuestControl>().nextStage();
-        }
-        */
     }
     public void stopDisassembleMiniGame()
     {
@@ -91,10 +83,16 @@ public class MiniGameControl : MonoBehaviour
         chosenHitPoints.Clear();
         
         if (_disassemblyMinigameUI.activeInHierarchy == true)
+        {
             finalPointsToHit = calculateDisasembleHitPoints();
+            Debug.Log("MiniGameControl.populateHitPoinst(): calculating for disassembly... finalPointsToHit is " + finalPointsToHit);
+        }
         else if (_craftingMinigameUI.activeInHierarchy == true)
+        {
             finalPointsToHit = calculateCraftHitPoints();
-        
+            Debug.Log("MiniGameControl.populateHitPoinst(): calculating for crafting... finalPointsToHit is " + finalPointsToHit);
+        }
+
         for (int j = finalPointsToHit; j > 0; j--)
         {
             int k = Random.Range(0, _hitPointMarkers.Count);
@@ -112,7 +110,7 @@ public class MiniGameControl : MonoBehaviour
             GameObject ph = Instantiate(_hitPointPrefab);
             ph.transform.SetParent(_hitPointMarkers[l].transform, false);
         }
-        
+        updateHitpointText();
     }
 
     private int calculateDisasembleHitPoints()
@@ -141,6 +139,8 @@ public class MiniGameControl : MonoBehaviour
 
     public void resetHitPoints()
     {
+        Debug.Log("MiniGameControl().resetHitPoints()");
+
         _disassembleCompleteButton.interactable = false;
         _craftCompletButton.interactable = false;
 

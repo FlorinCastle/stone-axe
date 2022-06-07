@@ -277,6 +277,7 @@ public class DisassembleItemControl : MonoBehaviour
 
         // remove part from inventory
         _invScriptRef.RemovePart(_selectedObject, true);
+        _invScriptRef.setupMatInventory();
 
         gameObject.GetComponent<ExperienceManager>().addExperience(1);
 

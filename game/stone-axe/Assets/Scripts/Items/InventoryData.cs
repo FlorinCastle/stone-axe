@@ -129,7 +129,7 @@ public class InventoryData : MonoBehaviour
         correctItemIndex();
     }
 
-    private void correctItemIndex()
+    public void correctItemIndex()
     {
         foreach (GameObject go in _itemInventoryData)
         {
@@ -150,6 +150,16 @@ public class InventoryData : MonoBehaviour
                 _partInventoryData.RemoveAt(index);
                 break;
             }
+        }
+        _invControlRef.setupPartInventory();
+        correctPartIndex();
+    }
+    public void correctPartIndex()
+    {
+        foreach (GameObject go in _partInventoryData)
+        {
+            int index = _partInventoryData.IndexOf(go);
+            go.GetComponent<PartDataStorage>().InventoryIndex = index;
         }
     }
 

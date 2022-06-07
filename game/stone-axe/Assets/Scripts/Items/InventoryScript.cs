@@ -1325,6 +1325,8 @@ public class InventoryScript : MonoBehaviour
     public void RemovePart(GameObject part, bool destroy)
     {
         _inventoryData.removePart(part, destroy);
+
+        setupPartInventory();
     }
     public void RemoveMatAmount(MaterialDataStorage mat, int amount)
     {

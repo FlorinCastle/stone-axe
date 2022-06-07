@@ -8,6 +8,7 @@ public class PartDataStorage : MonoBehaviour
     [SerializeField] private string _partName;
     [SerializeField] private MaterialData _material;
     [SerializeField] private int _totalValue;
+    [SerializeField] private int inventoryIndex;
 
     [Header("Part Stats")]
     [SerializeField] private int _partStrength;
@@ -57,6 +58,8 @@ public class PartDataStorage : MonoBehaviour
 
     public int Value { get => _totalValue; }
     public void setValue(int value) { _totalValue = value; }
+
+    public int InventoryIndex { get => inventoryIndex; set => inventoryIndex = value; }
 
     public int PartStr  { get => _partStrength; }
     public void setPartStr(int value) { _partStrength = value; }

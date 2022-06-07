@@ -188,6 +188,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
+  passToMonoBehavior: {fileID: 0}
 --- !u!1 &53814404344555469
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +421,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 45
+  m_ScrollSensitivity: -45
   m_Viewport: {fileID: 7779926396283193733}
   m_HorizontalScrollbar: {fileID: 8255635715030447416}
   m_VerticalScrollbar: {fileID: 2055401156242442057}
@@ -1086,6 +1087,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
+  passToMonoBehavior: {fileID: 0}
 --- !u!1 &1943918182007057432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,7 +1656,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 45
+  m_ScrollSensitivity: -45
   m_Viewport: {fileID: 857024767462647773}
   m_HorizontalScrollbar: {fileID: 7497322373933112686}
   m_VerticalScrollbar: {fileID: 777069295908382912}
@@ -2365,6 +2367,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
+  passToMonoBehavior: {fileID: 0}
 --- !u!1 &3010452329568183384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,6 +2716,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
+  passToMonoBehavior: {fileID: 0}
 --- !u!1 &3708386566421968708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2811,7 +2815,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 45
+  m_ScrollSensitivity: -45
   m_Viewport: {fileID: 4311022901406491997}
   m_HorizontalScrollbar: {fileID: 580319102783431331}
   m_VerticalScrollbar: {fileID: 6597635956066089335}
@@ -3180,6 +3184,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
+  passToMonoBehavior: {fileID: 0}
 --- !u!1 &4311036472616685772
 GameObject:
   m_ObjectHideFlags: 0
@@ -3849,7 +3854,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 45
+  m_ScrollSensitivity: -45
   m_Viewport: {fileID: 2200267433249282750}
   m_HorizontalScrollbar: {fileID: 2612220225047210046}
   m_VerticalScrollbar: {fileID: 3195141660532449906}
@@ -5005,6 +5010,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
+  passToMonoBehavior: {fileID: 0}
 --- !u!1 &7006348168459939526
 GameObject:
   m_ObjectHideFlags: 0
@@ -5354,6 +5360,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
+  passToMonoBehavior: {fileID: 0}
 --- !u!1 &7322592812357493981
 GameObject:
   m_ObjectHideFlags: 0
@@ -6579,6 +6586,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
+  passToMonoBehavior: {fileID: 0}
 --- !u!1 &8800440767313625553
 GameObject:
   m_ObjectHideFlags: 0

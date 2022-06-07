@@ -469,6 +469,8 @@ public class UIControl : MonoBehaviour
         enchantsScrollView.SetActive(false);
         partsScrollView.SetActive(false);
         itemsScrollView.SetActive(true);
+        GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryData>().correctItemIndex();
+        GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>().setupItemInventory();
         BUI_InvSelected();
         IUI_ItemsSelected();
     }
@@ -479,6 +481,8 @@ public class UIControl : MonoBehaviour
         matsScrollView.SetActive(false);
         enchantsScrollView.SetActive(false);
         partsScrollView.SetActive(true);
+        GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryData>().correctPartIndex();
+        GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>().setupPartInventory();
         BUI_InvSelected();
         IUI_PartsSelected();
     }
@@ -489,18 +493,18 @@ public class UIControl : MonoBehaviour
         partsScrollView.SetActive(false);
         enchantsScrollView.SetActive(false);
         matsScrollView.SetActive(true);
+        GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>().setupMatInventory();
         BUI_InvSelected();
         IUI_MatsSelected();
     }
     public void openEnchInv()
     {
         openInvUI();
-        if (CraftPartUIEnabled == true)
-            GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>().setupEnchantInventory();
         itemsScrollView.SetActive(false);
         partsScrollView.SetActive(false);
         matsScrollView.SetActive(false);
         enchantsScrollView.SetActive(true);
+        GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>().setupEnchantInventory();
         BUI_InvSelected();
         IUI_EnchSelected();
     }

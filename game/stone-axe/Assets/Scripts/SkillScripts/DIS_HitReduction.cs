@@ -98,11 +98,17 @@ public class DIS_HitReduction : MonoBehaviour
             removePointButton.GetComponent<Button>().interactable = false;
 
         if (_skillManagerRef.hasFreeSkillPoint() && currentLevel != maxLevel)
-            addPointButton.GetComponent<Button>().interactable = true;
+        {
+            addPointButton.GetComponent<Button>().interactable = true; 
+        }
         else if (currentLevel == maxLevel)
+        {
             addPointButton.GetComponent<Button>().interactable = false;
-        else
+        }
+        else if (_skillManagerRef.hasFreeSkillPoint() == false)
+        {
             addPointButton.GetComponent<Button>().interactable = false;
+        }
     }
 
     private void setupSkillLevelText()
