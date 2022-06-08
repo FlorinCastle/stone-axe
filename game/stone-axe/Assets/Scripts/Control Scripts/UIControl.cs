@@ -102,6 +102,7 @@ public class UIControl : MonoBehaviour
 
     private void Awake()
     {
+        gameObject.GetComponent<GameMaster>().marketAccessable(false);
         // check if ui objects have something assigned
         if (mainMenuUI == null)
             Debug.LogError("Main Menu UI is not assigned");
@@ -125,7 +126,6 @@ public class UIControl : MonoBehaviour
         setupCreditsText();
         updateCurrencyText();
 
-        gameObject.GetComponent<GameMaster>().marketAccessable(false);
     }
 
     private void Update()
@@ -335,7 +335,7 @@ public class UIControl : MonoBehaviour
 
     public void marketAccessable(bool input)
     {
-        //Debug.Log("market accessable: " + input.ToString());
+        Debug.Log("market accessable: " + input.ToString());
         _toMarketButton.interactable = input;
     }
 

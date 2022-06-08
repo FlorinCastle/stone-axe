@@ -179,21 +179,13 @@ public class AdventurerMaster : MonoBehaviour
         //StartCoroutine(AdventurerTimer());
         while (advSpawnEnabled)
         {
-            Debug.Log("Started Adventurer Spawn Coroutine");
+            Debug.LogWarning("Started Adventurer Spawn Coroutine");
             timerCoroutine = StartCoroutine(AdventurerTimer());
             //_spawnProgressSlider.gameObject.SetActive(true);
             yield return new WaitForSeconds(_timeBetweenSpawn);
             if (_currentAdventurers.Count < 3)
             {
                 spawnAdventurer();
-                /*
-                advPlaceholder = Instantiate(_adventurerPrefab, _walkingPoints[0].gameObject.transform, false);
-                advPlaceholder.transform.parent = null;
-                advPlaceholder.GetComponent<AdventurerAI>().setCurentTarget(_walkingPoints[1].gameObject);
-                advPlaceholder.GetComponent<AdventurerAI>().setupAdventurer();
-                //advPlaceholder.GetComponent<AdventurerAI>().IsMoving = true;
-                _currentAdventurers.Add(advPlaceholder);
-                */
             }
             StopCoroutine(timerCoroutine);
             _spawnProgressSlider.gameObject.SetActive(false);

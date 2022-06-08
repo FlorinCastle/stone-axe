@@ -93,7 +93,7 @@ public class GameMaster : MonoBehaviour
         return false;
     }
 
-    public void marketAccessable(bool input)
+    public void marketAccessable(bool input) // bleh
     {
         gameObject.GetComponent<UIControl>().marketAccessable(input);
         if (input == false)
@@ -613,6 +613,7 @@ public class GameMaster : MonoBehaviour
     }
     public void loadGame()
     {
+        Debug.Log("loading game from _selectedSave: " + _selectedSave);
         foreach (string savePath in _saveGameList)
         {
             //if (File.Exists(Application.dataPath + "/save.json"))
@@ -855,6 +856,8 @@ public class GameMaster : MonoBehaviour
                 + JsonUtility.FromJson<SaveObject>(File.ReadAllText(mostRecentSave)).shopName;
 
             _mostRecentSave = mostRecentSave;
+
+            Debug.Log("Ret: " + ret + "\n_mostRecentSave: " + _mostRecentSave);
 
             return ret;
         }

@@ -72,7 +72,7 @@ public class QuestControl : MonoBehaviour
 
         if (gameObject.GetComponent<UIControl>().ShopUIActive == true && star == false)
         {
-            //Debug.Log("QuestControl.FixedUpdate(): setting up quests for debug");
+            Debug.Log("QuestControl.FixedUpdate(): setting up quests for debug");
             setupStoryQuests();
             star = true;
         }
@@ -84,12 +84,14 @@ public class QuestControl : MonoBehaviour
     private GameObject p;
     public void setupStoryQuests() // bleh
     {
-        //Debug.Log("QuestControl.setupStoryQuests() - setting up story quests");
+        Debug.Log("QuestControl.setupStoryQuests() - setting up story quests");
+        _questRef.organizeQuests();
+
         if (_unlockedQuests.Count == 0)
             _unlockedQuests.Add(_questRef.getTutorialQuests()[0]);
         if (_chosenQuest == null)
         {
-            Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is null");
+            //Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is null");
 
             gameObject.GetComponent<GameMaster>().allTabsAccessable(false);
 
@@ -171,7 +173,7 @@ public class QuestControl : MonoBehaviour
         }
         else if (_chosenQuest.QuestType == "Tutorial" || _chosenQuest.QuestType == "Story")
         {
-            Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is either Tutorial or Story");
+            //Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is either Tutorial or Story");
             if (_chosenQuest.StoryQuestComplete == false)
                 setupStarter();
             else
@@ -201,7 +203,7 @@ public class QuestControl : MonoBehaviour
                     p.GetComponent<StoryQuestStarter>().QuestRef = _chosenQuest;
             }
 
-            Debug.Log("QuestControl.setupStarter(): p.QuestRef = " + p.GetComponent<StoryQuestStarter>().QuestRef.QuestName);
+            //Debug.Log("QuestControl.setupStarter(): p.QuestRef = " + p.GetComponent<StoryQuestStarter>().QuestRef.QuestName);
             _questStarterGOs.Add(p);
             p.GetComponent<StoryQuestStarter>().setupText();
         }
@@ -305,7 +307,8 @@ public class QuestControl : MonoBehaviour
     }
     public void LoadQuests(SaveQuestsObject questsSave)
     {
-        Debug.LogWarning("Loading Quests");
+        _questRef.organizeQuests();
+        //Debug.Log("checking data from questsSave - completed quests: " + questsSave.completedQuests);
         if (questsSave.currentQuest != null)
         {
             foreach (QuestData quest in _questRef.getAllQuests())
@@ -320,11 +323,14 @@ public class QuestControl : MonoBehaviour
         {
             if (quest.questType == "Tutorial")
             {
+                Debug.Log("quest - questName: " + quest.questName);
                 foreach (QuestData tutQuest in _questRef.getTutorialQuests())
                 {
-                    if (tutQuest.QuestName == quest.questName)
+                    Debug.Log("quest - tutQuest.QuestName: " + tutQuest.QuestName);
+
+                    if (tutQuest.QuestName.Equals(quest.questName))
                     {
-                        //Debug.Log("QuestControl.LoadQuests() tutQuest = " + tutQuest.QuestName + "; tutQuest.StoryQuestComplete = true");
+                        Debug.Log("QuestControl.LoadQuests() tutQuest = " + tutQuest.QuestName + "; tutQuest.StoryQuestComplete = true");
                         tutQuest.StoryQuestComplete = true;
                     }
                     if (tutQuest.QuestName == _enableBuyOnComplete.QuestName)
@@ -345,7 +351,7 @@ public class QuestControl : MonoBehaviour
                     }
                     if (tutQuest.QuestName == _enableAdventurersOnComplete.QuestName)
                     {
-                        //Debug.Log("QuestControl() toggling adventurers - DEBUG");
+                        Debug.Log("QuestControl() toggling adventurers - DEBUG");
                         gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
                         // ui control, enable to market button
                         gameObject.GetComponent<GameMaster>().marketAccessable(true);

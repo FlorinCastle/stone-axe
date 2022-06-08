@@ -139,7 +139,7 @@ public class MiniGameControl : MonoBehaviour
 
     public void resetHitPoints()
     {
-        Debug.Log("MiniGameControl().resetHitPoints()");
+        //Debug.Log("MiniGameControl().resetHitPoints()");
 
         _disassembleCompleteButton.interactable = false;
         _craftCompletButton.interactable = false;
