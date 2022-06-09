@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GoldenLasso
   m_EditorClassIdentifier: 
   _qItemName: Golden Lasso
-  _qItemLore: An item that is mainly used for restrainign others, but is also blessed
+  _qItemLore: An item that is mainly used for restraining others, but is also blessed
     by a god(dess) of Truth and Fairness
   _qItemUnlockLevel: 18
   _qItemPart1: {fileID: 11400000, guid: 3e0f8209da497274bb70b9f4a1a62cf8, type: 2}

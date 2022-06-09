@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Quest_CraftBoneCuirass
   m_EditorClassIdentifier: 
   _questName: Craft Bone Cuirass
-  _questDiscription: 
+  _questDiscription: ' a fellow in metal armor requested a bone cuirass. They said
+    something about ''wanting to wear the bones of their enemies''?'
   _questType: 2
   _questStages: []
   _requiredItem: {fileID: 0}
@@ -22,7 +23,7 @@ MonoBehaviour:
   _requiredCount: 0
   _nextQuest: {fileID: 0}
   _unlocksQuests: []
-  _requiredPlayerLevel: 8
+  _requiredPlayerLevel: 5
   _storyQuestComplete: 0
   _rewardCurrency: 1000
   _rewardEXP: 2

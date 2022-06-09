@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 906549ced2b40c84c8a9474b679e6739, type: 3}
-  m_Name: Quest_CraftSilverHuntersSword
+  m_Name: Quest_CraftRedPrincess
   m_EditorClassIdentifier: 
-  _questName: Craft Silver Hunter's Sword
-  _questDiscription: 
+  _questName: Craft Red Princess
+  _questDiscription: The blond requester has a very fine green hat. He requests that
+    you make a duplicate of the 'cane' he carries with himself. Hidden blade and
+    all.
   _questType: 2
   _questStages: []
   _requiredItem: {fileID: 0}
   _requiredMaterial: {fileID: 0}
-  _requiredQuestItem: {fileID: 11400000, guid: 1fe4a9478cebc974a8df82e2834dee40, type: 2}
+  _requiredQuestItem: {fileID: 11400000, guid: d96faadf02f45c0439eb6c536d4f6565, type: 2}
   _requiredCount: 0
   _nextQuest: {fileID: 0}
   _unlocksQuests: []
-  _requiredPlayerLevel: 0
+  _requiredPlayerLevel: 16
   _storyQuestComplete: 0
   _rewardCurrency: 1000
   _rewardEXP: 2

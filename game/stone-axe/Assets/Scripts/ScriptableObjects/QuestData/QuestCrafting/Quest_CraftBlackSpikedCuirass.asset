@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Quest_CraftBlackSpikedCuirass
   m_EditorClassIdentifier: 
   _questName: Craft Black Spiked Cuirass
-  _questDiscription: 
+  _questDiscription: a fellow in black spiked armor requested a black spiked cuirass.
+    They said something about 'messing up an enchantment session'?
   _questType: 2
   _questStages: []
   _requiredItem: {fileID: 0}

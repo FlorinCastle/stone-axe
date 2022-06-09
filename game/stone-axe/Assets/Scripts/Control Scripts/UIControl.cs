@@ -102,7 +102,7 @@ public class UIControl : MonoBehaviour
 
     private void Awake()
     {
-        gameObject.GetComponent<GameMaster>().marketAccessable(false);
+        //gameObject.GetComponent<GameMaster>().marketAccessable(false);
         // check if ui objects have something assigned
         if (mainMenuUI == null)
             Debug.LogError("Main Menu UI is not assigned");
@@ -264,7 +264,7 @@ public class UIControl : MonoBehaviour
     {
         if (File.Exists(Application.persistentDataPath + "/save1.json") && gameObject.GetComponent<GameMaster>().checkIfAnySavesExist())
         {
-            Debug.Log("UIControl.setupContinueUI() - save1.json exists!");
+            //Debug.Log("UIControl.setupContinueUI() - save1.json exists!");
             _continueButton.interactable = true;
 
             _continueText.text = "continue game: " + gameObject.GetComponent<GameMaster>().getMostRecentSaveString(); 
@@ -335,7 +335,7 @@ public class UIControl : MonoBehaviour
 
     public void marketAccessable(bool input)
     {
-        Debug.Log("market accessable: " + input.ToString());
+        //Debug.Log("market accessable: " + input.ToString());
         _toMarketButton.interactable = input;
     }
 

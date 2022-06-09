@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
-  m_Name: EyeAxe
+  m_Name: RedPrincess
   m_EditorClassIdentifier: 
-  _qItemName: Eye Axe
-  _qItemLore: 'An oversized, long handled axe that sould look oversized in the hands
-    of anyone except the tallest of beings.
-
-    The otherworldly eye crystal embeded
-    where the shaft meets the head seems to be looking for...something. Or somewhere.'
+  _qItemName: Red Princess
+  _qItemLore: A single-edged blade sheathed within an ordinary cane. By commanding
+    "Wake Up" the blade will transform into a secondary form that produces powerful
+    crimson energy attacks.
   _qItemUnlockLevel: 16
-  _qItemPart1: {fileID: 11400000, guid: 300b4734fd9a8484cbf9034e96ce4099, type: 2}
+  _qItemPart1: {fileID: 11400000, guid: 9da3680434e2c3e49806b931b533c9be, type: 2}
   _qItemPart2: {fileID: 11400000, guid: 0c394eafc001483488e07fe06842f262, type: 2}
-  _qItemPart3: {fileID: 11400000, guid: 49f0d999a34fb044cacc4c7d5a6c3cb1, type: 2}
+  _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 0
   _baseStrength: 0
   _baseDextarity: 0

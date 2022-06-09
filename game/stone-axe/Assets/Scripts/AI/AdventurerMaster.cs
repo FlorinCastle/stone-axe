@@ -33,7 +33,7 @@ public class AdventurerMaster : MonoBehaviour
         //_timer = _timeBetweenSpawn;
         if (_adventurerPrefab == null)
             Debug.LogError("Adventurer Prefab is not assigned!");
-        _spawnProgressSlider.gameObject.SetActive(false);
+        //_spawnProgressSlider.gameObject.SetActive(false);
         _soundMaster = GameObject.FindGameObjectWithTag("AudioMaster").GetComponent<SoundMaster>();
     }
 
@@ -42,6 +42,7 @@ public class AdventurerMaster : MonoBehaviour
         advSpawnEnabled = true;
         _spawnProgressSlider.gameObject.SetActive(true);
         advCoroutine = StartCoroutine(AdventurerSpawn());
+        //Debug.Log("AdventurerMaster.startAdventurerSpawn(): Started Adventurer Spawn Coroutine");
         return advSpawnEnabled;
     } 
     public bool disableAdventurerSpawn()
@@ -50,7 +51,7 @@ public class AdventurerMaster : MonoBehaviour
         _spawnProgressSlider.gameObject.SetActive(false);
         if (advCoroutine != null)
             StopCoroutine(advCoroutine);
-        Debug.Log("AdventurerMaster.disableAdventurerSpawn(): Stopped Adventurer Spawn Coroutine");
+        //Debug.Log("AdventurerMaster.disableAdventurerSpawn(): Stopped Adventurer Spawn Coroutine");
         return advSpawnEnabled;
     } 
     public void dismissAdventurers()
@@ -130,21 +131,21 @@ public class AdventurerMaster : MonoBehaviour
         if (advType == "Elf")
         {
             int e = Random.Range(0, _adventurerMats.ElfColors.Count);
-            Debug.Log(advType + " " + e);
+            //Debug.Log(advType + " " + e);
             return _adventurerMats.ElfColors[e];
             //return Color.red;
         }
         else if (advType == "Human")
         {
             int h = Random.Range(0, _adventurerMats.HumanColors.Count);
-            Debug.Log(advType + " " + h);
+            //Debug.Log(advType + " " + h);
             return _adventurerMats.HumanColors[h];
             // return Color.blue;
         }
         else if (advType == "Lizardman")
         {
             int l = Random.Range(0, _adventurerMats.LizardColors.Count);
-            Debug.Log(advType + " " + l);
+            //Debug.Log(advType + " " + l);
             return _adventurerMats.LizardColors[l];
             //return Color.black;
         }
@@ -179,9 +180,9 @@ public class AdventurerMaster : MonoBehaviour
         //StartCoroutine(AdventurerTimer());
         while (advSpawnEnabled)
         {
-            Debug.LogWarning("Started Adventurer Spawn Coroutine");
+            //Debug.LogWarning("Started Adventurer Spawn Coroutine");
             timerCoroutine = StartCoroutine(AdventurerTimer());
-            //_spawnProgressSlider.gameObject.SetActive(true);
+            _spawnProgressSlider.gameObject.SetActive(true);
             yield return new WaitForSeconds(_timeBetweenSpawn);
             if (_currentAdventurers.Count < 3)
             {
@@ -189,7 +190,7 @@ public class AdventurerMaster : MonoBehaviour
             }
             StopCoroutine(timerCoroutine);
             _spawnProgressSlider.gameObject.SetActive(false);
-            Debug.Log("Finished spawning Coroutine Countdown");
+            //Debug.Log("Finished spawning Coroutine Countdown");
         }
     }
     IEnumerator AdventurerTimer()

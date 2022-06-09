@@ -73,7 +73,8 @@ public class QuestDataEditor : Editor
 
             case QuestData.questTypeEnum.OCC_Item:
                 EditorGUILayout.PropertyField(reqItem, new GUIContent("Required Item"));
-                reqLevel.intValue = itemRef.ItemLevel;
+                if (itemRef != null) reqLevel.intValue = itemRef.ItemLevel;
+                else reqLevel.intValue = 0;
                 reqMat.objectReferenceValue = null;
                 reqQItem.objectReferenceValue = null;
                 reqCount.intValue = 0;
@@ -91,7 +92,8 @@ public class QuestDataEditor : Editor
                 reqItem.objectReferenceValue = null;
                 reqMat.objectReferenceValue = null;
                 EditorGUILayout.PropertyField(reqQItem, new GUIContent("Required Item"));
-                reqLevel.intValue = qItemRef.QuestItemUnlockLevel;
+                if (qItemRef != null) reqLevel.intValue = qItemRef.QuestItemUnlockLevel;
+                else reqLevel.intValue = 0;
                 reqCount.intValue = 0;
                 questComplete.boolValue = false;
                 nextQuest.objectReferenceValue = null;
@@ -107,7 +109,8 @@ public class QuestDataEditor : Editor
             case QuestData.questTypeEnum.OD_Material:
                 reqItem.objectReferenceValue = null;
                 EditorGUILayout.PropertyField(reqMat, new GUIContent("Required Material"));
-                reqLevel.intValue = matRef.LevelRequirement;
+                if (matRef != null) reqLevel.intValue = matRef.LevelRequirement;
+                else reqLevel.intValue = 0;
                 reqQItem.objectReferenceValue = null;
                 EditorGUILayout.PropertyField(reqCount, new GUIContent("Material Count"));
                 questComplete.boolValue = false;

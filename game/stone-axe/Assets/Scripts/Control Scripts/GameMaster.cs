@@ -63,8 +63,7 @@ public class GameMaster : MonoBehaviour
             _selectedSave = _mostRecentSave;
 
             loadSelectedGame();
-        }
-            
+        }            
     }
 
     public void setSkipTutorial()
@@ -419,19 +418,11 @@ public class GameMaster : MonoBehaviour
         if (spawnAdvent != toggle)
         {
             spawnAdvent = toggle;
-            if (toggle == true)
+            if (spawnAdvent == true)
                 gameObject.GetComponent<AdventurerMaster>().startAdventurerSpawn();
-            else if (toggle == false)
+            else if (spawnAdvent == false)
                 gameObject.GetComponent<AdventurerMaster>().disableAdventurerSpawn();
         }
-    }
-    public void toggleAdventurerSpawn()
-    {
-        spawnAdvent = !spawnAdvent;
-        if (spawnAdvent == true)
-            this.gameObject.GetComponent<AdventurerMaster>().startAdventurerSpawn();
-        else if (spawnAdvent == false)
-            this.gameObject.GetComponent<AdventurerMaster>().disableAdventurerSpawn();
     }
     public void adventurerEco(AdventurerAI aiRef)
     {
@@ -613,7 +604,7 @@ public class GameMaster : MonoBehaviour
     }
     public void loadGame()
     {
-        Debug.Log("loading game from _selectedSave: " + _selectedSave);
+        //Debug.Log("loading game from _selectedSave: " + _selectedSave);
         foreach (string savePath in _saveGameList)
         {
             //if (File.Exists(Application.dataPath + "/save.json"))
@@ -678,7 +669,7 @@ public class GameMaster : MonoBehaviour
                     // load out the player data
                     //Debug.Log(saveObject.playerSave.playerHead);
                     gameObject.GetComponent<PlayerManager>().loadPlayerData(saveObject.playerSave);
-                    Debug.Log("loaded save: " + saveObject.playerName + " " + saveObject.shopName);
+                    //Debug.Log("loaded save: " + saveObject.playerName + " " + saveObject.shopName);
                 }
                 else
                     Debug.LogWarning("No save data!");
@@ -831,7 +822,7 @@ public class GameMaster : MonoBehaviour
     {
         if (File.Exists(Application.persistentDataPath + "/save1.json"))
         {
-            Debug.Log("GameMaster.getMostRecentSaveString() - save1.json exists!");
+            //Debug.Log("GameMaster.getMostRecentSaveString() - save1.json exists!");
             string saveString = File.ReadAllText(Application.persistentDataPath + "/save1.json");
 
             SaveData saveObject = JsonUtility.FromJson<SaveData>(saveString);
@@ -857,7 +848,7 @@ public class GameMaster : MonoBehaviour
 
             _mostRecentSave = mostRecentSave;
 
-            Debug.Log("Ret: " + ret + "\n_mostRecentSave: " + _mostRecentSave);
+            //Debug.Log("Ret: " + ret + "\n_mostRecentSave: " + _mostRecentSave);
 
             return ret;
         }
