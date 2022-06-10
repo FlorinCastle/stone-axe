@@ -78,6 +78,19 @@ public class SellItemControl : MonoBehaviour
             _sellItemButton.interactable = false;
         }
     }
+    public void selectItem(GameObject value)
+    {
+        if (value.GetComponent<ItemDataStorage>())
+            _selectedItem = value;
+
+        if (_selectedItem != null)
+            setupDiscription();
+        else
+        {
+            Debug.Log("No Item selected!");
+            _sellItemButton.interactable = false;
+        }
+    }
 
     private ItemDataStorage _itemData;
     private string _itemName;

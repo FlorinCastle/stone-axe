@@ -287,7 +287,9 @@ public class GameMaster : MonoBehaviour
     }
     public void loadDisassembleMenu()
     {
-        _uiControlRef.SUI_DisassembleSelected();
+        Debug.Log("GameMaster.loadDisassembleMenu()");
+
+        //_uiControlRef.SUI_DisassembleSelected();
         _uiControlRef.disassembleMenuEnabled(true);
         _uiControlRef.shopEcoMenuEnabled(false);
         _uiControlRef.shopBuyMenuEnabled(false);
@@ -642,18 +644,22 @@ public class GameMaster : MonoBehaviour
                     else _playerName = gameObject.GetComponent<DefaultValues>().PlayerDefaultName;
                     if (saveObject.shopName != null || saveObject.shopName != "") _shopName = saveObject.shopName;
                     else _shopName = gameObject.GetComponent<DefaultValues>().ShopDefaultName;
-                    
+
+                    //Debug.Log("GameMaster.loadGame() saveObject.buyAvailable == " + saveObject.buyAvailable.ToString());
                     if (saveObject.buyAvailable == true) _uiControlRef.SUI_BuyEnabled();
-                    else buyAvailable = false; _uiControlRef.SUI_BuyDisabled();
+                    else if (saveObject.buyAvailable == false) { buyAvailable = false; _uiControlRef.SUI_BuyDisabled(); }
 
+                    //Debug.Log("GameMaster.loadGame() saveObject.sellAvailable == " + saveObject.sellAvailable.ToString());
                     if (saveObject.sellAvailable == true) _uiControlRef.SUI_SellEnabled();
-                    else sellAvailable = false; _uiControlRef.SUI_SellDisabled();
+                    else if (saveObject.sellAvailable == false) { sellAvailable = false; _uiControlRef.SUI_SellDisabled(); }
 
+                    //Debug.Log("GameMaster.loadGame() saveObject.disassembleAvailable == " + saveObject.disassembleAvailable.ToString());
                     if (saveObject.disassembleAvailable == true) _uiControlRef.SUI_DisassembleEnabled();
-                    else disassembleAvailable = false; _uiControlRef.SUI_DisassembleDisabled();
+                    else if (saveObject.disassembleAvailable == false) { disassembleAvailable = false; _uiControlRef.SUI_DisassembleDisabled(); }
 
+                    //Debug.Log("GameMaster.loadGame() saveObject.craftAvailable == " + saveObject.craftAvailable.ToString());
                     if (saveObject.craftAvailable == true) _uiControlRef.SUI_CraftEnabled();
-                    else craftAvailable = false; _uiControlRef.SUI_CraftDisabled();
+                    else if (saveObject.craftAvailable == false) { craftAvailable = false; _uiControlRef.SUI_CraftDisabled(); }
                     
 
                     _currentCurrency = saveObject.currentCurency;
@@ -670,6 +676,8 @@ public class GameMaster : MonoBehaviour
                     //Debug.Log(saveObject.playerSave.playerHead);
                     gameObject.GetComponent<PlayerManager>().loadPlayerData(saveObject.playerSave);
                     //Debug.Log("loaded save: " + saveObject.playerName + " " + saveObject.shopName);
+
+                    loadShopLevel();
                 }
                 else
                     Debug.LogWarning("No save data!");

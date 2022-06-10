@@ -10,6 +10,7 @@ public class ButtonGroup : MonoBehaviour
 
     public void ButtonSelected(Button value)
     {
+        //Debug.Log("ButtonGroup.ButtonSelected(): selecting button - " + value.gameObject.name);
         foreach (Button but in _buttonGroup)
             but.interactable = true;
 
@@ -19,6 +20,7 @@ public class ButtonGroup : MonoBehaviour
     }
     public void ButtonDisabled(Button value)
     {
+        //Debug.Log("ButtonGroup.ButtonDisabled(): disabling button - " + value.gameObject.name);
         foreach (Button but in _buttonGroup)
             if (but == value)
                 but.interactable = false;
@@ -26,6 +28,7 @@ public class ButtonGroup : MonoBehaviour
     }
     public void ButtonEnabled(Button value)
     {
+        //Debug.Log("ButtonGroup.ButtonEnabled(): enabling button - " + value.gameObject.name);
         foreach (Button but in _buttonGroup)
             if (but == value)
                 but.interactable = true;

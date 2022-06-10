@@ -121,7 +121,7 @@ public class InventoryScript : MonoBehaviour
     public void setupItemInventory()
     {
         clearItemButtonList();
-        _selectedItem = null;
+        //_selectedItem = null;
 
         if (_currentItemFilter.Equals(_itemsFilterData[0]))
         {
@@ -224,7 +224,7 @@ public class InventoryScript : MonoBehaviour
     public void setupPartInventory()
     {
         clearPartButtonList();
-        _selectedPart = null;
+        //_selectedPart = null;
 
         if (_currentPartFilter.Equals(_partsFilterData[0])) // if current filter is Defualt
         {
@@ -1394,8 +1394,10 @@ public class InventoryScript : MonoBehaviour
 
     public void setSelectedItem(int i)
     {
+        //Debug.Log("InventoryScript.setSelectedItem(int i) - i=" + i + " i corelates to: " + _inventoryData.ItemInventory[i].name);
         if (i != -1)
         {
+            //Debug.Log("InventoryScript.setSelectedItem(int i) - i=" + i + " i corelates to: " + _inventoryData.ItemInventory[i].name);
             _selectedItem = _inventoryData.ItemInventory[i];
             _selectedPart = null;
             _selectedMat = null;
@@ -1476,6 +1478,7 @@ public class InventoryScript : MonoBehaviour
 
     public GameObject getSelectedItem()
     {
+        Debug.Log("_selectedItem: " + _selectedItem.name);
         if (_selectedItem != null)
             return _selectedItem;
 
@@ -1524,6 +1527,7 @@ public class InventoryScript : MonoBehaviour
     */
     public void returnSelectedItem()
     {
+        //Debug.Log("_selectedItem: " + _selectedItem.name);
         // for quest item crafting
         if (_UIControlRef.ShopCraftUIEnabled == true)
         {
@@ -1538,17 +1542,17 @@ public class InventoryScript : MonoBehaviour
             }
             else
             {
+                Debug.Log("selectedItem: " + _selectedItem.name);
                 if (_craftControlRef.anyRecipeSelected() == false && _UIControlRef.ShopEcoUIEnabled == false && _UIControlRef.ShopDisUIEnabled == false)
                 {
                     _gameMaster.loadDisassembleMenu();
-                    /*
                     _UIControlRef.ShopEcoUIEnabled = false;
                     _UIControlRef.ShopDisUIEnabled = true;
                     _UIControlRef.ShopCraftUIEnabled = false;
-                    */
-                } 
-                GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem();
-                GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem();
+                }
+                Debug.Log("selectedItem: " + _selectedItem.name);
+                GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem(_selectedItem);
+                GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem(_selectedItem);
             }
         }
         // for selling in shop
@@ -1562,8 +1566,9 @@ public class InventoryScript : MonoBehaviour
                 _UIControlRef.ShopDisUIEnabled = true;
                 _UIControlRef.ShopCraftUIEnabled = false;
             }
-            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem();
-            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem();
+            Debug.Log("selectedItem: " + _selectedItem.name);
+            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem(_selectedItem);
+            GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem(_selectedItem);
         }
         // for selling in market
         else if (_UIControlRef.MarketUIEnabled == true)

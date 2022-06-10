@@ -101,21 +101,25 @@ public class QuestControl : MonoBehaviour
                 if (tutQuest == _enableBuyOnComplete && _enableBuyOnComplete.StoryQuestComplete)
                 {
                     //Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableBuyOnComplete");
+                    //Debug.Log("QuestControl.setupStoryQuests() - enabling Buy");
                     gameObject.GetComponent<GameMaster>().buyAccessable(true);
                 }
                 if (tutQuest == _enableDisassembleOnComplete && _enableDisassembleOnComplete.StoryQuestComplete)
                 {
                     //Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableDisassembleOnComplete");
+                    //Debug.Log("QuestControl.setupStoryQuests() - enabling Disassemble");
                     gameObject.GetComponent<GameMaster>().disassembleAccessable(true);
                 }
                 if (tutQuest == _enableCraftOnComplete && _enableCraftOnComplete.StoryQuestComplete)
                 {
                     //Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableCraftOnComplete");
+                    //Debug.Log("QuestControl.setupStoryQuests() - enabling Craft");
                     gameObject.GetComponent<GameMaster>().craftAccessable(true);
                 }
                 if (tutQuest == _enableSellOnComplete && _enableSellOnComplete.StoryQuestComplete)
                 {
                     //Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableSellOnComplete");
+                    //Debug.Log("QuestControl.setupStoryQuests() - enabling Sell");
                     gameObject.GetComponent<GameMaster>().sellAccessable(true);
                 }
                 if (tutQuest == _enableAdventurersOnComplete && _enableAdventurersOnComplete.StoryQuestComplete)
@@ -123,6 +127,7 @@ public class QuestControl : MonoBehaviour
                     //Debug.Log("QuestControl.setupStoryQuests() - enabling adventurers");
                     gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
                     // ui control, enable to market button
+                    //Debug.Log("QuestControl.setupStoryQuests() - enabling market");
                     gameObject.GetComponent<GameMaster>().marketAccessable(true);
                 }
                 

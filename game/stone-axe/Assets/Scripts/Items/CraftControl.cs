@@ -147,6 +147,7 @@ public class CraftControl : MonoBehaviour
             _UIControlRef.ShopEcoUIEnabled = false;
             _UIControlRef.ShopDisUIEnabled = false;
             _UIControlRef.ShopCraftUIEnabled = true;
+            _UIControlRef.SUI_CraftSelected();
             _gameMasterRef.updatePlayerPosition();
         }
 

@@ -688,6 +688,11 @@ public class UIControl : MonoBehaviour
             SUI_DisassembleSelected();
         else if (craftSubUI.activeInHierarchy == true)
             SUI_CraftSelected();
+
+        if (inventoryUI.activeInHierarchy == true)
+            BUI_InvSelected();
+        else if (receipeUI.activeInHierarchy == true)
+            BUI_RecipesSelected();
     }
     
     // Shop ui buy button

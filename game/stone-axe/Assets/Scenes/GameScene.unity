@@ -325,7 +325,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &115107808 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8749510819924072225, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -388,7 +387,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &136986396 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6735986796059124481, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -424,7 +422,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &147058297 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4716734064809724314, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
@@ -471,7 +468,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &161985788 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2320238803511935256, guid: 141109d87efa52e48a7e129a24b4fb7c, type: 3}
@@ -592,7 +588,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &203683713 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3209796441423247195, guid: 57c0e05b4a0bfa747bc43b81a989ad74, type: 3}
@@ -633,7 +628,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &226944414 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4298725694306386816, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
@@ -685,7 +679,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &247903522
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +778,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &262306977 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4818944809181282543, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -826,7 +818,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &276063611 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 289806336452026917, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -1158,7 +1149,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &358663637 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2206253782896875249, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -1271,7 +1261,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &390707510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,7 +1349,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &399410257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2603135033375687641, guid: bbb978ce789265f499b2dc5355239dbd, type: 3}
@@ -1396,7 +1384,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &420794776 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1976799731305134809, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -1503,7 +1490,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &430117865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,7 +1578,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &449962359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,7 +1883,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &518775077 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6064659084706931290, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
@@ -1934,7 +1918,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &522287031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,7 +2622,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &685712221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 315632522519415649, guid: f08ae8c8c4af81c41953df121b1b0127, type: 3}
@@ -2675,7 +2657,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &686137002 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4231724336933524692, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -2924,7 +2905,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &736132774 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5986173107023473856, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
@@ -3164,7 +3144,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &807663019 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4612299924519539147, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
@@ -3200,7 +3179,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &810074924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2020829247266915648, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -3241,7 +3219,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &820757658 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2326328816417137337, guid: 88365192ea74fcd4080e7156a23af797, type: 3}
@@ -3288,7 +3265,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &827355727
 GameObject:
   m_ObjectHideFlags: 0
@@ -3435,7 +3411,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &865996843
 GameObject:
   m_ObjectHideFlags: 0
@@ -3524,7 +3499,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &885297123
 GameObject:
   m_ObjectHideFlags: 0
@@ -4113,7 +4087,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &916210863 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4101748679740497444, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -4160,7 +4133,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &921268443 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9159213284598267545, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -4271,7 +4243,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &931527660
 GameObject:
   m_ObjectHideFlags: 0
@@ -4430,7 +4401,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4549,7 +4519,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &981279391 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3067443752668511449, guid: 57c0e05b4a0bfa747bc43b81a989ad74, type: 3}
@@ -4590,7 +4559,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &988439265 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3816245173212230436, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -4726,7 +4694,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &1013641663 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3692048483184885275, guid: 1d042dde36cf4d94f9fa320ae1b02a06, type: 3}
@@ -4930,7 +4897,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &1130338757
 GameObject:
   m_ObjectHideFlags: 0
@@ -5047,7 +5013,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &1151613769 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2642568667718230142, guid: bbb978ce789265f499b2dc5355239dbd, type: 3}
@@ -5083,7 +5048,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &1156415821 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7323737621770418035, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -5140,7 +5104,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &1181822451
 GameObject:
   m_ObjectHideFlags: 0
@@ -5686,7 +5649,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &1284966565 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1996867618220637197, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -5733,7 +5695,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &1303400238 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8176762714908906971, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -6304,7 +6265,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &1386481677 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2993701847827929443, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
@@ -6361,7 +6321,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &1417102094 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6020978199989468832, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
@@ -6397,7 +6356,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &1423007081 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1016078773547499159, guid: 141109d87efa52e48a7e129a24b4fb7c, type: 3}
@@ -6656,7 +6614,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1001 &1433950227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6905,7 +6862,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &1484961972 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4318965899797237382, guid: bbb978ce789265f499b2dc5355239dbd, type: 3}
@@ -6962,7 +6918,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &1584048950 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2928262507481320884, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -7062,7 +7017,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &1610205868 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 968348643211009224, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -7127,7 +7081,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &1623394687
 GameObject:
   m_ObjectHideFlags: 0
@@ -7381,7 +7334,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &1646608670
 GameObject:
   m_ObjectHideFlags: 0
@@ -7496,7 +7448,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &1696650682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2920222055676640568, guid: 141109d87efa52e48a7e129a24b4fb7c, type: 3}
@@ -7607,7 +7558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b66f1f240122184b8fbb930f33d27d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectSection: 3
+  selectSection: 2
   mainMenuUI: {fileID: 736132774}
   gameShopUI: {fileID: 369422302}
   optionsPopup: {fileID: 1997940092}
@@ -8430,7 +8381,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &1784629680 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4375706234229936638, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -8546,7 +8496,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &1807555727 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3926314260840608639, guid: 917aa56b33f32f04983529814c902ef6, type: 3}
@@ -8582,7 +8531,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &1807804930 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2029208072, guid: cbd0887bb4dfa07429c4fbb208cbc6ec, type: 3}
@@ -8640,7 +8588,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &1824162797 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2901935245864214399, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
@@ -8716,7 +8663,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &1833550846 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8686030030650414382, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -8801,7 +8747,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &1912036557 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 474858077167576249, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -8954,7 +8899,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &1922043382 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2910145869180087098, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -9001,7 +8945,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &1928790709 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7505176229477842247, guid: 141109d87efa52e48a7e129a24b4fb7c, type: 3}
@@ -9212,7 +9155,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &2010837022 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 763624051156945865, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -9248,7 +9190,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &2015276197 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7843434992548875545, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -9369,7 +9310,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &2051644896 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7927810607507063766, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
@@ -9405,7 +9345,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &2054372394 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7738296511988906245, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
@@ -9463,7 +9402,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &2074071259 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2920222055513279915, guid: 141109d87efa52e48a7e129a24b4fb7c, type: 3}
@@ -9499,7 +9437,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!114 &2077988571 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8672980731676890364, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
@@ -9616,7 +9553,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1 &2127846966 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2002507421340066036, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -9681,7 +9617,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
-  passToMonoBehavior: {fileID: 0}
 --- !u!1001 &2144300947
 PrefabInstance:
   m_ObjectHideFlags: 0
