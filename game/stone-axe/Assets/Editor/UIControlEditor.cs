@@ -23,7 +23,7 @@ public class UIControlEditor : Editor
         // Market UI
         marketEconomicSubUI, questSubUI,
         // Main Menu UI
-        mainUIElements, creditsUI, creditsText, continueText, continueButton, newGameButton,loadGameButton, settingsButton, creditsButton, loadGameMenu, newGameMenu,
+        mainUIElements, creditsUI, creditsText, continueText, continueButton, newGameButton,loadGameButton, settingsButton, creditsButton, loadGameMenu, newGameMenu, settingsGameMenu,
         // Load Game UI
         loadGameUIButton, deleteGameUIButton,
         // New Game UI
@@ -48,7 +48,7 @@ public class UIControlEditor : Editor
         // Market UI
         marketEconomicSubUI = serializedObject.FindProperty("marketEconomicSubUI"); questSubUI = serializedObject.FindProperty("questSubUI");
         // Main Menu UI
-        mainUIElements = serializedObject.FindProperty("_mainUIElements"); creditsUI = serializedObject.FindProperty("_creditsUI"); creditsText = serializedObject.FindProperty("_creditsText"); continueText = serializedObject.FindProperty("_continueText"); continueButton = serializedObject.FindProperty("_continueButton"); newGameButton = serializedObject.FindProperty("_newGameButton"); loadGameButton = serializedObject.FindProperty("_loadGameButton"); settingsButton = serializedObject.FindProperty("_settingsButton"); creditsButton = serializedObject.FindProperty("_creditsButton"); loadGameMenu = serializedObject.FindProperty("_loadGameMenu"); newGameMenu = serializedObject.FindProperty("_newGameMenu");
+        mainUIElements = serializedObject.FindProperty("_mainUIElements"); creditsUI = serializedObject.FindProperty("_creditsUI"); creditsText = serializedObject.FindProperty("_creditsText"); continueText = serializedObject.FindProperty("_continueText"); continueButton = serializedObject.FindProperty("_continueButton"); newGameButton = serializedObject.FindProperty("_newGameButton"); loadGameButton = serializedObject.FindProperty("_loadGameButton"); settingsButton = serializedObject.FindProperty("_settingsButton"); creditsButton = serializedObject.FindProperty("_creditsButton"); loadGameMenu = serializedObject.FindProperty("_loadGameMenu"); newGameMenu = serializedObject.FindProperty("_newGameMenu"); settingsGameMenu = serializedObject.FindProperty("_settingsMainMenu");
         // Load Game UI
         loadGameUIButton = serializedObject.FindProperty("_loadGameUIButton"); deleteGameUIButton = serializedObject.FindProperty("_deleteGameUIButton");
         // New Game UI
@@ -148,6 +148,7 @@ public class UIControlEditor : Editor
                 EditorGUILayout.PropertyField(creditsButton);
                 EditorGUILayout.PropertyField(loadGameMenu);
                 EditorGUILayout.PropertyField(newGameMenu);
+                EditorGUILayout.PropertyField(settingsGameMenu);
                 break;
 
             case UIControl.dataSection.LoadGameUI:

@@ -165,9 +165,10 @@ public class SellItemControl : MonoBehaviour
         //_invScriptRef.RemoveItem(_itemData.InventoryIndex);
         _invScriptRef.RemoveItem(_selectedItem);
 
-        this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
+        gameObject.GetComponent<ExperienceManager>().addExperience(3);
         clearSellMenu();
-        this.gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
+        gameObject.GetComponent<DisassembleItemControl>().clearDisassembleMenu();
+        gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
 
         if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
             (this.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" ||
@@ -212,7 +213,8 @@ public class SellItemControl : MonoBehaviour
         _sellItemButton.GetComponentInChildren<TextMeshProUGUI>().text = "sell: [price]";
         _haggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "haggle\n(success chance: n/a)";
 
-        _advText.text = "Awaiting Adventurer Arrival";
+        if (_gameMasterRef.AdventurerAtCounter == false)
+            _advText.text = "Awaiting Adventurer Arrival";
 
         _sellItemButton.interactable = false;
         _refuseButton.interactable = false;

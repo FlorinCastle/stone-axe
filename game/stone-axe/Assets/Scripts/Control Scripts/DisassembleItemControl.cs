@@ -238,12 +238,8 @@ public class DisassembleItemControl : MonoBehaviour
 
         this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
 
-        _selectedObject = null;
-
-        _itemNameText.text = "item chosen: [choose item]";
-        _itemText.text = "";
-
-        _disassembleButton.interactable = false;
+        clearDisassembleMenu();
+        gameObject.GetComponent<SellItemControl>().clearSellMenu();
         this.gameObject.GetComponent<SellItemControl>().clearSellMenu();
 
         if (this.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
@@ -281,13 +277,18 @@ public class DisassembleItemControl : MonoBehaviour
 
         gameObject.GetComponent<ExperienceManager>().addExperience(1);
 
+        clearDisassembleMenu();
+        gameObject.GetComponent<SellItemControl>().clearSellMenu();
+        gameObject.GetComponent<MiniGameControl>().stopDisassembleMiniGame();
+    }
+
+    public void clearDisassembleMenu()
+    {
         _selectedObject = null;
 
-        _itemNameText.text = "item chosen: [choose item]";
-        _itemText.text = "";
+        _itemNameText.text = "item chosen: none";
+        _itemText.text = "choose item";
 
         _disassembleButton.interactable = false;
-
-        gameObject.GetComponent<MiniGameControl>().stopDisassembleMiniGame();
     }
 }

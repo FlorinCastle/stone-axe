@@ -7017,6 +7017,11 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _button: {fileID: 0}
+--- !u!1 &1609562901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5962669856852928898, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+  m_PrefabInstance: {fileID: 5986173108268856756}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1610205868 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 968348643211009224, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
@@ -7558,7 +7563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b66f1f240122184b8fbb930f33d27d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectSection: 2
+  selectSection: 7
   mainMenuUI: {fileID: 736132774}
   gameShopUI: {fileID: 369422302}
   optionsPopup: {fileID: 1997940092}
@@ -7617,6 +7622,7 @@ MonoBehaviour:
   _creditsButton: {fileID: 1045522157}
   _loadGameMenu: {fileID: 5986173108268856758}
   _newGameMenu: {fileID: 5986173108268856757}
+  _settingsMainMenu: {fileID: 1609562901}
   _loadGameUIButton: {fileID: 1347919900}
   _deleteGameUIButton: {fileID: 1319147915}
   _playerName: {fileID: 1956532292}
@@ -11986,6 +11992,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2864273636950617303, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864273636950617303, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1734993353}
@@ -11993,6 +12003,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 908857082}
+    - target: {fileID: 2864273636950617303, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: unloadMainSettingsUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864273636950617303, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864273636950617303, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2882516298876994899, guid: 172b5cb12b2a4de48a7b5390eb0296df, type: 3}
       propertyPath: m_Name
       value: Back_Button
@@ -15467,7 +15489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1688566524503042909, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1882317529868768094, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIControl : MonoBehaviour
@@ -82,6 +83,7 @@ public class UIControl : MonoBehaviour
     [SerializeField] private Button _creditsButton;
     [SerializeField] private GameObject _loadGameMenu;
     [SerializeField] private GameObject _newGameMenu;
+    [SerializeField] private GameObject _settingsMainMenu;
     [Header("Load Game UI")]
     [SerializeField] private Button _loadGameUIButton;
     [SerializeField] private Button _deleteGameUIButton;
@@ -132,20 +134,41 @@ public class UIControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (dialogeUI.activeInHierarchy == false)
+            if (gameShopUI.activeInHierarchy == true)
             {
-                if (optionsPopup.activeInHierarchy == true)
-                    optionsPopup.SetActive(false);
-                else if (skillTreeUI.activeInHierarchy == true)
-                    skillTreeUI.SetActive(false);
-                else if (questUI.activeInHierarchy == true)
-                    questUI.SetActive(false);
-                else if (gameObject.GetComponent<ExperienceManager>().LevelUpUIActive() == true)
-                    gameObject.GetComponent<ExperienceManager>().collapseLevelUpMenu();
-                else if (miniGameUI.activeInHierarchy == true)
-                    gameObject.GetComponent<MiniGameControl>().stopCraftingMiniGame();
-                else if (optionsPopup.activeInHierarchy == false)
-                    optionsPopup.SetActive(true);
+                if (dialogeUI.activeInHierarchy == false)
+                {
+                    if (optionsPopup.activeInHierarchy == true)
+                        optionsPopup.SetActive(false);
+                    else if (skillTreeUI.activeInHierarchy == true)
+                        skillTreeUI.SetActive(false);
+                    else if (questUI.activeInHierarchy == true)
+                        questUI.SetActive(false);
+                    else if (gameObject.GetComponent<ExperienceManager>().LevelUpUIActive() == true)
+                        gameObject.GetComponent<ExperienceManager>().collapseLevelUpMenu();
+                    else if (miniGameUI.activeInHierarchy == true)
+                        gameObject.GetComponent<MiniGameControl>().stopCraftingMiniGame();
+                    else if (optionsPopup.activeInHierarchy == false)
+                        optionsPopup.SetActive(true);
+                }
+            }
+            else if (mainMenuUI.activeInHierarchy)
+            {
+                if (_loadGameMenu.activeInHierarchy == true)
+                {
+                    gameObject.GetComponent<GameMaster>().backLoad();
+                    EventSystem.current.SetSelectedGameObject(null);
+                }
+                else if (_newGameMenu.activeInHierarchy == true)
+                {
+                    unloadNewGameUI();
+                    EventSystem.current.SetSelectedGameObject(null);
+                }
+                else if (_settingsMainMenu.activeInHierarchy == true)
+                {
+                    unloadMainSettingsUI();
+                    EventSystem.current.SetSelectedGameObject(null);
+                }
             }
         }
     }
@@ -288,6 +311,10 @@ public class UIControl : MonoBehaviour
         storePlayerVariables();
         _isNotValidUI.SetActive(false);
         _newGameMenu.SetActive(false);
+    }
+    public void unloadMainSettingsUI()
+    {
+        _settingsMainMenu.SetActive(false);
     }
     public void mainMenu()
     {
