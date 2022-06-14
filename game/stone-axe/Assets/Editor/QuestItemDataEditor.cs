@@ -53,24 +53,33 @@ public class QuestItemDataEditor : Editor
         // Calculating level from parts
         ItemData part1refItem = null;
         PartData part1refpart = null;
-        if (qItemPart1.objectReferenceValue.GetType().ToString() == "ItemData")
-            part1refItem = (ItemData)qItemPart1.objectReferenceValue;
-        else if (qItemPart1.objectReferenceValue.GetType().ToString() == "PartData")
-            part1refpart = (PartData)qItemPart1.objectReferenceValue;
+        if (qItemPart1.objectReferenceValue != null)
+        {
+            if (qItemPart1.objectReferenceValue.GetType().ToString() == "ItemData")
+                part1refItem = (ItemData)qItemPart1.objectReferenceValue;
+            else if (qItemPart1.objectReferenceValue.GetType().ToString() == "PartData")
+                part1refpart = (PartData)qItemPart1.objectReferenceValue;
+        }
 
         ItemData part2refItem = null;
         PartData part2refpart = null;
-        if (qItemPart2.objectReferenceValue.GetType().ToString() == "ItemData")
-            part2refItem = (ItemData)qItemPart2.objectReferenceValue;
-        else if (qItemPart2.objectReferenceValue.GetType().ToString() == "PartData")
-            part2refpart = (PartData)qItemPart2.objectReferenceValue;
+        if (qItemPart2.objectReferenceValue != null)
+        {
+            if (qItemPart2.objectReferenceValue.GetType().ToString() == "ItemData")
+                part2refItem = (ItemData)qItemPart2.objectReferenceValue;
+            else if (qItemPart2.objectReferenceValue.GetType().ToString() == "PartData")
+                part2refpart = (PartData)qItemPart2.objectReferenceValue;
+        }
 
         ItemData part3refItem = null;
         PartData part3refpart = null;
-        if (qItemPart3.objectReferenceValue.GetType().ToString() == "ItemData")
-            part3refItem = (ItemData)qItemPart3.objectReferenceValue;
-        else if (qItemPart3.objectReferenceValue.GetType().ToString() == "PartData")
-            part3refpart = (PartData)qItemPart3.objectReferenceValue;
+        if (qItemPart3.objectReferenceValue != null)
+        {
+            if (qItemPart3.objectReferenceValue.GetType().ToString() == "ItemData")
+                part3refItem = (ItemData)qItemPart3.objectReferenceValue;
+            else if (qItemPart3.objectReferenceValue.GetType().ToString() == "PartData")
+                part3refpart = (PartData)qItemPart3.objectReferenceValue;
+        }
 
         if (part1refItem != null && qItemUnlockLevel.intValue <= part1refItem.ItemLevel)
             qItemUnlockLevel.intValue = part1refItem.ItemLevel;
@@ -79,12 +88,12 @@ public class QuestItemDataEditor : Editor
 
         if (part2refItem != null && qItemUnlockLevel.intValue <= part2refItem.ItemLevel)
             qItemUnlockLevel.intValue = part2refItem.ItemLevel;
-        if (part1refpart != null && qItemUnlockLevel.intValue <= part2refpart.PartLevelReq)
+        if (part2refpart != null && qItemUnlockLevel.intValue <= part2refpart.PartLevelReq)
             qItemUnlockLevel.intValue = part2refpart.PartLevelReq;
 
         if (part3refItem != null && qItemUnlockLevel.intValue <= part3refItem.ItemLevel)
             qItemUnlockLevel.intValue = part3refItem.ItemLevel;
-        if (part1refpart != null && qItemUnlockLevel.intValue <= part3refpart.PartLevelReq)
+        if (part3refpart != null && qItemUnlockLevel.intValue <= part3refpart.PartLevelReq)
             qItemUnlockLevel.intValue = part3refpart.PartLevelReq;
 
         // calculating stats from parts

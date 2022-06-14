@@ -74,11 +74,11 @@ public class ItemDataEditor : Editor
         PartData part2ref = (PartData)part2.objectReferenceValue;
         PartData part3ref = (PartData)part3.objectReferenceValue;
 
-        if (levelReq.intValue <= part1ref.PartLevelReq)
+        if (part1ref != null && levelReq.intValue <= part1ref.PartLevelReq)
             levelReq.intValue = part1ref.PartLevelReq;
-        if (levelReq.intValue <= part2ref.PartLevelReq)
+        if (part2ref != null && levelReq.intValue <= part2ref.PartLevelReq)
             levelReq.intValue = part2ref.PartLevelReq;
-        if (levelReq.intValue <= part3ref.PartLevelReq)
+        if (part3ref != null && levelReq.intValue <= part3ref.PartLevelReq)
             levelReq.intValue = part3ref.PartLevelReq;
 
         //levelReq = 0;

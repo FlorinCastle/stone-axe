@@ -257,9 +257,9 @@ public class GenerateItem : MonoBehaviour
             _generatedItem.Part2.Material.Material + "\n" +
             _generatedItem.Part3.Material.Material;
 
-        _totalStrenght = "\nStrenght: " + _generatedItem.TotalStrength;
-        _totalDex = "\nDextarity: " + _generatedItem.TotalDextarity;
-        _totalInt = "\nIntelegence: " + _generatedItem.TotalIntelegence;
+        _totalStrenght = "\nStrength: " + _generatedItem.TotalStrength;
+        _totalDex = "\nDexterity: " + _generatedItem.TotalDextarity;
+        _totalInt = "\nIntelligence: " + _generatedItem.TotalIntelegence;
         _totalValue = "\n\nValue: " + _generatedItem.TotalValue;
         _isEnchanted = _generatedItem.IsEnchanted;
 
