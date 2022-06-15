@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
-  m_Name: DeathsBlade
+  m_Name: Wanderers Bastard
   m_EditorClassIdentifier: 
-  _qItemName: Death's Blade
-  _qItemLore: A weapon used by Death to shepherd souls onward. The requester's jokes
-    are quite chuckleworthy
-  _qItemUnlockLevel: 25
-  _qItemPart1: {fileID: 11400000, guid: b903c6f2f49e04545b1b8240924e5e5e, type: 2}
-  _qItemPart2: {fileID: 11400000, guid: efa36cf510bc17140aaca20e1a356078, type: 2}
+  _qItemName: Wanderers Bastard
+  _qItemLore: An old bastard sword, well used by an once-young wanderer, now gone,
+    but not forgotten
+  _qItemUnlockLevel: 10
+  _qItemPart1: {fileID: 11400000, guid: 9a92fa346eeb8b64cb85eb2639ff48b8, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: 48a17134923977d46939fce7f931a600, type: 2}
   _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 0
   _baseStrength: 0

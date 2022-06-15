@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
-  m_Name: FlyingGlave
+  m_Name: Six Fingered Sword
   m_EditorClassIdentifier: 
-  _qItemName: Flying Glave
-  _qItemLore: A Glave weapon that allows for the user to perform great feats of acrobatics
-    in the air
+  _qItemName: Six Fingered Sword
+  _qItemLore: A beautiful rapier crafted by a now gone smith. Can be used left or
+    right handed
   _qItemUnlockLevel: 14
-  _qItemPart1: {fileID: 11400000, guid: 49f0d999a34fb044cacc4c7d5a6c3cb1, type: 2}
-  _qItemPart2: {fileID: 11400000, guid: 6b7061e9f995d3340aea8f1b8470bef7, type: 2}
-  _qItemPart3: {fileID: 11400000, guid: 6b7061e9f995d3340aea8f1b8470bef7, type: 2}
+  _qItemPart1: {fileID: 11400000, guid: 72e487bb1e4195d44a79d0e2469de4fc, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: 481856a10254f7946b4cbdab8856a0cf, type: 2}
+  _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 0
   _baseStrength: 0
   _baseDextarity: 0

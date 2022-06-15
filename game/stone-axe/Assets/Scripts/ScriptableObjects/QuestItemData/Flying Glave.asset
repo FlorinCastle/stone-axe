@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
-  m_Name: GoldenLasso
+  m_Name: Flying Glave
   m_EditorClassIdentifier: 
-  _qItemName: Golden Lasso
-  _qItemLore: An item that is mainly used for restraining others, but is also blessed
-    by a god(dess) of Truth and Fairness
-  _qItemUnlockLevel: 18
-  _qItemPart1: {fileID: 11400000, guid: 3e0f8209da497274bb70b9f4a1a62cf8, type: 2}
-  _qItemPart2: {fileID: 11400000, guid: cef5cc207515ad74093cd9473a392691, type: 2}
-  _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
+  _qItemName: Flying Glave
+  _qItemLore: A Glave weapon that allows for the user to perform great feats of acrobatics
+    in the air
+  _qItemUnlockLevel: 14
+  _qItemPart1: {fileID: 11400000, guid: 49f0d999a34fb044cacc4c7d5a6c3cb1, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: 6b7061e9f995d3340aea8f1b8470bef7, type: 2}
+  _qItemPart3: {fileID: 11400000, guid: 6b7061e9f995d3340aea8f1b8470bef7, type: 2}
   _baseCost: 0
   _baseStrength: 0
   _baseDextarity: 0

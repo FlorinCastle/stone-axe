@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
-  m_Name: TransformingPen
+  m_Name: Golden Lasso
   m_EditorClassIdentifier: 
-  _qItemName: Transforming Pen
-  _qItemLore: A weapon truly mightier than a sword! Also poseses transformative cababilities
-  _qItemPart1: {fileID: 11400000, guid: 9da3680434e2c3e49806b931b533c9be, type: 2}
-  _qItemPart2: {fileID: 11400000, guid: 481856a10254f7946b4cbdab8856a0cf, type: 2}
+  _qItemName: Golden Lasso
+  _qItemLore: An item that is mainly used for restraining others, but is also blessed
+    by a god(dess) of Truth and Fairness
+  _qItemUnlockLevel: 18
+  _qItemPart1: {fileID: 11400000, guid: 3e0f8209da497274bb70b9f4a1a62cf8, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: cef5cc207515ad74093cd9473a392691, type: 2}
   _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 0
   _baseStrength: 0

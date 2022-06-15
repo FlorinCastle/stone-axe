@@ -43,6 +43,13 @@ public class ItemDataEditor : Editor
         serializedObject.Update();
 
         EditorGUILayout.PropertyField(itemName);
+        if (itemName.stringValue != serializedObject.targetObject.name)
+        {
+            if (itemName.stringValue == "")
+                itemName.stringValue = serializedObject.targetObject.name;
+            else
+                Debug.LogWarning("(Item Data)ScriptableObject - " + serializedObject.targetObject.name + "\nInput Item Name does not match (Item Data)ScriptableObject name!");
+        }
         EditorGUILayout.PropertyField(levelReq, new GUIContent("Level Requirement"));
 
         EditorGUILayout.PropertyField(validPart1);

@@ -15,6 +15,11 @@ public class AdventurerAI : MonoBehaviour
     [SerializeField] private GameObject _currentTarget;
     private GameObject _prevTarget;
     private Vector3 _targetPosition;
+
+    [SerializeField] private GameObject chatty_focus;
+
+    [SerializeField] private GameObject mySpeechBubble;
+
     [Header("Body Refs")]
     [SerializeField] private GameObject _headMark;
 
@@ -103,6 +108,8 @@ public class AdventurerAI : MonoBehaviour
                     dismissed = false;
                     gameObject.GetComponent<Animator>().SetBool("Walk", true);
                     setCurentTarget(_currentTarget.GetComponent<LinePoint>().NextPoint);
+
+                    mySpeechBubble.GetComponent<SpeechBubbleTrackObject>().chat();
                 }
                 else if (_currentTarget.GetComponent<LinePoint>().HeadOfLine == true)
                 { // if at line point that is head of line
@@ -191,6 +198,10 @@ public class AdventurerAI : MonoBehaviour
     {
         //Debug.Log(gameObject.name + ".AdventurerAI.WaitThenGo() Coroutine has started!");
         beingHandled = true;
+
+        //if (mySpeechBubble != null)
+        //    mySpeechBubble.GetComponent<SpeechBubbleTrackObject>().chat();
+
         if (_advMaster.GetMyIndex(gameObject) != 0)
         {
             Debug.Log(gameObject.name + ".AdventurerAI.WaitThenGo(): waiting for " + _advMaster.AdventurerWaitTime + " seconds");
@@ -205,4 +216,6 @@ public class AdventurerAI : MonoBehaviour
 
     public GameObject CurrentTarget { get => _currentTarget; }
     public string AdventurerType { get => _advRaceRef.AdventurerSpecies; }
+    public GameObject MyChatBubble { get => mySpeechBubble; set => mySpeechBubble = value; }
+    public GameObject ChattyFocus { get => chatty_focus; }
 }

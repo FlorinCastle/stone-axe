@@ -16,6 +16,9 @@ MonoBehaviour:
   _levelName: Level 13
   _itemRecipes:
   - {fileID: 11400000, guid: 0ca6ec5d910d6dc44944156cf13e0f3a, type: 2}
-  _partRecipes: []
+  - {fileID: 11400000, guid: 24ca568f5141920498ae70c86fd8a764, type: 2}
+  _partRecipes:
+  - {fileID: 11400000, guid: 470f15cba2b7a594b9d7127a0efc0db6, type: 2}
+  - {fileID: 11400000, guid: 75b8dabbca8c2254283bb16c40387817, type: 2}
   _materials:
   - {fileID: 11400000, guid: 56c2efc7d77a43a49bccc0f0ab800c69, type: 2}

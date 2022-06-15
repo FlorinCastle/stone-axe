@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
-  m_Name: RedCoveralls
+  m_Name: Transforming Pen
   m_EditorClassIdentifier: 
-  _qItemName: Red Coveralls
-  _qItemLore: Bright red coveralls, worn by a service worker. Well used, but sturdy
-    and will be used for much longer
-  _qItemUnlockLevel: 6
-  _qItemPart1: {fileID: 11400000, guid: 0099b7ed353b01c4c8beb62e48a39876, type: 2}
-  _qItemPart2: {fileID: 11400000, guid: 6bdc22f9bca3fcb4ab530617e2ec7c9b, type: 2}
-  _qItemPart3: {fileID: 11400000, guid: a9f726ac3f3884a4da011a55f3063813, type: 2}
+  _qItemName: Transforming Pen
+  _qItemLore: A weapon truly mightier than a sword! Also poseses transformative cababilities
+  _qItemPart1: {fileID: 11400000, guid: 9da3680434e2c3e49806b931b533c9be, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: 481856a10254f7946b4cbdab8856a0cf, type: 2}
+  _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 0
   _baseStrength: 0
   _baseDextarity: 0

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
-  m_Name: BlackSpikedCuirass
+  m_Name: Bone Curiass
   m_EditorClassIdentifier: 
-  _qItemName: Black Spiked Cuirass
-  _qItemLore: Black chestplate with spikes and deep red accents across the breastplate.
-    A dark, otherworldly aura from a demonic creature emits from this armor
-  _qItemUnlockLevel: 8
-  _qItemPart1: {fileID: 11400000, guid: f70d2bad399cf524a96f80c3af711fc4, type: 2}
-  _qItemPart2: {fileID: 11400000, guid: 78fefe8565bb40848918725f3bbc3740, type: 2}
+  _qItemName: Bone Curiass
+  _qItemLore: A chestplate made of the bones of a truely monsterious creature. Very
+    protective
+  _qItemUnlockLevel: 5
+  _qItemPart1: {fileID: 11400000, guid: 286a78c5e15496d4db2548299eab7ba7, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: c3d93897133f0fb48827cc5fb05406aa, type: 2}
   _qItemPart3: {fileID: 11400000, guid: ac58c2151275da14cba38ad548c01080, type: 2}
   _baseCost: 0
   _baseStrength: 0

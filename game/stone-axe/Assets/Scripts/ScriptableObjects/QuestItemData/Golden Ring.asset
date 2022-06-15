@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
-  m_Name: TransformingWeapon
+  m_Name: Golden Ring
   m_EditorClassIdentifier: 
-  _qItemName: Transforming Weapon
-  _qItemLore: A large Sword and Shield that can combine to become a large axe
-  _qItemUnlockLevel: 9
-  _qItemPart1: {fileID: 11400000, guid: 5e57fb373a7d5d343a8f58dd3c275d6c, type: 2}
-  _qItemPart2: {fileID: 11400000, guid: 60bee362faf67e840b65be712fa59bea, type: 2}
-  _qItemPart3: {fileID: 11400000, guid: 0c394eafc001483488e07fe06842f262, type: 2}
+  _qItemName: Golden Ring
+  _qItemLore: A ring forged by a madman to use to control the wearers of similer
+    rings. A bit warm to the touch
+  _qItemUnlockLevel: 7
+  _qItemPart1: {fileID: 11400000, guid: f1788bbd3600cb047a0f4fbfceae01fe, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: 527d41718bdee5e4293d614e3c8918c9, type: 2}
+  _qItemPart3: {fileID: 11400000, guid: 4543bb96cd0ed64468c9c287671e0483, type: 2}
   _baseCost: 0
   _baseStrength: 0
   _baseDextarity: 0

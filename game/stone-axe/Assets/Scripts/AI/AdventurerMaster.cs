@@ -28,6 +28,11 @@ public class AdventurerMaster : MonoBehaviour
     private Coroutine advCoroutine = null;
     private Coroutine timerCoroutine = null;
 
+    [Header("Chatty")]
+    [SerializeField] private GameObject chattyParent;
+    [SerializeField] private GameObject speechBubblePrefab;
+    [SerializeField] private List<GameObject> _speechBubbles;
+
     private void Awake()
     {
         //_timer = _timeBetweenSpawn;
@@ -72,6 +77,10 @@ public class AdventurerMaster : MonoBehaviour
     public void removeAdventurer(GameObject adventurer)
     {
         _currentAdventurers.Remove(adventurer);
+        GameObject chat = adventurer.GetComponent<AdventurerAI>().MyChatBubble;
+        _speechBubbles.Remove(chat);
+
+        Destroy(chat);
         Destroy(adventurer);
     }
     public void removeAllAdventurers()
@@ -99,8 +108,13 @@ public class AdventurerMaster : MonoBehaviour
         advPlaceholder.GetComponent<AdventurerAI>().setupAdventurer();
         //advPlaceholder.GetComponent<AdventurerAI>().IsMoving = true;
         _currentAdventurers.Add(advPlaceholder);
-        if (this.gameObject.GetComponent<GameMaster>().ShopActive == true)
+        if (gameObject.GetComponent<GameMaster>().ShopActive == true)
             _soundMaster.playDoorSound();
+
+        GameObject chattyBubble = Instantiate(speechBubblePrefab, chattyParent.transform, false);
+        chattyBubble.GetComponent<SpeechBubbleTrackObject>().ObjRef = advPlaceholder.GetComponent<AdventurerAI>().ChattyFocus;
+        advPlaceholder.GetComponent<AdventurerAI>().MyChatBubble = chattyBubble;
+        _speechBubbles.Add(chattyBubble);
     }
     /*
     private GameObject npcPlaceholder;

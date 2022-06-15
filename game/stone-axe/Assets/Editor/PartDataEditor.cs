@@ -39,6 +39,13 @@ public class PartDataEditor : Editor
         serializedObject.Update();
 
         EditorGUILayout.PropertyField(partName);
+        if (partName.stringValue != serializedObject.targetObject.name)
+        {
+            if (partName.stringValue == "")
+                partName.stringValue = serializedObject.targetObject.name;
+            else
+                Debug.LogWarning("(Part Data)ScriptableObject - " + serializedObject.targetObject.name + "\nInput Part Name does not match (Part Data)ScriptableObject name!");
+        }
         EditorGUILayout.PropertyField(partLevelReq);
         EditorGUILayout.PropertyField(material);
         EditorGUILayout.PropertyField(validMatData);

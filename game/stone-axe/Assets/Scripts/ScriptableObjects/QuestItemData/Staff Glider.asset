@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
-  m_Name: StaffGlider
+  m_Name: Staff Glider
   m_EditorClassIdentifier: 
   _qItemName: Staff Glider
   _qItemLore: A glider made for the use of a particular group of people that utilized

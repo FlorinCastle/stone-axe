@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
-  m_Name: SixFingeredSword
+  m_Name: Transforming Weapon
   m_EditorClassIdentifier: 
-  _qItemName: 6-Fingered Sword
-  _qItemLore: A beautiful rapier crafted by a now gone smith. Can be used left or
-    right handed
-  _qItemUnlockLevel: 14
-  _qItemPart1: {fileID: 11400000, guid: 72e487bb1e4195d44a79d0e2469de4fc, type: 2}
-  _qItemPart2: {fileID: 11400000, guid: 481856a10254f7946b4cbdab8856a0cf, type: 2}
-  _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
+  _qItemName: Transforming Weapon
+  _qItemLore: A large Sword and Shield that can combine to become a large axe
+  _qItemUnlockLevel: 16
+  _qItemPart1: {fileID: 11400000, guid: 5e57fb373a7d5d343a8f58dd3c275d6c, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: 60bee362faf67e840b65be712fa59bea, type: 2}
+  _qItemPart3: {fileID: 11400000, guid: 0c394eafc001483488e07fe06842f262, type: 2}
   _baseCost: 0
   _baseStrength: 0
   _baseDextarity: 0

@@ -12,14 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c44053df750ac84482645dbf86aabaf, type: 3}
   m_Name: Suitcase Lid
   m_EditorClassIdentifier: 
-  _partName: 
-  _partLevelReq: 0
-  _material: {fileID: 0}
-  _validMaterials: []
-  _validMaterialTypes: []
-  _unitsOfMaterialNeeded: 0
-  _baseCost: 0
-  _baseStrenght: 0
-  _baseDextarity: 0
-  _baseIntelligence: 0
-  _filters: []
+  _partName: Suitcase Lid
+  _partLevelReq: 13
+  _material: {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
+  _validMaterials:
+  - {fileID: 11400000, guid: 9b2835e9845884a43adb36138324e56e, type: 2}
+  - {fileID: 11400000, guid: 3daa26c81517ad7469d747e94fe5e2f4, type: 2}
+  - {fileID: 11400000, guid: d905eb4a07023d74ea23a7f665c720dd, type: 2}
+  - {fileID: 11400000, guid: bab2bdbbc182b62418f2378a9c99c460, type: 2}
+  _validMaterialTypes:
+  - Leather
+  _unitsOfMaterialNeeded: 3
+  _baseCost: 12
+  _baseStrenght: 1
+  _baseDextarity: 3
+  _baseIntelligence: 2
+  _filters:
+  - {fileID: 11400000, guid: 10c48989c4e143c439a232a261506541, type: 2}
+  - {fileID: 11400000, guid: 20b136f7b5c2b5640a2c3026b92bca7a, type: 2}
+  - {fileID: 11400000, guid: fcc69f66b3a91d24889fe2d1b51e29f6, type: 2}

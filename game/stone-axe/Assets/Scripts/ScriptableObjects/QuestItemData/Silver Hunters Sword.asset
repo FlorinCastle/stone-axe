@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
-  m_Name: WanderersBastard
+  m_Name: Silver Hunters Sword
   m_EditorClassIdentifier: 
-  _qItemName: Wanderer's Bastard
-  _qItemLore: An old bastard sword, well used by an once-young wanderer, now gone,
-    but not forgotten
-  _qItemUnlockLevel: 10
-  _qItemPart1: {fileID: 11400000, guid: 9a92fa346eeb8b64cb85eb2639ff48b8, type: 2}
-  _qItemPart2: {fileID: 11400000, guid: 48a17134923977d46939fce7f931a600, type: 2}
+  _qItemName: Silver Hunters Sword
+  _qItemLore: A hunter's blade made of silver. The silver blade is bane for terrifying
+    monsters. Often paired with a steel sword that is used for humans rather than
+    monsters
+  _qItemUnlockLevel: 0
+  _qItemPart1: {fileID: 11400000, guid: 9da3680434e2c3e49806b931b533c9be, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: 481856a10254f7946b4cbdab8856a0cf, type: 2}
   _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 0
   _baseStrength: 0

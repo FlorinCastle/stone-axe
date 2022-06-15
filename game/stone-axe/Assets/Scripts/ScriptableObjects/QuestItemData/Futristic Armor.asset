@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
-  m_Name: FutristicArmor
+  m_Name: Futristic Armor
   m_EditorClassIdentifier: 
   _qItemName: Futristic Armor
   _qItemLore: Pure metal armor that could potentally have transformative capabilities.

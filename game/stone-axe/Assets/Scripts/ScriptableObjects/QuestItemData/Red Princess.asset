@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf5deebc5c093eb4f853875ce4195ded, type: 3}
-  m_Name: SilverHuntersSword
+  m_Name: Red Princess
   m_EditorClassIdentifier: 
-  _qItemName: Silver Hunter's Sword
-  _qItemLore: A hunter's blade made of silver. The silver blade is bane for terrifying
-    monsters. Often paired with a steel sword that is used for humans rather than
-    monsters
+  _qItemName: Red Princess
+  _qItemLore: A single-edged blade sheathed within an ordinary cane. By commanding
+    "Wake Up" the blade will transform into a secondary form that produces powerful
+    crimson energy attacks.
+  _qItemUnlockLevel: 16
   _qItemPart1: {fileID: 11400000, guid: 9da3680434e2c3e49806b931b533c9be, type: 2}
-  _qItemPart2: {fileID: 11400000, guid: 481856a10254f7946b4cbdab8856a0cf, type: 2}
+  _qItemPart2: {fileID: 11400000, guid: 0c394eafc001483488e07fe06842f262, type: 2}
   _qItemPart3: {fileID: 11400000, guid: c56eddd9f181aa0438e31add3aff2231, type: 2}
   _baseCost: 0
   _baseStrength: 0

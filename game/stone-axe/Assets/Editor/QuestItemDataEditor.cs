@@ -38,6 +38,13 @@ public class QuestItemDataEditor : Editor
         EditorStyles.textField.wordWrap = true;
 
         EditorGUILayout.PropertyField(qItemName, new GUIContent("Quest Item Name"));
+        if (qItemName.stringValue != serializedObject.targetObject.name)
+        {
+            if (qItemName.stringValue == "")
+                qItemName.stringValue = serializedObject.targetObject.name;
+            else
+                Debug.LogWarning("(Quest Item Data)ScriptableObject - " + serializedObject.targetObject.name + "\nInput Quest Item Name does not match (Quest Item Data)ScriptableObject name!");
+        }
         EditorGUILayout.PropertyField(qItemLore, new GUIContent("Quest Item Lore"));
         EditorGUI.BeginDisabledGroup(true);
         EditorGUILayout.PropertyField(qItemUnlockLevel, new GUIContent("Unlock Level"));

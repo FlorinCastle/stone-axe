@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Suitcase
   m_EditorClassIdentifier: 
   _itemName: Suitcase
-  _levelRequirement: 12
+  _levelRequirement: 13
   _part1: {fileID: 11400000, guid: 470f15cba2b7a594b9d7127a0efc0db6, type: 2}
   _validPart1:
   - {fileID: 11400000, guid: 470f15cba2b7a594b9d7127a0efc0db6, type: 2}
@@ -23,9 +23,9 @@ MonoBehaviour:
   _part3: {fileID: 11400000, guid: 577d2d7ce159cf045870956b4233f3db, type: 2}
   _validPart3:
   - {fileID: 11400000, guid: 577d2d7ce159cf045870956b4233f3db, type: 2}
-  _baseCost: 0
-  _baseStrenght: 0
-  _baseDextarity: 0
-  _baseIntelligence: 0
+  _baseCost: 25
+  _baseStrenght: 6
+  _baseDextarity: 8
+  _baseIntelligence: 4
   _isEnchanted: 0
   _filters: []
