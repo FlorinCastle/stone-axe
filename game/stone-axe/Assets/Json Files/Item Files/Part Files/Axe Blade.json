@@ -1,0 +1,28 @@
+{
+    "partID": -1,
+    "partName": "Axe Blade",
+    "levelRequirement": 2,
+    "validMaterials": [
+        "Adamantine",
+        "Bronze",
+        "Copper",
+        "Iron",
+        "Mythril",
+        "Silver",
+        "Steel"
+    ],
+    "validMaterialTypes": [
+        "Metal"
+    ],
+    "unitsOfMaterialNeeded": 3,
+    "baseCost": 5,
+    "baseStrength": 4,
+    "baseDextarity": 0,
+    "baseIntelligence": 0,
+    "filters": [
+        "Parts Only",
+        "Metal",
+        "Subtype - Magical Metal",
+        "Subtype - Non-Magical Metal"
+    ]
+}

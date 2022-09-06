@@ -2269,6 +2269,57 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0fda6977a8c8ca14fb19aba7bb1e01cd, type: 2}
   - {fileID: 11400000, guid: b8b977f5f1d225b498df2fa83b7a81ac, type: 2}
   - {fileID: 11400000, guid: 1f65688b1bb60484a85acc7f1d1720d3, type: 2}
+--- !u!1 &574211381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 574211383}
+  - component: {fileID: 574211382}
+  m_Layer: 0
+  m_Name: DevJsonConverter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &574211382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574211381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41d40dc95353c45478143a510444847c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemToConvert: {fileID: 0}
+  _partToConvert: {fileID: 11400000, guid: 300b4734fd9a8484cbf9034e96ce4099, type: 2}
+  itemID: 1
+  itemDirPath: D:\Users\ender\Documents\GitHub\stone-axe\game\stone-axe\Assets\Json
+    Files\Item Files\Item Files
+  partDirPath: D:\Users\ender\Documents\GitHub\stone-axe\game\stone-axe\Assets\Json
+    Files\Item Files\Part Files
+  replace: 0
+--- !u!4 &574211383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574211381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &581057022 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5227116683490497756, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}

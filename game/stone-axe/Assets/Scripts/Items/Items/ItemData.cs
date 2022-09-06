@@ -38,9 +38,13 @@ public class ItemData : ScriptableObject
 
     public string ItemName { get => _itemName; }
     public int ItemLevel { get => _levelRequirement; }
+    public int BaseCost { get => _baseCost; }
     public int TotalValue { get => _baseCost + _part1.TotalCurrentValue + _part2.TotalCurrentValue + _part3.TotalCurrentValue; }
+    public int BaseStrength { get => _baseStrenght; }
     public int TotalStrength { get => _baseStrenght + _part1.PartStrenght + _part2.PartStrenght + _part3.PartStrenght; }
+    public int BaseDextarity { get => _baseDextarity; }
     public int TotalDextarity { get => _baseDextarity + _part1.PartDextarity + _part2.PartDextarity + _part3.PartDextarity; }
+    public int BaseIntelligence { get => _baseIntelligence; }
     public int TotalIntelegence { get => _baseIntelligence + _part1.PartIntelligence + _part2.PartIntelligence + _part3.PartIntelligence; }
 
     // Not happy about having to have this code here :/
