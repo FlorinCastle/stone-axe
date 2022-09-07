@@ -1,0 +1,28 @@
+{
+    "partID": -1,
+    "partName": "Metal Shield Plate",
+    "levelRequirement": 9,
+    "validMaterials": [
+        "Adamantine",
+        "Bronze",
+        "Copper",
+        "Iron",
+        "Mythril",
+        "Silver",
+        "Steel"
+    ],
+    "validMaterialTypes": [
+        "Metal"
+    ],
+    "unitsOfMaterialNeeded": 6,
+    "baseCost": 8,
+    "baseStrength": 4,
+    "baseDextarity": 0,
+    "baseIntelligence": 0,
+    "filters": [
+        "Parts Only",
+        "Metal",
+        "Subtype - Magical Metal",
+        "Subtype - Non-Magical Metal"
+    ]
+}

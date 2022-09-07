@@ -1,0 +1,26 @@
+{
+    "partID": -1,
+    "partName": "Great Sword Handle",
+    "levelRequirement": 10,
+    "validMaterials": [
+        "Angel Wood",
+        "Ash Wood",
+        "Birch Wood",
+        "Dark Wood",
+        "Oak Wood",
+        "Rose Wood",
+        "Spruce Wood"
+    ],
+    "validMaterialTypes": [
+        "Wood"
+    ],
+    "unitsOfMaterialNeeded": 4,
+    "baseCost": 8,
+    "baseStrength": 3,
+    "baseDextarity": 1,
+    "baseIntelligence": 0,
+    "filters": [
+        "Parts Only",
+        "Wood"
+    ]
+}

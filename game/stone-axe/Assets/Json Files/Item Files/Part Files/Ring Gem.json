@@ -1,0 +1,24 @@
+{
+    "partID": -1,
+    "partName": "Ring Gem",
+    "levelRequirement": 7,
+    "validMaterials": [
+        "Diamond",
+        "Emerald",
+        "Ruby",
+        "Sapphire",
+        "Glass"
+    ],
+    "validMaterialTypes": [
+        "Gemstone"
+    ],
+    "unitsOfMaterialNeeded": 1,
+    "baseCost": 10,
+    "baseStrength": 0,
+    "baseDextarity": 1,
+    "baseIntelligence": 3,
+    "filters": [
+        "Parts Only",
+        "Gemstone"
+    ]
+}

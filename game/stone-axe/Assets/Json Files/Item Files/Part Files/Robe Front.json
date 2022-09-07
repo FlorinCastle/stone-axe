@@ -1,0 +1,24 @@
+{
+    "partID": -1,
+    "partName": "Robe Front",
+    "levelRequirement": 6,
+    "validMaterials": [
+        "Cotton",
+        "Linen",
+        "Silk",
+        "Wool"
+    ],
+    "validMaterialTypes": [
+        "Woven Cloth"
+    ],
+    "unitsOfMaterialNeeded": 6,
+    "baseCost": 10,
+    "baseStrength": 0,
+    "baseDextarity": 1,
+    "baseIntelligence": 3,
+    "filters": [
+        "Parts Only",
+        "Cloth",
+        "Subtype - Cloth"
+    ]
+}

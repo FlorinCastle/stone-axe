@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Metal Helm",
+    "levelRequirement": 7,
+    "requiredParts": [
+        "Metal Cap",
+        "Coif",
+        "Face Guard"
+    ],
+    "baseCost": 21,
+    "baseStrength": 6,
+    "baseDextarity": 3,
+    "baseIntelligence": 1,
+    "filters": [
+        "Final Items Only",
+        "Armor",
+        "Strength Main Stat"
+    ]
+}

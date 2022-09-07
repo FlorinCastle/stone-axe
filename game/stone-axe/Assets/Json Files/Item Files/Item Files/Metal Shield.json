@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Metal Shield",
+    "levelRequirement": 9,
+    "requiredParts": [
+        "Metal Shield Plate",
+        "Shield Edging",
+        "Metal Decoration"
+    ],
+    "baseCost": 28,
+    "baseStrength": 8,
+    "baseDextarity": 0,
+    "baseIntelligence": 2,
+    "filters": [
+        "Final Items Only",
+        "Armor",
+        "Strength Main Stat"
+    ]
+}

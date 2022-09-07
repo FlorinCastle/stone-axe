@@ -1,0 +1,30 @@
+{
+    "partID": -1,
+    "partName": "Threading",
+    "levelRequirement": 6,
+    "validMaterials": [
+        "Cotton",
+        "Linen",
+        "Silk",
+        "Wool",
+        "Adamantine",
+        "Mythril",
+        "Silver"
+    ],
+    "validMaterialTypes": [
+        "Woven Cloth",
+        "Magic Metal"
+    ],
+    "unitsOfMaterialNeeded": 2,
+    "baseCost": 6,
+    "baseStrength": 0,
+    "baseDextarity": 1,
+    "baseIntelligence": 2,
+    "filters": [
+        "Parts Only",
+        "Cloth",
+        "Subtype - Cloth",
+        "Metal",
+        "Subtype - Magical Metal"
+    ]
+}

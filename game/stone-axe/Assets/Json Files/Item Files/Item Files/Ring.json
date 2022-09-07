@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Ring",
+    "levelRequirement": 7,
+    "requiredParts": [
+        "Ring Band",
+        "Ring Gem",
+        "Ring Engraving"
+    ],
+    "baseCost": 28,
+    "baseStrength": 2,
+    "baseDextarity": 3,
+    "baseIntelligence": 5,
+    "filters": [
+        "Final Items Only",
+        "Armor",
+        "Intellegence Main Stat"
+    ]
+}

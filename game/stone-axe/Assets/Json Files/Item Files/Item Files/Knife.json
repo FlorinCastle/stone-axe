@@ -1,0 +1,15 @@
+{
+    "itemID": -1,
+    "itemName": "Knife",
+    "levelRequirement": 4,
+    "requiredParts": [
+        "Knife Blade",
+        "Short Handle",
+        "Pomel"
+    ],
+    "baseCost": 27,
+    "baseStrength": 3,
+    "baseDextarity": 9,
+    "baseIntelligence": 2,
+    "filters": []
+}

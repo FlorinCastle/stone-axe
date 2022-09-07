@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Magic Hat",
+    "levelRequirement": 5,
+    "requiredParts": [
+        "Cloth Cap",
+        "Brim",
+        "Hat Lining"
+    ],
+    "baseCost": 23,
+    "baseStrength": 1,
+    "baseDextarity": 3,
+    "baseIntelligence": 6,
+    "filters": [
+        "Final Items Only",
+        "Armor",
+        "Intellegence Main Stat"
+    ]
+}

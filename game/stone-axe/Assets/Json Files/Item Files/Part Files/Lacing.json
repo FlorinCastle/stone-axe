@@ -1,0 +1,24 @@
+{
+    "partID": -1,
+    "partName": "Lacing",
+    "levelRequirement": 6,
+    "validMaterials": [
+        "Cotton",
+        "Linen",
+        "Silk",
+        "Wool"
+    ],
+    "validMaterialTypes": [
+        "Woven Cloth"
+    ],
+    "unitsOfMaterialNeeded": 2,
+    "baseCost": 6,
+    "baseStrength": 0,
+    "baseDextarity": 3,
+    "baseIntelligence": 1,
+    "filters": [
+        "Parts Only",
+        "Cloth",
+        "Subtype - Cloth"
+    ]
+}

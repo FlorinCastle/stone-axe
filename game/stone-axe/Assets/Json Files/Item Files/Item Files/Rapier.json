@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Rapier",
+    "levelRequirement": 14,
+    "requiredParts": [
+        "Rapier Blade",
+        "Sword Handle",
+        "Pomel"
+    ],
+    "baseCost": 30,
+    "baseStrength": 4,
+    "baseDextarity": 5,
+    "baseIntelligence": 1,
+    "filters": [
+        "Final Items Only",
+        "Weapon",
+        "Dextarity Main Stat"
+    ]
+}

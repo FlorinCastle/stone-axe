@@ -1,0 +1,44 @@
+{
+    "partID": -1,
+    "partName": "Pomel",
+    "levelRequirement": 0,
+    "validMaterials": [
+        "Diamond",
+        "Emerald",
+        "Ruby",
+        "Sapphire",
+        "Adamantine",
+        "Bronze",
+        "Copper",
+        "Iron",
+        "Mythril",
+        "Silver",
+        "Steel",
+        "Angel Wood",
+        "Ash Wood",
+        "Birch Wood",
+        "Dark Wood",
+        "Oak Wood",
+        "Rose Wood",
+        "Spruce Wood",
+        "Glass"
+    ],
+    "validMaterialTypes": [
+        "Metal",
+        "Wood",
+        "Gemstone"
+    ],
+    "unitsOfMaterialNeeded": 1,
+    "baseCost": 5,
+    "baseStrength": 1,
+    "baseDextarity": 1,
+    "baseIntelligence": 1,
+    "filters": [
+        "Parts Only",
+        "Metal",
+        "Subtype - Magical Metal",
+        "Subtype - Non-Magical Metal",
+        "Gemstone",
+        "Wood"
+    ]
+}

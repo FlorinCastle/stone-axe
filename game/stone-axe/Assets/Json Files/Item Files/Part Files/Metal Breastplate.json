@@ -1,0 +1,28 @@
+{
+    "partID": -1,
+    "partName": "Metal Breastplate",
+    "levelRequirement": 8,
+    "validMaterials": [
+        "Adamantine",
+        "Bronze",
+        "Copper",
+        "Iron",
+        "Mythril",
+        "Silver",
+        "Steel"
+    ],
+    "validMaterialTypes": [
+        "Metal"
+    ],
+    "unitsOfMaterialNeeded": 8,
+    "baseCost": 12,
+    "baseStrength": 2,
+    "baseDextarity": 2,
+    "baseIntelligence": 0,
+    "filters": [
+        "Parts Only",
+        "Metal",
+        "Subtype - Magical Metal",
+        "Subtype - Non-Magical Metal"
+    ]
+}

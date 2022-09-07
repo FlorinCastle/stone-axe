@@ -1,0 +1,26 @@
+{
+    "partID": -1,
+    "partName": "Axe Handle",
+    "levelRequirement": 2,
+    "validMaterials": [
+        "Angel Wood",
+        "Ash Wood",
+        "Birch Wood",
+        "Dark Wood",
+        "Oak Wood",
+        "Rose Wood",
+        "Spruce Wood"
+    ],
+    "validMaterialTypes": [
+        "Wood"
+    ],
+    "unitsOfMaterialNeeded": 3,
+    "baseCost": 5,
+    "baseStrength": 2,
+    "baseDextarity": 1,
+    "baseIntelligence": 0,
+    "filters": [
+        "Parts Only",
+        "Wood"
+    ]
+}

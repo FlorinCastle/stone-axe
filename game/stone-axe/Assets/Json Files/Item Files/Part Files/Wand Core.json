@@ -1,0 +1,33 @@
+{
+    "partID": -1,
+    "partName": "Wand Core",
+    "levelRequirement": 0,
+    "validMaterials": [
+        "Angel Wood",
+        "Ash Wood",
+        "Birch Wood",
+        "Dark Wood",
+        "Oak Wood",
+        "Rose Wood",
+        "Spruce Wood",
+        "Diamond",
+        "Emerald",
+        "Ruby",
+        "Sapphire",
+        "Glass"
+    ],
+    "validMaterialTypes": [
+        "Wood",
+        "Gemstone"
+    ],
+    "unitsOfMaterialNeeded": 2,
+    "baseCost": 12,
+    "baseStrength": 0,
+    "baseDextarity": 0,
+    "baseIntelligence": 3,
+    "filters": [
+        "Parts Only",
+        "Wood",
+        "Gemstone"
+    ]
+}

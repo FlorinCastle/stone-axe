@@ -1,0 +1,28 @@
+{
+    "partID": -1,
+    "partName": "Great Sword Blade",
+    "levelRequirement": 10,
+    "validMaterials": [
+        "Adamantine",
+        "Bronze",
+        "Copper",
+        "Iron",
+        "Mythril",
+        "Silver",
+        "Steel"
+    ],
+    "validMaterialTypes": [
+        "Metal"
+    ],
+    "unitsOfMaterialNeeded": 10,
+    "baseCost": 20,
+    "baseStrength": 5,
+    "baseDextarity": 0,
+    "baseIntelligence": 0,
+    "filters": [
+        "Parts Only",
+        "Metal",
+        "Subtype - Magical Metal",
+        "Subtype - Non-Magical Metal"
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "itemID": -1,
+    "itemName": "Kunai",
+    "levelRequirement": 13,
+    "requiredParts": [
+        "Dagger Blade",
+        "Dagger Blade",
+        "Pomel"
+    ],
+    "baseCost": 41,
+    "baseStrength": 5,
+    "baseDextarity": 12,
+    "baseIntelligence": 2,
+    "filters": []
+}

@@ -1,0 +1,24 @@
+{
+    "partID": -1,
+    "partName": "Suitcase Body",
+    "levelRequirement": 13,
+    "validMaterials": [
+        "Boar Leather",
+        "Dragon Leather",
+        "Magic Beast Leather",
+        "Wolf Leather"
+    ],
+    "validMaterialTypes": [
+        "Leather"
+    ],
+    "unitsOfMaterialNeeded": 5,
+    "baseCost": 20,
+    "baseStrength": 2,
+    "baseDextarity": 4,
+    "baseIntelligence": 3,
+    "filters": [
+        "Parts Only",
+        "Cloth",
+        "Subtype - Leather"
+    ]
+}

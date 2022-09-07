@@ -1,0 +1,30 @@
+{
+    "partID": -1,
+    "partName": "Inner Padding",
+    "levelRequirement": 5,
+    "validMaterials": [
+        "Boar Leather",
+        "Cotton",
+        "Dragon Leather",
+        "Linen",
+        "Magic Beast Leather",
+        "Silk",
+        "Wolf Leather",
+        "Wool"
+    ],
+    "validMaterialTypes": [
+        "Woven Cloth",
+        "Leather"
+    ],
+    "unitsOfMaterialNeeded": 5,
+    "baseCost": 10,
+    "baseStrength": 1,
+    "baseDextarity": 2,
+    "baseIntelligence": 0,
+    "filters": [
+        "Parts Only",
+        "Cloth",
+        "Subtype - Leather",
+        "Subtype - Cloth"
+    ]
+}

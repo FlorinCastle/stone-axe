@@ -1,0 +1,26 @@
+{
+    "partID": -1,
+    "partName": "Spear Handle",
+    "levelRequirement": 11,
+    "validMaterials": [
+        "Angel Wood",
+        "Ash Wood",
+        "Birch Wood",
+        "Dark Wood",
+        "Oak Wood",
+        "Rose Wood",
+        "Spruce Wood"
+    ],
+    "validMaterialTypes": [
+        "Wood"
+    ],
+    "unitsOfMaterialNeeded": 6,
+    "baseCost": 8,
+    "baseStrength": 1,
+    "baseDextarity": 3,
+    "baseIntelligence": 0,
+    "filters": [
+        "Parts Only",
+        "Wood"
+    ]
+}

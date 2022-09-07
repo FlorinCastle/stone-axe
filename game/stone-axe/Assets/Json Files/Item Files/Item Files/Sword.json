@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Sword",
+    "levelRequirement": 0,
+    "requiredParts": [
+        "Sword Blade",
+        "Sword Handle",
+        "Pomel"
+    ],
+    "baseCost": 20,
+    "baseStrength": 6,
+    "baseDextarity": 3,
+    "baseIntelligence": 1,
+    "filters": [
+        "Final Items Only",
+        "Weapon",
+        "Strength Main Stat"
+    ]
+}

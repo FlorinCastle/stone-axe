@@ -1,0 +1,30 @@
+{
+    "partID": -1,
+    "partName": "Fan Leaves",
+    "levelRequirement": 17,
+    "validMaterials": [
+        "Boar Leather",
+        "Cotton",
+        "Dragon Leather",
+        "Linen",
+        "Magic Beast Leather",
+        "Silk",
+        "Wolf Leather",
+        "Wool"
+    ],
+    "validMaterialTypes": [
+        "Woven Cloth",
+        "Leather"
+    ],
+    "unitsOfMaterialNeeded": 4,
+    "baseCost": 14,
+    "baseStrength": 0,
+    "baseDextarity": 2,
+    "baseIntelligence": 2,
+    "filters": [
+        "Parts Only",
+        "Cloth",
+        "Subtype - Leather",
+        "Subtype - Cloth"
+    ]
+}

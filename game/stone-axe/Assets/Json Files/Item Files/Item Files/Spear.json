@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Spear",
+    "levelRequirement": 11,
+    "requiredParts": [
+        "Spear Head",
+        "Spear Handle",
+        "Pomel"
+    ],
+    "baseCost": 23,
+    "baseStrength": 5,
+    "baseDextarity": 4,
+    "baseIntelligence": 1,
+    "filters": [
+        "Final Items Only",
+        "Weapon",
+        "Strength Main Stat"
+    ]
+}

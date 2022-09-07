@@ -1,0 +1,15 @@
+{
+    "itemID": -1,
+    "itemName": "Suitcase",
+    "levelRequirement": 13,
+    "requiredParts": [
+        "Suitcase Body",
+        "Suitcase Lid",
+        "Buckle"
+    ],
+    "baseCost": 25,
+    "baseStrength": 6,
+    "baseDextarity": 8,
+    "baseIntelligence": 4,
+    "filters": []
+}

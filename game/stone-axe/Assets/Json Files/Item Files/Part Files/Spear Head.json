@@ -1,0 +1,28 @@
+{
+    "partID": -1,
+    "partName": "Spear Head",
+    "levelRequirement": 11,
+    "validMaterials": [
+        "Adamantine",
+        "Bronze",
+        "Copper",
+        "Iron",
+        "Mythril",
+        "Silver",
+        "Steel"
+    ],
+    "validMaterialTypes": [
+        "Metal"
+    ],
+    "unitsOfMaterialNeeded": 3,
+    "baseCost": 7,
+    "baseStrength": 1,
+    "baseDextarity": 2,
+    "baseIntelligence": 1,
+    "filters": [
+        "Parts Only",
+        "Metal",
+        "Subtype - Magical Metal",
+        "Subtype - Non-Magical Metal"
+    ]
+}

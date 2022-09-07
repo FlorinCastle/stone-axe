@@ -1,0 +1,33 @@
+{
+    "partID": -1,
+    "partName": "Staff Core",
+    "levelRequirement": 3,
+    "validMaterials": [
+        "Angel Wood",
+        "Ash Wood",
+        "Birch Wood",
+        "Dark Wood",
+        "Oak Wood",
+        "Rose Wood",
+        "Spruce Wood",
+        "Diamond",
+        "Emerald",
+        "Ruby",
+        "Sapphire",
+        "Glass"
+    ],
+    "validMaterialTypes": [
+        "Wood",
+        "Gemstone"
+    ],
+    "unitsOfMaterialNeeded": 2,
+    "baseCost": 6,
+    "baseStrength": 0,
+    "baseDextarity": 1,
+    "baseIntelligence": 2,
+    "filters": [
+        "Parts Only",
+        "Wood",
+        "Gemstone"
+    ]
+}

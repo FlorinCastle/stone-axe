@@ -1,0 +1,20 @@
+{
+    "itemID": -1,
+    "itemName": "Trident",
+    "levelRequirement": 21,
+    "requiredParts": [
+        "Trident Body",
+        "Trident Prongs",
+        "Pomel"
+    ],
+    "baseCost": 20,
+    "baseStrength": 5,
+    "baseDextarity": 5,
+    "baseIntelligence": 2,
+    "filters": [
+        "Final Items Only",
+        "Armor",
+        "Dextarity Main Stat",
+        "Strength Main Stat"
+    ]
+}

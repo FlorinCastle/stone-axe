@@ -1,0 +1,28 @@
+{
+    "partID": -1,
+    "partName": "Greaves",
+    "levelRequirement": 9,
+    "validMaterials": [
+        "Adamantine",
+        "Bronze",
+        "Copper",
+        "Iron",
+        "Mythril",
+        "Silver",
+        "Steel"
+    ],
+    "validMaterialTypes": [
+        "Metal"
+    ],
+    "unitsOfMaterialNeeded": 3,
+    "baseCost": 8,
+    "baseStrength": 3,
+    "baseDextarity": 1,
+    "baseIntelligence": 0,
+    "filters": [
+        "Parts Only",
+        "Metal",
+        "Subtype - Magical Metal",
+        "Subtype - Non-Magical Metal"
+    ]
+}

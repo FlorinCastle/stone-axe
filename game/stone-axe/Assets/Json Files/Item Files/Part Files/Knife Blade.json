@@ -1,0 +1,28 @@
+{
+    "partID": -1,
+    "partName": "Knife Blade",
+    "levelRequirement": 4,
+    "validMaterials": [
+        "Adamantine",
+        "Bronze",
+        "Copper",
+        "Iron",
+        "Mythril",
+        "Silver",
+        "Steel"
+    ],
+    "validMaterialTypes": [
+        "Metal"
+    ],
+    "unitsOfMaterialNeeded": 2,
+    "baseCost": 8,
+    "baseStrength": 5,
+    "baseDextarity": 3,
+    "baseIntelligence": 1,
+    "filters": [
+        "Metal",
+        "Subtype - Magical Metal",
+        "Subtype - Non-Magical Metal",
+        "Dextarity Main Stat"
+    ]
+}

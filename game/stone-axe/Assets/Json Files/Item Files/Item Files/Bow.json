@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Bow",
+    "levelRequirement": 5,
+    "requiredParts": [
+        "Bow Limb",
+        "Bowstring",
+        "Bow Grip"
+    ],
+    "baseCost": 28,
+    "baseStrength": 3,
+    "baseDextarity": 7,
+    "baseIntelligence": 2,
+    "filters": [
+        "Final Items Only",
+        "Weapon",
+        "Dextarity Main Stat"
+    ]
+}

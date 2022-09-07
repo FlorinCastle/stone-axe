@@ -1,0 +1,23 @@
+{
+    "partID": -1,
+    "partName": "Runes",
+    "levelRequirement": 16,
+    "validMaterials": [
+        "Mythril",
+        "Adamantine",
+        "Silver"
+    ],
+    "validMaterialTypes": [
+        "Magic Metal"
+    ],
+    "unitsOfMaterialNeeded": 2,
+    "baseCost": 10,
+    "baseStrength": 0,
+    "baseDextarity": 0,
+    "baseIntelligence": 4,
+    "filters": [
+        "Parts Only",
+        "Metal",
+        "Subtype - Magical Metal"
+    ]
+}

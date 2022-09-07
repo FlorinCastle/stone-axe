@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Wand",
+    "levelRequirement": 0,
+    "requiredParts": [
+        "Wand Body",
+        "Wand Core",
+        "Wand Handle"
+    ],
+    "baseCost": 28,
+    "baseStrength": 0,
+    "baseDextarity": 1,
+    "baseIntelligence": 9,
+    "filters": [
+        "Final Items Only",
+        "Weapon",
+        "Intellegence Main Stat"
+    ]
+}

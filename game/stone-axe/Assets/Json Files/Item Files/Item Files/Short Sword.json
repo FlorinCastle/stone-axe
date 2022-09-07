@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Short Sword",
+    "levelRequirement": 0,
+    "requiredParts": [
+        "Short Sword Blade",
+        "Sword Handle",
+        "Pomel"
+    ],
+    "baseCost": 20,
+    "baseStrength": 3,
+    "baseDextarity": 5,
+    "baseIntelligence": 2,
+    "filters": [
+        "Final Items Only",
+        "Weapon",
+        "Dextarity Main Stat"
+    ]
+}

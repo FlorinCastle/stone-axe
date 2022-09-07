@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Great Sword",
+    "levelRequirement": 10,
+    "requiredParts": [
+        "Great Sword Blade",
+        "Great Sword Handle",
+        "Pomel"
+    ],
+    "baseCost": 32,
+    "baseStrength": 10,
+    "baseDextarity": 0,
+    "baseIntelligence": 0,
+    "filters": [
+        "Final Items Only",
+        "Weapon",
+        "Strength Main Stat"
+    ]
+}

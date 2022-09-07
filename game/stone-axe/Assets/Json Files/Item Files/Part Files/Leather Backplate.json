@@ -1,0 +1,24 @@
+{
+    "partID": -1,
+    "partName": "Leather Backplate",
+    "levelRequirement": 5,
+    "validMaterials": [
+        "Boar Leather",
+        "Dragon Leather",
+        "Magic Beast Leather",
+        "Wolf Leather"
+    ],
+    "validMaterialTypes": [
+        "Leather"
+    ],
+    "unitsOfMaterialNeeded": 7,
+    "baseCost": 11,
+    "baseStrength": 2,
+    "baseDextarity": 2,
+    "baseIntelligence": 0,
+    "filters": [
+        "Parts Only",
+        "Cloth",
+        "Subtype - Leather"
+    ]
+}

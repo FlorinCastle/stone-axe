@@ -1,0 +1,32 @@
+{
+    "partID": -1,
+    "partName": "Wand Handle",
+    "levelRequirement": 0,
+    "validMaterials": [
+        "Angel Wood",
+        "Ash Wood",
+        "Birch Wood",
+        "Dark Wood",
+        "Oak Wood",
+        "Rose Wood",
+        "Spruce Wood",
+        "Adamantine",
+        "Mythril",
+        "Silver"
+    ],
+    "validMaterialTypes": [
+        "Wood",
+        "Magic Metal"
+    ],
+    "unitsOfMaterialNeeded": 2,
+    "baseCost": 6,
+    "baseStrength": 0,
+    "baseDextarity": 0,
+    "baseIntelligence": 3,
+    "filters": [
+        "Parts Only",
+        "Wood",
+        "Metal",
+        "Subtype - Magical Metal"
+    ]
+}

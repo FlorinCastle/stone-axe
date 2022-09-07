@@ -1,0 +1,20 @@
+{
+    "itemID": -1,
+    "itemName": "Scythe",
+    "levelRequirement": 25,
+    "requiredParts": [
+        "Scythe Blade",
+        "Scythe Handle",
+        "Pomel"
+    ],
+    "baseCost": 30,
+    "baseStrength": 7,
+    "baseDextarity": 6,
+    "baseIntelligence": 2,
+    "filters": [
+        "Final Items Only",
+        "Armor",
+        "Dextarity Main Stat",
+        "Strength Main Stat"
+    ]
+}

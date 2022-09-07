@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Metal Boots",
+    "levelRequirement": 9,
+    "requiredParts": [
+        "Knee Covering",
+        "Greaves",
+        "Sabaton"
+    ],
+    "baseCost": 23,
+    "baseStrength": 7,
+    "baseDextarity": 2,
+    "baseIntelligence": 1,
+    "filters": [
+        "Final Items Only",
+        "Armor",
+        "Strength Main Stat"
+    ]
+}

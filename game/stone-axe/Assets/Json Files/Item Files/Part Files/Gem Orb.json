@@ -1,0 +1,24 @@
+{
+    "partID": -1,
+    "partName": "Gem Orb",
+    "levelRequirement": 16,
+    "validMaterials": [
+        "Diamond",
+        "Emerald",
+        "Ruby",
+        "Sapphire",
+        "Glass"
+    ],
+    "validMaterialTypes": [
+        "Gemstone"
+    ],
+    "unitsOfMaterialNeeded": 5,
+    "baseCost": 15,
+    "baseStrength": 0,
+    "baseDextarity": 0,
+    "baseIntelligence": 4,
+    "filters": [
+        "Parts Only",
+        "Gemstone"
+    ]
+}

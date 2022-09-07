@@ -1,0 +1,37 @@
+{
+    "partID": -1,
+    "partName": "Short Handle",
+    "levelRequirement": 1,
+    "validMaterials": [
+        "Angel Wood",
+        "Ash Wood",
+        "Birch Wood",
+        "Dark Wood",
+        "Oak Wood",
+        "Rose Wood",
+        "Spruce Wood",
+        "Adamantine",
+        "Bronze",
+        "Copper",
+        "Iron",
+        "Mythril",
+        "Silver",
+        "Steel"
+    ],
+    "validMaterialTypes": [
+        "Wood",
+        "Metal"
+    ],
+    "unitsOfMaterialNeeded": 2,
+    "baseCost": 6,
+    "baseStrength": 2,
+    "baseDextarity": 5,
+    "baseIntelligence": 2,
+    "filters": [
+        "Metal",
+        "Subtype - Magical Metal",
+        "Subtype - Non-Magical Metal",
+        "Wood",
+        "Dextarity Main Stat"
+    ]
+}

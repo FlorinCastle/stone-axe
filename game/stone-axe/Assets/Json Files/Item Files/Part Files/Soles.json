@@ -1,0 +1,24 @@
+{
+    "partID": -1,
+    "partName": "Soles",
+    "levelRequirement": 6,
+    "validMaterials": [
+        "Boar Leather",
+        "Dragon Leather",
+        "Magic Beast Leather",
+        "Wolf Leather"
+    ],
+    "validMaterialTypes": [
+        "Leather"
+    ],
+    "unitsOfMaterialNeeded": 2,
+    "baseCost": 0,
+    "baseStrength": 1,
+    "baseDextarity": 3,
+    "baseIntelligence": 0,
+    "filters": [
+        "Parts Only",
+        "Cloth",
+        "Subtype - Leather"
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "itemID": -1,
+    "itemName": "Dagger",
+    "levelRequirement": 1,
+    "requiredParts": [
+        "Dagger Blade",
+        "Short Handle",
+        "Pomel"
+    ],
+    "baseCost": 20,
+    "baseStrength": 3,
+    "baseDextarity": 6,
+    "baseIntelligence": 1,
+    "filters": []
+}

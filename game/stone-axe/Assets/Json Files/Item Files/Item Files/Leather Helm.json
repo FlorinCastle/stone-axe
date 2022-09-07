@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Leather Helm",
+    "levelRequirement": 4,
+    "requiredParts": [
+        "Leather Cap",
+        "Crest",
+        "Nose Guard"
+    ],
+    "baseCost": 20,
+    "baseStrength": 3,
+    "baseDextarity": 5,
+    "baseIntelligence": 2,
+    "filters": [
+        "Final Items Only",
+        "Armor",
+        "Dextarity Main Stat"
+    ]
+}

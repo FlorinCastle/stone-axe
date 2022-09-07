@@ -1,0 +1,20 @@
+{
+    "itemID": -1,
+    "itemName": "Mask",
+    "levelRequirement": 12,
+    "requiredParts": [
+        "Front Mask Piece",
+        "Leather Band",
+        "Buckle"
+    ],
+    "baseCost": 20,
+    "baseStrength": 4,
+    "baseDextarity": 4,
+    "baseIntelligence": 2,
+    "filters": [
+        "Final Items Only",
+        "Armor",
+        "Dextarity Main Stat",
+        "Strength Main Stat"
+    ]
+}

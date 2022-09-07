@@ -1,0 +1,24 @@
+{
+    "partID": -1,
+    "partName": "Leather Breastplate",
+    "levelRequirement": 5,
+    "validMaterials": [
+        "Boar Leather",
+        "Dragon Leather",
+        "Magic Beast Leather",
+        "Wolf Leather"
+    ],
+    "validMaterialTypes": [
+        "Leather"
+    ],
+    "unitsOfMaterialNeeded": 8,
+    "baseCost": 12,
+    "baseStrength": 2,
+    "baseDextarity": 2,
+    "baseIntelligence": 0,
+    "filters": [
+        "Parts Only",
+        "Cloth",
+        "Subtype - Leather"
+    ]
+}

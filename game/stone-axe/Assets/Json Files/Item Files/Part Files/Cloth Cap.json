@@ -1,0 +1,24 @@
+{
+    "partID": -1,
+    "partName": "Cloth Cap",
+    "levelRequirement": 5,
+    "validMaterials": [
+        "Cotton",
+        "Linen",
+        "Silk",
+        "Wool"
+    ],
+    "validMaterialTypes": [
+        "Woven Cloth"
+    ],
+    "unitsOfMaterialNeeded": 3,
+    "baseCost": 6,
+    "baseStrength": 1,
+    "baseDextarity": 1,
+    "baseIntelligence": 1,
+    "filters": [
+        "Parts Only",
+        "Cloth",
+        "Subtype - Cloth"
+    ]
+}

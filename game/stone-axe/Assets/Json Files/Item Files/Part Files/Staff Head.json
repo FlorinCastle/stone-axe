@@ -1,0 +1,32 @@
+{
+    "partID": -1,
+    "partName": "Staff Head",
+    "levelRequirement": 3,
+    "validMaterials": [
+        "Angel Wood",
+        "Ash Wood",
+        "Birch Wood",
+        "Dark Wood",
+        "Oak Wood",
+        "Rose Wood",
+        "Spruce Wood",
+        "Adamantine",
+        "Mythril",
+        "Silver"
+    ],
+    "validMaterialTypes": [
+        "Wood",
+        "Magic Metal"
+    ],
+    "unitsOfMaterialNeeded": 3,
+    "baseCost": 5,
+    "baseStrength": 1,
+    "baseDextarity": 1,
+    "baseIntelligence": 2,
+    "filters": [
+        "Parts Only",
+        "Wood",
+        "Metal",
+        "Subtype - Magical Metal"
+    ]
+}

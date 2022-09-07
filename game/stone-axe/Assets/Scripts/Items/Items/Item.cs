@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -9,6 +10,9 @@ public class Item : MonoBehaviour
     [SerializeField] List<ItemData> _itemDataList;
     int ranItem;
     ItemData _generatedItem;
+
+    [SerializeField] List<string> itemJsonData;
+
     /*
     string textReturn = "";
 
@@ -52,8 +56,6 @@ public class Item : MonoBehaviour
     }
     */
 
-    public List<ItemData> getItemDataRef()
-    {
-        return _itemDataList;
-    }
+    public List<ItemData> getItemDataRef() { return _itemDataList; }
+    public List<string> getItemJsonData() { return itemJsonData; }
 }

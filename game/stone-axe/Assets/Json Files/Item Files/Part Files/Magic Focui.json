@@ -1,0 +1,23 @@
+{
+    "partID": -1,
+    "partName": "Magic Focui",
+    "levelRequirement": 16,
+    "validMaterials": [
+        "Adamantine",
+        "Mythril",
+        "Silver"
+    ],
+    "validMaterialTypes": [
+        "Magic Metal"
+    ],
+    "unitsOfMaterialNeeded": 2,
+    "baseCost": 8,
+    "baseStrength": 0,
+    "baseDextarity": 1,
+    "baseIntelligence": 3,
+    "filters": [
+        "Parts Only",
+        "Metal",
+        "Subtype - Magical Metal"
+    ]
+}

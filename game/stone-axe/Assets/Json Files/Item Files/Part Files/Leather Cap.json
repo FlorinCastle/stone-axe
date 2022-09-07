@@ -1,0 +1,24 @@
+{
+    "partID": -1,
+    "partName": "Leather Cap",
+    "levelRequirement": 4,
+    "validMaterials": [
+        "Boar Leather",
+        "Dragon Leather",
+        "Magic Beast Leather",
+        "Wolf Leather"
+    ],
+    "validMaterialTypes": [
+        "Leather"
+    ],
+    "unitsOfMaterialNeeded": 3,
+    "baseCost": 6,
+    "baseStrength": 1,
+    "baseDextarity": 1,
+    "baseIntelligence": 1,
+    "filters": [
+        "Parts Only",
+        "Cloth",
+        "Subtype - Leather"
+    ]
+}

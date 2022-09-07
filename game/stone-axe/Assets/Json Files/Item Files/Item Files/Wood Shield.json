@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Wood Shield",
+    "levelRequirement": 6,
+    "requiredParts": [
+        "Wood Shield Plate",
+        "Shield Edging",
+        "Leather Shield Cover"
+    ],
+    "baseCost": 26,
+    "baseStrength": 6,
+    "baseDextarity": 3,
+    "baseIntelligence": 1,
+    "filters": [
+        "Final Items Only",
+        "Armor",
+        "Strength Main Stat"
+    ]
+}

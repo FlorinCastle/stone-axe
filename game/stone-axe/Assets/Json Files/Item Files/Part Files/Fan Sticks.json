@@ -1,0 +1,37 @@
+{
+    "partID": -1,
+    "partName": "Fan Sticks",
+    "levelRequirement": 17,
+    "validMaterials": [
+        "Angel Wood",
+        "Ash Wood",
+        "Birch Wood",
+        "Dark Wood",
+        "Oak Wood",
+        "Rose Wood",
+        "Spruce Wood",
+        "Adamantine",
+        "Bronze",
+        "Copper",
+        "Iron",
+        "Mythril",
+        "Silver",
+        "Steel"
+    ],
+    "validMaterialTypes": [
+        "Wood",
+        "Metal"
+    ],
+    "unitsOfMaterialNeeded": 2,
+    "baseCost": 12,
+    "baseStrength": 0,
+    "baseDextarity": 3,
+    "baseIntelligence": 1,
+    "filters": [
+        "Parts Only",
+        "Wood",
+        "Metal",
+        "Subtype - Magical Metal",
+        "Subtype - Non-Magical Metal"
+    ]
+}

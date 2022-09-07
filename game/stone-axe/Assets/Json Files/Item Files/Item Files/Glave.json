@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Glave",
+    "levelRequirement": 14,
+    "requiredParts": [
+        "Glave Head",
+        "Spear Handle",
+        "Pomel"
+    ],
+    "baseCost": 32,
+    "baseStrength": 4,
+    "baseDextarity": 5,
+    "baseIntelligence": 1,
+    "filters": [
+        "Final Items Only",
+        "Weapon",
+        "Dextarity Main Stat"
+    ]
+}

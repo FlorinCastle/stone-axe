@@ -1,0 +1,24 @@
+{
+    "partID": -1,
+    "partName": "Nose Guard",
+    "levelRequirement": 4,
+    "validMaterials": [
+        "Wolf Leather",
+        "Magic Beast Leather",
+        "Dragon Leather",
+        "Boar Leather"
+    ],
+    "validMaterialTypes": [
+        "Leather"
+    ],
+    "unitsOfMaterialNeeded": 2,
+    "baseCost": 4,
+    "baseStrength": 1,
+    "baseDextarity": 2,
+    "baseIntelligence": 0,
+    "filters": [
+        "Parts Only",
+        "Cloth",
+        "Subtype - Leather"
+    ]
+}

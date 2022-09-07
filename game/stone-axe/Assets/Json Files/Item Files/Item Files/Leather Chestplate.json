@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Leather Chestplate",
+    "levelRequirement": 5,
+    "requiredParts": [
+        "Leather Breastplate",
+        "Leather Backplate",
+        "Inner Padding"
+    ],
+    "baseCost": 28,
+    "baseStrength": 3,
+    "baseDextarity": 6,
+    "baseIntelligence": 1,
+    "filters": [
+        "Final Items Only",
+        "Armor",
+        "Dextarity Main Stat"
+    ]
+}

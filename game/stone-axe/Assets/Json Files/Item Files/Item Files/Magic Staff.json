@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Magic Staff",
+    "levelRequirement": 5,
+    "requiredParts": [
+        "Staff Head",
+        "Staff Body",
+        "Staff Core"
+    ],
+    "baseCost": 23,
+    "baseStrength": 1,
+    "baseDextarity": 3,
+    "baseIntelligence": 6,
+    "filters": [
+        "Final Items Only",
+        "Weapon",
+        "Intellegence Main Stat"
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Mace",
+    "levelRequirement": 6,
+    "requiredParts": [
+        "Mace Head",
+        "Mace Handle",
+        "Pomel"
+    ],
+    "baseCost": 25,
+    "baseStrength": 5,
+    "baseDextarity": 2,
+    "baseIntelligence": 3,
+    "filters": [
+        "Final Items Only",
+        "Weapon",
+        "Strength Main Stat"
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Battle Fan",
+    "levelRequirement": 17,
+    "requiredParts": [
+        "Fan Leaves",
+        "Fan Sticks",
+        "Pomel"
+    ],
+    "baseCost": 30,
+    "baseStrength": 3,
+    "baseDextarity": 5,
+    "baseIntelligence": 2,
+    "filters": [
+        "Final Items Only",
+        "Weapon",
+        "Dextarity Main Stat"
+    ]
+}

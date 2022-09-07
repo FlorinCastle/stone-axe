@@ -1,0 +1,28 @@
+{
+    "partID": -1,
+    "partName": "Pickaxe Head",
+    "levelRequirement": 8,
+    "validMaterials": [
+        "Adamantine",
+        "Bronze",
+        "Copper",
+        "Iron",
+        "Mythril",
+        "Silver",
+        "Steel"
+    ],
+    "validMaterialTypes": [
+        "Metal"
+    ],
+    "unitsOfMaterialNeeded": 5,
+    "baseCost": 12,
+    "baseStrength": 3,
+    "baseDextarity": 5,
+    "baseIntelligence": 1,
+    "filters": [
+        "Parts Only",
+        "Metal",
+        "Subtype - Magical Metal",
+        "Subtype - Non-Magical Metal"
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "itemID": -1,
+    "itemName": "Magician's Orb",
+    "levelRequirement": 16,
+    "requiredParts": [
+        "Gem Orb",
+        "Runes",
+        "Magic Focui"
+    ],
+    "baseCost": 30,
+    "baseStrength": 0,
+    "baseDextarity": 2,
+    "baseIntelligence": 8,
+    "filters": [
+        "Final Items Only",
+        "Weapon",
+        "Intellegence Main Stat"
+    ]
+}

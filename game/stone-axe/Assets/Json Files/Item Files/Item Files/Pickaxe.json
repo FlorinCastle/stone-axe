@@ -1,0 +1,11 @@
+{
+    "itemID": -1,
+    "itemName": "Pickaxe",
+    "levelRequirement": 0,
+    "requiredParts": [],
+    "baseCost": 0,
+    "baseStrength": 0,
+    "baseDextarity": 0,
+    "baseIntelligence": 0,
+    "filters": []
+}
