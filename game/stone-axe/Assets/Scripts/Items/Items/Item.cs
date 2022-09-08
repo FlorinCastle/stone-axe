@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -10,8 +11,9 @@ public class Item : MonoBehaviour
     [SerializeField] List<ItemData> _itemDataList;
     int ranItem;
     ItemData _generatedItem;
+    ItemJsonData _generatedItemJsonData;
 
-    [SerializeField] List<string> itemJsonData;
+    [SerializeField] List<TextAsset> itemJsons;
 
     /*
     string textReturn = "";
@@ -30,6 +32,25 @@ public class Item : MonoBehaviour
         _generatedItem = _itemDataList[ranItem];
 
         return _generatedItem;
+    }
+    public ItemJsonData chooseItemJson()
+    {
+        ranItem = Random.Range(0, itemJsons.Count);
+        _generatedItemJsonData = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsons[ranItem]).Replace("Assets","")));
+
+        return _generatedItemJsonData;
+    }
+    public ItemJsonData getItemJsonData(string itemName) //(int itemIDin) 
+    {
+        foreach(TextAsset item in itemJsons)
+        {
+            string itemCheck = loadJson(item).itemName;
+            //int ID = loadJson(item).itemID;
+            if (itemCheck == itemName)
+                return loadJson(item);
+        }
+        Debug.LogWarning("Unable to find Valid Item for ID: [" + itemName + "]");
+        return null;
     }
 
     /*
@@ -57,5 +78,10 @@ public class Item : MonoBehaviour
     */
 
     public List<ItemData> getItemDataRef() { return _itemDataList; }
-    public List<string> getItemJsonData() { return itemJsonData; }
+    public List<TextAsset> getItemJsonData() { return itemJsons; }
+
+    private ItemJsonData loadJson(TextAsset jsonText)
+    {
+        return JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonText).Replace("Assets", "")));
+    }
 }

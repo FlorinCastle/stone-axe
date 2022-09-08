@@ -53,11 +53,11 @@ public class Craft : MonoBehaviour
     {
         // item dropdown
         //_itemDropdown.ClearOptions();
-        itemData = _itemScriptReference.getItemDataRef();
-        itemDropOptions.Add("Choose Item");
+        //itemData = _itemScriptReference.getItemDataRef();
+        //itemDropOptions.Add("Choose Item");
         // set up craftable items
-        foreach (ItemData item in itemData)
-            itemDropOptions.Add(item.ItemName);
+        //foreach (ItemData item in itemData)
+        //    itemDropOptions.Add(item.ItemName);
         //_itemDropdown.AddOptions(itemDropOptions);
 
         // part dropdown

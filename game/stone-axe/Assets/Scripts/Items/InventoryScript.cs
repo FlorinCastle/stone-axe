@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class InventoryScript : MonoBehaviour
 {
@@ -177,7 +180,7 @@ public class InventoryScript : MonoBehaviour
             holderList.Clear();
             setupList.Clear();
         }
-        
+
         _descriptionText1.text = "";
         _descriptionText2.text = "";
     }
@@ -1004,6 +1007,89 @@ public class InventoryScript : MonoBehaviour
 
         return itemDataStorageTemp;
     }
+    public GameObject convertItemData(ItemJsonData item)
+    {
+        // get variables set up
+        itemDataStorageTemp = Instantiate(_itemDataStoragePrefab);
+        itemDataStorageTemp.transform.parent = this.gameObject.transform;
+        itemDataScriptRef = itemDataStorageTemp.GetComponent<ItemDataStorage>();
+
+        // get data from object and insert into gameobject
+        // stats
+        itemDataStorageTemp.name = item.itemName;
+        itemDataScriptRef.setItemName(item.itemName);
+        itemDataScriptRef.setTotalValue(calculateTotalValue(item));
+        itemDataScriptRef.ItemRecipeRef = _recipeBookRef.getItemRecipe(item.itemName);
+        itemDataScriptRef.setTotalStrenght(calculateTotalStr(item));
+        itemDataScriptRef.setTotalDex(calculateTotalDex(item));
+        itemDataScriptRef.setTotalInt(calculateTotalInt(item));
+
+        // parts
+        // part 1
+        part1DataStorageTemp = Instantiate(_partDataStoragePrefab);
+        part1DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
+        part1DataScriptRef = part1DataStorageTemp.GetComponent<PartDataStorage>();
+        // setup reference to scriptabe object recipe
+        part1DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.parts[0].partName));
+        // convert data from object to gameobject
+        part1DataStorageTemp.name = item.parts[0].materialData.Material + " " + item.parts[0].partName;
+        part1DataScriptRef.setPartName(item.parts[0].partName);
+        part1DataScriptRef.setMaterial(_inventoryData.getMaterialData(item.parts[0].materialData.Material));
+        part1DataScriptRef.setPartStr(calculatePartStr(item.parts[0]));
+        part1DataScriptRef.setPartDex(calculatePartDex(item.parts[0]));
+        part1DataScriptRef.setPartInt(calculatePartInt(item.parts[0]));
+        part1DataScriptRef.setValue(calculatePartValue(item.parts[0]));
+        // store ref of part 1 in item script
+        itemDataScriptRef.setPart1(part1DataScriptRef);
+
+        // part 2
+        part2DataStorageTemp = Instantiate(_partDataStoragePrefab);
+        part2DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
+        part2DataScriptRef = part2DataStorageTemp.GetComponent<PartDataStorage>();
+        // setup reference to scriptabe object recipe
+        part2DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.parts[1].partName));
+        // convert data from object to gameobject
+        part2DataStorageTemp.name = item.parts[1].materialData.Material + " " + item.parts[1].partName;
+        part2DataScriptRef.setPartName(item.parts[1].partName);
+        part2DataScriptRef.setMaterial(_inventoryData.getMaterialData(item.parts[1].materialData.Material));
+        part2DataScriptRef.setPartStr(calculatePartStr(item.parts[1]));
+        part2DataScriptRef.setPartDex(calculatePartDex(item.parts[1]));
+        part2DataScriptRef.setPartInt(calculatePartInt(item.parts[1]));
+        part2DataScriptRef.setValue(calculatePartValue(item.parts[1]));
+        // store ref of part 1 in item script
+        itemDataScriptRef.setPart2(part2DataScriptRef);
+
+        // part 3
+        part3DataStorageTemp = Instantiate(_partDataStoragePrefab);
+        part3DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
+        part3DataScriptRef = part3DataStorageTemp.GetComponent<PartDataStorage>();
+        // setup reference to scriptabe object recipe
+        part3DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.parts[2].partName));
+        // convert data from object to gameobject
+        part3DataStorageTemp.name = item.parts[2].materialData.Material + " " + item.parts[2].partName;
+        part3DataScriptRef.setPartName(item.parts[2].partName);
+        part3DataScriptRef.setMaterial(_inventoryData.getMaterialData(item.parts[2].materialData.Material));
+        part3DataScriptRef.setPartStr(calculatePartStr(item.parts[2]));
+        part3DataScriptRef.setPartDex(calculatePartDex(item.parts[2]));
+        part3DataScriptRef.setPartInt(calculatePartInt(item.parts[2]));
+        part3DataScriptRef.setValue(calculatePartValue(item.parts[2]));
+        // store ref of part 1 in item script
+        itemDataScriptRef.setPart3(part3DataScriptRef);
+
+        // enchantment
+        itemDataScriptRef.setIsEnchanted(item.isEnchanted);
+        if (item.isEnchanted)
+        {
+            GameObject enc = convertEnchantData(item.ench);
+
+            enc.transform.parent = itemDataStorageTemp.gameObject.transform;
+            itemDataScriptRef.setEnchantment(enc.GetComponent<EnchantDataStorage>());
+
+            itemDataScriptRef.setTotalValue(itemDataScriptRef.TotalValue + enc.GetComponent<EnchantDataStorage>().AddedValueOfEnchant);
+        }
+
+        return itemDataStorageTemp;
+    }
 
     private GameObject partDataStorageTemp;
     private PartDataStorage partDataScriptRef;
@@ -1207,6 +1293,11 @@ public class InventoryScript : MonoBehaviour
         }
         return -1;
         */
+    }
+    public int InsertItem(ItemJsonData item)
+    {
+        GameObject temp = convertItemData(item);
+        return _inventoryData.insertItemData(temp);
     }
     /*
     public int InsertPart(PartData part)
@@ -1759,6 +1850,22 @@ public class InventoryScript : MonoBehaviour
         return null;
     }
 
+    private ItemJsonData getItemJsonData()
+    {
+        foreach (TextAsset itemJson in GameObject.FindGameObjectWithTag("ItemData").GetComponent<Item>().getItemJsonData())
+        {
+            string itemName = loadJson(itemJson).itemName;
+            if (itemName == _selectedItem.GetComponent<ItemDataStorage>().ItemName)
+                return loadJson(itemJson);
+        }
+        return null;
+    }
+
+    private ItemJsonData loadJson(TextAsset jsonData)
+    {
+        return JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonData).Replace("Assets", "")));
+    }
+
     public void nextItemFilter()
     {
         int i = _itemsFilterData.IndexOf(_currentItemFilter);
@@ -1859,6 +1966,48 @@ public class InventoryScript : MonoBehaviour
         }
 
         return false;
+    }
+
+    private int calculateTotalValue(ItemJsonData item)
+    {
+        return item.baseCost + calculatePartValue(item.parts[0]) + calculatePartValue(item.parts[1]) + calculatePartValue(item.parts[2]);
+    }
+    private int calculateTotalStr(ItemJsonData item)
+    {
+        return item.baseStrength +
+            calculatePartStr(item.parts[0]) +
+            calculatePartStr(item.parts[1]) +
+            calculatePartStr(item.parts[2]);
+    }
+    private int calculateTotalDex(ItemJsonData item)
+    {
+        return item.baseDextarity +
+            calculatePartDex(item.parts[0]) +
+            calculatePartDex(item.parts[1]) +
+            calculatePartDex(item.parts[2]);
+    }
+    private int calculateTotalInt(ItemJsonData item)
+    {
+        return item.baseIntelligence +
+            calculatePartInt(item.parts[0]) +
+            calculatePartInt(item.parts[1]) +
+            calculatePartInt(item.parts[2]);
+    }
+    private int calculatePartValue(PartJsonData part)
+    {
+        return part.baseCost + (part.materialData.BaseCostPerUnit * part.unitsOfMaterialNeeded);
+    }
+    private int calculatePartStr(PartJsonData part)
+    {
+        return part.baseStrength + part.materialData.AddedStrength;
+    }
+    private int calculatePartDex(PartJsonData part)
+    {
+        return part.baseDextarity + part.materialData.AddedDextarity;
+    }
+    private int calculatePartInt(PartJsonData part)
+    {
+        return part.baseIntelligence + part.materialData.AddedIntelligence;
     }
 
     public int ItemInvSize { get => _inventoryData.ItemInventory.Count; }

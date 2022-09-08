@@ -12,6 +12,11 @@ public class ItemJsonData
     public int baseStrength;
     public int baseDextarity;
     public int baseIntelligence;
-
     public List<string> filters;
+
+    // BETWEEN THESE LINES IS ONLY FOR USE IN CODE! DO NOT PUT DATA INTO THIS FOR SAVING
+    public List<PartJsonData> parts;
+    public bool isEnchanted;
+    public EnchantData ench;
+    // BETWEEN THESE LINES IS ONLY FOR USE IN CODE! DO NOT PUT DATA INTO THIS FOR SAVING
 }

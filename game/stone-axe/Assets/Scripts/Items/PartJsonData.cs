@@ -14,6 +14,9 @@ public class PartJsonData
     public int baseStrength;
     public int baseDextarity;
     public int baseIntelligence;
-
     public List<string> filters;
+
+    // BETWEEN THESE LINES IS ONLY FOR USE IN CODE! DO NOT PUT DATA INTO THIS FOR SAVING
+    public MaterialData materialData;
+    // BETWEEN THESE LINES IS ONLY FOR USE IN CODE! DO NOT PUT DATA INTO THIS FOR SAVING
 }

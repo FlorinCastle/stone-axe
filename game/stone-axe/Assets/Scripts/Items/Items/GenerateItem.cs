@@ -6,6 +6,7 @@ using TMPro;
 public class GenerateItem : MonoBehaviour
 {
     [SerializeField] private Item itemScript;
+    [SerializeField] private Part partScript;
     [SerializeField] private Enchant enchantScript;
     [SerializeField] private InventoryScript _inventoryRef;
     [SerializeField] private GameObject _inventoryControl;
@@ -40,6 +41,7 @@ public class GenerateItem : MonoBehaviour
     }
 
     [SerializeField] private ItemData _generatedItem;
+    [SerializeField] private ItemJsonData _generatedItemJson;
     [SerializeField] private EnchantData _generatedEnchant;
     // setup for level restrictions yet
     public void GenerateRandomItem()
@@ -126,6 +128,41 @@ public class GenerateItem : MonoBehaviour
         else if (forceInsert == true)
             _inventoryRef.InsertItem(_generatedItem);
         //_generatedItem = null;
+    }
+    public void GeneratePresetItem(ItemJsonData item, MaterialData part1Mat, MaterialData part2Mat, MaterialData part3Mat, bool forceInsert)
+    {
+        _generatedItemJson = item;
+        _generatedItemJson.parts.Add(partScript.getPartJsonData(item.requiredParts[0]));
+        _generatedItemJson.parts[0].materialData = part1Mat;
+        _generatedItemJson.parts.Add(partScript.getPartJsonData(item.requiredParts[1]));
+        _generatedItemJson.parts[1].materialData = part2Mat;
+        _generatedItemJson.parts.Add(partScript.getPartJsonData(item.requiredParts[2]));
+        _generatedItemJson.parts[2].materialData = part3Mat;
+        if (forceInsert == false)
+        {
+            int ranEnchChance = Random.Range(0, 100);
+            if (ranEnchChance <= (100 + _skillManager.EnchantChanceRef.getAddedEnchChance()))
+            {
+                _generatedEnchant = enchantScript.chooseEnchant();
+                _generatedItemJson.ench = _generatedEnchant;
+                _generatedItemJson.isEnchanted = true;
+            }
+            else
+                _generatedItemJson.isEnchanted = false;
+
+            generateItemTextJson();
+            itemText.text = _generatedText;
+
+            buyButtonText.text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * _skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice());
+            buyButton.interactable = true;
+            haggleButtonText.text = "haggle\n(success chance: " + (_skillManager.HagglePriceRef.getHaggleChance()).ToString() + "%)";
+
+            advText.text = "Awaiting Adventurer Arrival";
+
+            haggleButton.interactable = true;
+        }
+        else if (forceInsert == true)
+            _inventoryRef.InsertItem(_generatedItemJson);
     }
     public void GenerateRandomEnchant()
     {
@@ -277,8 +314,58 @@ public class GenerateItem : MonoBehaviour
             + _enchant
             + _totalValue;
     }
+    private void generateItemTextJson()
+    {
+        _itemName = "Item - " + _generatedItemJson.itemName;
+
+        _materials = "\n\nMaterials\n" +
+            _generatedItemJson.parts[0].materialData.Material + "\n" +
+            _generatedItemJson.parts[1].materialData.Material + "\n" +
+            _generatedItemJson.parts[2].materialData.Material;
+
+        _totalStrenght = "\nStrength: " + calculateTotalStr();
+        _totalDex = "\nDexterity: " + calculateTotalDex();
+        _totalInt = "\nIntelligence: " + calculateTotalInt();
+        _totalValue = "\n\nValue: " + calculateTotalVal();
+        _isEnchanted = _generatedItemJson.isEnchanted;
+
+        if (_isEnchanted)
+            _enchant = "\nitem is enchanted";
+        else
+            _enchant = "\nitem is not enchanted";
+
+        _generatedText = "";
+        _generatedText += _itemName
+            + "\nStats" + _totalStrenght
+            + _totalDex
+            + _totalInt
+            + _materials
+            + _enchant
+            + _totalValue;
+    }
+
     public EnchantData getEnchantment
     {
         get => _generatedEnchant;
+    }
+
+    private int calculateTotalStr()
+    {
+        return _generatedItemJson.baseStrength + _generatedItemJson.parts[0].baseStrength + _generatedItemJson.parts[1].baseStrength + _generatedItemJson.parts[2].baseStrength;
+    }
+    private int calculateTotalDex()
+    {
+        return _generatedItemJson.baseDextarity + _generatedItemJson.parts[0].baseDextarity + _generatedItemJson.parts[1].baseDextarity + _generatedItemJson.parts[2].baseDextarity;
+    }
+    private int calculateTotalInt()
+    {
+        return _generatedItemJson.baseIntelligence + _generatedItemJson.parts[0].baseIntelligence + _generatedItemJson.parts[1].baseIntelligence + _generatedItemJson.parts[2].baseIntelligence;
+    }
+    private int calculateTotalVal()
+    {
+        return _generatedItemJson.baseCost +
+            (_generatedItemJson.parts[0].baseCost + (_generatedItemJson.parts[0].materialData.BaseCostPerUnit * _generatedItemJson.parts[0].unitsOfMaterialNeeded)) +
+            (_generatedItemJson.parts[1].baseCost + (_generatedItemJson.parts[1].materialData.BaseCostPerUnit * _generatedItemJson.parts[1].unitsOfMaterialNeeded)) +
+            (_generatedItemJson.parts[2].baseCost + (_generatedItemJson.parts[2].materialData.BaseCostPerUnit * _generatedItemJson.parts[2].unitsOfMaterialNeeded));
     }
 }

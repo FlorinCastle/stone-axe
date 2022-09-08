@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 public class Part : MonoBehaviour
 {
     [Header("Part Tracker")]
     [SerializeField] List<PartData> _partDataList;
+    [SerializeField] List<TextAsset> partJsons;
+
+    [Header("Sorted")]
     [SerializeField] List<PartData> _metalBasedParts;
     [SerializeField] List<PartData> _basicMetalBasedParts;
     [SerializeField] List<PartData> _magicMetalBasedParts;
@@ -14,6 +19,7 @@ public class Part : MonoBehaviour
     [SerializeField] List<PartData> _wovenClothBasedParts;
     [SerializeField] List<PartData> _leatherBasedParts;
     [SerializeField] List<PartData> _gemstoneBasedParts;
+
 
     private void Awake()
     {
@@ -63,9 +69,20 @@ public class Part : MonoBehaviour
         }
     }
 
-    public List<PartData> getAllParts()
+    public List<PartData> getAllParts() { return _partDataList; }
+    public List<TextAsset> getAllPartJsonData() { return partJsons; }
+
+    public PartJsonData getPartJsonData(string partName)// (int partIDin)
     {
-        return _partDataList;
+        foreach (TextAsset part in partJsons)
+        {
+            string partCheck = loadJson(part).partName;
+            //int ID = loadJson(part).partID;
+            if (partCheck == partName)
+                return loadJson(part);
+        }
+        Debug.LogWarning("Unable to find Valid Part for ID: [" + partName + "]");
+        return null;
     }
 
     public List<PartData> getMetalParts()
@@ -86,5 +103,10 @@ public class Part : MonoBehaviour
     public List<PartData> getGemstoneParts()
     {
         return _gemstoneBasedParts;
+    }
+
+    private PartJsonData loadJson(TextAsset jsonText)
+    {
+        return JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonText).Replace("Assets", "")));
     }
 }

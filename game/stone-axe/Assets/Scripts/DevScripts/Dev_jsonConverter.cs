@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using static UnityEditor.Progress;
 
 public class Dev_jsonConverter : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private Item itemScriptRef;
+    [SerializeField] private Part partScriptRef;
+
+    [Header("Data")]
     [SerializeField] private ItemData _itemToConvert;
     [SerializeField] private PartData _partToConvert;
     [SerializeField] private string itemDirPath;
@@ -25,6 +31,15 @@ public class Dev_jsonConverter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*string path = Application.dataPath + AssetDatabase.GetAssetPath(GameObject.FindGameObjectWithTag("ItemData").GetComponent<Item>().getItemJsonData()[0]).Replace("Assets", "");
+        Debug.Log("path: " + path);
+
+        string itemString = File.ReadAllText(path);
+
+        ItemJsonData item = JsonUtility.FromJson<ItemJsonData>(itemString);        
+        Debug.Log(item.itemName); */
+        //convertManyItemToJson();
+
         if (_itemToConvert != null) convertItemToJson(_itemToConvert);
         if (_partToConvert != null) convertPartToJson(_partToConvert);
     }
@@ -66,6 +81,11 @@ public class Dev_jsonConverter : MonoBehaviour
         if (item.Part1 != null) partList.Add(item.Part1.PartName);
         if (item.Part2 != null) partList.Add(item.Part2.PartName);
         if (item.Part3 != null) partList.Add(item.Part3.PartName);
+
+        List<PartJsonData> partJsonList = new List<PartJsonData>();
+        if (item.Part1 != null) partJsonList.Add(partScriptRef.getPartJsonData(item.Part1.PartName));
+        if (item.Part2 != null) partJsonList.Add(partScriptRef.getPartJsonData(item.Part2.PartName));
+        if (item.Part3 != null) partJsonList.Add(partScriptRef.getPartJsonData(item.Part3.PartName));
 
         List<string> filterList = new List<string>();
         foreach (FilterData fil in item.ValidFilters) { filterList.Add(fil.FilterName); }
