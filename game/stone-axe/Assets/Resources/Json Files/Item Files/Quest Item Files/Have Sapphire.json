@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Have Sapphire",
+    "requiredPlayerLevel": 10,
+    "questDescription": "have this material",
+    "questType": "OD_Material",
+    "questStages": [],
+    "currencyReward": 130,
+    "EXPReward": 2,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

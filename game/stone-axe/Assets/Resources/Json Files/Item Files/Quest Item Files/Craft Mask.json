@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Craft Mask",
+    "requiredPlayerLevel": 12,
+    "questDescription": "craft this item",
+    "questType": "OCC_Item",
+    "questStages": [],
+    "currencyReward": 141,
+    "EXPReward": 3,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

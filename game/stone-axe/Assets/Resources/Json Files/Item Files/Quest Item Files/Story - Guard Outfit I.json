@@ -1,0 +1,30 @@
+{
+    "questID": -1,
+    "questName": "Story - Guard Outfit I",
+    "requiredPlayerLevel": 0,
+    "questDescription": "story quest",
+    "questType": "Story",
+    "questStages": [
+        "GuardOutfitI 1",
+        "GuardOutfitI 2",
+        "GuardOutfitI 3",
+        "GuardOutfitI 4",
+        "GuardOutfitI 5",
+        "GuardOutfitI 6",
+        "GuardOutfitI 7",
+        "GuardOutfitI 8",
+        "GuardOutfitI 9",
+        "GuardOutfitI 10",
+        "GuardOutfitI 11",
+        "GuardOutfitI 12",
+        "GuardOutfitI 13"
+    ],
+    "currencyReward": 0,
+    "EXPReward": 0,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

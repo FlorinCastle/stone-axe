@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Craft Black Spiked Cuirass",
+    "requiredPlayerLevel": 8,
+    "questDescription": "a fellow in black spiked armor requested a black spiked cuirass. They said something about 'messing up an enchantment session'?",
+    "questType": "OCC_QuestItem",
+    "questStages": [],
+    "currencyReward": 1000,
+    "EXPReward": 2,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

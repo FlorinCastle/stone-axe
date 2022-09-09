@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Have Rose Wood",
+    "requiredPlayerLevel": 13,
+    "questDescription": "have this material",
+    "questType": "OD_Material",
+    "questStages": [],
+    "currencyReward": 160,
+    "EXPReward": 2,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

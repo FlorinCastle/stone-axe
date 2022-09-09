@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Have Wolf Leather",
+    "requiredPlayerLevel": 5,
+    "questDescription": "have this material",
+    "questType": "OD_Material",
+    "questStages": [],
+    "currencyReward": 80,
+    "EXPReward": 2,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

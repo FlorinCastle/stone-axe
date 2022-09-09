@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Craft 6-Fingered Sword",
+    "requiredPlayerLevel": 14,
+    "questDescription": "a young bladesman has requested that you complete an item that his father left unfinshed",
+    "questType": "OCC_QuestItem",
+    "questStages": [],
+    "currencyReward": 1000,
+    "EXPReward": 2,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

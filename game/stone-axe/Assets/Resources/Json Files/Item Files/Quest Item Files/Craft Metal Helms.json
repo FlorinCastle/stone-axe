@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Craft Metal Helms",
+    "requiredPlayerLevel": 7,
+    "questDescription": "craft this item",
+    "questType": "OCC_TotalCrafted",
+    "questStages": [],
+    "currencyReward": 575,
+    "EXPReward": 3,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

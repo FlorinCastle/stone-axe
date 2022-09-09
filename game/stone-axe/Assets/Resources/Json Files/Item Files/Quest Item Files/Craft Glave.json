@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Craft Glave",
+    "requiredPlayerLevel": 14,
+    "questDescription": "craft this item",
+    "questType": "OCC_Item",
+    "questStages": [],
+    "currencyReward": 372,
+    "EXPReward": 3,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

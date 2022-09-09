@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Craft Great Sword",
+    "requiredPlayerLevel": 10,
+    "questDescription": "craft this item",
+    "questType": "OCC_Item",
+    "questStages": [],
+    "currencyReward": 207,
+    "EXPReward": 3,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

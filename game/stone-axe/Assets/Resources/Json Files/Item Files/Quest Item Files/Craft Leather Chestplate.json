@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Craft Leather Chestplate",
+    "requiredPlayerLevel": 5,
+    "questDescription": "craft this item",
+    "questType": "OCC_Item",
+    "questStages": [],
+    "currencyReward": 579,
+    "EXPReward": 3,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

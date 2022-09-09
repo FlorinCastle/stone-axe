@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Craft Leather Helm",
+    "requiredPlayerLevel": 4,
+    "questDescription": "craft this item",
+    "questType": "OCC_Item",
+    "questStages": [],
+    "currencyReward": 306,
+    "EXPReward": 3,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

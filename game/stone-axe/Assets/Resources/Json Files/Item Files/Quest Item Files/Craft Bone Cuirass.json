@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Craft Bone Cuirass",
+    "requiredPlayerLevel": 5,
+    "questDescription": " a fellow in metal armor requested a bone cuirass. They said something about 'wanting to wear the bones of their enemies'?",
+    "questType": "OCC_QuestItem",
+    "questStages": [],
+    "currencyReward": 1000,
+    "EXPReward": 2,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

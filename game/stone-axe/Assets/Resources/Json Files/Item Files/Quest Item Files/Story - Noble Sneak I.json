@@ -1,0 +1,31 @@
+{
+    "questID": -1,
+    "questName": "Story - Noble Sneak I",
+    "requiredPlayerLevel": 7,
+    "questDescription": "story quest",
+    "questType": "Story",
+    "questStages": [
+        "NobleSneakI 1",
+        "NobleSneakI 2",
+        "NobleSneakI 3",
+        "NobleSneakI 4",
+        "NobleSneakI 5",
+        "NobleSneakI 6",
+        "NobleSneakI 7",
+        "NobleSneakI 8",
+        "NobleSneakI 9",
+        "NobleSneakI 10",
+        "NobleSneakI 11",
+        "NobleSneakI 12",
+        "NobleSneakI 13",
+        "NobleSneakI 14"
+    ],
+    "currencyReward": 0,
+    "EXPReward": 0,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

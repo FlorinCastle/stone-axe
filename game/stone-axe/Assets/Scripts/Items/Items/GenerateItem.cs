@@ -164,6 +164,56 @@ public class GenerateItem : MonoBehaviour
         else if (forceInsert == true)
             _inventoryRef.InsertItem(_generatedItemJson);
     }
+    public void GeneratePresetItem(ItemJsonData item, List<MaterialData> mats, bool forceInsert)
+    {
+        if (item.requiredParts.Count == mats.Count)
+        {
+            int i = 0;
+            _generatedItemJson = item;
+            foreach (string part in item.requiredParts)
+            {
+                if (partScript.getPartJsonData(part).validMaterials.Contains(mats[i].Material))
+                {
+                    PartJsonData partJson = partScript.getPartJsonData(part);
+                    _generatedItemJson.parts.Add(partJson);
+                    partJson.materialData = mats[i];
+                }
+                else
+                {
+                    Debug.LogWarning("GenerateItem.GeneratePresetItem(ItemJsonData, List<MaterialData>, bool): Cannot generate item with input data!");
+                    break;
+                }
+                i++;
+            }
+            if (forceInsert == false)
+            {
+                int ranEnchChance = Random.Range(0, 100);
+                if (ranEnchChance <= (100 + _skillManager.EnchantChanceRef.getAddedEnchChance()))
+                {
+                    _generatedEnchant = enchantScript.chooseEnchant();
+                    _generatedItemJson.ench = _generatedEnchant;
+                    _generatedItemJson.isEnchanted = true;
+                }
+                else
+                    _generatedItemJson.isEnchanted = false;
+
+                generateItemTextJson();
+                itemText.text = _generatedText;
+
+                buyButtonText.text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * _skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice());
+                buyButton.interactable = true;
+                haggleButtonText.text = "haggle\n(success chance: " + (_skillManager.HagglePriceRef.getHaggleChance()).ToString() + "%)";
+
+                advText.text = "Awaiting Adventurer Arrival";
+
+                haggleButton.interactable = true;
+            }
+            else if (forceInsert == true)
+                _inventoryRef.InsertItem(_generatedItemJson);
+        }
+        else
+            Debug.LogWarning("GenerateItem.GeneratePresetItem(ItemJsonData, List<MaterialData>, bool): Cannot generate item with input data!");
+    }
     public void GenerateRandomEnchant()
     {
         _generatedEnchant = enchantScript.chooseEnchant();

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906549ced2b40c84c8a9474b679e6739, type: 3}
   m_Name: Story_KnightlyRegularIII
   m_EditorClassIdentifier: 
-  _questName: 'Story: Knightly Regular III'
+  _questName: Story - Knightly Regular III
   _questDiscription: The armored knight requests that you remake their spare boots
   _questType: 6
   _questStages:
@@ -45,3 +45,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b870c2b58f9bab3458542540cf3ac3d2, type: 2}
   _requiredPlayerLevel: 9
   _storyQuestComplete: 0
+  _rewardCurrency: 0
+  _rewardEXP: 0

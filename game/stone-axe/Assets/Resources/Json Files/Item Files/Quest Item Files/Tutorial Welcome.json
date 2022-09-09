@@ -1,0 +1,33 @@
+{
+    "questID": -1,
+    "questName": "Tutorial Welcome",
+    "requiredPlayerLevel": 0,
+    "questDescription": "Welcome to the shop",
+    "questType": "Tutorial",
+    "questStages": [
+        "Tutorial_Welcome 1",
+        "Tutorial_Welcome 2",
+        "Tutorial_Welcome 3",
+        "Tutorial_Welcome 4",
+        "Tutorial_Welcome 5",
+        "Tutorial_Welcome 6",
+        "Tutorial_Welcome 7",
+        "Tutorial_Welcome 8",
+        "Tutorial_Welcome 9",
+        "Tutorial_Welcome 10",
+        "Tutorial_Welcome 11",
+        "Tutorial_Welcome 12",
+        "Tutorial_Welcome 13",
+        "Tutorial_Welcome 14",
+        "Tutorial_Welcome 15",
+        "Tutorial_Welcome 16"
+    ],
+    "currencyReward": 0,
+    "EXPReward": 0,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

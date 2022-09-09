@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Craft Metal Chestplates",
+    "requiredPlayerLevel": 8,
+    "questDescription": "craft this item",
+    "questType": "OCC_TotalCrafted",
+    "questStages": [],
+    "currencyReward": 740,
+    "EXPReward": 3,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906549ced2b40c84c8a9474b679e6739, type: 3}
   m_Name: Story_DebtI
   m_EditorClassIdentifier: 
-  _questName: 'Story: Debt I'
+  _questName: Story - Debt I
   _questDiscription: story quest
   _questType: 6
   _questStages:
@@ -42,4 +42,7 @@ MonoBehaviour:
   _nextQuest: {fileID: 11400000, guid: 92f434d561190024ca947a8a6b909584, type: 2}
   _unlocksQuests:
   - {fileID: 11400000, guid: 92f434d561190024ca947a8a6b909584, type: 2}
+  _requiredPlayerLevel: 0
   _storyQuestComplete: 0
+  _rewardCurrency: 0
+  _rewardEXP: 0

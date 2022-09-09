@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Have Cotton",
+    "requiredPlayerLevel": 9,
+    "questDescription": "have this material",
+    "questType": "OD_Material",
+    "questStages": [],
+    "currencyReward": 120,
+    "EXPReward": 2,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

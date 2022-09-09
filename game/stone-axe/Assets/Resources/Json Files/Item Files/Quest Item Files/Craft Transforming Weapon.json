@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Craft Transforming Weapon",
+    "requiredPlayerLevel": 9,
+    "questDescription": "",
+    "questType": "OCC_QuestItem",
+    "questStages": [],
+    "currencyReward": 1000,
+    "EXPReward": 2,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

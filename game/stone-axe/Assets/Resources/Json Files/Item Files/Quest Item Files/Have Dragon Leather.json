@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Have Dragon Leather",
+    "requiredPlayerLevel": 23,
+    "questDescription": "have this material",
+    "questType": "OD_Material",
+    "questStages": [],
+    "currencyReward": 280,
+    "EXPReward": 2,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}

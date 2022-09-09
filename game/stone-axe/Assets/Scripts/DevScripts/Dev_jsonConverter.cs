@@ -17,6 +17,7 @@ public class Dev_jsonConverter : MonoBehaviour
     [SerializeField] private PartData _partToConvert;
     [SerializeField] private string itemDirPath;
     [SerializeField] private string partDirPath;
+    [SerializeField] private string questDirPath;
 
     [SerializeField] private bool replace;
 
@@ -25,6 +26,7 @@ public class Dev_jsonConverter : MonoBehaviour
 
     [SerializeField] private List<ItemData> items;
     [SerializeField] private List<PartData> parts;
+    [SerializeField] private List<QuestData> quests;
 
     [SerializeField] private List<ItemJsonData> itemJsons;
     [SerializeField] private string[] itemsJ;
@@ -39,6 +41,7 @@ public class Dev_jsonConverter : MonoBehaviour
         ItemJsonData item = JsonUtility.FromJson<ItemJsonData>(itemString);        
         Debug.Log(item.itemName); */
         //convertManyItemToJson();
+        convertManyQuestToJson();
 
         if (_itemToConvert != null) convertItemToJson(_itemToConvert);
         if (_partToConvert != null) convertPartToJson(_partToConvert);
@@ -110,6 +113,30 @@ public class Dev_jsonConverter : MonoBehaviour
 
         return json;
     }
+    
+    private string convertQuestToJson(QuestData quest)
+    {
+
+        List<string> questStages = new List<string>();
+        foreach (QuestStage stage in quest.QuestStages) { questStages.Add(stage.name); }
+
+        QuestJsonData questData = new QuestJsonData
+        {
+            questID = -1,
+            questName = quest.QuestName,
+            requiredPlayerLevel = quest.RequiredPlayerLevel,
+            questDescription = quest.QuestDiscription,
+            questType = quest.QuestType,
+            currencyReward = quest.RewardedCurrency,
+            EXPReward = quest.RewardedEXP,
+            questStages = questStages
+        };
+
+        string json = JsonUtility.ToJson(questData, true);
+        string questPath = questDirPath + "/" + quest.QuestName + ".json";
+        File.WriteAllText(questPath, json);
+        return json;
+    }
 
     private string convertManyItemToJson()
     {
@@ -127,6 +154,16 @@ public class Dev_jsonConverter : MonoBehaviour
         {
             Debug.Log(part.PartName);
             convertPartToJson(part);
+        }
+        return "";
+    }
+
+    private string convertManyQuestToJson()
+    {
+        foreach (QuestData quest in quests)
+        {
+            Debug.Log(quest.QuestName);
+            convertQuestToJson(quest);
         }
         return "";
     }

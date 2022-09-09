@@ -1,0 +1,16 @@
+{
+    "questID": -1,
+    "questName": "Have Spruce Wood",
+    "requiredPlayerLevel": 4,
+    "questDescription": "have this material",
+    "questType": "OD_Material",
+    "questStages": [],
+    "currencyReward": 70,
+    "EXPReward": 2,
+    "requiredItem": "",
+    "requiredMaterial": "",
+    "requiredQuestItem": "",
+    "requiredCount": 0,
+    "nextQuest": "",
+    "unlockedQuests": []
+}
