@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.Build.Pipeline;
 using UnityEngine;
+using static QuestStage;
 using static UnityEditor.Progress;
 
 public class Dev_jsonConverter : MonoBehaviour
@@ -116,9 +118,13 @@ public class Dev_jsonConverter : MonoBehaviour
     
     private string convertQuestToJson(QuestData quest)
     {
-
         List<string> questStages = new List<string>();
-        foreach (QuestStage stage in quest.QuestStages) { questStages.Add(stage.name); }
+        List<QuestStageJsonData> questStagesJson = new List<QuestStageJsonData>();
+        foreach (QuestStage stage in quest.QuestStages)
+        { 
+            questStages.Add(stage.name);
+            questStagesJson.Add(convertQuestStageToJson(stage));
+        }
 
         QuestJsonData questData = new QuestJsonData
         {
@@ -136,6 +142,52 @@ public class Dev_jsonConverter : MonoBehaviour
         string questPath = questDirPath + "/" + quest.QuestName + ".json";
         File.WriteAllText(questPath, json);
         return json;
+    }
+    private QuestStageJsonData convertQuestStageToJson(QuestStage stage)
+    {
+        List<string> mats = new List<string>();
+        if (stage.Part1Mat != null) mats.Add(stage.Part1Mat.Material);
+        if (stage.Part2Mat != null) mats.Add(stage.Part2Mat.Material);
+        if (stage.Part3Mat != null) mats.Add(stage.Part3Mat.Material);
+
+        QuestStageJsonData stageData = new QuestStageJsonData
+        {
+            questStageType = stage.StageType,
+            //questEvent = stage.QuestEvent,
+            forcedUI = stage.ForcedUI,
+            reqUI = stage.RequiredUI,
+            //speaker = stage.DialogueSpeaker,
+            //dialogeLine = stage.DialogueLine,
+            itemName = stage.ItemToGet.ItemName,
+            itemCount = stage.CountToGet,
+            partMats = mats,
+            currencyvalue = stage.CurrencyValue,
+            //NPCRef = stage.NPCRef.name
+        };
+
+        Debug.LogError("Dev_jsonConverter.convertQuestStageToJson(QuestStage stage): KAT! FINISH WORKING ON THIS");
+        if (stage.StageType == "Dialogue") { stageData.speaker = stage.DialogueSpeaker; stageData.dialogeLine = stage.DialogueLine; }
+        else if (stage.StageType == "Craft_Item") { }
+        else if (stage.StageType == "Sell_Item") { }
+        else if (stage.StageType == "Buy_Item") { }
+        else if (stage.StageType == "Disassemble_Item") { }
+        else if (stage.StageType == "Have_Currency") { }
+        else if (stage.StageType == "Force_Event")
+        {
+            stageData.questEvent = stage.QuestEvent;
+            if (stage.QuestEvent == "Summon_Adventurer") { }
+            else if (stage.QuestEvent == "Get_Item") { }
+            else if (stage.QuestEvent == "Remove_Quest_Item") { }
+            else if (stage.QuestEvent == "Get_Currency") { }
+            else if (stage.QuestEvent == "Remove_Currency") { }
+            else if (stage.QuestEvent == "Summon_NPC") { }
+            else if (stage.QuestEvent == "Dismiss_Quest_NPC") { stageData.NPCRef = stage.NPCRef.name; }
+            else if (stage.QuestEvent == "Force_For_Sale") { }
+            else if (stage.QuestEvent == "Force_Open_UI") { }
+        }
+        else if (stage.StageType == "Have_UI_Open") { }
+
+        return stageData;
     }
 
     private string convertManyItemToJson()

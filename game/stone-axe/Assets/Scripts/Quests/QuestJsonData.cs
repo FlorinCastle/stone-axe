@@ -10,6 +10,7 @@ public class QuestJsonData
     public string questDescription;
     public string questType;
     public List<string> questStages;
+    public List<QuestStageJsonData> questStagesJson;
 
     public int currencyReward;
     public int EXPReward;
