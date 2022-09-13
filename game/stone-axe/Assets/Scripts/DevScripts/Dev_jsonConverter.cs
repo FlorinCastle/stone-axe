@@ -43,7 +43,7 @@ public class Dev_jsonConverter : MonoBehaviour
         ItemJsonData item = JsonUtility.FromJson<ItemJsonData>(itemString);        
         Debug.Log(item.itemName); */
         //convertManyItemToJson();
-        convertManyQuestToJson();
+        //convertManyQuestToJson();
 
         if (_itemToConvert != null) convertItemToJson(_itemToConvert);
         if (_partToConvert != null) convertPartToJson(_partToConvert);
@@ -135,12 +135,16 @@ public class Dev_jsonConverter : MonoBehaviour
             questType = quest.QuestType,
             currencyReward = quest.RewardedCurrency,
             EXPReward = quest.RewardedEXP,
-            questStages = questStages
+            questStages = questStages,
+            questStagesJson = questStagesJson
         };
 
         string json = JsonUtility.ToJson(questData, true);
-        string questPath = questDirPath + "/" + quest.QuestName + ".json";
-        File.WriteAllText(questPath, json);
+        if (questDirPath != "")
+        {
+            string questPath = questDirPath + "/" + quest.QuestName + ".json";
+            File.WriteAllText(questPath, json);
+        }
         return json;
     }
     private QuestStageJsonData convertQuestStageToJson(QuestStage stage)
@@ -154,18 +158,20 @@ public class Dev_jsonConverter : MonoBehaviour
         {
             questStageType = stage.StageType,
             //questEvent = stage.QuestEvent,
-            forcedUI = stage.ForcedUI,
-            reqUI = stage.RequiredUI,
+            //forcedUI = stage.ForcedUI,
+            //reqUI = stage.RequiredUI,
             //speaker = stage.DialogueSpeaker,
             //dialogeLine = stage.DialogueLine,
-            itemName = stage.ItemToGet.ItemName,
-            itemCount = stage.CountToGet,
-            partMats = mats,
-            currencyvalue = stage.CurrencyValue,
+            //itemName = stage.ItemToGet.ItemName,
+            //itemCount = stage.CountToGet,
+            //partMats = mats,
+            //currencyvalue = stage.CurrencyValue,
             //NPCRef = stage.NPCRef.name
         };
+        Debug.Log(JsonUtility.ToJson(stageData, true));
 
         Debug.LogError("Dev_jsonConverter.convertQuestStageToJson(QuestStage stage): KAT! FINISH WORKING ON THIS");
+        /*
         if (stage.StageType == "Dialogue") { stageData.speaker = stage.DialogueSpeaker; stageData.dialogeLine = stage.DialogueLine; }
         else if (stage.StageType == "Craft_Item") { }
         else if (stage.StageType == "Sell_Item") { }
@@ -186,6 +192,7 @@ public class Dev_jsonConverter : MonoBehaviour
             else if (stage.QuestEvent == "Force_Open_UI") { }
         }
         else if (stage.StageType == "Have_UI_Open") { }
+        */
 
         return stageData;
     }
