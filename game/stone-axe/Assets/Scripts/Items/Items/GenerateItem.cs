@@ -7,6 +7,7 @@ public class GenerateItem : MonoBehaviour
 {
     [SerializeField] private Item itemScript;
     [SerializeField] private Part partScript;
+    [SerializeField] private Material materialScript;
     [SerializeField] private Enchant enchantScript;
     [SerializeField] private InventoryScript _inventoryRef;
     [SerializeField] private GameObject _inventoryControl;
@@ -93,6 +94,43 @@ public class GenerateItem : MonoBehaviour
         generateItemText();
         itemText.text = _generatedText;
         buyButtonText.text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * _skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice());
+        buyButton.interactable = true;
+        haggleButtonText.text = "haggle\n(success chance: " + (_skillManager.HagglePriceRef.getHaggleChance()).ToString() + "%)";
+        haggleButton.interactable = true;
+    }
+    public void GenerateRandomItemJson()
+    {
+        _generatedItemJson = itemScript.chooseItemJson();
+        do { _generatedItemJson = itemScript.chooseItemJson();
+        } while (_generatedItemJson.levelRequirement > _gameMasterRef.GetLevel);
+
+        _generatedItemJson.parts = new List<PartJsonData>();
+
+        foreach (string part in _generatedItemJson.requiredParts)
+        {
+            PartJsonData partJson = partScript.getPartJsonData(part);
+            int ranMatInt = 0;
+            do
+            {
+                ranMatInt = Random.Range(0, partJson.validMaterials.Count);
+                partJson.materialData = materialScript.getMaterialData(partJson.validMaterials[ranMatInt]);
+            } while (partJson.materialData.LevelRequirement > _gameMasterRef.GetLevel);
+
+            _generatedItemJson.parts.Add(partJson);
+        }
+
+        int ranEnchChance = Random.Range(0, 100);
+        if (ranEnchChance <= (100 + _skillManager.EnchantChanceRef.getAddedEnchChance()))
+        {
+            _generatedItemJson.ench = enchantScript.chooseEnchant();
+            _generatedItemJson.isEnchanted = true;
+        }
+        else
+            _generatedItemJson.isEnchanted = false;
+
+        generateItemTextJson();
+        itemText.text = _generatedText;
+        buyButtonText.text = "buy: " + Mathf.RoundToInt(calculateTotalVal() * _skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice());
         buyButton.interactable = true;
         haggleButtonText.text = "haggle\n(success chance: " + (_skillManager.HagglePriceRef.getHaggleChance()).ToString() + "%)";
         haggleButton.interactable = true;
@@ -200,9 +238,10 @@ public class GenerateItem : MonoBehaviour
                 generateItemTextJson();
                 itemText.text = _generatedText;
 
-                buyButtonText.text = "buy: " + Mathf.RoundToInt(_generatedItem.TotalValue * _skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice());
+                buyButtonText.text = "buy: " + Mathf.RoundToInt(calculateTotalVal() * _skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice());
                 buyButton.interactable = true;
                 haggleButtonText.text = "haggle\n(success chance: " + (_skillManager.HagglePriceRef.getHaggleChance()).ToString() + "%)";
+                haggleButton.interactable = true;
 
                 advText.text = "Awaiting Adventurer Arrival";
 
@@ -276,6 +315,8 @@ public class GenerateItem : MonoBehaviour
     {
         if (_generatedItem != null)
             _inventoryRef.InsertItem(_generatedItem);
+        if (_generatedItemJson != null)
+            _inventoryRef.InsertItem(_generatedItemJson);
         clearBuyMenu();
     }
     public void forceInsertEnchant()
@@ -290,6 +331,13 @@ public class GenerateItem : MonoBehaviour
         {
             int index = _inventoryRef.InsertItem(_generatedItem);
             //Debug.Log("inserted item to disassemble at index: " + index);
+            _inventoryRef.setSelectedItem(index);
+            _gameMaster.GetComponent<DisassembleItemControl>().selectItem();
+            _gameMaster.GetComponent<DisassembleItemControl>().disassembleItem();
+        }
+        if (_generatedItemJson != null)
+        {
+            int index = _inventoryRef.InsertItem(_generatedItemJson);
             _inventoryRef.setSelectedItem(index);
             _gameMaster.GetComponent<DisassembleItemControl>().selectItem();
             _gameMaster.GetComponent<DisassembleItemControl>().disassembleItem();

@@ -4373,7 +4373,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934415189}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92834512dd8674f409655588f2cea386, type: 3}
   m_Name: 
@@ -7773,6 +7773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemScript: {fileID: 564590206}
   partScript: {fileID: 1217593891}
+  materialScript: {fileID: 681287825}
   enchantScript: {fileID: 449962360}
   _inventoryRef: {fileID: 1181822452}
   _inventoryControl: {fileID: 1181822451}
@@ -15876,7 +15877,7 @@ PrefabInstance:
       objectReference: {fileID: 1734993353}
     - target: {fileID: 2828543944602473375, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2871716122849283728, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -17948,7 +17949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7611934963243128113, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7656806849748668384, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_Color.b

@@ -1020,6 +1020,7 @@ public class InventoryScript : MonoBehaviour
         itemDataScriptRef.setItemName(item.itemName);
         itemDataScriptRef.setTotalValue(calculateTotalValue(item));
         itemDataScriptRef.ItemRecipeRef = _recipeBookRef.getItemRecipe(item.itemName);
+        itemDataScriptRef.ItemJsonRef = item;
         itemDataScriptRef.setTotalStrenght(calculateTotalStr(item));
         itemDataScriptRef.setTotalDex(calculateTotalDex(item));
         itemDataScriptRef.setTotalInt(calculateTotalInt(item));

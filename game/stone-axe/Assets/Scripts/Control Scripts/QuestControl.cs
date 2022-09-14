@@ -59,9 +59,9 @@ public class QuestControl : MonoBehaviour
 
     private void Start()
     {
-        setupQuest1();
-        setupQuest2();
-        setupQuest3();
+        //setupQuest1();
+        //setupQuest2();
+        //setupQuest3();
     }
 
     private void FixedUpdate()

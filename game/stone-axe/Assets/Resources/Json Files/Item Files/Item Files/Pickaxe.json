@@ -2,10 +2,18 @@
     "itemID": -1,
     "itemName": "Pickaxe",
     "levelRequirement": 0,
-    "requiredParts": [],
-    "baseCost": 0,
-    "baseStrength": 0,
-    "baseDextarity": 0,
-    "baseIntelligence": 0,
-    "filters": []
+    "requiredParts": [
+        "Pickaxe Head",
+        "Pomel",
+        "Axe Handle"
+    ],
+    "baseCost": 30,
+    "baseStrength": 4,
+    "baseDextarity": 5,
+    "baseIntelligence": 1,
+    "filters": [
+        "Final Items Only",
+        "Weapon",
+        "Dextarity Main Stat"
+    ]
 }

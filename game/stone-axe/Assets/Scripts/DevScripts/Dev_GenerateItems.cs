@@ -42,7 +42,8 @@ public class Dev_GenerateItems : MonoBehaviour
             {
                 for (int p = 0; p < _totalItemPartsToGenerateCount; p++)
                 {
-                    _generateItemRef.GenerateRandomItem();
+                    //_generateItemRef.GenerateRandomItem();
+                    _generateItemRef.GenerateRandomItemJson();
                     _generateItemRef.forceDisassembleItem();
                     //Debug.Log("Creating and disassembling item #" + (p+1));
                 }
@@ -57,7 +58,8 @@ public class Dev_GenerateItems : MonoBehaviour
         {
             for (int i = 0; i < _itemsToGenerateCount; i++)
             {
-                _generateItemRef.GenerateRandomItem();
+                //_generateItemRef.GenerateRandomItem();
+                _generateItemRef.GenerateRandomItemJson();
                 _generateItemRef.forceInsertItem();
                 //Debug.Log("Creating item #" + (i+1));
             }

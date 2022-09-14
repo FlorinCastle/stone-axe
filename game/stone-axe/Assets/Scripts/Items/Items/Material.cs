@@ -38,4 +38,13 @@ public class Material : MonoBehaviour
                 Debug.LogError("Can not catigorize: " + mat.Material);
         }
     }
+
+    public MaterialData getMaterialData (string input)
+    {
+        foreach (MaterialData mat in _materialDataList)
+            if (mat.Material.Equals(input))
+                return mat;
+        Debug.LogError("Material.getMaterialData(string input): input: " + input + " not found in Material._materialDataList!!");
+        return null;
+    }
 }
