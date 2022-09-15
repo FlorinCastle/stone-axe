@@ -1570,7 +1570,7 @@ public class InventoryScript : MonoBehaviour
 
     public GameObject getSelectedItem()
     {
-        Debug.Log("_selectedItem: " + _selectedItem.name);
+        //Debug.Log("_selectedItem: " + _selectedItem.name);
         if (_selectedItem != null)
             return _selectedItem;
 
@@ -1634,7 +1634,7 @@ public class InventoryScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("selectedItem: " + _selectedItem.name);
+                //Debug.Log("selectedItem: " + _selectedItem.name);
                 if (_craftControlRef.anyRecipeSelected() == false && _UIControlRef.ShopEcoUIEnabled == false && _UIControlRef.ShopDisUIEnabled == false)
                 {
                     _gameMaster.loadDisassembleMenu();
@@ -1642,7 +1642,7 @@ public class InventoryScript : MonoBehaviour
                     _UIControlRef.ShopDisUIEnabled = true;
                     _UIControlRef.ShopCraftUIEnabled = false;
                 }
-                Debug.Log("selectedItem: " + _selectedItem.name);
+                //Debug.Log("selectedItem: " + _selectedItem.name);
                 GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem(_selectedItem);
                 GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem(_selectedItem);
             }
@@ -1658,7 +1658,7 @@ public class InventoryScript : MonoBehaviour
                 _UIControlRef.ShopDisUIEnabled = true;
                 _UIControlRef.ShopCraftUIEnabled = false;
             }
-            Debug.Log("selectedItem: " + _selectedItem.name);
+            //Debug.Log("selectedItem: " + _selectedItem.name);
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<SellItemControl>().selectItem(_selectedItem);
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<DisassembleItemControl>().selectItem(_selectedItem);
         }

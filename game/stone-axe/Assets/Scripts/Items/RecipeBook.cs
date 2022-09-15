@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class RecipeBook : MonoBehaviour
 {
     [SerializeField] private List<ItemData> itemRecipes;
+    [SerializeField] private List<TextAsset> itemJsonRecipes;
     [SerializeField] private List<PartData> partRecipes;
+    [SerializeField] private List<TextAsset> partJsonRecipes;
     [SerializeField] private List<QuestItemData> questItemRecipes;
     [SerializeField, HideInInspector] private List<string> itemRecipeName;
     [SerializeField, HideInInspector] private List<string> partRecipeName;

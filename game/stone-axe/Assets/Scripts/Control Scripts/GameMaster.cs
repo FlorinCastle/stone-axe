@@ -287,7 +287,7 @@ public class GameMaster : MonoBehaviour
     }
     public void loadDisassembleMenu()
     {
-        Debug.Log("GameMaster.loadDisassembleMenu()");
+        //Debug.Log("GameMaster.loadDisassembleMenu()");
 
         //_uiControlRef.SUI_DisassembleSelected();
         _uiControlRef.disassembleMenuEnabled(true);
