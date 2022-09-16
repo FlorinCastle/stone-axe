@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -82,6 +84,7 @@ public class RecipeBook : MonoBehaviour
         else
         {
             GameObject button = recipeButtons[index];
+            Debug.LogError("REPLACE ITEMDATA WITH ITEMJSON/TEXTFILE");
             foreach (ItemData itemRecipe in itemRecipes)
             {
                 if (itemRecipe.ItemName == button.GetComponent<RecipeButton>().GetRecipeName)
@@ -178,6 +181,7 @@ public class RecipeBook : MonoBehaviour
         else
         {
             GameObject button = upcomingRecipeButtons[index];
+            Debug.LogError("REPLACE ITEMDATA WITH ITEMJSON/TEXTFILE");
             foreach (ItemData itemRecipe in itemRecipes)
             {
                 if (itemRecipe.ItemName == button.GetComponent<RecipeButton>().GetRecipeName)
@@ -235,7 +239,9 @@ public class RecipeBook : MonoBehaviour
     }
 
     [SerializeField, HideInInspector] private List<ItemData> levelLockedItems;
+    [SerializeField, HideInInspector] private List<TextAsset> levelLockedJsonItems;
     [SerializeField, HideInInspector] private List<PartData> levelLockedParts;
+    [SerializeField, HideInInspector] private List<ItemJsonData> levelLockedJsonParts;
 
     // should be setup for level locking
     public void setupSpecialQuestRecipeGrid()
@@ -262,7 +268,8 @@ public class RecipeBook : MonoBehaviour
             InsertButton(tempButton);
         }
         r++;
-        foreach (ItemData itemRecipe in itemRecipes)
+        Debug.LogError("REPLACE ITEMDATA WITH ITEMJSON/TEXTFILE");
+        /*foreach (ItemData itemRecipe in itemRecipes)
         {
             if (itemRecipe != null && (itemRecipe.ItemLevel <= _gameMasterRef.GetLevel))
             {
@@ -280,6 +287,20 @@ public class RecipeBook : MonoBehaviour
             }
             else
                 levelLockedItems.Add(itemRecipe);
+            r++;
+        }*/
+        foreach (TextAsset itemJsonFile in itemJsonRecipes)
+        {
+            if (itemJsonFile != null)
+            {
+                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
+                if (itemJson.levelRequirement <= _gameMasterRef.GetLevel)
+                {
+                    setupButtonFromJson(itemJson);
+                }
+                else
+                    levelLockedJsonItems.Add(itemJsonFile); //levelLockedJsonItems.Add(itemJson);
+            }
             r++;
         }
         foreach (PartData partRecipe in partRecipes)
@@ -327,7 +348,8 @@ public class RecipeBook : MonoBehaviour
             InsertButton(tempButton);
         }
         r++;
-        foreach (ItemData itemRecipe in itemRecipes)
+        Debug.LogError("REPLACE ITEMDATA WITH ITEMJSON/TEXTFILE");
+        /*foreach (ItemData itemRecipe in itemRecipes)
         {
             if (itemRecipe != null && itemRecipe != reqItem && (itemRecipe.ItemLevel <= _gameMasterRef.GetLevel))
             {
@@ -342,6 +364,20 @@ public class RecipeBook : MonoBehaviour
                 tempButton.name = itemRecipe.ItemName + " Recipe";
                 // add button to list
                 InsertButton(tempButton);
+            }
+            r++;
+        }*/
+        foreach (TextAsset itemJsonFile in itemJsonRecipes)
+        {
+            if (itemJsonFile != null)
+            {
+                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
+                if (itemJson.levelRequirement <= _gameMasterRef.GetLevel)
+                {
+                    setupButtonFromJson(itemJson);
+                }
+                else
+                    levelLockedJsonItems.Add(itemJsonFile); //levelLockedJsonItems.Add(itemJson);
             }
             r++;
         }
@@ -370,7 +406,7 @@ public class RecipeBook : MonoBehaviour
         clearRecipeGrid();
         clearUpcomingRecipesLists();
         int r = 0;
-        foreach (ItemData itemRecipe in itemRecipes)
+        /*foreach (ItemData itemRecipe in itemRecipes)
         {
             if (itemRecipe != null && (itemRecipe.ItemLevel <= _gameMasterRef.GetLevel))
             {
@@ -388,6 +424,31 @@ public class RecipeBook : MonoBehaviour
             }
             else
                 levelLockedItems.Add(itemRecipe);
+            r++;
+        } */
+        foreach (TextAsset itemJsonFile in itemJsonRecipes)
+        {
+            if (itemJsonFile != null)
+            {
+                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
+                if (itemJson.levelRequirement <= _gameMasterRef.GetLevel)
+                {
+                    setupButtonFromJson(itemJson);
+                    /*// instantiate the button prefab
+                    tempButton = Instantiate(_itemRecipeInfoPrefab);
+                    tempButton.transform.SetParent(_contentRef.transform, false);
+                    tempButton.GetComponent<RecipeButton>().setRecipeName(itemJson.itemName);
+                    tempButton.GetComponent<RecipeButton>().CanCraft = true;
+                    // set up button text
+                    TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
+                    t.text = itemJson.itemName + " Recipe";
+                    tempButton.name = itemJson.itemName + " Recipe";
+                    // add button to list
+                    InsertButton(tempButton); */
+                }
+                else
+                    levelLockedJsonItems.Add(itemJsonFile); //levelLockedJsonItems.Add(itemJson);
+            }
             r++;
         }
         foreach (PartData partRecipe in partRecipes)
@@ -417,7 +478,8 @@ public class RecipeBook : MonoBehaviour
         clearRecipeGrid();
         clearUpcomingRecipesLists();
         //int r = 0;
-        foreach(ItemData itemRecipe in itemRecipes)
+        Debug.LogError("REPLACE ITEMDATA WITH ITEMJSON/TEXTFILE");
+        /*foreach(ItemData itemRecipe in itemRecipes)
         {
             if (checkIfEnabledFiltersValid(itemRecipe) && enabledFilters.Count != 0 && (itemRecipe.ItemLevel <= _gameMasterRef.GetLevel))
             {
@@ -436,8 +498,21 @@ public class RecipeBook : MonoBehaviour
                 InsertButton(tempButton);
                 //break;
             }
+        }*/
+        foreach (TextAsset itemJsonFile in itemJsonRecipes)
+        {
+            if (itemJsonFile != null)
+            {
+                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
+                if (checkIfEnabledFiltersValid(itemJson) && enabledFilters.Count != 0 && itemJson.levelRequirement <= _gameMasterRef.GetLevel)
+                {
+                    setupButtonFromJson(itemJson);
+                }
+                else
+                    levelLockedJsonItems.Add(itemJsonFile); //levelLockedJsonItems.Add(itemJson);
+            }
         }
-        foreach(PartData partRecipe in partRecipes)
+        foreach (PartData partRecipe in partRecipes)
         {
             if (checkIfEnabledFiltersValid(partRecipe) && enabledFilters.Count != 0 && (partRecipe.PartLevelReq <= _gameMasterRef.GetLevel))
             {
@@ -540,6 +615,22 @@ public class RecipeBook : MonoBehaviour
         return i;
     }
 
+    private void setupButtonFromJson(ItemJsonData itemJson)
+    {
+        // instantiate the button prefab
+        tempButton = Instantiate(_itemRecipeInfoPrefab);
+        tempButton.transform.SetParent(_contentRef.transform, false);
+        tempButton.GetComponent<RecipeButton>().setRecipeName(itemJson.itemName);
+        tempButton.GetComponent<RecipeButton>().CanCraft = true;
+        // set up button text
+        TextMeshProUGUI t = tempButton.GetComponentInChildren<TextMeshProUGUI>();
+        t.text = itemJson.itemName + " Recipe";
+        tempButton.name = itemJson.itemName + " Recipe";
+        // add button to list
+        InsertButton(tempButton);
+
+    }
+
     private int InsertUpcomingRecipeButton(GameObject button)
     {
         upcomingRecipeButtons.Add(button);
@@ -639,6 +730,13 @@ public class RecipeBook : MonoBehaviour
     {
         foreach(FilterData enabledFilter in enabledFilters)
             if (itemRecipe.ValidFilters.Contains(enabledFilter) == false)
+                return false;
+        return true;
+    }
+    private bool checkIfEnabledFiltersValid(ItemJsonData itemJson)
+    {
+        foreach (FilterData enabledFilter in enabledFilters)
+            if (itemJson.filters.Contains(enabledFilter.FilterName) == false)
                 return false;
         return true;
     }
