@@ -8,6 +8,7 @@ public class RecipeButton : MonoBehaviour
     [SerializeField, HideInInspector] private SoundMaster _soundControl;
     [SerializeField] private int _myButtonIndex;
     [SerializeField, HideInInspector] private string _recipeName;
+    [SerializeField] private TextAsset _recipeJson;
     private bool _canCraft;
 
     private void Awake()
@@ -22,6 +23,7 @@ public class RecipeButton : MonoBehaviour
     public void setItemRecipeInfoText()
     {
         _recipeControl.setItemRecipeInfo(_myButtonIndex);
+        _recipeControl.setItemRecipeInfo(_recipeJson);
         if (_canCraft == true)
             setRecipe();
     }
@@ -33,12 +35,14 @@ public class RecipeButton : MonoBehaviour
     public void setPartRecipeInfoText()
     {
         _recipeControl.setPartRecipeInfo(_myButtonIndex);
+        _recipeControl.setPartRecipeInfo(_recipeJson);
         if (_canCraft == true)
             setRecipe();
     }
     public void setUpcomingRecipeInfoText()
     {
         _recipeControl.setUpcomingRecipeInfo(_myButtonIndex);
+        _recipeControl.setUpcomingRecipeInfo(RecipeJson);
     }
 
     public void setRecipe()
@@ -47,6 +51,8 @@ public class RecipeButton : MonoBehaviour
     }
     public void setRecipeName(string name) { _recipeName = name; }
     public string GetRecipeName { get => _recipeName; }
+
+    public TextAsset RecipeJson { get => _recipeJson; set => _recipeJson = value; }
 
     public void setMyIndex(int value) { _myButtonIndex = value; }
     public int GetMyIndex { get => _myButtonIndex; }
