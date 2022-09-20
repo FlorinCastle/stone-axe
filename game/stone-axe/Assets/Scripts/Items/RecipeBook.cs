@@ -17,10 +17,10 @@ public class RecipeBook : MonoBehaviour
     [SerializeField, HideInInspector] private List<string> partRecipeName;
     [SerializeField, HideInInspector] private List<GameObject> recipeButtons;
     [SerializeField, HideInInspector] private List<GameObject> upcomingRecipeButtons;
-    [SerializeField, HideInInspector] private ItemData _selectedItemRecipe;
+    //[SerializeField, HideInInspector] private ItemData _selectedItemRecipe;
     [SerializeField, HideInInspector] private ItemJsonData _selectedJsonItemRecipe;
     [SerializeField, HideInInspector] private QuestItemData _selectedQuestItemRecipe;
-    [SerializeField, HideInInspector] private PartData _selectedPartRecipe;
+    //[SerializeField, HideInInspector] private PartData _selectedPartRecipe;
     [SerializeField, HideInInspector] private PartJsonData _selectedJsonPartRecipe;
     [SerializeField] private QuestData _craftQuest;
     [Header("Filters")]
@@ -78,7 +78,7 @@ public class RecipeBook : MonoBehaviour
         }
     }
 
-    public void setItemRecipeInfo(int index)
+    /*public void setItemRecipeInfo(int index)
     {
         // get gameobject from recipeButton list at input index
         if (index == -1)
@@ -109,7 +109,7 @@ public class RecipeBook : MonoBehaviour
                 }
             }
         }
-    }
+    } */
     public void setItemRecipeInfo(TextAsset jsonText)
     {
         if (jsonText != null)
@@ -128,6 +128,7 @@ public class RecipeBook : MonoBehaviour
     public void setQuestItemRecipeInfo(int index)
     {
         //Debug.LogWarning("settting up quest recipe Info");
+        Debug.LogError("RecipeBook.setQuestItemRecipeInfo(int index): set this up to use json");
         if (index == -1)
             _recipeText.text = "placeholder";
         else
@@ -137,9 +138,9 @@ public class RecipeBook : MonoBehaviour
             {
                 if (questRecipe.QuestItemName == button.GetComponent<RecipeButton>().GetRecipeName)
                 {
-                    _selectedItemRecipe = null;
+                    //_selectedItemRecipe = null;
                     _selectedQuestItemRecipe = questRecipe;
-                    _selectedPartRecipe = null;
+                    //_selectedPartRecipe = null;
 
                     _recipeText.text = questRecipe.QuestItemName + "\nParts:\nValid Part 1: ";
                     foreach (string itemName in itemRecipeName)
@@ -168,7 +169,7 @@ public class RecipeBook : MonoBehaviour
             }
         }
     }
-    public void setPartRecipeInfo(int index)
+    /*public void setPartRecipeInfo(int index)
     {
         if (index == -1)
             _recipeText.text = "placeholder";
@@ -189,7 +190,7 @@ public class RecipeBook : MonoBehaviour
                 }
             }
         }
-    }
+    } */
     public void setPartRecipeInfo(TextAsset jsonText)
     {
         if (jsonText != null)
@@ -266,8 +267,10 @@ public class RecipeBook : MonoBehaviour
     }
     public void clearSelectedRecipe()
     {
-        _selectedItemRecipe = null;
-        _selectedPartRecipe = null;
+        //_selectedItemRecipe = null;
+        _selectedJsonItemRecipe = null;
+        //_selectedPartRecipe = null;
+        _selectedJsonPartRecipe = null;
         _recipeText.text = "";
     }
 
@@ -292,9 +295,9 @@ public class RecipeBook : MonoBehaviour
         }
     }
 
-    [SerializeField, HideInInspector] private List<ItemData> levelLockedItems;
+    //[SerializeField, HideInInspector] private List<ItemData> levelLockedItems;
     [SerializeField, HideInInspector] private List<TextAsset> levelLockedJsonItems;
-    [SerializeField, HideInInspector] private List<PartData> levelLockedParts;
+    //[SerializeField, HideInInspector] private List<PartData> levelLockedParts;
     [SerializeField, HideInInspector] private List<TextAsset> levelLockedJsonParts;
 
     // setup for level locking
@@ -744,10 +747,15 @@ public class RecipeBook : MonoBehaviour
     }
     private void clearUpcomingRecipesLists()
     {
-        if (levelLockedItems.Count > 0)
+        /*if (levelLockedItems.Count > 0)
             levelLockedItems.Clear();
         if (levelLockedParts.Count > 0)
-            levelLockedParts.Clear();
+            levelLockedParts.Clear(); */
+
+        if (levelLockedJsonItems.Count > 0)
+            levelLockedJsonItems.Clear();
+        if (levelLockedJsonParts.Count > 0)
+            levelLockedJsonParts.Clear();
     }
 
     private int InsertButton(GameObject button)
@@ -800,7 +808,11 @@ public class RecipeBook : MonoBehaviour
 
     private bool anyRecipeSelected()
     {
-        if (_selectedItemRecipe != null || _selectedPartRecipe != null || _selectedQuestItemRecipe != null)
+        //if (_selectedItemRecipe != null || _selectedPartRecipe != null || _selectedQuestItemRecipe != null)
+            //return true;
+        if (_selectedJsonItemRecipe != null ||
+            _selectedJsonPartRecipe != null ||
+            _selectedQuestItemRecipe != null)
             return true;
 
         return false;
@@ -847,8 +859,10 @@ public class RecipeBook : MonoBehaviour
         return null;
     }
 
-    public ItemData getSelectedItemRecipe() { return _selectedItemRecipe; }
-    public PartData getSeletedPartRecipe() { return _selectedPartRecipe; }
+    //public ItemData getSelectedItemRecipe() { return _selectedItemRecipe; }
+    public ItemJsonData SelectedItemRecipe { get => _selectedJsonItemRecipe; }
+    //public PartData getSeletedPartRecipe() { return _selectedPartRecipe; }
+    public PartJsonData SelectedPartRecipe { get => _selectedJsonPartRecipe; }
     public QuestItemData getSelectedQuestRecipe() { return _selectedQuestItemRecipe; }
 
     public void setupFilterUI()

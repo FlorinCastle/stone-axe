@@ -22,7 +22,7 @@ public class RecipeButton : MonoBehaviour
 
     public void setItemRecipeInfoText()
     {
-        _recipeControl.setItemRecipeInfo(_myButtonIndex);
+        //_recipeControl.setItemRecipeInfo(_myButtonIndex);
         _recipeControl.setItemRecipeInfo(_recipeJson);
         if (_canCraft == true)
             setRecipe();
@@ -34,7 +34,7 @@ public class RecipeButton : MonoBehaviour
     }
     public void setPartRecipeInfoText()
     {
-        _recipeControl.setPartRecipeInfo(_myButtonIndex);
+        //_recipeControl.setPartRecipeInfo(_myButtonIndex);
         _recipeControl.setPartRecipeInfo(_recipeJson);
         if (_canCraft == true)
             setRecipe();

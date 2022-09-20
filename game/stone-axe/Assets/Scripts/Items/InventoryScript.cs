@@ -246,27 +246,31 @@ public class InventoryScript : MonoBehaviour
         else if (_currentPartFilter.Equals(_partsFilterData[1])) // if current filter is for craft
         {
             int k = 0;
-            if (_craftControlRef.checkItemRecipe() != null)
+            //if (_craftControlRef.checkItemRecipe() != null)
+            if (_craftControlRef.ItemJsonRecipe != null)
             {
                 Debug.Log("recipe selected!");
                 foreach (GameObject part in _inventoryData.PartInventory)
                 {
                     PartDataStorage partData = part.GetComponent<PartDataStorage>();
-                    if (_craftControlRef.checkItemRecipe().ValidParts1.Contains(partData.RecipeData))
+                    //if (_craftControlRef.checkItemRecipe().ValidParts1.Contains(partData.RecipeData))
+                    if (_craftControlRef.ItemJsonRecipe.requiredParts.Contains(partData.RecipeData.PartName))
                     {
                         partStorageSetup(partData, k, true);
                         k++;
                     }
-                    else if (_craftControlRef.checkItemRecipe().ValidParts2.Contains(partData.RecipeData))
+                    /*//else if (_craftControlRef.checkItemRecipe().ValidParts2.Contains(partData.RecipeData))
+                    else if (_craftControlRef.ItemJsonRecipe.requiredParts.Contains(partData.RecipeData.PartName))
                     {
                         partStorageSetup(partData, k, true);
                         k++;
                     }
-                    else if (_craftControlRef.checkItemRecipe().ValidParts3.Contains(partData.RecipeData))
+                    //else if (_craftControlRef.checkItemRecipe().ValidParts3.Contains(partData.RecipeData))
+                    else if (_craftControlRef.ItemJsonRecipe.requiredParts.Contains(partData.RecipeData.PartName))
                     {
                         partStorageSetup(partData, k, true);
                         k++;
-                    }
+                    }*/
                     else
                         holderList.Add(part);
                 }
@@ -439,12 +443,14 @@ public class InventoryScript : MonoBehaviour
         else if (_currentMatFilter.Equals(_matsFilterData[1]))
         {
             int m = 0;
-            if (_craftControlRef.checkPartRecipe() != null)
+            //if (_craftControlRef.checkPartRecipe() != null)
+            if (_craftControlRef.PartJsonRecipe != null)
             {
                 foreach (GameObject mat in _inventoryData.MaterialInventory)
                 {
                     MaterialDataStorage matStore = mat.GetComponent<MaterialDataStorage>();
-                    if (_craftControlRef.checkPartRecipe().ValidMaterialData.Contains(matStore.MatDataRef))
+                    //if (_craftControlRef.checkPartRecipe().ValidMaterialData.Contains(matStore.MatDataRef))
+                    if (_craftControlRef.PartJsonRecipe.validMaterials.Contains(matStore.MatDataRef.Material))
                     {
                         if (matStore.LevelRequirement <= _gameMaster.GetLevel)
                         {
@@ -1691,8 +1697,10 @@ public class InventoryScript : MonoBehaviour
         {
             Debug.Log("Selected part is valid for recipe!");
             //Debug.LogWarning("TODO setup code for selecting parts");
-            foreach (PartData part1ref in _craftControlRef.checkItemRecipe().ValidParts1)
-                if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part1ref
+            Debug.LogError("InventoryScript.returnSeletedPart(): rewrite this properly to use array/list");
+            //foreach (PartData part1ref in _craftControlRef.checkItemRecipe().ValidParts1)
+            foreach (string part1ref in _craftControlRef.ItemJsonRecipe.requiredParts)
+                if (_selectedPart.GetComponent<PartDataStorage>().PartName == part1ref
                     && (partLastFilled == 0 || partLastFilled == 2 || partLastFilled == 3 || _craftControlRef.Part1Set() == false || _craftControlRef.AllPartsSet() == true)
                     && phb == false)
                 {
@@ -1702,8 +1710,9 @@ public class InventoryScript : MonoBehaviour
                     phb = true;
                 }
 
-            foreach (PartData part2ref in _craftControlRef.checkItemRecipe().ValidParts2)
-                if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part2ref
+            //foreach (PartData part2ref in _craftControlRef.checkItemRecipe().ValidParts2)
+            foreach (string part2ref in _craftControlRef.ItemJsonRecipe.requiredParts)
+                if (_selectedPart.GetComponent<PartDataStorage>().PartName == part2ref
                     && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 3 || _craftControlRef.Part2Set() == false || _craftControlRef.AllPartsSet() == true)
                     && phb == false)
                 {
@@ -1713,8 +1722,9 @@ public class InventoryScript : MonoBehaviour
                     phb = true;
                 }
 
-            foreach (PartData part3ref in _craftControlRef.checkItemRecipe().ValidParts3)
-                if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == part3ref
+            //foreach (PartData part3ref in _craftControlRef.checkItemRecipe().ValidParts3)
+            foreach (string part3ref in _craftControlRef.ItemJsonRecipe.requiredParts)
+                if (_selectedPart.GetComponent<PartDataStorage>().PartName == part3ref
                     && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 2 || _craftControlRef.Part3Set() == false || _craftControlRef.AllPartsSet() == true)
                     && phb == false)
                 {
@@ -1928,6 +1938,7 @@ public class InventoryScript : MonoBehaviour
             GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>().SelectEnchant();
     }
 
+    /* old unused code
     private bool checkIfPartIsValid(int i, PartDataStorage part) // incoming i should either be 3, 4, or 5
     {
         CraftControl ccRef = GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>();
@@ -1935,39 +1946,46 @@ public class InventoryScript : MonoBehaviour
 
         if (i == 3)
         {
-            foreach (PartData validPart1 in ccRef.checkItemRecipe().ValidParts1)
-                if (validPart1.PartName == validPart.PartName)
+            //foreach (PartData validPart1 in ccRef.checkItemRecipe().ValidParts1)
+            foreach (string validPart1 in ccRef.ItemJsonRecipe.requiredParts)
+                if (validPart1 == validPart.PartName)
                     return true;
         }
         else if (i == 4)
         {
-            foreach (PartData validPart2 in ccRef.checkItemRecipe().ValidParts2)
-                if (validPart2.PartName == validPart.PartName)
+            //foreach (PartData validPart2 in ccRef.checkItemRecipe().ValidParts2)
+            foreach (string validPart2 in ccRef.ItemJsonRecipe.requiredParts)
+                if (validPart2 == validPart.PartName)
                     return true;
         }
         else if (i == 5)
         {
-            foreach (PartData validPart3 in ccRef.checkItemRecipe().ValidParts3)
-                if (validPart3.PartName == validPart.PartName)
+            //foreach (PartData validPart3 in ccRef.checkItemRecipe().ValidParts3)
+            foreach (string validPart3 in ccRef.ItemJsonRecipe.requiredParts)
+                if (validPart3 == validPart.PartName)
                     return true;
         }
 
         return false;
-    }
+    } */
 
+    /* old unused code
     private bool checkIfMatIsValid(int m, MaterialData mat) // incoming m should be 6
     {
         CraftControl ccRef = GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>();
 
         if (m == 6)
         {
-            foreach (MaterialData validMat in ccRef.checkPartRecipe().ValidMaterialData)
-                if (validMat.Material == mat.Material)
+            //foreach (MaterialData validMat in ccRef.checkPartRecipe().ValidMaterialData)
+            /*foreach (string validMat in ccRef.PartJsonRecipe.validMaterials)
+                if (validMat == mat.Material)
                     return true;
+            if (ccRef.PartJsonRecipe.validMaterials.Contains(mat.Material))
+                return true;
         }
 
         return false;
-    }
+    }*/
 
     private int calculateTotalValue(ItemJsonData item)
     {

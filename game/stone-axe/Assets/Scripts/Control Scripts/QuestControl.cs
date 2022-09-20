@@ -606,7 +606,7 @@ public class QuestControl : MonoBehaviour
     }
 
     //overload 1 (basic item crafting)
-    public void updateQuestProgress(ItemData craftedItemRecipe)
+    /*public void updateQuestProgress(ItemData craftedItemRecipe)
     {
         if (_chosenQuest != null)
         {
@@ -622,6 +622,31 @@ public class QuestControl : MonoBehaviour
                         _completeQuestButton.interactable = true; 
                     else 
                         _completeQuestButton.interactable = false; 
+                }
+            }
+            else if (_chosenQuest.QuestType == "Tutorial" || _chosenQuest.QuestType == "Story")
+            {
+                //Debug.LogWarning("PH");
+                updateQuestProgress(_chosenQuest, _chosenQuest.QuestStages[_currStageIndex]);
+            }
+        }
+    }*/
+    public void updateQuestProgress(ItemJsonData craftedItemRecipe)
+    {
+        if (_chosenQuest != null)
+        {
+            if (_chosenQuest.QuestType == "OCC_Item" ||
+                _chosenQuest.QuestType == "OCC_TotalCrafted")
+            {
+                if (_chosenQuest.RequiredItem.ItemName == craftedItemRecipe.itemName)
+                {
+                    currentItemCount++;
+                    setupText();
+                    if (currentItemCount >= reqItemCount)
+                        //Debug.Log("TODO: quest can be completed");
+                        _completeQuestButton.interactable = true;
+                    else
+                        _completeQuestButton.interactable = false;
                 }
             }
             else if (_chosenQuest.QuestType == "Tutorial" || _chosenQuest.QuestType == "Story")

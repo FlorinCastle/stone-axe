@@ -42,7 +42,8 @@ public class CraftControl : MonoBehaviour
     [SerializeField] TextMeshProUGUI _encDiscription;
 
     [Header("Item Crafting")]
-    [SerializeField] ItemData _chosenItemRecipe;
+    //[SerializeField] ItemData _chosenItemRecipe;
+    [SerializeField] ItemJsonData _chosenItemRecipeJson;
     [SerializeField] GameObject _chosenPart1;
     [SerializeField] GameObject _chosenPart2;
     [SerializeField] GameObject _chosenPart3;
@@ -63,6 +64,7 @@ public class CraftControl : MonoBehaviour
     private PartDataStorage partDataStorageRef;
     [Header("Part Crafting")]
     [SerializeField] PartData _chosenPartRecipe;
+    [SerializeField] PartJsonData _chosenPartRecipeJson;
     [SerializeField] MaterialData _chosenPartMaterial;
     [SerializeField] GameObject _optionalChosenEnchant;
     [Header("Quest Item Crafting")]
@@ -151,9 +153,11 @@ public class CraftControl : MonoBehaviour
             _gameMasterRef.updatePlayerPosition();
         }
 
-        if (_recipeBookRef.getSelectedItemRecipe() != null)
+        //if (_recipeBookRef.getSelectedItemRecipe() != null)
+        if (_recipeBookRef.SelectedItemRecipe != null)
         {
-            _chosenItemRecipe = _recipeBookRef.getSelectedItemRecipe();
+            //_chosenItemRecipe = _recipeBookRef.getSelectedItemRecipe();
+            _chosenItemRecipeJson = _recipeBookRef.SelectedItemRecipe;
             _chosenPartRecipe = null;
             _chosenQuestRecipe = null;
 
@@ -162,18 +166,27 @@ public class CraftControl : MonoBehaviour
             _partCraftingUI.SetActive(false);
             clearPartCraftingUI();
 
-            _selectedRecipeText.text = _chosenItemRecipe.ItemName;
+            //_selectedRecipeText.text = _chosenItemRecipe.ItemName;
+            _selectedRecipeText.text = _chosenItemRecipeJson.itemName;
 
-            _part1Name.text = _chosenItemRecipe.Part1.PartName;
+            /*_part1Name.text = _chosenItemRecipe.Part1.PartName;
             _part2Name.text = _chosenItemRecipe.Part2.PartName;
-            _part3Name.text = _chosenItemRecipe.Part3.PartName;
+            _part3Name.text = _chosenItemRecipe.Part3.PartName; */
+            Debug.LogError("CraftControl.setChosenRecipe(): swap to using lists/arrays for stuff");
+            _part1Name.text = _chosenItemRecipeJson.requiredParts[0];
+            _part2Name.text = _chosenItemRecipeJson.requiredParts[1];
+            _part3Name.text = _chosenItemRecipeJson.requiredParts[2];
+
 
             _cancelCraftButton.interactable = true;
         }
-        else if (_recipeBookRef.getSeletedPartRecipe() != null)
+        //else if (_recipeBookRef.getSeletedPartRecipe() != null)
+        else if (_recipeBookRef.SelectedPartRecipe != null)
         {
-            _chosenItemRecipe = null;
-            _chosenPartRecipe = _recipeBookRef.getSeletedPartRecipe();
+            //_chosenItemRecipe = null;
+            _chosenItemRecipeJson = null;
+            //_chosenPartRecipe = _recipeBookRef.getSeletedPartRecipe();
+            _chosenPartRecipeJson = _recipeBookRef.SelectedPartRecipe;
             _chosenQuestRecipe = null;
 
             _itemCraftingUI.SetActive(false);
@@ -188,7 +201,8 @@ public class CraftControl : MonoBehaviour
         }
         else if (_recipeBookRef.getSelectedQuestRecipe() != null)
         {
-            _chosenItemRecipe = null;
+            //_chosenItemRecipe = null;
+            _chosenItemRecipeJson = null;
             _chosenPartRecipe = null;
             _chosenQuestRecipe = _recipeBookRef.getSelectedQuestRecipe();
 
@@ -230,18 +244,26 @@ public class CraftControl : MonoBehaviour
     {
         _chosenPart1 = null;
         _part1Discription.text = "choose part";
-        if (_chosenItemRecipe == null && _chosenPartRecipe == null && _chosenQuestRecipe == null)
+        if (_chosenItemRecipeJson == null && //_chosenItemRecipe == null && 
+            _chosenPartRecipe == null && 
+            _chosenQuestRecipe == null)
             _part1Name.text = "part 1";
         _chosenPart2 = null;
         _part2Discription.text = "choose part";
-        if (_chosenItemRecipe == null && _chosenPartRecipe == null && _chosenQuestRecipe == null)
+        if (_chosenItemRecipeJson == null &&//_chosenItemRecipe == null && 
+            _chosenPartRecipe == null && 
+            _chosenQuestRecipe == null)
             _part2Name.text = "part 2";
         _chosenPart3 = null;
         _part3Discription.text = "choose part";
-        if (_chosenItemRecipe == null && _chosenPartRecipe == null && _chosenQuestRecipe == null)
+        if (_chosenItemRecipeJson == null &&//_chosenItemRecipe == null && 
+            _chosenPartRecipe == null && 
+            _chosenQuestRecipe == null)
             _part3Name.text = "part 3";
 
-        if (_chosenItemRecipe == null && _chosenPartRecipe == null && _chosenQuestRecipe == null)
+        if (_chosenItemRecipeJson == null && //_chosenItemRecipe == null && 
+            _chosenPartRecipe == null && 
+            _chosenQuestRecipe == null)
             _selectedRecipeText.text = "none";
 
         _finalStatsText1.text = "select [part1, part2, part3]";
@@ -256,7 +278,9 @@ public class CraftControl : MonoBehaviour
         _optionalChosenEnchant = null;
         _matDiscription.text = "choose material";
 
-        if (_chosenItemRecipe == null && _chosenPartRecipe == null && _chosenQuestRecipe == null)
+        if (_chosenItemRecipeJson == null && //_chosenItemRecipe == null && 
+            _chosenPartRecipe == null && 
+            _chosenQuestRecipe == null)
             _selectedRecipeText.text = "none";
 
         _partStatsText1.text = "select [material]";
@@ -442,7 +466,9 @@ public class CraftControl : MonoBehaviour
     public void Craft()
     {
         //_gameMasterRef.gameObject.GetComponent<MiniGameControl>().resetHitPoints();
-        if (_chosenItemRecipe != null)
+        //if (_chosenItemRecipe != null)
+        //    CraftItem();
+        if (_chosenItemRecipeJson != null)
             CraftItem();
         else if (_chosenPartRecipe != null)
             CraftPart();
@@ -464,9 +490,10 @@ public class CraftControl : MonoBehaviour
 
         itemDataStorageRef = itemDataStorageTemp.GetComponent<ItemDataStorage>();
         // stats
-        itemDataStorageTemp.name = _chosenItemRecipe.ItemName;
-        itemDataStorageRef.setItemName(_chosenItemRecipe.ItemName);
-        itemDataStorageRef.ItemRecipeRef = _chosenItemRecipe;
+        itemDataStorageTemp.name = _chosenItemRecipeJson.itemName; //_chosenItemRecipe.ItemName;
+        itemDataStorageRef.setItemName(_chosenItemRecipeJson.itemName); //_chosenItemRecipe.ItemName);
+        //itemDataStorageRef.ItemRecipeRef = _chosenItemRecipe;
+        itemDataStorageRef.ItemJsonRef = _chosenItemRecipeJson;
         itemDataStorageRef.setTotalValue(_part1DataRef.Value + _part2DataRef.Value + _part3DataRef.Value);
         itemDataStorageRef.setTotalStrenght(_part1DataRef.PartStr + _part2DataRef.PartStr + _part3DataRef.PartStr);
         itemDataStorageRef.setTotalDex(_part1DataRef.PartDex + _part2DataRef.PartDex + _part3DataRef.PartDex);
@@ -533,7 +560,8 @@ public class CraftControl : MonoBehaviour
         GameObject.FindGameObjectWithTag("GameMaster").GetComponent<ExperienceManager>().addExperience(4);
 
         // check quest
-        _questControlRef.updateQuestProgress(_chosenItemRecipe);
+        //_questControlRef.updateQuestProgress(_chosenItemRecipe);
+        _questControlRef.updateQuestProgress(_chosenItemRecipeJson);
 
         _inventoryControlReference.InsertItem(itemDataStorageTemp);
 
@@ -546,7 +574,8 @@ public class CraftControl : MonoBehaviour
                 {
                     if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet != null)
                     {
-                        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet == _chosenItemRecipe)
+                        //if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet == _chosenItemRecipe)
+                        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet.ItemName == _chosenItemRecipeJson.itemName)
                         {
                             craftCount++;
 
@@ -571,7 +600,8 @@ public class CraftControl : MonoBehaviour
                 {
                     if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet != null)
                     {
-                        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet == _chosenItemRecipe)
+                        //if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet == _chosenItemRecipe)
+                        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.ItemToGet.ItemName == _chosenItemRecipeJson.itemName)
                         {
                             itemDataStorageRef.IsForQuest = true;
                             craftCount++;
@@ -593,7 +623,8 @@ public class CraftControl : MonoBehaviour
             }
             else if(_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "OCC_Item" || _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "OCC_TotalCrafted" || _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "OCC_QuestItem")
             {
-                if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.RequiredItem == _chosenItemRecipe)
+                //if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.RequiredItem == _chosenItemRecipe)
+                if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.RequiredItem.ItemName == _chosenItemRecipeJson.itemName)
                 {
                     Debug.LogWarning("Quest Notif - Craft Done");
                     itemDataStorageRef.IsForQuest = true;
@@ -606,7 +637,8 @@ public class CraftControl : MonoBehaviour
         }
 
         // clear selected crafting componet variables
-        _chosenItemRecipe = null;
+        //_chosenItemRecipe = null;
+        _chosenItemRecipeJson = null;
         itemDataStorageTemp = null;
         itemDataStorageRef = null;
         _inventoryControlReference.RemovePart(_chosenPart1, false);
@@ -710,7 +742,8 @@ public class CraftControl : MonoBehaviour
                 Debug.LogError("Verify if quest has required item recipe assigned.\nQuest name: " + _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestName);
         }
         // clear selected crafting compnents
-        _chosenItemRecipe = null;
+        //_chosenItemRecipe = null;
+        _chosenItemRecipeJson = null;
         itemDataStorageTemp = null;
         itemDataStorageRef = null;
         _chosenPart1 = null;
@@ -817,7 +850,8 @@ public class CraftControl : MonoBehaviour
     private void updateFinalStatsText()
     {
         finalStatsString = "";
-        if (_chosenItemRecipe != null)
+        //if (_chosenItemRecipe != null)
+        if (_chosenItemRecipeJson != null)
         {
             if (_chosenPart1 != null && _chosenPart2 != null && _chosenPart3 != null)
             {
@@ -825,7 +859,7 @@ public class CraftControl : MonoBehaviour
                 _part2DataRef = _chosenPart2.GetComponent<PartDataStorage>();
                 _part3DataRef = _chosenPart3.GetComponent<PartDataStorage>();
 
-                _itemName = "Item - " + _chosenItemRecipe.ItemName;
+                _itemName = "Item - " + _chosenItemRecipeJson.itemName;//_chosenItemRecipe.ItemName;
                 _compData = "Materials\n" + _part1DataRef.MaterialName + "\n" + _part2DataRef.MaterialName + "\n" + _part3DataRef.MaterialName;
                 _totalStrength = "\nStrenght: " + (_part1DataRef.PartStr + _part2DataRef.PartStr + _part3DataRef.PartStr).ToString();
                 _totalDex = "\nDextarity: " + (_part1DataRef.PartDex + _part2DataRef.PartDex + _part3DataRef.PartDex).ToString();
@@ -1083,8 +1117,10 @@ public class CraftControl : MonoBehaviour
             //Debug.LogWarning("No Recipe selected!");
     }
 
-    public ItemData checkItemRecipe() { return _chosenItemRecipe; }
-    public PartData checkPartRecipe() { return _chosenPartRecipe; }
+    //public ItemData checkItemRecipe() { return _chosenItemRecipe; }
+    public ItemJsonData ItemJsonRecipe { get => _chosenItemRecipeJson; }
+    //public PartData checkPartRecipe() { return _chosenPartRecipe; }
+    public PartJsonData PartJsonRecipe { get => _chosenPartRecipeJson; }
     public QuestItemData checkQuestRecipe() { return _chosenQuestRecipe; }
 
     private bool checkIfAnyPartEnchanted()
@@ -1107,7 +1143,8 @@ public class CraftControl : MonoBehaviour
 
     public bool anyRecipeSelected()
     {
-        if (_chosenItemRecipe != null)
+        //if (_chosenItemRecipe != null)
+        if (_chosenItemRecipeJson != null)
             return true;
         else if (_chosenPartRecipe != null)
             return true;
@@ -1117,7 +1154,8 @@ public class CraftControl : MonoBehaviour
     }
     public bool anyItemRecipeSelected()
     {
-        if (_chosenItemRecipe != null)
+        //if (_chosenItemRecipe != null)
+        if (_chosenItemRecipeJson != null)
             return true;
         return false;
     }
@@ -1162,7 +1200,8 @@ public class CraftControl : MonoBehaviour
 
     public string Part1Type()
     {
-        if (_chosenItemRecipe != null)
+        //if (_chosenItemRecipe != null)
+        if (_chosenItemRecipeJson != null)
             return "part";
         else if (_chosenQuestRecipe != null)
         {
@@ -1181,7 +1220,8 @@ public class CraftControl : MonoBehaviour
     }
     public string Part2Type()
     {
-        if (_chosenItemRecipe != null)
+        //if (_chosenItemRecipe != null)
+        if (_chosenItemRecipeJson != null)
             return "part";
         else if (_chosenQuestRecipe != null)
             if (_chosenQuestRecipe.ItemPart2.GetType().ToString() == "ItemData")
@@ -1198,7 +1238,8 @@ public class CraftControl : MonoBehaviour
     }
     public string Part3Type()
     {
-        if (_chosenItemRecipe != null)
+        //if (_chosenItemRecipe != null)
+        if (_chosenItemRecipeJson != null)
             return "part";
         else if (_chosenQuestRecipe != null)
             if (_chosenQuestRecipe.ItemPart2.GetType().ToString() == "ItemData")
