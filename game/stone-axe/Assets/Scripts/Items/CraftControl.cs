@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -63,7 +64,7 @@ public class CraftControl : MonoBehaviour
     private GameObject partDataStorageTemp;
     private PartDataStorage partDataStorageRef;
     [Header("Part Crafting")]
-    [SerializeField] PartData _chosenPartRecipe;
+    //[SerializeField] PartData _chosenPartRecipe;
     [SerializeField] PartJsonData _chosenPartRecipeJson;
     [SerializeField] MaterialData _chosenPartMaterial;
     [SerializeField] GameObject _optionalChosenEnchant;
@@ -158,7 +159,8 @@ public class CraftControl : MonoBehaviour
         {
             //_chosenItemRecipe = _recipeBookRef.getSelectedItemRecipe();
             _chosenItemRecipeJson = _recipeBookRef.SelectedItemRecipe;
-            _chosenPartRecipe = null;
+            //_chosenPartRecipe = null;
+            _chosenPartRecipeJson = null;
             _chosenQuestRecipe = null;
 
             _itemCraftingUI.SetActive(true);
@@ -195,7 +197,8 @@ public class CraftControl : MonoBehaviour
             clearPartCraftingUI();
             setupPartRecipeStats();
 
-            _selectedRecipeText.text = _chosenPartRecipe.PartName;
+            //_selectedRecipeText.text = _chosenPartRecipe.PartName;
+            _selectedRecipeText.text = _chosenPartRecipeJson.partName;
 
             _cancelCraftButton.interactable = true;
         }
@@ -203,7 +206,8 @@ public class CraftControl : MonoBehaviour
         {
             //_chosenItemRecipe = null;
             _chosenItemRecipeJson = null;
-            _chosenPartRecipe = null;
+            //_chosenPartRecipe = null;
+            _chosenPartRecipeJson = null;
             _chosenQuestRecipe = _recipeBookRef.getSelectedQuestRecipe();
 
             _itemCraftingUI.SetActive(true);
@@ -245,24 +249,24 @@ public class CraftControl : MonoBehaviour
         _chosenPart1 = null;
         _part1Discription.text = "choose part";
         if (_chosenItemRecipeJson == null && //_chosenItemRecipe == null && 
-            _chosenPartRecipe == null && 
+            _chosenPartRecipeJson == null && //_chosenPartRecipe == null && 
             _chosenQuestRecipe == null)
             _part1Name.text = "part 1";
         _chosenPart2 = null;
         _part2Discription.text = "choose part";
         if (_chosenItemRecipeJson == null &&//_chosenItemRecipe == null && 
-            _chosenPartRecipe == null && 
+            _chosenPartRecipeJson == null && //_chosenPartRecipe == null && 
             _chosenQuestRecipe == null)
             _part2Name.text = "part 2";
         _chosenPart3 = null;
         _part3Discription.text = "choose part";
         if (_chosenItemRecipeJson == null &&//_chosenItemRecipe == null && 
-            _chosenPartRecipe == null && 
+            _chosenPartRecipeJson == null && //_chosenPartRecipe == null && 
             _chosenQuestRecipe == null)
             _part3Name.text = "part 3";
 
         if (_chosenItemRecipeJson == null && //_chosenItemRecipe == null && 
-            _chosenPartRecipe == null && 
+            _chosenPartRecipeJson == null && //_chosenPartRecipe == null && 
             _chosenQuestRecipe == null)
             _selectedRecipeText.text = "none";
 
@@ -279,7 +283,7 @@ public class CraftControl : MonoBehaviour
         _matDiscription.text = "choose material";
 
         if (_chosenItemRecipeJson == null && //_chosenItemRecipe == null && 
-            _chosenPartRecipe == null && 
+            _chosenPartRecipeJson == null && //_chosenPartRecipe == null && 
             _chosenQuestRecipe == null)
             _selectedRecipeText.text = "none";
 
@@ -290,14 +294,21 @@ public class CraftControl : MonoBehaviour
     private void setupPartRecipeStats()
     {
         _partRecipeStats1.text = "Valid Material Types\n";
-        foreach(string matType in _chosenPartRecipe.ValidMaterials)
+        //foreach(string matType in _chosenPartRecipe.ValidMaterials)
+        foreach (string matType in _chosenPartRecipeJson.validMaterialTypes)
         {
             _partRecipeStats1.text += matType + "\n";
         }
 
-        _partRecipeStats1.text += "\nUnits of Material Required: " + _chosenPartRecipe.UnitsOfMaterialNeeded;
+        _partRecipeStats1.text += "\nUnits of Material Required: " + _chosenPartRecipeJson.unitsOfMaterialNeeded;// _chosenPartRecipe.UnitsOfMaterialNeeded;
 
-        _partRecipeStats2.text = "Base Stats\nBase Strenght: " + _chosenPartRecipe.BaseStrenght + "\nBase Intellegence: " + _chosenPartRecipe.BaseIntelligence + "\nBase Dextarity: " + _chosenPartRecipe.BaseDextarity;
+        _partRecipeStats2.text = "Base Stats\nBase Strenght: " +
+            //_chosenPartRecipe.BaseStrenght + "\nBase Intellegence: " +
+            _chosenPartRecipeJson.baseStrength + "\nBase Intellegence: " +
+            //_chosenPartRecipe.BaseIntelligence + "\nBase Dextarity: " +
+            _chosenPartRecipeJson.baseIntelligence + "\nBase Dextarity: " +
+            //_chosenPartRecipe.BaseDextarity;
+            _chosenPartRecipeJson.baseDextarity;
     }
 
     /* old code
@@ -433,7 +444,7 @@ public class CraftControl : MonoBehaviour
     public void SelectMat()
     {
         _chosenPartMaterial = _inventoryControlReference.getSelectedMat();
-        if (_chosenPartMaterial != null && _chosenPartRecipe.ValidMaterialData.Contains(_chosenPartMaterial))
+        if (_chosenPartMaterial != null && _chosenPartRecipeJson.validMaterials.Contains(_chosenPartMaterial.Material))//_chosenPartRecipe.ValidMaterialData.Contains(_chosenPartMaterial))
         //if (_chosenPartMaterial != null)
         {
             // setup discription
@@ -470,7 +481,8 @@ public class CraftControl : MonoBehaviour
         //    CraftItem();
         if (_chosenItemRecipeJson != null)
             CraftItem();
-        else if (_chosenPartRecipe != null)
+        //else if (_chosenPartRecipe != null)
+        else if (_chosenPartRecipeJson != null)
             CraftPart();
         else if (_chosenQuestRecipe != null)
             CraftQuestItem();
@@ -661,21 +673,22 @@ public class CraftControl : MonoBehaviour
     }
     private void CraftPart()
     {
-        if (_invDataRef.getMaterial(_chosenPartMaterial.Material).CanRemoveAmount(_chosenPartRecipe.UnitsOfMaterialNeeded))
+        if (_invDataRef.getMaterial(_chosenPartMaterial.Material).CanRemoveAmount(_chosenPartRecipeJson.unitsOfMaterialNeeded))//_chosenPartRecipe.UnitsOfMaterialNeeded))
         {
             partDataStorageTemp = Instantiate(_partDataStoragePrefab);
             partDataStorageTemp.transform.parent = _inventoryControlReference.gameObject.transform;
 
             partDataStorageRef = partDataStorageTemp.GetComponent<PartDataStorage>();
             // stats
-            partDataStorageTemp.name = _chosenPartMaterial.Material + " " + _chosenPartRecipe.PartName;
-            partDataStorageRef.setPartName(_chosenPartRecipe.PartName);
+            partDataStorageTemp.name = _chosenPartMaterial.Material + " " + _chosenPartRecipeJson.partName; //_chosenPartRecipe.PartName;
+            partDataStorageRef.setPartName(_chosenPartRecipeJson.partName); //_chosenPartRecipe.PartName);
             partDataStorageRef.setMaterial(_chosenPartMaterial);
-            partDataStorageRef.setValue(_chosenPartRecipe.BaseCost + _chosenPartMaterial.BaseCostPerUnit);
-            partDataStorageRef.setPartStr(_chosenPartRecipe.BaseStrenght + _chosenPartMaterial.AddedStrength);
-            partDataStorageRef.setPartDex(_chosenPartRecipe.BaseDextarity + _chosenPartMaterial.AddedDextarity);
-            partDataStorageRef.setPartInt(_chosenPartRecipe.BaseIntelligence + _chosenPartMaterial.AddedIntelligence);
-            partDataStorageRef.setRecipeData(_chosenPartRecipe);
+            partDataStorageRef.setValue(_chosenPartRecipeJson.baseCost /*_chosenPartRecipe.BaseCost*/ + _chosenPartMaterial.BaseCostPerUnit);
+            partDataStorageRef.setPartStr(_chosenPartRecipeJson.baseStrength /*_chosenPartRecipe.BaseStrenght*/ + _chosenPartMaterial.AddedStrength);
+            partDataStorageRef.setPartDex(_chosenPartRecipeJson.baseDextarity /*_chosenPartRecipe.BaseDextarity*/ + _chosenPartMaterial.AddedDextarity);
+            partDataStorageRef.setPartInt(_chosenPartRecipeJson.baseIntelligence /*_chosenPartRecipe.BaseIntelligence*/ + _chosenPartMaterial.AddedIntelligence);
+            //partDataStorageRef.setRecipeData(_chosenPartRecipe);
+            partDataStorageRef.PartJsonData = _chosenPartRecipeJson;
             
             if (_optionalChosenEnchant != null)
             {
@@ -685,7 +698,7 @@ public class CraftControl : MonoBehaviour
             }
 
             // remove right amount of materials
-            _invDataRef.getMaterial(_chosenPartMaterial.Material).RemoveMat(Mathf.RoundToInt(_chosenPartRecipe.UnitsOfMaterialNeeded * materialSkill.getModifiedMatAmount()));
+            _invDataRef.getMaterial(_chosenPartMaterial.Material).RemoveMat(Mathf.RoundToInt(_chosenPartRecipeJson.unitsOfMaterialNeeded /*_chosenPartRecipe.UnitsOfMaterialNeeded*/ * materialSkill.getModifiedMatAmount()));
             _inventoryControlReference.setupMatInventory();
 
             // insert crafted part into inventory script
@@ -695,7 +708,8 @@ public class CraftControl : MonoBehaviour
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<ExperienceManager>().addExperience(3);
 
             // clear selected crafting components
-            _chosenPartRecipe = null;
+            //_chosenPartRecipe = null;
+            _chosenPartRecipeJson = null;
             partDataStorageTemp = null;
             partDataStorageRef = null;
             _chosenPartMaterial = null;
@@ -938,16 +952,16 @@ public class CraftControl : MonoBehaviour
             }
 
         }
-        else if (_chosenPartRecipe != null)
+        else if (_chosenPartRecipeJson != null) //_chosenPartRecipe != null)
         {
             if (_chosenPartMaterial != null)
             {
-                _partName = "Part - " + _chosenPartRecipe.PartName;
+                _partName = "Part - " + _chosenPartRecipeJson.partName; //_chosenPartRecipe.PartName;
                 _partMat = "Material\n" + _chosenPartMaterial.Material;
-                _partStrength = "\nStrenght: " + (_chosenPartRecipe.BaseStrenght + _chosenPartMaterial.AddedStrength);
-                _partDex = "\nDextarity: " + (_chosenPartRecipe.BaseDextarity + _chosenPartMaterial.AddedDextarity);
-                _partInt = "\nIntelegence: " + (_chosenPartRecipe.BaseIntelligence + _chosenPartMaterial.AddedIntelligence);
-                _partValue = "\n\nValue: " + (_chosenPartRecipe.BaseCost + _chosenPartMaterial.BaseCostPerUnit);
+                _partStrength = "\nStrenght: " + (_chosenPartRecipeJson.baseStrength /*_chosenPartRecipe.BaseStrenght*/ + _chosenPartMaterial.AddedStrength);
+                _partDex = "\nDextarity: " + (_chosenPartRecipeJson.baseDextarity /*_chosenPartRecipe.BaseDextarity*/ + _chosenPartMaterial.AddedDextarity);
+                _partInt = "\nIntelegence: " + (_chosenPartRecipeJson.baseIntelligence /*_chosenPartRecipe.BaseIntelligence*/ + _chosenPartMaterial.AddedIntelligence);
+                _partValue = "\n\nValue: " + (_chosenPartRecipeJson.baseCost /*_chosenPartRecipe.BaseCost*/ + _chosenPartMaterial.BaseCostPerUnit);
 
                 if (_optionalChosenEnchant != null)
                     _partEnchant = "\n\nEnchant:\n" + _optionalChosenEnchant.GetComponent<EnchantDataStorage>().EnchantName + "+" + _optionalChosenEnchant.GetComponent<EnchantDataStorage>().AmountOfBuff;
@@ -1146,7 +1160,8 @@ public class CraftControl : MonoBehaviour
         //if (_chosenItemRecipe != null)
         if (_chosenItemRecipeJson != null)
             return true;
-        else if (_chosenPartRecipe != null)
+        //else if (_chosenPartRecipe != null)
+        else if (_chosenPartRecipeJson != null)
             return true;
         else if (_chosenQuestRecipe != null)
             return true;
@@ -1161,7 +1176,8 @@ public class CraftControl : MonoBehaviour
     }
     public bool anyPartRecipeSelected()
     {
-        if (_chosenPartRecipe != null)
+        //if (_chosenPartRecipe != null)
+        if (_chosenPartRecipeJson != null)
             return true;
         return false;
     }

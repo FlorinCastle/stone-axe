@@ -164,7 +164,7 @@ public class GenerateItem : MonoBehaviour
             haggleButton.interactable = true;
         }
         else if (forceInsert == true)
-            _inventoryRef.InsertItem(_generatedItem);
+            Debug.LogWarning("GenerateItem.GeneratePresetItem(): this is a sign to rewrite the Quest System.");//_inventoryRef.InsertItem(_generatedItem);
         //_generatedItem = null;
     }
     public void GeneratePresetItem(ItemJsonData item, MaterialData part1Mat, MaterialData part2Mat, MaterialData part3Mat, bool forceInsert)
@@ -259,7 +259,7 @@ public class GenerateItem : MonoBehaviour
     }
     public void buyGeneratedItem()
     {
-        if (_generatedItem != null)
+        /*if (_generatedItem != null)
         {
             if (haggleSucceded == false)
             {
@@ -274,6 +274,25 @@ public class GenerateItem : MonoBehaviour
                 if (gameObject.GetComponent<GameMaster>().removeCurrency(Mathf.RoundToInt(_generatedItem.TotalValue * (_skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice() + _skillManager.HagglePriceRef.getModifiedPrice()))))
                 {
                     _inventoryRef.InsertItem(_generatedItem);
+                    gameObject.GetComponent<ExperienceManager>().addExperience(3);
+                }
+            }
+        }*/
+        if (_generatedItemJson != null)
+        {
+            if (haggleSucceded == false)
+            {
+                if (gameObject.GetComponent<GameMaster>().removeCurrency(Mathf.RoundToInt(calculateTotalVal() * _skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice())))
+                {
+                    _inventoryRef.InsertItem(_generatedItemJson);
+                    gameObject.GetComponent<ExperienceManager>().addExperience(3);
+                }
+            }
+            else if (haggleSucceded == true)
+            {
+                if (gameObject.GetComponent<GameMaster>().removeCurrency(Mathf.RoundToInt(calculateTotalVal() * (_skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice() + _skillManager.HagglePriceRef.getModifiedPrice()))))
+                {
+                    _inventoryRef.InsertItem(_generatedItemJson);
                     gameObject.GetComponent<ExperienceManager>().addExperience(3);
                 }
             }
@@ -313,8 +332,8 @@ public class GenerateItem : MonoBehaviour
     }
     public void forceInsertItem()
     {
-        if (_generatedItem != null)
-            _inventoryRef.InsertItem(_generatedItem);
+        /*if (_generatedItem != null)
+            _inventoryRef.InsertItem(_generatedItem);*/
         if (_generatedItemJson != null)
             _inventoryRef.InsertItem(_generatedItemJson);
         clearBuyMenu();
@@ -329,7 +348,8 @@ public class GenerateItem : MonoBehaviour
     {
         if (_generatedItem != null)
         {
-            int index = _inventoryRef.InsertItem(_generatedItem);
+            //int index = _inventoryRef.InsertItem(_generatedItem);
+            int index = _inventoryRef.InsertItem(_generatedItemJson);
             //Debug.Log("inserted item to disassemble at index: " + index);
             _inventoryRef.setSelectedItem(index);
             _gameMaster.GetComponent<DisassembleItemControl>().selectItem();

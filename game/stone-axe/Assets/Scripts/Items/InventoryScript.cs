@@ -848,7 +848,7 @@ public class InventoryScript : MonoBehaviour
     private PartDataStorage part1DataScriptRef;
     private PartDataStorage part2DataScriptRef;
     private PartDataStorage part3DataScriptRef;
-    public GameObject convertItemData(ItemData item)
+    /*public GameObject convertItemData(ItemData item)
     {
         // get variables set up
         itemDataStorageTemp = Instantiate(_itemDataStoragePrefab);
@@ -930,7 +930,7 @@ public class InventoryScript : MonoBehaviour
         }
 
         return itemDataStorageTemp;
-    }
+    }*/
     public GameObject convertItemData(SaveItemObject item)
     {
         itemDataStorageTemp = Instantiate(_itemDataStoragePrefab);
@@ -953,7 +953,8 @@ public class InventoryScript : MonoBehaviour
         part1DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part1DataScriptRef = part1DataStorageTemp.GetComponent<PartDataStorage>();
         // setup reference to scriptabe object recipe
-        part1DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.part1.partRecipeName));
+        //part1DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.part1.partRecipeName));
+        part1DataScriptRef.PartJsonData = GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartJsonRecipe(item.part1.partName);
         // convert data from object to gameobject
         part1DataStorageTemp.name = item.part1.materialName + " " + item.part1.partName;
         part1DataScriptRef.setPartName(item.part1.partName);
@@ -970,7 +971,8 @@ public class InventoryScript : MonoBehaviour
         part2DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part2DataScriptRef = part2DataStorageTemp.GetComponent<PartDataStorage>();
         // setup reference to scriptabe object recipe
-        part2DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.part2.partRecipeName));
+        //part2DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.part2.partRecipeName));
+        part2DataScriptRef.PartJsonData = GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartJsonRecipe(item.part2.partName);
         // convert data from object to gameobject
         part2DataStorageTemp.name = item.part2.materialName + " " + item.part2.partName;
         part2DataScriptRef.setPartName(item.part2.partName);
@@ -987,7 +989,8 @@ public class InventoryScript : MonoBehaviour
         part3DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part3DataScriptRef = part3DataStorageTemp.GetComponent<PartDataStorage>();
         // setup reference to scriptabe object recipe
-        part3DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.part3.partRecipeName));
+        //part3DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.part3.partRecipeName));
+        part3DataScriptRef.PartJsonData = GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartJsonRecipe(item.part3.partName);
         // convert data from object to gameobject
         part3DataStorageTemp.name = item.part3.materialName + " " + item.part3.partName;
         part3DataScriptRef.setPartName(item.part3.partName);
@@ -1037,7 +1040,8 @@ public class InventoryScript : MonoBehaviour
         part1DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part1DataScriptRef = part1DataStorageTemp.GetComponent<PartDataStorage>();
         // setup reference to scriptabe object recipe
-        part1DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.parts[0].partName));
+        //part1DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.parts[0].partName));
+        part1DataScriptRef.PartJsonData = GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartJsonRecipe(item.parts[0].partName);
         // convert data from object to gameobject
         part1DataStorageTemp.name = item.parts[0].materialData.Material + " " + item.parts[0].partName;
         part1DataScriptRef.setPartName(item.parts[0].partName);
@@ -1054,7 +1058,8 @@ public class InventoryScript : MonoBehaviour
         part2DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part2DataScriptRef = part2DataStorageTemp.GetComponent<PartDataStorage>();
         // setup reference to scriptabe object recipe
-        part2DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.parts[1].partName));
+        //part2DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.parts[1].partName));
+        part2DataScriptRef.PartJsonData = GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartJsonRecipe(item.parts[1].partName);
         // convert data from object to gameobject
         part2DataStorageTemp.name = item.parts[1].materialData.Material + " " + item.parts[1].partName;
         part2DataScriptRef.setPartName(item.parts[1].partName);
@@ -1071,7 +1076,8 @@ public class InventoryScript : MonoBehaviour
         part3DataStorageTemp.transform.parent = itemDataStorageTemp.gameObject.transform;
         part3DataScriptRef = part3DataStorageTemp.GetComponent<PartDataStorage>();
         // setup reference to scriptabe object recipe
-        part3DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.parts[2].partName));
+        //part3DataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(item.parts[2].partName));
+        part3DataScriptRef.PartJsonData = GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartJsonRecipe(item.parts[2].partName);
         // convert data from object to gameobject
         part3DataStorageTemp.name = item.parts[2].materialData.Material + " " + item.parts[2].partName;
         part3DataScriptRef.setPartName(item.parts[2].partName);
@@ -1100,7 +1106,7 @@ public class InventoryScript : MonoBehaviour
 
     private GameObject partDataStorageTemp;
     private PartDataStorage partDataScriptRef;
-    public GameObject convertPartData(PartData part)
+    /*public GameObject convertPartData(PartData part)
     {
         // get variables set up
         partDataStorageTemp = Instantiate(_partDataStoragePrefab);
@@ -1118,7 +1124,7 @@ public class InventoryScript : MonoBehaviour
         partDataScriptRef.setValue(part.TotalCurrentValue);
 
         return partDataStorageTemp;
-    }
+    }*/
     public GameObject convertPartData(SavePartObject part)
     {
         // get variables set up
@@ -1136,7 +1142,8 @@ public class InventoryScript : MonoBehaviour
         partDataScriptRef.setPartInt(part.partIntellegence);
         partDataScriptRef.setValue(part.totalValue);
         // recipe
-        partDataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(part.partRecipeName));
+        //partDataScriptRef.setRecipeData(GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartRecipe(part.partRecipeName));
+        partDataScriptRef.PartJsonData = GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().getPartJsonRecipe(part.partRecipeName);
         // enchant
         partDataScriptRef.setIsHoldingEnchanted(part.isEnchanted);
         if (part.isEnchanted)
@@ -1255,7 +1262,7 @@ public class InventoryScript : MonoBehaviour
         mat = _inventoryData.MaterialInventory[index].GetComponent<MaterialDataStorage>().MatDataRef;
         return true;
     }
-    */
+    
     // insert an item/part/material, return the index where it was inserted. -1 if error.
     public int InsertItem(ItemData item)
     {
@@ -1276,8 +1283,8 @@ public class InventoryScript : MonoBehaviour
             }
         }
         return -1;
-        */
-    }
+        
+    } */
     public int InsertItem(GameObject item)
     {
         if (item.GetComponent<ItemDataStorage>() != null)

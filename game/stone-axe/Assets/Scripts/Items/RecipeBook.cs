@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEditor;
+using UnityEditor.Purchasing;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -856,6 +857,17 @@ public class RecipeBook : MonoBehaviour
             if (part.PartName == value)
                 return part;
             //else Debug.LogWarning("Can not find recipe for: " + name);
+        return null;
+    }
+    public PartJsonData getPartJsonRecipe(string value)
+    {
+        foreach (TextAsset part in partJsonRecipes)
+        {
+            string path = Application.dataPath + AssetDatabase.GetAssetPath(part).Replace("Assets", "");
+            PartJsonData partJsonData = JsonUtility.FromJson<PartJsonData>(path);
+            if (partJsonData.partName == value)
+                return partJsonData;
+        }
         return null;
     }
 
