@@ -18,6 +18,7 @@ public class QuestStage : ScriptableObject
     [TextArea(1, 10)]
     public string _dialogueLine;
     public ItemData _item;
+    public TextAsset _itemJson;
     public int _itemCount;
     public MaterialData _part1Mat;
     public MaterialData _part2Mat;

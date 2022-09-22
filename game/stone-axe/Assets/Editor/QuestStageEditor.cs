@@ -12,6 +12,7 @@ public class QuestStageEditor : Editor
         dialogueSpeaker,
         questEvent,
         itemToGet,
+        itemToGetJson,
         itemCount,
         part1Mat,
         part2Mat,
@@ -28,6 +29,7 @@ public class QuestStageEditor : Editor
         dialogueSpeaker = serializedObject.FindProperty("_speaker");
         questEvent = serializedObject.FindProperty("_questEvent");
         itemToGet = serializedObject.FindProperty("_item");
+        itemToGetJson = serializedObject.FindProperty("_itemJson");
         itemCount = serializedObject.FindProperty("_itemCount");
         part1Mat = serializedObject.FindProperty("_part1Mat");
         part2Mat = serializedObject.FindProperty("_part2Mat");
@@ -63,6 +65,7 @@ public class QuestStageEditor : Editor
                 EditorGUILayout.PropertyField(dialogueLine);
                 currencyValue.intValue = 0;
                 itemToGet.objectReferenceValue = null;
+                itemToGetJson.objectReferenceValue = null;
                 npcRef.objectReferenceValue = null;
                 uiRef.enumValueIndex = 0;
                 break;
@@ -73,6 +76,7 @@ public class QuestStageEditor : Editor
                 dialogueLine.stringValue = "";
                 currencyValue.intValue = 0;
                 EditorGUILayout.PropertyField(itemToGet, new GUIContent("Item to Craft"));
+                EditorGUILayout.PropertyField(itemToGetJson, new GUIContent("Item to Craft (Json)"));
                 if (itemToGet.objectReferenceValue != null)
                 {
                     EditorGUILayout.PropertyField(itemCount, new GUIContent("Amount to Craft"));
@@ -89,6 +93,7 @@ public class QuestStageEditor : Editor
                 dialogueLine.stringValue = "";
                 currencyValue.intValue = 0;
                 itemToGet.objectReferenceValue = null;
+                itemToGetJson.objectReferenceValue = null;
                 itemCount.intValue = 0;
                 npcRef.objectReferenceValue = null;
                 uiRef.enumValueIndex = 0;
@@ -100,6 +105,7 @@ public class QuestStageEditor : Editor
                 dialogueLine.stringValue = "";
                 currencyValue.intValue = 0;
                 itemToGet.objectReferenceValue = null;
+                itemToGetJson.objectReferenceValue = null;
                 itemCount.intValue = 0;
                 npcRef.objectReferenceValue = null;
                 uiRef.enumValueIndex = 0;
@@ -111,6 +117,7 @@ public class QuestStageEditor : Editor
                 dialogueLine.stringValue = "";
                 currencyValue.intValue = 0;
                 itemToGet.objectReferenceValue = null;
+                itemToGetJson.objectReferenceValue = null;
                 itemCount.intValue = 0;
                 npcRef.objectReferenceValue = null;
                 uiRef.enumValueIndex = 0;
@@ -123,6 +130,7 @@ public class QuestStageEditor : Editor
                 EditorGUILayout.PropertyField(currencyValue, new GUIContent("Currency to Earn"));
                 //currencyValue.intValue = 0;
                 itemToGet.objectReferenceValue = null;
+                itemToGetJson.objectReferenceValue = null;
                 itemCount.intValue = 0;
                 npcRef.objectReferenceValue = null;
                 uiRef.enumValueIndex = 0;
@@ -138,6 +146,7 @@ public class QuestStageEditor : Editor
                     case QuestStage.questEvent.Get_Item:
                         currencyValue.intValue = 0;
                         EditorGUILayout.PropertyField(itemToGet, new GUIContent("Item to Get"));
+                        EditorGUILayout.PropertyField(itemToGetJson, new GUIContent("Item to Get (Json)"));
                         if (itemToGet.objectReferenceValue != null)
                         {
                             ItemData item = (ItemData)itemToGet.objectReferenceValue;
@@ -157,6 +166,7 @@ public class QuestStageEditor : Editor
                     case QuestStage.questEvent.Force_For_Sale:
                         currencyValue.intValue = 0;
                         EditorGUILayout.PropertyField(itemToGet, new GUIContent("Item to Force for Sale"));
+                        EditorGUILayout.PropertyField(itemToGetJson, new GUIContent("Item to Force for Sale (Json)"));
                         if (itemToGet.objectReferenceValue != null)
                         {
                             ItemData item = (ItemData)itemToGet.objectReferenceValue;
@@ -174,6 +184,7 @@ public class QuestStageEditor : Editor
                     case QuestStage.questEvent.Get_Currency:
                         EditorGUILayout.PropertyField(currencyValue, new GUIContent("Currency to Get"));
                         itemToGet.objectReferenceValue = null;
+                        itemToGetJson.objectReferenceValue = null;
                         itemCount.intValue = 0;
                         npcRef.objectReferenceValue = null;
                         uiRef.enumValueIndex = 0;
@@ -182,6 +193,7 @@ public class QuestStageEditor : Editor
                     case QuestStage.questEvent.Remove_Currency:
                         EditorGUILayout.PropertyField(currencyValue, new GUIContent("Currency to Remove"));
                         itemToGet.objectReferenceValue = null;
+                        itemToGetJson.objectReferenceValue = null;
                         itemCount.intValue = 0;
                         npcRef.objectReferenceValue = null;
                         uiRef.enumValueIndex = 0;
@@ -191,6 +203,7 @@ public class QuestStageEditor : Editor
                         currencyValue.intValue = 0;
                         EditorGUILayout.PropertyField(npcRef, new GUIContent("NPC Prefab Reference"));
                         itemToGet.objectReferenceValue = null;
+                        itemToGetJson.objectReferenceValue = null;
                         uiRef.enumValueIndex = 0;
                         itemCount.intValue = 0;
                         break;
@@ -199,6 +212,7 @@ public class QuestStageEditor : Editor
                         currencyValue.intValue = 0;
                         npcRef.objectReferenceValue = null;
                         itemToGet.objectReferenceValue = null;
+                        itemToGetJson.objectReferenceValue = null;
                         uiRef.enumValueIndex = 0;
                         itemCount.intValue = 0;
                         break;
@@ -207,6 +221,7 @@ public class QuestStageEditor : Editor
                         currencyValue.intValue = 0;
                         npcRef.objectReferenceValue = null;
                         itemToGet.objectReferenceValue = null;
+                        itemToGetJson.objectReferenceValue = null;
                         uiRef.enumValueIndex = 0;
                         itemCount.intValue = 0;
                         EditorGUILayout.PropertyField(forcedOpenUI, new GUIContent("UI to Open"));
@@ -220,6 +235,7 @@ public class QuestStageEditor : Editor
                 dialogueLine.stringValue = "";
                 currencyValue.intValue = 0;
                 itemToGet.objectReferenceValue = null;
+                itemToGetJson.objectReferenceValue = null;
                 itemCount.intValue = 0;
                 npcRef.objectReferenceValue = null;
                 EditorGUILayout.PropertyField(uiRef, new GUIContent("Required UI"));

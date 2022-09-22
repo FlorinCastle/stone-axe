@@ -861,14 +861,19 @@ public class RecipeBook : MonoBehaviour
     }
     public PartJsonData getPartJsonRecipe(string value)
     {
+        PartJsonData partJsonData = new PartJsonData();
         foreach (TextAsset part in partJsonRecipes)
         {
             string path = Application.dataPath + AssetDatabase.GetAssetPath(part).Replace("Assets", "");
-            PartJsonData partJsonData = JsonUtility.FromJson<PartJsonData>(path);
-            if (partJsonData.partName == value)
-                return partJsonData;
+            PartJsonData temp = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(path));
+            Debug.Log(temp.partName);
+            if (temp.partName == value)
+            {
+                partJsonData = temp;
+                break;
+            }
         }
-        return null;
+        return partJsonData;
     }
 
     //public ItemData getSelectedItemRecipe() { return _selectedItemRecipe; }

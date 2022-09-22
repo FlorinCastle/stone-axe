@@ -73,7 +73,7 @@ public class QuestControl : MonoBehaviour
         if (gameObject.GetComponent<UIControl>().ShopUIActive == true && star == false)
         {
             Debug.Log("QuestControl.FixedUpdate(): setting up quests for debug");
-            setupStoryQuests();
+            //setupStoryQuests();
             star = true;
         }
     }
@@ -781,7 +781,7 @@ public class QuestControl : MonoBehaviour
             else if (currStage.QuestEvent == "Get_Item")
             {
                 Debug.Log("Quest Event: Get Item");
-                this.gameObject.GetComponent<GenerateItem>().GeneratePresetItem(currStage.ItemToGet, currStage.Part1Mat, currStage.Part2Mat, currStage.Part3Mat, true);
+                gameObject.GetComponent<GenerateItem>().GeneratePresetItem(currStage.ItemToGet, currStage.Part1Mat, currStage.Part2Mat, currStage.Part3Mat, true);
                 nextStage();
             }
             else if (currStage.QuestEvent == "Force_For_Sale")
