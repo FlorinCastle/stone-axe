@@ -4,6 +4,8 @@
     "requiredPlayerLevel": 0,
     "questDescription": "How to Craft stuff\n- go to craft tab\n- go to recipes tab\n- select the recipe to remake the disassembled item\n- go to inventory tab and go to parts \n- select each of the parts\n- click craft",
     "questType": "Tutorial",
+    "currencyReward": 0,
+    "EXPReward": 0,
     "questStages": [
         "Tutorial_Craft 1",
         "Tutorial_Craft 2",
@@ -25,12 +27,6 @@
         "Tutorial_Craft 18",
         "Tutorial_Craft 19"
     ],
-    "currencyReward": 0,
-    "EXPReward": 0,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
+    "nextQuest": "Tutorial Sell",
     "unlockedQuests": []
 }

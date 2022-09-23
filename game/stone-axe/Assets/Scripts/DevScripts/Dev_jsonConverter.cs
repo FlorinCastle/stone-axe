@@ -43,7 +43,7 @@ public class Dev_jsonConverter : MonoBehaviour
         ItemJsonData item = JsonUtility.FromJson<ItemJsonData>(itemString);        
         Debug.Log(item.itemName); */
         //convertManyItemToJson();
-        //convertManyQuestToJson();
+        convertManyQuestToJson();
 
         if (_itemToConvert != null) convertItemToJson(_itemToConvert);
         if (_partToConvert != null) convertPartToJson(_partToConvert);
@@ -115,31 +115,138 @@ public class Dev_jsonConverter : MonoBehaviour
 
         return json;
     }
-    
+
     private string convertQuestToJson(QuestData quest)
     {
         List<string> questStages = new List<string>();
         List<QuestStageJsonData> questStagesJson = new List<QuestStageJsonData>();
         foreach (QuestStage stage in quest.QuestStages)
-        { 
+        {
             questStages.Add(stage.name);
             questStagesJson.Add(convertQuestStageToJson(stage));
         }
-
-        QuestJsonData questData = new QuestJsonData
+        string json = "";
+        if (quest.QuestType == "OCC_Item")
         {
-            questID = -1,
-            questName = quest.QuestName,
-            requiredPlayerLevel = quest.RequiredPlayerLevel,
-            questDescription = quest.QuestDiscription,
-            questType = quest.QuestType,
-            currencyReward = quest.RewardedCurrency,
-            EXPReward = quest.RewardedEXP,
-            questStages = questStages,
-            questStagesJson = questStagesJson
-        };
+            CraftItemQuest questData = new CraftItemQuest
+            {
+                questID = -1,
+                questName = quest.QuestName,
+                requiredPlayerLevel = quest.RequiredPlayerLevel,
+                questDescription = quest.QuestDiscription,
+                questType = quest.QuestType,
+                currencyReward = quest.RewardedCurrency,
+                EXPReward = quest.RewardedEXP,
+                requiredItem = quest.RequiredItem.ItemName,
+            };
+            json = JsonUtility.ToJson(questData, true);
+        }
+        else if (quest.QuestType == "OCC_QuestItem")
+        {
+            CraftQuestItemQuest questData = new CraftQuestItemQuest
+            {
+                questID = -1,
+                questName = quest.QuestName,
+                requiredPlayerLevel = quest.RequiredPlayerLevel,
+                questDescription = quest.QuestDiscription,
+                questType = quest.QuestType,
+                currencyReward = quest.RewardedCurrency,
+                EXPReward = quest.RewardedEXP,
+                requiredQuestItem = quest.RequiredQuestItem.QuestItemName,
+            };
+            json = JsonUtility.ToJson(questData, true);
+        }
+        else if (quest.QuestType == "OD_Material")
+        {
+            HaveMaterialQuest questData = new HaveMaterialQuest
+            {
+                questID = -1,
+                questName = quest.QuestName,
+                requiredPlayerLevel = quest.RequiredPlayerLevel,
+                questDescription = quest.QuestDiscription,
+                questType = quest.QuestType,
+                currencyReward = quest.RewardedCurrency,
+                EXPReward = quest.RewardedEXP,
+                requiredMaterial = quest.ReqiredMaterial.Material,
+                requiredCount = quest.ReqiredCount,
+            };
+            json = JsonUtility.ToJson(questData, true);
+        }
+        else if (quest.QuestType == "OCC_TotalCrafted")
+        {
+            CraftManyItemQuest questData = new CraftManyItemQuest
+            {
+                questID = -1,
+                questName = quest.QuestName,
+                requiredPlayerLevel = quest.RequiredPlayerLevel,
+                questDescription = quest.QuestDiscription,
+                questType = quest.QuestType,
+                currencyReward = quest.RewardedCurrency,
+                EXPReward = quest.RewardedEXP,
+                requiredItem = quest.RequiredItem.ItemName,
+                requiredCount = quest.ReqiredCount,
+            };
+            json = JsonUtility.ToJson(questData, true);
+        }
+        else if (quest.QuestType == "Tutorial")
+        {
+            string nextQuest = "";
+            if (quest.NextQuest != null)
+                nextQuest = quest.NextQuest.QuestName;
+            TutorialQuest questData = new TutorialQuest
+            {
+                questID = -1,
+                questName = quest.QuestName,
+                requiredPlayerLevel = quest.RequiredPlayerLevel,
+                questDescription = quest.QuestDiscription,
+                questType = quest.QuestType,
+                currencyReward = quest.RewardedCurrency,
+                EXPReward = quest.RewardedEXP,
+                questStages = questStages,
+                //questStagesJson = questStagesJson,
+                nextQuest = nextQuest,
+            };
+            json = JsonUtility.ToJson(questData, true);
+        }
+        else if (quest.QuestType == "Story")
+        {
+            string nextQuest = "";
+            if (quest.NextQuest != null)
+                nextQuest = quest.NextQuest.QuestName;
+            StoryQuest questData = new StoryQuest
+            {
+                questID = -1,
+                questName = quest.QuestName,
+                requiredPlayerLevel = quest.RequiredPlayerLevel,
+                questDescription = quest.QuestDiscription,
+                questType = quest.QuestType,
+                currencyReward = quest.RewardedCurrency,
+                EXPReward = quest.RewardedEXP,
+                questStages = questStages,
+                //questStagesJson = questStagesJson,
+                nextQuest = nextQuest,
+            };
+            json = JsonUtility.ToJson(questData, true);
+        }
+        else
+        {
+            BaseQuestJsonData questData = new BaseQuestJsonData
+            {
+                questID = -1,
+                questName = quest.QuestName,
+                requiredPlayerLevel = quest.RequiredPlayerLevel,
+                questDescription = quest.QuestDiscription,
+                questType = quest.QuestType,
+                currencyReward = quest.RewardedCurrency,
+                EXPReward = quest.RewardedEXP,
+                //questStages = questStages,
+                //questStagesJson = questStagesJson
+            };
+            json = JsonUtility.ToJson(questData, true);
+        }
+        
 
-        string json = JsonUtility.ToJson(questData, true);
+        Debug.Log(json);
         if (questDirPath != "")
         {
             string questPath = questDirPath + "/" + quest.QuestName + ".json";
@@ -168,7 +275,7 @@ public class Dev_jsonConverter : MonoBehaviour
             //currencyvalue = stage.CurrencyValue,
             //NPCRef = stage.NPCRef.name
         };
-        Debug.Log(JsonUtility.ToJson(stageData, true));
+        //Debug.Log(JsonUtility.ToJson(stageData, true));
 
         Debug.LogError("Dev_jsonConverter.convertQuestStageToJson(QuestStage stage): KAT! FINISH WORKING ON THIS");
         /*
@@ -221,7 +328,7 @@ public class Dev_jsonConverter : MonoBehaviour
     {
         foreach (QuestData quest in quests)
         {
-            Debug.Log(quest.QuestName);
+            //Debug.Log(quest.QuestName);
             convertQuestToJson(quest);
         }
         return "";

@@ -4,6 +4,8 @@
     "requiredPlayerLevel": 0,
     "questDescription": "How to Disassemble stuff\n- go to disassemble tab\n- go to inventory, then items\n- select the item you just bought\n- click disassemble item",
     "questType": "Tutorial",
+    "currencyReward": 0,
+    "EXPReward": 0,
     "questStages": [
         "Tutorial_Disassemble 1",
         "Tutorial_Disassemble 2",
@@ -24,12 +26,6 @@
         "Tutorial_Disassemble 17",
         "Tutorial_Disassemble 18"
     ],
-    "currencyReward": 0,
-    "EXPReward": 0,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
+    "nextQuest": "Tutorial Craft",
     "unlockedQuests": []
 }

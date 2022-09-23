@@ -866,7 +866,7 @@ public class RecipeBook : MonoBehaviour
         {
             string path = Application.dataPath + AssetDatabase.GetAssetPath(part).Replace("Assets", "");
             PartJsonData temp = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(path));
-            Debug.Log(temp.partName);
+            //Debug.Log(temp.partName);
             if (temp.partName == value)
             {
                 partJsonData = temp;

@@ -228,7 +228,7 @@ public class QuestControl : MonoBehaviour
         else
             Debug.LogError("QuestControl.setupStarter(QuestData qes) - qes is Null!");
     }
-    public void setupStarter(QuestJsonData qes)
+    public void setupStarter(BaseQuestJsonData qes)
     {
         p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
         if (qes != null)

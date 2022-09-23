@@ -4,6 +4,8 @@
     "requiredPlayerLevel": 0,
     "questDescription": "How to Buy stuff\n- Go to Economic Tab\n- Then go to 'Buy'\n- Click 'Generate Placeholder'\n- Then click 'Buy'",
     "questType": "Tutorial",
+    "currencyReward": 0,
+    "EXPReward": 0,
     "questStages": [
         "Tutorial_Buying 1",
         "Tutorial_Buying 2",
@@ -19,12 +21,6 @@
         "Tutorial_Buying 12",
         "Tutorial_Buying 13"
     ],
-    "currencyReward": 0,
-    "EXPReward": 0,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
+    "nextQuest": "Tutorial Disassemble",
     "unlockedQuests": []
 }

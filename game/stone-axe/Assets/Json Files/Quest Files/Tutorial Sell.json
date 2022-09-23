@@ -4,6 +4,8 @@
     "requiredPlayerLevel": 0,
     "questDescription": "How to Sell stuff\n- go to economic tab\n- then go to sell\n- go to inventory, then items\n- select the item to sell (it might already be selected)\n- then click sell",
     "questType": "Tutorial",
+    "currencyReward": 0,
+    "EXPReward": 0,
     "questStages": [
         "Tutorial_Selling 1",
         "Tutorial_Selling 2",
@@ -27,12 +29,6 @@
         "Tutorial_Selling 20",
         "Tutorial_Selling 21"
     ],
-    "currencyReward": 0,
-    "EXPReward": 0,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
     "nextQuest": "",
     "unlockedQuests": []
 }

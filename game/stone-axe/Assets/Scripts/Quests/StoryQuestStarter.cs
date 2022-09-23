@@ -10,7 +10,7 @@ public class StoryQuestStarter : MonoBehaviour
     //[SerializeField]
     private QuestControl _questControlRef;
     [SerializeField] private QuestData _questRef;
-    [SerializeField] private QuestJsonData _questJsonData;
+    [SerializeField] private BaseQuestJsonData _questJsonData;
     [SerializeField] private GameObject _selfRef;
     [Header("UI")]
     [SerializeField] private GameObject _basicDetails;
@@ -49,7 +49,7 @@ public class StoryQuestStarter : MonoBehaviour
     public void hideDetails() { _basicDetails.SetActive(false); }
 
     public QuestData QuestRef { get => _questRef; set => _questRef = value; }
-    public QuestJsonData QuestJsonRef { get => _questJsonData; set => _questJsonData = value; }
+    public BaseQuestJsonData QuestJsonRef { get => _questJsonData; set => _questJsonData = value; }
     public GameObject SelfRef { get => _selfRef; }
 
     IEnumerator cantStartQuest()
