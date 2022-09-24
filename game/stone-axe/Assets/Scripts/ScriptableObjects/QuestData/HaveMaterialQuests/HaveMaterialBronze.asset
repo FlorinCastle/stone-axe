@@ -24,5 +24,5 @@ MonoBehaviour:
   _unlocksQuests: []
   _requiredPlayerLevel: 2
   _storyQuestComplete: 0
-  _rewardCurrency: 50
+  _rewardCurrency: 40
   _rewardEXP: 2

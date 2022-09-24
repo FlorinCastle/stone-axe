@@ -8417,6 +8417,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 184f51a8522bf8f428fe8693954f0d87, type: 2}
   - {fileID: 11400000, guid: b870c2b58f9bab3458542540cf3ac3d2, type: 2}
   - {fileID: 11400000, guid: cf74b2413199451459bbc2c2d06e840e, type: 2}
+  _questJsons:
+  - {fileID: 4900000, guid: 61886765e2bac04468ab232e928878f1, type: 3}
+  - {fileID: 4900000, guid: 83745e93e12f12b4b8e029ff26f3175b, type: 3}
+  - {fileID: 4900000, guid: 9f315e7581d37a741ad121a1c72b0cbd, type: 3}
+  - {fileID: 4900000, guid: 348332f2d638e684588eb129a96a7e41, type: 3}
+  - {fileID: 4900000, guid: 36be8c4d1768c6145905d926021c2c02, type: 3}
+  - {fileID: 4900000, guid: 19b35c9b45d3dc3449465fa67435bdcf, type: 3}
   _tutorialQuests: []
   _storyQuests: []
   _onCraftItemQuests: []

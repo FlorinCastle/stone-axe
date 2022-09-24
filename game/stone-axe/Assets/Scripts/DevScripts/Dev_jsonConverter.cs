@@ -43,7 +43,7 @@ public class Dev_jsonConverter : MonoBehaviour
         ItemJsonData item = JsonUtility.FromJson<ItemJsonData>(itemString);        
         Debug.Log(item.itemName); */
         //convertManyItemToJson();
-        convertManyQuestToJson();
+        //convertManyQuestToJson();
 
         if (_itemToConvert != null) convertItemToJson(_itemToConvert);
         if (_partToConvert != null) convertPartToJson(_partToConvert);
@@ -246,7 +246,7 @@ public class Dev_jsonConverter : MonoBehaviour
         }
         
 
-        Debug.Log(json);
+        //Debug.Log(json);
         if (questDirPath != "")
         {
             string questPath = questDirPath + "/" + quest.QuestName + ".json";
