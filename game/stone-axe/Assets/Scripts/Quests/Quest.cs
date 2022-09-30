@@ -59,20 +59,20 @@ public class Quest : MonoBehaviour
         {
             BaseQuestJsonData questJson = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(quest).Replace("Assets", "")));
             //Debug.Log(JsonUtility.ToJson(questJson, true));
-            if (questJson.questType == "OCC_Item") // add to craft 1 item list
-                _craftItemQuestJsons.Add(quest);//Debug.Log("OCC_Item " + quest.name); 
-            if (questJson.questType == "OCC_QuestItem") // add to craft quest item list
-                Debug.Log("OCC_QuestItem " + quest.name);
-            if (questJson.questType == "OD_Material") // add to have material quest list
-                Debug.Log("OD_Material " + quest.name);
-            if (questJson.questType == "OCC_TotalCrafted") // add to craft many item list
-                Debug.Log("OCC_TotalCrafted " + quest.name);
-            if (questJson.questType == "Tutorial") // add to tutorial quest list
-                Debug.Log("Tutorial " + quest.name);
-            if (questJson.questType == "Story") // add to story quest list
-                Debug.Log("Story " + quest.name);
+            if (questJson.questType == "OCC_Item" && !_craftItemTotalQuestJsons.Contains(quest))        // add to craft 1 item list
+                _craftItemQuestJsons.Add(quest);
+            if (questJson.questType == "OCC_QuestItem" && !_craftQuestItemQuestJsons.Contains(quest))   // add to craft quest item list
+                _craftQuestItemQuestJsons.Add(quest);
+            if (questJson.questType == "OD_Material")       // add to have material quest list
+                _haveMatQuestJsons.Add(quest);
+            if (questJson.questType == "OCC_TotalCrafted")  // add to craft many item list
+                _craftItemTotalQuestJsons.Add(quest);
+            if (questJson.questType == "Tutorial")          // add to tutorial quest list
+                _tutorialQuestJsons.Add(quest);
+            if (questJson.questType == "Story")             // add to story quest list
+                _storyQuestJsons.Add(quest);
             if (questJson.questType == "OCC_Item" || questJson.questType == "OCC_QuestItem" || questJson.questType == "OD_Material" || questJson.questType == "OCC_TotalCrafted") // add to repeatable quests list
-                Debug.Log("repeatable " + quest.name);
+                _repeatableQuestJsons.Add(quest);           //Debug.Log("repeatable " + quest.name);
         }
     }
 
@@ -91,7 +91,42 @@ public class Quest : MonoBehaviour
         }
         return questObject;
     }
+    public QuestObject saveQuest(TextAsset currentQuest)
+    {
+        QuestObject questObject = new QuestObject
+        {
+            questName = "",
+            questType = "Not_Set",
+        };
+        if (currentQuest != null)
+        {
+            questObject.questName = QuestName(currentQuest);
+            questObject.questType = QuestType(currentQuest);
+        }
+        return questObject;
+    }
     
+    public string QuestName(TextAsset questAsset)
+    {
+        BaseQuestJsonData quest = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+        return quest.questName;
+    }
+    public int QuestLevel(TextAsset questAsset)
+    {
+        BaseQuestJsonData quest = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+        return quest.requiredPlayerLevel;
+    }
+    public string QuestType(TextAsset questAsset)
+    {
+        BaseQuestJsonData quest = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+        return quest.questType;
+    }
+    public string RequiredMat(TextAsset questAsset)
+    {
+        HaveMaterialQuest quest = JsonUtility.FromJson<HaveMaterialQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+        return quest.requiredMaterial;
+    }
+
     public List<TextAsset> AllQuests { get => _questJsons; }
     public List<TextAsset> TutorialQuests { get => _questJsons; }
     public List<TextAsset> StoryQuests { get => _questJsons; }
@@ -101,14 +136,14 @@ public class Quest : MonoBehaviour
     public List<TextAsset> CraftManyItemQuests { get => _questJsons; }
     public List<TextAsset> RepeatableQuests { get => _questJsons; }
 
-    public List<QuestData> getAllQuests() { return _questDataList; }
+    //public List<QuestData> getAllQuests() { return _questDataList; }
     public List<QuestData> getTutorialQuests() { return _tutorialQuests; }
     public List<QuestData> getStoryQuests() { return _storyQuests; }
-    public List<QuestData> getOnCraftItemQuests() { return _onCraftItemQuests; }
-    public List<QuestData> getOnCraftQuestItemQuests() { return _onCraftQuestItemQuests; }
-    public List<QuestData> getOnDisMatQuests() { return _onDisMatQuests; }
-    public List<QuestData> getOnCraftTotalQuests() { return _onCraftTotalQuests; }
-    public List<QuestData> getRepeatableQuests() { return _repeatableQuests; }
+    //public List<QuestData> getOnCraftItemQuests() { return _onCraftItemQuests; }
+    //public List<QuestData> getOnCraftQuestItemQuests() { return _onCraftQuestItemQuests; }
+    //public List<QuestData> getOnDisMatQuests() { return _onDisMatQuests; }
+    //public List<QuestData> getOnCraftTotalQuests() { return _onCraftTotalQuests; }
+    //public List<QuestData> getRepeatableQuests() { return _repeatableQuests; }
 }
 [System.Serializable]
 public class QuestObject

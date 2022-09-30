@@ -11,6 +11,7 @@ public class StoryQuestStarter : MonoBehaviour
     private QuestControl _questControlRef;
     [SerializeField] private QuestData _questRef;
     [SerializeField] private BaseQuestJsonData _questJsonData;
+    [SerializeField] private TextAsset _questTextAsset;
     [SerializeField] private GameObject _selfRef;
     [Header("UI")]
     [SerializeField] private GameObject _basicDetails;
@@ -50,6 +51,7 @@ public class StoryQuestStarter : MonoBehaviour
 
     public QuestData QuestRef { get => _questRef; set => _questRef = value; }
     public BaseQuestJsonData QuestJsonRef { get => _questJsonData; set => _questJsonData = value; }
+    public TextAsset QuestJson { get => _questTextAsset; set => _questTextAsset = value; }
     public GameObject SelfRef { get => _selfRef; }
 
     IEnumerator cantStartQuest()

@@ -10,8 +10,9 @@ public class QuestControl : MonoBehaviour
     private Quest _questRef;
     private InventoryData _invDataRef;
     private InventoryScript _invControlRef;
+    //[SerializeField] private QuestData _chosenQuest;
     [SerializeField]
-    private QuestData _chosenQuest;
+    private TextAsset _chosenQuestJson;
     [SerializeField]
     private int _currStageIndex = 0;
 
@@ -36,7 +37,8 @@ public class QuestControl : MonoBehaviour
     private Button _completeQuestButton;
 
     [Header("Quest Organization")]
-    [SerializeField] private List<QuestData> _repeatableQuests;
+    //[SerializeField] private List<QuestData> _repeatableQuests;
+    [SerializeField] private List<TextAsset> _repeatableQuestsJson;
     [SerializeField] private List<QuestData> _unlockedQuests;
     [SerializeField] private List<GameObject> _questStarterGOs;
     [SerializeField] private QuestData _enableBuyOnComplete;
@@ -52,9 +54,12 @@ public class QuestControl : MonoBehaviour
 
     private void Awake()
     {
-        _repeatableQuests = _questRef.getRepeatableQuests();
+        //_repeatableQuests = _questRef.getRepeatableQuests();
+        _repeatableQuestsJson = _questRef.RepeatableQuests;
         _invDataRef = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryData>();
         _invControlRef = _invDataRef.gameObject.GetComponent<InventoryScript>();
+
+        StartCoroutine(checkMatQuestConstant());
     }
 
     private void Start()
@@ -66,9 +71,12 @@ public class QuestControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_chosenQuest != null && shut)
+        /*if (_chosenQuest != null && shut)
             if (_chosenQuest.QuestType == "OD_Material")
-                updateQuestProgress(_chosenQuest.ReqiredMaterial);
+                updateQuestProgress(_chosenQuest.ReqiredMaterial);*/
+
+        if (_chosenQuestJson != null && shut)
+            if (_chosenQuestJson)
 
         if (gameObject.GetComponent<UIControl>().ShopUIActive == true && star == false)
         {
@@ -89,7 +97,7 @@ public class QuestControl : MonoBehaviour
 
         if (_unlockedQuests.Count == 0)
             _unlockedQuests.Add(_questRef.getTutorialQuests()[0]);
-        if (_chosenQuest == null)
+        if (_chosenQuestJson == null)
         {
             //Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is null");
 
@@ -100,34 +108,24 @@ public class QuestControl : MonoBehaviour
                 //Debug.Log("QuestControl.setupStoryQuests() - tutQuest is " + tutQuest.QuestName);                
                 if (tutQuest == _enableBuyOnComplete && _enableBuyOnComplete.StoryQuestComplete)
                 {
-                    //Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableBuyOnComplete");
-                    //Debug.Log("QuestControl.setupStoryQuests() - enabling Buy");
                     gameObject.GetComponent<GameMaster>().buyAccessable(true);
                 }
                 if (tutQuest == _enableDisassembleOnComplete && _enableDisassembleOnComplete.StoryQuestComplete)
                 {
-                    //Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableDisassembleOnComplete");
-                    //Debug.Log("QuestControl.setupStoryQuests() - enabling Disassemble");
                     gameObject.GetComponent<GameMaster>().disassembleAccessable(true);
                 }
                 if (tutQuest == _enableCraftOnComplete && _enableCraftOnComplete.StoryQuestComplete)
                 {
-                    //Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableCraftOnComplete");
-                    //Debug.Log("QuestControl.setupStoryQuests() - enabling Craft");
                     gameObject.GetComponent<GameMaster>().craftAccessable(true);
                 }
                 if (tutQuest == _enableSellOnComplete && _enableSellOnComplete.StoryQuestComplete)
                 {
-                    //Debug.LogWarning("QuestControl.LoadQuests() TODO code for _enableSellOnComplete");
-                    //Debug.Log("QuestControl.setupStoryQuests() - enabling Sell");
                     gameObject.GetComponent<GameMaster>().sellAccessable(true);
                 }
                 if (tutQuest == _enableAdventurersOnComplete && _enableAdventurersOnComplete.StoryQuestComplete)
                 {
-                    //Debug.Log("QuestControl.setupStoryQuests() - enabling adventurers");
                     gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
                     // ui control, enable to market button
-                    //Debug.Log("QuestControl.setupStoryQuests() - enabling market");
                     gameObject.GetComponent<GameMaster>().marketAccessable(true);
                 }
                 
@@ -149,8 +147,6 @@ public class QuestControl : MonoBehaviour
                                 _unlockedQuests.Add(temp);
                             }
                 }
-                //else
-                    //break;
             }
             foreach(QuestData storyQuest in _questRef.getStoryQuests())
             {
@@ -176,10 +172,10 @@ public class QuestControl : MonoBehaviour
             }
             setupStarter();
         }
-        else if (_chosenQuest.QuestType == "Tutorial" || _chosenQuest.QuestType == "Story")
+        else if (_questRef.QuestType(_chosenQuestJson) == "Tutorial" || _questRef.QuestType(_chosenQuestJson) == "Story") 
         {
             //Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is either Tutorial or Story");
-            if (_chosenQuest.StoryQuestComplete == false)
+            if (true/* verify _chosenQuest is complete*/) //_chosenQuest.StoryQuestComplete == false)
                 setupStarter();
             else
             {
@@ -196,16 +192,17 @@ public class QuestControl : MonoBehaviour
 
     public void setupStarter()
     {
-        if ((_chosenQuest != null && _chosenQuest.StoryQuestComplete == false)|| (starterRef != null && starterRef.StoryQuestComplete == false))
+        //if ((_chosenQuest != null && _chosenQuest.StoryQuestComplete == false)|| (starterRef != null && starterRef.StoryQuestComplete == false))
+        if ((_chosenQuestJson != null && true /* verify that _chosenQuestJson is not complete */) || (starterRef != null && true /* verify starterRef is not complete*/))
         {
             p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
-            if (_chosenQuest == null)
+            if (_chosenQuestJson == null)
                 if (starterRef.StoryQuestComplete == false)
                     p.GetComponent<StoryQuestStarter>().QuestRef = starterRef;
             else
             {
-                if (_chosenQuest.StoryQuestComplete == false)
-                    p.GetComponent<StoryQuestStarter>().QuestRef = _chosenQuest;
+                if (true /* verify _chosenQuest is not complete*/) //_chosenQuest.StoryQuestComplete == false)
+                    p.GetComponent<StoryQuestStarter>().QuestJson = _chosenQuestJson;
             }
 
             //Debug.Log("QuestControl.setupStarter(): p.QuestRef = " + p.GetComponent<StoryQuestStarter>().QuestRef.QuestName);
@@ -314,7 +311,7 @@ public class QuestControl : MonoBehaviour
 
         SaveQuestsObject questObject = new SaveQuestsObject
         {
-            currentQuest = _questRef.saveQuest(_chosenQuest),
+            currentQuest = _questRef.saveQuest(_chosenQuestJson),
             currentQuestStage = _currStageIndex,
             completedQuests = completedQuestList,
             unlockedQuests = unlockedQuestList,
@@ -328,11 +325,16 @@ public class QuestControl : MonoBehaviour
         //Debug.Log("checking data from questsSave - completed quests: " + questsSave.completedQuests);
         if (questsSave.currentQuest != null)
         {
-            foreach (QuestData quest in _questRef.getAllQuests())
+            /*foreach (QuestData quest in _questRef.getAllQuests())
                 if (quest.QuestName == questsSave.currentQuest.questName)
                 {
                     _chosenQuest = quest;
                     _currStageIndex = questsSave.currentQuestStage;
+                }*/
+            foreach (TextAsset quest in _questRef.AllQuests)
+                if(_questRef.QuestName(quest) == questsSave.currentQuest.questName)
+                {
+                    _chosenQuestJson = quest;
                 }
             setupText();
         }
@@ -402,12 +404,22 @@ public class QuestControl : MonoBehaviour
         setupStoryQuests();
     }
 
-    public void forceSetQuest(QuestData quest)
+    /*public void forceSetQuest(QuestData quest)
     {
         _chosenQuest = quest;
-        Debug.Log("chosen quest is: " + quest.QuestName);
+        //Debug.Log("chosen quest is: " + quest.QuestName);
         setupText();
         if (quest.QuestType == "Tutorial" || quest.QuestType == "Story")
+        {
+            _currStageIndex = 0;
+            //startStoryQuest(quest);
+        }
+    }*/
+    public void forceSetQuest(TextAsset quest)
+    {
+        _chosenQuestJson = quest;
+        setupText();
+        if (_questRef.QuestType(_chosenQuestJson) == "Tutorial" || _questRef.QuestType(_chosenQuestJson) == "Story")
         {
             _currStageIndex = 0;
             //startStoryQuest(quest);
@@ -433,14 +445,17 @@ public class QuestControl : MonoBehaviour
     {
         if (_questSheet1 != null)
         {
-            int i = Random.Range(0, _repeatableQuests.Count);
+            //int i = Random.Range(0, _repeatableQuests.Count);
+            int i = Random.Range(0, _repeatableQuestsJson.Count);
             do
             {
-                i = Random.Range(0, _repeatableQuests.Count);
-            } while (_repeatableQuests[i].RequiredPlayerLevel > gameObject.GetComponent<GameMaster>().GetLevel);
-            _questSheet1.Quest = _repeatableQuests[i];
+                //i = Random.Range(0, _repeatableQuests.Count);
+                i = Random.Range(0, _repeatableQuestsJson.Count);
+            } while (_questRef.QuestLevel(_repeatableQuestsJson[i]) > gameObject.GetComponent<GameMaster>().GetLevel);
+            //while (_repeatableQuests[i].RequiredPlayerLevel > gameObject.GetComponent<GameMaster>().GetLevel);
+            //_questSheet1.Quest = _questRef.QuestLevel(_repeatableQuestsJson[i]) > gameObject.GetComponent<GameMaster>());
+            _questSheet1.QuestJson = _repeatableQuestsJson[i];
             _questSheet1.setQuestDetails();
-
         }
         else Debug.LogWarning("Quest sheet 1 is not assigned");
     }
@@ -448,12 +463,12 @@ public class QuestControl : MonoBehaviour
     {
         if (_questSheet2 != null)
         {
-            int j = Random.Range(0, _repeatableQuests.Count);
+            int j = Random.Range(0, _repeatableQuestsJson.Count);
             do
             {
-                j = Random.Range(0, _repeatableQuests.Count);
-            } while (_repeatableQuests[j].RequiredPlayerLevel > gameObject.GetComponent<GameMaster>().GetLevel);
-            _questSheet2.Quest = _repeatableQuests[j];
+                j = Random.Range(0, _repeatableQuestsJson.Count);
+            } while (_questRef.QuestLevel(_repeatableQuestsJson[j]) > gameObject.GetComponent<GameMaster>().GetLevel);
+            _questSheet2.QuestJson = _repeatableQuestsJson[j];
             _questSheet2.setQuestDetails();
 
         }
@@ -463,12 +478,12 @@ public class QuestControl : MonoBehaviour
     {
         if (_questSheet3 != null)
         {
-            int k = Random.Range(0, _repeatableQuests.Count);
+            int k = Random.Range(0, _repeatableQuestsJson.Count);
             do
             {
-                k = Random.Range(0, _repeatableQuests.Count);
-            } while (_repeatableQuests[k].RequiredPlayerLevel > gameObject.GetComponent<GameMaster>().GetLevel);
-            _questSheet3.Quest = _repeatableQuests[k];
+                k = Random.Range(0, _repeatableQuestsJson.Count);
+            } while (_questRef.QuestLevel(_repeatableQuestsJson[k]) > gameObject.GetComponent<GameMaster>().GetLevel);
+            _questSheet3.QuestJson = _repeatableQuestsJson[k];
             _questSheet3.setQuestDetails();
 
         }
@@ -493,8 +508,10 @@ public class QuestControl : MonoBehaviour
     }
     public void setupText()
     {
-        if (_chosenQuest != null)
+        if (_chosenQuestJson != null)
         {
+
+
             _questName.text = _chosenQuest.QuestName;
             _questText.text = _chosenQuest.QuestDiscription;
             if (_chosenQuest.QuestType == "OCC_Item" || _chosenQuest.QuestType == "OCC_TotalCrafted")
@@ -541,7 +558,8 @@ public class QuestControl : MonoBehaviour
     {
         if (_selectedSheet != null)
         {
-            _chosenQuest = _selectedSheet.Quest;
+            //_chosenQuest = _selectedSheet.Quest;
+            _chosenQuestJson = _selectedSheet.QuestJson;
             _selectedSheet.confirmQuest();
             if (_chosenQuest.QuestType == "OCC_Item")
             {
@@ -681,6 +699,10 @@ public class QuestControl : MonoBehaviour
                         _completeQuestButton.interactable = false;
                 }
             }
+    }
+    public void updateQuestProgress(string material)
+    {
+
     }
 
     // overload 4 (story & tutorial quest)
@@ -847,6 +869,20 @@ public class QuestControl : MonoBehaviour
         _selectedSheet = null;
     }
 
+    // coroutines
+    private IEnumerator checkMatQuestConstant()
+    {
+        while (true)
+        {
+            if (_chosenQuestJson != null && shut)
+                if (_questRef.QuestType(_chosenQuestJson) == "OD_Material")
+                    updateQuestProgress(_questRef.RequiredMat(_chosenQuestJson));
+
+            yield return new WaitForSecondsRealtime(1); 
+        }
+    }
+
+    // data
     public bool BuyQuestComplete { get => _enableBuyOnComplete.StoryQuestComplete; }
     public bool DisassembleQuestComplete { get => _enableDisassembleOnComplete.StoryQuestComplete; }
     public bool CraftQuestComplete { get => _enableCraftOnComplete.StoryQuestComplete; }

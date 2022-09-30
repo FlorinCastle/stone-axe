@@ -13,8 +13,6 @@ public class BaseQuestJsonData
     public int currencyReward;
     public int EXPReward;
 
-
-
     /*public List<string> questStages;
     public List<QuestStageJsonData> questStagesJson;
 
