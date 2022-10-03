@@ -81,6 +81,13 @@ public class InventoryData : MonoBehaviour
                 return matData.GetComponent<MaterialDataStorage>().MaterialCount;
         return -1;
     }
+    public int getMaterialCount(string mat)
+    {
+        foreach (GameObject matData in materialInventory)
+            if (matData.GetComponent<MaterialDataStorage>().MatDataRef.Material == mat)
+                return matData.GetComponent<MaterialDataStorage>().MaterialCount;
+        return -1;
+    }
     public void getRandomItem()
     {
         int ranItemIndex = Random.Range(0,_itemInventoryData.Count);

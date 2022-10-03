@@ -11,6 +11,7 @@ public class DialogueControl : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _dialogueText;
 
     [SerializeField, HideInInspector] private QuestData _currentStoryQuest;
+    [SerializeField, HideInInspector] private TextAsset _currentStoryQuestJson;
     [SerializeField, HideInInspector] private int index = 0;
 
     public void startDialogue()
@@ -78,4 +79,5 @@ public class DialogueControl : MonoBehaviour
 
     public int CurrentStageIndex { get => index; set => index = value; }
     public QuestData CurrentQuest { set => _currentStoryQuest = value; }
+    public TextAsset CurrentQuestJson { set => _currentStoryQuestJson = value; }
 }

@@ -328,8 +328,9 @@ public class UIControl : MonoBehaviour
     public void doDialogue()
     {
         // TODO modular lines to signify quests
-        List<QuestData> tutQuests = GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>().getTutorialQuests();
-        this.gameObject.GetComponent<DialogueControl>().CurrentQuest = tutQuests[0];
+        //List<QuestData> tutQuests = GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>().getTutorialQuests();
+        List<TextAsset> tutQuests = GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>().TutorialQuests;
+        this.gameObject.GetComponent<DialogueControl>().CurrentQuestJson = tutQuests[0];
         this.gameObject.GetComponent<QuestControl>().forceSetQuest(tutQuests[0]);
 
         // only required line

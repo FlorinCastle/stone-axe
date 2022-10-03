@@ -10,7 +10,7 @@ public class QuestControl : MonoBehaviour
     private Quest _questRef;
     private InventoryData _invDataRef;
     private InventoryScript _invControlRef;
-    //[SerializeField] private QuestData _chosenQuest;
+    [SerializeField] private QuestData _chosenQuest;
     [SerializeField]
     private TextAsset _chosenQuestJson;
     [SerializeField]
@@ -510,27 +510,57 @@ public class QuestControl : MonoBehaviour
     {
         if (_chosenQuestJson != null)
         {
+            //_questName.text = _chosenQuest.QuestName;
+            //_questText.text = _chosenQuest.QuestDiscription;
+            _questName.text = _questRef.QuestName(_chosenQuestJson);
+            _questText.text = _questRef.QuestDescription(_chosenQuestJson);
 
+            if (_questRef.QuestType(_chosenQuestJson) == "OCC_Item")
+            {
+                CraftItemQuest quest = _questRef.LoadCraftItemQuest(_chosenQuestJson);
+                _questName.text += " (" + currentItemCount + "/1)";
+                _questText.text += ": " + quest.requiredItem;
+            }
+            else if (_questRef.QuestType(_chosenQuestJson) == "OCC_TotalCrafted")
+            {
+                CraftManyItemQuest quest = _questRef.LoadCraftManyItemQuest(_chosenQuestJson);
+                _questName.text += " (" + currentItemCount + "/" + quest.requiredCount +")";
+                _questText.text += ": " + quest.requiredItem;
+            }
+            else if (_questRef.QuestType(_chosenQuestJson) == "OD_Material")
+            {
+                HaveMaterialQuest quest = _questRef.LoadHaveMaterialQuest(_chosenQuestJson);
+                _questName.text += " (" + _invDataRef.getMaterialCount(quest.requiredMaterial) + "/" + reqItemCount + ")";
+                _questText.text += ": " + quest.requiredMaterial;
+                shut = true;
+            }
+            else if (_questRef.QuestType(_chosenQuestJson) == "Tutorial")
+            {
+                _questName.text += "";
+            }
+            else if (_questRef.QuestType(_chosenQuestJson) == "Story")
+            {
+                _questText.text += "\n\nCurrent step: ";
 
-            _questName.text = _chosenQuest.QuestName;
-            _questText.text = _chosenQuest.QuestDiscription;
-            if (_chosenQuest.QuestType == "OCC_Item" || _chosenQuest.QuestType == "OCC_TotalCrafted")
+            }
+
+            /*if (_questRef.QuestType(_chosenQuestJson) == "OCC_Item" || _questRef.QuestType(_chosenQuestJson) == "OCC_TotalCrafted") //(_chosenQuest.QuestType == "OCC_Item" || _chosenQuest.QuestType == "OCC_TotalCrafted")
             {
                 _questName.text += " (" + currentItemCount + "/" + reqItemCount + ")";
                 _questText.text += ": " + _chosenQuest.RequiredItem.ItemName;
             }
-            else if (_chosenQuest.QuestType == "OD_Material")
+            else if (_questRef.QuestType(_chosenQuestJson) == "OD_Material") //(_chosenQuest.QuestType == "OD_Material")
             {
                 //_questName.text += " (" + _chosenQuest.ReqiredMaterial.MaterialCount + "/" + reqItemCount + ")";
                 _questName.text += " (" + _invDataRef.getMaterialCount(_chosenQuest.ReqiredMaterial) + "/" + reqItemCount + ")";
                 _questText.text += ": " + _chosenQuest.ReqiredMaterial.Material;
                 shut = true;
             }
-            else if (_chosenQuest.QuestType == "Tutorial")
+            else if (_questRef.QuestType(_chosenQuestJson) == "Tutorial") //(_chosenQuest.QuestType == "Tutorial")
             {
                 _questName.text += "";
             }
-            else if (_chosenQuest.QuestType == "Story")
+            else if (_questRef.QuestType(_chosenQuestJson) == "Story") //(_chosenQuest.QuestType == "Story")
             {
                 _questText.text += "\n\nCurrent step: ";
                 Debug.Log("QuestControl.setupText() CurrentStage == " + CurrentStage.StageType.ToString());
@@ -546,7 +576,7 @@ public class QuestControl : MonoBehaviour
                     _questText.text += "Disassemble Item";
                 else if (CurrentStage.StageType.ToString() == "Have_Currency")
                     _questText.text += "Have Currency value of " + CurrentStage.CurrencyValue; 
-            }
+            } */
         }
         else
         {
@@ -561,28 +591,28 @@ public class QuestControl : MonoBehaviour
             //_chosenQuest = _selectedSheet.Quest;
             _chosenQuestJson = _selectedSheet.QuestJson;
             _selectedSheet.confirmQuest();
-            if (_chosenQuest.QuestType == "OCC_Item")
+            if (_questRef.QuestType(_chosenQuestJson) == "OCC_Item")
             {
                 reqItemCount = 1;
             }
-            else if (_chosenQuest.QuestType == "OCC_QuestItem")
+            else if (_questRef.QuestType(_chosenQuestJson) == "OCC_QuestItem")
             {
                 reqItemCount = 1;
                 GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().setupQuestRecipeGrid();
             }
-            else if (_chosenQuest.QuestType == "OD_Material")
+            else if (_questRef.QuestType(_chosenQuestJson) == "OD_Material")
             {
-                reqItemCount = _chosenQuest.ReqiredCount;
+                reqItemCount = _questRef.LoadHaveMaterialQuest(_chosenQuestJson).requiredCount; //_chosenQuest.ReqiredCount;
             }
-            else if (_chosenQuest.QuestType == "OCC_TotalCrafted")
+            else if (_questRef.QuestType(_chosenQuestJson) == "OCC_TotalCrafted")
             {
-                reqItemCount = _chosenQuest.ReqiredCount;
+                reqItemCount = _questRef.LoadCraftManyItemQuest(_chosenQuestJson).requiredCount; //_chosenQuest.ReqiredCount;
             }
         }
     }
     public bool questChosen()
     {
-        if (_chosenQuest != null)
+        if (_chosenQuestJson != null)//_chosenQuest != null)
             return true;
         else
             return false;
@@ -590,23 +620,25 @@ public class QuestControl : MonoBehaviour
 
     private void distributeQuestRewards()
     {
-        if (_chosenQuest.RewardedCurrency > 0)
-            gameObject.GetComponent<GameMaster>().addCurrency(_chosenQuest.RewardedCurrency);
-        if (_chosenQuest.RewardedEXP > 0)
-            gameObject.GetComponent<ExperienceManager>().addExperience(_chosenQuest.RewardedEXP);
+        if (_questRef.RewardedCurrency(_chosenQuestJson) > 0)
+            gameObject.GetComponent<GameMaster>().addCurrency(_questRef.RewardedCurrency(_chosenQuestJson));
+        if (_questRef.RewardedExperience(_chosenQuestJson) > 0)
+            gameObject.GetComponent<ExperienceManager>().addExperience(_questRef.RewardedExperience(_chosenQuestJson));
     }
 
-    public void startStoryQuest(QuestData questInput)
+    //public void startStoryQuest(QuestData questInput)
+    public void startStoryQuest(TextAsset questInput)
     {
-        _chosenQuest = questInput;
+        _chosenQuestJson = questInput;
         _currStageIndex = 0;
         setupText();
-        this.gameObject.GetComponent<DialogueControl>().CurrentQuest = questInput;
+        this.gameObject.GetComponent<DialogueControl>().CurrentQuestJson = questInput;
 
-        if (questInput.QuestStages[_currStageIndex].StageType == "Dialogue")
+        Debug.LogWarning("TODO: re-add setting the quest stage");
+        /*if (questInput.QuestStages[_currStageIndex].StageType == "Dialogue")
             this.gameObject.GetComponent<DialogueControl>().startDialogue(_currStageIndex);
         else
-            Debug.LogError("This quest starts with a non-Dialogue stage!\nNote to Dev: Implement this quest's start in code!\nLine: 485 Method: startStoryQuest(QuestData questInput)");
+            Debug.LogError("This quest starts with a non-Dialogue stage!\nNote to Dev: Implement this quest's start in code!\nMethod: startStoryQuest(QuestData questInput)"); */
     }
     public void nextStage()
     {
@@ -614,12 +646,14 @@ public class QuestControl : MonoBehaviour
         if (_currStageIndex < CurrentQuest.QuestStages.Count)
         {
             gameObject.GetComponent<DialogueControl>().setupDialogueLine();
-            updateQuestProgress(_chosenQuest, _chosenQuest.QuestStages[_currStageIndex]);
+            Debug.LogWarning("TODO: re-add updating quest progress");
+            //updateQuestProgress(_chosenQuest, _chosenQuest.QuestStages[_currStageIndex]);
         }
         else if (_currStageIndex >= CurrentQuest.QuestStages.Count)
         {
             gameObject.GetComponent<DialogueControl>().dialogeQuestEnd();
-            updateQuestProgress(_chosenQuest, true);
+            Debug.LogWarning("TODO: re-add updating quest progress");
+            //updateQuestProgress(_chosenQuest, true);
         }
     }
 
@@ -651,12 +685,12 @@ public class QuestControl : MonoBehaviour
     }*/
     public void updateQuestProgress(ItemJsonData craftedItemRecipe)
     {
-        if (_chosenQuest != null)
+        if (_chosenQuestJson != null)
         {
-            if (_chosenQuest.QuestType == "OCC_Item" ||
-                _chosenQuest.QuestType == "OCC_TotalCrafted")
+            if (_questRef.QuestType(_chosenQuestJson) == "OCC_Item" ||
+                _questRef.QuestType(_chosenQuestJson) == "OCC_TotalCrafted")
             {
-                if (_chosenQuest.RequiredItem.ItemName == craftedItemRecipe.itemName)
+                if (_questRef.LoadCraftItemQuest(_chosenQuestJson).requiredItem == craftedItemRecipe.itemName)
                 {
                     currentItemCount++;
                     setupText();
@@ -667,10 +701,10 @@ public class QuestControl : MonoBehaviour
                         _completeQuestButton.interactable = false;
                 }
             }
-            else if (_chosenQuest.QuestType == "Tutorial" || _chosenQuest.QuestType == "Story")
+            else if (_questRef.QuestType(_chosenQuestJson) == "Tutorial" || _questRef.QuestType(_chosenQuestJson) == "Story")
             {
-                //Debug.LogWarning("PH");
-                updateQuestProgress(_chosenQuest, _chosenQuest.QuestStages[_currStageIndex]);
+                Debug.LogWarning("TODO: fix this");
+                //updateQuestProgress(_chosenQuest, _chosenQuest.QuestStages[_currStageIndex]);
             }
         }
     }
@@ -683,13 +717,13 @@ public class QuestControl : MonoBehaviour
     // overload 3 (material quest)
     public void updateQuestProgress(MaterialData materialData)
     {
-        if (_chosenQuest != null)
-            if (_chosenQuest.QuestType == "OD_Material")
+        if (_chosenQuestJson != null)
+            if (_questRef.QuestType(_chosenQuestJson) == "OD_Material")
             {
-                if (_chosenQuest.ReqiredMaterial == materialData)
+                if (_questRef.LoadHaveMaterialQuest(_chosenQuestJson).requiredMaterial == materialData.Material)
                 {
                     //if (materialData.MaterialCount >= _chosenQuest.ReqiredCount)
-                    if (_invDataRef.getMaterialCount(materialData) >= _chosenQuest.ReqiredCount)
+                    if (_invDataRef.getMaterialCount(materialData) >= _questRef.LoadHaveMaterialQuest(_chosenQuestJson).requiredCount)
                     {
                         //Debug.Log("TODO: quest can be completed");
                         shut = false;
@@ -726,14 +760,14 @@ public class QuestControl : MonoBehaviour
                 foreach (QuestData unlockedQ in quest.QuestUnlocks)
                     _unlockedQuests.Add(unlockedQ);
                 setupStoryQuests();
-                _chosenQuest = null;
+                _chosenQuestJson = null;
             }
             if (quest.NextQuest == null && isComplete == true)
             {
                 foreach (QuestData unlockedQ in quest.QuestUnlocks)
                     _unlockedQuests.Add(unlockedQ);
                 setupStoryQuests();
-                _chosenQuest = null;
+                _chosenQuestJson = null;
             }
 
             //if (isComplete)
@@ -852,17 +886,17 @@ public class QuestControl : MonoBehaviour
     public void completeQuest()
     {
         _completeQuestButton.interactable = false;
-        if (_chosenQuest.QuestType == "OD_Material")
+        if (_questRef.QuestType(_chosenQuestJson) == "OD_Material")
         {
-            _invControlRef.RemoveMatAmount(_invDataRef.getMaterial(_chosenQuest.ReqiredMaterial.Material), _chosenQuest.ReqiredCount);
+            _invControlRef.RemoveMatAmount(_invDataRef.getMaterial(_questRef.LoadHaveMaterialQuest(_chosenQuestJson).requiredMaterial), _questRef.LoadHaveMaterialQuest(_chosenQuestJson).requiredCount);
         }
-        else if (_chosenQuest.QuestType == "OCC_Item" || _chosenQuest.QuestType == "OCC_TotalCrafted" || _chosenQuest.QuestType == "OCC_QuestItem")
+        else if (_questRef.QuestType(_chosenQuestJson) == "OCC_Item" || _questRef.QuestType(_chosenQuestJson) == "OCC_TotalCrafted" || _questRef.QuestType(_chosenQuestJson) == "OCC_QuestItem")
         {
             _invControlRef.RemoveQuestItems();
         }
         distributeQuestRewards();
 
-        _chosenQuest = null;
+        _chosenQuestJson = null;
         setupText();
         currentItemCount = 0;
         rerollQuest();

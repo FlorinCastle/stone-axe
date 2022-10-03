@@ -28,7 +28,8 @@ public class StoryQuestStarter : MonoBehaviour
         if (_questControlRef.gameObject.GetComponent<GameMaster>().GetLevel >= _questRef.RequiredPlayerLevel &&
             _questControlRef.CurrentQuest == null)
         {
-            _questControlRef.startStoryQuest(_questRef);
+            //_questControlRef.startStoryQuest(_questRef);
+            _questControlRef.startStoryQuest(_questTextAsset);
             //_questControlRef.removeStarter();
             _questControlRef.removeStarter(_selfRef);
             hideDetails();
