@@ -10,7 +10,7 @@ public class QuestControl : MonoBehaviour
     private Quest _questRef;
     private InventoryData _invDataRef;
     private InventoryScript _invControlRef;
-    [SerializeField] private QuestData _chosenQuest;
+    //[SerializeField] private QuestData _chosenQuest;
     [SerializeField]
     private TextAsset _chosenQuestJson;
     [SerializeField]
@@ -643,13 +643,14 @@ public class QuestControl : MonoBehaviour
     public void nextStage()
     {
         _currStageIndex++;
-        if (_currStageIndex < CurrentQuest.QuestStages.Count)
+        Debug.LogWarning("TODO fix this");
+        if (_currStageIndex < 3) //CurrentQuest.QuestStages.Count)
         {
             gameObject.GetComponent<DialogueControl>().setupDialogueLine();
             Debug.LogWarning("TODO: re-add updating quest progress");
             //updateQuestProgress(_chosenQuest, _chosenQuest.QuestStages[_currStageIndex]);
         }
-        else if (_currStageIndex >= CurrentQuest.QuestStages.Count)
+        else if (_currStageIndex >= 1)//CurrentQuest.QuestStages.Count)
         {
             gameObject.GetComponent<DialogueControl>().dialogeQuestEnd();
             Debug.LogWarning("TODO: re-add updating quest progress");
@@ -922,8 +923,9 @@ public class QuestControl : MonoBehaviour
     public bool CraftQuestComplete { get => _enableCraftOnComplete.StoryQuestComplete; }
     public bool SellQuestComplte { get => _enableSellOnComplete.StoryQuestComplete; }
 
-    public QuestData CurrentQuest { get => _chosenQuest; }
-    public QuestStage CurrentStage { get => _chosenQuest.QuestStages[_currStageIndex]; }
+    //public QuestData CurrentQuest { get => _chosenQuest; }
+    public TextAsset CurrentQuest { get => _chosenQuestJson; }
+    //public QuestStage CurrentStage { get => _chosenQuest.QuestStages[_currStageIndex]; }
     public int CurrentStageIndex { get => _currStageIndex; set => _currStageIndex = value; }
 }
 [System.Serializable]

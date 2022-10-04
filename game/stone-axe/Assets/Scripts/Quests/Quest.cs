@@ -131,6 +131,16 @@ public class Quest : MonoBehaviour
         HaveMaterialQuest quest = JsonUtility.FromJson<HaveMaterialQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
         return quest.requiredMaterial;
     }
+    public string RequiredItem(TextAsset questAsset)
+    {
+        CraftItemQuest quest = JsonUtility.FromJson<CraftItemQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+        return quest.requiredItem;
+    }
+    public string RequiredQuestItem(TextAsset questAsset)
+    {
+        CraftQuestItemQuest quest = JsonUtility.FromJson<CraftQuestItemQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+        return quest.requiredQuestItem;
+    }
     public int RewardedCurrency(TextAsset questAsset)
     {
         BaseQuestJsonData quest = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
@@ -150,6 +160,11 @@ public class Quest : MonoBehaviour
     public CraftItemQuest LoadCraftItemQuest(TextAsset questAsset)
     {
         CraftItemQuest quest = JsonUtility.FromJson<CraftItemQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+        return quest;
+    }
+    public CraftQuestItemQuest LoadCraftQuestItemQuest(TextAsset questAsset)
+    {
+        CraftQuestItemQuest quest = JsonUtility.FromJson<CraftQuestItemQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
         return quest;
     }
     public CraftManyItemQuest LoadCraftManyItemQuest(TextAsset questAsset)

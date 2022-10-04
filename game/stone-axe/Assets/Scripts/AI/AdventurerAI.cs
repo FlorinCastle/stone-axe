@@ -24,10 +24,14 @@ public class AdventurerAI : MonoBehaviour
     [SerializeField] private GameObject _headMark;
 
     private GameMaster gameMasterRef;
+    private Quest questRef;
+    private QuestControl questControlRef;
 
     private void Awake()
     {
         gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+        questRef = GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>();
+        questControlRef = gameMasterRef.gameObject.GetComponent<QuestControl>();
         _advMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<AdventurerMaster>();
     }
 
@@ -121,16 +125,17 @@ public class AdventurerAI : MonoBehaviour
                         gameMasterRef.adventurerEco(this);
                     }
 
-                    if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
-                        (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" ||
-                        gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Story")) 
+                    if (questControlRef.CurrentQuest != null &&
+                        (questRef.QuestType(questControlRef.CurrentQuest) == "Tutorial" ||
+                        questRef.QuestType(questControlRef.CurrentQuest) == "Story")) 
                     {
-                        if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Force_Event" &&
+                        Debug.Log("TODO rewrite this");
+                        /*if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Force_Event" &&
                             gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.QuestEvent == "Summon_Adventurer")
                         {
                             Debug.Log("Quest Notif - Adventurer at counter");
                             gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
-                        }
+                        }*/
                     }
                 }
             }

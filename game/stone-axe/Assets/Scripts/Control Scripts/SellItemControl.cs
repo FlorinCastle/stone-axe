@@ -10,6 +10,8 @@ public class SellItemControl : MonoBehaviour
     [SerializeField] private UIControl _uIControlRef;
     [SerializeField] private GameObject _selectedItem;
     private GameMaster _gameMasterRef;
+    private Quest questRef;
+    private QuestControl questControl;
     [Header("Shop UI")]
     [SerializeField] private TextMeshProUGUI _advText;
     [SerializeField] private TextMeshProUGUI _itemText;
@@ -40,6 +42,8 @@ public class SellItemControl : MonoBehaviour
         if (_uIControlRef == null)
             _uIControlRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<UIControl>();
         _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+        questRef = GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>();
+        questControl = _gameMasterRef.gameObject.GetComponent<QuestControl>();
 
         _sellItemButton.interactable = false;
         _refuseButton.interactable = false;
@@ -170,16 +174,17 @@ public class SellItemControl : MonoBehaviour
         gameObject.GetComponent<DisassembleItemControl>().clearDisassembleMenu();
         gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
 
-        if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
-            (this.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" ||
-            this.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Story"))
+        if (questControl.CurrentQuest != null &&
+            (questRef.QuestType(questControl.CurrentQuest) == "Tutorial" ||
+            questRef.QuestType(questControl.CurrentQuest) == "Story"))
         {
-            if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Sell_Item")
+            Debug.Log("TODO re-implement this");
+            /*if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Sell_Item")
             {
                 Debug.LogWarning("Quest Notif - Sell Done");
                 _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
 
-            }
+            }*/
         }
     }
 

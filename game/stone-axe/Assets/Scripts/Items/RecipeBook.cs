@@ -45,10 +45,14 @@ public class RecipeBook : MonoBehaviour
     [SerializeField] private GameObject _filterPrefab;
 
     private GameMaster _gameMasterRef;
+    private Quest questRef;
+    private QuestControl questControl;
 
     private void Awake()
     {
         _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+        questRef = GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>();
+        questControl = _gameMasterRef.gameObject.GetComponent<QuestControl>();
 
         _recipeSelectButton.interactable = false; // temp till I get all the code set up
         recipeButtons = new List<GameObject>();
@@ -280,15 +284,16 @@ public class RecipeBook : MonoBehaviour
     // should be setup for level locking
     public void setupQuestRecipeGrid()
     {
-        QuestData currQuest = _gameMasterRef.GetComponent<QuestControl>().CurrentQuest;
+        //QuestData currQuest = _gameMasterRef.GetComponent<QuestControl>().CurrentQuest;
+        BaseQuestJsonData currQuest = questRef.LoadQuestData(questControl.CurrentQuest);
         if (currQuest != null)
         {
-            if (currQuest.QuestType == "Tutorial" || currQuest.QuestType == "Story")
+            if (currQuest.questType == "Tutorial" || currQuest.questType == "Story")
             {
                 Debug.LogWarning("RecipeBook: quest type - Tutorail or Story");
                 setupStoryQuestRecipeGrid();
             }
-            else if (currQuest.QuestType == "OCC_QuestItem")
+            else if (currQuest.questType == "OCC_QuestItem")
             {
                 Debug.LogWarning("RecipeBook: quest type - OCC_QuestItem");
                 setupSpecialQuestRecipeGrid();
@@ -467,9 +472,10 @@ public class RecipeBook : MonoBehaviour
     // should be setup for level locking
     public void setupSpecialQuestRecipeGrid()
     {
-        QuestData currQuest = _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest;
+        //QuestData currQuest = _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest;
+        CraftQuestItemQuest currQuest = questRef.LoadCraftQuestItemQuest(questControl.CurrentQuest);
 
-        QuestItemData questItem = currQuest.RequiredQuestItem;
+        QuestItemData questItem = getQuestItemRecipe(currQuest.requiredQuestItem);
 
         clearRecipeGrid();
         clearUpcomingRecipesLists();
@@ -562,9 +568,11 @@ public class RecipeBook : MonoBehaviour
     // shold be setup for level locking
     public void setupStoryQuestRecipeGrid()
     {
-        QuestData currQuest = _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest;
+        Debug.LogError("TODO Fix this");
 
-        ItemData reqItem = currQuest.RequiredItem;
+        //QuestData currQuest = _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest;
+        ItemData reqItem = null; //currQuest.RequiredItem;
+
         clearRecipeGrid();
         clearUpcomingRecipesLists();
         int r = 0;
@@ -844,6 +852,14 @@ public class RecipeBook : MonoBehaviour
         foreach (ItemData item in itemRecipes)
             if (item.ItemName == value)
                 return item;
+        return null;
+    }
+
+    public QuestItemData getQuestItemRecipe(string value)
+    {
+        foreach (QuestItemData questItem in questItemRecipes)
+            if (questItem.QuestItemName == value)
+                return questItem;
         return null;
     }
 

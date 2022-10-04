@@ -25,6 +25,8 @@ public class GenerateItem : MonoBehaviour
     private TextMeshProUGUI haggleButtonText;
 
     [SerializeField] private GameMaster _gameMasterRef;
+    private Quest questRef;
+    private QuestControl questControl;
 
     private bool haggleSucceded = false;
 
@@ -33,6 +35,9 @@ public class GenerateItem : MonoBehaviour
     private void Awake()
     {
         //_gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
+        questRef = GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>();
+        questControl = _gameMasterRef.gameObject.GetComponent<QuestControl>();
+
         buyButtonText = buyButton.GetComponentInChildren<TextMeshProUGUI>();
         haggleButtonText = haggleButton.GetComponentInChildren<TextMeshProUGUI>();
         haggleButtonText.text = "haggle\n(success chance: n/a)";
@@ -301,15 +306,16 @@ public class GenerateItem : MonoBehaviour
 
         gameObject.GetComponent<AdventurerMaster>().dismissAdventurers();
 
-        if (_gameMaster.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
-            (_gameMaster.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" ||
-            _gameMaster.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Story"))
+        if (questControl.CurrentQuest != null &&
+            (questRef.QuestType(questControl.CurrentQuest) == "Tutorial" ||
+            questRef.QuestType(questControl.CurrentQuest) == "Story"))
         {
-            if (_gameMaster.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Buy_Item")
+            Debug.Log("TODO re-implement this");
+            /*if (_gameMaster.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Buy_Item")
             {
                 Debug.LogWarning("Quest Notif - Bought item from Adventurer!");
                 _gameMaster.gameObject.GetComponent<QuestControl>().nextStage();
-            }
+            }*/
         }
     }
     public void haggleGeneratedPrice()

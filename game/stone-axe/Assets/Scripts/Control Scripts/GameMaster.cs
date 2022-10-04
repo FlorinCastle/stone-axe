@@ -28,6 +28,8 @@ public class GameMaster : MonoBehaviour
     private UIControl _uiControlRef;
     [SerializeField]
     private GameObject saveTrackerParent;
+    private Quest questRef;
+    private QuestControl questControl;
     [Header("Prefabs")]
     [SerializeField] private GameObject _saveHolderPrefab;
     [Header("Save Tracking")]
@@ -54,6 +56,9 @@ public class GameMaster : MonoBehaviour
         _invData = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryData>();
         _invScript = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>();
         _uiControlRef = gameObject.GetComponent<UIControl>();
+
+        questRef = GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>();
+        questControl = gameObject.GetComponent<QuestControl>();
 
         loadSaveGames();
 
@@ -205,11 +210,11 @@ public class GameMaster : MonoBehaviour
         gameObject.GetComponent<SellItemControl>().SellingState = 0;
 
         //if (gameObject.GetComponent<QuestControl>().CurrentQuest != null && gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial")
-        if (gameObject.GetComponent<QuestControl>().CurrentQuest != null)
-        { if (gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType != "Tutorial")
+        if (questControl.CurrentQuest != null)
+        { if (questRef.QuestType(questControl.CurrentQuest) != "Tutorial")
                 gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
         }
-        else if (gameObject.GetComponent<QuestControl>().CurrentQuest == null)
+        else if (questControl.CurrentQuest == null)
             gameObject.GetComponent<AdventurerMaster>().removeAllAdventurers();
 
         if (gameObject.GetComponent<PlayerManager>().PlayerExists == false)
@@ -354,10 +359,11 @@ public class GameMaster : MonoBehaviour
     public void startDisassemblyMiniGame()
     {
         gameObject.GetComponent<MiniGameControl>().startDisassemblyMiniGame();
-        if (gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
-            gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" &&
+        Debug.Log("TODO re-implement this");
+        if (questControl.CurrentQuest != null &&
+            questRef.QuestType(questControl.CurrentQuest) == "Tutorial" && false/*
             gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Have_UI_Open" &&
-            gameObject.GetComponent<QuestControl>().CurrentStage.RequiredUI == "MiniGame_UI")
+            gameObject.GetComponent<QuestControl>().CurrentStage.RequiredUI == "MiniGame_UI"*/)
         {
             Debug.LogWarning("Quest Notif - Disassemble Minigame");
             gameObject.GetComponent<QuestControl>().nextStage();
@@ -366,10 +372,10 @@ public class GameMaster : MonoBehaviour
     public void startCraftMiniGame()
     {
         gameObject.GetComponent<MiniGameControl>().startCraftingMiniGame();
-        if (gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
-            gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" &&
-            gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Have_UI_Open" &&
-            gameObject.GetComponent<QuestControl>().CurrentStage.RequiredUI == "MiniGame_UI")
+        if (questControl.CurrentQuest != null &&
+            questRef.QuestType(questControl.CurrentQuest) == "Tutorial" && false
+            /*gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Have_UI_Open" &&
+            gameObject.GetComponent<QuestControl>().CurrentStage.RequiredUI == "MiniGame_UI"*/)
         {
             Debug.Log("Quest Notif - Craft Minigame");
             gameObject.GetComponent<QuestControl>().nextStage();

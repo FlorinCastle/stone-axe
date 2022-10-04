@@ -8,6 +8,8 @@ public class DisassembleItemControl : MonoBehaviour
 {
     [SerializeField] private InventoryScript _invScriptRef;
     private InventoryData _invDataRef;
+    private Quest _questRef;
+    private QuestControl _questControl;
     [SerializeField] private UIControl _uIControlRef;
     [SerializeField] private GameObject _selectedObject;
     [SerializeField] private DIS_DisassembleChance disassembleSkill;
@@ -22,12 +24,14 @@ public class DisassembleItemControl : MonoBehaviour
     {
         if (_invScriptRef == null)
             _invScriptRef = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>();
-
         if (_uIControlRef == null)
             _uIControlRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<UIControl>();
-
         if (_invDataRef == null)
             _invDataRef = _invScriptRef.gameObject.GetComponent<InventoryData>();
+        if (_questRef == null)
+            _questRef = gameObject.GetComponent<Quest>();
+        if (_questControl == null)
+            _questControl = gameObject.GetComponent<QuestControl>();
         _disassembleButton.interactable = false;
     }
 
@@ -242,15 +246,16 @@ public class DisassembleItemControl : MonoBehaviour
         gameObject.GetComponent<SellItemControl>().clearSellMenu();
         this.gameObject.GetComponent<SellItemControl>().clearSellMenu();
 
-        if (this.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
-            (this.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Tutorial" ||
-            this.gameObject.GetComponent<QuestControl>().CurrentQuest.QuestType == "Story"))
+        if (_questControl.CurrentQuest != null &&
+            (_questRef.QuestType(_questControl.CurrentQuest) == "Tutorial" ||
+            _questRef.QuestType(_questControl.CurrentQuest) == "Story"))
         {
-            if (this.gameObject.GetComponent<QuestControl>().CurrentStage.QuestEvent == "Disassemble_Item") { }
+            Debug.Log("TODO re-implement this");
+            /*if (this.gameObject.GetComponent<QuestControl>().CurrentStage.QuestEvent == "Disassemble_Item") { }
             {
                 Debug.LogWarning("Quest Notif - Disassemble Minigame Done");
                 this.gameObject.GetComponent<QuestControl>().nextStage();
-            }
+            }*/
         }
 
         gameObject.GetComponent<MiniGameControl>().stopDisassembleMiniGame();
