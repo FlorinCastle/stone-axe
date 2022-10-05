@@ -40,6 +40,7 @@ public class QuestControl : MonoBehaviour
     //[SerializeField] private List<QuestData> _repeatableQuests;
     [SerializeField] private List<TextAsset> _repeatableQuestsJson;
     [SerializeField] private List<QuestData> _unlockedQuests;
+    [SerializeField] private List<TextAsset> _unlockedQuestsJson;
     [SerializeField] private List<GameObject> _questStarterGOs;
     [SerializeField] private QuestData _enableBuyOnComplete;
     [SerializeField] private QuestData _enableSellOnComplete;
@@ -71,7 +72,8 @@ public class QuestControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        /*if (_chosenQuest != null && shut)
+        /* moved to a coroutine that checks once a second instead of in FixedUpdate's time
+         * if (_chosenQuest != null && shut)
             if (_chosenQuest.QuestType == "OD_Material")
                 updateQuestProgress(_chosenQuest.ReqiredMaterial);*/
 
@@ -89,6 +91,7 @@ public class QuestControl : MonoBehaviour
     public void setStar() { star = true; }
 
     [SerializeField] private QuestData starterRef;
+    [SerializeField] private TextAsset starterJsonRef;
     private GameObject p;
     public void setupStoryQuests() // bleh
     {
@@ -148,7 +151,7 @@ public class QuestControl : MonoBehaviour
                             }
                 }
             }
-            foreach(QuestData storyQuest in _questRef.getStoryQuests())
+            /*foreach(QuestData storyQuest in _questRef.getStoryQuests())
             {
                 if (starterRef == null)
                 {
@@ -169,7 +172,49 @@ public class QuestControl : MonoBehaviour
                 }
                 else
                     break;
+            } */
+            foreach(TextAsset storyQuest in _questRef.StoryQuests)
+            {
+                if (starterJsonRef == null)
+                {
+                    if (_unlockedQuestsJson.Contains(storyQuest))
+                    {
+                        starterJsonRef = storyQuest;
+                        break;
+                    }
+                    if (_questRef.LoadStoryQuest(storyQuest).unlockedQuests.Count > 0)
+                        foreach (string temp in _questRef.LoadStoryQuest(storyQuest).unlockedQuests)
+                        {
+                            TextAsset tempText = _questRef.FetchQuestTextAssestByName(temp);
+                            if (tempText != null)
+                                _unlockedQuestsJson.Add(tempText);
+                        }
+                }
+                else
+                    break;
             }
+            foreach (TextAsset tutQuest in _questRef.TutorialQuests)
+            {
+                if (starterJsonRef == null)
+                {
+                    if (_unlockedQuestsJson.Contains(tutQuest))
+                    {
+                        starterJsonRef = tutQuest;
+                        break;
+                    }
+                    if (_questRef.LoadStoryQuest(tutQuest).unlockedQuests.Count > 0)
+                        foreach (string temp in _questRef.LoadStoryQuest(tutQuest).unlockedQuests)
+                        {
+                            TextAsset tempText = _questRef.FetchQuestTextAssestByName(temp);
+                            if (tempText != null)
+                                _unlockedQuestsJson.Add(tempText);
+                        }
+
+                }
+                else
+                    break;
+            }
+
             setupStarter();
         }
         else if (_questRef.QuestType(_chosenQuestJson) == "Tutorial" || _questRef.QuestType(_chosenQuestJson) == "Story") 
@@ -271,8 +316,8 @@ public class QuestControl : MonoBehaviour
         Debug.Log("QuestControl.resetAllQuests() - resetting quests");
         foreach (QuestData tutQuest in _questRef.getTutorialQuests())
             tutQuest.StoryQuestComplete = false;
-        foreach (QuestData storyQuest in _questRef.getStoryQuests())
-            storyQuest.StoryQuestComplete = false;
+        /*foreach (QuestData storyQuest in _questRef.getStoryQuests())
+            storyQuest.StoryQuestComplete = false; */
 
         _unlockedQuests.Clear();
         _unlockedQuests.Add(_questRef.getTutorialQuests()[0]);
@@ -285,8 +330,9 @@ public class QuestControl : MonoBehaviour
             tutQuest.StoryQuestComplete = true;
             _unlockedQuests.Add(tutQuest);
         }
-        foreach (QuestData storyQuest in _questRef.getStoryQuests())
-            storyQuest.StoryQuestComplete = false;
+        Debug.LogWarning("TODO fix this");
+        /*foreach (QuestData storyQuest in _questRef.getStoryQuests())
+            storyQuest.StoryQuestComplete = false; */
 
         _unlockedQuests.Clear();
         _unlockedQuests.Add(_questRef.getTutorialQuests()[_questRef.getTutorialQuests().Count - 1].QuestUnlocks[0]);
@@ -301,10 +347,10 @@ public class QuestControl : MonoBehaviour
         foreach(QuestData tutQuest in _questRef.getTutorialQuests())
             if (tutQuest.StoryQuestComplete == true)
                 completedQuestList.Add(_questRef.saveQuest(tutQuest));
-
-        foreach (QuestData stryQuest in _questRef.getStoryQuests())
+        Debug.LogWarning("TODO fix this");
+        /*foreach (QuestData stryQuest in _questRef.getStoryQuests())
             if (stryQuest.StoryQuestComplete == true)
-                completedQuestList.Add(_questRef.saveQuest(stryQuest));
+                completedQuestList.Add(_questRef.saveQuest(stryQuest)); */
 
         foreach (QuestData unlockQuest in _unlockedQuests)
             unlockedQuestList.Add(_questRef.saveQuest(unlockQuest));
@@ -379,9 +425,10 @@ public class QuestControl : MonoBehaviour
             }
             else if (quest.questType == "Story")
             {
-                foreach (QuestData storyQuest in _questRef.getStoryQuests())
+                Debug.LogWarning("TODO fix this");
+                /*foreach (QuestData storyQuest in _questRef.getStoryQuests())
                     if (storyQuest.QuestName == quest.questName)
-                        storyQuest.StoryQuestComplete = true;
+                        storyQuest.StoryQuestComplete = true; */
             }
         }
         foreach (QuestObject quest in questsSave.unlockedQuests)
@@ -394,9 +441,10 @@ public class QuestControl : MonoBehaviour
             }
             else if (quest.questType == "Story")
             {
-                foreach (QuestData storyQuest in _questRef.getStoryQuests())
+                Debug.LogWarning("TODO fix this");
+                /*foreach (QuestData storyQuest in _questRef.getStoryQuests())
                     if (storyQuest.QuestName == quest.questName)
-                        _unlockedQuests.Add(storyQuest);
+                        _unlockedQuests.Add(storyQuest); */
             }
         }
 
@@ -909,6 +957,7 @@ public class QuestControl : MonoBehaviour
     {
         while (true)
         {
+            Debug.Log("QuestControl().checkMatQuestConstant(): Coroutine check");
             if (_chosenQuestJson != null && shut)
                 if (_questRef.QuestType(_chosenQuestJson) == "OD_Material")
                     updateQuestProgress(_questRef.RequiredMat(_chosenQuestJson));

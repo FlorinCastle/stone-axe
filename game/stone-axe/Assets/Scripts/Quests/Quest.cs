@@ -10,11 +10,11 @@ public class Quest : MonoBehaviour
     [SerializeField] private List<QuestData> _questDataList;
     [SerializeField] private List<QuestData> _tutorialQuests;
     [SerializeField] private List<QuestData> _storyQuests;
-    [SerializeField] private List<QuestData> _onCraftItemQuests;
-    [SerializeField] private List<QuestData> _onCraftQuestItemQuests;
-    [SerializeField] private List<QuestData> _onDisMatQuests;
-    [SerializeField] private List<QuestData> _onCraftTotalQuests;
-    [SerializeField] private List<QuestData> _repeatableQuests;
+    //[SerializeField] private List<QuestData> _onCraftItemQuests;
+    //[SerializeField] private List<QuestData> _onCraftQuestItemQuests;
+    //[SerializeField] private List<QuestData> _onDisMatQuests;
+    //[SerializeField] private List<QuestData> _onCraftTotalQuests;
+    //[SerializeField] private List<QuestData> _repeatableQuests;
     [Header("Quest Jsons")]
     [SerializeField] private List<TextAsset> _questJsons;
     [SerializeField] private List<TextAsset> _tutorialQuestJsons;
@@ -37,7 +37,7 @@ public class Quest : MonoBehaviour
     public void organizeQuests()
     {
         Debug.Log("Quest.Awake() organizing quests");
-        foreach (QuestData quest in _questDataList)
+        /*foreach (QuestData quest in _questDataList)
         {
             string questType = quest.QuestType;
             if (questType == "OCC_Item" && !_onCraftItemQuests.Contains(quest))
@@ -54,7 +54,7 @@ public class Quest : MonoBehaviour
                 _storyQuests.Add(quest);
             if ((questType == "OCC_Item" || questType == "OCC_QuestItem" || questType == "OD_Material" || questType == "OCC_TotalCrafted") && !_repeatableQuests.Contains(quest))
                 _repeatableQuests.Add(quest);
-        }
+        } */
         foreach (TextAsset quest in _questJsons)
         {
             BaseQuestJsonData questJson = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(quest).Replace("Assets", "")));
@@ -178,7 +178,19 @@ public class Quest : MonoBehaviour
         return quest;
 
     }
+    public StoryQuest LoadStoryQuest(TextAsset questAsset)
+    {
+        StoryQuest quest = JsonUtility.FromJson<StoryQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+        return quest;
+    }
 
+    public TextAsset FetchQuestTextAssestByName(string input)
+    {
+        foreach(TextAsset quest in _questJsons)
+            if (QuestName(quest) == input)
+                return quest;
+        return null;
+    }
 
     public List<TextAsset> AllQuests { get => _questJsons; }
     public List<TextAsset> TutorialQuests { get => _questJsons; }
@@ -191,7 +203,7 @@ public class Quest : MonoBehaviour
 
     //public List<QuestData> getAllQuests() { return _questDataList; }
     public List<QuestData> getTutorialQuests() { return _tutorialQuests; }
-    public List<QuestData> getStoryQuests() { return _storyQuests; }
+    //public List<QuestData> getStoryQuests() { return _storyQuests; }
     //public List<QuestData> getOnCraftItemQuests() { return _onCraftItemQuests; }
     //public List<QuestData> getOnCraftQuestItemQuests() { return _onCraftQuestItemQuests; }
     //public List<QuestData> getOnDisMatQuests() { return _onDisMatQuests; }
