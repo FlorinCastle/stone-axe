@@ -98,34 +98,37 @@ public class QuestControl : MonoBehaviour
         //Debug.Log("QuestControl.setupStoryQuests() - setting up story quests");
         _questRef.organizeQuests();
 
-        if (_unlockedQuests.Count == 0)
-            _unlockedQuests.Add(_questRef.getTutorialQuests()[0]);
+        /*if (_unlockedQuests.Count == 0)
+            _unlockedQuests.Add(_questRef.getTutorialQuests()[0]); */
+        if (_unlockedQuestsJson.Count == 0)
+            _unlockedQuestsJson.Add(_questRef.TutorialQuests[0]);
         if (_chosenQuestJson == null)
         {
             //Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is null");
 
             gameObject.GetComponent<GameMaster>().allTabsAccessable(false);
 
-            foreach (QuestData tutQuest in _questRef.getTutorialQuests())
+            //foreach (QuestData tutQuest in _questRef.getTutorialQuests())
+            foreach (TextAsset tutQuest in _questRef.TutorialQuests)
             {
                 //Debug.Log("QuestControl.setupStoryQuests() - tutQuest is " + tutQuest.QuestName);                
-                if (tutQuest == _enableBuyOnComplete && _enableBuyOnComplete.StoryQuestComplete)
+                if (_questRef.QuestName(tutQuest) == _enableBuyOnComplete.QuestName && _enableBuyOnComplete.StoryQuestComplete)
                 {
                     gameObject.GetComponent<GameMaster>().buyAccessable(true);
                 }
-                if (tutQuest == _enableDisassembleOnComplete && _enableDisassembleOnComplete.StoryQuestComplete)
+                if (_questRef.QuestName(tutQuest) == _enableDisassembleOnComplete.QuestName && _enableDisassembleOnComplete.StoryQuestComplete)
                 {
                     gameObject.GetComponent<GameMaster>().disassembleAccessable(true);
                 }
-                if (tutQuest == _enableCraftOnComplete && _enableCraftOnComplete.StoryQuestComplete)
+                if (_questRef.QuestName(tutQuest) == _enableCraftOnComplete.QuestName && _enableCraftOnComplete.StoryQuestComplete)
                 {
                     gameObject.GetComponent<GameMaster>().craftAccessable(true);
                 }
-                if (tutQuest == _enableSellOnComplete && _enableSellOnComplete.StoryQuestComplete)
+                if (_questRef.QuestName(tutQuest) == _enableSellOnComplete.QuestName && _enableSellOnComplete.StoryQuestComplete)
                 {
                     gameObject.GetComponent<GameMaster>().sellAccessable(true);
                 }
-                if (tutQuest == _enableAdventurersOnComplete && _enableAdventurersOnComplete.StoryQuestComplete)
+                if (_questRef.QuestName(tutQuest) == _enableAdventurersOnComplete.QuestName && _enableAdventurersOnComplete.StoryQuestComplete)
                 {
                     gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
                     // ui control, enable to market button
@@ -136,18 +139,19 @@ public class QuestControl : MonoBehaviour
                 if (starterRef == null)
                 {
                     //Debug.Log("QuestControl.setupStoryQuests() - starterRef is null");
-                    if (tutQuest.StoryQuestComplete == false && _unlockedQuests.Contains(tutQuest))
+                    if (/*tutQuest.StoryQuestComplete == false &&*/ _unlockedQuestsJson.Contains(tutQuest))
                     {
                         //Debug.Log("asigning starter tutorial");
-                        starterRef = tutQuest;
+                        //starterRef = tutQuest;
+                        starterJsonRef = tutQuest;
                         break;
                     }
-                    if (tutQuest.QuestUnlocks.Count > 0 && tutQuest.StoryQuestComplete == true)
-                        foreach (QuestData temp in tutQuest.QuestUnlocks)
-                            if (_unlockedQuests.Contains(temp) == false)
+                    if (_questRef.LoadStoryQuest(tutQuest).unlockedQuests.Count > 0 && /*tutQuest.StoryQuestComplete == */true)
+                        foreach (string temp in _questRef.LoadStoryQuest(tutQuest).unlockedQuests)//QuestData temp in tutQuest.QuestUnlocks)
+                            if (_unlockedQuestsJson.Contains(_questRef.FetchQuestTextAssestByName(temp)) == false)
                             {
                                 //Debug.Log(tutQuest.QuestName + " - Adding Unlocked Quest: " + temp.QuestName);
-                                _unlockedQuests.Add(temp);
+                                _unlockedQuestsJson.Add(_questRef.FetchQuestTextAssestByName(temp));//_unlockedQuests.Add(temp);
                             }
                 }
             }
@@ -314,28 +318,34 @@ public class QuestControl : MonoBehaviour
     public void resetAllQuests()
     {
         Debug.Log("QuestControl.resetAllQuests() - resetting quests");
-        foreach (QuestData tutQuest in _questRef.getTutorialQuests())
-            tutQuest.StoryQuestComplete = false;
+        Debug.LogWarning("TODO fix this");
+        /*foreach (QuestData tutQuest in _questRef.getTutorialQuests())
+            tutQuest.StoryQuestComplete = false; */
         /*foreach (QuestData storyQuest in _questRef.getStoryQuests())
             storyQuest.StoryQuestComplete = false; */
 
-        _unlockedQuests.Clear();
-        _unlockedQuests.Add(_questRef.getTutorialQuests()[0]);
+        //_unlockedQuests.Clear();
+        _unlockedQuestsJson.Clear();
+        //_unlockedQuests.Add(_questRef.getTutorialQuests()[0]);
+        _unlockedQuestsJson.Add(_questRef.TutorialQuests[0]);
     }
     public void skipTutorialQuests()
     {
         Debug.Log("QuestControl.skipTutorialQuests() - skipping tutorial quests");
-        foreach (QuestData tutQuest in _questRef.getTutorialQuests())
+        //foreach (QuestData tutQuest in _questRef.getTutorialQuests())
+        foreach(TextAsset tutQuest in _questRef.TutorialQuests)
         {
-            tutQuest.StoryQuestComplete = true;
-            _unlockedQuests.Add(tutQuest);
+            //tutQuest.StoryQuestComplete = true;
+            //_unlockedQuests.Add(tutQuest);
+            _unlockedQuestsJson.Add(tutQuest);
         }
         Debug.LogWarning("TODO fix this");
         /*foreach (QuestData storyQuest in _questRef.getStoryQuests())
             storyQuest.StoryQuestComplete = false; */
 
         _unlockedQuests.Clear();
-        _unlockedQuests.Add(_questRef.getTutorialQuests()[_questRef.getTutorialQuests().Count - 1].QuestUnlocks[0]);
+        //_unlockedQuests.Add(_questRef.getTutorialQuests()[_questRef.getTutorialQuests().Count - 1].QuestUnlocks[0]);
+        _unlockedQuestsJson.Add(_questRef.FetchQuestTextAssestByName(_questRef.LoadStoryQuest(_questRef.TutorialQuests[_questRef.TutorialQuests.Count - 1]).unlockedQuests[0]));
     }
 
 
@@ -344,10 +354,10 @@ public class QuestControl : MonoBehaviour
 
         List<QuestObject> completedQuestList = new List<QuestObject>();
         List<QuestObject> unlockedQuestList = new List<QuestObject>(); 
-        foreach(QuestData tutQuest in _questRef.getTutorialQuests())
-            if (tutQuest.StoryQuestComplete == true)
-                completedQuestList.Add(_questRef.saveQuest(tutQuest));
         Debug.LogWarning("TODO fix this");
+        /*foreach(QuestData tutQuest in _questRef.getTutorialQuests())
+            if (tutQuest.StoryQuestComplete == true)
+                completedQuestList.Add(_questRef.saveQuest(tutQuest));*/
         /*foreach (QuestData stryQuest in _questRef.getStoryQuests())
             if (stryQuest.StoryQuestComplete == true)
                 completedQuestList.Add(_questRef.saveQuest(stryQuest)); */
@@ -389,32 +399,33 @@ public class QuestControl : MonoBehaviour
             if (quest.questType == "Tutorial")
             {
                 //Debug.Log("quest - questName: " + quest.questName);
-                foreach (QuestData tutQuest in _questRef.getTutorialQuests())
+                //foreach (QuestData tutQuest in _questRef.getTutorialQuests())
+                foreach(TextAsset tutQuest in _questRef.TutorialQuests)
                 {
                     //Debug.Log("quest - tutQuest.QuestName: " + tutQuest.QuestName);
 
-                    if (tutQuest.QuestName.Equals(quest.questName))
+                    if (_questRef.QuestName(tutQuest).Equals(quest.questName))//tutQuest.QuestName.Equals(quest.questName))
                     {
-                        //Debug.Log("QuestControl.LoadQuests() tutQuest = " + tutQuest.QuestName + "; tutQuest.StoryQuestComplete = true");
-                        tutQuest.StoryQuestComplete = true;
+                        Debug.Log("QuestControl.LoadQuests() tutQuest = " + _questRef.QuestName(tutQuest) + "; tutQuest.StoryQuestComplete = true");
+                        //tutQuest.StoryQuestComplete = true;
                     }
-                    if (tutQuest.QuestName.Equals(_enableBuyOnComplete.QuestName))
+                    if (_questRef.QuestName(tutQuest).Equals(_enableBuyOnComplete.QuestName))//tutQuest.QuestName.Equals(_enableBuyOnComplete.QuestName))
                     {
                         //Debug.Log("QuestControl.LoadQuests() TODO code for _enableBuyOnComplete");
                     }
-                    if (tutQuest.QuestName.Equals(_enableDisassembleOnComplete.QuestName))
+                    if (_questRef.QuestName(tutQuest).Equals(_enableDisassembleOnComplete.QuestName)) //tutQuest.QuestName.Equals(_enableDisassembleOnComplete.QuestName))
                     {
                         //Debug.Log("QuestControl.LoadQuests() TODO code for _enableDisassembleOnComplete");
                     }
-                    if (tutQuest.QuestName.Equals(_enableCraftOnComplete.QuestName))
+                    if (_questRef.QuestName(tutQuest).Equals(_enableCraftOnComplete.QuestName)) //tutQuest.QuestName.Equals(_enableCraftOnComplete.QuestName))
                     {
                         //Debug.Log("QuestControl.LoadQuests() TODO code for _enableCraftOnComplete");
                     }
-                    if (tutQuest.QuestName.Equals(_enableSellOnComplete.QuestName))
+                    if (_questRef.QuestName(tutQuest).Equals(_enableSellOnComplete.QuestName)) //tutQuest.QuestName.Equals(_enableSellOnComplete.QuestName))
                     {
                         //Debug.Log("QuestControl.LoadQuests() TODO code for _enableSellOnComplete");
                     }
-                    if (tutQuest.QuestName.Equals(_enableAdventurersOnComplete.QuestName))
+                    if (_questRef.QuestName(tutQuest).Equals(_enableAdventurersOnComplete.QuestName)) //tutQuest.QuestName.Equals(_enableAdventurersOnComplete.QuestName))
                     {
                         //Debug.Log("tutQuest.QuestName: " + tutQuest.QuestName + "\n_enableAdventurersOnComplete.QuestName: " + _enableAdventurersOnComplete.QuestName + "\nQuestControl() toggling adventurers - DEBUG");
                         //gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
@@ -435,9 +446,9 @@ public class QuestControl : MonoBehaviour
         {
             if (quest.questType == "Tutorial")
             {
-                foreach (QuestData tutQuest in _questRef.getTutorialQuests())
-                    if (tutQuest.QuestName == quest.questName)
-                        _unlockedQuests.Add(tutQuest);
+                foreach (TextAsset tutQuest in _questRef.TutorialQuests)//(QuestData tutQuest in _questRef.getTutorialQuests())
+                    if (_questRef.QuestName(tutQuest) == quest.questName)//(tutQuest.QuestName == quest.questName)
+                        _unlockedQuestsJson.Add(tutQuest);//_unlockedQuests.Add(tutQuest);
             }
             else if (quest.questType == "Story")
             {

@@ -202,7 +202,7 @@ public class Quest : MonoBehaviour
     public List<TextAsset> RepeatableQuests { get => _questJsons; }
 
     //public List<QuestData> getAllQuests() { return _questDataList; }
-    public List<QuestData> getTutorialQuests() { return _tutorialQuests; }
+    //public List<QuestData> getTutorialQuests() { return _tutorialQuests; }
     //public List<QuestData> getStoryQuests() { return _storyQuests; }
     //public List<QuestData> getOnCraftItemQuests() { return _onCraftItemQuests; }
     //public List<QuestData> getOnCraftQuestItemQuests() { return _onCraftQuestItemQuests; }
