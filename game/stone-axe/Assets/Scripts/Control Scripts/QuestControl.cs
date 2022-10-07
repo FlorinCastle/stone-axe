@@ -355,6 +355,9 @@ public class QuestControl : MonoBehaviour
         List<QuestObject> completedQuestList = new List<QuestObject>();
         List<QuestObject> unlockedQuestList = new List<QuestObject>(); 
         Debug.LogWarning("TODO fix this");
+        foreach (TextAsset questText in _questRef.TutorialQuests)
+            if (_questRef.LoadStoryQuest(questText).isComplete == true)
+                Debug.Log("QuestControl.saveQuests(): " + _questRef.LoadStoryQuest(questText).questName + ":questText.isComplete");
         /*foreach(QuestData tutQuest in _questRef.getTutorialQuests())
             if (tutQuest.StoryQuestComplete == true)
                 completedQuestList.Add(_questRef.saveQuest(tutQuest));*/

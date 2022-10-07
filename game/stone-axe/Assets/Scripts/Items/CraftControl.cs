@@ -178,7 +178,7 @@ public class CraftControl : MonoBehaviour
             /*_part1Name.text = _chosenItemRecipe.Part1.PartName;
             _part2Name.text = _chosenItemRecipe.Part2.PartName;
             _part3Name.text = _chosenItemRecipe.Part3.PartName; */
-            Debug.LogError("CraftControl.setChosenRecipe(): swap to using lists/arrays for stuff");
+            Debug.LogWarning("CraftControl.setChosenRecipe(): swap to using lists/arrays for stuff");
             _part1Name.text = _chosenItemRecipeJson.requiredParts[0];
             _part2Name.text = _chosenItemRecipeJson.requiredParts[1];
             _part3Name.text = _chosenItemRecipeJson.requiredParts[2];

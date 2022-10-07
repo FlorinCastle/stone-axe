@@ -47,6 +47,8 @@ public class StoryQuest : BaseQuestJsonData // combine this one and TutorialQues
     public List<QuestStageJsonData> questStagesJson;
     public string nextQuest;
     public List<string> unlockedQuests;
+
+    public bool isComplete;
 }
 public class TutorialQuest : BaseQuestJsonData 
 {

@@ -32,7 +32,7 @@ public class PartDataStorage : MonoBehaviour
             partStrength = _partStrength,
             partDextarity = _partDextarity,
             partIntellegence = _partIntelegence,
-            partRecipeName = _selfRecipeData.PartName,
+            partRecipeName = _selfRecipeJsonData.partName,
             isEnchanted = _isEnchanted,
             enchantment = checkEnchant(),
         };

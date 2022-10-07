@@ -32,7 +32,7 @@ public class ItemDataStorage : MonoBehaviour
             itemName = _itemName,
             totalValue = _totalValue,
             invIndex = inventoryIndex,
-            recipeName = _receipeRef.ItemName,
+            recipeName = _jsonRecipeRef.itemName,//_receipeRef.ItemName,
             totalStrenght = _totalStrength,
             totalDextarity = _totalDextarity,
             totalIntellegence = _totalIntelegence,

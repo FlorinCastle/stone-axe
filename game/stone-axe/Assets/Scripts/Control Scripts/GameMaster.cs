@@ -836,35 +836,42 @@ public class GameMaster : MonoBehaviour
     {
         if (File.Exists(Application.persistentDataPath + "/save1.json"))
         {
-            //Debug.Log("GameMaster.getMostRecentSaveString() - save1.json exists!");
+            Debug.Log("GameMaster.getMostRecentSaveString() - save1.json exists!");
             string saveString = File.ReadAllText(Application.persistentDataPath + "/save1.json");
 
             SaveData saveObject = JsonUtility.FromJson<SaveData>(saveString);
 
             List<string> saveList = saveObject.saveGamePaths;
 
-            string mostRecentSave = File.ReadAllText(saveList[0]);
-
-            var mostRecentDateTime = DateTime.Parse(JsonUtility.FromJson<SaveObject>(mostRecentSave).saveDateTime);
-
-            foreach (string sg_string in saveList)
+            if (File.Exists(saveList[0]))
             {
-                var saveDateTime = DateTime.Parse(JsonUtility.FromJson<SaveObject>(File.ReadAllText(sg_string)).saveDateTime);
+                string mostRecentSave = File.ReadAllText(saveList[0]);
 
-                if (saveDateTime >= mostRecentDateTime)
+                var mostRecentDateTime = DateTime.Parse(JsonUtility.FromJson<SaveObject>(mostRecentSave).saveDateTime);
+
+                foreach (string sg_string in saveList)
                 {
-                    mostRecentDateTime = saveDateTime;
-                    mostRecentSave = sg_string;
+                    var saveDateTime = DateTime.Parse(JsonUtility.FromJson<SaveObject>(File.ReadAllText(sg_string)).saveDateTime);
+
+                    if (saveDateTime >= mostRecentDateTime)
+                    {
+                        mostRecentDateTime = saveDateTime;
+                        mostRecentSave = sg_string;
+                    }
                 }
+                string ret = JsonUtility.FromJson<SaveObject>(File.ReadAllText(mostRecentSave)).playerName + " / "
+                    + JsonUtility.FromJson<SaveObject>(File.ReadAllText(mostRecentSave)).shopName;
+
+                _mostRecentSave = mostRecentSave;
+
+                //Debug.Log("Ret: " + ret + "\n_mostRecentSave: " + _mostRecentSave);
+
+                return ret;
             }
-            string ret = JsonUtility.FromJson<SaveObject>(File.ReadAllText(mostRecentSave)).playerName + " / "
-                + JsonUtility.FromJson<SaveObject>(File.ReadAllText(mostRecentSave)).shopName;
-
-            _mostRecentSave = mostRecentSave;
-
-            //Debug.Log("Ret: " + ret + "\n_mostRecentSave: " + _mostRecentSave);
-
-            return ret;
+            else
+            {
+                Debug.LogWarning("Save of target path: " + saveList[0] + " does not Exist!\nHas the File been manually deleted?");
+            }
         }
         return "";
     }
