@@ -8072,7 +8072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _questRef: {fileID: 1737104023}
-  _chosenQuest: {fileID: 0}
+  _chosenQuestJson: {fileID: 0}
   _currStageIndex: 0
   _questSheet1: {fileID: 923706211}
   _questSheet2: {fileID: 1156415821}
@@ -8083,8 +8083,9 @@ MonoBehaviour:
   _questText: {fileID: 820757658}
   _newQuestButton: {fileID: 0}
   _completeQuestButton: {fileID: 744597666}
-  _repeatableQuests: []
+  _repeatableQuestsJson: []
   _unlockedQuests: []
+  _unlockedQuestsJson: []
   _questStarterGOs: []
   _enableBuyOnComplete: {fileID: 11400000, guid: 16242dde5e7c8dc48ba0ef782e9c7174, type: 2}
   _enableSellOnComplete: {fileID: 11400000, guid: 2240dccd919c2304dacfd315d1845e62, type: 2}
@@ -8092,6 +8093,7 @@ MonoBehaviour:
   _enableCraftOnComplete: {fileID: 11400000, guid: eb0c1a0207564e24b997af98e0ac5496, type: 2}
   _enableAdventurersOnComplete: {fileID: 11400000, guid: 2240dccd919c2304dacfd315d1845e62, type: 2}
   starterRef: {fileID: 0}
+  starterJsonRef: {fileID: 0}
 --- !u!114 &1734993361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8173,6 +8175,7 @@ MonoBehaviour:
   _nameText: {fileID: 1747409719}
   _dialogueText: {fileID: 714859521}
   _currentStoryQuest: {fileID: 0}
+  _currentStoryQuestJson: {fileID: 0}
   index: 0
 --- !u!114 &1734993364
 MonoBehaviour:
@@ -8417,20 +8420,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 184f51a8522bf8f428fe8693954f0d87, type: 2}
   - {fileID: 11400000, guid: b870c2b58f9bab3458542540cf3ac3d2, type: 2}
   - {fileID: 11400000, guid: cf74b2413199451459bbc2c2d06e840e, type: 2}
-  _questJsons:
-  - {fileID: 4900000, guid: 61886765e2bac04468ab232e928878f1, type: 3}
-  - {fileID: 4900000, guid: 83745e93e12f12b4b8e029ff26f3175b, type: 3}
-  - {fileID: 4900000, guid: 9f315e7581d37a741ad121a1c72b0cbd, type: 3}
-  - {fileID: 4900000, guid: 348332f2d638e684588eb129a96a7e41, type: 3}
-  - {fileID: 4900000, guid: 36be8c4d1768c6145905d926021c2c02, type: 3}
-  - {fileID: 4900000, guid: 19b35c9b45d3dc3449465fa67435bdcf, type: 3}
   _tutorialQuests: []
   _storyQuests: []
-  _onCraftItemQuests: []
-  _onCraftQuestItemQuests: []
-  _onDisMatQuests: []
-  _onCraftTotalQuests: []
-  _repeatableQuests: []
+  _questJsons:
+  - {fileID: 4900000, guid: 36be8c4d1768c6145905d926021c2c02, type: 3}
+  - {fileID: 4900000, guid: 61886765e2bac04468ab232e928878f1, type: 3}
+  - {fileID: 4900000, guid: 9f315e7581d37a741ad121a1c72b0cbd, type: 3}
+  - {fileID: 4900000, guid: 83745e93e12f12b4b8e029ff26f3175b, type: 3}
+  - {fileID: 4900000, guid: 348332f2d638e684588eb129a96a7e41, type: 3}
+  - {fileID: 4900000, guid: 19b35c9b45d3dc3449465fa67435bdcf, type: 3}
+  _tutorialQuestJsons: []
+  _storyQuestJsons: []
+  _craftItemQuestJsons: []
+  _craftQuestItemQuestJsons: []
+  _haveMatQuestJsons: []
+  _craftItemTotalQuestJsons: []
+  _repeatableQuestJsons: []
 --- !u!4 &1737104024
 Transform:
   m_ObjectHideFlags: 0
@@ -15635,7 +15640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2020829247266915648, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2040054708181432600, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -17267,7 +17272,7 @@ PrefabInstance:
       objectReference: {fileID: 908857082}
     - target: {fileID: 6290840026315454170, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6363181291176931999, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
