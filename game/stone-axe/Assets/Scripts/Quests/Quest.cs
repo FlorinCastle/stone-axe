@@ -28,6 +28,8 @@ public class Quest : MonoBehaviour
     private List<TutorialQuest> _tutorialQuestData;
     private List<StoryQuest> _storyQuestData;
 
+    private bool questsOrganized = false;
+
     private void Awake()
     {
         organizeQuests();
@@ -39,26 +41,30 @@ public class Quest : MonoBehaviour
 
     public void organizeQuests()
     {
-        Debug.Log("Quest.Awake() organizing quests");
-        foreach (TextAsset quest in _questJsons)
+        if (questsOrganized == false)
         {
-            BaseQuestJsonData questJson = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(quest).Replace("Assets", "")));
-            //Debug.Log(JsonUtility.ToJson(questJson, true));
-            if (questJson.questType == "OCC_Item" && !_craftItemTotalQuestJsons.Contains(quest))        // add to craft 1 item list
-                _craftItemQuestJsons.Add(quest);
-            if (questJson.questType == "OCC_QuestItem" && !_craftQuestItemQuestJsons.Contains(quest))   // add to craft quest item list
-                _craftQuestItemQuestJsons.Add(quest);
-            if (questJson.questType == "OD_Material")       // add to have material quest list
-                _haveMatQuestJsons.Add(quest);
-            if (questJson.questType == "OCC_TotalCrafted")  // add to craft many item list
-                _craftItemTotalQuestJsons.Add(quest);
-            if (questJson.questType == "Tutorial")          // add to tutorial quest list
-                _tutorialQuestJsons.Add(quest);
-            if (questJson.questType == "Story")             // add to story quest list
-                _storyQuestJsons.Add(quest);
-            if (questJson.questType == "OCC_Item" || questJson.questType == "OCC_QuestItem" || questJson.questType == "OD_Material" || questJson.questType == "OCC_TotalCrafted") // add to repeatable quests list
-                _repeatableQuestJsons.Add(quest);           //Debug.Log("repeatable " + quest.name);
-        }
+            Debug.Log("Quest.Awake() organizing quests");
+            foreach (TextAsset quest in _questJsons)
+            {
+                BaseQuestJsonData questJson = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(quest).Replace("Assets", "")));
+                //Debug.Log(JsonUtility.ToJson(questJson, true));
+                if (questJson.questType == "OCC_Item" && !_craftItemTotalQuestJsons.Contains(quest))        // add to craft 1 item list
+                    _craftItemQuestJsons.Add(quest);
+                if (questJson.questType == "OCC_QuestItem" && !_craftQuestItemQuestJsons.Contains(quest))   // add to craft quest item list
+                    _craftQuestItemQuestJsons.Add(quest);
+                if (questJson.questType == "OD_Material")       // add to have material quest list
+                    _haveMatQuestJsons.Add(quest);
+                if (questJson.questType == "OCC_TotalCrafted")  // add to craft many item list
+                    _craftItemTotalQuestJsons.Add(quest);
+                if (questJson.questType == "Tutorial")          // add to tutorial quest list
+                    _tutorialQuestJsons.Add(quest);
+                if (questJson.questType == "Story")             // add to story quest list
+                    _storyQuestJsons.Add(quest);
+                if (questJson.questType == "OCC_Item" || questJson.questType == "OCC_QuestItem" || questJson.questType == "OD_Material" || questJson.questType == "OCC_TotalCrafted") // add to repeatable quests list
+                    _repeatableQuestJsons.Add(quest);           //Debug.Log("repeatable " + quest.name);
+            }
+        }            
+        questsOrganized = true;
     }
 
     // TODO
@@ -86,9 +92,26 @@ public class Quest : MonoBehaviour
         if (currentQuest != null)
         {
             questObject.questName = QuestName(currentQuest);
-            questObject.questType = QuestType(currentQuest);
+            questObject.questType = QuestType(currentQuest);            
         }
         return questObject;
+    }
+    public QuestObject saveQuest(StoryQuest currentQuest)
+    {
+        QuestObject questObject = new QuestObject
+        {
+            questName = "",
+            questType = "Not_Set",
+            isComplete = false,
+        };
+        if (currentQuest != null)
+        {
+            questObject.questName = currentQuest.questName;
+            questObject.questType = currentQuest.questType;
+            questObject.isComplete = currentQuest.isComplete;
+        }
+        return questObject;
+
     }
     
     public string QuestName(TextAsset questAsset)
@@ -178,13 +201,13 @@ public class Quest : MonoBehaviour
     }
 
     public List<TextAsset> AllQuests { get => _questJsons; }
-    public List<TextAsset> TutorialQuests { get => _questJsons; }
-    public List<TextAsset> StoryQuests { get => _questJsons; }
-    public List<TextAsset> CraftItemQuests { get => _questJsons; }
-    public List<TextAsset> CraftQuestItemQuests { get => _questJsons; }
-    public List<TextAsset> HaveMaterialQuests { get => _questJsons; }
-    public List<TextAsset> CraftManyItemQuests { get => _questJsons; }
-    public List<TextAsset> RepeatableQuests { get => _questJsons; }
+    public List<TextAsset> TutorialQuests { get => _tutorialQuestJsons; }
+    public List<TextAsset> StoryQuests { get => _storyQuestJsons; }
+    public List<TextAsset> CraftItemQuests { get => _craftItemQuestJsons; }
+    public List<TextAsset> CraftQuestItemQuests { get => _craftQuestItemQuestJsons; }
+    public List<TextAsset> HaveMaterialQuests { get => _haveMatQuestJsons; }
+    public List<TextAsset> CraftManyItemQuests { get => _craftItemTotalQuestJsons; }
+    public List<TextAsset> RepeatableQuests { get => _repeatableQuestJsons; }
 
     //public List<QuestData> getAllQuests() { return _questDataList; }
     //public List<QuestData> getTutorialQuests() { return _tutorialQuests; }
@@ -200,5 +223,5 @@ public class QuestObject
 {
     public string questName;
     public string questType;
-    public string isComplete;
+    public bool isComplete;
 }

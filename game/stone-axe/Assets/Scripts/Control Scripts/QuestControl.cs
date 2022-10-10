@@ -77,8 +77,8 @@ public class QuestControl : MonoBehaviour
             if (_chosenQuest.QuestType == "OD_Material")
                 updateQuestProgress(_chosenQuest.ReqiredMaterial);*/
 
-        if (_chosenQuestJson != null && shut)
-            if (_chosenQuestJson)
+        /*if (_chosenQuestJson != null && shut)
+            if (_chosenQuestJson)*/
 
         if (gameObject.GetComponent<UIControl>().ShopUIActive == true && star == false)
         {
@@ -104,7 +104,7 @@ public class QuestControl : MonoBehaviour
             _unlockedQuestsJson.Add(_questRef.TutorialQuests[0]);
         if (_chosenQuestJson == null)
         {
-            //Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is null");
+            Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is null");
 
             gameObject.GetComponent<GameMaster>().allTabsAccessable(false);
 
@@ -244,6 +244,7 @@ public class QuestControl : MonoBehaviour
         //if ((_chosenQuest != null && _chosenQuest.StoryQuestComplete == false)|| (starterRef != null && starterRef.StoryQuestComplete == false))
         if ((_chosenQuestJson != null && true /* verify that _chosenQuestJson is not complete */) || (starterRef != null && true /* verify starterRef is not complete*/))
         {
+            Debug.Log("QuestControl.setupStarter(): setting up starter");
             p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
             if (_chosenQuestJson == null)
                 if (starterRef.StoryQuestComplete == false)
@@ -349,7 +350,7 @@ public class QuestControl : MonoBehaviour
     }
 
 
-    public SaveQuestsObject saveQuests()
+    /*public SaveQuestsObject saveQuests()
     {
 
         List<QuestObject> completedQuestList = new List<QuestObject>();
@@ -363,7 +364,7 @@ public class QuestControl : MonoBehaviour
                 completedQuestList.Add(_questRef.saveQuest(tutQuest));*/
         /*foreach (QuestData stryQuest in _questRef.getStoryQuests())
             if (stryQuest.StoryQuestComplete == true)
-                completedQuestList.Add(_questRef.saveQuest(stryQuest)); */
+                completedQuestList.Add(_questRef.saveQuest(stryQuest)); 
 
         foreach (QuestData unlockQuest in _unlockedQuests)
             unlockedQuestList.Add(_questRef.saveQuest(unlockQuest));
@@ -377,7 +378,30 @@ public class QuestControl : MonoBehaviour
         };
 
         return questObject;
+    }*/
+    public SaveQuestsObject saveQuests()
+    {
+
+        List<QuestObject> completedQuestList = new List<QuestObject>();
+        List<QuestObject> unlockedQuestList = new List<QuestObject>();
+
+        foreach (TextAsset questText in _questRef.TutorialQuests)
+            if (_questRef.LoadStoryQuest(questText).isComplete == true)
+                Debug.Log("QuestControl.saveQuests(): " + _questRef.LoadStoryQuest(questText).questName + ":questText.isComplete");
+
+        foreach (QuestData unlockQuest in _unlockedQuests)
+            unlockedQuestList.Add(_questRef.saveQuest(unlockQuest));
+
+        SaveQuestsObject questObject = new SaveQuestsObject
+        {
+            currentQuest = _questRef.saveQuest(_chosenQuestJson),
+            currentQuestStage = _currStageIndex,
+            completedQuests = completedQuestList,
+            unlockedQuests = unlockedQuestList,
+        };
+        return questObject;
     }
+
     public void LoadQuests(SaveQuestsObject questsSave)
     {
         _questRef.organizeQuests();

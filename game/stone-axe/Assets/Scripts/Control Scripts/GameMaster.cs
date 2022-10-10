@@ -612,7 +612,7 @@ public class GameMaster : MonoBehaviour
     }
     public void loadGame()
     {
-        //Debug.Log("loading game from _selectedSave: " + _selectedSave);
+        Debug.Log("GameMaster().loadGame(): loading game from _selectedSave: " + _selectedSave);
         foreach (string savePath in _saveGameList)
         {
             //if (File.Exists(Application.dataPath + "/save.json"))
@@ -643,6 +643,7 @@ public class GameMaster : MonoBehaviour
                     // load out assigned skill points
                     gameObject.GetComponent<SkillManager>().LoadSkills(saveObject.skillObject);
                     // load out quest data
+                    Debug.Log("GameMaster.loadGame(): loading quests");
                     gameObject.GetComponent<QuestControl>().LoadQuests(saveObject.questSaveObject);
 
                     // load out this gameobject's data
