@@ -4,13 +4,7 @@
     "requiredPlayerLevel": 13,
     "questDescription": "craft this item",
     "questType": "OCC_Item",
-    "questStages": [],
     "currencyReward": 262,
     "EXPReward": 3,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredItem": "Kunai"
 }

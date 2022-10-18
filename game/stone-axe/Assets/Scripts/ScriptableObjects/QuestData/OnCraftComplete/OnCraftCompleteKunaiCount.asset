@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906549ced2b40c84c8a9474b679e6739, type: 3}
   m_Name: OnCraftCompleteKunaiCount
   m_EditorClassIdentifier: 
-  _questName: Craft several Kunai
+  _questName: Craft Several Kunai
   _questDiscription: craft this item
   _questType: 4
   _questStages: []

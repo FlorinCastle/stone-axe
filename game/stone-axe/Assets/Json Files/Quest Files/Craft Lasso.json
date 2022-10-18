@@ -1,6 +1,6 @@
 {
     "questID": -1,
-    "questName": "Lasso",
+    "questName": "Craft Lasso",
     "requiredPlayerLevel": 18,
     "questDescription": "craft this item",
     "questType": "OCC_Item",
