@@ -41,7 +41,7 @@ public class CraftManyItemQuest : BaseQuestJsonData
     public string requiredItem;
     public int requiredCount;
 }
-public class StoryQuest : BaseQuestJsonData // combine this one and TutorialQuest?
+public class StoryQuest : BaseQuestJsonData
 {
     public List<string> questStages;
     public List<QuestStageJsonData> questStagesJson;
@@ -56,4 +56,6 @@ public class TutorialQuest : BaseQuestJsonData
     public List<QuestStageJsonData> questStagesJson;
     public string nextQuest;
     public List<string> unlockedQuests;
+
+    public List<string> unlockFeatures;
 }

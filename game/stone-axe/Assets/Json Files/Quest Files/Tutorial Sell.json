@@ -30,5 +30,6 @@
         "Tutorial_Selling 21"
     ],
     "nextQuest": "",
-    "unlockedQuests": []
+    "unlockedQuests": [],
+    "unlockFeatures": ["Sell", "Adventurers"]
 }

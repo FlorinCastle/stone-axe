@@ -27,5 +27,6 @@
         "Tutorial_Disassemble 18"
     ],
     "nextQuest": "Tutorial Craft",
-    "unlockedQuests": []
+    "unlockedQuests": [],
+    "unlockFeatures": ["Disassemble"]
 }

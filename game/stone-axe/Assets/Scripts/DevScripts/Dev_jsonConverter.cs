@@ -43,7 +43,7 @@ public class Dev_jsonConverter : MonoBehaviour
         ItemJsonData item = JsonUtility.FromJson<ItemJsonData>(itemString);        
         Debug.Log(item.itemName); */
         //convertManyItemToJson();
-        convertManyQuestToJson();
+        //convertManyQuestToJson();
 
         if (_itemToConvert != null) convertItemToJson(_itemToConvert);
         if (_partToConvert != null) convertPartToJson(_partToConvert);
@@ -205,6 +205,7 @@ public class Dev_jsonConverter : MonoBehaviour
                 questStages = questStages,
                 //questStagesJson = questStagesJson,
                 nextQuest = nextQuest,
+                unlockFeatures = new List<string>(),
             };
             json = JsonUtility.ToJson(questData, true);
         }

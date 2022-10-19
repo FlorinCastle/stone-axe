@@ -25,5 +25,6 @@
         "Tutorial_Welcome 16"
     ],
     "nextQuest": "Tutorial Buying",
-    "unlockedQuests": []
+    "unlockedQuests": [],
+    "unlockFeatures": []
 }

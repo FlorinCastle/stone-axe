@@ -2350,9 +2350,7 @@ MonoBehaviour:
   partSOPath: 
   items: []
   parts: []
-  quests:
-  - {fileID: 11400000, guid: eeefb83eeb88ba34eb4a6dba0bc329ca, type: 2}
-  - {fileID: 11400000, guid: 77a07d767ea926c4f9817de2bba07525, type: 2}
+  quests: []
   itemsJ: []
 --- !u!4 &574211383
 Transform:

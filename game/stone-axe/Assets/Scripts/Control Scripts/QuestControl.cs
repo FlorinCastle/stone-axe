@@ -239,7 +239,7 @@ public class QuestControl : MonoBehaviour
         }
     }
 
-    public void setupStarter()
+    private void setupStarter()
     {
         //if ((_chosenQuest != null && _chosenQuest.StoryQuestComplete == false)|| (starterRef != null && starterRef.StoryQuestComplete == false))
         if ((_chosenQuestJson != null && true /* verify that _chosenQuestJson is not complete */) || (starterRef != null && true /* verify starterRef is not complete*/))
@@ -260,7 +260,7 @@ public class QuestControl : MonoBehaviour
             p.GetComponent<StoryQuestStarter>().setupText();
         }
     }
-    public void setupStarter(QuestData qes)
+    private void setupStarter(QuestData qes)
     {
         p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
         if (qes != null)

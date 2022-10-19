@@ -22,5 +22,6 @@
         "Tutorial_Buying 13"
     ],
     "nextQuest": "Tutorial Disassemble",
-    "unlockedQuests": []
+    "unlockedQuests": [],
+    "unlockFeatures": []
 }

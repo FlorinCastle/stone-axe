@@ -28,5 +28,6 @@
         "Tutorial_Craft 19"
     ],
     "nextQuest": "Tutorial Sell",
-    "unlockedQuests": []
+    "unlockedQuests": [],
+    "unlockFeatures": ["Craft"]
 }

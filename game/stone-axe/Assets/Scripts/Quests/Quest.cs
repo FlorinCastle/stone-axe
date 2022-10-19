@@ -19,16 +19,17 @@ public class Quest : MonoBehaviour
     [Header("Quest Jsons")]
     [SerializeField] private List<TextAsset> _questJsons;
     [SerializeField] private List<TextAsset> _tutorialQuestJsons;
+    private List<TutorialQuest> tutorialQuests = new List<TutorialQuest>();
     [SerializeField] private List<TextAsset> _storyQuestJsons;
-    private List<StoryQuest> storyQuests;
+    private List<StoryQuest> storyQuests = new List<StoryQuest>();
     [SerializeField] private List<TextAsset> _craftItemQuestJsons;
-    private List<CraftItemQuest> craftItemQuests;
+    private List<CraftItemQuest> craftItemQuests = new List<CraftItemQuest>();
     [SerializeField] private List<TextAsset> _craftQuestItemQuestJsons;
-    private List<CraftQuestItemQuest> craftQuestItemQuests;
+    private List<CraftQuestItemQuest> craftQuestItemQuests = new List<CraftQuestItemQuest>();
     [SerializeField] private List<TextAsset> _haveMatQuestJsons;
-    private List<HaveMaterialQuest> haveMatQuests;
+    private List<HaveMaterialQuest> haveMatQuests = new List<HaveMaterialQuest>();
     [SerializeField] private List<TextAsset> _craftItemTotalQuestJsons;
-    private List<CraftManyItemQuest> craftManyQuest;
+    private List<CraftManyItemQuest> craftManyQuest = new List<CraftManyItemQuest>();
     [SerializeField] private List<TextAsset> _repeatableQuestJsons;
 
     private List<TutorialQuest> _tutorialQuestData;
@@ -40,18 +41,12 @@ public class Quest : MonoBehaviour
 
     private void Awake()
     {
-        storyQuests = new List<StoryQuest>();
-        craftItemQuests = new List<CraftItemQuest>();
-        craftQuestItemQuests = new List<CraftQuestItemQuest>();
-        haveMatQuests = new List<HaveMaterialQuest>();
-        craftManyQuest = new List<CraftManyItemQuest>();
-
         organizeQuests();
         processQuests();
     }
     private void Start()
     {
-        organizeQuests();
+        //organizeQuests();
     }
 
     public void organizeQuests()
@@ -113,7 +108,13 @@ public class Quest : MonoBehaviour
                     if (!craftManyQuest.Contains(craftQuest))
                         craftManyQuest.Add(craftQuest);
                 }
-                if (questJson.questType == "Tutorial" || questJson.questType == "Story")
+                if (questJson.questType == "Tutorial")
+                {
+                    TutorialQuest tutorialQuest = JsonUtility.FromJson<TutorialQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(quest).Replace("Assets", "")));
+                    if (!tutorialQuests.Contains(tutorialQuest))
+                        tutorialQuests.Add(tutorialQuest);
+                }
+                if (questJson.questType == "Story")
                 {
                     StoryQuest storyQuest = JsonUtility.FromJson<StoryQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(quest).Replace("Assets", "")));
                     if (!storyQuests.Contains(storyQuest))
