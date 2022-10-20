@@ -8069,9 +8069,10 @@ MonoBehaviour:
   _questRef: {fileID: 1737104023}
   _chosenQuestJson: {fileID: 0}
   _currStageIndex: 0
-  _questSheet1: {fileID: 923706211}
-  _questSheet2: {fileID: 1156415821}
-  _questSheet3: {fileID: 2079588263}
+  _questSheetList:
+  - {fileID: 923706211}
+  - {fileID: 1156415821}
+  - {fileID: 2079588263}
   _storyQuestPopupParent: {fileID: 1307283905}
   _questStarterPrefab: {fileID: 2496011540154331948, guid: 2d1126155ae6a4246996237dfa3beb63, type: 3}
   _questName: {fileID: 656829204}
@@ -17388,6 +17389,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 908857082}
+    - target: {fileID: 6261518820023223996, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6290840026315454170, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -18012,6 +18017,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 908857082}
+    - target: {fileID: 7433707032930236220, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7485012190445823121, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_Name
       value: Game_Shop_UI

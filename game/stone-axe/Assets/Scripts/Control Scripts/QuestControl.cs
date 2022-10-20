@@ -16,9 +16,11 @@ public class QuestControl : MonoBehaviour
     [SerializeField]
     private int _currStageIndex = 0;
 
-    [SerializeField] private QuestSheet _questSheet1;
+    /*[SerializeField] private QuestSheet _questSheet1;
     [SerializeField] private QuestSheet _questSheet2;
-    [SerializeField] private QuestSheet _questSheet3;
+    [SerializeField] private QuestSheet _questSheet3; */
+
+    [SerializeField] private List<QuestSheet> _questSheetList;
 
     private QuestSheet _selectedSheet;
     [SerializeField]
@@ -68,6 +70,7 @@ public class QuestControl : MonoBehaviour
         //setupQuest1();
         //setupQuest2();
         //setupQuest3();
+        setupMarketQuests();
     }
 
     private void FixedUpdate()
@@ -513,21 +516,12 @@ public class QuestControl : MonoBehaviour
     }
     public void chooseQuestSheet(QuestSheet input)
     {
-        if (input == _questSheet1)
-        {
-            _selectedSheet = _questSheet1;
-        }
-        else if (input == _questSheet2)
-        {
-            _selectedSheet = _questSheet2;
-        }
-        else if (input == _questSheet3)
-        {
-            _selectedSheet = _questSheet3;
-        }
+        if (input != null)
+            _selectedSheet = input;
     }
 
-    public void setupQuest1()
+    /* Old Code
+     * private void setupQuest1()
     {
         if (_questSheet1 != null)
         {
@@ -545,7 +539,7 @@ public class QuestControl : MonoBehaviour
         }
         else Debug.LogWarning("Quest sheet 1 is not assigned");
     }
-    public void setupQuest2()
+    private void setupQuest2()
     {
         if (_questSheet2 != null)
         {
@@ -560,7 +554,7 @@ public class QuestControl : MonoBehaviour
         }
         else Debug.LogWarning("Quest sheet 2 is not assigned");
     }
-    public void setupQuest3()
+    private void setupQuest3()
     {
         if (_questSheet3 != null)
         {
@@ -575,6 +569,22 @@ public class QuestControl : MonoBehaviour
         }
         else Debug.LogWarning("Quest sheet 3 is not assigned");
     }
+    */
+    private void setupMarketQuests()
+    {
+        foreach(QuestSheet qSheet in _questSheetList)
+        {
+            if (qSheet != null)
+            {
+                int i = Random.Range(0, _repeatableQuestsJson.Count);
+                do { i = Random.Range(0, _repeatableQuestsJson.Count); } while (_questRef.QuestLevel(_repeatableQuestsJson[i]) > gameObject.GetComponent<GameMaster>().GetLevel);
+                qSheet.QuestJson = _repeatableQuestsJson[i];
+                qSheet.setQuestDetails();
+            }
+            else
+                Debug.LogWarning("QuestControl.setupMarketQuests(): qSheet is not assigned");
+        }
+    }
 
     public void acceptQuest()
     {
@@ -583,14 +593,15 @@ public class QuestControl : MonoBehaviour
     }
     public void rerollQuest()
     {
-        if (_selectedSheet == _questSheet1)
-            setupQuest1();
-        else if (_selectedSheet == _questSheet2)
-            setupQuest2();
-        else if (_selectedSheet == _questSheet3)
-            setupQuest3();
+        if (_selectedSheet != null)
+        {
+            int i = Random.Range(0, _repeatableQuestsJson.Count);
+            do { i = Random.Range(0, _repeatableQuestsJson.Count); } while (_questRef.QuestLevel(_repeatableQuestsJson[i]) > gameObject.GetComponent<GameMaster>().GetLevel);
+            _selectedSheet.QuestJson = _repeatableQuestsJson[i];
+            _selectedSheet.setQuestDetails();
+        }
         else
-            Debug.LogWarning("no quest sheet selected!");
+            Debug.LogWarning("QuestControl.rerollQuest(): _selectedSheet is not assigned");
     }
     public void setupText()
     {
