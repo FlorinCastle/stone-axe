@@ -67,9 +67,6 @@ public class QuestControl : MonoBehaviour
 
     private void Start()
     {
-        //setupQuest1();
-        //setupQuest2();
-        //setupQuest3();
         setupMarketQuests();
     }
 
@@ -98,7 +95,7 @@ public class QuestControl : MonoBehaviour
     private GameObject p;
     public void setupStoryQuests() // bleh
     {
-        //Debug.Log("QuestControl.setupStoryQuests() - setting up story quests");
+        Debug.Log("QuestControl.setupStoryQuests() - setting up story quests");
         _questRef.organizeQuests();
 
         /*if (_unlockedQuests.Count == 0)
@@ -114,7 +111,7 @@ public class QuestControl : MonoBehaviour
             //foreach (QuestData tutQuest in _questRef.getTutorialQuests())
             foreach (TextAsset tutQuest in _questRef.TutorialQuests)
             {
-                //Debug.Log("QuestControl.setupStoryQuests() - tutQuest is " + tutQuest.QuestName);                
+                Debug.Log("QuestControl.setupStoryQuests() - tutQuest is " + _questRef.QuestName(tutQuest));                
                 if (_questRef.QuestName(tutQuest) == _enableBuyOnComplete.QuestName && _enableBuyOnComplete.StoryQuestComplete)
                 {
                     gameObject.GetComponent<GameMaster>().buyAccessable(true);

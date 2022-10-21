@@ -27,6 +27,7 @@ public class ItemDataStorage : MonoBehaviour
 
     public SaveItemObject SaveItem()
     {
+        Debug.Log("ItemDataStorage.SaveItem(): saving " + _jsonRecipeRef.itemName);
         SaveItemObject saveObject = new SaveItemObject
         {
             itemName = _itemName,

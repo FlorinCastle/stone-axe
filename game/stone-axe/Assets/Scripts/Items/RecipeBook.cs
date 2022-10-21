@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.Purchasing;
 using UnityEngine;
 using UnityEngine.UI;
@@ -853,6 +854,22 @@ public class RecipeBook : MonoBehaviour
             if (item.ItemName == value)
                 return item;
         return null;
+    }
+    public ItemJsonData getItemJsonRecipe(string value)
+    {
+        ItemJsonData itemJsonData = new ItemJsonData();
+        foreach (TextAsset item in itemJsonRecipes)
+        {
+            string path = Application.dataPath + AssetDatabase.GetAssetPath(item).Replace("Assets", "");
+            ItemJsonData temp = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(path));
+            //Debug.Log(temp.itemName);
+            if (temp.itemName == value)
+            {
+                itemJsonData = temp;
+                break;
+            }
+        }
+        return itemJsonData;
     }
 
     public QuestItemData getQuestItemRecipe(string value)

@@ -52,7 +52,7 @@ public class GameMaster : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
         _invData = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryData>();
         _invScript = GameObject.FindGameObjectWithTag("InventoryControl").GetComponent<InventoryScript>();
         _uiControlRef = gameObject.GetComponent<UIControl>();
