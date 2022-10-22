@@ -60,6 +60,9 @@ public class GameMaster : MonoBehaviour
         questRef = GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>();
         questControl = gameObject.GetComponent<QuestControl>();
 
+        questRef.organizeQuests();
+        questRef.processQuests();
+
         loadSaveGames();
 
         if (_uiControlRef.ShopUIActive)
@@ -572,7 +575,7 @@ public class GameMaster : MonoBehaviour
             buyAvailable = buyAvailable,
             sellAvailable = sellAvailable,
             disassembleAvailable = disassembleAvailable,
-            craftAvailable = craftAvailable,
+            craftAvailable = craftAvailable,            
             playerSave = savePlayer,
             inventoryObjects = itemSaveList,
             partInvObjects = partSaveList,

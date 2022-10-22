@@ -389,8 +389,10 @@ public class QuestControl : MonoBehaviour
             if (_questRef.LoadStoryQuest(questText).isComplete == true)
                 Debug.Log("QuestControl.saveQuests(): " + _questRef.LoadStoryQuest(questText).questName + ":questText.isComplete");
 
-        foreach (QuestData unlockQuest in _unlockedQuests)
-            unlockedQuestList.Add(_questRef.saveQuest(unlockQuest));
+        /*foreach (QuestData unlockQuest in _unlockedQuests)
+            unlockedQuestList.Add(_questRef.saveQuest(unlockQuest));*/
+        foreach (TextAsset unlockQest in _unlockedQuestsJson)
+            unlockedQuestList.Add(_questRef.saveQuest(unlockQest));
 
         SaveQuestsObject questObject = new SaveQuestsObject
         {
@@ -420,6 +422,11 @@ public class QuestControl : MonoBehaviour
                     _chosenQuestJson = quest;
                 }
             setupText();
+        }
+        if (questsSave.unlockedQuests.Count == 0 && questsSave.completedQuests.Count == 0 && questsSave.currentQuest == null)
+        {
+            _unlockedQuestsJson.Add(_questRef.TutorialQuests[0]);
+
         }
         foreach (QuestObject quest in questsSave.completedQuests)
         {

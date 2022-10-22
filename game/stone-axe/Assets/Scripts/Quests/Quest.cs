@@ -41,8 +41,9 @@ public class Quest : MonoBehaviour
 
     private void Awake()
     {
-        organizeQuests();
-        processQuests();
+        //Debug.Log("Quest.Awake() organizing quests");
+        //organizeQuests();
+        //processQuests();
     }
     private void Start()
     {
@@ -51,9 +52,10 @@ public class Quest : MonoBehaviour
 
     public void organizeQuests()
     {
+        //Debug.Log("Quest.organizeQuests(): organizing quests");
         if (questsOrganized == false)
         {
-            Debug.Log("Quest.Awake() organizing quests");
+            Debug.Log("Quest.organizeQuests(): quests unorganized. organizing quests");
             foreach (TextAsset quest in _questJsons)
             {
                 BaseQuestJsonData questJson = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(quest).Replace("Assets", "")));
@@ -84,6 +86,7 @@ public class Quest : MonoBehaviour
             if (processedJsons.Contains(quest) == false)
             {
                 BaseQuestJsonData questJson = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(quest).Replace("Assets", "")));
+                //Debug.Log("Quest.processQuests(): processedJsons does not contain " + questJson.questName + ". processing now");
                 if (questJson.questType == "OCC_Item")
                 {
                     CraftItemQuest craftQuest = JsonUtility.FromJson<CraftItemQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(quest).Replace("Assets", "")));
