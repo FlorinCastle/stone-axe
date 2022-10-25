@@ -28,8 +28,8 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        if (this.gameObject.GetComponent<UIControl>().ShopUIActive == true && playerExists == false)
-            spawnPlayer();
+        //if (this.gameObject.GetComponent<UIControl>().ShopUIActive == true && playerExists == false)
+            //spawnPlayer();
     }
 
     public PlayerSave savePlayer()
@@ -68,27 +68,30 @@ public class PlayerManager : MonoBehaviour
     private Color32 _playerColor;
     public void spawnPlayer()
     {
-        _playerRef = Instantiate(_playerPrefab);
-        if (_playerHeadPrefabRef != null)
-            _playerRef.GetComponent<PlayerScript>().setupHead(_playerHeadPrefabRef);
-        else
+        if (playerExists == false)
         {
-            //Debug.LogWarning("no player head");
-            int headIndex = Random.Range(0, _playerHeads.Count);
-            _playerRef.GetComponent<PlayerScript>().setupHead(_playerHeads[headIndex]);
-            _playerHeadPrefabRef = _playerHeads[headIndex];
-        }
-        _renderers = _playerRef.gameObject.GetComponentsInChildren<Renderer>();
-        _propBlock = new MaterialPropertyBlock();
-        foreach(Renderer ren in _renderers)
-        {
-            ren.GetPropertyBlock(_propBlock);
-            _propBlock.SetColor("_Color", _playerColor);
-            ren.SetPropertyBlock(_propBlock);
-        }
+            _playerRef = Instantiate(_playerPrefab);
+            if (_playerHeadPrefabRef != null)
+                _playerRef.GetComponent<PlayerScript>().setupHead(_playerHeadPrefabRef);
+            else
+            {
+                //Debug.LogWarning("no player head");
+                int headIndex = Random.Range(0, _playerHeads.Count);
+                _playerRef.GetComponent<PlayerScript>().setupHead(_playerHeads[headIndex]);
+                _playerHeadPrefabRef = _playerHeads[headIndex];
+            }
+            _renderers = _playerRef.gameObject.GetComponentsInChildren<Renderer>();
+            _propBlock = new MaterialPropertyBlock();
+            foreach(Renderer ren in _renderers)
+            {
+                ren.GetPropertyBlock(_propBlock);
+                _propBlock.SetColor("_Color", _playerColor);
+                ren.SetPropertyBlock(_propBlock);
+            }
 
-        playerExists = true;
-        warpToCounter();
+            playerExists = true;
+            warpToCounter();
+        }        
     }
     public void setPlayerHead (string value)
     {

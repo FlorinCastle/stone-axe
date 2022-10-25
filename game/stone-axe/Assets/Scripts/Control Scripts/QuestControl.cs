@@ -13,6 +13,8 @@ public class QuestControl : MonoBehaviour
     //[SerializeField] private QuestData _chosenQuest;
     [SerializeField]
     private TextAsset _chosenQuestJson;
+    //[SerializeField]
+    private BaseQuestJsonData questJsonData;
     [SerializeField]
     private int _currStageIndex = 0;
 
@@ -90,8 +92,8 @@ public class QuestControl : MonoBehaviour
 
     public void setStar() { star = true; }
 
-    [SerializeField] private QuestData starterRef;
-    [SerializeField] private TextAsset starterJsonRef;
+    //[SerializeField] private QuestData starterRef;
+    //[SerializeField] private TextAsset starterJsonRef;
     private GameObject p;
     public void setupStoryQuests() // bleh
     {
@@ -104,7 +106,7 @@ public class QuestControl : MonoBehaviour
             _unlockedQuestsJson.Add(_questRef.TutorialQuests[0]);
         if (_chosenQuestJson == null)
         {
-            Debug.Log("QuestControl.setupStoryQuests() - _chosenQuest is null");
+            Debug.Log("QuestControl.setupStoryQuests() - _chosenQuestJson is null");
 
             gameObject.GetComponent<GameMaster>().allTabsAccessable(false);
 
@@ -136,14 +138,14 @@ public class QuestControl : MonoBehaviour
                 }
                 
 
-                if (starterRef == null)
+                if (_chosenQuestJson == null)
                 {
                     //Debug.Log("QuestControl.setupStoryQuests() - starterRef is null");
                     if (/*tutQuest.StoryQuestComplete == false &&*/ _unlockedQuestsJson.Contains(tutQuest))
                     {
                         //Debug.Log("asigning starter tutorial");
                         //starterRef = tutQuest;
-                        starterJsonRef = tutQuest;
+                        _chosenQuestJson = tutQuest;
                         break;
                     }
                     if (_questRef.LoadStoryQuest(tutQuest).unlockedQuests.Count > 0 && /*tutQuest.StoryQuestComplete == */true)
@@ -179,11 +181,11 @@ public class QuestControl : MonoBehaviour
             } */
             foreach(TextAsset storyQuest in _questRef.StoryQuests)
             {
-                if (starterJsonRef == null)
+                if (_chosenQuestJson == null)
                 {
                     if (_unlockedQuestsJson.Contains(storyQuest))
                     {
-                        starterJsonRef = storyQuest;
+                        _chosenQuestJson = storyQuest;
                         break;
                     }
                     if (_questRef.LoadStoryQuest(storyQuest).unlockedQuests.Count > 0)
@@ -199,11 +201,11 @@ public class QuestControl : MonoBehaviour
             }
             foreach (TextAsset tutQuest in _questRef.TutorialQuests)
             {
-                if (starterJsonRef == null)
+                if (_chosenQuestJson == null)
                 {
                     if (_unlockedQuestsJson.Contains(tutQuest))
                     {
-                        starterJsonRef = tutQuest;
+                        _chosenQuestJson = tutQuest;
                         break;
                     }
                     if (_questRef.LoadStoryQuest(tutQuest).unlockedQuests.Count > 0)
@@ -242,18 +244,18 @@ public class QuestControl : MonoBehaviour
     private void setupStarter()
     {
         //if ((_chosenQuest != null && _chosenQuest.StoryQuestComplete == false)|| (starterRef != null && starterRef.StoryQuestComplete == false))
-        if ((_chosenQuestJson != null && true /* verify that _chosenQuestJson is not complete */) || (starterRef != null && true /* verify starterRef is not complete*/))
+        if ((_chosenQuestJson != null && true /* verify that _chosenQuestJson is not complete */))
         {
             Debug.Log("QuestControl.setupStarter(): setting up starter");
             p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
-            if (_chosenQuestJson == null)
-                if (starterRef.StoryQuestComplete == false)
-                    p.GetComponent<StoryQuestStarter>().QuestRef = starterRef;
-            else
+            //if (_chosenQuestJson == null)
+            //    if (_chosenQuestJson.StoryQuestComplete == false)
+            //        p.GetComponent<StoryQuestStarter>().QuestRef = _chosenQuestJson;
+            /*else
             {
-                if (true /* verify _chosenQuest is not complete*/) //_chosenQuest.StoryQuestComplete == false)
-                    p.GetComponent<StoryQuestStarter>().QuestJson = _chosenQuestJson;
-            }
+                if (true /* verify _chosenQuest is not complete) //_chosenQuest.StoryQuestComplete == false)
+                    p.GetComponent<StoryQuestStarter>().QuestJson = _chosenQuestJson; 
+            } */
 
             //Debug.Log("QuestControl.setupStarter(): p.QuestRef = " + p.GetComponent<StoryQuestStarter>().QuestRef.QuestName);
             _questStarterGOs.Add(p);
@@ -1003,6 +1005,13 @@ public class QuestControl : MonoBehaviour
         currentItemCount = 0;
         rerollQuest();
         _selectedSheet = null;
+    }
+
+    public bool QuestChosen()
+    {
+        if (_chosenQuestJson != null)
+            return true;
+        return false;
     }
 
     // coroutines

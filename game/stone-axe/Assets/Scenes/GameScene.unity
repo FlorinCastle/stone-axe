@@ -7939,8 +7939,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e23a30c4fbee9844a24b491ff09e7fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _invScriptRef: {fileID: 0}
-  _uIControlRef: {fileID: 0}
+  _invScriptRef: {fileID: 1181822452}
+  _questControl: {fileID: 1734993360}
+  _uIControlRef: {fileID: 1734993353}
   _selectedObject: {fileID: 0}
   disassembleSkill: {fileID: 1310622674}
   reducedMatSkill: {fileID: 2027709418}
@@ -8088,8 +8089,6 @@ MonoBehaviour:
   _enableDisassembleOnComplete: {fileID: 11400000, guid: 1f0c89b476d511e429ef8fa963c443ec, type: 2}
   _enableCraftOnComplete: {fileID: 11400000, guid: eb0c1a0207564e24b997af98e0ac5496, type: 2}
   _enableAdventurersOnComplete: {fileID: 11400000, guid: 2240dccd919c2304dacfd315d1845e62, type: 2}
-  starterRef: {fileID: 0}
-  starterJsonRef: {fileID: 0}
 --- !u!114 &1734993361
 MonoBehaviour:
   m_ObjectHideFlags: 0
