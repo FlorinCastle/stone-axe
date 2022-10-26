@@ -7940,6 +7940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _invScriptRef: {fileID: 1181822452}
+  _questRef: {fileID: 1737104023}
   _questControl: {fileID: 1734993360}
   _uIControlRef: {fileID: 1734993353}
   _selectedObject: {fileID: 0}

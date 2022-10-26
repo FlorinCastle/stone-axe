@@ -8,7 +8,7 @@ public class DisassembleItemControl : MonoBehaviour
 {
     [SerializeField] private InventoryScript _invScriptRef;
     private InventoryData _invDataRef;
-    private Quest _questRef;
+    [SerializeField] private Quest _questRef;
     [SerializeField] private QuestControl _questControl;
     [SerializeField] private UIControl _uIControlRef;
     [SerializeField] private GameObject _selectedObject;

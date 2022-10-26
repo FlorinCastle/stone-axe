@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class StoryQuestStarter : MonoBehaviour
 {
     [Header("Data")]
-    //[SerializeField]
+    [SerializeField]
     private QuestControl _questControlRef;
     [SerializeField] private QuestData _questRef;
     [SerializeField] private BaseQuestJsonData _questJsonData;
@@ -23,9 +23,14 @@ public class StoryQuestStarter : MonoBehaviour
         _questControlRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<QuestControl>();
     }
 
+    public void setupQuestData()
+    {
+        _questJsonData = GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>().LoadQuestData(_questTextAsset);
+    }
+
     public void startQuest()
     {
-        if (_questControlRef.gameObject.GetComponent<GameMaster>().GetLevel >= _questRef.RequiredPlayerLevel &&
+        if (_questControlRef.gameObject.GetComponent<GameMaster>().GetLevel >= _questJsonData.requiredPlayerLevel &&
             _questControlRef.CurrentQuest == null)
         {
             //_questControlRef.startStoryQuest(_questRef);
