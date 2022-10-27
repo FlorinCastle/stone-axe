@@ -49,22 +49,23 @@ public class HaveCurrencyStage : QuestStageJsonData
 }
 public class ForceEventStage : QuestStageJsonData
 {
-
+    public EventStage questEvent;
 }
 public class HaveUIOpenStage : QuestStageJsonData
 {
-    //public string forcedUI;
     public string reqUI;
 }
+
 
 public class EventStage
 {
     public string questEvent;
 }
-public class SummonAdventureryEvent : EventStage
+public class SummonAdventurerEvent : EventStage
 {
 
 }
+
 public class GetItemEvent : EventStage
 {
     public string itemName;

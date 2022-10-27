@@ -2350,7 +2350,8 @@ MonoBehaviour:
   partSOPath: 
   items: []
   parts: []
-  quests: []
+  quests:
+  - {fileID: 11400000, guid: 29b15c4c3e08a9641a2275deb3ef5764, type: 2}
   itemsJ: []
 --- !u!4 &574211383
 Transform:
@@ -8090,6 +8091,7 @@ MonoBehaviour:
   _enableDisassembleOnComplete: {fileID: 11400000, guid: 1f0c89b476d511e429ef8fa963c443ec, type: 2}
   _enableCraftOnComplete: {fileID: 11400000, guid: eb0c1a0207564e24b997af98e0ac5496, type: 2}
   _enableAdventurersOnComplete: {fileID: 11400000, guid: 2240dccd919c2304dacfd315d1845e62, type: 2}
+  starterJsonRef: {fileID: 0}
 --- !u!114 &1734993361
 MonoBehaviour:
   m_ObjectHideFlags: 0
