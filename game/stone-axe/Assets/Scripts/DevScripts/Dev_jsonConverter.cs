@@ -127,12 +127,18 @@ public class Dev_jsonConverter : MonoBehaviour
         }*/
 
         List<QuestStageJsonData> questStagesList = new List<QuestStageJsonData>();
-        foreach (QuestStage stage in quest.QuestStages)
+        if (quest.QuestStages.Count >= 1)
         {
-            questStages.Add(stage.name);
-            QuestStageJsonData questStageJsonData = convertQuestStageToJson(stage);
-            Debug.Log(questStageJsonData);
-            questStagesList.Add(questStageJsonData);
+            foreach (QuestStage stage in quest.QuestStages)
+            {
+                //questStages.Add(stage.name);
+                var questStageJsonData = convertQuestStageToJson(stage);
+                //string qStageJson = JsonUtility.ToJson(questStageJsonData, false);
+                //questStagesList.Add(questStageJsonData);
+                questStages.Add(questStageJsonData);
+                //Debug.Log(questStageJsonData);
+                //Debug.Log(qStageJson);
+            }
         }
 
         string json = "";
@@ -266,16 +272,18 @@ public class Dev_jsonConverter : MonoBehaviour
         }
         return json;
     }
-    private QuestStageJsonData convertQuestStageToJson(QuestStage stage)
+    /*private QuestStageJsonData convertQuestStageToJson(QuestStage stage)
     {
         List<string> mats = new List<string>();
         if (stage.Part1Mat != null) mats.Add(stage.Part1Mat.Material);
         if (stage.Part2Mat != null) mats.Add(stage.Part2Mat.Material);
         if (stage.Part3Mat != null) mats.Add(stage.Part3Mat.Material);
 
+        Debug.Log(stage.name + ": "+ stage.StageType);
+
         if (stage.StageType == "Not_Set")
         {
-            QuestStageJsonData questStageJsonData = new QuestStageJsonData()
+            var questStageJsonData = new QuestStageJsonData()
             {
                 questStageType = stage.StageType
             };
@@ -283,12 +291,15 @@ public class Dev_jsonConverter : MonoBehaviour
         }
         else if (stage.StageType == "Dialogue")
         {
-            DialogeStage questStageJsonData = new DialogeStage()
+            var questStageJsonData = new DialogeStage()
             {
                 questStageType = stage.StageType,
                 speaker = stage.DialogueSpeaker,
                 dialogeLine = stage.DialogueLine,
             };
+
+            Debug.Log(JsonUtility.ToJson(questStageJsonData));
+
             return questStageJsonData;
 
         }
@@ -424,7 +435,171 @@ public class Dev_jsonConverter : MonoBehaviour
 
         //Debug.LogError("Dev_jsonConverter.convertQuestStageToJson(QuestStage stage): KAT! FINISH WORKING ON THIS");
         return null;
+    } */
+    private string convertQuestStageToJson(QuestStage stage)
+    {
+        List<string> mats = new List<string>();
+        if (stage.Part1Mat != null) mats.Add(stage.Part1Mat.Material);
+        if (stage.Part2Mat != null) mats.Add(stage.Part2Mat.Material);
+        if (stage.Part3Mat != null) mats.Add(stage.Part3Mat.Material);
+
+        Debug.Log(stage.name + ": " + stage.StageType);
+
+        if (stage.StageType == "Not_Set")
+        {
+            var questStageJsonData = new QuestStageJsonData()
+            {
+                questStageType = stage.StageType
+            };
+            return JsonUtility.ToJson(questStageJsonData, true);
+        }
+        else if (stage.StageType == "Dialogue")
+        {
+            var questStageJsonData = new DialogeStage()
+            {
+                questStageType = stage.StageType,
+                speaker = stage.DialogueSpeaker,
+                dialogeLine = stage.DialogueLine,
+            };
+
+            Debug.Log(JsonUtility.ToJson(questStageJsonData, true));
+
+            return JsonUtility.ToJson(questStageJsonData, true);
+
+        }
+        else if (stage.StageType == "Craft_Item")
+        {
+            CraftItemStage questStageJsonData = new CraftItemStage()
+            {
+                questStageType = stage.StageType,
+                itemName = stage.ItemToGet.ItemName
+            };
+            return JsonUtility.ToJson(questStageJsonData, true);
+        }
+        else if (stage.StageType == "Sell_Item")
+        {
+            SellItemStage questStageJsonData = new SellItemStage()
+            {
+                questStageType = stage.StageType
+            };
+            return JsonUtility.ToJson(questStageJsonData, true);
+        }
+        else if (stage.StageType == "Buy_Item")
+        {
+            BuyItemStage questStageJsonData = new BuyItemStage()
+            {
+                questStageType = stage.StageType
+            };
+            return JsonUtility.ToJson(questStageJsonData, true);
+        }
+        else if (stage.StageType == "Disassemble_Item")
+        {
+            DisassembleItemStage questStageJsonData = new DisassembleItemStage()
+            {
+                questStageType = stage.StageType
+            };
+            return JsonUtility.ToJson(questStageJsonData, true);
+        }
+        else if (stage.StageType == "Have_Currency")
+        {
+            HaveCurrencyStage questStageJsonData = new HaveCurrencyStage()
+            {
+                questStageType = stage.StageType,
+                currencyvalue = stage.CurrencyValue
+            };
+            return JsonUtility.ToJson(questStageJsonData, true);
+        }
+        else if (stage.StageType == "Force_Event")
+        {
+            ForceEventStage questStageJsonData = new ForceEventStage()
+            {
+                questStageType = stage.StageType
+            };
+
+            if (stage.QuestEvent == "Summon_Adventurer")
+            {
+                SummonAdventurerEvent stageEvent = new SummonAdventurerEvent() { };
+                questStageJsonData.questEvent = stageEvent;
+            }
+            else if (stage.QuestEvent == "Get_Item")
+            {
+                GetItemEvent stageEvent = new GetItemEvent()
+                {
+                    itemName = stage.ItemToGet.ItemName,
+                    partMats = mats,
+                    itemCount = stage.CountToGet
+                };
+                questStageJsonData.questEvent = stageEvent;
+            }
+            else if (stage.QuestEvent == "Remove_Quest_Item")
+            {
+                RemoveQuestItemsEvent stageEvent = new RemoveQuestItemsEvent() { };
+                questStageJsonData.questEvent = stageEvent;
+            }
+            else if (stage.QuestEvent == "Get_Currency")
+            {
+                GetCurrencyEvent stageEvent = new GetCurrencyEvent()
+                {
+                    currencyvalue = stage.CurrencyValue
+                };
+                questStageJsonData.questEvent = stageEvent;
+            }
+            else if (stage.QuestEvent == "Remove_Currency")
+            {
+                RemoveCurrencyEvent stageEvent = new RemoveCurrencyEvent()
+                {
+                    currencyvalue = stage.CurrencyValue
+                };
+                questStageJsonData.questEvent = stageEvent;
+            }
+            else if (stage.QuestEvent == "Summon_NPC")
+            {
+                SummonNPCEvent stageEvent = new SummonNPCEvent()
+                {
+                    NPCRef = stage.NPCRef.name,
+                };
+                questStageJsonData.questEvent = stageEvent;
+            }
+            else if (stage.QuestEvent == "Dismiss_Quest_NPC")
+            {
+                GetItemEvent stageEvent = new GetItemEvent() { };
+                questStageJsonData.questEvent = stageEvent;
+            }
+            else if (stage.QuestEvent == "Force_For_Sale")
+            {
+                ForceForSaleEvent stageEvent = new ForceForSaleEvent()
+                {
+                    itemName = stage.ItemToGet.ItemName,
+                    partMats = mats
+                };
+                questStageJsonData.questEvent = stageEvent;
+            }
+            else if (stage.QuestEvent == "Force_Open_UI")
+            {
+                ForceOpenUIEvent stageEvent = new ForceOpenUIEvent()
+                {
+                    forcedUI = stage.ForcedUI
+                };
+                questStageJsonData.questEvent = stageEvent;
+            }
+
+            return JsonUtility.ToJson(questStageJsonData, true);
+        }
+        else if (stage.StageType == "Have_UI_Open")
+        {
+            HaveUIOpenStage questStageJsonData = new HaveUIOpenStage()
+            {
+                questStageType = stage.StageType,
+                reqUI = stage.RequiredUI
+            };
+            return JsonUtility.ToJson(questStageJsonData, true);
+        }
+        else Debug.LogWarning("Dev_jsonConverter.convertQuestStageToJson(QuestStage stage): variable 'stage' does not contain a valid StageType!");
+
+        return null;
+
     }
+
     /* old code from convertQuestStageToJson()
      * QuestStageJsonData stageData = new QuestStageJsonData
     {
