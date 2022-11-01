@@ -3,7 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class QuestStageJsonData 
+public class QuestStageJsonData
+{
+    public int questStageIndex;
+    public string questStageType;
+
+    public string speaker;
+    public string dialogeLine;
+
+    public ItemJson reqItem; // can be null (should usually be null)
+}
+
+// for use in Quests ONLY
+public class ItemJson
+{
+    public string itemName;
+    public List<PartJson> partData;
+    public int reqCount;
+}
+public class PartJson
+{
+    public string partName;
+    public string partMat;
+}
+
+
+/*public class QuestStageJsonData 
 {
     public string questStageType;
     /*public string questEvent;
@@ -20,7 +45,7 @@ public class QuestStageJsonData
 
     public int currencyvalue;
 
-    public string NPCRef; */
+    public string NPCRef; 
 }
 [System.Serializable]
 public class DialogeStage : QuestStageJsonData
@@ -118,4 +143,4 @@ public class DimissQuestNPCEvent : EventStage
 public class ForceOpenUIEvent : EventStage
 {
     public string forcedUI;
-}
+} */

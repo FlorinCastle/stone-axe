@@ -1017,7 +1017,7 @@ public class InventoryScript : MonoBehaviour
 
         return itemDataStorageTemp;
     }
-    public GameObject convertItemData(ItemJsonData item)
+    public GameObject convertItemData(ItemJsonDataCode item)
     {
         // get variables set up
         itemDataStorageTemp = Instantiate(_itemDataStoragePrefab);
@@ -1309,7 +1309,7 @@ public class InventoryScript : MonoBehaviour
         return -1;
         */
     }
-    public int InsertItem(ItemJsonData item)
+    public int InsertItem(ItemJsonDataCode item)
     {
         GameObject temp = convertItemData(item);
         return _inventoryData.insertItemData(temp);
@@ -1995,25 +1995,25 @@ public class InventoryScript : MonoBehaviour
         return false;
     }*/
 
-    private int calculateTotalValue(ItemJsonData item)
+    private int calculateTotalValue(ItemJsonDataCode item)
     {
         return item.baseCost + calculatePartValue(item.parts[0]) + calculatePartValue(item.parts[1]) + calculatePartValue(item.parts[2]);
     }
-    private int calculateTotalStr(ItemJsonData item)
+    private int calculateTotalStr(ItemJsonDataCode item)
     {
         return item.baseStrength +
             calculatePartStr(item.parts[0]) +
             calculatePartStr(item.parts[1]) +
             calculatePartStr(item.parts[2]);
     }
-    private int calculateTotalDex(ItemJsonData item)
+    private int calculateTotalDex(ItemJsonDataCode item)
     {
         return item.baseDextarity +
             calculatePartDex(item.parts[0]) +
             calculatePartDex(item.parts[1]) +
             calculatePartDex(item.parts[2]);
     }
-    private int calculateTotalInt(ItemJsonData item)
+    private int calculateTotalInt(ItemJsonDataCode item)
     {
         return item.baseIntelligence +
             calculatePartInt(item.parts[0]) +

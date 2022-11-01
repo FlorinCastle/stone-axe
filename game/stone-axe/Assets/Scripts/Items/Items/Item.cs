@@ -11,7 +11,7 @@ public class Item : MonoBehaviour
     [SerializeField] List<ItemData> _itemDataList;
     int ranItem;
     ItemData _generatedItem;
-    ItemJsonData _generatedItemJsonData;
+    ItemJsonDataCode _generatedItemJsonData;
 
     [SerializeField] List<TextAsset> itemJsons;
 
@@ -33,10 +33,10 @@ public class Item : MonoBehaviour
 
         return _generatedItem;
     }
-    public ItemJsonData chooseItemJson()
+    public ItemJsonDataCode chooseItemJson()
     {
         ranItem = Random.Range(0, itemJsons.Count);
-        _generatedItemJsonData = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsons[ranItem]).Replace("Assets","")));
+        _generatedItemJsonData = JsonUtility.FromJson<ItemJsonDataCode>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsons[ranItem]).Replace("Assets","")));
 
         return _generatedItemJsonData;
     }

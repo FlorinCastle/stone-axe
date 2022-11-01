@@ -47,7 +47,7 @@ public class GenerateItem : MonoBehaviour
     }
 
     [SerializeField] private ItemData _generatedItem;
-    [SerializeField] private ItemJsonData _generatedItemJson;
+    [SerializeField] private ItemJsonDataCode _generatedItemJson;
     [SerializeField] private EnchantData _generatedEnchant;
     // setup for level restrictions yet
     public void GenerateRandomItem()
@@ -172,7 +172,7 @@ public class GenerateItem : MonoBehaviour
             Debug.LogWarning("GenerateItem.GeneratePresetItem(): this is a sign to rewrite the Quest System.");//_inventoryRef.InsertItem(_generatedItem);
         //_generatedItem = null;
     }
-    public void GeneratePresetItem(ItemJsonData item, MaterialData part1Mat, MaterialData part2Mat, MaterialData part3Mat, bool forceInsert)
+    public void GeneratePresetItem(ItemJsonDataCode item, MaterialData part1Mat, MaterialData part2Mat, MaterialData part3Mat, bool forceInsert)
     {
         _generatedItemJson = item;
         _generatedItemJson.parts.Add(partScript.getPartJsonData(item.requiredParts[0]));
@@ -207,7 +207,7 @@ public class GenerateItem : MonoBehaviour
         else if (forceInsert == true)
             _inventoryRef.InsertItem(_generatedItemJson);
     }
-    public void GeneratePresetItem(ItemJsonData item, List<MaterialData> mats, bool forceInsert)
+    public void GeneratePresetItem(ItemJsonDataCode item, List<MaterialData> mats, bool forceInsert)
     {
         if (item.requiredParts.Count == mats.Count)
         {

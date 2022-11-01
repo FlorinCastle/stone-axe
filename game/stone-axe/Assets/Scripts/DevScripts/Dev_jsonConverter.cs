@@ -43,7 +43,7 @@ public class Dev_jsonConverter : MonoBehaviour
         ItemJsonData item = JsonUtility.FromJson<ItemJsonData>(itemString);        
         Debug.Log(item.itemName); */
         //convertManyItemToJson();
-        convertManyQuestToJson();
+        //convertManyQuestToJson();
 
         if (_itemToConvert != null) convertItemToJson(_itemToConvert);
         if (_partToConvert != null) convertPartToJson(_partToConvert);
@@ -132,10 +132,14 @@ public class Dev_jsonConverter : MonoBehaviour
             foreach (QuestStage stage in quest.QuestStages)
             {
                 //questStages.Add(stage.name);
-                var questStageJsonData = convertQuestStageToJson(stage);
+
+                //var questStageJsonData = convertQuestStageToJson(stage); // important
+
                 //string qStageJson = JsonUtility.ToJson(questStageJsonData, false);
                 //questStagesList.Add(questStageJsonData);
-                questStages.Add(questStageJsonData);
+
+                //questStages.Add(questStageJsonData); // important
+
                 //Debug.Log(questStageJsonData);
                 //Debug.Log(qStageJson);
             }
@@ -436,6 +440,7 @@ public class Dev_jsonConverter : MonoBehaviour
         //Debug.LogError("Dev_jsonConverter.convertQuestStageToJson(QuestStage stage): KAT! FINISH WORKING ON THIS");
         return null;
     } */
+    /* TODO Fix this
     private string convertQuestStageToJson(QuestStage stage)
     {
         List<string> mats = new List<string>();
@@ -598,7 +603,7 @@ public class Dev_jsonConverter : MonoBehaviour
 
         return null;
 
-    }
+    } */
 
     /* old code from convertQuestStageToJson()
      * QuestStageJsonData stageData = new QuestStageJsonData
