@@ -741,7 +741,7 @@ public class QuestControl : MonoBehaviour
         _chosenQuestJson = questInput;
         _currStageIndex = 0;
         setupText();
-        this.gameObject.GetComponent<DialogueControl>().CurrentQuestJson = questInput;
+        gameObject.GetComponent<DialogueControl>().CurrentQuestJson = questInput;
 
         Debug.LogWarning("TODO: re-add setting the quest stage");
         /*if (questInput.QuestStages[_currStageIndex].StageType == "Dialogue")

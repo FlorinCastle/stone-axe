@@ -20,6 +20,7 @@ public class ItemJsonData
     public EnchantData ench;
     // BETWEEN THESE LINES IS ONLY FOR USE IN CODE! DO NOT PUT DATA INTO THIS FOR SAVING */
 }
+// FOR USE IN CODE ONLY
 public class ItemJsonDataCode : ItemJsonData
 {
     public List<PartJsonData> parts;
