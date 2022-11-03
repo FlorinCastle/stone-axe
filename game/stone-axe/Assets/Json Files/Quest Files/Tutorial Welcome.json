@@ -6,25 +6,184 @@
     "questType": "Tutorial",
     "currencyReward": 0,
     "EXPReward": 0,
-    "questStages": [
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"???\",\n    \"dialogeLine\": \"Hey?\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"???\",\n    \"dialogeLine\": \"Are you okay?\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"???\",\n    \"dialogeLine\": \"Oh! There we go!\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"???\",\n    \"dialogeLine\": \"Good morning! Or afternoon.\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"???\",\n    \"dialogeLine\": \"It's a bit tough to keep track of time with the boarded up windows, hehe!\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"???\",\n    \"dialogeLine\": \"Oh! I should introduce myself!\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"Faerie\",\n    \"dialogeLine\": \"I'm Faerie!\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"Faerie\",\n    \"dialogeLine\": \"Are you Arti's kid?\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"You\",\n    \"dialogeLine\": \"Uh...no?\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"Faerie\",\n    \"dialogeLine\": \"Oh! Are you Facter's kid then?\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"You\",\n    \"dialogeLine\": \"No? I'm (playername)\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"Faerie\",\n    \"dialogeLine\": \"Huh? Then how did you get the key to get in?\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"You\",\n    \"dialogeLine\": \"I bought the place from the Guild. They gave me the key.\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"Faerie\",\n    \"dialogeLine\": \"The...guild? I didn't think there was a guild in this village?\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"You\",\n    \"dialogeLine\": \"Village? This is the Capital City.\"\n}",
-        "{\n    \"questStageType\": \"Dialogue\",\n    \"speaker\": \"Faerie\",\n    \"dialogeLine\": \"Huh?! Capital City?! How long was I dorment for?!\"\n}"
+    "questStagesJson": [
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "Hey?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "Are you okay?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "Oh! There we go!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "Good morning! Or afternoon.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "It's a bit tough to keep track of time with the boarded up windows, hehe!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "Oh! I should introduce myself!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "I'm Faerie!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Are you Arti's kid?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Uh...no?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Oh! Are you Facter's kid then?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "No? I'm (playername)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Huh? Then how did you get the key to get in?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "I bought the place from the Guild. They gave me the key.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "The...guild? I didn't think there was a guild in this village?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Village? This is the Capital City.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Huh?! Capital City?! How long was I dorment for?!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            }
+        }
     ],
-    "questStagesJson": [],
     "nextQuest": "Tutorial Buying",
     "unlockedQuests": [],
     "unlockFeatures": []

@@ -138,7 +138,8 @@ public class Dev_jsonConverter : MonoBehaviour
                 //string qStageJson = JsonUtility.ToJson(questStageJsonData, false);
                 //questStagesList.Add(questStageJsonData);
 
-                questStages.Add(questStageJsonData); // important
+                //questStages.Add(JsonUtility.ToJson(questStageJsonData, true)); // important
+                questStagesList.Add(questStageJsonData);
 
                 //Debug.Log(questStageJsonData);
                 //Debug.Log(qStageJson);
@@ -223,7 +224,7 @@ public class Dev_jsonConverter : MonoBehaviour
                 questType = quest.QuestType,
                 currencyReward = quest.RewardedCurrency,
                 EXPReward = quest.RewardedEXP,
-                questStages = questStages,
+                //questStages = questStages,
                 questStagesJson = questStagesList,
                 nextQuest = nextQuest,
                 unlockFeatures = new List<string>(),
@@ -244,8 +245,8 @@ public class Dev_jsonConverter : MonoBehaviour
                 questType = quest.QuestType,
                 currencyReward = quest.RewardedCurrency,
                 EXPReward = quest.RewardedEXP,
-                questStages = questStages,
-                //questStagesJson = questStagesJson,
+                //questStages = questStages,
+                questStagesJson = questStagesList,
                 nextQuest = nextQuest,
             };
             json = JsonUtility.ToJson(questData, true);
@@ -441,7 +442,7 @@ public class Dev_jsonConverter : MonoBehaviour
         return null;
     } */
     //TODO Fix this
-    private string convertQuestStageToJson(QuestStage stage)
+    private QuestStageJsonData convertQuestStageToJson(QuestStage stage)
     {
         List<string> mats = new List<string>();
         if (stage.Part1Mat != null) mats.Add(stage.Part1Mat.Material);
@@ -473,7 +474,7 @@ public class Dev_jsonConverter : MonoBehaviour
 
             Debug.Log(JsonUtility.ToJson(questStageJsonData, true));
 
-            return JsonUtility.ToJson(questStageJsonData, true);
+            return questStageJsonData;
 
         }
         /*else if (stage.StageType == "Craft_Item")

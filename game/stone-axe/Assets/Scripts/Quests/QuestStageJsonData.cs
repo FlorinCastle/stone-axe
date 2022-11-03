@@ -12,8 +12,10 @@ public class QuestStageJsonData
     public string dialogeLine;
 
     public ItemJson reqItem; // can be null (should usually be null)
+    public EventJson eventData;
 }
 
+[System.Serializable]
 // for use in Quests ONLY
 public class ItemJson
 {
@@ -21,10 +23,16 @@ public class ItemJson
     public List<PartJson> partData;
     public int reqCount;
 }
+[System.Serializable]
 public class PartJson
 {
     public string partName;
     public string partMat;
+}
+[System.Serializable]
+public class EventJson
+{
+    public string eventName;
 }
 
 

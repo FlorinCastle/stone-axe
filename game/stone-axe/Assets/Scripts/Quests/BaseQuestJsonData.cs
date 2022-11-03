@@ -43,7 +43,7 @@ public class CraftManyItemQuest : BaseQuestJsonData
 }
 public class StoryQuest : BaseQuestJsonData
 {
-    public List<string> questStages;
+    //public List<string> questStages;
     public List<QuestStageJsonData> questStagesJson;
     public string nextQuest;
     public List<string> unlockedQuests;
@@ -52,7 +52,7 @@ public class StoryQuest : BaseQuestJsonData
 }
 public class TutorialQuest : BaseQuestJsonData 
 {
-    public List<string> questStages;
+    //public List<string> questStages;
     public List<QuestStageJsonData> questStagesJson;
     public string nextQuest;
     public List<string> unlockedQuests;
