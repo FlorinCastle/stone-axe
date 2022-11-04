@@ -8172,9 +8172,9 @@ MonoBehaviour:
   _dialogueUI: {fileID: 7485012191131071719}
   _nameText: {fileID: 1747409719}
   _dialogueText: {fileID: 714859521}
-  _currentStoryQuest: {fileID: 0}
   _currentStoryQuestJson: {fileID: 0}
   index: 0
+  questRef: {fileID: 1737104023}
 --- !u!114 &1734993364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17184,6 +17184,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 908857082}
     - target: {fileID: 5227116683490497756, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298619858976374418, guid: 25a8f259d1ddcc647a396fbc3d4dbb54, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

@@ -10,9 +10,11 @@ public class DialogueControl : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TextMeshProUGUI _dialogueText;
 
-    [SerializeField, HideInInspector] private QuestData _currentStoryQuest;
+    //[SerializeField, HideInInspector] private QuestData _currentStoryQuest;
     [SerializeField, HideInInspector] private TextAsset _currentStoryQuestJson;
     [SerializeField, HideInInspector] private int index = 0;
+
+    [SerializeField] private Quest questRef;
 
     public void startDialogue()
     {
@@ -30,25 +32,25 @@ public class DialogueControl : MonoBehaviour
 
     public void setupDialogueLine()
     {
-        index = this.gameObject.GetComponent<QuestControl>().CurrentStageIndex;
-        if (index < _currentStoryQuest.QuestStages.Count)
+        index = gameObject.GetComponent<QuestControl>().CurrentStageIndex;
+        if (index < questRef.LoadStoryQuest(_currentStoryQuestJson).questStagesJson.Count)
         {
             //this.gameObject.GetComponent<QuestControl>().CurrentStageIndex = index; // p sure issue is this line
             //index = this.gameObject.GetComponent<QuestControl>().CurrentStageIndex;
 
-            QuestStage currStage = _currentStoryQuest.QuestStages[index];
+            QuestStageJsonData currStage = questRef.LoadStoryQuest(_currentStoryQuestJson).questStagesJson[index]; //_currentStoryQuest.QuestStages[index];
             //Debug.LogWarning("setupDialogueLine - " + _currentStoryQuest.QuestName + " " + index);
-            if (currStage.StageType == "Dialogue")
+            if (currStage.questStageType == "Dialogue")
             {
                 _dialogueUI.SetActive(true);
-                _nameText.text = currStage.DialogueSpeaker;
+                _nameText.text = currStage.speaker;
 
-                string line = currStage.DialogueLine;
+                string line = currStage.dialogeLine;
                 string temp1 = line.Replace("(playername)", gameObject.GetComponent<GameMaster>().PlayerName);
                 string temp2 = temp1.Replace("(shopname)", gameObject.GetComponent<GameMaster>().ShopName);
                 _dialogueText.text = temp2;
             }
-            else if (currStage.StageType == "Buy_Item" || currStage.StageType == "Disassemble_Item" || currStage.StageType == "Craft_Item" || currStage.StageType == "Sell_Item" || currStage.StageType == "Force_Event" || currStage.StageType == "Have_UI_Open")
+            else if (currStage.questStageType == "Buy_Item" || currStage.questStageType == "Disassemble_Item" || currStage.questStageType == "Craft_Item" || currStage.questStageType == "Sell_Item" || currStage.questStageType == "Force_Event" || currStage.questStageType == "Have_UI_Open")
             {
                 _dialogueUI.SetActive(false);
                 //gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuest, currStage);
@@ -64,7 +66,7 @@ public class DialogueControl : MonoBehaviour
     }
     public void dialogeQuestEnd()
     {
-        Debug.Log("No more stages! " + _currentStoryQuest.QuestName);
+        Debug.Log("No more stages! " + questRef.LoadStoryQuest(_currentStoryQuestJson).questName);
         //if (_currentStoryQuest.NextQuest == null)
         _dialogueUI.SetActive(false);
         //gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuest, true);
@@ -78,6 +80,6 @@ public class DialogueControl : MonoBehaviour
     */
 
     public int CurrentStageIndex { get => index; set => index = value; }
-    public QuestData CurrentQuest { set => _currentStoryQuest = value; }
+    //public QuestData CurrentQuest { set => _currentStoryQuest = value; }
     public TextAsset CurrentQuestJson { set => _currentStoryQuestJson = value; }
 }
