@@ -130,6 +130,27 @@ public class Quest : MonoBehaviour
 
     }
 
+    public void updateProcessedQuest(TextAsset quest, bool isComplete)
+    {
+        BaseQuestJsonData questJsonData = LoadQuestData(quest);
+        if (questJsonData.questType == "Tutorial")
+        {
+            foreach (TutorialQuest tutorialQuest in tutorialQuests)
+                if (tutorialQuest.questName.Equals(questJsonData.questName)) // TODO: replace this with unique quest IDs
+                {
+                    tutorialQuest.isComplete = isComplete;
+                }
+        }
+        else if (questJsonData.questType == "Story")
+        {
+            foreach (StoryQuest storyQuest in storyQuests)
+                if (storyQuest.questName.Equals(questJsonData.questName)) // TODO: replace this with unique quest IDs
+                {
+                    storyQuest.isComplete = isComplete;
+                }
+        }
+    }
+
     // TODO
     public QuestObject saveQuest(QuestData currentQuest)
     {
@@ -252,6 +273,11 @@ public class Quest : MonoBehaviour
     public StoryQuest LoadStoryQuest(TextAsset questAsset)
     {
         StoryQuest quest = JsonUtility.FromJson<StoryQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+        return quest;
+    }
+    public TutorialQuest LoadTutorialQuest(TextAsset questAsset)
+    {
+        TutorialQuest quest = JsonUtility.FromJson<TutorialQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
         return quest;
     }
 

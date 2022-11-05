@@ -58,4 +58,6 @@ public class TutorialQuest : BaseQuestJsonData
     public List<string> unlockedQuests;
 
     public List<string> unlockFeatures;
+
+    public bool isComplete;
 }

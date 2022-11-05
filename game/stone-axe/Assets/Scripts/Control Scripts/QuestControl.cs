@@ -758,18 +758,18 @@ public class QuestControl : MonoBehaviour
     public void nextStage()
     {
         _currStageIndex++;
-        Debug.LogWarning("TODO fix this");
-        if (_currStageIndex < 3) //CurrentQuest.QuestStages.Count)
+        //Debug.LogWarning("TODO fix this");
+        if (_currStageIndex < _questRef.LoadStoryQuest(_chosenQuestJson).questStagesJson.Count) //CurrentQuest.QuestStages.Count)
         {
             gameObject.GetComponent<DialogueControl>().setupDialogueLine();
-            Debug.LogWarning("TODO: re-add updating quest progress");
+            //Debug.LogWarning("TODO: re-add updating quest progress");
             //updateQuestProgress(_chosenQuest, _chosenQuest.QuestStages[_currStageIndex]);
         }
-        else if (_currStageIndex >= 1)//CurrentQuest.QuestStages.Count)
+        else if (_currStageIndex >= _questRef.LoadStoryQuest(_chosenQuestJson).questStagesJson.Count)//CurrentQuest.QuestStages.Count)
         {
             gameObject.GetComponent<DialogueControl>().dialogeQuestEnd();
-            Debug.LogWarning("TODO: re-add updating quest progress");
-            //updateQuestProgress(_chosenQuest, true);
+            //Debug.LogWarning("TODO: re-add updating quest progress");
+            updateQuestProgress(_chosenQuestJson, true);
         }
     }
 
@@ -856,7 +856,7 @@ public class QuestControl : MonoBehaviour
     }
 
     // overload 4 (story & tutorial quest)
-    public void updateQuestProgress(QuestData quest, bool isComplete)
+    /*public void updateQuestProgress(QuestData quest, bool isComplete)
     {
         //Debug.Log("updating quest progress");
         if (quest.QuestType == "Tutorial")
@@ -890,6 +890,26 @@ public class QuestControl : MonoBehaviour
         }
         //Debug.Log("QuestControl().updateQuestProgress(quest, isComplete) quest: " + quest.QuestName + " setting up story quests"); 
         setupStoryQuests();
+    }*/
+    public void updateQuestProgress(TextAsset quest, bool isComplete)
+    {
+        Debug.Log("updating quest progress");
+
+        _questRef.updateProcessedQuest(quest, isComplete);
+        if (_questRef.LoadStoryQuest(quest).questType == "Tutorial" && isComplete)
+        {
+            if (_questRef.LoadTutorialQuest(quest).unlockFeatures.Count > 0)
+                Debug.Log(_questRef.LoadTutorialQuest(quest).unlockFeatures);
+
+            if (_questRef.LoadStoryQuest(quest).unlockedQuests.Count > 0 && isComplete)
+            {
+                foreach (string unlockedQ in _questRef.LoadStoryQuest(quest).unlockedQuests)
+                    _unlockedQuestsJson.Add(_questRef.FetchQuestTextAssestByName(unlockedQ));
+                setupStoryQuests();
+                _chosenQuestJson = null;
+            }
+        }
+
     }
     public void updateQuestProgress(QuestData quest, QuestStage currStage)
     {
