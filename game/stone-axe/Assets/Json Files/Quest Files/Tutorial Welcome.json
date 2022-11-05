@@ -233,6 +233,6 @@
         }
     ],
     "nextQuest": "Tutorial Buying",
-    "unlockedQuests": [],
+    "unlockedQuests": [ "Tutorial Buying" ],
     "unlockFeatures": []
 }

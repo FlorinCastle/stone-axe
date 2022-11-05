@@ -69,7 +69,7 @@ public class DialogueControl : MonoBehaviour
         Debug.Log("No more stages! " + questRef.LoadStoryQuest(_currentStoryQuestJson).questName);
         //if (_currentStoryQuest.NextQuest == null)
         _dialogueUI.SetActive(false);
-        //gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuest, true);
+        gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuestJson, true);
     }
     /*
     public void nextStage()

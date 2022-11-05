@@ -138,17 +138,35 @@ public class Quest : MonoBehaviour
             foreach (TutorialQuest tutorialQuest in tutorialQuests)
                 if (tutorialQuest.questName.Equals(questJsonData.questName)) // TODO: replace this with unique quest IDs
                 {
+                    //Debug.Log("Quest.updateProcessedQuest: " + tutorialQuest.questName + " is complete value is " + isComplete.ToString());
                     tutorialQuest.isComplete = isComplete;
                 }
         }
         else if (questJsonData.questType == "Story")
         {
             foreach (StoryQuest storyQuest in storyQuests)
-                if (storyQuest.questName.Equals(questJsonData.questName)) // TODO: replace this with unique quest IDs
+                if (storyQuest.questName.Equals(questJsonData.questName))   // TODO: replace this with unique quest IDs
                 {
                     storyQuest.isComplete = isComplete;
                 }
         }
+    }
+
+    public bool isLongQuestComplete(TextAsset quest)
+    {
+        if (LoadQuestData(quest).questType == "Tutorial")
+        {
+            foreach (TutorialQuest tutorialQuest in tutorialQuests)
+                if (tutorialQuest.questName.Equals(QuestName(quest)))   // TODO: replace this with unique quest IDs
+                    return tutorialQuest.isComplete;
+        }
+        else if (LoadQuestData(quest).questType == "Story")
+        {
+            foreach (StoryQuest storyQuest in storyQuests)
+                if (storyQuest.questName.Equals(QuestName(quest)))      // TODO: replace this with unique quest IDs
+                    return storyQuest.isComplete;
+        }
+        return false;
     }
 
     // TODO
