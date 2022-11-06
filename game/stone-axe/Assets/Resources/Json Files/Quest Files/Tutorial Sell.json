@@ -1,0 +1,309 @@
+{
+    "questID": -1,
+    "questName": "Tutorial Sell",
+    "requiredPlayerLevel": 0,
+    "questDescription": "How to Sell stuff\n- go to economic tab\n- then go to sell\n- go to inventory, then items\n- select the item to sell (it might already be selected)\n- then click sell",
+    "questType": "Tutorial",
+    "currencyReward": 0,
+    "EXPReward": 0,
+    "questStagesJson": [
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Woo! Now that you know how to buy, disassemble, and craft, it's time to learn how to sell stuff!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Summon_Adventurer"
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Force_Open_UI"
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Oh! Here's someone who wants to buy!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Let's head to the counter!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(go to Sell Tab)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(go to inventory, then items)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(or click 'choose item' within the Sell menu, if you can see it)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(select the item to sell - one might already be selected. Adventurers can be smart sometimes)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(then click Sell)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Sell_Item",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "And done!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Bell",
+            "dialogeLine": "*ring* *ring*",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Oh?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Letterbox",
+            "dialogeLine": "*clunk*",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Huh? A message?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "What does it say?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Letter",
+            "dialogeLine": "It is with great pleasure that we, the Guild, bestow upon the holder of this letter, a stall postion within the public market",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "A Market Stall?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Wait! I remember Arti talking about Market Stalls in big towns!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "You can sell stuff at Market Stalls, and pick up requests for spacific things!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        }
+    ],
+    "nextQuest": "",
+    "unlockedQuests": [],
+    "unlockFeatures": [],
+    "isComplete": false
+}

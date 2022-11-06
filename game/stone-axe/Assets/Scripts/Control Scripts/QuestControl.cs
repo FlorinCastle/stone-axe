@@ -263,7 +263,7 @@ public class QuestControl : MonoBehaviour
         _questStarterGOs.Add(p);
         p.GetComponent<StoryQuestStarter>().setupText();
     }
-    /*private void setupStarter()
+    /*old code - private void setupStarter()
     {
         //if ((_chosenQuest != null && _chosenQuest.StoryQuestComplete == false)|| (starterRef != null && starterRef.StoryQuestComplete == false))
         if ((starterJsonRef != null /* verify that _chosenQuestJson is not complete ))
@@ -290,7 +290,7 @@ public class QuestControl : MonoBehaviour
             p.GetComponent<StoryQuestStarter>().setupText();
         }
     }*/
-    /*private void setupStarter(QuestData qes)
+    /*old code - private void setupStarter(QuestData qes)
     {
         p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
         if (qes != null)
@@ -318,7 +318,7 @@ public class QuestControl : MonoBehaviour
             Debug.LogError("QuestControl.setupStarter(QuestJsonData qes) - qes is Null!");
     } */
 
-    public void removeStarter()
+    /* old code - public void removeStarter()
     {
         if (p != null)
         {
@@ -327,7 +327,7 @@ public class QuestControl : MonoBehaviour
         }
         else if (p == null)
             Debug.LogWarning("QuestControl - Quest Starter Game Object (variable p) is null!");
-    }
+    } */
     public void removeStarter(GameObject g)
     {
         if (g != null)
@@ -380,7 +380,7 @@ public class QuestControl : MonoBehaviour
     }
 
 
-    /*public SaveQuestsObject saveQuests()
+    /*old code - public SaveQuestsObject saveQuests()
     {
 
         List<QuestObject> completedQuestList = new List<QuestObject>();
@@ -527,7 +527,7 @@ public class QuestControl : MonoBehaviour
         setupStoryQuests();
     }
 
-    /*public void forceSetQuest(QuestData quest)
+    /*old code - public void forceSetQuest(QuestData quest)
     {
         _chosenQuest = quest;
         //Debug.Log("chosen quest is: " + quest.QuestName);
@@ -554,8 +554,7 @@ public class QuestControl : MonoBehaviour
             _selectedSheet = input;
     }
 
-    /* Old Code
-     * private void setupQuest1()
+    /* Old Code - private void setupQuest1()
     {
         if (_questSheet1 != null)
         {

@@ -1,0 +1,267 @@
+{
+    "questID": -1,
+    "questName": "Tutorial Disassemble",
+    "requiredPlayerLevel": 0,
+    "questDescription": "How to Disassemble stuff\n- go to disassemble tab\n- go to inventory, then items\n- select the item you just bought\n- click disassemble item",
+    "questType": "Tutorial",
+    "currencyReward": 0,
+    "EXPReward": 0,
+    "questStagesJson": [
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Now, we get to the fun part!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Breaking down the item you just got!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "You could just resell the item as is, but if you get a few items of the same kind, you can mix and match parts to make really cool new items!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "So, we need to head over to the Disassembly Bench!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(go to Disassemble Tab)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(go to inventory, then items)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(select the item you just bought)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(Click Disassmble Item)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Force_Open_UI"
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Have_UI_Open",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(this is the disassembly minigame)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(to disassemble an item, click each of the points in any order)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(when all the points are gone, click Disassemble)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(you can also just skip the minigame if you want)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Disassemble_Item",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "And, tada! The item you bought is disassembled!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "You can also disassemble the parts into raw materials. But we don't have time for that right now.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Next up! Crafting!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        }
+    ],
+    "nextQuest": "Tutorial Craft",
+    "unlockedQuests": [],
+    "unlockFeatures": [],
+    "isComplete": false
+}

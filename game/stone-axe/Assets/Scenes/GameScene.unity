@@ -2343,7 +2343,7 @@ MonoBehaviour:
     Files\Item Files\Item Files
   partDirPath: D:\Users\ender\Documents\GitHub\stone-axe\game\stone-axe\Assets\Resources\Json
     Files\Item Files\Part Files
-  questDirPath: D:\Users\ender\Documents\GitHub\stone-axe\game\stone-axe\Assets\Json
+  questDirPath: D:\Users\ender\Documents\GitHub\stone-axe\game\stone-axe\Assets\Resources\Json
     Files\Quest Files
   replace: 0
   itemSOPath: 
@@ -2351,7 +2351,7 @@ MonoBehaviour:
   items: []
   parts: []
   quests:
-  - {fileID: 11400000, guid: 29b15c4c3e08a9641a2275deb3ef5764, type: 2}
+  - {fileID: 11400000, guid: 2240dccd919c2304dacfd315d1845e62, type: 2}
   itemsJ: []
 --- !u!4 &574211383
 Transform:

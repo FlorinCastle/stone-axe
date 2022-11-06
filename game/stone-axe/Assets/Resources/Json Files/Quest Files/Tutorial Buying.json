@@ -1,0 +1,197 @@
+{
+    "questID": -1,
+    "questName": "Tutorial Buying",
+    "requiredPlayerLevel": 0,
+    "questDescription": "How to Buy stuff\n- Go to Economic Tab\n- Then go to 'Buy'\n- Click 'Generate Placeholder'\n- Then click 'Buy'",
+    "questType": "Tutorial",
+    "currencyReward": 0,
+    "EXPReward": 0,
+    "questStagesJson": [
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Alright! Now that this place is all cleaned up! Have you been taught about keeping a shop (playername)?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Not really?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Oh. In that case! I can teach you!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "So, what I want you to do is go to the counter...",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Summon_Adventurer"
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Force_Open_UI"
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "So, what you need to do is buy an item from the Adventurer that just arrived!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(go to Buy Tab)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(then click Buy)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Force_For_Sale"
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Buy_Item",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "And there we go!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Easy wasn't it (playername)? Hehe~",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        }
+    ],
+    "nextQuest": "Tutorial Disassemble",
+    "unlockedQuests": [],
+    "unlockFeatures": [],
+    "isComplete": false
+}

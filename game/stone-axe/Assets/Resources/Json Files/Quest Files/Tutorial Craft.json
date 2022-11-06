@@ -1,0 +1,281 @@
+{
+    "questID": -1,
+    "questName": "Tutorial Craft",
+    "requiredPlayerLevel": 0,
+    "questDescription": "How to Craft stuff\n- go to craft tab\n- go to recipes tab\n- select the recipe to remake the disassembled item\n- go to inventory tab and go to parts \n- select each of the parts\n- click craft",
+    "questType": "Tutorial",
+    "currencyReward": 0,
+    "EXPReward": 0,
+    "questStagesJson": [
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Okay! Now that we have parts, let's make a new item (playername)!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Just head over to the Crafting Forge, and we can get started!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(go to craft tab)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(go to recipes tab)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(select the recipe to remake the disassembled item)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(go to inventory tab and go to parts)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(select each of the parts)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(click craft)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Force_Open_UI"
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Have_UI_Open",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(this is the crafting minigame)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(it functions the same as the disassembly minigame)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(just click the points in any order and click 'craft' when done)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Tutorial",
+            "dialogeLine": "(or skip the minigame)",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Craft_Item",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "Sword",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "There we go! It's crafted!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "You can also make parts for items in a simaler way",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "You can check the shop's Recipe Book at any time to see what recipes you have and what kinds of materials or parts you need",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Faerie",
+            "dialogeLine": "Now that we have a completed item, let's sell it!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": ""
+            }
+        }
+    ],
+    "nextQuest": "Tutorial Sell",
+    "unlockedQuests": [],
+    "unlockFeatures": [],
+    "isComplete": false
+}

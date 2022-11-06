@@ -43,7 +43,7 @@ public class Dev_jsonConverter : MonoBehaviour
         ItemJsonData item = JsonUtility.FromJson<ItemJsonData>(itemString);        
         Debug.Log(item.itemName); */
         //convertManyItemToJson();
-        //convertManyQuestToJson();
+        convertManyQuestToJson();
 
         if (_itemToConvert != null) convertItemToJson(_itemToConvert);
         if (_partToConvert != null) convertPartToJson(_partToConvert);
@@ -472,12 +472,107 @@ public class Dev_jsonConverter : MonoBehaviour
                 dialogeLine = stage.DialogueLine,
             };
 
-            Debug.Log(JsonUtility.ToJson(questStageJsonData, true));
+            //Debug.Log(JsonUtility.ToJson(questStageJsonData, true));
 
             return questStageJsonData;
 
         }
-        /*else if (stage.StageType == "Craft_Item")
+        else if (stage.StageType == "Force_Event")
+        {
+            var eventJson = new EventJson()
+            {
+                eventName = stage.QuestEvent,
+            };
+
+            var questStageJsonData = new QuestStageJsonData()
+            {
+                questStageType = stage.StageType,
+                speaker = "",
+                dialogeLine = "",
+                eventData = eventJson,
+            };
+
+            //Debug.Log(JsonUtility.ToJson(questStageJsonData, true));
+
+            return questStageJsonData;
+        }
+        else if (stage.StageType == "Buy_Item")
+        {
+            var questStageJsonData = new QuestStageJsonData()
+            {
+                questStageType = stage.StageType,
+                speaker = "",
+                dialogeLine = "",
+            };
+
+            //Debug.Log(JsonUtility.ToJson(questStageJsonData, true));
+
+            return questStageJsonData;
+        }
+        else if (stage.StageType == "Sell_Item")
+        {
+            var questStageJsonData = new QuestStageJsonData()
+            {
+                questStageType = stage.StageType,
+                speaker = "",
+                dialogeLine = "",
+            };
+
+            //Debug.Log(JsonUtility.ToJson(questStageJsonData, true));
+
+            return questStageJsonData;
+        }
+        else if (stage.StageType == "Disassemble_Item")
+        {
+            var questStageJsonData = new QuestStageJsonData()
+            {
+                questStageType = stage.StageType,
+                speaker = "",
+                dialogeLine = "",
+            };
+
+            //Debug.Log(JsonUtility.ToJson(questStageJsonData, true));
+
+            return questStageJsonData;
+        }
+        else if (stage.StageType == "Craft_Item")
+        {
+            var itemJson = new ItemJson()
+            {
+                itemName = stage.ItemToGet.ItemName,
+            };
+
+            var questStageJsonData = new QuestStageJsonData()
+            {
+                questStageType = stage.StageType,
+                speaker = "",
+                dialogeLine = "",
+                reqItem = itemJson,
+            };
+
+            //Debug.Log(JsonUtility.ToJson(questStageJsonData, true));
+
+            return questStageJsonData;
+        }
+        else if (stage.StageType == "Have_UI_Open")
+        {
+            var questStageJsonData = new QuestStageJsonData()
+            {
+                questStageType = stage.StageType,
+                speaker = "",
+                dialogeLine = "",
+            };
+
+            //Debug.Log(JsonUtility.ToJson(questStageJsonData, true));
+
+            return questStageJsonData;
+        }
+        else Debug.LogWarning("Dev_jsonConverter.convertQuestStageToJson(QuestStage stage): variable 'stage' does not contain a valid setup for the " + stage.StageType + " StageType!");
+
+        return null;
+    }
+
+    /*else if (stage.StageType == "Craft_Item")
         {
             CraftItemStage questStageJsonData = new CraftItemStage()
             {
@@ -604,10 +699,6 @@ public class Dev_jsonConverter : MonoBehaviour
             };
             return JsonUtility.ToJson(questStageJsonData, true);
         } */
-        else Debug.LogWarning("Dev_jsonConverter.convertQuestStageToJson(QuestStage stage): variable 'stage' does not contain a valid StageType!");
-
-        return null;
-    }
 
     /* old code from convertQuestStageToJson()
      * QuestStageJsonData stageData = new QuestStageJsonData
