@@ -111,13 +111,13 @@ public class Quest : MonoBehaviour
                     if (!craftManyQuest.Contains(craftQuest))
                         craftManyQuest.Add(craftQuest);
                 }
-                if (questJson.questType == "Tutorial")
+                /*if (questJson.questType == "Tutorial")
                 {
                     TutorialQuest tutorialQuest = JsonUtility.FromJson<TutorialQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(quest).Replace("Assets", "")));
                     if (!tutorialQuests.Contains(tutorialQuest))
                         tutorialQuests.Add(tutorialQuest);
-                }
-                if (questJson.questType == "Story")
+                }*/
+                if (questJson.questType == "Story" || questJson.questType == "Tutorial")
                 {
                     StoryQuest storyQuest = JsonUtility.FromJson<StoryQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(quest).Replace("Assets", "")));
                     if (!storyQuests.Contains(storyQuest))
@@ -133,7 +133,7 @@ public class Quest : MonoBehaviour
     public void updateProcessedQuest(TextAsset quest, bool isComplete)
     {
         BaseQuestJsonData questJsonData = LoadQuestData(quest);
-        if (questJsonData.questType == "Tutorial")
+        /*if (questJsonData.questType == "Tutorial")
         {
             foreach (TutorialQuest tutorialQuest in tutorialQuests)
                 if (tutorialQuest.questName.Equals(questJsonData.questName)) // TODO: replace this with unique quest IDs
@@ -143,20 +143,20 @@ public class Quest : MonoBehaviour
                 }
         }
         else if (questJsonData.questType == "Story")
-        {
-            foreach (StoryQuest storyQuest in storyQuests)
-                if (storyQuest.questName.Equals(questJsonData.questName))   // TODO: replace this with unique quest IDs
-                {
-                    storyQuest.isComplete = isComplete;
-                }
-        }
+        {*/
+        foreach (StoryQuest storyQuest in storyQuests)
+            if (storyQuest.questName.Equals(questJsonData.questName))   // TODO: replace this with unique quest IDs
+            {
+                storyQuest.isComplete = isComplete;
+                break;
+            }
     }
 
     public bool isLongQuestComplete(TextAsset quest)
     {
-        if (LoadQuestData(quest).questType == "Tutorial")
+        /*if (LoadQuestData(quest).questType == "Tutorial")
         {
-            foreach (TutorialQuest tutorialQuest in tutorialQuests)
+            foreach (StoryQuest tutorialQuest in tutorialQuests)
                 if (tutorialQuest.questName.Equals(QuestName(quest)))   // TODO: replace this with unique quest IDs
                     return tutorialQuest.isComplete;
         }
@@ -165,7 +165,10 @@ public class Quest : MonoBehaviour
             foreach (StoryQuest storyQuest in storyQuests)
                 if (storyQuest.questName.Equals(QuestName(quest)))      // TODO: replace this with unique quest IDs
                     return storyQuest.isComplete;
-        }
+        } */
+        foreach (StoryQuest storyQuest in storyQuests)
+            if (storyQuest.questName.Equals(QuestName(quest)))      // TODO: replace this with unique quest IDs
+                return storyQuest.isComplete;
         return false;
     }
 
@@ -269,34 +272,58 @@ public class Quest : MonoBehaviour
     }
     public CraftItemQuest LoadCraftItemQuest(TextAsset questAsset)
     {
-        CraftItemQuest quest = JsonUtility.FromJson<CraftItemQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
-        return quest;
+        //CraftItemQuest quest = JsonUtility.FromJson<CraftItemQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+
+        foreach (CraftItemQuest quest in craftItemQuests)
+            if (quest.questName == QuestName(questAsset))
+                return quest;
+        return null;
     }
     public CraftQuestItemQuest LoadCraftQuestItemQuest(TextAsset questAsset)
     {
-        CraftQuestItemQuest quest = JsonUtility.FromJson<CraftQuestItemQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
-        return quest;
+        //CraftQuestItemQuest quest = JsonUtility.FromJson<CraftQuestItemQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+
+        foreach (CraftQuestItemQuest quest in craftQuestItemQuests)
+            if (quest.questName == QuestName(questAsset))
+                return quest;
+        return null;
     }
     public CraftManyItemQuest LoadCraftManyItemQuest(TextAsset questAsset)
     {
-        CraftManyItemQuest quest = JsonUtility.FromJson<CraftManyItemQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
-        return quest;
+        //CraftManyItemQuest quest = JsonUtility.FromJson<CraftManyItemQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+
+        foreach (CraftManyItemQuest quest in craftManyQuest)
+            if (quest.questName == QuestName(questAsset))
+                return quest;
+        return null;
     }
     public HaveMaterialQuest LoadHaveMaterialQuest(TextAsset questAsset)
     {
-        HaveMaterialQuest quest = JsonUtility.FromJson<HaveMaterialQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
-        return quest;
+        //HaveMaterialQuest quest = JsonUtility.FromJson<HaveMaterialQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+
+        foreach (HaveMaterialQuest quest in haveMatQuests)
+            if (quest.questName == QuestName(questAsset))
+                return quest;
+        return null;
 
     }
     public StoryQuest LoadStoryQuest(TextAsset questAsset)
     {
-        StoryQuest quest = JsonUtility.FromJson<StoryQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
-        return quest;
+        //StoryQuest quest = JsonUtility.FromJson<StoryQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+
+        foreach (StoryQuest quest in storyQuests)
+            if (quest.questName == QuestName(questAsset))
+                return quest;
+        return null;
     }
     public TutorialQuest LoadTutorialQuest(TextAsset questAsset)
     {
-        TutorialQuest quest = JsonUtility.FromJson<TutorialQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
-        return quest;
+        //TutorialQuest quest = JsonUtility.FromJson<TutorialQuest>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
+
+        foreach (TutorialQuest quest in tutorialQuests)
+            if (quest.questName == QuestName(questAsset))
+                return quest;
+        return null;
     }
 
     public TextAsset FetchQuestTextAssestByName(string input)

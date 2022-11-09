@@ -498,11 +498,17 @@ public class Dev_jsonConverter : MonoBehaviour
         }
         else if (stage.StageType == "Buy_Item")
         {
+            var reqitem = new ItemJson
+            {
+
+            };
+
             var questStageJsonData = new QuestStageJsonData()
             {
                 questStageType = stage.StageType,
                 speaker = "",
                 dialogeLine = "",
+                reqItem = reqitem,
             };
 
             //Debug.Log(JsonUtility.ToJson(questStageJsonData, true));

@@ -33,6 +33,7 @@ public class PartJson
 public class EventJson
 {
     public string eventName;
+    public List<string> eventData;
 }
 
 

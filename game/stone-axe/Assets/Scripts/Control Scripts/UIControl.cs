@@ -379,7 +379,7 @@ public class UIControl : MonoBehaviour
         _disaUIButton.interactable = false;
         _craftUIButton.interactable = false;
 
-        gameObject.GetComponent<QuestControl>().nextStage();
+        //gameObject.GetComponent<QuestControl>().nextStage();
     }
     public void shopSellAccessableOnly()
     {

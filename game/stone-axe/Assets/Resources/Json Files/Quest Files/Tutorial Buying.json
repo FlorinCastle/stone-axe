@@ -88,14 +88,15 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": "Force_Open_UI"
+                "eventName": "Force_Open_UI",
+                "eventData": [ "Buy_UI" ]
             }
         },
         {
             "questStageIndex": 0,
             "questStageType": "Dialogue",
             "speaker": "Faerie",
-            "dialogeLine": "So, what you need to do is buy an item from the Adventurer that just arrived!",
+            "dialogeLine": "...and buy an item from the Adventurer that just arrived!",
             "reqItem": {
                 "itemName": "",
                 "partData": [],
@@ -139,9 +140,22 @@
             "speaker": "",
             "dialogeLine": "",
             "reqItem": {
-                "itemName": "",
-                "partData": [],
-                "reqCount": 0
+              "itemName": "Sword",
+              "partData": [
+                  {
+                    "partName": "Sword Blade",
+                    "partMat": "Iron"
+                  },
+                  {
+                    "partName": "Sword Handle",
+                    "partMat": "Oak Wood"
+                  },
+                  {
+                    "partName": "Pomel",
+                    "partMat": "Copper"
+                  }
+              ],
+              "reqCount": 0
             },
             "eventData": {
                 "eventName": "Force_For_Sale"
@@ -191,7 +205,7 @@
         }
     ],
     "nextQuest": "Tutorial Disassemble",
-    "unlockedQuests": [],
+    "unlockedQuests": [ "Tutorial Disassemble" ],
     "unlockFeatures": [],
     "isComplete": false
 }

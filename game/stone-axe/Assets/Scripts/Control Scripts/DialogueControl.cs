@@ -35,28 +35,14 @@ public class DialogueControl : MonoBehaviour
         index = gameObject.GetComponent<QuestControl>().CurrentStageIndex;
         if (index < questRef.LoadStoryQuest(_currentStoryQuestJson).questStagesJson.Count)
         {
-            //this.gameObject.GetComponent<QuestControl>().CurrentStageIndex = index; // p sure issue is this line
-            //index = this.gameObject.GetComponent<QuestControl>().CurrentStageIndex;
+            QuestStageJsonData currStage = questRef.LoadStoryQuest(_currentStoryQuestJson).questStagesJson[index]; 
+            dialogueUIActive(true);
+            _nameText.text = currStage.speaker;
 
-            QuestStageJsonData currStage = questRef.LoadStoryQuest(_currentStoryQuestJson).questStagesJson[index]; //_currentStoryQuest.QuestStages[index];
-            //Debug.LogWarning("setupDialogueLine - " + _currentStoryQuest.QuestName + " " + index);
-            if (currStage.questStageType == "Dialogue")
-            {
-                _dialogueUI.SetActive(true);
-                _nameText.text = currStage.speaker;
-
-                string line = currStage.dialogeLine;
-                string temp1 = line.Replace("(playername)", gameObject.GetComponent<GameMaster>().PlayerName);
-                string temp2 = temp1.Replace("(shopname)", gameObject.GetComponent<GameMaster>().ShopName);
-                _dialogueText.text = temp2;
-            }
-            else if (currStage.questStageType == "Buy_Item" || currStage.questStageType == "Disassemble_Item" || currStage.questStageType == "Craft_Item" || currStage.questStageType == "Sell_Item" || currStage.questStageType == "Force_Event" || currStage.questStageType == "Have_UI_Open")
-            {
-                _dialogueUI.SetActive(false);
-                //gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuest, currStage);
-
-                //Debug.LogWarning("No dialogue for this stage!");
-            }
+            string line = currStage.dialogeLine;
+            string temp1 = line.Replace("(playername)", gameObject.GetComponent<GameMaster>().PlayerName);
+            string temp2 = temp1.Replace("(shopname)", gameObject.GetComponent<GameMaster>().ShopName);
+            _dialogueText.text = temp2;
             index++;
         }
         else
@@ -64,12 +50,47 @@ public class DialogueControl : MonoBehaviour
             dialogeQuestEnd();
         }
     }
+    /* old setupDialogeLine() code
+     * 
+        index = gameObject.GetComponent<QuestControl>().CurrentStageIndex;
+        if (index < questRef.LoadStoryQuest(_currentStoryQuestJson).questStagesJson.Count)
+        {
+            //this.gameObject.GetComponent<QuestControl>().CurrentStageIndex = index; // p sure issue is this line
+            //index = this.gameObject.GetComponent<QuestControl>().CurrentStageIndex;
+
+            QuestStageJsonData currStage = questRef.LoadStoryQuest(_currentStoryQuestJson).questStagesJson[index]; //_currentStoryQuest.QuestStages[index];
+            //Debug.LogWarning("setupDialogueLine - " + _currentStoryQuest.QuestName + " " + index);
+            //if (currStage.questStageType == "Dialogue")
+            //{
+            dialogueUIActive(true);
+            _nameText.text = currStage.speaker;
+
+            string line = currStage.dialogeLine;
+            string temp1 = line.Replace("(playername)", gameObject.GetComponent<GameMaster>().PlayerName);
+            string temp2 = temp1.Replace("(shopname)", gameObject.GetComponent<GameMaster>().ShopName);
+            _dialogueText.text = temp2;
+            //}
+            /*else if (currStage.questStageType == "Buy_Item" || currStage.questStageType == "Disassemble_Item" || currStage.questStageType == "Craft_Item" || currStage.questStageType == "Sell_Item" || currStage.questStageType == "Force_Event" || currStage.questStageType == "Have_UI_Open")
+            {
+                dialogueUIActive(false);
+                gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuest, currStage);
+
+                //Debug.LogWarning("No dialogue for this stage!");
+            } 
+        dialogueUIActive(false);
+        index++;
+            }
+            else
+    {
+        dialogeQuestEnd();
+    }
+    */
     public void dialogeQuestEnd()
     {
         Debug.Log("No more stages! " + questRef.LoadStoryQuest(_currentStoryQuestJson).questName);
         //if (_currentStoryQuest.NextQuest == null)
-        _dialogueUI.SetActive(false);
-        gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuestJson, true);
+        dialogueUIActive(false);
+        //gameObject.GetComponent<QuestControl>().updateQuestProgress(_currentStoryQuestJson, true);
     }
     /*
     public void nextStage()
@@ -78,6 +99,8 @@ public class DialogueControl : MonoBehaviour
         setupDialogueLine();
     }
     */
+
+    public void dialogueUIActive(bool input) { _dialogueUI.SetActive(input); }
 
     public int CurrentStageIndex { get => index; set => index = value; }
     //public QuestData CurrentQuest { set => _currentStoryQuest = value; }

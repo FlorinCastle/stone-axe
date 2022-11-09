@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using TMPro;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -769,8 +772,6 @@ public class QuestControl : MonoBehaviour
             gameObject.GetComponent<DialogueControl>().startDialogue(_currStageIndex);
         else
             Debug.LogError("This quest starts with a non-Dialogue stage!\nNote to Dev: Implement this quest's start in code!\nMethod: startStoryQuest(QuestData questInput)");
-
-
         /*if (questInput.QuestStages[_currStageIndex].StageType == "Dialogue")
             this.gameObject.GetComponent<DialogueControl>().startDialogue(_currStageIndex);
         else
@@ -780,15 +781,109 @@ public class QuestControl : MonoBehaviour
     {
         _currStageIndex++;
         //Debug.LogWarning("TODO fix this");
-        if (_currStageIndex < _questRef.LoadStoryQuest(_chosenQuestJson).questStagesJson.Count) //CurrentQuest.QuestStages.Count)
+        StoryQuest storyQuest = _questRef.LoadStoryQuest(_chosenQuestJson);
+
+        if (_currStageIndex < storyQuest.questStagesJson.Count) 
         {
-            gameObject.GetComponent<DialogueControl>().setupDialogueLine();
+            if (storyQuest.questStagesJson[_currStageIndex].questStageType == "Dialogue")
+            {
+                //gameObject.GetComponent<DialogueControl>().dialogueUIActive(true);
+                gameObject.GetComponent<DialogueControl>().setupDialogueLine();
+            }
+            else if (storyQuest.questStagesJson[_currStageIndex].questStageType == "Buy_Item")
+            {
+                gameObject.GetComponent<DialogueControl>().dialogueUIActive(false);
+                Debug.Log("nextStage() current stage is Buy_Item");
+            }
+            else if (storyQuest.questStagesJson[_currStageIndex].questStageType == "Disassemble_Item")
+            {
+                gameObject.GetComponent<DialogueControl>().dialogueUIActive(false);
+                Debug.Log("nextStage() current stage is Disassemble_Item");
+            }
+            else if (storyQuest.questStagesJson[_currStageIndex].questStageType == "Craft_Item")
+            {
+                gameObject.GetComponent<DialogueControl>().dialogueUIActive(false);
+                Debug.Log("nextStage() current stage is Craft_Item");
+            }
+            else if (storyQuest.questStagesJson[_currStageIndex].questStageType == "Sell_Item")
+            {
+                gameObject.GetComponent<DialogueControl>().dialogueUIActive(false);
+                Debug.Log("nextStage() current stage is Sell_Item");
+            }
+            else if (storyQuest.questStagesJson[_currStageIndex].questStageType == "Force_Event")
+            {
+                gameObject.GetComponent<DialogueControl>().dialogueUIActive(false);
+                Debug.Log("nextStage() current stage is Force_Event");
+                QuestStageJsonData questStage = storyQuest.questStagesJson[_currStageIndex];
+
+                if (questStage.eventData.eventName == "Not_Set" || questStage.eventData.eventName == "")
+                    Debug.LogWarning("QuestControl().nextStage(): " + storyQuest.questName + " stage index " + _currStageIndex + " is not set!");
+                else if (questStage.eventData.eventName == "Summon_Adventurer")
+                {
+                    gameObject.GetComponent<AdventurerMaster>().spawnAdventurer();
+                    nextStage();
+                }
+                else if (questStage.eventData.eventName == "Get_Item")
+                {
+
+                }
+                else if (questStage.eventData.eventName == "Remove_Quest_Items")
+                {
+
+                }
+                else if (questStage.eventData.eventName == "Get_Currency")
+                {
+
+                }
+                else if (questStage.eventData.eventName == "Remove_Currency")
+                {
+
+                }
+                else if (questStage.eventData.eventName == "Summon_NPC")
+                {
+
+                }
+                else if (questStage.eventData.eventName == "Dismiss_Quest_NPC")
+                {
+
+                }
+                else if (questStage.eventData.eventName == "Force_For_Sale")
+                {
+                    Debug.LogWarning("PUT IN THE CODE FOR THIS");
+                }
+                else if (questStage.eventData.eventName == "Force_Open_UI")
+                {
+                    if (questStage.eventData.eventData.Contains("Buy_UI"))
+                        if (storyQuest.questType == "Tutorial")
+                            gameObject.GetComponent<UIControl>().shopBuyAccessableOnly();
+                    if (questStage.eventData.eventData.Contains("Sell_UI"))
+                        if (storyQuest.questType == "Tutorial")
+                            gameObject.GetComponent<UIControl>().shopSellAccessableOnly();
+                    if (questStage.eventData.eventData.Contains("Disassemble_UI"))
+                        if (storyQuest.questType == "Tutorial")
+                            gameObject.GetComponent<UIControl>().shopDisassembleAccessableOnly();
+                    if (questStage.eventData.eventData.Contains("Craft_UI"))
+                        if (storyQuest.questType == "Tutorial")
+                            gameObject.GetComponent<UIControl>().shopCraftAccessableOnly();
+
+                    nextStage();
+                }
+                else
+                    Debug.LogWarning("QuestControl().nextStage(): " + storyQuest.questName + " stage index " + _currStageIndex + " of stageType " + questStage.eventData.eventName + " is not a valid event type!");
+
+            }
+            else if (storyQuest.questStagesJson[_currStageIndex].questStageType == "Have_UI_Open")
+            {
+                gameObject.GetComponent<DialogueControl>().dialogueUIActive(false);
+                Debug.Log("nextStage() current stage is Have_UI_Open");
+            }
             //Debug.LogWarning("TODO: re-add updating quest progress");
             //updateQuestProgress(_chosenQuest, _chosenQuest.QuestStages[_currStageIndex]);
         }
-        else if (_currStageIndex >= _questRef.LoadStoryQuest(_chosenQuestJson).questStagesJson.Count)//CurrentQuest.QuestStages.Count)
+        else if (_currStageIndex >= _questRef.LoadStoryQuest(_chosenQuestJson).questStagesJson.Count)
         {
             gameObject.GetComponent<DialogueControl>().dialogeQuestEnd();
+            updateQuestProgress(_chosenQuestJson, true);
             //Debug.LogWarning("TODO: re-add updating quest progress");
             //updateQuestProgress(_chosenQuestJson, true);
         }
@@ -919,7 +1014,7 @@ public class QuestControl : MonoBehaviour
         _questRef.updateProcessedQuest(quest, isComplete);
         if (_questRef.LoadStoryQuest(quest).questType == "Tutorial" && isComplete)
         {
-            if (_questRef.LoadTutorialQuest(quest).unlockFeatures.Count > 0)
+            if (_questRef.LoadStoryQuest(quest).unlockFeatures.Count > 0)
                 Debug.Log(_questRef.LoadTutorialQuest(quest).unlockFeatures);
 
             if (_questRef.LoadStoryQuest(quest).unlockedQuests.Count > 0 && isComplete)

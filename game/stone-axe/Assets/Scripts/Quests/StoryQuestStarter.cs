@@ -9,7 +9,7 @@ public class StoryQuestStarter : MonoBehaviour
     [Header("Data")]
     [SerializeField]
     private QuestControl _questControlRef;
-    [SerializeField] private QuestData _questRef;
+    //[SerializeField] private QuestData _questRef;
     [SerializeField] private BaseQuestJsonData _questJsonData;
     [SerializeField] private TextAsset _questTextAsset;
     [SerializeField] private GameObject _selfRef;
@@ -47,15 +47,15 @@ public class StoryQuestStarter : MonoBehaviour
 
     public void setupText()
     {
-        if (_questRef != null) _text.text = _questRef.QuestName;
-        else if (_questJsonData != null) _text.text = _questJsonData.questName;
+        /*if (_questRef != null) _text.text = _questRef.QuestName;
+        else */if (_questJsonData != null) _text.text = _questJsonData.questName;
         else Debug.LogError(gameObject.name + ".StoryQuestStarter: _questRef and _questJsonData is null!");
     }
 
     public void showDetails() { _basicDetails.SetActive(true); }
     public void hideDetails() { _basicDetails.SetActive(false); }
 
-    public QuestData QuestRef { get => _questRef; set => _questRef = value; }
+    //public QuestData QuestRef { get => _questRef; set => _questRef = value; }
     public BaseQuestJsonData QuestJsonRef { get => _questJsonData; set => _questJsonData = value; }
     public TextAsset QuestJson { get => _questTextAsset; set => _questTextAsset = value; }
     public GameObject SelfRef { get => _selfRef; }
@@ -67,7 +67,7 @@ public class StoryQuestStarter : MonoBehaviour
             _text.text = "Quest already active!";
         }
         else
-            _text.text = "Level not high enough! Level: " + _questRef.RequiredPlayerLevel;
+            _text.text = "Level not high enough!";// Level: " + _questRef.RequiredPlayerLevel;
 
         yield return new WaitForSeconds(5f);
         setupText();

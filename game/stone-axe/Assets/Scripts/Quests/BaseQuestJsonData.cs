@@ -48,6 +48,8 @@ public class StoryQuest : BaseQuestJsonData
     public string nextQuest;
     public List<string> unlockedQuests;
 
+    public List<string> unlockFeatures;
+
     public bool isComplete;
 }
 public class TutorialQuest : BaseQuestJsonData 

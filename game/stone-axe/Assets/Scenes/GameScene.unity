@@ -2330,7 +2330,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574211381}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41d40dc95353c45478143a510444847c, type: 3}
   m_Name: 
@@ -2351,7 +2351,7 @@ MonoBehaviour:
   items: []
   parts: []
   quests:
-  - {fileID: 11400000, guid: 2240dccd919c2304dacfd315d1845e62, type: 2}
+  - {fileID: 0}
   itemsJ: []
 --- !u!4 &574211383
 Transform:
