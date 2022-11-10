@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
+using static UnityEditor.Progress;
 
 public class GenerateItem : MonoBehaviour
 {
@@ -258,6 +259,44 @@ public class GenerateItem : MonoBehaviour
         else
             Debug.LogWarning("GenerateItem.GeneratePresetItem(ItemJsonData, List<MaterialData>, bool): Cannot generate item with input data!");
     }
+    public void GeneratePresetItem(ItemJson itemData, bool forceInsert)
+    {
+        //Debug.Log(itemData.itemName);
+        _generatedItemJson = itemScript.getItemJsonData(itemData.itemName);
+        Debug.Log(_generatedItemJson.itemName);
+        _generatedItemJson.parts.Add(partScript.getPartJsonData(itemData.partData[0].partName));
+        _generatedItemJson.parts[0].materialData = materialScript.getMaterialData(itemData.partData[0].partMat);
+        _generatedItemJson.parts.Add(partScript.getPartJsonData(itemData.partData[1].partName));
+        _generatedItemJson.parts[1].materialData = materialScript.getMaterialData(itemData.partData[1].partMat);
+        _generatedItemJson.parts.Add(partScript.getPartJsonData(itemData.partData[2].partName));
+        _generatedItemJson.parts[2].materialData = materialScript.getMaterialData(itemData.partData[2].partMat);
+        if (forceInsert == false)
+        {
+            int ranEnchChance = Random.Range(0, 100);
+            if (ranEnchChance <= (100 + _skillManager.EnchantChanceRef.getAddedEnchChance()))
+            {
+                _generatedEnchant = enchantScript.chooseEnchant();
+                _generatedItemJson.ench = _generatedEnchant;
+                _generatedItemJson.isEnchanted = true;
+            }
+            else
+                _generatedItemJson.isEnchanted = false;
+
+            generateItemTextJson();
+            Debug.Log(_generatedText);
+            itemText.text = _generatedText;
+
+            buyButtonText.text = "buy: " + Mathf.RoundToInt(calculateTotalVal() * _skillManager.DecreaseBuyPriceRef.getModifiedBuyPrice());
+            buyButton.interactable = true;
+            haggleButtonText.text = "haggle\n(success chance: " + (_skillManager.HagglePriceRef.getHaggleChance()).ToString() + "%)";
+
+            advText.text = "Awaiting Adventurer Arrival";
+
+            haggleButton.interactable = true;
+        }
+        else if (forceInsert == true)
+            _inventoryRef.InsertItem(_generatedItemJson);
+    }
     public void GenerateRandomEnchant()
     {
         _generatedEnchant = enchantScript.chooseEnchant();
@@ -310,7 +349,12 @@ public class GenerateItem : MonoBehaviour
             (questRef.QuestType(questControl.CurrentQuest) == "Tutorial" ||
             questRef.QuestType(questControl.CurrentQuest) == "Story"))
         {
-            Debug.Log("TODO re-implement this");
+            //Debug.Log("TODO re-implement this");
+            if (questControl.CurrentStage.questStageType == "Buy_Item")
+            {
+                //Debug.LogWarning("Quest Notif - Bought item from Adventurer!");
+                questControl.nextStage();
+            }
             /*if (_gameMaster.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Buy_Item")
             {
                 Debug.LogWarning("Quest Notif - Bought item from Adventurer!");

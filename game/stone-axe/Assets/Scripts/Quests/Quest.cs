@@ -193,6 +193,7 @@ public class Quest : MonoBehaviour
         {
             questName = "",
             questType = "Not_Set",
+            isComplete = isLongQuestComplete(currentQuest)
         };
         if (currentQuest != null)
         {

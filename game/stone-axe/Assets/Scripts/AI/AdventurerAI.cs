@@ -113,7 +113,7 @@ public class AdventurerAI : MonoBehaviour
                     gameObject.GetComponent<Animator>().SetBool("Walk", true);
                     setCurentTarget(_currentTarget.GetComponent<LinePoint>().NextPoint);
 
-                    mySpeechBubble.GetComponent<SpeechBubbleTrackObject>().chat();
+                    mySpeechBubble.GetComponent<SpeechBubbleTrackObject>().chat("and im off");
                 }
                 else if (_currentTarget.GetComponent<LinePoint>().HeadOfLine == true)
                 { // if at line point that is head of line
@@ -129,7 +129,13 @@ public class AdventurerAI : MonoBehaviour
                         (questRef.QuestType(questControlRef.CurrentQuest) == "Tutorial" ||
                         questRef.QuestType(questControlRef.CurrentQuest) == "Story")) 
                     {
-                        Debug.Log("TODO rewrite this");
+                        //Debug.Log("TODO rewrite this");
+                        if (questControlRef.CurrentStage.questStageType == "Force_Event" &&
+                            questControlRef.CurrentStage.eventData.eventName == "Summon_Adventurer")
+                        {
+                            //Debug.Log("Quest Notif - Adventurer at counter");
+                            questControlRef.nextStage();
+                        }
                         /*if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Force_Event" &&
                             gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.QuestEvent == "Summon_Adventurer")
                         {

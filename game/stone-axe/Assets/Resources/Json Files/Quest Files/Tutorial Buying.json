@@ -140,22 +140,22 @@
             "speaker": "",
             "dialogeLine": "",
             "reqItem": {
-              "itemName": "Sword",
-              "partData": [
-                  {
-                    "partName": "Sword Blade",
-                    "partMat": "Iron"
-                  },
-                  {
-                    "partName": "Sword Handle",
-                    "partMat": "Oak Wood"
-                  },
-                  {
-                    "partName": "Pomel",
-                    "partMat": "Copper"
-                  }
-              ],
-              "reqCount": 0
+                "itemName": "Sword",
+                "partData": [
+                    {
+                      "partName": "Sword Blade",
+                      "partMat": "Iron"
+                    },
+                    {
+                      "partName": "Sword Handle",
+                      "partMat": "Oak Wood"
+                    },
+                    {
+                      "partName": "Pomel",
+                      "partMat": "Copper"
+                    }
+                ],
+                "reqCount": 0
             },
             "eventData": {
                 "eventName": "Force_For_Sale"

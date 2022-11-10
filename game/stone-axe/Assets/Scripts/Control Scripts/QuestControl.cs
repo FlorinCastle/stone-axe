@@ -419,8 +419,11 @@ public class QuestControl : MonoBehaviour
         List<QuestObject> unlockedQuestList = new List<QuestObject>();
 
         foreach (TextAsset questText in _questRef.TutorialQuests)
-            if (_questRef.LoadStoryQuest(questText).isComplete == true)
+            if (_questRef.isLongQuestComplete(questText) == true)//_questRef.LoadStoryQuest(questText).isComplete == true)
+            {
                 Debug.Log("QuestControl.saveQuests(): " + _questRef.LoadStoryQuest(questText).questName + ":questText.isComplete");
+                completedQuestList.Add(_questRef.saveQuest(questText));
+            }
 
         /*foreach (QuestData unlockQuest in _unlockedQuests)
             unlockedQuestList.Add(_questRef.saveQuest(unlockQuest));*/
@@ -821,35 +824,44 @@ public class QuestControl : MonoBehaviour
                 else if (questStage.eventData.eventName == "Summon_Adventurer")
                 {
                     gameObject.GetComponent<AdventurerMaster>().spawnAdventurer();
-                    nextStage();
+                    //nextStage();
                 }
                 else if (questStage.eventData.eventName == "Get_Item")
                 {
+                    Debug.LogWarning("PUT IN THE CODE FOR Get_Item");
 
                 }
                 else if (questStage.eventData.eventName == "Remove_Quest_Items")
                 {
+                    Debug.LogWarning("PUT IN THE CODE FOR Remove_Quest_Items");
 
                 }
                 else if (questStage.eventData.eventName == "Get_Currency")
                 {
+                    Debug.LogWarning("PUT IN THE CODE FOR Get_Currency");
 
                 }
                 else if (questStage.eventData.eventName == "Remove_Currency")
                 {
+                    Debug.LogWarning("PUT IN THE CODE FOR Remove_Currency");
 
                 }
                 else if (questStage.eventData.eventName == "Summon_NPC")
                 {
+                    Debug.LogWarning("PUT IN THE CODE FOR Summon_NPC");
 
                 }
                 else if (questStage.eventData.eventName == "Dismiss_Quest_NPC")
                 {
+                    Debug.LogWarning("PUT IN THE CODE FOR Dismiss_Quest_NPC");
 
                 }
                 else if (questStage.eventData.eventName == "Force_For_Sale")
                 {
-                    Debug.LogWarning("PUT IN THE CODE FOR THIS");
+                    if (questStage.reqItem != null)
+                        gameObject.GetComponent<GenerateItem>().GeneratePresetItem(questStage.reqItem, false);
+                    else Debug.LogWarning("QuestControl().nextStage(): " + storyQuest.questName + " stage index " + _currStageIndex + " of stageType " + questStage.eventData.eventName + " is requesting a null item!");
+                    nextStage();
                 }
                 else if (questStage.eventData.eventName == "Force_Open_UI")
                 {
@@ -1184,6 +1196,7 @@ public class QuestControl : MonoBehaviour
 
     //public QuestData CurrentQuest { get => _chosenQuest; }
     public TextAsset CurrentQuest { get => _chosenQuestJson; }
+    public QuestStageJsonData CurrentStage { get => _questRef.LoadStoryQuest(_chosenQuestJson).questStagesJson[_currStageIndex]; }
     //public QuestStage CurrentStage { get => _chosenQuest.QuestStages[_currStageIndex]; }
     public int CurrentStageIndex { get => _currStageIndex; set => _currStageIndex = value; }
 }

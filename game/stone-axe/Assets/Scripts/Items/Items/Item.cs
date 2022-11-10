@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
     ItemJsonDataCode _generatedItemJsonData;
 
     [SerializeField] List<TextAsset> itemJsons;
-
+    [SerializeField] List<ItemJsonData> items;
     /*
     string textReturn = "";
 
@@ -40,7 +40,19 @@ public class Item : MonoBehaviour
 
         return _generatedItemJsonData;
     }
-    public ItemJsonData getItemJsonData(string itemName) //(int itemIDin) 
+    public ItemJsonDataCode getItemJsonData(string itemName) //(int itemIDin) 
+    {
+        foreach (TextAsset item in itemJsons)
+        {
+            string itemCheck = loadJson(item).itemName;
+            //int ID = loadJson(item).itemID;
+            if (itemCheck == itemName)
+                return JsonUtility.FromJson<ItemJsonDataCode>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(item).Replace("Assets", "")));
+        }
+        Debug.LogWarning("Unable to find Valid Item for ID: [" + itemName + "]");
+        return null;
+    } 
+    /*public ItemJsonData getItemJsonData(string itemName) //(int itemIDin) 
     {
         foreach(TextAsset item in itemJsons)
         {
@@ -51,7 +63,7 @@ public class Item : MonoBehaviour
         }
         Debug.LogWarning("Unable to find Valid Item for ID: [" + itemName + "]");
         return null;
-    }
+    } */
 
     /*
     public string silence()

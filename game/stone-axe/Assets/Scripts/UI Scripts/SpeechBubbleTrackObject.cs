@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SpeechBubbleTrackObject : MonoBehaviour
 {
     [SerializeField] private GameObject chatty;
+    [SerializeField] private TextMeshProUGUI _text;
     private GameObject obj;
 
     Camera mCamera;
@@ -36,6 +38,12 @@ public class SpeechBubbleTrackObject : MonoBehaviour
     {
         if (!beingHandled)
             _chat = StartCoroutine(Message());
+    }
+    public void chat(string input)
+    {
+        if (!beingHandled)
+            _chat = StartCoroutine(Message());
+        _text.text = input;
     }
 
     private IEnumerator Message()
