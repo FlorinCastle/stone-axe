@@ -18,6 +18,7 @@ public class Quest : MonoBehaviour
     //[SerializeField] private List<QuestData> _repeatableQuests;
     [Header("Quest Jsons")]
     [SerializeField] private List<TextAsset> _questJsons;
+    private List<BaseQuestJsonData> _questJsonData = new List<BaseQuestJsonData>();
     [SerializeField] private List<TextAsset> _tutorialQuestJsons;
     private List<TutorialQuest> tutorialQuests = new List<TutorialQuest>();
     [SerializeField] private List<TextAsset> _storyQuestJsons;
@@ -125,6 +126,7 @@ public class Quest : MonoBehaviour
                 }
                 //Debug.Log("Quest.processQuests(): Quest [" + questJson.questName + "] has been processed");
                 processedJsons.Add(quest);
+                _questJsonData.Add(questJson);
             }
         }
 
@@ -222,6 +224,7 @@ public class Quest : MonoBehaviour
     
     public string QuestName(TextAsset questAsset)
     {
+        //Debug.Log(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
         BaseQuestJsonData quest = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
         return quest.questName;
     }

@@ -421,22 +421,34 @@ public class QuestControl : MonoBehaviour
         foreach (TextAsset questText in _questRef.TutorialQuests)
             if (_questRef.isLongQuestComplete(questText) == true)//_questRef.LoadStoryQuest(questText).isComplete == true)
             {
-                Debug.Log("QuestControl.saveQuests(): " + _questRef.LoadStoryQuest(questText).questName + ":questText.isComplete");
+                //Debug.Log("QuestControl.saveQuests(): " + _questRef.LoadStoryQuest(questText).questName + ":questText.isComplete");
                 completedQuestList.Add(_questRef.saveQuest(questText));
             }
 
         /*foreach (QuestData unlockQuest in _unlockedQuests)
             unlockedQuestList.Add(_questRef.saveQuest(unlockQuest));*/
         foreach (TextAsset unlockQest in _unlockedQuestsJson)
+        {
+            //Debug.Log("QuestControl.saveQuests(): " + _questRef.LoadStoryQuest(unlockQest).questName + ":questText.isunlocked");
             unlockedQuestList.Add(_questRef.saveQuest(unlockQest));
+        }
+
+        Debug.Log("setting up quest object");
 
         SaveQuestsObject questObject = new SaveQuestsObject
         {
-            currentQuest = _questRef.saveQuest(_chosenQuestJson),
-            currentQuestStage = _currStageIndex,
+            //currentQuest = _questRef.saveQuest(_chosenQuestJson),
+            //currentQuestStage = _currStageIndex,
             completedQuests = completedQuestList,
             unlockedQuests = unlockedQuestList,
         };
+        if (_chosenQuestJson != null)
+        {
+            questObject.currentQuest = _questRef.saveQuest(_chosenQuestJson);
+            questObject.currentQuestStage = _currStageIndex;
+        }
+
+        Debug.Log("questObject setup");
         return questObject;
     }
 
@@ -474,7 +486,7 @@ public class QuestControl : MonoBehaviour
                 {
                     //Debug.Log("quest - tutQuest.QuestName: " + tutQuest.QuestName);
 
-                    if (_questRef.QuestName(tutQuest).Equals(quest.questName))//tutQuest.QuestName.Equals(quest.questName))
+                    /*if (_questRef.QuestName(tutQuest).Equals(quest.questName))//tutQuest.QuestName.Equals(quest.questName))
                     {
                         Debug.Log("QuestControl.LoadQuests() tutQuest = " + _questRef.QuestName(tutQuest) + "; tutQuest.StoryQuestComplete = true");
                         //tutQuest.StoryQuestComplete = true;
@@ -501,7 +513,7 @@ public class QuestControl : MonoBehaviour
                         //gameObject.GetComponent<GameMaster>().toggleAdventurers(true);
                         // ui control, enable to market button
                         //gameObject.GetComponent<GameMaster>().marketAccessable(true);
-                    }
+                    }*/
                 }
             }
             else if (quest.questType == "Story")
@@ -1035,6 +1047,7 @@ public class QuestControl : MonoBehaviour
                     _unlockedQuestsJson.Add(_questRef.FetchQuestTextAssestByName(unlockedQ));
                 setupStoryQuests();
                 _chosenQuestJson = null;
+                _currStageIndex = 0;
             }
         }
 
