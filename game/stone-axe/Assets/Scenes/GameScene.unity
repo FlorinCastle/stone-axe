@@ -4370,7 +4370,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934415189}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92834512dd8674f409655588f2cea386, type: 3}
   m_Name: 
@@ -5654,6 +5654,19 @@ MonoBehaviour:
   _part1Name: {fileID: 1654406120}
   _part2Name: {fileID: 124096468}
   _part3Name: {fileID: 1687524361}
+  _chosenPartRecipeJson:
+    partID: 0
+    partName: 
+    levelRequirement: 0
+    validMaterials: []
+    validMaterialTypes: []
+    unitsOfMaterialNeeded: 0
+    baseCost: 0
+    baseStrength: 0
+    baseDextarity: 0
+    baseIntelligence: 0
+    filters: []
+    materialData: {fileID: 0}
   _chosenPartMaterial: {fileID: 0}
   _optionalChosenEnchant: {fileID: 0}
   _chosenQuestRecipe: {fileID: 0}
@@ -6764,6 +6777,19 @@ MonoBehaviour:
   recipeButtons: []
   upcomingRecipeButtons: []
   _selectedQuestItemRecipe: {fileID: 0}
+  _selectedJsonPartRecipe:
+    partID: 0
+    partName: 
+    levelRequirement: 0
+    validMaterials: []
+    validMaterialTypes: []
+    unitsOfMaterialNeeded: 0
+    baseCost: 0
+    baseStrength: 0
+    baseDextarity: 0
+    baseIntelligence: 0
+    filters: []
+    materialData: {fileID: 0}
   _craftQuest: {fileID: 11400000, guid: eb0c1a0207564e24b997af98e0ac5496, type: 2}
   filterData:
   - {fileID: 11400000, guid: b8da9b853241afa4ab2ed683bf25b60d, type: 2}
@@ -8083,7 +8109,6 @@ MonoBehaviour:
   _newQuestButton: {fileID: 0}
   _completeQuestButton: {fileID: 744597666}
   _repeatableQuestsJson: []
-  _unlockedQuests: []
   _unlockedQuestsJson: []
   _questStarterGOs: []
   _enableBuyOnComplete: {fileID: 11400000, guid: 16242dde5e7c8dc48ba0ef782e9c7174, type: 2}

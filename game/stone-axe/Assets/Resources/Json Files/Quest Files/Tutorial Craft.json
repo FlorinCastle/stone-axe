@@ -275,7 +275,7 @@
         }
     ],
     "nextQuest": "Tutorial Sell",
-    "unlockedQuests": [],
+    "unlockedQuests": [ "Tutorial Sell" ],
     "unlockFeatures": [],
     "isComplete": false
 }

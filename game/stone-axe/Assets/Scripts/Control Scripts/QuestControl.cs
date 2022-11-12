@@ -47,7 +47,7 @@ public class QuestControl : MonoBehaviour
     [Header("Quest Organization")]
     //[SerializeField] private List<QuestData> _repeatableQuests;
     [SerializeField] private List<TextAsset> _repeatableQuestsJson;
-    [SerializeField] private List<QuestData> _unlockedQuests;
+    //[SerializeField] private List<QuestData> _unlockedQuests;
     [SerializeField] private List<TextAsset> _unlockedQuestsJson;
     [SerializeField] private List<GameObject> _questStarterGOs;
     [SerializeField] private QuestData _enableBuyOnComplete;
@@ -109,6 +109,10 @@ public class QuestControl : MonoBehaviour
 
         if (starterJsonRef == null)
         {
+            foreach (GameObject go in _questStarterGOs)
+                Destroy(go);
+            _questStarterGOs.Clear();
+
             foreach (TextAsset quest in _unlockedQuestsJson)
             {
                 if (_questRef.isLongQuestComplete(quest) == false)
@@ -378,8 +382,9 @@ public class QuestControl : MonoBehaviour
         /*foreach (QuestData storyQuest in _questRef.getStoryQuests())
             storyQuest.StoryQuestComplete = false; */
 
-        _unlockedQuests.Clear();
+        //_unlockedQuests.Clear();
         //_unlockedQuests.Add(_questRef.getTutorialQuests()[_questRef.getTutorialQuests().Count - 1].QuestUnlocks[0]);
+        _unlockedQuestsJson.Clear();
         _unlockedQuestsJson.Add(_questRef.FetchQuestTextAssestByName(_questRef.LoadStoryQuest(_questRef.TutorialQuests[_questRef.TutorialQuests.Count - 1]).unlockedQuests[0]));
     }
 
@@ -472,37 +477,44 @@ public class QuestControl : MonoBehaviour
                 }
             setupText();
         }
+        
         if (questsSave.unlockedQuests.Count == 0 && questsSave.completedQuests.Count == 0 && questsSave.currentQuest == null)
         {
             _unlockedQuestsJson.Add(_questRef.TutorialQuests[0]);
-
+            //setupStoryQuests();
         }
-        foreach (QuestObject quest in questsSave.unlockedQuests)
+        else
         {
-            if (quest.questType == "Tutorial")
+            foreach (QuestObject quest in questsSave.unlockedQuests)
             {
-                foreach (TextAsset tutQuest in _questRef.TutorialQuests)//(QuestData tutQuest in _questRef.getTutorialQuests())
-                    if (_questRef.QuestName(tutQuest) == quest.questName)//(tutQuest.QuestName == quest.questName)
-                        _unlockedQuestsJson.Add(tutQuest);//_unlockedQuests.Add(tutQuest);
+                if (quest.questType == "Tutorial")
+                {
+                    foreach (TextAsset tutQuest in _questRef.TutorialQuests)//(QuestData tutQuest in _questRef.getTutorialQuests())
+                        if (_questRef.QuestName(tutQuest) == quest.questName)//(tutQuest.QuestName == quest.questName)
+                            _unlockedQuestsJson.Add(tutQuest);//_unlockedQuests.Add(tutQuest);
+                }
+                else if (quest.questType == "Story")
+                {
+                    Debug.LogWarning("TODO fix this");
+                    foreach (TextAsset storyQuest in _questRef.StoryQuests)
+                        if (_questRef.QuestName(storyQuest) == quest.questName)
+                            _unlockedQuestsJson.Add(storyQuest);
+                    /*foreach (QuestData storyQuest in _questRef.getStoryQuests())
+                        if (storyQuest.QuestName == quest.questName)
+                            _unlockedQuests.Add(storyQuest); */
+                }
             }
-            else if (quest.questType == "Story")
+            foreach (QuestObject quest in questsSave.completedQuests)
             {
-                Debug.LogWarning("TODO fix this");
-                /*foreach (QuestData storyQuest in _questRef.getStoryQuests())
-                    if (storyQuest.QuestName == quest.questName)
-                        _unlockedQuests.Add(storyQuest); */
+                if (quest.questType == "Tutorial")
+                    foreach(TextAsset tutQuest in _questRef.TutorialQuests)
+                        if (_questRef.QuestName(tutQuest) == quest.questName)
+                            updateQuestProgress(tutQuest, true);
+                if (quest.questType == "Story")
+                    foreach (TextAsset storyQuest in _questRef.StoryQuests)
+                        if (_questRef.QuestName(storyQuest) == quest.questName)
+                            updateQuestProgress(storyQuest, true);
             }
-        }
-        foreach (QuestObject quest in questsSave.completedQuests)
-        {
-            if (quest.questType == "Tutorial")
-                foreach(TextAsset tutQuest in _questRef.TutorialQuests)
-                    if (_questRef.QuestName(tutQuest) == quest.questName)
-                        updateQuestProgress(tutQuest, true);
-            if (quest.questType == "Story")
-                foreach (TextAsset storyQuest in _questRef.StoryQuests)
-                    if (_questRef.QuestName(storyQuest) == quest.questName)
-                        updateQuestProgress(storyQuest, true);
         }
         
         star = true;
@@ -1039,7 +1051,8 @@ public class QuestControl : MonoBehaviour
             if (_questRef.LoadStoryQuest(quest).unlockedQuests.Count > 0 && isComplete)
             {
                 foreach (string unlockedQ in _questRef.LoadStoryQuest(quest).unlockedQuests)
-                    _unlockedQuestsJson.Add(_questRef.FetchQuestTextAssestByName(unlockedQ));
+                    if (_unlockedQuestsJson.Contains(_questRef.FetchQuestTextAssestByName(unlockedQ)) == false)
+                        _unlockedQuestsJson.Add(_questRef.FetchQuestTextAssestByName(unlockedQ));
                 setupStoryQuests();
                 _chosenQuestJson = null;
                 _currStageIndex = 0;

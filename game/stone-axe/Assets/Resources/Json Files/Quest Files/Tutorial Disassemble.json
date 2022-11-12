@@ -261,7 +261,7 @@
         }
     ],
     "nextQuest": "Tutorial Craft",
-    "unlockedQuests": [],
+    "unlockedQuests": [ "Tutorial Craft" ],
     "unlockFeatures": [],
     "isComplete": false
 }
