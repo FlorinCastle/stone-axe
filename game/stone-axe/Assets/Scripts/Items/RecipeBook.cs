@@ -7,24 +7,28 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditor.Purchasing;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class RecipeBook : MonoBehaviour
 {
-    [SerializeField] private List<ItemData> itemRecipes;
+    //[SerializeField] private List<ItemData> itemRecipes;
     [SerializeField] private List<TextAsset> itemJsonRecipes;
-    [SerializeField] private List<PartData> partRecipes;
+    [SerializeField] private List<ItemJsonData> itemJsonData;
+    //[SerializeField] private List<PartData> partRecipes;
     [SerializeField] private List<TextAsset> partJsonRecipes;
+    [SerializeField] private List<PartJsonData> partJsonData;
     [SerializeField] private List<QuestItemData> questItemRecipes;
     [SerializeField, HideInInspector] private List<string> itemRecipeName;
     [SerializeField, HideInInspector] private List<string> partRecipeName;
     [SerializeField, HideInInspector] private List<GameObject> recipeButtons;
-    [SerializeField, HideInInspector] private List<GameObject> upcomingRecipeButtons;
+    [SerializeField] private List<GameObject> upcomingRecipeButtons;
     //[SerializeField, HideInInspector] private ItemData _selectedItemRecipe;
     [SerializeField, HideInInspector] private ItemJsonData _selectedJsonItemRecipe;
     [SerializeField, HideInInspector] private QuestItemData _selectedQuestItemRecipe;
     //[SerializeField, HideInInspector] private PartData _selectedPartRecipe;
     [SerializeField, HideInInspector] private PartJsonData _selectedJsonPartRecipe;
-    [SerializeField] private QuestData _craftQuest;
+    [SerializeField] private TextAsset _craftQuestJson;
+    //[SerializeField] private QuestData _craftQuest;
     [Header("Filters")]
     [SerializeField] private List<FilterData> filterData;
     [SerializeField, HideInInspector] private List<GameObject> filterButtons;
@@ -49,11 +53,15 @@ public class RecipeBook : MonoBehaviour
     private Quest questRef;
     private QuestControl questControl;
 
+    [SerializeField, HideInInspector] private List<TextAsset> processedJsons;
+
     private void Awake()
     {
         _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         questRef = GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>();
         questControl = _gameMasterRef.gameObject.GetComponent<QuestControl>();
+
+        processRecipes();
 
         _recipeSelectButton.interactable = false; // temp till I get all the code set up
         recipeButtons = new List<GameObject>();
@@ -63,26 +71,44 @@ public class RecipeBook : MonoBehaviour
         _filterUI.SetActive(false);
     }
 
+    private void processRecipes()
+    {
+        Debug.Log("RecipeBook.processRecipes() processing recipes");
+        foreach(TextAsset item in itemJsonRecipes)
+            if (processedJsons.Contains(item) == false)
+            {
+                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(item).Replace("Assets", "")));
+                itemJsonData.Add(itemJson);
+                processedJsons.Add(item);
+            }
+        foreach (TextAsset part in partJsonRecipes)
+            if (processedJsons.Contains(part) == false)
+            {
+                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(part).Replace("Assets", "")));
+                partJsonData.Add(partJson);
+                processedJsons.Add(part);
+            }
+    }
+
     public void disableRecipeSelectButton()
     {
         _recipeSelectButton.interactable = false;
         _filterUI.SetActive(false);
     }
-
     public void prepToSelectRecipe()
     {
         _recipeSelectButton.interactable = true;
     }
-
     public void selectRecipe()
     {
-        if (anyRecipeSelected() && (GameObject.FindGameObjectWithTag("GameMaster").GetComponent<QuestControl>().CraftQuestComplete || GameObject.FindGameObjectWithTag("GameMaster").GetComponent<QuestControl>().CurrentQuest == _craftQuest))
+        if (anyRecipeSelected() && (GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>().isLongQuestComplete(_craftQuestJson) || GameObject.FindGameObjectWithTag("GameMaster").GetComponent<QuestControl>().CurrentQuest == _craftQuestJson))
         {
             CraftControl CCRef = GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>();
 
             CCRef.setChosenRecipe();
         }
     }
+    /*GameObject.FindGameObjectWithTag("GameMaster").GetComponent<QuestControl>().CraftQuestComplete || */
 
     /*public void setItemRecipeInfo(int index)
     {
@@ -211,7 +237,7 @@ public class RecipeBook : MonoBehaviour
             Debug.LogError("RecipeBook.setItemRecipeInfo(TextAsset jsonText): jsonText is Null!");
     }
 
-    public void setUpcomingRecipeInfo (int index)
+    /*public void setUpcomingRecipeInfo (int index)
     {
         if (index == -1)
             _recipeText.text = "placeholder";
@@ -219,7 +245,29 @@ public class RecipeBook : MonoBehaviour
         {
             GameObject button = upcomingRecipeButtons[index];
             //Debug.LogError("REPLACE ITEMDATA WITH ITEMJSON/TEXTFILE");
-            foreach (ItemData itemRecipe in itemRecipes)
+            foreach (ItemJsonData itemRecipe in itemJsonData)
+            {
+                if (itemRecipe.itemName == button.GetComponent<RecipeButton>().GetRecipeName)
+                {
+                    _recipeText.text = itemRecipe.itemName + "\nParts:";
+                    for(int i = 1; i < itemRecipe.requiredParts.Count; i++)
+                    {
+                        _recipeText.text += "\nValid Part " + i + ": " + itemRecipe.requiredParts[i-1];
+                    }
+                    /*foreach (PartData valid1 in itemRecipe.requiredParts[0])
+                        _recipeText.text += valid1.PartName + " ";
+
+                    _recipeText.text += "\nValid Part 2: ";
+                    foreach (PartData valid2 in itemRecipe.ValidParts2)
+                        _recipeText.text += valid2.PartName + " ";
+
+                    _recipeText.text += "\nValid Part 3: ";
+                    foreach (PartData valid3 in itemRecipe.ValidParts3)
+                        _recipeText.text += valid3.PartName + " "; 
+                }
+            }
+
+            /*foreach (ItemData itemRecipe in itemRecipes)
             {
                 if (itemRecipe.ItemName == button.GetComponent<RecipeButton>().GetRecipeName)
                 {
@@ -246,7 +294,7 @@ public class RecipeBook : MonoBehaviour
                 }
             }
         }
-    }
+    } */
     public void setUpcomingRecipeInfo(TextAsset jsonText)
     {
         if (jsonText != null)
@@ -254,15 +302,15 @@ public class RecipeBook : MonoBehaviour
             if (itemJsonRecipes.Contains(jsonText))
             {
                 ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonText).Replace("Assets", "")));
-                _recipeText.text = _selectedJsonItemRecipe.itemName + " Json\nParts:";
-                foreach (string partName in _selectedJsonItemRecipe.requiredParts)
-                    _recipeText.text += "\nValid Json Part " + (_selectedJsonItemRecipe.requiredParts.IndexOf(partName) + 1) + ": " + partName;
+                _recipeText.text = itemJson.itemName + " Json\nParts:";
+                foreach (string partName in itemJson.requiredParts)
+                    _recipeText.text += "\nValid Json Part " + (itemJson.requiredParts.IndexOf(partName) + 1) + ": " + partName;
             }
             else if (partJsonRecipes.Contains(jsonText))
             {
                 PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonText).Replace("Assets", "")));
-                _recipeText.text = _selectedJsonPartRecipe.partName + " Json\nValid Material Types:\n";
-                foreach (string matType in _selectedJsonPartRecipe.validMaterialTypes)
+                _recipeText.text = partJson.partName + " Json\nValid Material Types:\n";
+                foreach (string matType in partJson.validMaterialTypes)
                     _recipeText.text += matType + "\n";
             }
             else
@@ -398,7 +446,7 @@ public class RecipeBook : MonoBehaviour
         clearRecipeGrid();
         clearUpcomingRecipesLists();
         //int r = 0;
-        Debug.LogError("REPLACE ITEMDATA WITH ITEMJSON/TEXTFILE");
+        //Debug.LogError("REPLACE ITEMDATA WITH ITEMJSON/TEXTFILE");
         /*foreach(ItemData itemRecipe in itemRecipes)
         {
             if (checkIfEnabledFiltersValid(itemRecipe) && enabledFilters.Count != 0 && (itemRecipe.ItemLevel <= _gameMasterRef.GetLevel))
@@ -496,7 +544,7 @@ public class RecipeBook : MonoBehaviour
             InsertButton(tempButton);
         }
         r++;
-        Debug.LogError("REPLACE ITEMDATA WITH ITEMJSON/TEXTFILE");
+        //Debug.LogError("REPLACE ITEMDATA WITH ITEMJSON/TEXTFILE");
         /*foreach (ItemData itemRecipe in itemRecipes)
         {
             if (itemRecipe != null && (itemRecipe.ItemLevel <= _gameMasterRef.GetLevel))
@@ -572,13 +620,13 @@ public class RecipeBook : MonoBehaviour
         Debug.LogError("TODO Fix this");
 
         //QuestData currQuest = _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest;
-        ItemData reqItem = null; //currQuest.RequiredItem;
+        //ItemData reqItem = null; //currQuest.RequiredItem;
 
         clearRecipeGrid();
         clearUpcomingRecipesLists();
         int r = 0;
 
-        if (reqItem != null)
+        /*if (reqItem != null)
         {
             // instantiate the button prefab
             tempButton = Instantiate(_itemRecipeInfoPrefab);
@@ -590,7 +638,7 @@ public class RecipeBook : MonoBehaviour
             tempButton.name = reqItem.ItemName + " Recipe";
             // add button to list
             InsertButton(tempButton);
-        }
+        }*/
         r++;
         Debug.LogError("REPLACE ITEMDATA WITH ITEMJSON/TEXTFILE");
         /*foreach (ItemData itemRecipe in itemRecipes)
@@ -828,7 +876,7 @@ public class RecipeBook : MonoBehaviour
         return false;
     }
 
-    public List<string> itemRecipesNames()
+    /*public List<string> itemRecipesNames()
     {
         itemRecipeName.Clear();
         foreach (ItemData item in itemRecipes)
@@ -842,9 +890,9 @@ public class RecipeBook : MonoBehaviour
         foreach (PartData part in partRecipes)
             partRecipeName.Add(part.PartName);
         return partRecipeName;
-    }
+    } */
 
-    public ItemData getItemRecipe(int i)
+    /*public ItemData getItemRecipe(int i)
     {
         return itemRecipes[i];
     }
@@ -854,7 +902,7 @@ public class RecipeBook : MonoBehaviour
             if (item.ItemName == value)
                 return item;
         return null;
-    }
+    }*/
     public ItemJsonData getItemJsonRecipe(string value)
     {
         ItemJsonData itemJsonData = new ItemJsonData();
@@ -880,7 +928,7 @@ public class RecipeBook : MonoBehaviour
         return null;
     }
 
-    public PartData getPartRecipe(int i)
+    /*public PartData getPartRecipe(int i)
     {
         return partRecipes[i];
     }
@@ -891,7 +939,7 @@ public class RecipeBook : MonoBehaviour
                 return part;
             //else Debug.LogWarning("Can not find recipe for: " + name);
         return null;
-    }
+    }*/
     public PartJsonData getPartJsonRecipe(string value)
     {
         PartJsonData partJsonData = new PartJsonData();
@@ -949,13 +997,13 @@ public class RecipeBook : MonoBehaviour
         }
 
     }
-    private bool checkIfEnabledFiltersValid(ItemData itemRecipe)
+    /*private bool checkIfEnabledFiltersValid(ItemData itemRecipe)
     {
         foreach(FilterData enabledFilter in enabledFilters)
             if (itemRecipe.ValidFilters.Contains(enabledFilter) == false)
                 return false;
         return true;
-    }
+    } */
     private bool checkIfEnabledFiltersValid(ItemJsonData itemJson)
     {
         foreach (FilterData enabledFilter in enabledFilters)
@@ -963,11 +1011,11 @@ public class RecipeBook : MonoBehaviour
                 return false;
         return true;
     }
-    private bool checkIfEnabledFiltersValid(PartData partRecipe)
+    /*private bool checkIfEnabledFiltersValid(PartData partRecipe)
     {
         foreach (FilterData enabledFilter in enabledFilters)
             if (partRecipe.ValidFilters.Contains(enabledFilter) == false)
                 return false;
         return true;
-    }
+    }*/
 }

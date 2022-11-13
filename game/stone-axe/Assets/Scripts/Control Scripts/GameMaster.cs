@@ -65,6 +65,8 @@ public class GameMaster : MonoBehaviour
 
         loadSaveGames();
 
+        _uiControlRef.updateCurrencyText();
+
         if (_uiControlRef.ShopUIActive)
         {
             getMostRecentSaveString();

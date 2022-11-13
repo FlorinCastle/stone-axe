@@ -41,7 +41,7 @@ public class RecipeButton : MonoBehaviour
     }
     public void setUpcomingRecipeInfoText()
     {
-        _recipeControl.setUpcomingRecipeInfo(_myButtonIndex);
+        //_recipeControl.setUpcomingRecipeInfo(_myButtonIndex);
         _recipeControl.setUpcomingRecipeInfo(RecipeJson);
     }
 

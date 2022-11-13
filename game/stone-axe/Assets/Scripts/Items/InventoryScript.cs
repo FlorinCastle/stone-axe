@@ -942,7 +942,7 @@ public class InventoryScript : MonoBehaviour
         itemDataStorageTemp.name = item.itemName;
         itemDataScriptRef.setItemName(item.itemName);
         itemDataScriptRef.setTotalValue(item.totalValue);
-        itemDataScriptRef.ItemRecipeRef = _recipeBookRef.getItemRecipe(item.recipeName);
+        //itemDataScriptRef.ItemRecipeRef = _recipeBookRef.getItemRecipe(item.recipeName);
         itemDataScriptRef.ItemJsonRef = _recipeBookRef.getItemJsonRecipe(item.recipeName);
         itemDataScriptRef.setTotalStrenght(item.totalStrenght);
         itemDataScriptRef.setTotalDex(item.totalDextarity);
@@ -1029,7 +1029,7 @@ public class InventoryScript : MonoBehaviour
         itemDataStorageTemp.name = item.itemName;
         itemDataScriptRef.setItemName(item.itemName);
         itemDataScriptRef.setTotalValue(calculateTotalValue(item));
-        itemDataScriptRef.ItemRecipeRef = _recipeBookRef.getItemRecipe(item.itemName);
+        //itemDataScriptRef.ItemRecipeRef = _recipeBookRef.getItemRecipe(item.itemName);
         itemDataScriptRef.ItemJsonRef = item;
         itemDataScriptRef.setTotalStrenght(calculateTotalStr(item));
         itemDataScriptRef.setTotalDex(calculateTotalDex(item));

@@ -141,7 +141,8 @@ public class GenerateItem : MonoBehaviour
         haggleButtonText.text = "haggle\n(success chance: " + (_skillManager.HagglePriceRef.getHaggleChance()).ToString() + "%)";
         haggleButton.interactable = true;
     }
-    public void GeneratePresetItem(ItemData item, MaterialData part1Mat, MaterialData part2Mat, MaterialData part3Mat, bool forceInsert)
+    /* old GeneratePresetItem code
+     * public void GeneratePresetItem(ItemData item, MaterialData part1Mat, MaterialData part2Mat, MaterialData part3Mat, bool forceInsert)
     {
         _generatedItem = item;
         _generatedItem.Part1.Material = part1Mat;
@@ -172,7 +173,7 @@ public class GenerateItem : MonoBehaviour
         else if (forceInsert == true)
             Debug.LogWarning("GenerateItem.GeneratePresetItem(): this is a sign to rewrite the Quest System.");//_inventoryRef.InsertItem(_generatedItem);
         //_generatedItem = null;
-    }
+    } */
     public void GeneratePresetItem(ItemJsonDataCode item, MaterialData part1Mat, MaterialData part2Mat, MaterialData part3Mat, bool forceInsert)
     {
         _generatedItemJson = item;

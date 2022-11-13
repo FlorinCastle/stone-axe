@@ -50,11 +50,11 @@ public class QuestControl : MonoBehaviour
     //[SerializeField] private List<QuestData> _unlockedQuests;
     [SerializeField] private List<TextAsset> _unlockedQuestsJson;
     [SerializeField] private List<GameObject> _questStarterGOs;
-    [SerializeField] private QuestData _enableBuyOnComplete;
+    /*[SerializeField] private QuestData _enableBuyOnComplete;
     [SerializeField] private QuestData _enableSellOnComplete;
     [SerializeField] private QuestData _enableDisassembleOnComplete;
     [SerializeField] private QuestData _enableCraftOnComplete;
-    [SerializeField] private QuestData _enableAdventurersOnComplete;
+    [SerializeField] private QuestData _enableAdventurersOnComplete; */
 
     private int reqItemCount = 0;
     private int currentItemCount = 0;
@@ -1059,7 +1059,8 @@ public class QuestControl : MonoBehaviour
             }
         }
     }
-    public void updateQuestProgress(QuestData quest, QuestStage currStage)
+    /* old updateQuestProgress code
+     * public void updateQuestProgress(QuestData quest, QuestStage currStage)
     {
         if (currStage.StageType == "Buy_Item")
         {
@@ -1165,7 +1166,7 @@ public class QuestControl : MonoBehaviour
             if (currStage.RequiredUI == "MiniGame_UI")
                 Debug.Log("Waiting for MiniGame_UI UI to be open");
         }
-    }
+    } */
 
     public void completeQuest()
     {
@@ -1209,10 +1210,10 @@ public class QuestControl : MonoBehaviour
     }
 
     // data
-    public bool BuyQuestComplete { get => _enableBuyOnComplete.StoryQuestComplete; }
+    /*public bool BuyQuestComplete { get => _enableBuyOnComplete.StoryQuestComplete; }
     public bool DisassembleQuestComplete { get => _enableDisassembleOnComplete.StoryQuestComplete; }
     public bool CraftQuestComplete { get => _enableCraftOnComplete.StoryQuestComplete; }
-    public bool SellQuestComplte { get => _enableSellOnComplete.StoryQuestComplete; }
+    public bool SellQuestComplte { get => _enableSellOnComplete.StoryQuestComplete; } */
 
     //public QuestData CurrentQuest { get => _chosenQuest; }
     public TextAsset CurrentQuest { get => _chosenQuestJson; }

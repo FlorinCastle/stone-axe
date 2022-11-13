@@ -126,7 +126,7 @@ public class UIControl : MonoBehaviour
         _startNewGameButton.interactable = false;
         setupMainMenu();
         setupCreditsText();
-        updateCurrencyText();
+        //updateCurrencyText();
 
     }
 
