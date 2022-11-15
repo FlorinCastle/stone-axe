@@ -4,33 +4,318 @@
     "requiredPlayerLevel": 0,
     "questDescription": "story quest",
     "questType": "Story",
-    "questStages": [
-        "DebtI 1",
-        "DebtI 2",
-        "DebtI 3",
-        "DebtI 4",
-        "DebtI 5",
-        "DebtI 6",
-        "DebtI 7",
-        "DebtI 8",
-        "DebtI 9",
-        "DebtI 10",
-        "DebtI 11",
-        "DebtI 12",
-        "DebtI 13",
-        "DebtI 14",
-        "DebtI 15",
-        "DebtI 16",
-        "DebtI 17",
-        "DebtI 18",
-        "DebtI 19"
-    ],
     "currencyReward": 0,
     "EXPReward": 0,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "questStagesJson": [
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Door",
+            "dialogeLine": "*ka-chack*",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Summon_NPC",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Ah! Hello!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "Hello. Are-are you the new owner of this shop?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Um- close enough, yes. How can I help?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "Oh, good. Well, ya’see…",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "The previous owner of this here shop took out a loan to keep their business afloat and had the shop as collateral.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Um…",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "But they just took the funds from the loan and ran, so I came to collect.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Uh…",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Debt Collector ",
+            "dialogeLine": "So, here are the repayment options for the loan.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Wait. Slow down. Let me read this…",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "So, my choices are…Turn over the deed, bulk pay the remaining balance, or pay off the remaining balance in installments?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Debt Collector",
+            "dialogeLine": "Yes. Up to you which one you want. But, choose quick, cause I have all the documents for deed ownership transferral already filled out.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Um. Um! I wanna keep the deed so… Um!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Payments! I’ll do that.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Debt Collector",
+            "dialogeLine": "Perfect! First Payment will be 1000 g! I’ll be back in about 3 days!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Dismiss_Quest_NPC",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Oh gods above. What am I gonna do…",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        }
+    ],
+    "nextQuest": "Story - Debt II",
+    "unlockedQuests": [
+        "Story - Debt II"
+    ],
+    "unlockFeatures": [],
+    "isComplete": false
 }

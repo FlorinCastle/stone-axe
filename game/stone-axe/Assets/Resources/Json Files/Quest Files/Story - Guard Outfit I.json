@@ -4,27 +4,222 @@
     "requiredPlayerLevel": 0,
     "questDescription": "story quest",
     "questType": "Story",
-    "questStages": [
-        "GuardOutfitI 1",
-        "GuardOutfitI 2",
-        "GuardOutfitI 3",
-        "GuardOutfitI 4",
-        "GuardOutfitI 5",
-        "GuardOutfitI 6",
-        "GuardOutfitI 7",
-        "GuardOutfitI 8",
-        "GuardOutfitI 9",
-        "GuardOutfitI 10",
-        "GuardOutfitI 11",
-        "GuardOutfitI 12",
-        "GuardOutfitI 13"
-    ],
     "currencyReward": 0,
     "EXPReward": 0,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "questStagesJson": [
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Door",
+            "dialogeLine": "*ka-chack*",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Summon_NPC",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "Hello?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Greetings! What can I do for you?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "I...could be better. Still a little shaken up.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Guard Head",
+            "dialogeLine": "That’s to be expected. I left a report with The Guild, and the funds we managed to recover from that man. It should be dispersed soon.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Guard Head",
+            "dialogeLine": "I also heard a bit about YOU from our Noble Knight Attache that hauled in the scammer.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Me?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Guard Head",
+            "dialogeLine": "Aye. Said you did good work.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Guard Head",
+            "dialogeLine": "Which is why, in a few days, I plan to come by with an order for you. If you are up for it?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "I…It would be an honor, sir.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Guard Head",
+            "dialogeLine": "Good. I’ll be back in a few days!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Dismiss_Quest_NPC",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        }
+    ],
+    "nextQuest": "Story - Guard Outfit II",
+    "unlockedQuests": [
+        "Story - Guard Outfit II"
+    ],
+    "unlockFeatures": [],
+    "isComplete": false
 }

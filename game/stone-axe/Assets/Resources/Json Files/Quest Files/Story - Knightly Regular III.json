@@ -4,33 +4,319 @@
     "requiredPlayerLevel": 9,
     "questDescription": "The armored knight requests that you remake their spare boots",
     "questType": "Story",
-    "questStages": [
-        "KnightRegIII 1",
-        "KnightRegIII 2",
-        "KnightRegIII 3",
-        "KnightRegIII 4",
-        "KnightRegIII 5",
-        "KnightRegIII 6",
-        "KnightRegIII 7",
-        "KnightRegIII 8",
-        "KnightRegIII 9",
-        "KnightRegIII 10",
-        "KnightRegIII 11",
-        "KnightRegIII 12",
-        "KnightRegIII 13",
-        "KnightRegIII 14",
-        "KnightRegIII 15",
-        "KnightRegIII 16",
-        "KnightRegIII 17",
-        "KnightRegIII 18",
-        "KnightRegIII 19"
-    ],
     "currencyReward": 0,
     "EXPReward": 0,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "questStagesJson": [
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Door",
+            "dialogeLine": "*ka-chack*",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Remove_Currency",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Welcome!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Knight",
+            "dialogeLine": "Greetings.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Alright. What work would you like done today?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Knight",
+            "dialogeLine": "I need my spare Greaves reworked.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Knight",
+            "dialogeLine": "I need my spare Greaves reworked.\\nQuickly.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Can do.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Get_Item",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Wow. These definitely need a rework. I’ll be quick.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Disassemble_Item",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Craft_Item",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "Metal Boots",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "And...done!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Knight",
+            "dialogeLine": "Good. Here is what you are owed.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Knight",
+            "dialogeLine": "I will not be back for further reworking for a while.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Knight",
+            "dialogeLine": "My order has deployed me for an out-of-city investigation.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Knight",
+            "dialogeLine": "Please be wary for a few days.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Will do. Have a good day.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Remove_Quest_Items",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        }
+    ],
+    "nextQuest": "Story - Knightly Regular IV",
+    "unlockedQuests": [
+        "Story - Debt I",
+        "Story - Noble Sneak I"
+    ],
+    "unlockFeatures": [],
+    "isComplete": false
 }

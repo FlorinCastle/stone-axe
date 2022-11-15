@@ -4,35 +4,351 @@
     "requiredPlayerLevel": 0,
     "questDescription": "story quest",
     "questType": "Story",
-    "questStages": [
-        "DebtIII 1",
-        "DebtIII 2",
-        "DebtIII 3",
-        "DebtIII 4",
-        "DebtIII 5",
-        "DebtIII 6",
-        "DebtIII 7",
-        "DebtIII 8",
-        "DebtIII 9",
-        "DebtIII 10",
-        "DebtIII 11",
-        "DebtIII 12",
-        "DebtIII 13",
-        "DebtIII 14",
-        "DebtIII 15",
-        "DebtIII 16",
-        "DebtIII 17",
-        "DebtIII 18",
-        "DebtIII 19",
-        "DebtIII 20",
-        "DebtIII 21"
-    ],
     "currencyReward": 0,
     "EXPReward": 0,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
+    "questStagesJson": [
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Okay. I’ve got nine days to do this. You can do this.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Have_Currency",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 3500
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Door",
+            "dialogeLine": "*ka-chack*",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Summon_NPC",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Debt Collector",
+            "dialogeLine": "Hello. I know it’s only been eight days, but I returned early and have several appointments after this.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Uh. Um. I’ve only got 3500…",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Debt Collector",
+            "dialogeLine": "Well, you are spectacularly useless, aren’t you?!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Debt Collector",
+            "dialogeLine": "You did so well with getting the 1000 g! I would have thought that getting a bit more would have been just as easy!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Debt Collector",
+            "dialogeLine": "Useless! Spectacularly useless!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Door",
+            "dialogeLine": "*ka-chack*",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Summon_NPC",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Debt Collector",
+            "dialogeLine": "Fine! Looks like I’ll need to go down to the City Center and turn in the paperwork for Deed transferal!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Knight",
+            "dialogeLine": "There. You. Are.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Knight",
+            "dialogeLine": "There. You. Are. /n*grabs Debt Collector’s shoulder*",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Knight",
+            "dialogeLine": "You are under arrest.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Debt Collector??",
+            "dialogeLine": "What?! Huh?!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Knight",
+            "dialogeLine": "You are under arrest for Illegal Deed transferal, Extorting funds from Legal Businesses, and other miscellaneous minor scams.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Scammer",
+            "dialogeLine": "Huh?!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Knight",
+            "dialogeLine": "Apologies for the disturbance. I will drag this one in for processing now. If we are able to recover your stolen currency, then we will return it to you.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Knight",
+            "dialogeLine": "Have a good day.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Dismiss_Quest_NPC",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        }
+    ],
     "nextQuest": "",
-    "unlockedQuests": []
+    "unlockedQuests": [
+        "Story - Knightly Regular IV",
+        "Story - Guard Outfit I"
+    ],
+    "unlockFeatures": [],
+    "isComplete": false
 }

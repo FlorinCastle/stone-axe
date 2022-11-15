@@ -13,6 +13,7 @@ public class QuestStageJsonData
 
     public ItemJson reqItem; // can be null (should usually be null)
     public EventJson eventData;
+    public int reqCurrency;
 }
 
 [System.Serializable]

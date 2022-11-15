@@ -303,7 +303,7 @@
         }
     ],
     "nextQuest": "",
-    "unlockedQuests": [],
+    "unlockedQuests": [ "Story - Knightly Regular I" ],
     "unlockFeatures": [],
     "isComplete": false
 }

@@ -4,28 +4,238 @@
     "requiredPlayerLevel": 7,
     "questDescription": "story quest",
     "questType": "Story",
-    "questStages": [
-        "NobleSneakI 1",
-        "NobleSneakI 2",
-        "NobleSneakI 3",
-        "NobleSneakI 4",
-        "NobleSneakI 5",
-        "NobleSneakI 6",
-        "NobleSneakI 7",
-        "NobleSneakI 8",
-        "NobleSneakI 9",
-        "NobleSneakI 10",
-        "NobleSneakI 11",
-        "NobleSneakI 12",
-        "NobleSneakI 13",
-        "NobleSneakI 14"
-    ],
     "currencyReward": 0,
     "EXPReward": 0,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "questStagesJson": [
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "Door",
+            "dialogeLine": "*ka-chack*",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Summon_NPC",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "Hel-lo~!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Oh! How can I help you?",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "I want a ring pleese!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "A ring? Ok. I can do that.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "A really pretty ring!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Um…Sure.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "Thank you!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "???",
+            "dialogeLine": "Oh! Make sure it’s a Secret!",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Force_Event",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "Dismiss_Quest_NPC",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Craft_Item",
+            "speaker": "",
+            "dialogeLine": "",
+            "reqItem": {
+                "itemName": "Ring",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "That should do it.",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        },
+        {
+            "questStageIndex": 0,
+            "questStageType": "Dialogue",
+            "speaker": "You",
+            "dialogeLine": "Now to wait for the little lady to come back for the ring…",
+            "reqItem": {
+                "itemName": "",
+                "partData": [],
+                "reqCount": 0
+            },
+            "eventData": {
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
+        }
+    ],
+    "nextQuest": "Story - Noble Sneak I",
+    "unlockedQuests": [
+        "Story - Noble Sneak II"
+    ],
+    "unlockFeatures": [],
+    "isComplete": false
 }

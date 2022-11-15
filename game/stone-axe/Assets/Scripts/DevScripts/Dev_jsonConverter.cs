@@ -215,6 +215,11 @@ public class Dev_jsonConverter : MonoBehaviour
             string nextQuest = "";
             if (quest.NextQuest != null)
                 nextQuest = quest.NextQuest.QuestName;
+
+            List<string> nextQuests = new List<string>();
+            foreach (QuestData unlockedQuest in quest.QuestUnlocks)
+                nextQuests.Add(unlockedQuest.QuestName);
+
             TutorialQuest questData = new TutorialQuest
             {
                 questID = -1,
@@ -228,6 +233,7 @@ public class Dev_jsonConverter : MonoBehaviour
                 questStagesJson = questStagesList,
                 nextQuest = nextQuest,
                 unlockFeatures = new List<string>(),
+                unlockedQuests = nextQuests,
             };
             json = JsonUtility.ToJson(questData, true);
         }
@@ -236,6 +242,11 @@ public class Dev_jsonConverter : MonoBehaviour
             string nextQuest = "";
             if (quest.NextQuest != null)
                 nextQuest = quest.NextQuest.QuestName;
+
+            List<string> nextQuests = new List<string>();
+            foreach (QuestData unlockedQuest in quest.QuestUnlocks)
+                nextQuests.Add(unlockedQuest.QuestName);
+
             StoryQuest questData = new StoryQuest
             {
                 questID = -1,
@@ -248,6 +259,7 @@ public class Dev_jsonConverter : MonoBehaviour
                 //questStages = questStages,
                 questStagesJson = questStagesList,
                 nextQuest = nextQuest,
+                unlockedQuests = nextQuests,
             };
             json = JsonUtility.ToJson(questData, true);
         }
@@ -570,6 +582,18 @@ public class Dev_jsonConverter : MonoBehaviour
             };
 
             //Debug.Log(JsonUtility.ToJson(questStageJsonData, true));
+
+            return questStageJsonData;
+        }
+        else if (stage.StageType == "Have_Currency")
+        {
+            var questStageJsonData = new QuestStageJsonData()
+            {
+                questStageType = stage.StageType,
+                speaker = "",
+                dialogeLine = "",
+                reqCurrency = stage.CurrencyValue,
+            };
 
             return questStageJsonData;
         }
