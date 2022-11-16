@@ -1,7 +1,9 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Story - Knightly Regular III",
-    "requiredPlayerLevel": 9,
+    "questPrereqs": {
+        "requiredPlayerLevel": 9
+    },
     "questDescription": "The armored knight requests that you remake their spare boots",
     "questType": "Story",
     "currencyReward": 0,

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BaseQuestJsonData
 {
-    public int questID;
+    public string questID;
     public string questName;
-    public int requiredPlayerLevel;
+    public QuestPrerequisits questPrereqs;
+    //public int requiredPlayerLevel;
     public string questDescription;
     public string questType;
 
@@ -62,4 +63,11 @@ public class TutorialQuest : BaseQuestJsonData
     public List<string> unlockFeatures;
 
     public bool isComplete;
+}
+
+[System.Serializable]
+public class QuestPrerequisits
+{
+    public int requiredPlayerLevel;
+    List<string> requiredCompletedQuests;
 }

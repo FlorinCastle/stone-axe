@@ -1,16 +1,13 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Have Silk",
-    "requiredPlayerLevel": 15,
+    "questPrereqs": {
+        "requiredPlayerLevel": 15
+    },
     "questDescription": "have this material",
     "questType": "OD_Material",
-    "questStages": [],
     "currencyReward": 180,
     "EXPReward": 2,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredMaterial": "Silk",
+    "requiredCount": 5
 }

@@ -1,7 +1,9 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Tutorial Craft",
-    "requiredPlayerLevel": 0,
+    "questPrereqs": {
+        "requiredPlayerLevel": 0
+    },
     "questDescription": "How to Craft stuff\n- go to craft tab\n- go to recipes tab\n- select the recipe to remake the disassembled item\n- go to inventory tab and go to parts \n- select each of the parts\n- click craft",
     "questType": "Tutorial",
     "currencyReward": 0,
@@ -18,8 +20,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -32,8 +36,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -46,8 +52,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -60,8 +68,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -74,8 +84,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -88,8 +100,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -102,8 +116,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -116,8 +132,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -130,8 +148,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": "Force_Open_UI"
-            }
+                "eventName": "Force_Open_UI",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -144,8 +164,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -158,8 +180,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -172,8 +196,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -186,8 +212,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -200,8 +228,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -214,8 +244,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -228,8 +260,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -242,8 +276,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -256,8 +292,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -270,12 +308,16 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         }
     ],
     "nextQuest": "Tutorial Sell",
-    "unlockedQuests": [ "Tutorial Sell" ],
+    "unlockedQuests": [
+        "Tutorial Sell"
+    ],
     "unlockFeatures": [],
     "isComplete": false
 }

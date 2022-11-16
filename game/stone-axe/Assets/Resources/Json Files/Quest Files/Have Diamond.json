@@ -1,16 +1,13 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Have Diamond",
-    "requiredPlayerLevel": 25,
+    "questPrereqs": {
+        "requiredPlayerLevel": 25
+    },
     "questDescription": "have this material",
     "questType": "OD_Material",
-    "questStages": [],
     "currencyReward": 280,
     "EXPReward": 2,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredMaterial": "Diamond",
+    "requiredCount": 5
 }

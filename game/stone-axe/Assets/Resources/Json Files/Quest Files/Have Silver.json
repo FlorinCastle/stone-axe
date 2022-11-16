@@ -1,16 +1,13 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Have Silver",
-    "requiredPlayerLevel": 8,
+    "questPrereqs": {
+        "requiredPlayerLevel": 8
+    },
     "questDescription": "have this material",
     "questType": "OD_Material",
-    "questStages": [],
     "currencyReward": 100,
     "EXPReward": 2,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredMaterial": "Silver",
+    "requiredCount": 5
 }

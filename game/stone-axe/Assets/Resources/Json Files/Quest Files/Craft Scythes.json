@@ -1,16 +1,13 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Scythes",
-    "requiredPlayerLevel": 25,
+    "questPrereqs": {
+        "requiredPlayerLevel": 25
+    },
     "questDescription": "craft this item",
     "questType": "OCC_TotalCrafted",
-    "questStages": [],
     "currencyReward": 1145,
     "EXPReward": 3,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredItem": "Scythe",
+    "requiredCount": 3
 }

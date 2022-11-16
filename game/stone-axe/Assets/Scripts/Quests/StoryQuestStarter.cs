@@ -30,7 +30,7 @@ public class StoryQuestStarter : MonoBehaviour
 
     public void startQuest()
     {
-        if (_questControlRef.gameObject.GetComponent<GameMaster>().GetLevel >= _questJsonData.requiredPlayerLevel &&
+        if (_questControlRef.gameObject.GetComponent<GameMaster>().GetLevel >= _questJsonData.questPrereqs.requiredPlayerLevel &&
             _questControlRef.CurrentQuest == null)
         {
             //_questControlRef.startStoryQuest(_questRef);

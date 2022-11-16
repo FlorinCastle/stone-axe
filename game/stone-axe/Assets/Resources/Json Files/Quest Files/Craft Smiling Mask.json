@@ -1,16 +1,12 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Smiling Mask",
-    "requiredPlayerLevel": 14,
+    "questPrereqs": {
+        "requiredPlayerLevel": 14
+    },
     "questDescription": "a green hooded figure has requested that a duplicate of the Smiling Mask they bare be created",
     "questType": "OCC_QuestItem",
-    "questStages": [],
     "currencyReward": 1000,
     "EXPReward": 2,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredQuestItem": "Six Fingered Sword"
 }

@@ -1,16 +1,12 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Battle Fan",
-    "requiredPlayerLevel": 17,
+    "questPrereqs": {
+        "requiredPlayerLevel": 17
+    },
     "questDescription": "craft this item",
     "questType": "OCC_Item",
-    "questStages": [],
     "currencyReward": 183,
     "EXPReward": 3,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredItem": "Battle Fan"
 }

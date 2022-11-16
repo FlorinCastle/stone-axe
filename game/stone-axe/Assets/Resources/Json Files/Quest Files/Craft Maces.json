@@ -1,16 +1,13 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Maces",
-    "requiredPlayerLevel": 6,
+    "questPrereqs": {
+        "requiredPlayerLevel": 6
+    },
     "questDescription": "craft this item",
     "questType": "OCC_TotalCrafted",
-    "questStages": [],
     "currencyReward": 1105,
     "EXPReward": 3,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredItem": "Mace",
+    "requiredCount": 3
 }

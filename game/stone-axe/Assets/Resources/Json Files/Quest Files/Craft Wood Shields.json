@@ -1,16 +1,13 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Wood Shields",
-    "requiredPlayerLevel": 6,
+    "questPrereqs": {
+        "requiredPlayerLevel": 6
+    },
     "questDescription": "craft this item",
     "questType": "OCC_TotalCrafted",
-    "questStages": [],
     "currencyReward": 1510,
     "EXPReward": 3,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredItem": "Wood Shield",
+    "requiredCount": 3
 }

@@ -1,16 +1,12 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Red Princess",
-    "requiredPlayerLevel": 16,
+    "questPrereqs": {
+        "requiredPlayerLevel": 16
+    },
     "questDescription": "The blond requester has a very fine green hat. He requests that you make a duplicate of the 'cane' he carries with himself. Hidden blade and all.",
     "questType": "OCC_QuestItem",
-    "questStages": [],
     "currencyReward": 1000,
     "EXPReward": 2,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredQuestItem": "Red Princess"
 }

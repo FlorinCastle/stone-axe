@@ -1,16 +1,13 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Have Ash Wood",
-    "requiredPlayerLevel": 2,
+    "questPrereqs": {
+        "requiredPlayerLevel": 2
+    },
     "questDescription": "have this material",
     "questType": "OD_Material",
-    "questStages": [],
     "currencyReward": 50,
     "EXPReward": 2,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredMaterial": "Ash Wood",
+    "requiredCount": 5
 }

@@ -1,16 +1,12 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Forgetting Stick",
-    "requiredPlayerLevel": 16,
+    "questPrereqs": {
+        "requiredPlayerLevel": 16
+    },
     "questDescription": "",
     "questType": "OCC_QuestItem",
-    "questStages": [],
     "currencyReward": 1000,
     "EXPReward": 2,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredQuestItem": "Forgetting Stick"
 }

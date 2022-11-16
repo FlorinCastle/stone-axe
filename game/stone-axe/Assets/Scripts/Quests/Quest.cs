@@ -236,7 +236,7 @@ public class Quest : MonoBehaviour
     public int QuestLevel(TextAsset questAsset)
     {
         BaseQuestJsonData quest = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(questAsset).Replace("Assets", "")));
-        return quest.requiredPlayerLevel;
+        return quest.questPrereqs.requiredPlayerLevel;
     }
     public string QuestType(TextAsset questAsset)
     {

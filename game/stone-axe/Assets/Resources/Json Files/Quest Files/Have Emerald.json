@@ -1,16 +1,13 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Have Emerald",
-    "requiredPlayerLevel": 5,
+    "questPrereqs": {
+        "requiredPlayerLevel": 5
+    },
     "questDescription": "have this material",
     "questType": "OD_Material",
-    "questStages": [],
     "currencyReward": 30,
     "EXPReward": 2,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredMaterial": "Emerald",
+    "requiredCount": 5
 }

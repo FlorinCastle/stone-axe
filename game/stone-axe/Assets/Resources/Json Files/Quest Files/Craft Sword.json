@@ -1,16 +1,12 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Sword",
-    "requiredPlayerLevel": 0,
+    "questPrereqs": {
+        "requiredPlayerLevel": 0
+    },
     "questDescription": "craft this item",
     "questType": "OCC_Item",
-    "questStages": [],
     "currencyReward": 118,
     "EXPReward": 3,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredItem": "Sword"
 }

@@ -1,7 +1,9 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Have Adamantine",
-    "requiredPlayerLevel": 21,
+    "questPrereqs": {
+        "requiredPlayerLevel": 21
+    },
     "questDescription": "have this material",
     "questType": "OD_Material",
     "currencyReward": 192,

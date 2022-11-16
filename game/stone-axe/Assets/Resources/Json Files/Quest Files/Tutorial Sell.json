@@ -1,7 +1,9 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Tutorial Sell",
-    "requiredPlayerLevel": 0,
+    "questPrereqs": {
+        "requiredPlayerLevel": 0
+    },
     "questDescription": "How to Sell stuff\n- go to economic tab\n- then go to sell\n- go to inventory, then items\n- select the item to sell (it might already be selected)\n- then click sell",
     "questType": "Tutorial",
     "currencyReward": 0,
@@ -18,8 +20,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -32,8 +36,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": "Summon_Adventurer"
-            }
+                "eventName": "Summon_Adventurer",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -46,8 +52,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": "Force_Open_UI"
-            }
+                "eventName": "Force_Open_UI",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -60,8 +68,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -74,8 +84,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -88,8 +100,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -102,8 +116,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -116,8 +132,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -130,8 +148,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -144,8 +164,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -158,8 +180,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -172,8 +196,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -186,8 +212,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -200,8 +228,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -214,8 +244,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -228,8 +260,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -242,8 +276,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -256,8 +292,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -270,8 +308,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -284,8 +324,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -298,12 +340,16 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         }
     ],
     "nextQuest": "",
-    "unlockedQuests": [ "Story - Knightly Regular I" ],
+    "unlockedQuests": [
+        "Story - Knightly Regular I"
+    ],
     "unlockFeatures": [],
     "isComplete": false
 }

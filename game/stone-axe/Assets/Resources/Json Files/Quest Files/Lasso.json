@@ -1,12 +1,12 @@
 {
     "questID": "-1",
-    "questName": "Craft Ring",
+    "questName": "Lasso",
     "questPrereqs": {
-        "requiredPlayerLevel": 7
+        "requiredPlayerLevel": 18
     },
     "questDescription": "craft this item",
     "questType": "OCC_Item",
-    "currencyReward": 156,
+    "currencyReward": 138,
     "EXPReward": 3,
-    "requiredItem": "Ring"
+    "requiredItem": "Lasso"
 }

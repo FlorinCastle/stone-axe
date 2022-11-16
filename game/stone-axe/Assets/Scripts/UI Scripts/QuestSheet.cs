@@ -55,7 +55,7 @@ public class QuestSheet : MonoBehaviour
             BaseQuestJsonData quest = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(_questJsonRef).Replace("Assets", "")));
 
             _headerText.text = quest.questName;
-            _bodyText.text = "quest type: " + quest.questType + "\n\n" + quest.questDescription + "\n\nquest level: " + quest.requiredPlayerLevel;
+            _bodyText.text = "quest type: " + quest.questType + "\n\n" + quest.questDescription + "\n\nquest level: " + quest.questPrereqs.requiredPlayerLevel;
             _selfButtonRef.interactable = true;
         }
         else

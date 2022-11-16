@@ -1,7 +1,9 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Story - Knightly Regular IV",
-    "requiredPlayerLevel": 7,
+    "questPrereqs": {
+        "requiredPlayerLevel": 7
+    },
     "questDescription": "The armored knight requests that you remake their helm",
     "questType": "Story",
     "currencyReward": 0,

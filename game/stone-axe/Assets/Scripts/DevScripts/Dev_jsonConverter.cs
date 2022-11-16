@@ -146,14 +146,20 @@ public class Dev_jsonConverter : MonoBehaviour
             }
         }
 
+        QuestPrerequisits questPrereqs = new QuestPrerequisits
+        {
+            requiredPlayerLevel = quest.RequiredPlayerLevel,
+        };
+
         string json = "";
         if (quest.QuestType == "OCC_Item")
         {
             CraftItemQuest questData = new CraftItemQuest
             {
-                questID = -1,
+                questID = "-1",
                 questName = quest.QuestName,
-                requiredPlayerLevel = quest.RequiredPlayerLevel,
+                questPrereqs = questPrereqs,
+                //requiredPlayerLevel = quest.RequiredPlayerLevel,
                 questDescription = quest.QuestDiscription,
                 questType = quest.QuestType,
                 currencyReward = quest.RewardedCurrency,
@@ -166,9 +172,10 @@ public class Dev_jsonConverter : MonoBehaviour
         {
             CraftQuestItemQuest questData = new CraftQuestItemQuest
             {
-                questID = -1,
+                questID = "-1",
                 questName = quest.QuestName,
-                requiredPlayerLevel = quest.RequiredPlayerLevel,
+                questPrereqs = questPrereqs,
+                //requiredPlayerLevel = quest.RequiredPlayerLevel,
                 questDescription = quest.QuestDiscription,
                 questType = quest.QuestType,
                 currencyReward = quest.RewardedCurrency,
@@ -181,9 +188,10 @@ public class Dev_jsonConverter : MonoBehaviour
         {
             HaveMaterialQuest questData = new HaveMaterialQuest
             {
-                questID = -1,
+                questID = "-1",
                 questName = quest.QuestName,
-                requiredPlayerLevel = quest.RequiredPlayerLevel,
+                questPrereqs = questPrereqs,
+                //requiredPlayerLevel = quest.RequiredPlayerLevel,
                 questDescription = quest.QuestDiscription,
                 questType = quest.QuestType,
                 currencyReward = quest.RewardedCurrency,
@@ -197,9 +205,10 @@ public class Dev_jsonConverter : MonoBehaviour
         {
             CraftManyItemQuest questData = new CraftManyItemQuest
             {
-                questID = -1,
+                questID = "-1",
                 questName = quest.QuestName,
-                requiredPlayerLevel = quest.RequiredPlayerLevel,
+                questPrereqs = questPrereqs,
+                //requiredPlayerLevel = quest.RequiredPlayerLevel,
                 questDescription = quest.QuestDiscription,
                 questType = quest.QuestType,
                 currencyReward = quest.RewardedCurrency,
@@ -222,9 +231,10 @@ public class Dev_jsonConverter : MonoBehaviour
 
             TutorialQuest questData = new TutorialQuest
             {
-                questID = -1,
+                questID = "-1",
                 questName = quest.QuestName,
-                requiredPlayerLevel = quest.RequiredPlayerLevel,
+                questPrereqs = questPrereqs,
+                //requiredPlayerLevel = quest.RequiredPlayerLevel,
                 questDescription = quest.QuestDiscription,
                 questType = quest.QuestType,
                 currencyReward = quest.RewardedCurrency,
@@ -249,9 +259,10 @@ public class Dev_jsonConverter : MonoBehaviour
 
             StoryQuest questData = new StoryQuest
             {
-                questID = -1,
+                questID = "-1",
                 questName = quest.QuestName,
-                requiredPlayerLevel = quest.RequiredPlayerLevel,
+                questPrereqs = questPrereqs,
+                //requiredPlayerLevel = quest.RequiredPlayerLevel.to,
                 questDescription = quest.QuestDiscription,
                 questType = quest.QuestType,
                 currencyReward = quest.RewardedCurrency,
@@ -267,9 +278,10 @@ public class Dev_jsonConverter : MonoBehaviour
         {
             BaseQuestJsonData questData = new BaseQuestJsonData
             {
-                questID = -1,
+                questID = "-1",
                 questName = quest.QuestName,
-                requiredPlayerLevel = quest.RequiredPlayerLevel,
+                questPrereqs = questPrereqs,
+                //requiredPlayerLevel = quest.RequiredPlayerLevel,
                 questDescription = quest.QuestDiscription,
                 questType = quest.QuestType,
                 currencyReward = quest.RewardedCurrency,
@@ -461,7 +473,7 @@ public class Dev_jsonConverter : MonoBehaviour
         if (stage.Part2Mat != null) mats.Add(stage.Part2Mat.Material);
         if (stage.Part3Mat != null) mats.Add(stage.Part3Mat.Material);
 
-        Debug.Log(stage.name + ": " + stage.StageType);
+        //Debug.Log(stage.name + ": " + stage.StageType);
 
         /*var questStageJsonData = new QuestStageJsonData()
         {

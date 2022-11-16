@@ -1,16 +1,12 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Futristic Armor",
-    "requiredPlayerLevel": 9,
+    "questPrereqs": {
+        "requiredPlayerLevel": 9
+    },
     "questDescription": "",
     "questType": "OCC_QuestItem",
-    "questStages": [],
     "currencyReward": 1000,
     "EXPReward": 2,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredQuestItem": "Futristic Armor"
 }

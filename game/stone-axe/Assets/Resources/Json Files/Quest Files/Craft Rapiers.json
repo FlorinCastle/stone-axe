@@ -1,16 +1,13 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Rapiers",
-    "requiredPlayerLevel": 14,
+    "questPrereqs": {
+        "requiredPlayerLevel": 14
+    },
     "questDescription": "craft this item",
     "questType": "OCC_TotalCrafted",
-    "questStages": [],
     "currencyReward": 540,
     "EXPReward": 3,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredItem": "Rapier",
+    "requiredCount": 3
 }

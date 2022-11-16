@@ -1,16 +1,13 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Suitcase",
-    "requiredPlayerLevel": 13,
+    "questPrereqs": {
+        "requiredPlayerLevel": 13
+    },
     "questDescription": "craft this amount of this item",
     "questType": "OCC_TotalCrafted",
-    "questStages": [],
     "currencyReward": 485,
     "EXPReward": 3,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredItem": "Suitcase",
+    "requiredCount": 3
 }

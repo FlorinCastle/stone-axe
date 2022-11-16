@@ -1,7 +1,9 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Story - Knightly Regular II",
-    "requiredPlayerLevel": 8,
+    "questPrereqs": {
+        "requiredPlayerLevel": 8
+    },
     "questDescription": "The armored knight requests that you remake their spare chestplate",
     "questType": "Story",
     "currencyReward": 0,

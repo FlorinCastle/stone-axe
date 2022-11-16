@@ -1,16 +1,12 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Dagger",
-    "requiredPlayerLevel": 1,
+    "questPrereqs": {
+        "requiredPlayerLevel": 1
+    },
     "questDescription": "craft this item",
     "questType": "OCC_Item",
-    "questStages": [],
     "currencyReward": 229,
     "EXPReward": 3,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredItem": "Dagger"
 }

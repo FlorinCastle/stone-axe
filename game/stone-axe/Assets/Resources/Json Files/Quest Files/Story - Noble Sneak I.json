@@ -1,7 +1,9 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Story - Noble Sneak I",
-    "requiredPlayerLevel": 7,
+    "questPrereqs": {
+        "requiredPlayerLevel": 7
+    },
     "questDescription": "story quest",
     "questType": "Story",
     "currencyReward": 0,

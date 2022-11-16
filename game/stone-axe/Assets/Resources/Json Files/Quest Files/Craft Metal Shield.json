@@ -1,16 +1,12 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Metal Shield",
-    "requiredPlayerLevel": 9,
+    "questPrereqs": {
+        "requiredPlayerLevel": 9
+    },
     "questDescription": "craft this item",
     "questType": "OCC_Item",
-    "questStages": [],
     "currencyReward": 180,
     "EXPReward": 3,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredItem": "Metal Shield"
 }

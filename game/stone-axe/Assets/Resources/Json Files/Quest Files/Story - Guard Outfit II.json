@@ -1,7 +1,9 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Story - Guard Outfit II",
-    "requiredPlayerLevel": 11,
+    "questPrereqs": {
+        "requiredPlayerLevel": 11
+    },
     "questDescription": "story quest",
     "questType": "Story",
     "currencyReward": 0,

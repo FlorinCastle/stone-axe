@@ -1,7 +1,9 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Story - Guard Outfit I",
-    "requiredPlayerLevel": 0,
+    "questPrereqs": {
+        "requiredPlayerLevel": 0
+    },
     "questDescription": "story quest",
     "questType": "Story",
     "currencyReward": 0,

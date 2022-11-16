@@ -1,7 +1,9 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Tutorial Buying",
-    "requiredPlayerLevel": 0,
+    "questPrereqs": {
+        "requiredPlayerLevel": 0
+    },
     "questDescription": "How to Buy stuff\n- Go to Economic Tab\n- Then go to 'Buy'\n- Click 'Generate Placeholder'\n- Then click 'Buy'",
     "questType": "Tutorial",
     "currencyReward": 0,
@@ -18,8 +20,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -32,8 +36,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -46,8 +52,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -60,8 +68,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -74,8 +84,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": "Summon_Adventurer"
-            }
+                "eventName": "Summon_Adventurer",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -89,22 +101,25 @@
             },
             "eventData": {
                 "eventName": "Force_Open_UI",
-                "eventData": [ "Buy_UI" ]
-            }
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
             "questStageType": "Dialogue",
             "speaker": "Faerie",
-            "dialogeLine": "...and buy an item from the Adventurer that just arrived!",
+            "dialogeLine": "So, what you need to do is buy an item from the Adventurer that just arrived!",
             "reqItem": {
                 "itemName": "",
                 "partData": [],
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -117,8 +132,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -131,8 +148,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -140,26 +159,15 @@
             "speaker": "",
             "dialogeLine": "",
             "reqItem": {
-                "itemName": "Sword",
-                "partData": [
-                    {
-                      "partName": "Sword Blade",
-                      "partMat": "Iron"
-                    },
-                    {
-                      "partName": "Sword Handle",
-                      "partMat": "Oak Wood"
-                    },
-                    {
-                      "partName": "Pomel",
-                      "partMat": "Copper"
-                    }
-                ],
+                "itemName": "",
+                "partData": [],
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": "Force_For_Sale"
-            }
+                "eventName": "Force_For_Sale",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -172,8 +180,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -186,8 +196,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -200,12 +212,16 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         }
     ],
     "nextQuest": "Tutorial Disassemble",
-    "unlockedQuests": [ "Tutorial Disassemble" ],
+    "unlockedQuests": [
+        "Tutorial Disassemble"
+    ],
     "unlockFeatures": [],
     "isComplete": false
 }

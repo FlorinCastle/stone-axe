@@ -1,16 +1,13 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Have Bronze",
-    "requiredPlayerLevel": 2,
+    "questPrereqs": {
+        "requiredPlayerLevel": 2
+    },
     "questDescription": "have this material",
     "questType": "OD_Material",
-    "questStages": [],
-    "currencyReward": 50,
+    "currencyReward": 40,
     "EXPReward": 2,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredMaterial": "Bronze",
+    "requiredCount": 5
 }

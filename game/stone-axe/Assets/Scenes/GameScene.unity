@@ -2351,18 +2351,7 @@ MonoBehaviour:
   partSOPath: 
   items: []
   parts: []
-  quests:
-  - {fileID: 11400000, guid: daf048bc4d4d3ae41b1d9503ad05c2b5, type: 2}
-  - {fileID: 11400000, guid: 92f434d561190024ca947a8a6b909584, type: 2}
-  - {fileID: 11400000, guid: a0250f8e4f6ec384fbf4e8f7f00ec586, type: 2}
-  - {fileID: 11400000, guid: 94b119a43ebafcf469f3cf82a5766683, type: 2}
-  - {fileID: 11400000, guid: 2b6f58fb78813004ebb38a8b28cce32d, type: 2}
-  - {fileID: 11400000, guid: b513f70bebd368e42865c6a21fad0df2, type: 2}
-  - {fileID: 11400000, guid: 807ded92744f1a645903d5bfb83707a7, type: 2}
-  - {fileID: 11400000, guid: 80a2ae7c035daf64fa457f43f3b71ab2, type: 2}
-  - {fileID: 11400000, guid: 184f51a8522bf8f428fe8693954f0d87, type: 2}
-  - {fileID: 11400000, guid: b870c2b58f9bab3458542540cf3ac3d2, type: 2}
-  - {fileID: 11400000, guid: cf74b2413199451459bbc2c2d06e840e, type: 2}
+  quests: []
   itemJsons: []
   itemsJ: []
 --- !u!4 &574211383

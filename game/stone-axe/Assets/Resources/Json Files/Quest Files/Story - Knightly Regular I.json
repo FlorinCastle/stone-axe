@@ -1,7 +1,9 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Story - Knightly Regular I",
-    "requiredPlayerLevel": 0,
+    "questPrereqs": {
+        "requiredPlayerLevel": 0
+    },
     "questDescription": "An armored knight arrives and requests that you remake their weaponry",
     "questType": "Story",
     "currencyReward": 0,

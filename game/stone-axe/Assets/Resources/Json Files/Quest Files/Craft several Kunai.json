@@ -1,7 +1,9 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Several Kunai",
-    "requiredPlayerLevel": 13,
+    "questPrereqs": {
+        "requiredPlayerLevel": 13
+    },
     "questDescription": "craft this item",
     "questType": "OCC_TotalCrafted",
     "currencyReward": 875,

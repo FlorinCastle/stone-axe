@@ -1,16 +1,12 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Craft Luggage",
-    "requiredPlayerLevel": 16,
+    "questPrereqs": {
+        "requiredPlayerLevel": 16
+    },
     "questDescription": "an individual of the Luggage race has requested a skilled crafter to craft the body of their child",
     "questType": "OCC_QuestItem",
-    "questStages": [],
     "currencyReward": 1000,
     "EXPReward": 2,
-    "requiredItem": "",
-    "requiredMaterial": "",
-    "requiredQuestItem": "",
-    "requiredCount": 0,
-    "nextQuest": "",
-    "unlockedQuests": []
+    "requiredQuestItem": "Luggage"
 }

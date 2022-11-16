@@ -1,7 +1,9 @@
 {
-    "questID": -1,
+    "questID": "-1",
     "questName": "Tutorial Welcome",
-    "requiredPlayerLevel": 0,
+    "questPrereqs": {
+        "requiredPlayerLevel": 0
+    },
     "questDescription": "Welcome to the shop",
     "questType": "Tutorial",
     "currencyReward": 0,
@@ -18,8 +20,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -32,8 +36,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -46,8 +52,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -60,8 +68,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -74,8 +84,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -88,8 +100,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -102,8 +116,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -116,8 +132,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -130,8 +148,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -144,8 +164,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -158,8 +180,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -172,8 +196,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -186,8 +212,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -200,8 +228,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -214,8 +244,10 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         },
         {
             "questStageIndex": 0,
@@ -228,11 +260,16 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": ""
-            }
+                "eventName": "",
+                "eventData": []
+            },
+            "reqCurrency": 0
         }
     ],
     "nextQuest": "Tutorial Buying",
-    "unlockedQuests": [ "Tutorial Buying" ],
-    "unlockFeatures": []
+    "unlockedQuests": [
+        "Tutorial Buying"
+    ],
+    "unlockFeatures": [],
+    "isComplete": false
 }
