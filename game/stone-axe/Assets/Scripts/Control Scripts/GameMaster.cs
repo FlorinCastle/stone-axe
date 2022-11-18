@@ -364,11 +364,11 @@ public class GameMaster : MonoBehaviour
     public void startDisassemblyMiniGame()
     {
         gameObject.GetComponent<MiniGameControl>().startDisassemblyMiniGame();
-        Debug.Log("TODO re-implement this");
+        //Debug.Log("TODO re-implement this");
         if (questControl.CurrentQuest != null &&
-            questRef.QuestType(questControl.CurrentQuest) == "Tutorial" && false/*
-            gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Have_UI_Open" &&
-            gameObject.GetComponent<QuestControl>().CurrentStage.RequiredUI == "MiniGame_UI"*/)
+            questRef.QuestType(questControl.CurrentQuest) == "Tutorial" && 
+            gameObject.GetComponent<QuestControl>().CurrentStage.questStageType == "Have_UI_Open" &&
+            gameObject.GetComponent<QuestControl>().CurrentStage.eventData.eventData.Contains("MiniGame_UI"))
         {
             Debug.LogWarning("Quest Notif - Disassemble Minigame");
             gameObject.GetComponent<QuestControl>().nextStage();
@@ -378,9 +378,9 @@ public class GameMaster : MonoBehaviour
     {
         gameObject.GetComponent<MiniGameControl>().startCraftingMiniGame();
         if (questControl.CurrentQuest != null &&
-            questRef.QuestType(questControl.CurrentQuest) == "Tutorial" && false
-            /*gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Have_UI_Open" &&
-            gameObject.GetComponent<QuestControl>().CurrentStage.RequiredUI == "MiniGame_UI"*/)
+            questRef.QuestType(questControl.CurrentQuest) == "Tutorial" && 
+            gameObject.GetComponent<QuestControl>().CurrentStage.questStageType == "Have_UI_Open" &&
+            gameObject.GetComponent<QuestControl>().CurrentStage.eventData.eventData.Contains("MiniGame_UI"))
         {
             Debug.Log("Quest Notif - Craft Minigame");
             gameObject.GetComponent<QuestControl>().nextStage();
@@ -406,10 +406,10 @@ public class GameMaster : MonoBehaviour
 
     public void updateLevelLocks()
     {
-        if (gameObject.GetComponent<QuestControl>().CurrentQuest != null)
+        /*if (gameObject.GetComponent<QuestControl>().CurrentQuest != null)
             Debug.Log("temp");
-        else
-            GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().setupRecipeGrid();
+        else*/
+        GameObject.FindGameObjectWithTag("RecipeBookControl").GetComponent<RecipeBook>().setupRecipeGrid();
     }
     public void updatePlayerPosition()
     {

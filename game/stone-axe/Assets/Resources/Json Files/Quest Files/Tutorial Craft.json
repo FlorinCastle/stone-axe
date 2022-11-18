@@ -241,7 +241,7 @@
             "reqItem": {
                 "itemName": "Sword",
                 "partData": [],
-                "reqCount": 0
+                "reqCount": 1
             },
             "eventData": {
                 "eventName": "",

@@ -390,7 +390,7 @@ public class UIControl : MonoBehaviour
         _disaUIButton.interactable = false;
         _craftUIButton.interactable = false;
 
-        gameObject.GetComponent<QuestControl>().nextStage();
+        //gameObject.GetComponent<QuestControl>().nextStage();
     }
     public void shopDisassembleAccessableOnly() // for use in tutorial only
     {
@@ -401,7 +401,7 @@ public class UIControl : MonoBehaviour
         _disaUIButton.interactable = false; // this one
         _craftUIButton.interactable = false;
 
-        gameObject.GetComponent<QuestControl>().nextStage();
+        //gameObject.GetComponent<QuestControl>().nextStage();
     }
     public void shopCraftAccessableOnly() // for use in tutorial only
     {
@@ -412,7 +412,7 @@ public class UIControl : MonoBehaviour
         _disaUIButton.interactable = false;
         _craftUIButton.interactable = false; // this one
 
-        gameObject.GetComponent<QuestControl>().nextStage();
+        //gameObject.GetComponent<QuestControl>().nextStage();
     }
     public void shopNoTabsAccessable()
     {

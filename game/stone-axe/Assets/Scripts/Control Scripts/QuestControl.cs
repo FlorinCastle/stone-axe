@@ -884,18 +884,29 @@ public class QuestControl : MonoBehaviour
                 }
                 else if (questStage.eventData.eventName == "Force_Open_UI")
                 {
+                    Debug.Log("nextStage() current stage event is Force_Open_UI");
                     if (questStage.eventData.eventData.Contains("Buy_UI"))
+                    {
                         if (storyQuest.questType == "Tutorial")
                             gameObject.GetComponent<UIControl>().shopBuyAccessableOnly();
-                    if (questStage.eventData.eventData.Contains("Sell_UI"))
+                    }
+                    else if (questStage.eventData.eventData.Contains("Sell_UI"))
+                    {
                         if (storyQuest.questType == "Tutorial")
                             gameObject.GetComponent<UIControl>().shopSellAccessableOnly();
-                    if (questStage.eventData.eventData.Contains("Disassemble_UI"))
+                    }
+                    else if (questStage.eventData.eventData.Contains("Disassemble_UI"))
+                    {
                         if (storyQuest.questType == "Tutorial")
                             gameObject.GetComponent<UIControl>().shopDisassembleAccessableOnly();
-                    if (questStage.eventData.eventData.Contains("Craft_UI"))
+                    }
+                    else if (questStage.eventData.eventData.Contains("Craft_UI"))
+                    {
                         if (storyQuest.questType == "Tutorial")
                             gameObject.GetComponent<UIControl>().shopCraftAccessableOnly();
+                    }
+                    else
+                        Debug.LogWarning("QuestControl.nextStage(): questStage Force_Event.Force_Open_UI: eventData does not contain a valid UI type to open!");
 
                     nextStage();
                 }

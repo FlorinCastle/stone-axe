@@ -240,22 +240,23 @@ public class DisassembleItemControl : MonoBehaviour
         //_invScriptRef.RemoveItem(_selectedItem.GetComponent<ItemDataStorage>().InventoryIndex);
         _invScriptRef.RemoveItem(_selectedObject);
 
-        this.gameObject.GetComponent<ExperienceManager>().addExperience(3);
+        gameObject.GetComponent<ExperienceManager>().addExperience(3);
 
         clearDisassembleMenu();
         gameObject.GetComponent<SellItemControl>().clearSellMenu();
-        this.gameObject.GetComponent<SellItemControl>().clearSellMenu();
+        gameObject.GetComponent<SellItemControl>().clearSellMenu();
 
         if (_questControl.QuestChosen() && // WHY TF ARE YOU THROWING A NULL REF?!? IF YOU HIT A NULL, YOU SHOULD THROW FALSE, DO F-ALL AND MOVE ON
             (_questRef.QuestType(_questControl.CurrentQuest) == "Tutorial" ||
             _questRef.QuestType(_questControl.CurrentQuest) == "Story"))
         {
-            Debug.Log("TODO re-implement this");
-            /*if (this.gameObject.GetComponent<QuestControl>().CurrentStage.QuestEvent == "Disassemble_Item") { }
+            //Debug.Log("TODO re-implement this");
+            if (gameObject.GetComponent<QuestControl>().CurrentStage.questStageType == "Disassemble_Item")
             {
                 Debug.LogWarning("Quest Notif - Disassemble Minigame Done");
-                this.gameObject.GetComponent<QuestControl>().nextStage();
-            }*/
+                gameObject.GetComponent<QuestControl>().nextStage();
+
+            }
         }
         else {/* do fuck all */}
 

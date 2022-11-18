@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class Quest : MonoBehaviour
 {
-    [Header("Quest Tracking")]
-    [SerializeField] private List<QuestData> _questDataList;
+    //[Header("Quest Tracking")]
+    //[SerializeField] private List<QuestData> _questDataList;
     //private List<QuestData> _tutorialQuests;
     //private List<QuestData> _storyQuests;
     //[SerializeField] private List<QuestData> _onCraftItemQuests;
@@ -40,17 +40,6 @@ public class Quest : MonoBehaviour
 
     private bool questsOrganized = false;
 
-    private void Awake()
-    {
-        //Debug.Log("Quest.Awake() organizing quests");
-        //organizeQuests();
-        //processQuests();
-    }
-    private void Start()
-    {
-        //organizeQuests();
-    }
-
     public void organizeQuests()
     {
         //Debug.Log("Quest.organizeQuests(): organizing quests");
@@ -59,6 +48,8 @@ public class Quest : MonoBehaviour
             Debug.Log("Quest.organizeQuests(): quests unorganized. organizing quests");
             foreach (TextAsset quest in _questJsons)
             {
+                //Debug.Log(Application.dataPath + AssetDatabase.GetAssetPath(quest).Replace("Assets", "") + "\n" + JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(quest).Replace("Assets", ""))));
+
                 BaseQuestJsonData questJson = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(quest).Replace("Assets", "")));
                 //Debug.Log(JsonUtility.ToJson(questJson, true));
                 if (questJson.questType == "OCC_Item" && !_craftItemQuestJsons.Contains(quest))        // add to craft 1 item list
@@ -175,7 +166,7 @@ public class Quest : MonoBehaviour
     }
 
     // TODO
-    public QuestObject saveQuest(QuestData currentQuest)
+    /*public QuestObject saveQuest(QuestData currentQuest)
     {
         QuestObject questObject = new QuestObject
         {
@@ -188,7 +179,7 @@ public class Quest : MonoBehaviour
             questObject.questType = currentQuest.QuestType;
         }
         return questObject;
-    }
+    }*/
     public QuestObject saveQuest(TextAsset currentQuest)
     {
         QuestObject questObject = new QuestObject
