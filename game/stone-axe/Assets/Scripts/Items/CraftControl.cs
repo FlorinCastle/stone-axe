@@ -48,8 +48,11 @@ public class CraftControl : MonoBehaviour
     //[SerializeField] ItemData _chosenItemRecipe;
     [SerializeField] ItemJsonData _chosenItemRecipeJson;
     [SerializeField] GameObject _chosenPart1;
+    private string part1String;
     [SerializeField] GameObject _chosenPart2;
+    private string part2String;
     [SerializeField] GameObject _chosenPart3;
+    private string part3String;
     [Space(5)]
     [SerializeField] TextMeshProUGUI _part1Name;
     [SerializeField] TextMeshProUGUI _part2Name;
@@ -178,10 +181,13 @@ public class CraftControl : MonoBehaviour
             /*_part1Name.text = _chosenItemRecipe.Part1.PartName;
             _part2Name.text = _chosenItemRecipe.Part2.PartName;
             _part3Name.text = _chosenItemRecipe.Part3.PartName; */
-            Debug.LogWarning("CraftControl.setChosenRecipe(): swap to using lists/arrays for stuff");
-            _part1Name.text = _chosenItemRecipeJson.requiredParts[0];
-            _part2Name.text = _chosenItemRecipeJson.requiredParts[1];
-            _part3Name.text = _chosenItemRecipeJson.requiredParts[2];
+            //Debug.LogWarning("CraftControl.setChosenRecipe(): swap to using lists/arrays for stuff");
+            part1String = _chosenItemRecipeJson.requiredParts[0];
+            _part1Name.text = part1String;
+            part2String = _chosenItemRecipeJson.requiredParts[1];
+            _part2Name.text = part2String;
+            part3String = _chosenItemRecipeJson.requiredParts[2];
+            _part3Name.text = part3String;
 
 
             _cancelCraftButton.interactable = true;
@@ -1222,18 +1228,21 @@ public class CraftControl : MonoBehaviour
             return true;
         else return false;
     }
+    public string part1Name { get => part1String; }
     public bool Part2Set()
     {
         if (_chosenPart2 != null)
             return true;
         else return false;
     }
+    public string part2Name { get => part2String; }
     public bool Part3Set()
     {
         if (_chosenPart3 != null)
             return true;
         else return false;
     }
+    public string part3Name { get => part3String; }
 
     public bool AllPartsSet()
     {

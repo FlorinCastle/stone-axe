@@ -1705,10 +1705,13 @@ public class InventoryScript : MonoBehaviour
         {
             Debug.Log("Selected part is valid for recipe!");
             //Debug.LogWarning("TODO setup code for selecting parts");
-            Debug.LogError("InventoryScript.returnSeletedPart(): rewrite this properly to use array/list");
+            //Debug.LogError("InventoryScript.returnSeletedPart(): rewrite this properly to use array/list");
             //foreach (PartData part1ref in _craftControlRef.checkItemRecipe().ValidParts1)
-            foreach (string part1ref in _craftControlRef.ItemJsonRecipe.requiredParts)
-                if (_selectedPart.GetComponent<PartDataStorage>().PartName == part1ref
+
+            
+
+            //foreach (string part1ref in _craftControlRef.ItemJsonRecipe.requiredParts)
+                if (_selectedPart.GetComponent<PartDataStorage>().PartName == _craftControlRef.part1Name
                     && (partLastFilled == 0 || partLastFilled == 2 || partLastFilled == 3 || _craftControlRef.Part1Set() == false || _craftControlRef.AllPartsSet() == true)
                     && phb == false)
                 {
@@ -1719,8 +1722,8 @@ public class InventoryScript : MonoBehaviour
                 }
 
             //foreach (PartData part2ref in _craftControlRef.checkItemRecipe().ValidParts2)
-            foreach (string part2ref in _craftControlRef.ItemJsonRecipe.requiredParts)
-                if (_selectedPart.GetComponent<PartDataStorage>().PartName == part2ref
+            //foreach (string part2ref in _craftControlRef.ItemJsonRecipe.requiredParts)
+                if (_selectedPart.GetComponent<PartDataStorage>().PartName == _craftControlRef.part2Name
                     && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 3 || _craftControlRef.Part2Set() == false || _craftControlRef.AllPartsSet() == true)
                     && phb == false)
                 {
@@ -1731,8 +1734,8 @@ public class InventoryScript : MonoBehaviour
                 }
 
             //foreach (PartData part3ref in _craftControlRef.checkItemRecipe().ValidParts3)
-            foreach (string part3ref in _craftControlRef.ItemJsonRecipe.requiredParts)
-                if (_selectedPart.GetComponent<PartDataStorage>().PartName == part3ref
+            //foreach (string part3ref in _craftControlRef.ItemJsonRecipe.requiredParts)
+                if (_selectedPart.GetComponent<PartDataStorage>().PartName == _craftControlRef.part3Name
                     && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 2 || _craftControlRef.Part3Set() == false || _craftControlRef.AllPartsSet() == true)
                     && phb == false)
                 {

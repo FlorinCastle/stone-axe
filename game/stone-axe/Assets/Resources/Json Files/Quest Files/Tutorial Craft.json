@@ -149,7 +149,7 @@
             },
             "eventData": {
                 "eventName": "Force_Open_UI",
-                "eventData": []
+                "eventData": [ "Craft_UI" ]
             },
             "reqCurrency": 0
         },
@@ -165,7 +165,7 @@
             },
             "eventData": {
                 "eventName": "",
-                "eventData": []
+                "eventData": [ "MiniGame_UI" ]
             },
             "reqCurrency": 0
         },
