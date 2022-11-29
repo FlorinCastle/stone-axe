@@ -178,13 +178,13 @@ public class SellItemControl : MonoBehaviour
             (questRef.QuestType(questControl.CurrentQuest) == "Tutorial" ||
             questRef.QuestType(questControl.CurrentQuest) == "Story"))
         {
-            Debug.Log("TODO re-implement this");
-            /*if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Sell_Item")
+            //Debug.Log("TODO re-implement this");
+            if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.questStageType == "Sell_Item")
             {
                 Debug.LogWarning("Quest Notif - Sell Done");
                 _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
 
-            }*/
+            }
         }
     }
 

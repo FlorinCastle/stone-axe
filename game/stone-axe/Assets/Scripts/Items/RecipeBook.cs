@@ -101,7 +101,7 @@ public class RecipeBook : MonoBehaviour
     }
     public void selectRecipe()
     {
-        if (anyRecipeSelected() /*&& (GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>().isLongQuestComplete(_craftQuestJson) || GameObject.FindGameObjectWithTag("GameMaster").GetComponent<QuestControl>().CurrentQuest == _craftQuestJson)*/)
+        if (anyRecipeSelected() && (GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>().isLongQuestComplete(_craftQuestJson) || GameObject.FindGameObjectWithTag("GameMaster").GetComponent<QuestControl>().CurrentQuest == _craftQuestJson))
         {
             CraftControl CCRef = GameObject.FindGameObjectWithTag("CraftControl").GetComponent<CraftControl>();
 

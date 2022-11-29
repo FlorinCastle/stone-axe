@@ -53,7 +53,7 @@
             },
             "eventData": {
                 "eventName": "Force_Open_UI",
-                "eventData": []
+                "eventData": ["Sell_UI"]
             },
             "reqCurrency": 0
         },
