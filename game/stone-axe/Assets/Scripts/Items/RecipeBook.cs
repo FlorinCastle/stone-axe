@@ -7,6 +7,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditor.Purchasing;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.AddressableAssets.Build.BuildPipelineTasks.GenerateLocationListsTask;
 using static UnityEditor.Progress;
 
 public class RecipeBook : MonoBehaviour
@@ -445,6 +446,37 @@ public class RecipeBook : MonoBehaviour
     {
         clearRecipeGrid();
         clearUpcomingRecipesLists();
+        foreach (TextAsset itemJsonFile in itemJsonRecipes)
+        {
+            if (itemJsonFile != null)
+            {
+                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
+                if (checkIfEnabledFiltersValid(itemJson) && enabledFilters.Count != 0 && itemJson.levelRequirement <= _gameMasterRef.GetLevel)
+                {
+                    setupButtonFromJson(itemJson, itemJsonFile);
+                }
+                else
+                    levelLockedJsonItems.Add(itemJsonFile); //levelLockedJsonItems.Add(itemJson);
+            }
+        }
+        foreach (TextAsset partJsonFile in partJsonRecipes)
+        {
+            if (partJsonFile != null)
+            {
+                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(partJsonFile).Replace("Assets", "")));
+                if (partJson.levelRequirement <= _gameMasterRef.GetLevel)
+                {
+                    setupButtonFromJson(partJson, partJsonFile);
+                }
+                else
+                    levelLockedJsonParts.Add(partJsonFile);
+            }
+        }
+        if (recipeButtons.Count == 0 && enabledFilters.Count == 0)
+        {
+            setupRecipeGrid();
+        }
+    }
         //int r = 0;
         //Debug.LogError("REPLACE ITEMDATA WITH ITEMJSON/TEXTFILE");
         /*foreach(ItemData itemRecipe in itemRecipes)
@@ -467,19 +499,6 @@ public class RecipeBook : MonoBehaviour
                 //break;
             }
         }*/
-        foreach (TextAsset itemJsonFile in itemJsonRecipes)
-        {
-            if (itemJsonFile != null)
-            {
-                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
-                if (checkIfEnabledFiltersValid(itemJson) && enabledFilters.Count != 0 && itemJson.levelRequirement <= _gameMasterRef.GetLevel)
-                {
-                    setupButtonFromJson(itemJson, itemJsonFile);
-                }
-                else
-                    levelLockedJsonItems.Add(itemJsonFile); //levelLockedJsonItems.Add(itemJson);
-            }
-        }
         /*foreach (PartData partRecipe in partRecipes)
         {
             if (checkIfEnabledFiltersValid(partRecipe) && enabledFilters.Count != 0 && (partRecipe.PartLevelReq <= _gameMasterRef.GetLevel))
@@ -499,24 +518,6 @@ public class RecipeBook : MonoBehaviour
                 //break;
             }
         }*/
-        foreach (TextAsset partJsonFile in partJsonRecipes)
-        {
-            if (partJsonFile != null)
-            {
-                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(partJsonFile).Replace("Assets", "")));
-                if (partJson.levelRequirement <= _gameMasterRef.GetLevel)
-                {
-                    setupButtonFromJson(partJson, partJsonFile);
-                }
-                else
-                    levelLockedJsonParts.Add(partJsonFile);
-            }
-        }
-        if (recipeButtons.Count == 0 && enabledFilters.Count == 0)
-        {
-            setupRecipeGrid();
-        }
-    }
 
     // should be setup for level locking
     public void setupSpecialQuestRecipeGrid()
@@ -705,6 +706,47 @@ public class RecipeBook : MonoBehaviour
             r++;
         }
     }
+    //
+    public void setupSearchedRecipeGrid(string input)
+    {
+        //if (recipeGridCoroutine != null)
+        //    StopCoroutine(recipeGridCoroutine);
+        Debug.Log(input);
+        clearRecipeGrid();
+        clearUpcomingRecipesLists();
+
+        //recipeGridCoroutine = StartCoroutine(setupSearchedRecipeGridElements(input));
+    }
+
+    /*private Coroutine recipeGridCoroutine;
+    private IEnumerator setupSearchedRecipeGridElements(string input)
+    {
+        foreach (ItemJsonData itemJsonFile in itemJsonData)
+        {
+            if (itemJsonFile != null)
+                if (itemJsonFile.itemName.Contains(input))
+                {
+                    //Debug.Log(itemJsonFile.itemName);
+                    setupButtonFromJson(itemJsonFile);
+                }
+        }
+        foreach (PartJsonData partJsonFile in partJsonData)
+        {
+            if (partJsonFile != null)
+                if (partJsonFile.partName.Contains(input))
+                {
+                    //Debug.Log(partJsonFile.partName);
+                    setupButtonFromJson(partJsonFile);
+                }
+        }
+        yield return null;
+    }*/
+
+    private async void setupSearchedRecipeGridElements(string input)
+    {
+
+    }
+
 
     private void setupUpcomingRecipes()
     {
@@ -824,6 +866,16 @@ public class RecipeBook : MonoBehaviour
         return i;
     }
 
+    private void setupButtonFromJson(ItemJsonData itemJson)
+    {
+        foreach(TextAsset jsonFile in itemJsonRecipes)
+            if (JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonFile).Replace("Assets", ""))).itemName == itemJson.itemName)
+            {
+                setupButtonFromJson(itemJson, jsonFile);
+                break;
+            }
+
+    }
     private void setupButtonFromJson(ItemJsonData itemJson, TextAsset jsonFile)
     {
         // instantiate the button prefab
@@ -839,6 +891,15 @@ public class RecipeBook : MonoBehaviour
         // add button to list
         InsertButton(tempButton);
 
+    }
+    private void setupButtonFromJson(PartJsonData partJson)
+    {
+        foreach(TextAsset jsonFile in partJsonRecipes)
+            if (JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonFile).Replace("Assets", ""))).partName == partJson.partName)
+            {
+                setupButtonFromJson(partJson, jsonFile);
+                break;
+            }
     }
     private void setupButtonFromJson(PartJsonData partJson, TextAsset jsonFile)
     {
