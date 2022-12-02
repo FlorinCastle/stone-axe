@@ -14,9 +14,11 @@ public class RecipeBook : MonoBehaviour
 {
     //[SerializeField] private List<ItemData> itemRecipes;
     [SerializeField] private List<TextAsset> itemJsonRecipes;
+    private Dictionary<string, TextAsset> itemRecipesJson = new Dictionary<string, TextAsset>();
     [SerializeField] private List<ItemJsonData> itemJsonData;
     //[SerializeField] private List<PartData> partRecipes;
     [SerializeField] private List<TextAsset> partJsonRecipes;
+    private Dictionary<string, TextAsset> partRecipesJson = new Dictionary<string, TextAsset>();
     [SerializeField] private List<PartJsonData> partJsonData;
     [SerializeField] private List<QuestItemData> questItemRecipes;
     [SerializeField, HideInInspector] private List<string> itemRecipeName;
@@ -56,6 +58,7 @@ public class RecipeBook : MonoBehaviour
 
     [SerializeField, HideInInspector] private List<TextAsset> processedJsons;
 
+
     private void Awake()
     {
         _gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
@@ -80,6 +83,7 @@ public class RecipeBook : MonoBehaviour
             {
                 ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(item).Replace("Assets", "")));
                 itemJsonData.Add(itemJson);
+                itemRecipesJson.Add(itemJson.itemName, item);
                 processedJsons.Add(item);
             }
         foreach (TextAsset part in partJsonRecipes)
@@ -87,6 +91,7 @@ public class RecipeBook : MonoBehaviour
             {
                 PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(part).Replace("Assets", "")));
                 partJsonData.Add(partJson);
+                partRecipesJson.Add(partJson.partName, part);
                 processedJsons.Add(part);
             }
     }
@@ -709,16 +714,16 @@ public class RecipeBook : MonoBehaviour
     //
     public void setupSearchedRecipeGrid(string input)
     {
-        //if (recipeGridCoroutine != null)
-        //    StopCoroutine(recipeGridCoroutine);
+        if (recipeGridCoroutine != null)
+            StopCoroutine(recipeGridCoroutine);
         Debug.Log(input);
         clearRecipeGrid();
         clearUpcomingRecipesLists();
 
-        //recipeGridCoroutine = StartCoroutine(setupSearchedRecipeGridElements(input));
+        recipeGridCoroutine = StartCoroutine(setupSearchedRecipeGridElements(input));
     }
 
-    /*private Coroutine recipeGridCoroutine;
+    private Coroutine recipeGridCoroutine;
     private IEnumerator setupSearchedRecipeGridElements(string input)
     {
         foreach (ItemJsonData itemJsonFile in itemJsonData)
@@ -740,12 +745,29 @@ public class RecipeBook : MonoBehaviour
                 }
         }
         yield return null;
-    }*/
-
-    private async void setupSearchedRecipeGridElements(string input)
-    {
-
     }
+
+    /*private async void setupSearchedRecipeGridElements(string input)
+    {
+        foreach (ItemJsonData itemJsonFile in itemJsonData)
+        {
+            if (itemJsonFile != null)
+                if (itemJsonFile.itemName.Contains(input))
+                {
+                    //Debug.Log(itemJsonFile.itemName);
+                    setupButtonFromJson(itemJsonFile);
+                }
+        }
+        foreach (PartJsonData partJsonFile in partJsonData)
+        {
+            if (partJsonFile != null)
+                if (partJsonFile.partName.Contains(input))
+                {
+                    //Debug.Log(partJsonFile.partName);
+                    setupButtonFromJson(partJsonFile);
+                }
+        }
+    }*/
 
 
     private void setupUpcomingRecipes()
@@ -874,6 +896,10 @@ public class RecipeBook : MonoBehaviour
                 setupButtonFromJson(itemJson, jsonFile);
                 break;
             }
+
+    }
+    private void toggleButtonFromJson(ItemJsonData itemJson)
+    {
 
     }
     private void setupButtonFromJson(ItemJsonData itemJson, TextAsset jsonFile)
