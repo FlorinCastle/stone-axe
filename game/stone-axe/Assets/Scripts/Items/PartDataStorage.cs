@@ -15,7 +15,7 @@ public class PartDataStorage : MonoBehaviour
     [SerializeField] private int _partDextarity;
     [SerializeField] private int _partIntelegence;
 
-    [SerializeField] private PartData _selfRecipeData;
+    //[SerializeField] private PartData _selfRecipeData;
     [SerializeField] private PartJsonData _selfRecipeJsonData;
 
     [Header("Enchant Storage")]
@@ -46,7 +46,8 @@ public class PartDataStorage : MonoBehaviour
         else return null;
     }
 
-    public PartData RecipeData { get => _selfRecipeData; }
+    //public PartData RecipeData { get => _selfRecipeData; }
+    public PartJsonData RecipeData { get => _selfRecipeJsonData; }
     //public void setRecipeData(PartData partRecipe) { _selfRecipeData = partRecipe; }
 
     public PartJsonData PartJsonData { get => _selfRecipeJsonData; set => _selfRecipeJsonData = value; }

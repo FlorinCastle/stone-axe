@@ -115,7 +115,7 @@ public class DisassembleItemControl : MonoBehaviour
             header = "materials ";
             _itemNameText.text = "part chosen: " + partData.PartName;
 
-            body = partData.MaterialName + " " + partData.RecipeData.UnitsOfMaterialNeeded + "\n";
+            body = partData.MaterialName + " " + partData.RecipeData.unitsOfMaterialNeeded + "\n";
             if (partData.IsHoldingEnchant)
             {
                 ench = "\n" + partData.Enchantment.EnchantName + " +" + partData.Enchantment.AmountOfBuff;
@@ -215,17 +215,17 @@ public class DisassembleItemControl : MonoBehaviour
             // get reference to part 1, get material composition and add to appropriate material ref
             GameObject part1 = _selectedObject.GetComponent<ItemDataStorage>().Part1.gameObject;
             string ph1 = part1.GetComponent<PartDataStorage>().Material.Material;
-            _invDataRef.getMaterial(ph1).AddMat(Mathf.RoundToInt(part1.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
+            _invDataRef.getMaterial(ph1).AddMat(Mathf.RoundToInt(part1.GetComponent<PartDataStorage>().RecipeData.unitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
 
             // part 2
             GameObject part2 = _selectedObject.GetComponent<ItemDataStorage>().Part2.gameObject;
             string ph2 = part2.GetComponent<PartDataStorage>().Material.Material;
-            _invDataRef.getMaterial(ph2).AddMat(Mathf.RoundToInt(part2.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
+            _invDataRef.getMaterial(ph2).AddMat(Mathf.RoundToInt(part2.GetComponent<PartDataStorage>().RecipeData.unitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
 
             // part 3
             GameObject part3 = _selectedObject.GetComponent<ItemDataStorage>().Part3.gameObject;
             string ph3 = part3.GetComponent<PartDataStorage>().Material.Material;
-            _invDataRef.getMaterial(ph3).AddMat(Mathf.RoundToInt(part3.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
+            _invDataRef.getMaterial(ph3).AddMat(Mathf.RoundToInt(part3.GetComponent<PartDataStorage>().RecipeData.unitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
 
             // move enchantment if enchanted
             if (_selectedObject.GetComponent<ItemDataStorage>().IsEnchanted)
@@ -268,7 +268,7 @@ public class DisassembleItemControl : MonoBehaviour
 
         // get reference to material and add to appropriate material ref
         string ph1 = _selectedObject.GetComponent<PartDataStorage>().Material.Material;
-        _invDataRef.getMaterial(ph1).AddMat(Mathf.RoundToInt(_selectedObject.GetComponent<PartDataStorage>().RecipeData.UnitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
+        _invDataRef.getMaterial(ph1).AddMat(Mathf.RoundToInt(_selectedObject.GetComponent<PartDataStorage>().RecipeData.unitsOfMaterialNeeded * reducedMatSkill.getModifiedMatAmount()));
         // move enchantment if enchanted
         if (_selectedObject.GetComponent<PartDataStorage>().IsHoldingEnchant)
         {

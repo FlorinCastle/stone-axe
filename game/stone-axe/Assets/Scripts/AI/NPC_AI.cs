@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NPC_AI : MonoBehaviour
 {
+    [SerializeField] private string npcName;
     private bool _move;
     [SerializeField] private bool dismissed;
 
@@ -107,7 +108,7 @@ public class NPC_AI : MonoBehaviour
         _targetPosition = new Vector3(target.transform.position.x, this.gameObject.transform.position.y, target.transform.position.z);
     }
 
-
+    public string NPCName { get => npcName; }
     public bool IsMoving { set => _move = value; }
     public bool IsDismissed { set => dismissed = value; }
 }

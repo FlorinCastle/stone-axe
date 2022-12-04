@@ -150,16 +150,16 @@ public class InventoryScript : MonoBehaviour
                 {
                     ItemDataStorage itemDat = item.GetComponent<ItemDataStorage>();
 
-                    if (itemDat.ItemRecipeRef.ValidFilters.Contains(_currentItemFilter))
+                    if (itemDat.ItemJsonRef.filters.Contains(_currentItemFilter.FilterName))
                     {
-                        Debug.Log("InventoryScript.setupItemInventory(): " + itemDat.ItemName + " has the filter: " + _currentItemFilter.FilterName);
+                        //Debug.Log("InventoryScript.setupItemInventory(): " + itemDat.ItemName + " has the filter: " + _currentItemFilter.FilterName);
                         itemStorageSetup(itemDat, k, true);
                         setupList.Add(item);
                         k++;
                     }
                     else if (itemDat.Part1.Material.ValidFilters.Contains(_currentItemFilter))
                     {
-                        Debug.Log("InventoryScript.setupItemInventory(): " + itemDat.ItemName + " Part1.Material has the filter: " + _currentItemFilter.FilterName);
+                        //Debug.Log("InventoryScript.setupItemInventory(): " + itemDat.ItemName + " Part1.Material has the filter: " + _currentItemFilter.FilterName);
                         itemStorageSetup(itemDat, k, true);
                         setupList.Add(item);
                         k++;
@@ -254,7 +254,7 @@ public class InventoryScript : MonoBehaviour
                 {
                     PartDataStorage partData = part.GetComponent<PartDataStorage>();
                     //if (_craftControlRef.checkItemRecipe().ValidParts1.Contains(partData.RecipeData))
-                    if (_craftControlRef.ItemJsonRecipe.requiredParts.Contains(partData.RecipeData.PartName))
+                    if (_craftControlRef.ItemJsonRecipe.requiredParts.Contains(partData.RecipeData.partName))
                     {
                         partStorageSetup(partData, k, true);
                         k++;
@@ -1748,7 +1748,8 @@ public class InventoryScript : MonoBehaviour
         else if (_craftControlRef.anyQuestRecipeSelected() == true)
         {
             Debug.Log("Selected part is valid for quest recipe!");
-            if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart1
+            Debug.LogWarning("InventoryScript.returnSeletedPart(): readd the creaft special item crafting!");
+            /*if (_selectedPart.GetComponent<PartDataStorage>().PartName == _craftControlRef.checkQuestRecipe().ItemPart1
                 && (partLastFilled == 0 || partLastFilled == 2 || partLastFilled == 3 || _craftControlRef.Part1Set() == false || _craftControlRef.AllPartsSet() == true)
                 && phb == false)
             {
@@ -1757,7 +1758,7 @@ public class InventoryScript : MonoBehaviour
                 partLastFilled = 1;
                 phb = true;
             }
-            if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart2
+            if (_selectedPart.GetComponent<PartDataStorage>().PartName == _craftControlRef.checkQuestRecipe().ItemPart2
                 && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 3 || _craftControlRef.Part2Set() == false || _craftControlRef.AllPartsSet() == true)
                 && phb == false)
             {
@@ -1766,7 +1767,7 @@ public class InventoryScript : MonoBehaviour
                 partLastFilled = 2;
                 phb = true;
             }
-            if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart3
+            if (_selectedPart.GetComponent<PartDataStorage>().PartName == _craftControlRef.checkQuestRecipe().ItemPart3
                 && (partLastFilled == 0 || partLastFilled == 1 || partLastFilled == 2 || _craftControlRef.Part3Set() == false || _craftControlRef.AllPartsSet() == true)
                 && phb == false)
             {
@@ -1774,7 +1775,7 @@ public class InventoryScript : MonoBehaviour
                 _craftControlRef.SelectQPart3();
                 partLastFilled = 3;
                 phb = true;
-            }
+            } */
         }
         else if (_UIControlRef.ShopDisUIEnabled == true)
         {
@@ -1800,13 +1801,14 @@ public class InventoryScript : MonoBehaviour
         }
         else if (_selectedPart != null)
         {
-            if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart1 && phb == false)
+            Debug.LogWarning("InventoryScript.questPart1(): fix this");
+            /*if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart1 && phb == false)
             {
                 Debug.LogWarning("selected item matches recipe part 1");
                 _craftControlRef.SelectQPart1();
 
                 phb = true;
-            }
+            } */
         }
     }
     private void questPart2()
@@ -1826,13 +1828,14 @@ public class InventoryScript : MonoBehaviour
         }
         else if (_selectedPart != null)
         {
-            if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart2 && phb == false)
+            Debug.LogWarning("InventoryScript.questPart2(): fix this");
+            /*if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart2 && phb == false)
             {
                 Debug.LogWarning("selected item matches recipe part 2");
                 _craftControlRef.SelectQPart2();
 
                 phb = true;
-            }
+            }*/
         }
     }
     private void questPart3()
@@ -1853,13 +1856,14 @@ public class InventoryScript : MonoBehaviour
         }
         else if (_selectedPart != null)
         {
-            if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart3 && phb == false)
+            Debug.LogWarning("InventoryScript.questPart3(): fix this");
+            /*if (_selectedPart.GetComponent<PartDataStorage>().RecipeData == _craftControlRef.checkQuestRecipe().ItemPart3 && phb == false)
             {
                 Debug.LogWarning("selected item matches recipe part 3");
                 _craftControlRef.SelectQPart3();
 
                 phb = true;
-            }
+            }*/
         }
     }
 

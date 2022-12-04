@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NPC_Master : MonoBehaviour
 {
+    [SerializeField] private List<GameObject> _npcPrefabList;
     [SerializeField] private List<GameObject> _npcList;
     [SerializeField] private List<WalkingPoint> _walkingPoints;
     [SerializeField] private List<NPCPoint> _npcPoints;
@@ -31,6 +32,7 @@ public class NPC_Master : MonoBehaviour
         if (this.gameObject.GetComponent<GameMaster>().ShopActive == true)
             _soundMaster.playDoorSound();
     }
+    public void spawnNPC(string input) { spawnNPC(getNPCObj(input)); }
     public void dismissNPCs()
     {
         foreach(GameObject npc in _npcList)
@@ -45,5 +47,24 @@ public class NPC_Master : MonoBehaviour
         Debug.Log(npcRef.name + " - I YEET MYSELF!");
         _npcList.Remove(npcRef);
         Destroy(npcRef);
+    }
+
+    public bool isValidNPC(string input)
+    {
+        foreach(GameObject npc in _npcPrefabList)
+            if (npc.GetComponent<NPC_AI>().NPCName == input)
+                return true;
+        Debug.LogError("NPC_Master.isValidNPC(string): input is not a valid NPC name!");
+        return false;
+    }
+
+    private GameObject getNPCObj(string input)
+    {
+        if (isValidNPC(input))
+            foreach (GameObject npc in _npcPrefabList)
+                if (npc.GetComponent<NPC_AI>().NPCName == input)
+                    return npc;
+        Debug.LogError("NPC_Master.getNPCObj(string): input is not a valid NPC name!");
+        return null;
     }
 }

@@ -868,7 +868,14 @@ public class QuestControl : MonoBehaviour
                 else if (questStage.eventData.eventName == "Summon_NPC")
                 {
                     Debug.LogWarning("PUT IN THE CODE FOR Summon_NPC");
-
+                    Debug.Log("Quest Event: Summon Story NPC");
+                    if (questStage.eventData.eventData.Count > 0)
+                    {
+                        foreach(string input in questStage.eventData.eventData)
+                            if (gameObject.GetComponent<NPC_Master>().isValidNPC(input))
+                                gameObject.GetComponent<NPC_Master>().spawnNPC(input);
+                    }
+                    else Debug.LogError("NPC Ref for " + storyQuest.questName + " Stage: " + questStage.questStageType + " is not asigned!");
                 }
                 else if (questStage.eventData.eventName == "Dismiss_Quest_NPC")
                 {

@@ -716,7 +716,7 @@ public class RecipeBook : MonoBehaviour
     {
         if (recipeGridCoroutine != null)
             StopCoroutine(recipeGridCoroutine);
-        Debug.Log(input);
+        //Debug.Log(input);
         clearRecipeGrid();
         clearUpcomingRecipesLists();
 
