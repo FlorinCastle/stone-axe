@@ -2351,7 +2351,8 @@ MonoBehaviour:
   partSOPath: 
   items: []
   parts: []
-  quests: []
+  quests:
+  - {fileID: 11400000, guid: b513f70bebd368e42865c6a21fad0df2, type: 2}
   itemJsons: []
   itemsJ: []
 --- !u!4 &574211383
@@ -8169,6 +8170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54a14ece0549964ab42580a77ec8f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _npcPrefabList:
+  - {fileID: 2822056689991755846, guid: e1aed44058b3d4245a17275f3fc951ff, type: 3}
+  - {fileID: 2822056689991755846, guid: 4f8fffb1b6a42b949b2e2ecbbb769d93, type: 3}
+  - {fileID: 2822056689991755846, guid: a3ed85e95f13d014487434db28cbeb74, type: 3}
+  - {fileID: 2822056689991755846, guid: 7c245a794cdeec249b85cc5978b34a48, type: 3}
+  - {fileID: 2822056689991755846, guid: de8ea3c698605e84285c8a202339e6ba, type: 3}
   _npcList: []
   _walkingPoints:
   - {fileID: 995469540}

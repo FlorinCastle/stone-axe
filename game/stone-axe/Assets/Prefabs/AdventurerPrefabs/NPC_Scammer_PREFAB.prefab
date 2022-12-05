@@ -368,6 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aeb2e51f7e51d54ebc7dace23ef49fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcName: Scammer
+  dismissed: 0
   _currentTarget: {fileID: 0}
 --- !u!95 &3695382923491057050
 Animator:

@@ -729,7 +729,7 @@ public class RecipeBook : MonoBehaviour
         foreach (ItemJsonData itemJsonFile in itemJsonData)
         {
             if (itemJsonFile != null)
-                if (itemJsonFile.itemName.Contains(input))
+                if (itemJsonFile.itemName.ToLower().Contains(input))
                 {
                     //Debug.Log(itemJsonFile.itemName);
                     setupButtonFromJson(itemJsonFile);
@@ -738,7 +738,7 @@ public class RecipeBook : MonoBehaviour
         foreach (PartJsonData partJsonFile in partJsonData)
         {
             if (partJsonFile != null)
-                if (partJsonFile.partName.Contains(input))
+                if (partJsonFile.partName.ToLower().Contains(input))
                 {
                     //Debug.Log(partJsonFile.partName);
                     setupButtonFromJson(partJsonFile);

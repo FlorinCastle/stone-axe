@@ -11,15 +11,15 @@ public class NPC_AI : MonoBehaviour
     [SerializeField] private GameObject _currentTarget;
     private Vector3 _targetPosition;
 
-    private GameMaster gameMasterRef;
-    private Quest questRef;
-    private QuestControl questControl;
+    [SerializeField, HideInInspector] private GameMaster gameMasterRef;
+    [SerializeField, HideInInspector] private Quest questRef;
+    [SerializeField, HideInInspector] private QuestControl questControl;
 
     private void Awake()
     {
         gameMasterRef = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
-        questRef = gameObject.GetComponent<Quest>();
-        questControl = gameObject.GetComponent<QuestControl>();
+        questRef = GameObject.FindGameObjectWithTag("QuestMaster").GetComponent<Quest>();
+        questControl = gameMasterRef.gameObject.GetComponent<QuestControl>();
     }
 
     private Vector3 newDirection;
@@ -70,17 +70,17 @@ public class NPC_AI : MonoBehaviour
                     // advance quest
                     //Debug.Log("TODO: setup code for npc quest triggering");
                     
-                    if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null &&
+                    if (questControl.CurrentQuest != null &&
                         (questRef.QuestType(questControl.CurrentQuest) == "Tutorial" ||
                         questRef.QuestType(questControl.CurrentQuest) == "Story"))
                     {
                         Debug.Log("TODO re-implement this");
-                        /*if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.StageType == "Force_Event" &&
-                            gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.QuestEvent == "Summon_NPC")
+                        if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.questStageType == "Force_Event" &&
+                            gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.eventData.eventName == "Summon_NPC")
                         {
                             Debug.LogWarning("Quest Notif - NPC at counter");
                             gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
-                        }*/
+                        }
                     }
                     
 
@@ -97,10 +97,10 @@ public class NPC_AI : MonoBehaviour
         if (Vector3.Angle(transform.forward, _targetPosition - this.transform.position) < 10f)
             IsMoving = true;
     }
-    public void setupNPC(GameObject NPCRef)
+    /*public void setupNPC(GameObject NPCRef)
     {
 
-    }
+    }*/
 
     public void setCurentTarget(GameObject target)
     {

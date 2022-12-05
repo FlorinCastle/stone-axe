@@ -541,6 +541,7 @@ public class CraftControl : MonoBehaviour
                 enc = _chosenPart1.GetComponent<PartDataStorage>().Enchantment;
                 encSelected = true;
                 _chosenPart1.GetComponent<PartDataStorage>().setEnchantment(null);
+                _chosenPart1.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
             }
             if (_chosenPart2.GetComponent<PartDataStorage>().IsHoldingEnchant == true)
             {
@@ -549,6 +550,7 @@ public class CraftControl : MonoBehaviour
                     enc = _chosenPart2.GetComponent<PartDataStorage>().Enchantment;
                     encSelected = true;
                     _chosenPart2.GetComponent<PartDataStorage>().setEnchantment(null);
+                    _chosenPart2.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
                 }
                 else if (enc.EnchantType == _chosenPart2.GetComponent<PartDataStorage>().Enchantment.EnchantType)
                 {
@@ -564,6 +566,7 @@ public class CraftControl : MonoBehaviour
                     enc = _chosenPart3.GetComponent<PartDataStorage>().Enchantment;
                     encSelected = true;
                     _chosenPart3.GetComponent<PartDataStorage>().setEnchantment(null);
+                    _chosenPart3.GetComponent<PartDataStorage>().setIsHoldingEnchanted(false);
                 }
                 else if (enc.EnchantType == _chosenPart3.GetComponent<PartDataStorage>().Enchantment.EnchantType)
                 {

@@ -148,7 +148,7 @@ public class InventoryData : MonoBehaviour
     {
         foreach (GameObject go in _partInventoryData)
         {
-            if (part == go)
+            if (part.GetComponent<PartDataStorage>().RecipeData == go.GetComponent<PartDataStorage>().RecipeData)
             {
                 int index = _partInventoryData.IndexOf(go);
                 if (destroy == true)

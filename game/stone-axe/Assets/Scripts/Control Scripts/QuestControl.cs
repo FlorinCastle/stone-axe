@@ -849,6 +849,10 @@ public class QuestControl : MonoBehaviour
                 {
                     Debug.LogWarning("PUT IN THE CODE FOR Get_Item");
 
+                    Debug.Log("Quest Event: Get Item");
+
+                    gameObject.GetComponent<GenerateItem>().GeneratePresetItem(questStage.reqItem, true);
+                    nextStage();
                 }
                 else if (questStage.eventData.eventName == "Remove_Quest_Items")
                 {
@@ -867,7 +871,7 @@ public class QuestControl : MonoBehaviour
                 }
                 else if (questStage.eventData.eventName == "Summon_NPC")
                 {
-                    Debug.LogWarning("PUT IN THE CODE FOR Summon_NPC");
+                    //Debug.LogWarning("PUT IN THE CODE FOR Summon_NPC");
                     Debug.Log("Quest Event: Summon Story NPC");
                     if (questStage.eventData.eventData.Count > 0)
                     {

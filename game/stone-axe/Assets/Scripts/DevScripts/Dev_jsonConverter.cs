@@ -515,6 +515,22 @@ public class Dev_jsonConverter : MonoBehaviour
                 dialogeLine = "",
                 eventData = eventJson,
             };
+            if (stage.StageType == "Get_Item")
+            {
+                List<PartJson> parts = new List<PartJson>();
+                if (stage.Part1Mat != null) { var part = new PartJson() { partName = stage.ItemToGet.Part1.PartName }; parts.Add(part); }
+                if (stage.Part2Mat != null) { var part = new PartJson() { partName = stage.ItemToGet.Part2.PartName }; parts.Add(part); }
+                if (stage.Part3Mat != null) { var part = new PartJson() { partName = stage.ItemToGet.Part3.PartName }; parts.Add(part); }
+
+                var questReqItem = new ItemJson()
+                {
+                    itemName = stage.ItemToGet.ItemName,
+                    partData = parts,
+                    reqCount = 1
+                };
+
+                questStageJsonData.reqItem = questReqItem;
+            }
 
             //Debug.Log(JsonUtility.ToJson(questStageJsonData, true));
 

@@ -19,11 +19,12 @@ public class PartDataStorage : MonoBehaviour
     [SerializeField] private PartJsonData _selfRecipeJsonData;
 
     [Header("Enchant Storage")]
-    [SerializeField] private bool _isEnchanted = false;
+    [SerializeField] private bool _isEnchanted;
     [SerializeField] private EnchantDataStorage _enchantStorage;
 
     public SavePartObject SavePart()
     {
+        Debug.Log("PartDataStorage.SavePart(): saving " + _material._materialName + " " + _selfRecipeJsonData.partName);
         SavePartObject saveObject = new SavePartObject
         {
             partName = _partName,
@@ -33,6 +34,7 @@ public class PartDataStorage : MonoBehaviour
             partDextarity = _partDextarity,
             partIntellegence = _partIntelegence,
             partRecipeName = _selfRecipeJsonData.partName,
+
             isEnchanted = _isEnchanted,
             enchantment = checkEnchant(),
         };
