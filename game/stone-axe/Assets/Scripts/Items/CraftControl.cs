@@ -593,7 +593,7 @@ public class CraftControl : MonoBehaviour
         // quest checks
         if (_gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentQuest != null)
         {
-            Debug.Log("TODO re-implement this");
+            Debug.Log("CraftControl.Craft(): TODO re-implement this");
             if (questRef.QuestType(questControl.CurrentQuest) == "Tutorial" || questRef.QuestType(questControl.CurrentQuest) == "Story")
             {
                 if (_gameMasterRef.GetComponent<QuestControl>().CurrentStage.questStageType == "Craft_Item")
@@ -606,6 +606,9 @@ public class CraftControl : MonoBehaviour
                             if (craftCount >= _gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.reqItem.reqCount)
                             {
                                 Debug.Log("Quest Notif - Craft(s) Done");
+                                if (questRef.QuestType(questControl.CurrentQuest) == "Story")
+                                    itemDataStorageRef.IsForQuest = true;
+
                                 _gameMasterRef.gameObject.GetComponent<QuestControl>().nextStage();
                                 craftCount = 0;
                             }

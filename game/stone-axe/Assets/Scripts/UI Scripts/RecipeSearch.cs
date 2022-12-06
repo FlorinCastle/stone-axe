@@ -11,7 +11,12 @@ public class RecipeSearch : MonoBehaviour
     public void updateRecipes()
     {
         if (recipeBookRef != null)
-            recipeBookRef.setupSearchedRecipeGrid(textInput.text);
+        {
+            if (textInput.text.Length > 2)
+                recipeBookRef.setupSearchedRecipeGrid(textInput.text);
+            else
+                recipeBookRef.setupRecipeGrid();
+        }
         else
             Debug.LogError("RecipeSearch.updateRecipes(): recipeBookRef on GameObject " + gameObject.name + " is NULL! Assign recipeBookRef in the Inspector!");
     }

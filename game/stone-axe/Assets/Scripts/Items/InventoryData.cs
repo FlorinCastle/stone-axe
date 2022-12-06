@@ -197,6 +197,26 @@ public class InventoryData : MonoBehaviour
         }
         _enchantInventoryData.Clear();
     }
+    /*public void removeAllQuestItems()
+    {
+        for (var i = _itemInventoryData.Count - 1; i > -1; i--)
+        {
+            if (_itemInventoryData[i].GetComponent<ItemDataStorage>().IsForQuest)
+            {
+                Destroy(_itemInventoryData[i]);
+                _itemInventoryData.RemoveAt(i);
+            }
+        }
+        /*foreach(GameObject go in _itemInventoryData)
+        {
+            if (go.GetComponent<ItemDataStorage>().IsForQuest)
+            {
+                int index = _itemInventoryData.IndexOf(go);
+                Destroy(go);
+                _itemInventoryData.RemoveAt(index);
+            }
+        } 
+    }*/
     /*
     public MaterialData getMaterial(string matName)
     {

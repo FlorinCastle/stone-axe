@@ -74,7 +74,7 @@ public class NPC_AI : MonoBehaviour
                         (questRef.QuestType(questControl.CurrentQuest) == "Tutorial" ||
                         questRef.QuestType(questControl.CurrentQuest) == "Story"))
                     {
-                        Debug.Log("TODO re-implement this");
+                        //Debug.Log("TODO re-implement this");
                         if (gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.questStageType == "Force_Event" &&
                             gameMasterRef.gameObject.GetComponent<QuestControl>().CurrentStage.eventData.eventName == "Summon_NPC")
                         {

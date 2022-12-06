@@ -529,6 +529,7 @@ public class Dev_jsonConverter : MonoBehaviour
                     reqCount = 1
                 };
 
+                Debug.LogWarning(questReqItem);
                 questStageJsonData.reqItem = questReqItem;
             }
 

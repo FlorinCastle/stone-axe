@@ -495,7 +495,7 @@ public class QuestControl : MonoBehaviour
                 }
                 else if (quest.questType == "Story")
                 {
-                    Debug.LogWarning("TODO fix this");
+                    //Debug.LogWarning("TODO fix this");
                     foreach (TextAsset storyQuest in _questRef.StoryQuests)
                         if (_questRef.QuestName(storyQuest) == quest.questName)
                             _unlockedQuestsJson.Add(storyQuest);
@@ -847,7 +847,7 @@ public class QuestControl : MonoBehaviour
                 }
                 else if (questStage.eventData.eventName == "Get_Item")
                 {
-                    Debug.LogWarning("PUT IN THE CODE FOR Get_Item");
+                    //Debug.LogWarning("PUT IN THE CODE FOR Get_Item");
 
                     Debug.Log("Quest Event: Get Item");
 
@@ -856,8 +856,9 @@ public class QuestControl : MonoBehaviour
                 }
                 else if (questStage.eventData.eventName == "Remove_Quest_Items")
                 {
-                    Debug.LogWarning("PUT IN THE CODE FOR Remove_Quest_Items");
-
+                    //Debug.LogWarning("PUT IN THE CODE FOR Remove_Quest_Items");
+                    _invControlRef.RemoveQuestItems();
+                    nextStage();
                 }
                 else if (questStage.eventData.eventName == "Get_Currency")
                 {
@@ -884,7 +885,8 @@ public class QuestControl : MonoBehaviour
                 else if (questStage.eventData.eventName == "Dismiss_Quest_NPC")
                 {
                     Debug.LogWarning("PUT IN THE CODE FOR Dismiss_Quest_NPC");
-
+                    gameObject.GetComponent<NPC_Master>().dismissNPCs();
+                    nextStage();
                 }
                 else if (questStage.eventData.eventName == "Force_For_Sale")
                 {
@@ -1070,6 +1072,18 @@ public class QuestControl : MonoBehaviour
             if (_questRef.LoadStoryQuest(quest).unlockFeatures.Count > 0)
                 Debug.Log(_questRef.LoadTutorialQuest(quest).unlockFeatures);
 
+            if (_questRef.LoadStoryQuest(quest).unlockedQuests.Count > 0 && isComplete)
+            {
+                foreach (string unlockedQ in _questRef.LoadStoryQuest(quest).unlockedQuests)
+                    if (_unlockedQuestsJson.Contains(_questRef.FetchQuestTextAssestByName(unlockedQ)) == false)
+                        _unlockedQuestsJson.Add(_questRef.FetchQuestTextAssestByName(unlockedQ));
+                setupStoryQuests();
+                _chosenQuestJson = null;
+                _currStageIndex = 0;
+            }
+        }
+        else if (_questRef.LoadStoryQuest(quest).questType == "Story" && isComplete)
+        {
             if (_questRef.LoadStoryQuest(quest).unlockedQuests.Count > 0 && isComplete)
             {
                 foreach (string unlockedQ in _questRef.LoadStoryQuest(quest).unlockedQuests)

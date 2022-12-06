@@ -117,7 +117,7 @@
             },
             "eventData": {
                 "eventName": "Summon_NPC",
-                "eventData": []
+                "eventData": ["Knight"]
             },
             "reqCurrency": 0
         },
@@ -159,8 +159,21 @@
             "speaker": "",
             "dialogeLine": "",
             "reqItem": {
-                "itemName": "",
-                "partData": [],
+                "itemName": "Sword",
+                "partData": [
+                    {
+                        "partName": "Sword Blade",
+                        "partMat": "Iron"
+                    },
+                    {
+                        "partName": "Sword Handle",
+                        "partMat": "Oak Wood"
+                    },
+                    {
+                        "partName": "Pomel",
+                        "partMat": "Copper"
+                    }
+                ],
                 "reqCount": 0
             },
             "eventData": {
