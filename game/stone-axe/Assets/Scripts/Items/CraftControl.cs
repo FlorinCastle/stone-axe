@@ -586,7 +586,7 @@ public class CraftControl : MonoBehaviour
 
         // check quest
         //_questControlRef.updateQuestProgress(_chosenItemRecipe);
-        _questControlRef.updateQuestProgress(_chosenItemRecipeJson);
+        //_questControlRef.updateQuestProgress(_chosenItemRecipeJson);
 
         _inventoryControlReference.InsertItem(itemDataStorageTemp);
 

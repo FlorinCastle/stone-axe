@@ -140,6 +140,7 @@ public class Quest : MonoBehaviour
         foreach (StoryQuest storyQuest in storyQuests)
             if (storyQuest.questName.Equals(questJsonData.questName))   // TODO: replace this with unique quest IDs
             {
+                //Debug.LogWarning("Quest.updateProcessedQuest(quest, isComplete): quest match found! updating quest.isComplete is complete...");
                 storyQuest.isComplete = isComplete;
                 break;
             }

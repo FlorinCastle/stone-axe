@@ -262,7 +262,7 @@ public class QuestControl : MonoBehaviour
         } */
     private void setupStarter(TextAsset quest)
     {
-        Debug.Log("QuestControl.setupStarter(): setting up starter");
+        //Debug.Log("QuestControl.setupStarter(): setting up starter for TextAsset " + quest.name);
 
         p = Instantiate(_questStarterPrefab, _storyQuestPopupParent.transform);
         p.GetComponent<StoryQuestStarter>().QuestJson = quest;
@@ -428,6 +428,11 @@ public class QuestControl : MonoBehaviour
             if (_questRef.isLongQuestComplete(questText) == true)//_questRef.LoadStoryQuest(questText).isComplete == true)
             {
                 //Debug.Log("QuestControl.saveQuests(): " + _questRef.LoadStoryQuest(questText).questName + ":questText.isComplete");
+                completedQuestList.Add(_questRef.saveQuest(questText));
+            }
+        foreach (TextAsset questText in _questRef.StoryQuests)
+            if (_questRef.isLongQuestComplete(questText) == true)
+            {
                 completedQuestList.Add(_questRef.saveQuest(questText));
             }
 
@@ -884,7 +889,7 @@ public class QuestControl : MonoBehaviour
                 }
                 else if (questStage.eventData.eventName == "Dismiss_Quest_NPC")
                 {
-                    Debug.LogWarning("PUT IN THE CODE FOR Dismiss_Quest_NPC");
+                    //Debug.LogWarning("PUT IN THE CODE FOR Dismiss_Quest_NPC");
                     gameObject.GetComponent<NPC_Master>().dismissNPCs();
                     nextStage();
                 }
@@ -1086,6 +1091,7 @@ public class QuestControl : MonoBehaviour
         {
             if (_questRef.LoadStoryQuest(quest).unlockedQuests.Count > 0 && isComplete)
             {
+                //Debug.LogWarning("QuestControl.updateQuestProgress(quest, isComplete): Story quest done! updating!");
                 foreach (string unlockedQ in _questRef.LoadStoryQuest(quest).unlockedQuests)
                     if (_unlockedQuestsJson.Contains(_questRef.FetchQuestTextAssestByName(unlockedQ)) == false)
                         _unlockedQuestsJson.Add(_questRef.FetchQuestTextAssestByName(unlockedQ));
