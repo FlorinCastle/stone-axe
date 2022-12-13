@@ -7,6 +7,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [Header("Item Tracking")]
+    [SerializeField] private ItemJsonPaths pathDatabase;
     //[SerializeField] List<GameObject> mainItemGroups;
     [SerializeField] List<ItemData> _itemDataList;
     int ranItem;
@@ -35,8 +36,12 @@ public class Item : MonoBehaviour
     }
     public ItemJsonDataCode chooseItemJson()
     {
+        Debug.LogWarning("Item.chooseItemJson(): test");
         ranItem = Random.Range(0, itemJsons.Count);
-        _generatedItemJsonData = JsonUtility.FromJson<ItemJsonDataCode>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsons[ranItem]).Replace("Assets","")));
+        _generatedItemJsonData = JsonUtility.FromJson<ItemJsonDataCode>(File.ReadAllText(Application.dataPath +  pathDatabase.getItemJsonPath(itemJsons[ranItem]).Replace("Assets", "")));
+
+
+        //_generatedItemJsonData = JsonUtility.FromJson<ItemJsonDataCode>(File.ReadAllText(Application.dataPath + Resources.Load();//Resources.Load(AssetDatabase.GetAssetPath(itemJsons[ranItem]).Replace("Assets",""))));
 
         return _generatedItemJsonData;
     }
@@ -47,7 +52,8 @@ public class Item : MonoBehaviour
             string itemCheck = loadJson(item).itemName;
             //int ID = loadJson(item).itemID;
             if (itemCheck == itemName)
-                return JsonUtility.FromJson<ItemJsonDataCode>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(item).Replace("Assets", "")));
+                return JsonUtility.FromJson<ItemJsonDataCode>(File.ReadAllText(Application.dataPath + pathDatabase.getItemJsonPath(item).Replace("Assets", "")));
+                       //JsonUtility.FromJson<ItemJsonDataCode>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(item).Replace("Assets", "")));
         }
         Debug.LogWarning("Unable to find Valid Item for ID: [" + itemName + "]");
         return null;
