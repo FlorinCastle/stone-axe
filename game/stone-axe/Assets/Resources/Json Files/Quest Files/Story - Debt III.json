@@ -69,7 +69,7 @@
             },
             "eventData": {
                 "eventName": "Summon_NPC",
-                "eventData": []
+                "eventData": ["Scammer"]
             },
             "reqCurrency": 0
         },
@@ -181,7 +181,7 @@
             },
             "eventData": {
                 "eventName": "Summon_NPC",
-                "eventData": []
+                "eventData": ["Knight"]
             },
             "reqCurrency": 0
         },

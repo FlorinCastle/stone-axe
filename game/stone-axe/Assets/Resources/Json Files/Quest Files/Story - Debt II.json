@@ -133,7 +133,7 @@
             },
             "eventData": {
                 "eventName": "Summon_NPC",
-                "eventData": []
+                "eventData": ["Scammer"]
             },
             "reqCurrency": 0
         },

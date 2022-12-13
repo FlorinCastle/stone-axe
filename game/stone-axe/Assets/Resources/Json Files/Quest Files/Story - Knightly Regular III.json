@@ -36,8 +36,8 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": "Remove_Currency",
-                "eventData": []
+                "eventName": "Summon_NPC",
+                "eventData": ["Knight"]
             },
             "reqCurrency": 0
         },

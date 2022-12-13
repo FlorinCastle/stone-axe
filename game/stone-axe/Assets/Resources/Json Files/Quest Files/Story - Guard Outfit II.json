@@ -37,7 +37,7 @@
             },
             "eventData": {
                 "eventName": "Summon_NPC",
-                "eventData": []
+                "eventData": ["Guard"]
             },
             "reqCurrency": 0
         },
@@ -261,7 +261,7 @@
             },
             "eventData": {
                 "eventName": "Summon_NPC",
-                "eventData": []
+                "eventData": ["Guard"]
             },
             "reqCurrency": 0
         },
@@ -437,7 +437,7 @@
             },
             "eventData": {
                 "eventName": "Summon_NPC",
-                "eventData": []
+                "eventData": ["Guard"]
             },
             "reqCurrency": 0
         },

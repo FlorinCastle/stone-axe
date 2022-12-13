@@ -36,8 +36,8 @@
                 "reqCount": 0
             },
             "eventData": {
-                "eventName": "Remove_Currency",
-                "eventData": []
+                "eventName": "Summon_NPC",
+                "eventData": ["Knight"]
             },
             "reqCurrency": 0
         },
@@ -191,8 +191,21 @@
             "speaker": "",
             "dialogeLine": "",
             "reqItem": {
-                "itemName": "",
-                "partData": [],
+                "itemName": "Metal Boots",
+                "partData": [
+                    {
+                      "partName": "Knee Covering",
+                      "partMat": "Iron"
+                    },
+                    {
+                      "partName": "Greaves",
+                      "partMat": "Iron"
+                    },
+                    {
+                      "partName": "Sabaton",
+                      "partMat": "Iron"
+                    }
+                ],
                 "reqCount": 0
             },
             "eventData": {

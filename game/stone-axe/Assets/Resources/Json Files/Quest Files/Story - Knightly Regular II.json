@@ -37,7 +37,7 @@
             },
             "eventData": {
                 "eventName": "Summon_NPC",
-                "eventData": []
+                "eventData": ["Knight"]
             },
             "reqCurrency": 0
         },
@@ -143,8 +143,21 @@
             "speaker": "",
             "dialogeLine": "",
             "reqItem": {
-                "itemName": "",
-                "partData": [],
+                "itemName": "Metal Chestplate",
+                "partData": [
+                    {
+                      "partName": "Metal Breastplate",
+                      "partMat": "Iron"
+                    },
+                    {
+                      "partName": "Metal Backplate",
+                      "partMat": "Iron"
+                    },
+                    {
+                      "partName": "Inner Padding",
+                      "partMat": "Linen"
+                    }
+                ],
                 "reqCount": 0
             },
             "eventData": {

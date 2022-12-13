@@ -37,7 +37,7 @@
             },
             "eventData": {
                 "eventName": "Summon_NPC",
-                "eventData": []
+                "eventData": ["Little Lady"]
             },
             "reqCurrency": 0
         },
@@ -165,7 +165,7 @@
             },
             "eventData": {
                 "eventName": "Summon_NPC",
-                "eventData": []
+                "eventData": ["Butler"]
             },
             "reqCurrency": 0
         },

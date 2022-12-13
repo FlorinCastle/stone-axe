@@ -357,11 +357,11 @@ public class QuestControl : MonoBehaviour
     public void resetAllQuests()
     {
         Debug.Log("QuestControl.resetAllQuests() - resetting quests");
-        Debug.LogWarning("TODO fix this");
-        /*foreach (QuestData tutQuest in _questRef.getTutorialQuests())
-            tutQuest.StoryQuestComplete = false; */
-        /*foreach (QuestData storyQuest in _questRef.getStoryQuests())
-            storyQuest.StoryQuestComplete = false; */
+        //Debug.LogWarning("TODO fix this");
+        foreach (TextAsset tutQuest in _questRef.TutorialQuests)
+            _questRef.updateProcessedQuest(tutQuest, false); 
+        foreach (TextAsset storyQuest in _questRef.StoryQuests)
+            _questRef.updateProcessedQuest(storyQuest, false); 
 
         //_unlockedQuests.Clear();
         _unlockedQuestsJson.Clear();
