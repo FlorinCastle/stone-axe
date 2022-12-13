@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.Purchasing;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.AddressableAssets.Build.BuildPipelineTasks.GenerateLocationListsTask;
-using static UnityEditor.Progress;
 
 public class RecipeBook : MonoBehaviour
 {
