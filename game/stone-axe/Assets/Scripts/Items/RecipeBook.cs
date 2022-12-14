@@ -77,7 +77,9 @@ public class RecipeBook : MonoBehaviour
         foreach(TextAsset item in itemJsonRecipes)
             if (processedJsons.Contains(item) == false)
             {
-                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(item).Replace("Assets", "")));
+                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(item.text);
+                //JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(item).Replace("Assets", "")));
+
                 itemJsonData.Add(itemJson);
                 itemRecipesJson.Add(itemJson.itemName, item);
                 processedJsons.Add(item);
@@ -85,7 +87,7 @@ public class RecipeBook : MonoBehaviour
         foreach (TextAsset part in partJsonRecipes)
             if (processedJsons.Contains(part) == false)
             {
-                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(part).Replace("Assets", "")));
+                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(part.text);//File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(part).Replace("Assets", "")));
                 partJsonData.Add(partJson);
                 partRecipesJson.Add(partJson.partName, part);
                 processedJsons.Add(part);
@@ -148,7 +150,7 @@ public class RecipeBook : MonoBehaviour
     {
         if (jsonText != null)
         {
-            _selectedJsonItemRecipe = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonText).Replace("Assets", "")));
+            _selectedJsonItemRecipe = JsonUtility.FromJson<ItemJsonData>(jsonText.text);//File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonText).Replace("Assets", "")));
             _selectedJsonPartRecipe = null;
 
             //Debug.Log(_selectedJsonItemRecipe.itemName);
@@ -230,7 +232,8 @@ public class RecipeBook : MonoBehaviour
         if (jsonText != null)
         {
             _selectedJsonItemRecipe = null;
-            _selectedJsonPartRecipe = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonText).Replace("Assets", "")));
+            _selectedJsonPartRecipe = JsonUtility.FromJson<PartJsonData>(jsonText.text);
+            //File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonText).Replace("Assets", "")));
             _recipeText.text = _selectedJsonPartRecipe.partName + " Json\nValid Material Types:\n";
             foreach (string matType in _selectedJsonPartRecipe.validMaterialTypes)
                 _recipeText.text += matType + "\n";
@@ -303,14 +306,16 @@ public class RecipeBook : MonoBehaviour
         {
             if (itemJsonRecipes.Contains(jsonText))
             {
-                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonText).Replace("Assets", "")));
+                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(jsonText.text);
+                //File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonText).Replace("Assets", "")));
                 _recipeText.text = itemJson.itemName + " Json\nParts:";
                 foreach (string partName in itemJson.requiredParts)
                     _recipeText.text += "\nValid Json Part " + (itemJson.requiredParts.IndexOf(partName) + 1) + ": " + partName;
             }
             else if (partJsonRecipes.Contains(jsonText))
             {
-                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonText).Replace("Assets", "")));
+                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(jsonText.text);
+                //File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonText).Replace("Assets", "")));
                 _recipeText.text = partJson.partName + " Json\nValid Material Types:\n";
                 foreach (string matType in partJson.validMaterialTypes)
                     _recipeText.text += matType + "\n";
@@ -387,7 +392,8 @@ public class RecipeBook : MonoBehaviour
         {
             if (itemJsonFile != null)
             {
-                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
+                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(itemJsonFile.text);
+                //File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
                 if (itemJson.levelRequirement <= _gameMasterRef.GetLevel)
                 {
                     setupButtonFromJson(itemJson, itemJsonFile);
@@ -431,7 +437,8 @@ public class RecipeBook : MonoBehaviour
         {
             if (partJsonFile != null)
             {
-                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(partJsonFile).Replace("Assets", "")));
+                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(partJsonFile.text);
+                //File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(partJsonFile).Replace("Assets", "")));
                 if (partJson.levelRequirement <= _gameMasterRef.GetLevel)
                 {
                     setupButtonFromJson(partJson, partJsonFile);
@@ -451,7 +458,8 @@ public class RecipeBook : MonoBehaviour
         {
             if (itemJsonFile != null)
             {
-                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
+                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(itemJsonFile.text);
+                //File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
                 if (checkIfEnabledFiltersValid(itemJson) && enabledFilters.Count != 0 && itemJson.levelRequirement <= _gameMasterRef.GetLevel)
                 {
                     setupButtonFromJson(itemJson, itemJsonFile);
@@ -464,7 +472,8 @@ public class RecipeBook : MonoBehaviour
         {
             if (partJsonFile != null)
             {
-                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(partJsonFile).Replace("Assets", "")));
+                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(partJsonFile.text);
+                //File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(partJsonFile).Replace("Assets", "")));
                 if (partJson.levelRequirement <= _gameMasterRef.GetLevel)
                 {
                     setupButtonFromJson(partJson, partJsonFile);
@@ -571,7 +580,8 @@ public class RecipeBook : MonoBehaviour
         {
             if (itemJsonFile != null)
             {
-                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
+                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(itemJsonFile.text);
+                //File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
                 if (itemJson.levelRequirement <= _gameMasterRef.GetLevel)
                 {
                     setupButtonFromJson(itemJson, itemJsonFile);
@@ -604,7 +614,8 @@ public class RecipeBook : MonoBehaviour
         {
             if (partJsonFile != null)
             {
-                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(partJsonFile).Replace("Assets", "")));
+                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(partJsonFile.text);
+                //File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(partJsonFile).Replace("Assets", "")));
                 if (partJson.levelRequirement <= _gameMasterRef.GetLevel)
                 {
                     setupButtonFromJson(partJson, partJsonFile);
@@ -665,7 +676,8 @@ public class RecipeBook : MonoBehaviour
         {
             if (itemJsonFile != null)
             {
-                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
+                ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(itemJsonFile.text);
+                //File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
                 if (itemJson.levelRequirement <= _gameMasterRef.GetLevel)
                 {
                     setupButtonFromJson(itemJson, itemJsonFile);
@@ -696,7 +708,8 @@ public class RecipeBook : MonoBehaviour
         {
             if (partJsonFile != null)
             {
-                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(partJsonFile).Replace("Assets", "")));
+                PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(partJsonFile.text);
+                //File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(partJsonFile).Replace("Assets", "")));
                 if (partJson.levelRequirement <= _gameMasterRef.GetLevel)
                 {
                     setupButtonFromJson(partJson, partJsonFile);
@@ -783,7 +796,8 @@ public class RecipeBook : MonoBehaviour
         foreach(TextAsset itemJsonFile in levelLockedJsonItems)
         {
             // instantiate the button prefab
-            ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
+            ItemJsonData itemJson = JsonUtility.FromJson<ItemJsonData>(itemJsonFile.text);
+            //File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(itemJsonFile).Replace("Assets", "")));
             tempButton = Instantiate(_upcomingItemRecipePrefab);
             tempButton.transform.SetParent(_contentRef.transform, false);
             tempButton.GetComponent<RecipeButton>().setRecipeName(itemJson.itemName);
@@ -811,7 +825,8 @@ public class RecipeBook : MonoBehaviour
         foreach(TextAsset partJsonFile in levelLockedJsonParts)
         {
             // instantiate the button prefab
-            PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(partJsonFile).Replace("Assets", "")));
+            PartJsonData partJson = JsonUtility.FromJson<PartJsonData>(partJsonFile.text);
+            //File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(partJsonFile).Replace("Assets", "")));
             tempButton = Instantiate(_upcomingItemRecipePrefab);
             tempButton.transform.SetParent(_contentRef.transform, false);
             tempButton.GetComponent<RecipeButton>().setRecipeName(partJson.partName);
@@ -887,7 +902,7 @@ public class RecipeBook : MonoBehaviour
     private void setupButtonFromJson(ItemJsonData itemJson)
     {
         foreach(TextAsset jsonFile in itemJsonRecipes)
-            if (JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonFile).Replace("Assets", ""))).itemName == itemJson.itemName)
+            if (JsonUtility.FromJson<ItemJsonData>(jsonFile.text).itemName == itemJson.itemName) /*File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonFile).Replace("Assets", "")))*/
             {
                 setupButtonFromJson(itemJson, jsonFile);
                 break;
@@ -917,7 +932,7 @@ public class RecipeBook : MonoBehaviour
     private void setupButtonFromJson(PartJsonData partJson)
     {
         foreach(TextAsset jsonFile in partJsonRecipes)
-            if (JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonFile).Replace("Assets", ""))).partName == partJson.partName)
+            if (JsonUtility.FromJson<PartJsonData>(jsonFile.text).partName == partJson.partName)/*File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonFile).Replace("Assets", ""))*/
             {
                 setupButtonFromJson(partJson, jsonFile);
                 break;
@@ -991,8 +1006,8 @@ public class RecipeBook : MonoBehaviour
         ItemJsonData itemJsonData = new ItemJsonData();
         foreach (TextAsset item in itemJsonRecipes)
         {
-            string path = Application.dataPath + AssetDatabase.GetAssetPath(item).Replace("Assets", "");
-            ItemJsonData temp = JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(path));
+            //string path = Application.dataPath + AssetDatabase.GetAssetPath(item).Replace("Assets", "");
+            ItemJsonData temp = JsonUtility.FromJson<ItemJsonData>(item.text);//File.ReadAllText(path));
             //Debug.Log(temp.itemName);
             if (temp.itemName == value)
             {
@@ -1028,8 +1043,8 @@ public class RecipeBook : MonoBehaviour
         PartJsonData partJsonData = new PartJsonData();
         foreach (TextAsset part in partJsonRecipes)
         {
-            string path = Application.dataPath + AssetDatabase.GetAssetPath(part).Replace("Assets", "");
-            PartJsonData temp = JsonUtility.FromJson<PartJsonData>(File.ReadAllText(path));
+            //string path = Application.dataPath + AssetDatabase.GetAssetPath(part).Replace("Assets", "");
+            PartJsonData temp = JsonUtility.FromJson<PartJsonData>(part.text);//File.ReadAllText(path));
             //Debug.Log(temp.partName);
             if (temp.partName == value)
             {

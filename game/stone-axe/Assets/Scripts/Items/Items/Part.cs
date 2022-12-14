@@ -107,6 +107,6 @@ public class Part : MonoBehaviour
 
     private PartJsonData loadJson(TextAsset jsonText)
     {
-        return JsonUtility.FromJson<PartJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonText).Replace("Assets", "")));
+        return JsonUtility.FromJson<PartJsonData>(jsonText.text);//File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonText).Replace("Assets", "")));
     }
 }

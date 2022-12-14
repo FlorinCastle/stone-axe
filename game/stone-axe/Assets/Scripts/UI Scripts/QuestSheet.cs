@@ -52,7 +52,8 @@ public class QuestSheet : MonoBehaviour
         }*/
         if (_questJsonRef != null)
         {
-            BaseQuestJsonData quest = JsonUtility.FromJson<BaseQuestJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(_questJsonRef).Replace("Assets", "")));
+            BaseQuestJsonData quest = JsonUtility.FromJson<BaseQuestJsonData>(_questJsonRef.text);
+            //File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(_questJsonRef).Replace("Assets", "")));
 
             _headerText.text = quest.questName;
             _bodyText.text = "quest type: " + quest.questType + "\n\n" + quest.questDescription + "\n\nquest level: " + quest.questPrereqs.requiredPlayerLevel;

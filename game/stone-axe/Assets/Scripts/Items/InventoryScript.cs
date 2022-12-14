@@ -1888,7 +1888,7 @@ public class InventoryScript : MonoBehaviour
 
     private ItemJsonData loadJson(TextAsset jsonData)
     {
-        return JsonUtility.FromJson<ItemJsonData>(File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonData).Replace("Assets", "")));
+        return JsonUtility.FromJson<ItemJsonData>(jsonData.text);//File.ReadAllText(Application.dataPath + AssetDatabase.GetAssetPath(jsonData).Replace("Assets", "")));
     }
 
     public void nextItemFilter()
